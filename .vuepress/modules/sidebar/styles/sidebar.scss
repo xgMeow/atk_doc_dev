@@ -24,7 +24,7 @@
     transform var(--transform-transition);
 
   backdrop-filter: saturate(150%) blur(12px);
-  scrollbar-color: var(--theme-color) var(--border-color);
+  // scrollbar-color: var(--theme-color) var(--border-color);
 
   @media (max-width: hope-config.$pad) {
     font-size: 0.86em;
@@ -99,18 +99,18 @@
 
 // 滚动条隐藏，放上去显示
 .vp-sidebar {
-  scrollbar-color: transparent #eff2f5; /* 设置透明隐藏滚动条 */
-  overflow-y: scroll;  /* 垂直滚动条始终显示 */
+  scrollbar-color: transparent #eff2f5 !important; /* 设置透明隐藏滚动条 */
+  overflow-y: scroll !important;  /* 垂直滚动条始终显示 */
 }
 .vp-sidebar:hover {
-  scrollbar-color: #d5dae0 #eff2f5; /* 显示滚动条 */
+  scrollbar-color: #d5dae0 #eff2f5 !important; /* 显示滚动条 */
 }
 
 pre {
-  scrollbar-color: transparent transparent;
+  scrollbar-color: transparent transparent !important;
 }
 pre:hover {
-  scrollbar-color: #d5dae0 transparent; 
+  scrollbar-color: #d5dae0 transparent !important; 
 }
 #navbar.vp-navbar {
   width: 100%;

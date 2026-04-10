@@ -818,3 +818,21 @@ li.vp-toc-item.active{
 .hint-container.caution p {
   line-height: 2;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #adb5bd;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ba2aa;
+}
