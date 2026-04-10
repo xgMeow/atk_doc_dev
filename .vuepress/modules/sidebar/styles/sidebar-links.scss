@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "vuepress-shared/styles/arrow";
-@use "@sass-palette/helper";
-
 .vp-sidebar-links {
   margin: 0;
   padding: 0;
@@ -23,7 +19,6 @@
     }
 
     > li {
-      // stylelint-disable selector-max-compound-selectors
       > .vp-sidebar-link {
         font-size: 1.1em;
       }
@@ -31,10 +26,6 @@
       &:not(:first-child) {
         margin-top: 0.5rem;
       }
-      // stylelint-enable selector-max-compound-selectors
     }
   }
-}
-.vp-sidebar > .vp-sidebar-links{
-  padding: 1.5rem 0.5rem;
 }

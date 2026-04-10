@@ -215,3 +215,166 @@ pre:hover {
 .vp-sidebar-group .vp-sidebar-group .vp-sidebar-header{
   font-size: 1.1em;
 }
+// ==================== 搜索和工具栏样式 ====================
+
+// 搜索框容器
+.sidebar-search-box {
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  background: var(--sidebar-bg-color);
+  z-index: 10;
+}
+
+.sidebar-search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  padding: 10px 14px;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+  
+  &:focus-within {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--theme-color);
+    box-shadow: 0 0 0 3px rgba(64, 158, 255, 0.15);
+  }
+}
+
+.sidebar-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0 10px;
+  font-size: 14px;
+  color: var(--text-color);
+  outline: none;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.35);
+  }
+}
+
+.sidebar-icon {
+  flex-shrink: 0;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-search-input-wrapper:focus-within .sidebar-icon {
+  color: var(--theme-color);
+}
+
+.sidebar-clear-icon {
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+
+// 工具栏
+.sidebar-toolbar {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px 16px;
+  background: var(--sidebar-bg-color);
+}
+
+.sidebar-toolbar-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+
+.sidebar-toolbar-text {
+  line-height: 1;
+}
+
+// 搜索高亮
+.sidebar-search-highlight {
+  background: var(--theme-color);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+// 搜索匹配项
+.search-matched {
+  background: rgba(64, 158, 255, 0.1);
+  border-left: 3px solid var(--theme-color);
+  border-radius: 0 6px 6px 0;
+}
+
+// 深色模式适配
+html[data-theme=dark] {
+  .sidebar-search-input-wrapper {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.08);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    &:focus-within {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--theme-color);
+      box-shadow: 0 0 0 3px rgba(64, 158, 255, 0.2);
+    }
+  }
+
+  .sidebar-search-input {
+    color: rgba(255, 255, 255, 0.9);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+  }
+
+  .sidebar-icon {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .sidebar-clear-icon {
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .sidebar-toolbar-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .search-matched {
+    background: rgba(64, 158, 255, 0.15);
+  }
+}
