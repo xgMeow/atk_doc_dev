@@ -36,7 +36,7 @@
     .hint {
       color: var(--grey-light);
       font-size: 0.875rem;
-      line-height: 2;
+      // line-height: 2;
     }
 
     .arrow {
@@ -77,7 +77,7 @@
 .vp-page-nav .nav-link:hover .hint {
   color: var(--menu-text-color); 
   font-size: 0.875rem;
-  line-height: 2;
+  // line-height: 2;
 }
 .vp-page-nav .nav-link:hover{
   background: var(--menu-color-blue-low);
