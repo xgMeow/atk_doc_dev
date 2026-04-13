@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { onMounted, watch, onUnmounted, nextTick } from 'vue'
+import { onMounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -61,8 +61,25 @@ const updateToc = () => {
     a.href = `#${item.id}`
     a.textContent = item.text
     
-    // 添加缩进样式
-    a.style.paddingLeft = `${(item.level - 2) * 12}px`
+    // 根据层级设置缩进（内联样式确保生效）
+    const indentMap = {
+      2: '0.75em',
+      3: '1.75em',
+      4: '2.75em',
+      5: '3.75em',
+      6: '4.75em'
+    }
+    a.style.paddingLeft = indentMap[item.level] || '0.75em'
+    
+    // 根据层级设置字体大小
+    const fontSizeMap = {
+      2: '14px',
+      3: '13px',
+      4: '13px',
+      5: '12px',
+      6: '12px'
+    }
+    a.style.fontSize = fontSizeMap[item.level] || '14px'
     
     li.appendChild(a)
     tocList.appendChild(li)
@@ -92,24 +109,46 @@ watch(
   display: none;
 }
 
-/* TOC 层级样式 */
+/* TOC 基础样式 */
+.vp-toc-item {
+  position: relative;
+  margin: 0;
+  padding: 0.2em 0;
+  list-style: none;
+  border-radius: 0 12px 12px 0;
+}
+
+.vp-toc-item.active {
+  background: #f0f4ff;
+}
+
+.vp-toc-link {
+  display: block;
+  padding: 0.25em 0.75em;
+  color: var(--text-color, #213547);
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color 0.25s, background-color 0.25s;
+}
+
+.vp-toc-link:hover {
+  color: var(--menu-color-blue, #1456f0);
+}
+
 .vp-toc-link.level2 {
   font-weight: 500;
 }
 
-.vp-toc-link.level3 {
-  font-size: 0.9em;
-  color: var(--vp-c-text-2);
+/* 暗色模式适配 */
+html[data-theme="dark"] .vp-toc-item.active {
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.vp-toc-link.level4 {
-  font-size: 0.85em;
-  color: var(--vp-c-text-3);
+html[data-theme="dark"] .vp-toc-link {
+  color: var(--text-color, #d8d8d8);
 }
 
-.vp-toc-link.level5,
-.vp-toc-link.level6 {
-  font-size: 0.8em;
-  color: var(--vp-c-text-3);
+html[data-theme="dark"] .vp-toc-link:hover {
+  color: var(--menu-color-blue, #fff);
 }
 </style>
