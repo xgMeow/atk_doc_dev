@@ -5,10 +5,12 @@
 </template>
 
 <script setup>
-import { onMounted, watch, nextTick, onUnmounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { onMounted, watch, nextTick, onUnmounted, computed } from 'vue'
+import { useRoute, usePageFrontmatter } from 'vuepress/client'
 
 const route = useRoute()
+const frontmatter = usePageFrontmatter()
+
 let scrollHandler = null
 let headerElements = []
 let tocItems = []
@@ -21,17 +23,40 @@ const getHeaderLevel = (el) => {
   return match ? parseInt(match[1]) : 0
 }
 
+// 从 frontmatter 获取最大渲染层级
+const getMaxLevel = () => {
+  const tocConfig = frontmatter.value?.toc
+  if (!tocConfig) return 6 // 默认渲染到 h6
+  
+  // 支持多种格式：
+  // toc: 2 (数字)
+  // toc: { levels: 2 }
+  // toc: { levels: [2, 6] } - 取第一个作为最大层级
+  // toc: { levels: "deep" } - 渲染到 h6
+  
+  if (typeof tocConfig === 'number') return tocConfig
+  if (typeof tocConfig === 'object') {
+    const levels = tocConfig.levels
+    if (typeof levels === 'number') return levels
+    if (levels === 'deep') return 6
+    if (Array.isArray(levels)) return levels[0] || 6
+  }
+  return 6
+}
+
 // 生成 TOC 项目
 const generateTocItems = () => {
   const contentContainer = document.querySelector('.theme-hope-content')
   if (!contentContainer) return []
 
+  const maxLevel = getMaxLevel()
   const headers = contentContainer.querySelectorAll('h2, h3, h4, h5, h6')
   const items = []
 
   headers.forEach((header) => {
     const level = getHeaderLevel(header)
     if (level < 2) return
+    if (level > maxLevel) return // 超过最大层级的不渲染
 
     const id = header.getAttribute('id')
     const text = header.textContent?.trim() || ''
@@ -56,7 +81,6 @@ const setActiveById = (targetId) => {
       item.li.classList.remove('active')
     }
   })
-  // 更新 marker 位置
   updateMarkerPosition()
 }
 
@@ -70,7 +94,6 @@ const updateMarkerPosition = () => {
     return
   }
   
-  // 计算 active item 相对于 TOC wrapper 的位置
   const wrapperRect = tocWrapper.getBoundingClientRect()
   const itemRect = activeItem.getBoundingClientRect()
   
@@ -78,7 +101,7 @@ const updateMarkerPosition = () => {
   tocMarker.style.top = `${top}px`
 }
 
-// 更新高亮状态（根据滚动位置）
+// 更新高亮状态
 const updateActiveHighlight = () => {
   const scrollTop = window.scrollY
   const navbarHeight = 120
@@ -111,7 +134,6 @@ const updateToc = () => {
   const tocList = document.querySelector('.vp-toc-list')
   if (!tocList) return
 
-  // 获取 TOC wrapper 和 marker
   tocWrapper = document.querySelector('.vp-toc-wrapper')
   tocMarker = document.querySelector('.vp-toc-marker')
 
@@ -130,7 +152,6 @@ const updateToc = () => {
     a.href = `#${item.id}`
     a.textContent = item.text
     
-    // 缩进
     const indentMap = {
       2: '0.75em',
       3: '1.75em',
@@ -140,7 +161,6 @@ const updateToc = () => {
     }
     a.style.paddingLeft = indentMap[item.level] || '0.75em'
     
-    // 字体大小
     const fontSizeMap = {
       2: '14px',
       3: '13px',
@@ -150,8 +170,7 @@ const updateToc = () => {
     }
     a.style.fontSize = fontSizeMap[item.level] || '14px'
 
-    // 点击事件
-    a.addEventListener('click', (e) => {
+    a.addEventListener('click', () => {
       setActiveById(item.id)
     })
     
@@ -164,7 +183,6 @@ const updateToc = () => {
     }
   })
 
-  // 初始高亮
   nextTick(() => {
     setTimeout(updateActiveHighlight, 100)
   })
@@ -175,7 +193,6 @@ onMounted(() => {
     setTimeout(() => {
       updateToc()
       
-      // 使用 passive 提高滚动性能
       scrollHandler = () => {
         requestAnimationFrame(updateActiveHighlight)
       }
