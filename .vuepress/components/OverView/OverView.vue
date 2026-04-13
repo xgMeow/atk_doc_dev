@@ -167,13 +167,14 @@ const modulesData = ref([
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.module-hexagon:hover {
+/* ==================== 六边形模块标题悬停效果 ==================== */
+/* .module-hexagon:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 
     0 8px 20px rgba(21, 81, 163, 0.4),
     0 16px 40px rgba(21, 81, 163, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
+} */
 
 /* 六边形上下三角 */
 .module-hexagon::before,
