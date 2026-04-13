@@ -12,6 +12,8 @@ const route = useRoute()
 let scrollHandler = null
 let headerElements = []
 let tocItems = []
+let tocWrapper = null
+let tocMarker = null
 
 // 获取标题层级
 const getHeaderLevel = (el) => {
@@ -54,6 +56,26 @@ const setActiveById = (targetId) => {
       item.li.classList.remove('active')
     }
   })
+  // 更新 marker 位置
+  updateMarkerPosition()
+}
+
+// 更新 marker 位置
+const updateMarkerPosition = () => {
+  if (!tocWrapper || !tocMarker) return
+  
+  const activeItem = document.querySelector('.vp-toc-item.active')
+  if (!activeItem) {
+    tocMarker.style.top = '-1.7rem'
+    return
+  }
+  
+  // 计算 active item 相对于 TOC wrapper 的位置
+  const wrapperRect = tocWrapper.getBoundingClientRect()
+  const itemRect = activeItem.getBoundingClientRect()
+  
+  const top = itemRect.top - wrapperRect.top + tocWrapper.scrollTop
+  tocMarker.style.top = `${top}px`
 }
 
 // 更新高亮状态（根据滚动位置）
@@ -70,7 +92,6 @@ const updateActiveHighlight = () => {
     const rect = header.getBoundingClientRect()
     const headerTop = rect.top + scrollTop - navbarHeight
     
-    // 标题在视口上方或刚好进入视口
     if (rect.top <= navbarHeight + 50) {
       const distance = Math.abs(scrollTop - headerTop + navbarHeight)
       if (distance < minDistance) {
@@ -89,6 +110,10 @@ const updateActiveHighlight = () => {
 const updateToc = () => {
   const tocList = document.querySelector('.vp-toc-list')
   if (!tocList) return
+
+  // 获取 TOC wrapper 和 marker
+  tocWrapper = document.querySelector('.vp-toc-wrapper')
+  tocMarker = document.querySelector('.vp-toc-marker')
 
   const items = generateTocItems()
   
@@ -125,7 +150,7 @@ const updateToc = () => {
     }
     a.style.fontSize = fontSizeMap[item.level] || '14px'
 
-    // 点击事件 - 立即设置高亮
+    // 点击事件
     a.addEventListener('click', (e) => {
       setActiveById(item.id)
     })
@@ -150,7 +175,7 @@ onMounted(() => {
     setTimeout(() => {
       updateToc()
       
-      // 滚动监听
+      // 使用 passive 提高滚动性能
       scrollHandler = () => {
         requestAnimationFrame(updateActiveHighlight)
       }
@@ -168,7 +193,6 @@ watch(
   }
 )
 
-// 监听 hash 变化（点击跳转）
 watch(
   () => route.hash,
   (newHash) => {
