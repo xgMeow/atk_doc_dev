@@ -5,10 +5,13 @@
 </template>
 
 <script setup>
-import { onMounted, watch, nextTick } from 'vue'
+import { onMounted, watch, nextTick, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+let scrollHandler = null
+let headerElements = []
+let tocItems = []
 
 // 获取标题层级
 const getHeaderLevel = (el) => {
@@ -26,7 +29,7 @@ const generateTocItems = () => {
 
   headers.forEach((header) => {
     const level = getHeaderLevel(header)
-    if (level < 2) return // 跳过 h1
+    if (level < 2) return
 
     const id = header.getAttribute('id')
     const text = header.textContent?.trim() || ''
@@ -42,6 +45,46 @@ const generateTocItems = () => {
   return items
 }
 
+// 设置高亮
+const setActiveById = (targetId) => {
+  tocItems.forEach(item => {
+    if (item.id === targetId) {
+      item.li.classList.add('active')
+    } else {
+      item.li.classList.remove('active')
+    }
+  })
+}
+
+// 更新高亮状态（根据滚动位置）
+const updateActiveHighlight = () => {
+  const scrollTop = window.scrollY
+  const navbarHeight = 120
+
+  let activeId = null
+  let minDistance = Infinity
+
+  headerElements.forEach((header) => {
+    if (!header) return
+    
+    const rect = header.getBoundingClientRect()
+    const headerTop = rect.top + scrollTop - navbarHeight
+    
+    // 标题在视口上方或刚好进入视口
+    if (rect.top <= navbarHeight + 50) {
+      const distance = Math.abs(scrollTop - headerTop + navbarHeight)
+      if (distance < minDistance) {
+        minDistance = distance
+        activeId = header.id
+      }
+    }
+  })
+
+  if (activeId) {
+    setActiveById(activeId)
+  }
+}
+
 // 更新 TOC
 const updateToc = () => {
   const tocList = document.querySelector('.vp-toc-list')
@@ -49,8 +92,9 @@ const updateToc = () => {
 
   const items = generateTocItems()
   
-  // 清空现有内容
   tocList.innerHTML = ''
+  headerElements = []
+  tocItems = []
 
   items.forEach(item => {
     const li = document.createElement('li')
@@ -61,7 +105,7 @@ const updateToc = () => {
     a.href = `#${item.id}`
     a.textContent = item.text
     
-    // 根据层级设置缩进（内联样式确保生效）
+    // 缩进
     const indentMap = {
       2: '0.75em',
       3: '1.75em',
@@ -71,7 +115,7 @@ const updateToc = () => {
     }
     a.style.paddingLeft = indentMap[item.level] || '0.75em'
     
-    // 根据层级设置字体大小
+    // 字体大小
     const fontSizeMap = {
       2: '14px',
       3: '13px',
@@ -80,20 +124,41 @@ const updateToc = () => {
       6: '12px'
     }
     a.style.fontSize = fontSizeMap[item.level] || '14px'
+
+    // 点击事件 - 立即设置高亮
+    a.addEventListener('click', (e) => {
+      setActiveById(item.id)
+    })
     
     li.appendChild(a)
     tocList.appendChild(li)
+
+    if (item.element) {
+      headerElements.push(item.element)
+      tocItems.push({ id: item.id, li })
+    }
+  })
+
+  // 初始高亮
+  nextTick(() => {
+    setTimeout(updateActiveHighlight, 100)
   })
 }
 
 onMounted(() => {
-  // 初始更新
   nextTick(() => {
-    setTimeout(updateToc, 500)
+    setTimeout(() => {
+      updateToc()
+      
+      // 滚动监听
+      scrollHandler = () => {
+        requestAnimationFrame(updateActiveHighlight)
+      }
+      window.addEventListener('scroll', scrollHandler, { passive: true })
+    }, 500)
   })
 })
 
-// 监听路由变化
 watch(
   () => route.path,
   () => {
@@ -102,6 +167,25 @@ watch(
     })
   }
 )
+
+// 监听 hash 变化（点击跳转）
+watch(
+  () => route.hash,
+  (newHash) => {
+    if (newHash) {
+      const id = newHash.replace('#', '')
+      setTimeout(() => {
+        setActiveById(id)
+      }, 300)
+    }
+  }
+)
+
+onUnmounted(() => {
+  if (scrollHandler) {
+    window.removeEventListener('scroll', scrollHandler)
+  }
+})
 </script>
 
 <style>
@@ -109,13 +193,13 @@ watch(
   display: none;
 }
 
-/* TOC 基础样式 */
 .vp-toc-item {
   position: relative;
   margin: 0;
   padding: 0.2em 0;
   list-style: none;
   border-radius: 0 12px 12px 0;
+  transition: background-color 0.25s;
 }
 
 .vp-toc-item.active {
@@ -128,27 +212,32 @@ watch(
   color: var(--text-color, #213547);
   line-height: 1.5;
   text-decoration: none;
-  transition: color 0.25s, background-color 0.25s;
+  transition: color 0.25s;
 }
 
 .vp-toc-link:hover {
   color: var(--menu-color-blue, #1456f0);
 }
 
+.vp-toc-item.active .vp-toc-link {
+  color: var(--menu-color-blue, #1456f0);
+  font-weight: 500;
+}
+
 .vp-toc-link.level2 {
   font-weight: 500;
 }
 
-/* 暗色模式适配 */
 html[data-theme="dark"] .vp-toc-item.active {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(20, 86, 240, 0.15);
 }
 
 html[data-theme="dark"] .vp-toc-link {
   color: var(--text-color, #d8d8d8);
 }
 
-html[data-theme="dark"] .vp-toc-link:hover {
-  color: var(--menu-color-blue, #fff);
+html[data-theme="dark"] .vp-toc-link:hover,
+html[data-theme="dark"] .vp-toc-item.active .vp-toc-link {
+  color: #fff;
 }
 </style>
