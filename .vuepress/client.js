@@ -3,6 +3,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { resolveRoute as _resolveRoute, resolveRoutePath as _resolveRoutePath } from 'vuepress/client';
 import { useRoutes } from 'vuepress/client';
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
+import EnhancedToc from './components/EnhancedToc.vue'
 
 defineCatalogInfoGetter((meta) => {
     // console.log(meta);
@@ -100,29 +101,6 @@ export default defineClientConfig({
     // 或者 vue-router 实例
     const router = useRouter();
     let routes = useRoutes();
-    // console.log(route);
-    // console.log(router);
-    // console.log(routes);
-    // if (!__VUEPRESS_SSR__) {
-    //     if(location.href.startsWith("file://") && !is_file_protocol){
-    //         is_file_protocol = true;
-    //     }
-    //     console.log(route.fullPath);
-    //     let fullpath = route.fullPath;
-    //     console.log(fullpath)
-    //     let split_path = fullpath.split("/") || []; 
-    //     for(let i=0;i<split_path.length;i++){
-    //         let path_new = "/" + split_path.slice(i).join("/");
-    //         let _route = _resolveRoute(path_new);
-    //         if(!_route.notFound){
-    //             if(!root_dir || i>0){
-    //                 root_dir = split_path.slice(0, i).join("/")
-    //                 console.log(root_dir)
-    //                 router.options.history.base = "file:///" + root_dir + "";
-    //             }
-    //         }
-    //     }
-    // }
   },
-  rootComponents: [],
+  rootComponents: [EnhancedToc],
 })

@@ -70,6 +70,12 @@ export const useHopeTheme = ({ type, plat="" }) =>
       // editLink: "在 GitHub 上编辑此页",
     },
 
+    // TOC目录配置 - 显示h2-h6级标题
+    toc: {
+      levels: "deep",
+      selector: ".theme-hope-content > h2, .theme-hope-content > h3, .theme-hope-content > h4, .theme-hope-content > h5, .theme-hope-content > h6",
+    },
+
     // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
     // hotReload: true,
 
