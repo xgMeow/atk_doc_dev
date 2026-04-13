@@ -324,9 +324,10 @@ h3 {
 }
 
 .vp-sidebar-header.clickable:hover {
-  background: #edeeee;
-  // color: var(--menu-color-blue);
-  border-radius: 6px;
+  // background: #edeeee;
+  background: #fff;
+  font-weight: bold;
+  // border-radius: 0 20px 20px 0;
 }
 
 
