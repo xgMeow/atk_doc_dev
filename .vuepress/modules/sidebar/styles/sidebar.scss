@@ -22,12 +22,40 @@
     box-shadow 0.3s ease;
 
   backdrop-filter: saturate(180%) blur(20px);
-  scrollbar-color: transparent #eff2f5;
   overflow-y: scroll;
-  scrollbar-width: 6px;
 
+  // Firefox滚动条样式（标准属性）
+  scrollbar-width: thin; // 使用thin而非具体像素值，更好的兼容性
+  scrollbar-color: transparent #eff2f5; // 滑块透明，轨道颜色
+
+  // Webkit浏览器（Chrome/Safari/Edge）滚动条样式
+  &::-webkit-scrollbar {
+    width: 6px; // 滚动条宽度
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #eff2f5; // 轨道颜色（右侧色块）
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent; // 默认滑块透明
+    border-radius: 3px;
+    transition: background 0.2s ease;
+  }
+
+  // 鼠标悬停在侧边栏上时显示滑块
   &:hover {
-    scrollbar-color: #d5dae0 #eff2f5;
+    scrollbar-color: #d5dae0 #eff2f5; // Firefox: 滑块颜色变深
+
+    &::-webkit-scrollbar-thumb {
+      background: #d5dae0; // Webkit: 滑块显示
+    }
+  }
+
+  // 鼠标悬停在滑块上时的样式（仅Webkit支持）
+  &::-webkit-scrollbar-thumb:hover {
+    background: #b0b5bd; // 滑块hover颜色（比默认更深一点）
   }
 
   @media (max-width: hope-config.$pad) {
@@ -400,8 +428,25 @@ html[data-theme=dark] {
     background: linear-gradient(180deg, #1a1d23 0%, #14161a 100%);
     border-right-color: rgba(255, 255, 255, 0.06);
     
+    // Firefox深色模式滚动条
+    scrollbar-color: transparent #2a2d33;
+    
+    // Webkit深色模式滚动条
+    &::-webkit-scrollbar-track {
+      background: #2a2d33;
+    }
+    
     &:hover {
       box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+      scrollbar-color: #4a4d53 #2a2d33;
+
+      &::-webkit-scrollbar-thumb {
+        background: #4a4d53;
+      }
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #5a5d63;
     }
   }
 
