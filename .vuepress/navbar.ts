@@ -9,11 +9,6 @@ export const useNavbar = ({ type }) => {
         text: "下载离线版手册",
         link: "http://192.168.0.253:8888/help-standalone.zip",
       },
-      {
-        text: "二次开发教程",
-        link: "/二次开发教程/",
-        // icon: "config"
-      }
     ])
   }
   else if (standalone) {
@@ -23,11 +18,6 @@ export const useNavbar = ({ type }) => {
       //   link: "https://atkdocs.smsat.space/",
       //   icon: '/images/logo.png'
       // },
-      {
-        text: "二次开发教程",
-        link: "/二次开发教程/",
-        // icon: "config"
-      },
       {
         text: '下载',
         icon: "book",
@@ -47,11 +37,6 @@ export const useNavbar = ({ type }) => {
       {
         text: "下载离线版手册",
         link: "https://cdn.smsat.space/download/atk-doc-offline.zip"
-      },
-      {
-        text: "二次开发教程",
-        link: "/二次开发教程/",
-        // icon: "config"
       },
       {
         text: '下载',
