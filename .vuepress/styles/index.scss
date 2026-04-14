@@ -293,21 +293,16 @@ h3 {
 }
 .vp-sidebar-link.active {
   // 扁平
-  background: #3367d1;
+  background: #027cfb;
   color: #fff;
   font-weight: 500;
-
-  // 渐变立体
-  // background: var(--navbar-bg-color);
-  // color: #fff;
-  // font-weight: 600;
-  // letter-spacing: 1px;
 }
 
 .vp-sidebar-header.clickable:hover {
-  background: #edeeee;
-  // color: var(--menu-color-blue);
-  border-radius: 6px;
+  // background: #edeeee;
+  background: #fff;
+  font-weight: bold;
+  // border-radius: 0 20px 20px 0;
 }
 
 table{
