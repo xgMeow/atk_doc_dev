@@ -24,7 +24,7 @@ export const useConfig = ({type, plat=""}) => {
       "@components": path.resolve(__dirname,"./components",),
     },
     markdown:{
-      toc: { includeLevel: [2, 3, 4, 5, 6] },
+      // toc: { includeLevel: [2, 3, 4, 5, 6] },
       headers: { level: [2, 6] },
       code:{
         lineNumbers: 5

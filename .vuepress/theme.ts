@@ -46,7 +46,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
     // sidebar,
     sidebar: {
       "/": "structure",
-      "/二次开发教程/": "structure"
+      // "/二次开发教程/": "structure"
     },
 
     // 页脚
