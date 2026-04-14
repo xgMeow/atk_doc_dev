@@ -803,6 +803,10 @@ li.vp-toc-item.active{
   border-radius: 10px;
 }
 
+::-webkit-scrollbar-track-piece {
+  background: #eff2f5;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #adb5bd;
   border-radius: 10px;
