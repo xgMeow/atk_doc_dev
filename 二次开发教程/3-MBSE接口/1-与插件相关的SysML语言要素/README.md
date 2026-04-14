@@ -1,5 +1,5 @@
 ---
-title: 与插件相关的SysML语言要素
+title: 插件相关的SysML语言要素
 index: false
 ---
 
