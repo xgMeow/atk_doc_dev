@@ -233,7 +233,9 @@ onUnmounted(() => {
 .enhanced-toc-wrapper {
   display: none;
 }
-
+.vp-toc-header{
+  color: #3c3c43;
+}
 .vp-toc-item {
   position: relative;
   margin: 0;
@@ -243,17 +245,25 @@ onUnmounted(() => {
   transition: background-color 0.25s;
 }
 
+.vp-toc-item a {
+  margin: 0;
+}
+
 .vp-toc-item.active {
   background: #f0f4ff;
 }
 
 .vp-toc-link {
   display: block;
-  padding: 0.25em 0.75em;
-  color: var(--text-color, #213547);
+  padding: 0;
+  color: #67676c;
   line-height: 1.5;
   text-decoration: none;
   transition: color 0.25s;
+}
+
+.vp-toc-wrapper{
+  margin:0;
 }
 
 .vp-toc-link:hover {
