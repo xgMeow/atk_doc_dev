@@ -4,6 +4,7 @@ import { resolveRoute as _resolveRoute, resolveRoutePath as _resolveRoutePath } 
 import { useRoutes } from 'vuepress/client';
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 import EnhancedToc from './components/EnhancedToc.vue'
+import NotFound from './components/NotFound.vue'
 
 defineCatalogInfoGetter((meta) => {
     // console.log(meta);
@@ -103,4 +104,7 @@ export default defineClientConfig({
     let routes = useRoutes();
   },
   rootComponents: [EnhancedToc],
+  layouts: {
+    NotFound,
+  },
 })
