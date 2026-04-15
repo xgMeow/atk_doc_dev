@@ -20,6 +20,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
     // 当前网站部署到的域名
     hostname: "https://atkdocs.smsat.space",
 
+    // 隐藏文章标题下的作者
     displayAuthor: false,
     author: {
       name: "国防科技大学空天科学学院",
@@ -62,6 +63,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
     // },
 
     // 多语言配置
+    // 页面信息配置：隐藏作者(Author)和写作日期(Date)，只显示分类、标签、阅读时间、字数
     pageInfo: ["Category", "Tag", "ReadingTime", "Word"],
     metaLocales: {
       /**
@@ -69,7 +71,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
        */
       // TOC标题
       toc: "快速导航",
-      lastUpdated: "最后更新",
+      lastUpdated: "最后更新", // 修改更新时间显示文字，原来是"上次编辑于"
       // editLink: "在 GitHub 上编辑此页",
     },
 
@@ -94,9 +96,10 @@ export const useHopeTheme = ({ type, plat="" }) =>
       //   categoryId: "DIC_kwDOG_Pt2M4COD69",
       // },
       git: {
-        createdTime: false,
-        contributors: false,
-        updatedTime: true,
+        // Git 信息配置：隐藏写作日期和贡献者，保留更新时间
+        createdTime: false,   // 隐藏标题下的写作日期
+        contributors: false,   // 隐藏文章底部的贡献者
+        updatedTime: true,     // 保留最后更新时间
       },
       seo: !standalone,
       sitemap: !standalone,
