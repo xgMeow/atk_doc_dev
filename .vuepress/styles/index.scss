@@ -583,16 +583,15 @@ ol li{
   // font-family: 'Times New Roman', Times;
 }/*设置正文最上面内容结构的样式,以及字体格式*/
 
-p, ul, ol{
+p,ul,ol {
   color: #213547;
-}
-
-ol{
-  margin-block-start:0px;
+  margin-block-start: 12px;
+  margin-block-end: 12px;
 }
 
 .hint-container-title{
   text-indent: 0em;
+  margin-bottom: 12px;
 }/*设置二次开发文档中警告、提示、注意等内容结构的样式,以及字体格式，首行不缩进*/
 
 
