@@ -91,7 +91,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
       //   categoryId: "DIC_kwDOG_Pt2M4COD69",
       // },
       git: {
-        createdTime: true,
+        createdTime: false,
         contributors: true,
         updatedTime: true,
       },
