@@ -25,7 +25,7 @@ scatter(x,y,sz) ：创建散点图的同时指定圆的大小。要绘制大小�
     scatter(x, y)
 ```
 
-![](media/scatter/image.png)
+<img src="media/scatter/image.png" alt="" no-view />
 
 ### 改变圆圈大小和颜色
 
@@ -37,4 +37,4 @@ scatter(x,y,sz) ：创建散点图的同时指定圆的大小。要绘制大小�
     scatter(x, y, s, c)
 ```
 
-![](media/scatter/image-2.png)
+<img src="media/scatter/image-2.png" alt="" no-view />
