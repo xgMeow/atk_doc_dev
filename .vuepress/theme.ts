@@ -20,6 +20,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
     // 当前网站部署到的域名
     hostname: "https://atkdocs.smsat.space",
 
+    displayAuthor: false,
     author: {
       name: "国防科技大学空天科学学院",
       email: "atk_nudt@163.com",
