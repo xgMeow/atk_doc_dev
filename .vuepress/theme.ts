@@ -62,6 +62,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
     // },
 
     // 多语言配置
+    pageInfo: ["Category", "Tag", "ReadingTime", "Word"],
     metaLocales: {
       /**
        * 编辑此页文字
