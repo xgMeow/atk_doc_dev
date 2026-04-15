@@ -67,6 +67,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
        */
       // TOC标题
       toc: "快速导航",
+      lastUpdated: "最后更新",
       // editLink: "在 GitHub 上编辑此页",
     },
 
