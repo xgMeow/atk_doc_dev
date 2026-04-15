@@ -24,4 +24,4 @@ title(txt)
     show();
 ```
 
-<img src="media/title/image-1.png" alt="" no-view />
+<img src="./media/title/image-1.png" alt="" no-view />
