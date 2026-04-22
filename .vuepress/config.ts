@@ -4,6 +4,7 @@ import { standaloneBundler } from './bundler-standalone/index.js'
 import path from "path"
 import viteBundler from "@vuepress/bundler-vite";
 import webpackBundler from "@vuepress/bundler-webpack";
+import { include } from "@mdit/plugin-include";
 
 export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
@@ -28,7 +29,13 @@ export const useConfig = ({type, plat=""}) => {
       headers: { level: [2, 6] },
       code:{
         lineNumbers: 5
-      }
+      },
+      // 新增：集成 include 插件
+      extendsMarkdown: (md) => {
+        md.use(include, {
+          currentPath: (env) => env.filePath,
+        });
+      },
     },
     extendsPage: (page) => {
       let order = page.frontmatter.order;
