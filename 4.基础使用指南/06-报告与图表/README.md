@@ -1,6 +1,5 @@
 ---
-title: 软件安装
+title: 报告与图表
 index: false
 ---
-
 <Catalog />

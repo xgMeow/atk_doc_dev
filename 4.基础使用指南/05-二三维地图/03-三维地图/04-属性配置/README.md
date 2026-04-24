@@ -1,6 +1,5 @@
 ---
-title: 软件安装
+title: 属性配置
 index: false
 ---
-
 <Catalog />

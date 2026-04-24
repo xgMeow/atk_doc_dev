@@ -1,6 +1,5 @@
 ---
-title: 软件安装
+title: 视点控制
 index: false
 ---
-
 <Catalog />

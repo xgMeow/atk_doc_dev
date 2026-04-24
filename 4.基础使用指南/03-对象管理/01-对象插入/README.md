@@ -1,6 +1,5 @@
 ---
-title: 软件安装
+title: 对象插入
 index: false
 ---
-
 <Catalog />

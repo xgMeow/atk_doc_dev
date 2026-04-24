@@ -1,6 +1,5 @@
 ---
-title: 软件安装
+title: 安装后常见问题
 index: false
 ---
-
 <Catalog />

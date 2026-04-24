@@ -1,6 +1,5 @@
 ---
-title: 软件安装
+title: 场景管理
 index: false
 ---
-
 <Catalog />

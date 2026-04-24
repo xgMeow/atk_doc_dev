@@ -1,6 +1,5 @@
 ---
-title: 软件安装
+title: 三维地形全局管理
 index: false
 ---
-
 <Catalog />

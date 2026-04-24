@@ -1,6 +1,5 @@
 ---
-title: 软件安装
+title: 二维工具栏
 index: false
 ---
-
 <Catalog />

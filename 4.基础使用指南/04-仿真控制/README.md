@@ -1,5 +1,5 @@
 ---
-title: ATK 注册码获取指南
+title: 仿真控制
 index: false
 ---
 
