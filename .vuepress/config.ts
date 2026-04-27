@@ -9,6 +9,7 @@ import { include } from "@mdit/plugin-include";
 export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
   return defineUserConfig({
+    // GitHub Pages 部署路径。仓库名是 atk_doc，所以网站在 /atk_doc/ 子目录下
     base: "/atk_doc/",
     lang: "zh-CN",
     title: standalone ? "ATK 帮助文档(离线版)": "ATK 帮助文档",
