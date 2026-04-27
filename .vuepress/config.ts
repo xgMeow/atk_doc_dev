@@ -9,7 +9,7 @@ import { include } from "@mdit/plugin-include";
 export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
   return defineUserConfig({
-    base: "/",
+    base: "/atk_doc/",
     lang: "zh-CN",
     title: standalone ? "ATK 帮助文档(离线版)": "ATK 帮助文档",
     description: "加快工业软件国产化，服务航天强国建设",
