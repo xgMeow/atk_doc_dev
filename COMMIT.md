@@ -1,3 +1,7 @@
+---
+index: false
+---
+
 # atk_doc 提交信息规范（Git Commit Message）
 
 所有 Git 提交信息必须遵循以下格式：
