@@ -1,6 +1,7 @@
 stages:
   - build
   - deploy
+  - sync
 
 
 build:gitlab:
@@ -65,8 +66,32 @@ deploy:pages:
     - build:standalone
     - build:standalone-kylin
   script:
-    #- mkdir ./public || true
     - sudo cp  -rv .dist/gitlab/* /var/opt/gitlab/gitlab-rails/shared/pages
     - sudo zip -rv /var/opt/gitlab/gitlab-rails/shared/pages/help-standalone.zip        .dist/standalone/
     - sudo zip -rv /var/opt/gitlab/gitlab-rails/shared/pages/help-standalone-kylin.zip  .dist/standalone-kylin/
-  
+
+
+# 同步到 GitHub Pages
+sync:github:
+  stage: sync
+  only:
+    - master
+    - develop
+  tags:
+    - linux
+    - gitlab
+  script:
+    - git config user.name "GitCode CI"
+    - git config user.email "ci@gitcode.com"
+    - |
+      if [ "$CI_COMMIT_REF_NAME" = "master" ]; then
+        echo "Syncing master to GitHub atk_doc..."
+        git push https://xg_meow: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@github.com/xgMeow/atk_doc.git master:main -f
+        echo "Sync master completed!"
+      fi
+    - |
+      if [ "$CI_COMMIT_REF_NAME" = "develop" ]; then
+        echo "Syncing develop to GitHub atk_doc_dev..."
+        git push https://xg_meow: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@github.com/xgMeow/atk_doc_dev.git develop:main -f
+        echo "Sync develop completed!"
+      fi
