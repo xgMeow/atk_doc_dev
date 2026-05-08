@@ -5,10 +5,12 @@
 若此前完成过ATK本地注册，需先清理注册表残留配置：
 
 1. 打开注册表编辑器（按下 `Win + R` 输入 `regedit` 回车）；
+
 2. 定位到路径：`计算机\HKEY_CURRENT_USER\Software\SIM.SM`；
+
 3. 右键删除名为 `Key` 的注册表项。
 
-<img src="./media/ATK远程服务注册/image-20260408113221314.png" alt="注册表清理路径" style="zoom:50%;" />
+![注册表清理路径](./media/ATK远程服务注册/image-20260508095207350.png)
 
 ## 2. 服务端启动与注册
 
