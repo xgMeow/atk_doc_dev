@@ -36,7 +36,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { siteBase } from '../shared/config.js'
+import { siteBase } from '../../shared/config.js'
 
 const getLink = (path) => {
   const normalizedBase = siteBase.replace(/\/+$/, '')
