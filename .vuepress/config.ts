@@ -1,3 +1,4 @@
+import { siteBase } from "./shared/config.js";
 import { defineUserConfig } from "vuepress";
 import {useHopeTheme} from "./theme.js";
 import { standaloneBundler } from './bundler-standalone/index.js'
@@ -10,7 +11,7 @@ export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
   return defineUserConfig({
     // GitHub Pages 部署路径。仓库名是 atk_doc，所以网站在 /atk_doc/ 子目录下
-    base: "/",
+    base: siteBase,
     lang: "zh-CN",
     title: standalone ? "ATK 帮助文档(离线版)": "ATK 帮助文档",
     description: "加快工业软件国产化，服务航天强国建设",

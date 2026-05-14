@@ -36,24 +36,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useData } from 'vuepress'
-
-const { frontmatter: fm } = useData()
-
-const getBase = () => {
-  // 尝试从多个可能的全局变量获取 base
-  if (typeof window !== 'undefined') {
-    const vp = window.__VUEPRESS__
-    if (vp && vp.siteData && vp.siteData.base) return vp.siteData.base
-    if (vp && vp.router && vp.router.options && vp.router.options.base) return vp.router.options.base
-  }
-  // fallback
-  return fm.value?.base || '/'
-}
+import { siteBase } from '../shared/config.js'
 
 const getLink = (path) => {
-  const base = getBase()
-  const normalizedBase = base.replace(/\/+$/, '')
+  const normalizedBase = siteBase.replace(/\/+$/, '')
   const normalizedPath = path.replace(/\/+/g, '/').replace(/\/$/, '') + '/'
   return normalizedBase + normalizedPath
 }
