@@ -19,7 +19,7 @@
           <template v-for="(item, itemIndex) in row" :key="itemIndex">
             <a 
               v-if="item.link" 
-              :href="item.link" 
+              :href="getLink(item.link)" 
               class="content-item link-item"
             >
               {{ item.name }}
@@ -35,7 +35,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+// 从 VuePress 全局变量获取 base 配置，兼容 / 和 /xxx/ 两种情况
+const base = computed(() => {
+  const siteData = window.__VUEPRESS__.siteData
+  return (siteData && siteData.base) || '/'
+})
+
+const getLink = (path) => {
+  // 统一路径格式后拼接 base
+  const normalizedBase = base.value.replace(/\/+$/, '') // 去掉末尾斜杠
+  const normalizedPath = path.replace(/\/+/g, '/').replace(/\/$/, '') + '/' // 规范路径并补末尾斜杠
+  return normalizedBase + normalizedPath
+}
 
 // 模块数据配置
 const modulesData = ref([
@@ -166,15 +179,6 @@ const modulesData = ref([
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* ==================== 六边形模块标题悬停效果 ==================== */
-/* .module-hexagon:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 
-    0 8px 20px rgba(21, 81, 163, 0.4),
-    0 16px 40px rgba(21, 81, 163, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-} */
 
 /* 六边形上下三角 */
 .module-hexagon::before,
