@@ -39,6 +39,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.28.4",
 		"@babel/preset-env": "^7.28.3",
+		"@mdit/plugin-include": "^0.23.2",
 		"@vue/babel-preset-app": "^5.0.9",
 		"babel-loader": "^10.0.0",
 		"patch-package": "^8.0.1"

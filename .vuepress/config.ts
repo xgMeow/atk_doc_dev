@@ -4,11 +4,13 @@ import { standaloneBundler } from './bundler-standalone/index.js'
 import path from "path"
 import viteBundler from "@vuepress/bundler-vite";
 import webpackBundler from "@vuepress/bundler-webpack";
+import { include } from "@mdit/plugin-include";
 
 export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
   return defineUserConfig({
-    base: "/atk_doc/",
+    // GitHub Pages 部署路径。仓库名是 atk_doc，所以网站在 /atk_doc/ 子目录下
+    base: "/",
     lang: "zh-CN",
     title: standalone ? "ATK 帮助文档(离线版)": "ATK 帮助文档",
     description: "加快工业软件国产化，服务航天强国建设",
@@ -28,7 +30,13 @@ export const useConfig = ({type, plat=""}) => {
       headers: { level: [2, 6] },
       code:{
         lineNumbers: 5
-      }
+      },
+      // 新增：集成 include 插件
+      extendsMarkdown: (md) => {
+        md.use(include, {
+          currentPath: (env) => env.filePath,
+        });
+      },
     },
     extendsPage: (page) => {
       let order = page.frontmatter.order;
