@@ -40,7 +40,7 @@ import { siteBase } from '../../shared/config.js'
 
 const getLink = (path) => {
   const normalizedBase = siteBase.replace(/\/+$/, '')
-  const normalizedPath = path.replace(/\/+/g, '/').replace(/\/$/, '') + '/'
+  const normalizedPath = path.replace(/\/+/g, '/')
   return normalizedBase + normalizedPath
 }
 
