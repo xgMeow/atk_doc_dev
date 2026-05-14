@@ -45,24 +45,24 @@ export default {
         "/topics/AstroMaster/Follow":                        "/5.专业使用指南/13-轨道机动规划工具/6-跟随段.html",
 
         // ATK对象
-        "/topics/Objects/Satellite/index":                    "/03-基础使用指南/2-插入对象/10-对象属性/卫星.html",     //卫星-属性；右下角的“help”按钮 
-        "/topics/Objects/Satellite/Orbit":                    "/03-基础使用指南/2-插入对象/10-对象属性/卫星.html#轨道",          //卫星-属性-点击轨道后；右下角的“help”按钮 
-        "/topics/Objects/Satellite/Attitude":                 "/03-基础使用指南/2-插入对象/10-对象属性/卫星.html#姿态",          //卫星-属性-点击姿态后；右下角的“help”按钮 
-        "/topics/Objects/Satellite/Mass":                     "/03-基础使用指南/2-插入对象/10-对象属性/卫星.html#质量",          //卫星-属性-点击质量后；右下角的“help”按钮 
-        "/topics/Objects/Satellite/PassBreak":                "/03-基础使用指南/2-插入对象/10-对象属性/卫星.html#轨道圈数",       //卫星-属性-点击轨道圈数后；右下角的“help”按钮 
-        "/topics/Objects/Satellite/2DGraphics":               "/03-基础使用指南/2-插入对象/10-对象属性/卫星.html#二维视图",          //卫星-属性-点击二维视图及其下属后；右下角的“help”按钮 
-        "/topics/Objects/Satellite/3DGraphics":               "/03-基础使用指南/2-插入对象/10-对象属性/卫星.html#三维视图",          //卫星-属性-点击三维视图及其下属后；右下角的“help”按钮 
-        "/topics/Objects/Satellite/Constraints":              "/03-基础使用指南/2-插入对象/10-对象属性/卫星.html#约束",             //卫星-属性-点击约束后；右下角的“help”按钮 
+        "/topics/Objects/Satellite/index":                    "/03-基础使用指南/03-对象管理/02-属性配置/卫星.html",     //卫星-属性；右下角的“help”按钮 
+        "/topics/Objects/Satellite/Orbit":                    "/03-基础使用指南/03-对象管理/02-属性配置/卫星.html#轨道",          //卫星-属性-点击轨道后；右下角的“help”按钮 
+        "/topics/Objects/Satellite/Attitude":                 "/03-基础使用指南/03-对象管理/02-属性配置/卫星.html#姿态",          //卫星-属性-点击姿态后；右下角的“help”按钮 
+        "/topics/Objects/Satellite/Mass":                     "/03-基础使用指南/03-对象管理/02-属性配置/卫星.html#质量",          //卫星-属性-点击质量后；右下角的“help”按钮 
+        "/topics/Objects/Satellite/PassBreak":                "/03-基础使用指南/03-对象管理/02-属性配置/卫星.html#轨道圈数",       //卫星-属性-点击轨道圈数后；右下角的“help”按钮 
+        "/topics/Objects/Satellite/2DGraphics":               "/03-基础使用指南/03-对象管理/02-属性配置/卫星.html#二维视图",          //卫星-属性-点击二维视图及其下属后；右下角的“help”按钮 
+        "/topics/Objects/Satellite/3DGraphics":               "/03-基础使用指南/03-对象管理/02-属性配置/卫星.html#三维视图",          //卫星-属性-点击三维视图及其下属后；右下角的“help”按钮 
+        "/topics/Objects/Satellite/Constraints":              "/03-基础使用指南/03-对象管理/02-属性配置/卫星.html#约束",             //卫星-属性-点击约束后；右下角的“help”按钮 
         "/topics/Objects/Satellite/OrbitPlanning":            "/02-案例教程/3.4轨道机动规划工具案例/3.4.1霍曼转移.html",     //卫星属性-轨道-轨道预报器：机动规划；右下角的“help”按钮 
         "/topics/Objects/Satellite/OrbitPlanningRPO":         "/02-案例教程/12-RPO案例.html",                    //卫星属性-轨道-轨道预报器-机动规划-选中RPO后；右下角的“help”按钮 
         "/topics/Objects/Satellite/AstroUq":                  "/02-案例教程/13-偏差分析案例.html",                 //卫星属性-轨道-轨道预报器-偏差分析；右下角的“help”按钮
-        "/topics/Objects/Facility":                           "/03-基础使用指南/2-插入对象/10-对象属性/地面站.html",      //地面站-属性；右下角的“help”按钮 
-        "/topics/Objects/Sensor":                             "/03-基础使用指南/2-插入对象/10-对象属性/传感器.html",      //传感器-属性；右下角的“help”按钮 
-        "/topics/Objects/Receiver":                           "/03-基础使用指南/2-插入对象/10-对象属性/接收器.html",      //接收器-属性；右下角的“help”按钮 
-        "/topics/Objects/Transmitter":                        "/03-基础使用指南/2-插入对象/10-对象属性/发射器.html",      //发射器-属性；右下角的“help”按钮 
-        "/topics/Objects/SatelliteCollection":                "/03-基础使用指南/2-插入对象/10-对象属性/卫星集群.html",             //卫星集群-属性：右下角的“help”按钮 
-        "/topics/Objects/CoverageDefinition":                 "/03-基础使用指南/2-插入对象/10-对象属性/覆盖定义.html",     //覆盖定义-属性：右下角的“help”按钮 
-        "/topics/Scenario/CoverageDefinition":                "/03-基础使用指南/1-创建场景/04-场景属性配置/",     //场景-属性：右下角的“help”按钮
+        "/topics/Objects/Facility":                           "/03-基础使用指南/03-对象管理/02-属性配置/地面站.html",      //地面站-属性；右下角的“help”按钮 
+        "/topics/Objects/Sensor":                             "/03-基础使用指南/03-对象管理/02-属性配置/传感器.html",      //传感器-属性；右下角的“help”按钮 
+        "/topics/Objects/Receiver":                           "/03-基础使用指南/03-对象管理/02-属性配置/接收器.html",      //接收器-属性；右下角的“help”按钮 
+        "/topics/Objects/Transmitter":                        "/03-基础使用指南/03-对象管理/02-属性配置/发射器.html",      //发射器-属性；右下角的“help”按钮 
+        "/topics/Objects/SatelliteCollection":                "/03-基础使用指南/03-对象管理/02-属性配置/卫星集群.html",             //卫星集群-属性：右下角的“help”按钮 
+        "/topics/Objects/CoverageDefinition":                 "/03-基础使用指南/03-对象管理/02-属性配置/覆盖定义.html",     //覆盖定义-属性：右下角的“help”按钮 
+        "/topics/Scenario/CoverageDefinition":                "/03-基础使用指南/02-场景管理/03-场景属性配置/",     //场景-属性：右下角的“help”按钮
         "/topics/Intergrating/Client":                        "/二次开发教程/2-二次开发CONNECT模式/1-ATK客户端.html",
         "/topics/Intergrating/Introduction":                  "/二次开发教程/1-二次开发介绍.html",
         "/topics/Release/ChangeLog":                          "/发布说明/发布说明.html",
