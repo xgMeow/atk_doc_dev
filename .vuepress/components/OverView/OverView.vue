@@ -35,18 +35,26 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
+import { useData } from 'vuepress'
 
-// 从 VuePress 全局变量获取 base 配置，兼容 / 和 /xxx/ 两种情况
-const base = computed(() => {
-  const siteData = window.__VUEPRESS__.siteData
-  return (siteData && siteData.base) || '/'
-})
+const { frontmatter: fm } = useData()
+
+const getBase = () => {
+  // 尝试从多个可能的全局变量获取 base
+  if (typeof window !== 'undefined') {
+    const vp = window.__VUEPRESS__
+    if (vp && vp.siteData && vp.siteData.base) return vp.siteData.base
+    if (vp && vp.router && vp.router.options && vp.router.options.base) return vp.router.options.base
+  }
+  // fallback
+  return fm.value?.base || '/'
+}
 
 const getLink = (path) => {
-  // 统一路径格式后拼接 base
-  const normalizedBase = base.value.replace(/\/+$/, '') // 去掉末尾斜杠
-  const normalizedPath = path.replace(/\/+/g, '/').replace(/\/$/, '') + '/' // 规范路径并补末尾斜杠
+  const base = getBase()
+  const normalizedBase = base.replace(/\/+$/, '')
+  const normalizedPath = path.replace(/\/+/g, '/').replace(/\/$/, '') + '/'
   return normalizedBase + normalizedPath
 }
 
