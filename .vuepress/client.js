@@ -5,18 +5,26 @@ import { useRoutes } from 'vuepress/client';
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 import EnhancedToc from './components/EnhancedToc.vue'
 import NotFound from './components/NotFound.vue'
+import CatalogCard from './components/CatalogCard/CatalogCard.vue' 
 
+// 定义目录信息获取器，传入文档元数据，返回目录信息对象
 defineCatalogInfoGetter((meta) => {
-    // console.log(meta);
-    return meta;
+    if (!meta.title) return null;
+    return {
+        title: meta.title,
+        description: meta.description,
+        thumbnail: meta.thumbnail,
+        order: meta.order,
+        icon: meta.icon,
+    };
 });
-
 
 var is_file_protocol = false;   // 是否是离线模型
 var root_dir = "";              // 用于在离线模式下缓存当前文档所在的文件夹
 
 export default defineClientConfig({
-  enhance({ app, router, siteData }) {
+  enhance ({ app, router, siteData }) {
+    app.component('CatalogCard', CatalogCard);  
     // console.log("__VUEPRESS_SSR__=", __VUEPRESS_SSR__)
     if (!__VUEPRESS_SSR__) {
         if(location.href.startsWith("file://")){

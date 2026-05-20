@@ -60,7 +60,10 @@ export const useConfig = ({type, plat=""}) => {
         ...page.routeMeta,
         // 目录标题
         title: page.title,
-        order: order
+        order: order,
+        description: page.frontmatter.description,
+        thumbnail: page.frontmatter.thumbnail,
+        icon: page.frontmatter.icon,
       }
     },
     shouldPrefetch: false,
