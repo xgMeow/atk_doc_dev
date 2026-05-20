@@ -1,7 +1,13 @@
-# RPO案例
+---
+description: 通过水滴绕飞模式模拟地球同步轨道卫星在轨服务前的环绕观测任务，掌握 RPO 段配置与伴飞轨迹分析方法。
+thumbnail: '/02-案例教程/media/3.12RPO案例/cover.png'
+---
+
 <PathViewer
   :relative-paths="files"
 />
+
+# RPO案例
 
 ## 案例想定
 

@@ -4,4 +4,5 @@ index: false
 dir:
     link: false
 ---
-<Catalog />
+
+<CatalogCard/>
