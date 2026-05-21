@@ -78,7 +78,7 @@ var handleModuleAssets = ({
   app,
   config
 }) => {
-  config.module.rule("images").test(/\.(png|jpe?g|gif|webp)(\?.*)?$/).type("asset").set("generator", {
+  config.module.rule("images").test(/\.(png|jpe?g|gif|webp|bmp|ico)(\?.*)?$/).type("asset").set("generator", {
     filename: "assets/img/[name].[contenthash:8][ext]"
   });
   config.module.rule("svg").test(/\.(svg)(\?.*)?$/).type("asset/resource").set("generator", {

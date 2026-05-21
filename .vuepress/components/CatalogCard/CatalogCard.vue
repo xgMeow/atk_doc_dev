@@ -5,12 +5,19 @@ import { entries, isNumber, isPlainObject, isString, keys, startsWith } from '@v
 import { useCatalogInfoGetter } from '@vuepress/plugin-catalog/client';
 
 interface Props {
+  /** 扫描的根路径，空字符串表示当前页面所在目录 */
   base?: string;
+  /** 目录嵌套深度上限，从 base 起算 */
   level?: number;
+  /** 卡片网格列数 */
   cols?: number;
+  /** 是否展示图标/缩略图区域 */
   showIcon?: boolean;
+  /** 是否展示描述文字区域 */
   showDescription?: boolean;
+  /** 卡片底部按钮文案 */
   buttonText?: string;
+  /** 排布模式：mixed 将无子文档的模块平铺在上，structured 统一按层级展示 */
   layout?: 'mixed' | 'structured';
 }
 
@@ -29,37 +36,42 @@ const props = withDefaults(defineProps<Props>(), {
 //  Vite 不直接提供文档目录下的静态资源，必须通过 import.meta.glob 导入让 Vite 处理
 // ==========================================
 
+/** 将 glob 返回的文件系统路径转为站点相对路径，匹配 imageUrlMap key 格式 */
 const stripGlobPrefix = (p: string) => p.replace(/^\.\.\/\.\.\/\.\.\//, '');
 
 const imageModules = import.meta.glob('../../../**/*.{png,jpg,jpeg,gif,svg,webp,bmp,ico}', {
   query: '?url',
   import: 'default',
   eager: true,
-});
+}) as Record<string, string>;
 
 const imageUrlMap: Record<string, string> = {};
+// 构建时填充 —— 遍历 import.meta.glob 返回的图片模块，将路径转换为站点路径作为 key
 for (const [fsPath, url] of Object.entries(imageModules)) {
   imageUrlMap[`/${stripGlobPrefix(fsPath)}`] = url;
 }
 
 const resolveThumbnailUrl = (path: string | undefined): string | undefined => {
   if (!path) return undefined;
+  // 已解析的绝对路径或外部 URL 直接返回
   if (path.startsWith('/@fs/') || path.startsWith('http://') || path.startsWith('https://')) return path;
+  // 相对路径通过 imageUrlMap 查找 Vite 处理后的真实 URL
   return imageUrlMap[path] || path;
 };
 
 // 从所有 markdown 文件中提取第一张图片，建立 路由路径→图片 的映射
 // 优先级：frontmatter thumbnail > 文档第一张图片 > icon
-const mdModules = import.meta.glob<string>('../../../**/*.md', {
+const mdModules = import.meta.glob('../../../**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
-});
+}) as Record<string, string>;
 
 const fsPathToRoute = (fsPath: string): string => {
   const relative = stripGlobPrefix(fsPath);
   const noExt = relative.replace(/\.md$/, '');
   let routePath: string;
+  // README / index 视为目录入口，挂到目录路径下
   if (noExt.endsWith('/README') || noExt.endsWith('/index') || noExt === 'README' || noExt === 'index') {
     const dir = noExt.replace(/\/(?:README|index)$/, '').replace(/^(?:README|index)$/, '');
     routePath = dir ? `/${dir}/` : '/';
@@ -73,6 +85,7 @@ const getMdDir = (globPath: string): string => {
   return stripGlobPrefix(globPath).replace(/\/[^/]+\.md$/, '');
 };
 
+/** 从 markdown 源码中提取第一张可见图片路径（优先 Markdown 语法，其次排除 no-view 的 HTML img） */
 const extractFirstImage = (content: string): string | null => {
   const mdMatch = content.match(/!\[.*?\]\(([^)\s]+?)\)/);
   if (mdMatch) return mdMatch[1];
@@ -109,22 +122,36 @@ const routes = useRoutes();
 const siteData = useSiteData();
 
 interface CatalogItem {
+  /** 相对于站点根目录的层级深度 */
   level: number;
+  /** 所属父级路径 */
   base: string;
+  /** 页面路由路径 */
   path: string;
+  /** 页面标题，即 frontmatter 中的 title */
   title: string;
+  /** 排序权重，正数升序在前，负数在后 */
   order?: number;
+  /** 页面描述，即 frontmatter 中的 description */
   description?: string;
+  /** SVG path d 属性值，作为图标 */
   icon?: string;
+  /** 缩略图 URL，优先级：frontmatter thumbnail > 文档首张图片 */
   thumbnail?: string;
+  /** 子级目录项 */
   children?: CatalogItem[];
 }
 
+/**
+ * 核心目录数据：从路由信息中提取并构建树形结构。
+ * 流程：提取各路由的 catalog info → 按 base 和 level 过滤 → 按层级深度排序 → 构建父子嵌套树
+ */
 const catalogData = computed(() => {
   const base = props.base ? `/${props.base}/`.replace(/\/+/g, '/') : page.value.path.replace(/\/[^/]+$/, '/');
   const baseDepth = base.split('/').length - 2;
   const result: CatalogItem[] = [];
 
+  // 从所有路由中提取 catalog 信息（title/order/description/icon/thumbnail）
   const catalogInfo = entries(routes.value)
     .map(([path, { meta }]) => {
       const info = catalogInfoGetter(meta) || meta;
@@ -146,6 +173,7 @@ const catalogData = computed(() => {
     .filter((item): item is CatalogItem => isPlainObject(item) && isString(item.title));
 
   catalogInfo
+    // 过滤：仅保留 base 路径下的页面，且层级不超过 props.level
     .filter(({ level, path }) => {
       if (!startsWith(path, base) || path === base) return false;
       if (base === '/') {
@@ -154,11 +182,13 @@ const catalogData = computed(() => {
       }
       return level - baseDepth <= props.level;
     })
+    // 排序：先按层级深度升序，同层级按 order 再按 title 字母序
     .sort((a, b) => {
       const levelDiff = a.level - b.level;
       if (levelDiff) return levelDiff;
       return compareOrder(a.order, b.order) || a.title.localeCompare(b.title);
     })
+    // 构建父子嵌套树：relativeLevel 1 为一级模块，2 为子文档，3+ 为孙级文档
     .forEach((info) => {
       const relativeLevel = info.level - baseDepth;
       if (relativeLevel === 1) {
@@ -212,10 +242,12 @@ const displayModules = computed(() => {
   });
 });
 
+/** 卡片网格列数样式，由 props.cols 控制 */
 const gridStyle = computed(() => ({
   gridTemplateColumns: `repeat(${props.cols}, minmax(0, 1fr))`,
 }));
 
+/** 将一级模块按有无子文档拆分为目录和文档两组，供 mixed 布局使用 */
 const flatModules = computed(() => {
   const dirs = displayModules.value.filter(m => m.children?.length);
   const docs = displayModules.value.filter(m => !m.children?.length);
