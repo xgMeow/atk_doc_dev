@@ -14,3 +14,5 @@ dist
 .rst
 node_modules.rar
 .vs
+
+.dev-docs/doc-to-word/word_output
