@@ -153,11 +153,9 @@ mjx-container {
 }
 
 #app{
-  // font-family: Microsoft YaHei,Segoe UI,Arial,Helvetica;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
-    // color: #000;
 }
 
 
@@ -307,7 +305,6 @@ h3 {
 
 table{
   display: block;
-  // font-family: 'Times New Roman', Times;
   margin: 12px auto;
   width: fit-content;
 }
@@ -581,7 +578,6 @@ li p {
 
 ol li{
   font-size: 17px;
-  // font-family: 'Times New Roman', Times;
 }/*设置正文最上面内容结构的样式,以及字体格式*/
 
 p,ul,ol {
@@ -635,7 +631,6 @@ figcaption{
 // 所有标题都加粗
 .vp-page h1 a, .vp-page h2 a, .vp-page h3 a, .vp-page h4 a, .vp-page h5 a, .vp-page h6 a, .vp-catalog-main-title {
   font-weight: bold !important;
-  // font-family: 'Times New Roman', Times;
   color: var(--title-color);
   font-family: var(--font-family-heading);
 }
@@ -822,4 +817,91 @@ li.vp-toc-item.active{
 
 strong {
   font-weight: bolder;
+}
+
+.hint-container {
+  margin: 20px 0 !important;
+  padding: 18px 22px !important;
+  border-radius: 4px !important;
+  border: 1px solid transparent !important;
+  border-left-width: 4px !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.25s ease !important;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%) !important;
+}
+
+.hint-container.tip {
+  border-color: rgba(0, 148, 0, 0.2) !important;
+  border-left-color: #009400 !important;
+  background-color: #f0faf0 !important;
+}
+
+.hint-container.warning {
+  border-color: rgba(230, 167, 0, 0.2) !important;
+  border-left-color: #e6a700 !important;
+  background-color: #fffcf0 !important;
+}
+
+.hint-container.danger,
+.hint-container.caution {
+  border-color: rgba(225, 50, 56, 0.2) !important;
+  border-left-color: #e13238 !important;
+  background-color: #fff5f5 !important;
+}
+
+.hint-container.info {
+  border-color: rgba(76, 179, 212, 0.2) !important;
+  border-left-color: #4cb3d4 !important;
+  background-color: #f0f9fc !important;
+}
+
+.hint-container.note {
+  border-color: rgba(153, 153, 153, 0.2) !important;
+  border-left-color: #6b7280 !important;
+  background-color: #f8f9fa !important;
+}
+
+.hint-container-title {
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+  display: flex !important;
+  align-items: center !important;
+  padding-inline-start: 0 !important;
+
+  &::before {
+    margin-right: 8px !important;
+    position: inherit;
+  }
+}
+
+.hint-container p {
+  color: #4b5563 !important;
+}
+
+.tip code {
+  background: rgb(0 148 0 / 12%);
+  color: #007a00;
+}
+
+.warning code {
+  background: rgb(230 167 0 / 12%);
+  color: #997500;
+}
+
+.danger code,
+.caution code {
+  background: rgb(225 50 56 / 12%);
+  color: #c53030;
+}
+
+.info code {
+  background: rgb(76 179 212 / 12%);
+  color: #0c7a9d;
+}
+
+.note code {
+  background: rgb(212 213 216 / 20%);
+  color: #4b5563;
 }
