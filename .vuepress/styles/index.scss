@@ -1,5 +1,7 @@
 // Hint 高亮块样式
 @import "hint-blocks.scss";
+// 按钮样式
+@import "kbd.scss";
 img {
   vertical-align: middle;
   margin: 0 4px;
@@ -693,27 +695,6 @@ body{
     }
   }
 }
-
-kbd {
-  padding: 3px 4px 2px 4px;
-  margin: 0 1px;
-  display: inline-flex;
-  gap: 4px;
-  align-items: center;
-  font-size: inherit;
-  background: #fafbfc;
-  box-shadow: none;
-  border: 1px solid #d6dee9;
-  border-radius: 2px;
-  letter-spacing: 0px;
-  color: #666666;
-  font-size: 16px;
-
-  img {
-    margin: 0;
-  }
-}
-
 
 blockquote {
   border-color: #4870ac;
