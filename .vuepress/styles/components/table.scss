@@ -1,0 +1,37 @@
+.theme-hope-content table{
+  display: table;
+  margin: 12px 0;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.theme-hope-content thead {
+  display: table-header-group;
+}
+
+.theme-hope-content tbody {
+  display: table-row-group;
+}
+
+.theme-hope-content tr {
+  display: table-row;
+}
+
+.theme-hope-content th,
+.theme-hope-content td {
+  display: table-cell;
+  padding: 0.6em 1em;
+  border: 1px solid #dfe2e5;
+  background: var(--bg-color);
+  text-align: left !important; // 如果居中的话，有些内容长的表格显示会很奇怪，不便于阅读
+  overflow-wrap: anywhere;
+}
+
+.theme-hope-content th {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #67676c;
+  background-color: #f6f6f7;
+}

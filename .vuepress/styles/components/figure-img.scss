@@ -11,7 +11,7 @@
 
     img {
       display: block;
-      width: 100%;
+      width: calc(100% - 2px); // 减去边框宽度
       max-width: 100%;
       height: auto;
       background: linear-gradient(135deg, color-mix(in oklab, #2f6feb, transparent 92%), color-mix(in oklab, #111111, transparent 97%));
@@ -32,6 +32,10 @@
       border-radius: 0 0 12px 12px;
       border: 1px solid #e5e5e5;
       border-top: none;
+    }
+
+    figcaption:not(:empty)::before {
+      content: "图：";
     }
 
     figcaption:empty {
