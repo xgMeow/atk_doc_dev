@@ -1,0 +1,15 @@
+img {
+  vertical-align: middle;
+  margin: 0 4px;
+}
+
+img[no-view] {
+  width: auto;
+  height: 24px;
+}
+
+.theme-hope-content > img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
