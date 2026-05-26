@@ -1,0 +1,33 @@
+.theme-hope-content {
+  figure {
+    width: min(60%, 960px);
+    margin: 32px auto;
+    border: 1px solid #e5e5e5;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    background: #ffffff;
+    // box-shadow: 0 18px 48px color-mix(in oklab, #111111, transparent 90%);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      background: linear-gradient(135deg, color-mix(in oklab, #2f6feb, transparent 92%), color-mix(in oklab, #111111, transparent 97%));
+      transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), filter 200ms cubic-bezier(0.2, 0, 0, 1);
+      border-radius: 0;
+    }
+
+    figcaption {
+      margin: 0;
+      padding: 12px 16px;
+      border-top: 1px solid #e5e5e5;
+      color: #6b6b6b;
+      background: color-mix(in oklab, #ffffff, #111111, 5%);
+      font-size: 13px;
+      line-height: 1.5;
+      font-family: ui-monospace, "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    }
+  }
+}

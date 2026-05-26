@@ -68,7 +68,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
        * 编辑此页文字
        */
       // TOC标题
-      toc: "快速导航",
+      toc: "本文目录",
       lastUpdated: "最后更新", // 修改更新时间显示文字，原来是"上次编辑于"
       // editLink: "在 GitHub 上编辑此页",
     },

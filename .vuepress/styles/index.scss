@@ -1,7 +1,10 @@
 // Hint 高亮块样式
-@import "hint-blocks.scss";
+@import "components/hint-blocks.scss";
 // 按钮样式
-@import "kbd.scss";
+@import "components/kbd.scss";
+// 图片样式
+@import "components/figure-img.scss";
+
 img {
   vertical-align: middle;
   margin: 0 4px;
@@ -776,10 +779,6 @@ li.vp-toc-item.active{
 
 ::-webkit-scrollbar-thumb:hover {
   background: #9ba2aa;
-}
-
-.theme-hope-content figure img{
-  border-radius: 0;
 }
 
 strong {
