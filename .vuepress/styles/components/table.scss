@@ -2,7 +2,7 @@
   display: table;
   margin: 12px 0;
   width: 100%;
-  table-layout: fixed;
+  table-layout: auto;
   border-collapse: collapse;
 }
 
@@ -25,7 +25,8 @@
   border: 1px solid #dfe2e5;
   background: var(--bg-color);
   text-align: left !important; // 如果居中的话，有些内容长的表格显示会很奇怪，不便于阅读
-  overflow-wrap: anywhere;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .theme-hope-content th {
