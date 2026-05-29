@@ -143,7 +143,7 @@ export default defineComponent({
                 h("input", {
                     type: "text",
                     class: "sidebar-search-input",
-                    placeholder: "搜索文档...",
+                    placeholder: "目录搜索...",
                     value: searchQuery.value,
                     onInput: (e) => {
                         searchQuery.value = e.target.value;
