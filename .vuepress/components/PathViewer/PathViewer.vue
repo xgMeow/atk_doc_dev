@@ -124,7 +124,7 @@ import { ref, computed, onMounted } from 'vue'
  */
 const normalizePath = (path) => {
   if (!path) return ''
-  let normalized = path.replace(/\//g, '\\')
+  let normalized = path.replace(/\//g, '\\').replace(/\\+/g, '\\')
   if (normalized.endsWith('\\')) normalized = normalized.slice(0, -1)
   return normalized
 }
