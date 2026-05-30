@@ -1,0 +1,12 @@
+## Enabled
+
+作用：设置该停止段是否任务控制序列停止
+
+用法： 
+```
+Astrogator <Satellite Object Path> SetValue <Attribute Path>.Stop.Enabled {Value}
+```
+举例： 
+```
+Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Stop.Enabled false
+```
