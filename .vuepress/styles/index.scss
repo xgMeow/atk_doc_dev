@@ -116,7 +116,6 @@ mjx-container {
 .vp-breadcrumb li{
   position: relative;
   padding-left: 1em; /* 为箭头留空间 */
-  line-height: 32px;
 }
 // 面包屑li之间的箭头
 .vp-breadcrumb li + li::before{
@@ -531,8 +530,6 @@ h4 {
 
 p{
   font-size: 17px;
-  line-height: 32px;
-  // text-indent: 2em; // 缩进2个字符
 }/*正文首行缩进*/
 
 li p {
@@ -595,7 +592,6 @@ figcaption{
 }
 
 body{
-  line-height: 24px;
   color: #3c3c43;
 }
 
@@ -740,4 +736,8 @@ li.vp-toc-item.active{
 
 strong {
   font-weight: bolder;
+}
+
+p, ul, ol{
+  line-height: 2;
 }
