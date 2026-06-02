@@ -9,6 +9,7 @@ dist
 .dist
 .dist-offline
 .vscode/*
+Help
 
 .outputdir
 .rst
