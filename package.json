@@ -13,6 +13,7 @@
 		"build:standalone": "vuepress build --config ./.vuepress/config-standalone.ts --dest .dist/standalone . && npm run script:standalone",
 		"build:standalone-kylin": "vuepress build --config ./.vuepress/config-standalone-kylin.ts --dest .dist/standalone-kylin . && npm run script:standalone-kylin",
 		"build:gitlab": "vuepress build --config ./.vuepress/config-gitlab.ts --dest .dist/gitlab .",
+		"export:word": "node scripts/export-word.cjs",
 		"script:standalone": "node ./.vuepress/standalone.cjs .dist/standalone",
 		"script:standalone-kylin": "node ./.vuepress/standalone.cjs .dist/standalone-kylin",
 		"postinstall": "patch-package"
