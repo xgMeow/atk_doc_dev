@@ -739,5 +739,11 @@ strong {
 }
 
 p, ul, ol{
-  line-height: 2;
+  line-height: 32px;
+}
+
+.theme-hope-content{
+  p, ul, ol{
+    line-height: 2;
+  }
 }
