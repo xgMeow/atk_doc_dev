@@ -5,4 +5,4 @@ dir:
     link: false
 ---
 
-<Catalog />
+<ConnectCommandSummary />

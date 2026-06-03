@@ -2,11 +2,10 @@
 
 作用：根据欧拉角设置姿态数据
 
-::: note 用法
+用法：
 ```
 AddAttitude <ObjectPath> Euler {StartTime} {Sequence} <Angle1> <Angle2> <Angle3>
 ```
-:::
 
 ::: tip 举例
 ```

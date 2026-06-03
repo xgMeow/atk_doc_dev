@@ -1,0 +1,603 @@
+<main>
+                <h1>Area Targets</h1>
+                <p>
+There are a number of commands designed to help you to control the definition and graphical display of area targets that can be executed through Connect.</p>
+                <table>
+                    <tbody><tr>
+                        <th>Command</th>
+                        <th>Format</th>
+                        <th>Description</th>
+                        <th>Version</th>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_BoundaryType.htm">BoundaryType</a>
+                        </td>
+                        <td>BoundaryType &lt;ObjectPath&gt; {Options} </td>
+                        <td>Define the type of line used for the boundary of an area or line target</td>
+                        <td>8.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_CalculationTool.htm">CalculationTool</a>
+                        </td>
+                        <td>CalculationTool &lt;ScenarioPath&gt; {Options}</td>
+                        <td>Define coordinate systems and elements used in constructing them, including templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_CalculationToolCondition.htm">CalculationTool Condition</a>
+                        </td>
+                        <td>CalculationTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {"Condition" | "ConditionTemplate"} &lt;ComponentName&gt; [{ConditionType} &lt;TypeParams&gt;]</td>
+                        <td>Define and modify Condition components and templates.</td>
+                        <td>11.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_CalculationToolConditionSet.htm">CalculationTool Condition Set</a>
+                        </td>
+                        <td>CalculationTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {"Condition Set" | "Condition SetTemplate"} &lt;ComponentName&gt; [{ConditionType} &lt;TypeParams&gt;]</td>
+                        <td>Define and modify Condition Set components and templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_CalculationToolParameterSet.htm">CalculationTool Parameter Set</a>
+                        </td>
+                        <td>CalculationTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {"Parameter Set" | "Parameter SetTemplate"} &lt;ComponentName&gt; [{ParameterSetType} &lt;TypeParams&gt;]</td>
+                        <td>Define and modify Parameter Set components and templates.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_CalculationToolScalarCalculation.htm">CalculationTool Scalar Calculation</a>
+                        </td>
+                        <td>CalculationTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {"Scalar Calculation" | "Scalar CalculationTemplate"} &lt;ComponentName&gt; [{ScalarCalculationType} &lt;TypeParams&gt;]</td>
+                        <td>Define and modify Scalar Calculation components and templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_CalculationTool_R.htm">CalculationTool_R</a>
+                        </td>
+                        <td>CalculationTool_R &lt;ScenarioPath&gt; {Option} [&lt;Parameters&gt;]</td>
+                        <td>Return information about CalculationTool components.</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_CalculationTool_RM.htm">CalculationTool_RM</a>
+                        </td>
+                        <td>CalculationTool_RM &lt;ScenarioPath&gt; {Option} [&lt;Parameters&gt;]</td>
+                        <td>Return information about CalculationTool components.</td>
+                        <td>10.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_CentralBody_R.htm">CentralBody_R</a>
+                        </td>
+                        <td>CentralBody_R &lt;ApplicationPath&gt; &lt;ObjectPath&gt;</td>
+                        <td>Returns the name of the central body of any object</td>
+                        <td>10.0.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_Copy.htm">Copy</a>
+                        </td>
+                        <td>Copy &lt;ApplicationPath&gt; &lt;CopyFromObjectPath&gt; [{CopyOption}]</td>
+                        <td>Copy and paste an object.</td>
+                        <td>8.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_DisplayTimes.htm">DisplayTimes</a>
+                        </td>
+                        <td>DisplayTimes &lt;ObjectPath&gt; {DisplayOption} {Action} [&lt;Parameters&gt;]</td>
+                        <td>Control the display of object graphics</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_ExtendBoundary.htm">ExtendBoundary</a>
+                        </td>
+                        <td>ExtendBoundary &lt;ATObjectPath&gt; Pattern [{PointType}] &lt;NumPoints&gt; {PointDefn}...</td>
+                        <td>Extend the boundary of an area target</td>
+                        <td>6.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_ExternalData.htm">ExternalData</a>
+                        </td>
+                        <td>ExternalData &lt;ObjectPath&gt; {DataOption} [&lt;Parameters&gt;]</td>
+                        <td>Allow for the association and management of time ordered data computed outside of STK with STK objects.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GISImport.htm">GIS Import</a>
+                        </td>
+                        <td>GIS &lt;ScenarioPath&gt; Import "&lt;ShapefilePath&gt;" {ObjectType} [&lt;ImportOptions&gt;]</td>
+                        <td>Import GIS shapefile into current scenario</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GetBoundary.htm">GetBoundary</a>
+                        </td>
+                        <td>GetBoundary &lt;ATObjectPath&gt;</td>
+                        <td>Returns the defining parameters of an area target</td>
+                        <td>4.1.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GetDescription.htm">GetDescription</a>
+                        </td>
+                        <td>GetDescription &lt;ObjectPath&gt; {Type}</td>
+                        <td>Return the description of an object</td>
+                        <td>4.0.6</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GetDspTimes.htm">GetDspTimes</a>
+                        </td>
+                        <td>GetDspTimes &lt;ObjectPath&gt; {DataOption}</td>
+                        <td>Return the display time data for an object</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GetNumNotes.htm">GetNumNotes</a>
+                        </td>
+                        <td>GetNumNotes &lt;ObjectPath&gt;</td>
+                        <td>Return the number of notes currently registered for an object</td>
+                        <td>4.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsBoundary.htm">Graphics Boundary</a>
+                        </td>
+                        <td>Graphics &lt;ATObjectPath&gt; Boundary {On | Off}</td>
+                        <td>Control the display of an area targets boundary</td>
+                        <td>4.3</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsBoundaryPts.htm">Graphics BoundaryPts</a>
+                        </td>
+                        <td>Graphics &lt;ATObjectPath&gt; BoundaryPts {On | Off}</td>
+                        <td>Control the display of an area target's boundary</td>
+                        <td>4.3</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsBoundingRectangle.htm">Graphics BoundingRectangle</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; BoundingRectangle {On | Off}</td>
+                        <td>Toggle the display of the AreaTarget or LineTarget bounding rectangle.</td>
+                        <td>6.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsCentroid.htm">Graphics Centroid</a>
+                        </td>
+                        <td>Graphics &lt;ATObjectPath&gt; Centroid {On | Off}</td>
+                        <td>Display an area target's centroid</td>
+                        <td>4.2.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsFillAreaTarget.htm">Graphics Fill</a> (AreaTarget)</td>
+                        <td>Graphics &lt;ATObjectPath&gt; Fill {On | Off}</td>
+                        <td>Control the display of the area covered by an area target</td>
+                        <td>4.3</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsFillTranslucency.htm">Graphics FillTranslucency</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; FillTranslucency &lt;Value&gt; </td>
+                        <td>Set the percent translucency of the fill for a Sensor or AreaTarget.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsLabel.htm">Graphics Label</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; Label {Options}</td>
+                        <td>Control the display of object labels</td>
+                        <td>9.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsLineStyle.htm">Graphics LineStyle</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; LineStyle {LineStyle}</td>
+                        <td>Set the line style for a LineTarget, AreaTarget, Sensor or Planet.</td>
+                        <td>6.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsLineWidth.htm">Graphics LineWidth</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; LineWidth &lt;LineWidth&gt;</td>
+                        <td>Set the line width for a LineTarget, AreaTarget, Sensor or Planet.</td>
+                        <td>6.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsMarker.htm">Graphics Marker</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; Marker {MarkerType} ["&lt;FilePath&gt;" [{CustomOptions}]]</td>
+                        <td>Define a marker to represent an object in a 2D Graphics window</td>
+                        <td>
+11.6
+</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsObjectStateInWin.htm">Graphics ObjectStateInWin</a>
+                        </td>
+                        <td>Graphics &lt;ScenarioPath&gt; ObjectStateInWin {Options}</td>
+                        <td>Control the display of objects' graphics in the 2D window.</td>
+                        <td>7.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsSetColor.htm">Graphics SetColor</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; SetColor {Color} [{Item}]</td>
+                        <td>Set the color of a label, marker, ground track, swath or polygon of an object</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsSetLabel.htm">Graphics SetLabel</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; SetLabel "&lt;Label Text&gt;"</td>
+                        <td>Set the label for an instance to the input text string (Deprecated Command)</td>
+                        <td>9.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsShow.htm">Graphics Show</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; Show {On | Off} </td>
+                        <td>To turn on or off the graphics display of an object.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsUseInstNameLabel.htm">Graphics UseInstNameLabel</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; UseInstNameLabel</td>
+                        <td>Set the label for an instance to the instance name (Deprecated Command)</td>
+                        <td>9.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_GraphicsWindowState.htm">Graphics WindowState</a>
+                        </td>
+                        <td>Graphics &lt;ObjectPath&gt; WindowState {Options}</td>
+                        <td>Control the display of object graphics in the 2D window.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_Graphics_RGetLabel.htm">Graphics_R GetLabel</a>
+                        </td>
+                        <td>Graphics_R &lt;ObjectPath&gt; GetLabel</td>
+                        <td>Return object graphics label</td>
+                        <td>6.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_LabelNotes.htm">LabelNotes</a>
+                        </td>
+                        <td>LabelNotes &lt;ObjectPath&gt; {Action} &lt;Parameters&gt;</td>
+                        <td>Control the display of notes and note labels attached to an object</td>
+                        <td>4.1.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_Load.htm">Load</a>
+                        </td>
+                        <td>Load &lt;ApplicationPath&gt; {&lt;ClassPath&gt; | VDF} "&lt;FilePath&gt;"</td>
+                        <td>Open an existing scenario or insert an object into the current scenario</td>
+                        <td>8.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_New.htm">New</a>
+                        </td>
+                        <td>New &lt;ApplicationPath&gt; &lt;ClassPath&gt; &lt;NewObjectName&gt; {NewOptions}</td>
+                        <td>Create a new scenario or add a new object to the current scenario</td>
+                        <td>8.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_NewMulti.htm">NewMulti</a>
+                        </td>
+                        <td>NewMulti &lt;ApplicationPath&gt; &lt;ClassPathOfObjectToCreate&gt; &lt;NumToCreate&gt; &lt;NewName1&gt; [&lt;NewName2&gt;...]  [NoDefault] [Ignore]</td>
+                        <td>Create multiple instances of new objects</td>
+                        <td>4.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_PositionFacilityPlaceTargetAreaTarget.htm">Position</a> (Facility, Place, Target &amp; Area Target)</td>
+                        <td>Position &lt;ObjectPath&gt; [{Type}] [{TimeValue}]</td>
+                        <td>Locate the position of a facility, place or target or the centroid of an area target</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_Rename.htm">Rename</a>
+                        </td>
+                        <td>Rename &lt;ObjectPath&gt; &lt;NewName&gt;</td>
+                        <td>Rename an object</td>
+                        <td>4.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_Save.htm">Save</a>
+                        </td>
+                        <td>Save &lt;ApplicationPath&gt; &lt;ObjectPath&gt; ["&lt;SaveInDirectory&gt;"]
+</td>
+                        <td>Save a scenario or object within a scenario</td>
+                        <td>4.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SaveAs.htm">SaveAs</a>
+                        </td>
+                        <td>SaveAs &lt;ApplicationPath&gt; &lt;ObjectPath&gt; "&lt;FilePath&gt;"</td>
+                        <td>Save a scenario or object within a scenario with a different name</td>
+                        <td>4.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SetAccessOption.htm">SetAccessOption</a>
+                        </td>
+                        <td>SetAccessOption &lt;ObjectPath&gt; {Whole | Any}</td>
+                        <td>Set access to use the whole object during computations.</td>
+                        <td>6.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SetAsDefault.htm">SetAsDefault</a>
+                        </td>
+                        <td>SetAsDefault &lt;ApplicationPath&gt; [&lt;ObjectPath&gt;]</td>
+                        <td>Save the indicated object as the default</td>
+                        <td>4.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SetBoundary.htm">SetBoundary</a>
+                        </td>
+                        <td>SetBoundary &lt;ATObjectPath&gt; {Type} &lt;Parameters&gt;</td>
+                        <td>Define the perimeter of an area target</td>
+                        <td>6.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SetConstraintAreaLineTargets.htm">SetConstraint</a> (Area &amp; Line Targets)</td>
+                        <td>SetConstraint &lt;ObjectPath&gt; {ConstraintName} &lt;Parameters&gt;</td>
+                        <td>Set a constraint for an area target or line target</td>
+                        <td>10.0.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SetConstraintOptions.htm">SetConstraintOptions</a>
+                        </td>
+                        <td>SetConstraintOptions &lt;ObjectPath&gt; {ConstraintName} {Options}</td>
+                        <td>Set constraint options for an object's active constraints.</td>
+                        <td>9.2.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SetDescription.htm">SetDescription</a>
+                        </td>
+                        <td>SetDescription &lt;ObjectPath&gt; {Type} [{Option}] "&lt;Description&gt;"</td>
+                        <td>Set the long or short description of a scenario or object</td>
+                        <td>6.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SetPositionFacilityPlaceTargetAreaTarget.htm">SetPosition</a> (Facility, Place, Target &amp; Area Target)</td>
+                        <td>SetPosition &lt;ObjectPath&gt; [{Type}] {CoordType} &lt;Parameters&gt;</td>
+                        <td>Set the position of a facility, place, target or area target</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SpatialTool.htm">SpatialTool</a>
+                        </td>
+                        <td>SpatialTool &lt;ScenarioPath&gt; {Options} </td>
+                        <td>Define volumes and elements used in constructing them, including templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SpatialToolSpatialCalculation.htm">SpatialTool Spatial Calculation</a>
+                        </td>
+                        <td>SpatialTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {Spatial Calculation | Spatial CalculationTemplate} &lt;Spatial CalculationName&gt; [{Spatial CalculationType} &lt;Spatial CalculationTypeParams&gt;]</td>
+                        <td>Define and modify Spatial Calculation components and templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SpatialToolSpatialCondition.htm">SpatialTool Spatial Condition</a>
+                        </td>
+                        <td>SpatialTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {Spatial Condition | Spatial ConditionTemplate} &lt;Spatial ConditionName&gt; [{Spatial ConditionType} &lt;Spatial ConditionTypeParams&gt;]</td>
+                        <td>Define and modify Spatial Condition components and templates.</td>
+                        <td>11.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SpatialToolVolumeGrid.htm">SpatialTool Volume Grid</a>
+                        </td>
+                        <td>SpatialTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {Volume Grid | Volume GridTemplate} &lt;Volume GridName&gt; [{Volume GridType} &lt;Volume GridTypeParams&gt;]</td>
+                        <td>Define and modify Volume Grid components and templates.</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SpatialTool_R.htm">SpatialTool_R</a>
+                        </td>
+                        <td>SpatialTool_R &lt;ScenarioPath&gt; {Option} [&lt;Parameters&gt;]</td>
+                        <td>Return information about Spatial components.</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_SpatialTool_RM.htm">SpatialTool_RM</a>
+                        </td>
+                        <td>SpatialTool_RM &lt;ScenarioPath&gt; {Option} [&lt;Parameters&gt;]</td>
+                        <td>Return information about SpatialTool components.</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_TimeTool.htm">TimeTool</a>
+                        </td>
+                        <td>TimeTool &lt;ScenarioPath&gt; {Options}</td>
+                        <td>Define components defining instances or intervals of time.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_TimeToolCollectionofIntervalLists.htm">TimeTool Collection of Interval Lists</a>
+                        </td>
+                        <td>TimeTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {"Collection of Interval Lists" | "Collection of Interval ListsTemplate"} &lt;ComponentName&gt; [{CollectionOfIntervalListsType} &lt;TypeParams&gt;]</td>
+                        <td>Define and modify Collection of Interval Lists components and templates.</td>
+                        <td>10.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_TimeToolInterval.htm">TimeTool Interval</a>
+                        </td>
+                        <td>TimeTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {"Interval" | "IntervalTemplate"} &lt;ComponentName&gt; [{IntervalType} &lt;TypeParams&gt;]</td>
+                        <td>Define and modify Interval components and templates.</td>
+                        <td>11.3</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_TimeToolIntervalList.htm">TimeTool Interval List</a>
+                        </td>
+                        <td>TimeTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {"Interval List" | "Interval ListTemplate"} &lt;ComponentName&gt; [{IntervalListType} &lt;TypeParams&gt;]</td>
+                        <td>Define and modify Interval List components and templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_TimeToolTimeArray.htm">TimeTool Time Array</a>
+                        </td>
+                        <td>TimeTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {"Time Array" | "Time ArrayTemplate"} &lt;ComponentName&gt; [{TimeArrayType} &lt;TypeParams&gt;]</td>
+                        <td>Define and modify Time Array components and templates.</td>
+                        <td>11.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_TimeToolTimeInstant.htm">TimeTool Time Instant</a>
+                        </td>
+                        <td>TimeTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {"Time Instant" | "Time InstantTemplate"} &lt;ComponentName&gt; [{TimeInstantType} &lt;TypeParams&gt;]</td>
+                        <td>Define and modify Time Instant components and templates.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_TimeTool_R.htm">TimeTool_R</a>
+                        </td>
+                        <td>TimeTool_R &lt;ScenarioPath&gt; {Option} [&lt;Parameters&gt;]</td>
+                        <td>Return information about TimeTool components.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_TimeTool_RM.htm">TimeTool_RM</a>
+                        </td>
+                        <td>TimeTool_RM &lt;ScenarioPath&gt; {Option} [&lt;Parameters&gt;]</td>
+                        <td>Return information about TimeTool components.</td>
+                        <td>10.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_Unload.htm">Unload</a>
+                        </td>
+                        <td>Unload &lt;ApplicationPath&gt; &lt;ObjectPath&gt; [RemAssignedObjs]
+</td>
+                        <td>Remove an object or scenario</td>
+                        <td>4.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_UnloadMulti.htm">UnloadMulti</a>
+                        </td>
+                        <td>UnloadMulti &lt;ApplicationPath&gt; &lt;ObjectPath&gt;</td>
+                        <td>Remove an object and all of its subobjects from the current scenario</td>
+                        <td>9.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_UseTerrain.htm">UseTerrain</a>
+                        </td>
+                        <td>UseTerrain &lt;ObjectPath&gt; {UseOption} </td>
+                        <td>To enable or disable the consideration of terrain data for calculations</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VOBorderWall.htm">VO BorderWall</a>
+                        </td>
+                        <td>VO &lt;ObjectPath&gt; BorderWall {BorderWallOption} &lt;Value&gt; [{BorderWallOption} &lt;Value&gt;...]</td>
+                        <td>Define the boundary wall of an area target, or the border wall of range rings of a facility, place, target or vehicle.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VOFill.htm">VO Fill</a>
+                        </td>
+                        <td>VO &lt;ObjectPath&gt; Fill {On | Off}</td>
+                        <td>Set the fill option to be used on an area target or a sensor</td>
+                        <td>6.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VOFillGranularity.htm">VO FillGranularity</a>
+                        </td>
+                        <td>VO &lt;ObjectPath&gt; FillGranularity &lt;Value&gt;</td>
+                        <td>Set the granularity to be used when filling an area target.</td>
+                        <td>7.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VOLabelLOD.htm">VO LabelLOD</a>
+                        </td>
+                        <td>VO &lt;ObjectPath&gt; LabelLOD {LODOption} &lt;Value&gt; [{LODOption} &lt;Value&gt;...]</td>
+                        <td>Define the level of detail for displaying an area or line target label</td>
+                        <td>6.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VOObjectStateInWin.htm">VO ObjectStateInWin</a>
+                        </td>
+                        <td>VO &lt;ScenarioPath&gt; ObjectStateInWin {Options}</td>
+                        <td>Control the display of object graphics in the 3D window.</td>
+                        <td>7.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VOSetVectorGeometry.htm">VO SetVectorGeometry</a>
+                        </td>
+                        <td>VO &lt;ObjectPath&gt; SetVectorGeometry {Option} &lt;Parameters&gt; [WindowID &lt;WinNumber&gt;]</td>
+                        <td>Define the display of geometric components in the 3D Graphics window</td>
+                        <td>
+11.6
+</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VOTranslucency.htm">VO Translucency</a>
+                        </td>
+                        <td>VO &lt;ObjectPath&gt; Translucency &lt;TranslucencyValue&gt;</td>
+                        <td>Set the translucency of a sensor projection or an area target's fill color as displayed in the 3D window.</td>
+                        <td>4.1.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VOWindowState.htm">VO WindowState</a>
+                        </td>
+                        <td>VO &lt;ObjectPath&gt; WindowState {Options}</td>
+                        <td>Control the display of object graphics in the 3D window.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VectorTool.htm">VectorTool</a>
+                        </td>
+                        <td>VectorTool &lt;ScenarioPath&gt; {Options} </td>
+                        <td>Define coordinate systems and elements used in constructing them, including templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VectorToolAngle.htm">VectorTool Angle</a>
+                        </td>
+                        <td>VectorTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {Angle | AngleTemplate} &lt;AngleName&gt; [{AngleType} &lt;AngleTypeParams&gt;]</td>
+                        <td>Define and modify Angle geometry components and templates.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VectorToolAxes.htm">VectorTool Axes</a>
+                        </td>
+                        <td>VectorTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {Axes | AxesTemplate} &lt;AxesName&gt; [{AxesType} &lt;AxesTypeParams&gt;]</td>
+                        <td>Define and modify Axes geometry components and templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VectorToolPlane.htm">VectorTool Plane</a>
+                        </td>
+                        <td>VectorTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {Plane | PlaneTemplate} &lt;PlaneName&gt; [{PlaneType} &lt;PlaneTypeParams&gt;]</td>
+                        <td>Define and modify Plane geometry components and templates.</td>
+                        <td>11.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VectorToolPoint.htm">VectorTool Point</a>
+                        </td>
+                        <td>VectorTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {Point | PointTemplate} &lt;PointName&gt; [{PointType} &lt;PointTypeParams&gt;]</td>
+                        <td>Define and modify Point geometry components and templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VectorToolSystem.htm">VectorTool System</a>
+                        </td>
+                        <td>VectorTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {System | SystemTemplate} &lt;SystemName&gt; [{SystemType} &lt;SystemTypeParams&gt;]</td>
+                        <td>Define and modify System geometry components and templates.</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VectorToolVector.htm">VectorTool Vector</a>
+                        </td>
+                        <td>VectorTool &lt;ScenarioPath&gt; &lt;ParentObject&gt; {Action} {Vector | VectorTemplate} &lt;VectorName&gt; [{VectorType} &lt;VectorTypeParams&gt;]</td>
+                        <td>Define and modify Vector geometry components and templates.</td>
+                        <td>11.5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VectorTool_R.htm">VectorTool_R</a>
+                        </td>
+                        <td>VectorTool_R &lt;ScenarioPath&gt; {Option} [&lt;Parameters&gt;]</td>
+                        <td>Return information about VectorTool components.</td>
+                        <td>10.1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="cmd_VectorTool_RM.htm">VectorTool_RM</a>
+                        </td>
+                        <td>VectorTool_RM &lt;ScenarioPath&gt; {Option} [&lt;Parameters&gt;]</td>
+                        <td>Return information about VectorTool components.</td>
+                        <td>10.1</td>
+                    </tr>
+                </tbody></table>
+            </main>

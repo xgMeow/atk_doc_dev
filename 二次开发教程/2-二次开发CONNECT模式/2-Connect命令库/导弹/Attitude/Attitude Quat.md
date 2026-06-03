@@ -2,11 +2,10 @@
 
 作用：根据四元数设置姿态数据
 
-::: note 用法
+用法：
 ```
 AddAttitude <ObjectPath> Quat {StartTime} <Q1> <Q2> <Q3> <Q4>
 ```
-:::
 
 ::: info 说明
 
