@@ -2,12 +2,53 @@
 // Hint 高亮块样式
 // ==========================================================================
 
-// 收缩栏前面的按钮
-.hint-container.details summary::before{
+// ==========================================================================
+// Details 折叠块样式 — slate 板岩灰，素雅且与其他 hint 结构统一
+// ==========================================================================
+
+// 展开箭头：隐藏默认背景
+.hint-container.details summary::before {
   background: transparent;
 }
 
+.hint-container.details summary::after{
+  left: 0;
+}
+
+// Details 容器 — slate 基调，柔和底色的统一模式
+.hint-container.details {
+  border-color: rgba(100, 116, 139, 0.2) !important;
+  background-color: #ffffff !important;
+}
+
+// Summary 标题 — 清晰可辨，hover 有反馈
+.hint-container.details summary {
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  margin: 0;
+  padding-block: 0;
+  padding: 8px 0 8px 32px;
+
+  &:hover {
+    color: #1e293b;
+  }
+}
+
+.hint-container.details[open]>summary {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+  padding: 8px 0 16px 32px;
+}
+
+// Details 内行内代码
+.hint-container.details code {
+  background: rgba(100, 116, 139, 0.1);
+  color: #475569;
+}
+
+// ==========================================================================
 // 高亮块标题图标位置
+// ==========================================================================
 .hint-container.important .hint-container-title::before,
 .hint-container.info .hint-container-title::before,
 .hint-container.note .hint-container-title::before,
@@ -30,7 +71,7 @@
   padding: 6px 22px !important;
   border-radius: 4px !important;
   border: 1px solid transparent !important;
-  border-left-width: 4px !important;
+  border-left-width: 4px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
   transition: all 0.25s ease !important;
   background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%) !important;
@@ -95,7 +136,8 @@
 .hint-container-title {
   font-weight: 600 !important;
   margin-bottom: 8px !important;
-  padding-bottom: 8px !important;
+  margin-top: 0 !important;
+  padding: 8px 0 !important;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
   display: flex !important;
   align-items: center !important;
