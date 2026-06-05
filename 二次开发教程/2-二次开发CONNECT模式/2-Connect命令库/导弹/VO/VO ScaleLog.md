@@ -1,18 +1,22 @@
 # VO ScaleLog
 
-作用：设置导弹 3D 模型比例大小
+## 作用
 
-::: note 用法
+设置导弹 3D 模型比例大小
+
+## 语法
+
 ```
 VO <ObjectPath> ScaleLog <value>
 ```
-:::
 
-::: info 说明
-- `<value>`用于调整模型大小
-:::
+## 补充说明
 
-::: tip 举例
+- `<value>` 用于调整模型大小
+
+## 示例
+
+::: details open **设置模型比例**
 ```
 VO */Missile/Missile1 ScaleLog 3
 ```

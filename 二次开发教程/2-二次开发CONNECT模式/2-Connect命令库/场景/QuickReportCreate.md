@@ -4,14 +4,18 @@
 
 快捷报告创建
 
-## 用法
+## 语法
 
 ```
 QuickReportCreate <ScenarioPath> "<QuickReportName>"
 ```
 
-## 举例
+## 示例
+
+::: details open **创建快捷报告**
 
 ```
 QuickReportCreate * "J2000 Position Velocity"
 ```
+
+:::

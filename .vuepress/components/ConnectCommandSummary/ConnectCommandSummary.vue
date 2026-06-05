@@ -38,6 +38,13 @@ function toggleGroup(cat: string) {
   collapsed[cat] = !collapsed[cat];
 }
 
+function renderInlineMarkdown(text: string): string {
+  return text
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+}
+
 function groupId(text: string): string {
   return text.trim().toLowerCase()
     .replace(/[\s]+/g, '-')
@@ -112,7 +119,7 @@ onMounted(() => {
                 <td class="cmd-cell-cmd">
                   <RouteLink :to="entry.path">{{ entry.command }}</RouteLink>
                 </td>
-                <td class="cmd-cell-effect">{{ entry.effect }}</td>
+                <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect)"></td>
                 <td class="cmd-cell-usage"><code class="cmd-code">{{ entry.usage }}</code></td>
               </tr>
             </tbody>
@@ -330,6 +337,22 @@ onMounted(() => {
 
 .cmd-cell-effect {
   color: var(--text-secondary);
+
+  :deep(code) {
+    padding: 0.1rem 0.35rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background: var(--bg-code);
+    color: var(--text);
+    font-size: 0.82em;
+    font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+    word-break: break-word;
+  }
+
+  :deep(strong) {
+    font-weight: 600;
+    color: var(--text);
+  }
 }
 
 .cmd-code {

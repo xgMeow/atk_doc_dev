@@ -1,13 +1,19 @@
 # Graphics_R GetLabel
- 
 
-作用：获得对象的标签
+## 作用
 
-用法： 
+获得对象的标签。
+
+## 语法
+
 ```
 Graphics_R <ObjectPath> GetLabel
 ```
-举例： 
+
+## 示例
+
+::: details open **获得标签**
 ```
 Graphics_R */Facility/Facility1 GetLabel
 ```
+:::

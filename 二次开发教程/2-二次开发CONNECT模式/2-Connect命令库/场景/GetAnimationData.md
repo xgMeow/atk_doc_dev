@@ -4,23 +4,26 @@
 
 获得场景基本属性
 
-## 用法
+## 语法
 
 ```
 GetAnimationData <ScenarioPath> {Option}
 ```
 
-## 说明
+## 参数说明
 
-| {Option} | 含义 |
+| `{Option}` | 说明 |
 |------|------|
-| `TimePeriod` | 获取该场景的**开始时间**和**停止时间** |
-| `CurrentTime` | 获取**当前仿真时间** |
-| `TimeStep` | 获取**仿真步长**，默认单位是秒 |
+| `TimePeriod` | 获得场景开始时间和停止时间 |
+| `CurrentTime` | 获得当前仿真时间 |
+| `TimeStep` | 获得仿真步长时间，默认单位为秒 |
 
+## 示例
 
-## 举例
+::: details open **获取场景时间段**
 
 ```
 GetAnimationData * TimePeriod
 ```
+
+:::

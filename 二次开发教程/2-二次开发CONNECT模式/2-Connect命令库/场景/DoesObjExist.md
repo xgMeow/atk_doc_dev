@@ -4,14 +4,18 @@
 
 确定对象是否存在
 
-## 用法
+## 语法
 
 ```
 DoesObjExist <ApplicationPath> <ObjectPath>
 ```
 
-## 举例
+## 示例
+
+::: details open **检查对象是否存在**
 
 ```
 DoesObjExist / */Satellite/Satellite1
 ```
+
+:::

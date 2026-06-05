@@ -1,18 +1,22 @@
 # GetAttitude
 
-作用：获得姿态类型
+## 作用
 
-::: note 用法
+获得姿态类型
+
+## 语法
+
 ```
 GetAttitude <ObjectPath> {AttOption}
 ```
-:::
 
-::: info 说明
-- 说明：`AttOption` 包括属性为 `Profile ConnectName`、`Profile LongName`
-:::
+## 补充说明
 
-::: tip 举例
+- `AttOption` 包括属性为 `Profile ConnectName`、`Profile LongName`
+
+## 示例
+
+::: details open **获得姿态类型**
 ```
 GetAttitude *//Missile/Missile1 Profile LongName
 ```

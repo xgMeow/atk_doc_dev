@@ -4,19 +4,25 @@
 
 返回三维窗口信息
 
-## 用法
+## 语法
 
 ```
 Window3D_R <ScenarioPath> {WindowOption} [WindowID <WinNumber>]
 ```
 
-## 说明
+## 参数说明
 
-- `Size` 返回三维窗口的大小(包括边框)
-- `InnerSize` 返回三维窗口的大小(不包括边框)
+| `{WindowOption}` | 说明 |
+|------|------|
+| `Size` | 返回三维窗口的大小(包括边框) |
+| `InnerSize` | 返回三维窗口的大小(不包括边框) |
 
-## 举例
+## 示例
+
+::: details open **获取三维窗口内部大小**
 
 ```
 Window3d_R * InnerSize
 ```
+
+:::

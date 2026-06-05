@@ -4,14 +4,18 @@
 
 删除当前场景所有子对象
 
-## 用法
+## 语法
 
 ```
 UnloadSubObj <ApplicationPath> <ScenarioPath>
 ```
 
-## 举例
+## 示例
+
+::: details open **删除当前场景所有子对象**
 
 ```
 UnloadSubObj / *
 ```
+
+:::

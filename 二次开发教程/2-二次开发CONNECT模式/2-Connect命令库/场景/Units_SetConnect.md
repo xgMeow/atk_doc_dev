@@ -2,21 +2,25 @@
 
 ## 作用
 
-设置Connect模式单位属性
+设置 Connect 模式单位属性
 
-## 用法
+## 语法
 
 ```
 Units_SetConnect <AppOrScenPath> {Default | Internal | {Dimension} {Unit}... }
 ```
 
-## 说明
+## 补充说明
 
-- `{Dimension} {Unit}`请查看常用设置格式-常用单位格式
-- Connect模式仅支持`{Dimension}`设置 `Date`,`Distance`,`Time`,`Angle`
+- `{Dimension} {Unit}` 请查看常用设置格式-常用单位格式
+- Connect 模式仅支持 `{Dimension}` 设置 `Date`、`Distance`、`Time`、`Angle`
 
-## 举例
+## 示例
+
+::: details open **设置日期单位为儒略日**
 
 ```
 Units_SetConnect / Date "JDate"
 ```
+
+:::

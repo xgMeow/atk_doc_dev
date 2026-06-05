@@ -12,16 +12,8 @@ Cov <CovDefnObjectPath> Asset <AssetObjectPath> {Action}
 
 ## 参数说明
 
-| 参数 | 说明 |
-|------|------|
-| `<CovDefnObjectPath>` | 覆盖定义对象的路径 |
-| `<AssetObjectPath>` | 资产对象的路径 |
-| `{Action}` | 操作类型，见下表 |
-
-### {Action} 取值
-
-| `{Action}` | 含义 |
-|----|------|
+| {Action} | 说明 |
+|-----|------|
 | `Assign` | 标记对象可进行覆盖计算 |
 | `Deassign` | 取消标记对象，对象不进行覆盖计算 |
 

@@ -1,59 +1,58 @@
 # ACAT
 
-作用：设置高级接近分析参数及计算接近事件
+## 作用
 
-::: note 用法
+设置**高级接近分析**参数及计算接近事件。
+
+## 语法
+
 ```
 ACAT <AdvCatObjPath> {CalculateOptions} <Parameters>
 ```
-:::
 
-::: info 说明
+## 参数说明
 
-- CalculateOptions 参数说明： 
+| 参数 | 说明 |
+| --- | --- |
+| `Compute On` | 计算接近事件 |
+| `TimePeriod {TimeInterval}` | `TimeInterval` 请查看常用设置格式-常用日期/时间格式 |
+| `Primary {Parameters}` | 设置主目标 |
+| `PrimaryMulti {Parameters}` | 设置多个主目标 |
+| `Secondary {Parameters}` | 设置次目标 |
+| `SecondaryMulti {Parameters}` | 设置多个次目标 |
+| `Threshold <DistanceValue>` | 设置阈值 |
+| `PntToPnt {On \| Off}` | 设置是否使用距离测量 |
+| `PreFilters {OutOfDate \| ApogeePerigee \| OrbitPath \| Time} {On \| Off \| <Value>}` | 设置预滤波器参数`{轨道历元过期门限 \| 远/近地点门限 \| 轨道路径 \| 时间}`是否使用及使用时的值 |
+| `ScaleFactor <ScaleValue>` | 设置椭球比例因子 |
+| `SampleStepSize <MaxValue> <MinValue>` | 设置最大/最小采样步长 |
+| `ConjTcaMode {GlobalOnly \| LocalOnly \| GlobalPlusLocal \| LocalPlusEndPoints}` | 设置碰撞类型`{全局解 \| 局部解 \| 全局解 + 局部解 \| 局部解 + 边界}` |
 
-| CalculateOptions                                                                        | 说明               |
-| --------------------------------------------------------------------------------------- | ------------------- |
-| Compute On                                                                              | 计算接近事件  |
-| TimePeriod `{TimeInterval}`                                                             | `TimeInterval` 请查看常用设置格式-常用日期/时间格式         |
-| Primary `{Parameters}`                                                                  | 设置主目标  |
-| PrimaryMulti `{Parameters}`                                                             | 设置多个主目标  |
-| Secondary `{Parameters}`                                                                | 设置次目标           |
-| SecondaryMulti `{Parameters}`                                                           | 设置多个次目标           |
-| Threshold `<DistanceValue>`                                                             | 设置阈值           |
-| PntToPnt `{On \| Off}`                                                                  | 设置是否使用距离测量           |
-| PreFilters `{OutOfDate \| ApogeePerigee \| OrbitPath \| Time} {On \| Off \| <Value>}`   | 设置预滤波器参数`{轨道历元过期门限 \| 远/近地点门限 \| 轨道路径 \| 时间}`是否使用及使用时的值          |   
-| ScaleFactor `<ScaleValue>`                                                              | 设置椭球比例因子           |
-| SampleStepSize `<MaxValue> <MinValue>`                                                  | 设置最大/最小采样步长           |
-| ConjTcaMode `{GlobalOnly \| LocalOnly \| GlobalPlusLocal \| LocalPlusEndPoints}`        | 设置碰撞类型`{全局解 \| 局部解 \| 全局解 + 局部解 \| 局部解 + 边界 }` |     
+### Primary/Secondary `{Parameters}` 取值
 
-- Primary/Secondary `{Parameters}` 包括三种操作：
+| 参数 | 说明 |
+| --- | --- |
+| `Add "<ObjPath>" \| "<ObjFileName>" [{AdditionalParams}]` | 将目标添加至列表 |
+| `Remove "<ObjPath>" \| "<ObjFileName>"` | 从列表移除目标 |
+| `RemoveAll` | 移除列表中所有目标 |
 
-| Parameters                                | 说明               |
-| ------------------------------------------ | ------------------- |
-| Add `"<ObjPath>" \| "<ObjFileName>" [{AdditionalParams}]`     | 将目标添加至列表               |
-| Remove `"<ObjPath>" \| "<ObjFileName>"` | 从列表移除目标 |
-| RemoveAll           | 移除列表中所有目标  |
+### PrimaryMulti/SecondaryMulti `{Parameters}` 取值
 
-- PrimaryMulti/SecondaryMulti `{Parameters}` 包括三种操作：
+| 参数 | 说明 |
+| --- | --- |
+| `Add "<ObjPath>" [{AdditionalParams}]` | 将目标添加至列表 |
+| `Remove "<ObjPath>"` | 从列表移除目标 |
 
-| Parameters                                 | 说明               |
-| ------------------------------------------- | ------------------- |
-| Add `"<ObjPath>" [{AdditionalParams}]`      | 将目标添加至列表               |
-| Remove `"<Objath>"`                         | 从列表移除目标 |
+### Add `[{AdditionalParams}]` 取值
 
-- Primary/Secondary/ PrimaryMulti/SecondaryMulti `{Parameters}` 中 Add `"<ObjPath>" [{AdditionalParams}]` 参数说明： 
-
-| AdditionalParams                    | 说明               |
-| ------------------------------------ | ------------------- |
-| `{Class}`                            | 设置目标类别,目前包括Fixed              |
+| 参数 | 说明 |
+| --- | --- |
+| `{Class}` | 设置目标类别，目前包括Fixed |
 | `<Tangential> <CrossTrack> <Normal>` | 设置目标切向、径向、法向 |
-| HardBodyRadius `<RadiusValue>`       | 设置目标包络球半径  |
+| `HardBodyRadius <RadiusValue>` | 设置目标包络球半径 |
 
-:::
+## 示例
 
-
-::: tip 举例
+::: details open **设置高级接近分析参数**
 ```
 ACAT */AdvCat/AdvCat1 Threshold 50000 
 ACAT */AdvCat/AdvCat1 PntToPnt On

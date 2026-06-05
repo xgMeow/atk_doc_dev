@@ -1,22 +1,25 @@
 # Graphics Label
 
- 
+## 作用
 
-作用：设置船标签属性
+设置**船标签**属性。
 
-用法： 
+## 语法
+
 ```
 Graphics <ObjectPath> Label {Options}
 ```
-说明：
 
- 
+## 参数说明
 
-| Options          | 说明           |
-| ---------------- | -------------- |
+| 参数 | 说明 |
+| -- | -- |
 | `Show {on \| off}` | 显示或隐藏标签 |
 
-举例： 
+## 示例
+
+::: details open **显示船标签**
 ```
 Graphics */Ship/Ship1 Label Show on
 ```
+:::

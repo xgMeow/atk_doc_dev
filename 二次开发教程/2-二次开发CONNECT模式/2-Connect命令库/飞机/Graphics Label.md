@@ -1,22 +1,25 @@
 # Graphics Label
 
- 
+## 作用
 
-作用：设置飞机标签属性
+设置**飞机标签**属性。
 
-用法： 
+## 语法
+
 ```
 Graphics <ObjectPath> Label {Options}
 ```
-说明：
 
- 
+## 参数说明
 
-| Options            | 说明           |
-| ----------------   | -------------- |
-| `Show {on \| off}` | 显示或隐藏标签 |
+| 参数 | 说明 |
+|------|------|
+| `Show` | `{on \| off}`：显示或隐藏标签 |
 
-举例： 
+## 示例
+
+::: details open **显示飞机标签**
 ```
 Graphics */Aircraft/Aircraft1 Label Show on
 ```
+:::

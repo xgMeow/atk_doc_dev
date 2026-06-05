@@ -1,17 +1,23 @@
 # Graphics SetColor
 
- 
+## 作用
 
-作用：设置飞机轨迹标签颜色
+设置**飞机轨迹标签颜色**。
 
-用法： 
+## 语法
+
 ```
 Graphics <ObjectPath> SetColor {Color} [{Item}]
 ```
 
-说明： `Color` 可用属性请查看常用设置格式-常用图形格式
+## 补充说明
 
-举例： 
+- `Color` 可用属性请查看常用设置格式-常用图形格式。
+
+## 示例
+
+::: details open **设置飞机轨迹颜色**
 ```
 Graphics */Aircraft/Aircraft1 SetColor 4
 ```
+:::

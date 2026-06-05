@@ -4,14 +4,18 @@
 
 获得 ATK 版本信息
 
-## 用法
+## 语法
 
 ```
 GetATKVersion <ApplicationPath> [Details | Platform]
 ```
 
-## 举例
+## 示例
+
+::: details open **获取 ATK 平台版本**
 
 ```
 GetATKVersion / Platform
 ```
+
+:::

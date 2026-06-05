@@ -4,14 +4,18 @@
 
 新建多个对象
 
-## 用法
+## 语法
 
 ```
 NewMulti <ApplicationPath> <ClassPathOfObjectToCreate> <NumToCreate> <NewName1> [<NewName2>...] [NoDefault] [Ignore]
 ```
 
-## 举例
+## 示例
+
+::: details open **新建多个对象**
 
 ```
 NewMulti / */Facility 3 Fac1 Fac2 Fac3 NoDefault
 ```
+
+:::

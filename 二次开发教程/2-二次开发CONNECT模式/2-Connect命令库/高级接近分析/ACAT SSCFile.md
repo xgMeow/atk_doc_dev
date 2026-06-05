@@ -1,14 +1,18 @@
 # ACAT SSCFile
 
-作用：使用文件设置SSC目标半径
+## 作用
 
-::: note 用法
+使用文件设置**SSC**目标半径。
+
+## 语法
+
 ```
 ACAT <AdvCatObjPath> SSCFile {On | Off | "<FilePath>"}
 ```
-:::
 
-::: tip 举例
+## 示例
+
+::: details open **使用SSC文件设置目标半径**
 ```
 ACAT */AdvCAT/MyAdvCAT SSCFile "C:\Users\tempest\Documents\STK\SSC.rad"
 ```

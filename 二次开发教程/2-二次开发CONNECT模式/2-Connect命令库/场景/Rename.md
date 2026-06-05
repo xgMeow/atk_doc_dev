@@ -4,14 +4,18 @@
 
 对象重命名
 
-## 用法
+## 语法
 
 ```
 Rename <ObjectPath> <NewName>
 ```
 
-## 举例
+## 示例
+
+::: details open **对象重命名**
 
 ```
 Rename */Satellite/Satellite1 Sat1
 ```
+
+:::

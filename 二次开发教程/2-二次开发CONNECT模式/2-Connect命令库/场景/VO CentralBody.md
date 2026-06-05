@@ -4,7 +4,7 @@
 
 三维中心天体、坐标系视点显示
 
-## 用法
+## 语法
 
 ```
 VO <ScenarioPath> CentralBody <CBName> [<WinNumber>]
@@ -14,12 +14,20 @@ VO <ScenarioPath> CentralBody <CBName> [<WinNumber>]
 VO <ScenarioPath> CentralBody "<ObjectPath> <Point> <Axes>"
 ```
 
-## 举例
+## 示例
+
+::: details open **设置三维中心天体为火星**
 
 ```
 VO * CentralBody Mars
 ```
 
+:::
+
+::: details open **设置对象坐标系视点**
+
 ```
 VO * CentralBody "Satellite/Satellite1 PointFixed AxesFixed"
 ```
+
+:::

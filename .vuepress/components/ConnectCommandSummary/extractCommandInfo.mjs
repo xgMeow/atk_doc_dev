@@ -39,27 +39,23 @@ export const extractCommandEntries = (content, path) => {
     }
   }
 
-  const commandHeadings = headings.some(item => item.level === 2)
-    ? headings.filter(item => item.level === 2)
-    : headings.filter(item => item.level === 1).slice(0, 1);
+  // Every file is a single-command document: H1 = command name
+  const h1 = headings.find(h => h.level === 1);
+  if (!h1) return [];
 
-  return commandHeadings
-    .map((heading) => {
-      const sectionEnd = headings.find(item => item.line > heading.line && item.level <= heading.level)?.line ?? lines.length;
-      const section = lines.slice(heading.line + 1, sectionEnd).join('\n');
-      const effect = extractLabelText(section, '作用');
-      const usage = extractUsage(section);
+  const command = h1.title;
 
-      if (!effect || !usage) return null;
+  const effect = getSectionParagraph(lines, headings, '作用');
+  const usage = getSectionCodeBlock(lines, headings, '语法');
 
-      return {
-        command: heading.title,
-        effect,
-        usage,
-        path: heading.level === 1 ? path : `${path}#${slugifyHeading(heading.title)}`,
-      };
-    })
-    .filter(Boolean);
+  if (!effect || !usage) return [];
+
+  return [{
+    command,
+    effect,
+    usage,
+    path,
+  }];
 };
 
 const toDirectoryPath = (path) => {
@@ -82,24 +78,27 @@ const getCategory = (filePath, directoryPath) => {
   return relativePath.includes('/') ? relativePath.split('/')[0] : decodedDirectory.split('/').filter(Boolean).at(-1) || '通用命令';
 };
 
-const extractLabelText = (section, label) => {
-  const match = section.match(new RegExp(`(?:^|\\n)\\s*(?:[-*]\\s*)?${label}：\\s*([^\\n]+)`));
-  return match?.[1]?.trim() || '';
+// Get the first text paragraph from the section after a heading
+const getSectionParagraph = (lines, headings, title) => {
+  const heading = headings.find(h => h.title === title);
+  if (!heading) return '';
+
+  const sectionEnd = headings.find(h => h.line > heading.line && h.level <= heading.level)?.line ?? lines.length;
+  const section = lines.slice(heading.line + 1, sectionEnd).join('\n');
+
+  // Remove code blocks, get first non-empty text line
+  const textContent = section.replace(/```[\s\S]*?```/g, '').trim();
+  return textContent.split('\n')[0]?.trim() || '';
 };
 
-const extractUsage = (section) => {
-  const labelIndex = section.search(/(?:^|\n)\s*(?:[-*]\s*)?用法：/);
-  if (labelIndex < 0) return '';
+// Get the first code block content from the section after a heading
+const getSectionCodeBlock = (lines, headings, title) => {
+  const heading = headings.find(h => h.title === title);
+  if (!heading) return '';
 
-  const afterLabel = section.slice(labelIndex);
-  const match = afterLabel.match(/```[^\n]*\n([\s\S]*?)```/);
+  const sectionEnd = headings.find(h => h.line > heading.line && h.level <= heading.level)?.line ?? lines.length;
+  const section = lines.slice(heading.line + 1, sectionEnd).join('\n');
+
+  const match = section.match(/```[^\n]*\n([\s\S]*?)```/);
   return match?.[1]?.trim() || '';
 };
-
-const slugifyHeading = (heading) => encodeURIComponent(
-  heading
-    .trim()
-    .toLowerCase()
-    .replace(/[`~!@#$%^&*()+=\[\]{}|\\:;"'<>,.?/，。！？、；：“”‘’（）【】]/g, '')
-    .replace(/\s+/g, '-')
-);

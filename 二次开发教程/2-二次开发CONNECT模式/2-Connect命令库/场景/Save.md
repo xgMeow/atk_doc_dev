@@ -4,19 +4,25 @@
 
 保存场景或对象
 
-## 用法
+## 语法
 
 ```
 Save <ApplicationPath> <ObjectPath> ["<SaveInDirectory>"]
 ```
 
-## 说明
+## 参数说明
 
-`<ObjectPath>` 目前为默认值`*`，为当前场景路径
-`<SaveInDirectory>` 设置保存路径，当前场景会保存到此路径下，需要输入保存文件名
+| 参数 | 说明 |
+|------|------|
+| `<ObjectPath>` | 目前为默认值 `*`，为当前场景路径 |
+| `<SaveInDirectory>` | 设置保存路径，当前场景会保存到此路径下，需要输入保存文件名 |
 
-## 举例
+## 示例
+
+::: details open **保存当前场景**
 
 ```
 Save / *
 ```
+
+:::

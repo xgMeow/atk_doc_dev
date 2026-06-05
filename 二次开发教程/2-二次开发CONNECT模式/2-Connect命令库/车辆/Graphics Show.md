@@ -1,15 +1,19 @@
 # Graphics Show
 
- 
+## 作用
 
-作用：设置车辆是否在窗口显示
+设置车辆是否在窗口显示。
 
-用法： 
+## 语法
+
 ```
 Graphics <ObjectPath> Show {On | Off}
 ```
 
-举例： 
+## 示例
+
+::: details open **隐藏车辆显示**
 ```
 Graphics */GroundVehicle/GroundVehicle1 Show Off
 ```
+:::

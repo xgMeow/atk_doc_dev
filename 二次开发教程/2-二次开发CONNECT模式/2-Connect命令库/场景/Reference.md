@@ -4,14 +4,18 @@
 
 设置卫星参考航天器
 
-## 用法
+## 语法
 
 ```
 Reference <SatObjectPath> SetRefSatellite <SatObjectPath>
 ```
 
-## 举例
+## 示例
+
+::: details open **设置卫星参考航天器**
 
 ```
 Reference */Satellite/Satellite1 SetRefSatellite */Satellite/Satellite2
 ```
+
+:::

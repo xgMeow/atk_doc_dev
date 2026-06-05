@@ -1,28 +1,34 @@
 # AddWaypoint
 
+## 作用
 
-作用：设置船航线属性
+设置**船航线**属性。
 
-用法： 
+## 语法
+
 ```
 AddWaypoint <VehObjectPath> {AddMethod} <Parameters> [<TurnRadius>]
 ```
-说明：
 
- 
+## 参数说明
 
-| AddMethod         | Parameters                             |
-| ----------------- | -------------------------------------- |
-| DetTimeAccFromVel | `[{MapGridSpec}] {PointDef}  <Velocity>` |
-| DetVelFromTime    | `[{MapGridSpec}] {PointDef}  <DateTime>` |
+### AddMethod 取值
 
- -
- 
-| MapGridSpec | PointDef                           |
-| ----------- | ---------------------------------- |
-| LatLon      | `<Latitude> <Longitude>  <Altitude>` |
+| AddMethod | Parameters |
+| -- | -- |
+| `DetTimeAccFromVel` | `[{MapGridSpec}] {PointDef} <Velocity>` |
+| `DetVelFromTime` | `[{MapGridSpec}] {PointDef} <DateTime>` |
 
-举例： 
+### MapGridSpec 取值
+
+| MapGridSpec | PointDef |
+| -- | -- |
+| `LatLon` | `<Latitude> <Longitude> <Altitude>` |
+
+## 示例
+
+::: details open **设置船航线**
 ```
 AddWaypoint */Ship/Ship1 DetTimeAccFromVel LatLon 42.5 15 0.0 1.0
 ```
+:::

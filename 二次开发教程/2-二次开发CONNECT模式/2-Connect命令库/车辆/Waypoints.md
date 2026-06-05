@@ -1,15 +1,19 @@
 # Waypoints
- 
 
-作用：清空车辆航线
+## 作用
 
-用法： 
+清空车辆航线。
+
+## 语法
 
 ```
 Waypoints <VehObjectPath> Clear
 ```
 
-举例： 
+## 示例
+
+::: details open **清空车辆航线**
 ```
 Waypoints */GroundVehicle/GroundVehicle1 Clear
 ```
+:::

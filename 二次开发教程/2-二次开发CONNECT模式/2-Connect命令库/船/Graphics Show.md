@@ -1,15 +1,19 @@
 # Graphics Show
 
- 
+## 作用
 
-作用：设置船是否在窗口显示
+设置**船是否在窗口显示**。
 
-用法： 
+## 语法
+
 ```
 Graphics <ObjectPath> Show {On | Off}
 ```
 
-举例： 
+## 示例
+
+::: details open **隐藏船模型**
 ```
 Graphics */Ship/Ship1 Show Off
 ```
+:::

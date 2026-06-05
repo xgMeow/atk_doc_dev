@@ -4,26 +4,38 @@
 
 新建场景或新建对象
 
-## 用法
+## 语法
 
 ```
 New <ApplicationPath> <ClassPath> <NewObjectName> {NewOptions}
 ```
 
-## 说明
+## 补充说明
 
-`NewOptions` 包括属性 `NoDefault`，`Ignore` 和 `CentralBody <CBName>`
+- `{NewOptions}` 包括属性 `NoDefault`、`Ignore` 和 `CentralBody <CBName>`
 
-## 举例
+## 示例
+
+::: details open **新建场景**
 
 ```
 New / Scenario See_DC
 ```
 
+:::
+
+::: details open **新建卫星对象**
+
 ```
 New / */Satellite Satellite1 CentralBody Earth
 ```
 
+:::
+
+::: details open **新建传感器对象**
+
 ```
 New / */Satellite/Satellite1/Sensor Sensor1
 ```
+
+:::
