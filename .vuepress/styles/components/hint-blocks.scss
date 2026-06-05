@@ -11,8 +11,9 @@
   background: transparent;
 }
 
-.hint-container.details summary::after{
+.hint-container.details summary::after {
   left: 0;
+  top: 8px;
 }
 
 // Details 容器 — slate 基调，柔和底色的统一模式
