@@ -1,29 +1,26 @@
 # Cov Access
 
-作用：计算并清空单个对象覆盖性计算
+## 作用
 
-用法：
+计算并清空单个对象覆盖性计算
+
+## 用法
 
 ```
 Cov <ObjectPath> Access {ComputeOption} [<Parameters>]
 ```
 
-`{ComputeOption}[<Parameters>]`说明：
+## 说明
 
-- `Compute [{TimeInterval} | UseObjectTimes]` 
-  
-    计算对象覆盖性
+| `{ComputeOption}` | `<Parameters>` | 说明 |
+|------------------|------------------|------|
+| `Compute` | `{TimeInterval}` | 计算对象覆盖性 |
+| `Compute` | `UseObjectTimes` | 计算对象覆盖性 |
+| `Clear` | （无参数） | 清除对象覆盖定义计算 |
+| `ClearAccesses` | （无参数） | 清除对象所有计算和设置 |
 
-- `Clear` 
-  
-    清除对象覆盖定义计算
+## 举例
 
-- `ClearAccesses`
-
-    清楚对象所有计算和设置
-
-::: note 举例
 ```
 Cov */Satellite/Satellite1 Access Compute "20 Jun 2024 04:00:00.00" "21 Jun 2024 04:00:00.00"
 ```
-:::

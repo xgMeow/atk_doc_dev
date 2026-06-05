@@ -1,30 +1,27 @@
 # GetDirectory
 
-作用：返回所选目录的路径
+## 作用
 
-用法：
+返回所选目录的路径
+
+## 用法
 
 ```
 GetDirectory <ApplicationPath> {DirOption}
 ```
 
-`{DirOption}`说明
+## 说明
 
 - `DefaultUser` 返回程序运行目录
-
 - `UserData` 返回当前用户数据目录
-
 - `ATKHome` 返回 ATK 运行文件夹
-
 - `Config` 返回用户的配置目录
-
 - `Scenario` 返回场景文件目录
-
 - `AllUsers` 返回包含所有用户的 ATK 应用程序数据的目录
-
 - `Database {Satellite | City | Facility}` 返回指定的数据目录
 
-举例：
+## 举例
+
 ```
 GetDirectory / Database Satellite
 ```

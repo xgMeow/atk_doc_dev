@@ -1,13 +1,17 @@
 # Rename
 
-作用：对象重命名
+## 作用
 
-用法：
+对象重命名
+
+## 用法
+
 ```
 Rename <ObjectPath> <NewName>
 ```
 
-举例：
+## 举例
+
 ```
 Rename */Satellite/Satellite1 Sat1
 ```

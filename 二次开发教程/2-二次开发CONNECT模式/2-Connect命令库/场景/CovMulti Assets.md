@@ -1,15 +1,17 @@
 # CovMulti Assets
 
-作用：覆盖性选择多个目标对象
+## 作用
 
-用法：
+覆盖性选择多个目标对象
+
+## 用法
 
 ```
 CovMulti / Assets < AssetObjectPath > < AssetObjectPath > …
 ```
 
-::: note 举例
+## 举例
+
 ```
 CovMulti / Assets */Satellite/Satellite1/Sensor/Sensor1 */Satellite/Satellite2/Sensor/Sensor1 */Satellite/Satellite3/Sensor/Sensor1
 ```
-:::
