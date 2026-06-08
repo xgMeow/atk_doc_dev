@@ -1,5 +1,6 @@
 ---
 shortTitle: 坐标系定义与转换
+description: ATK 中各类坐标参考系的系统介绍，涵盖中心天体、轨道局部、表面局部、历元及黄道坐标系及其转换关系。
 index: false
 ---
 
