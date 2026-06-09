@@ -741,3 +741,9 @@ li.vp-toc-item.active{
 strong {
   font-weight: bolder;
 }
+
+a {
+  .external-link-icon {
+    color: inherit;
+  }
+}
