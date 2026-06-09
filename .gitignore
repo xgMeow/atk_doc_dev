@@ -1,19 +1,12 @@
 *.zip
+*.rar
 *.pdf
 node_modules
-*.map
-dist-offline/*
-dist
 /*.py
-数学模型/*
 .dist
-.dist-offline
-.vscode/*
+.vscode
 Help
 
 .outputdir
 .rst
-node_modules.rar
-.vs
-
 .dev-docs/doc-to-word/word_output
