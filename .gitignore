@@ -10,3 +10,7 @@ Help
 .outputdir
 .rst
 .dev-docs/doc-to-word/word_output
+
+# Python
+__pycache__/
+*.pyc
