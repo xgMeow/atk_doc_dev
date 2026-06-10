@@ -1,5 +1,5 @@
 ---
-name: deploy
+name: atk-deploy
 description: 执行完整部署流程：公式检查 → 链接检查 → Windows 构建 → 麒麟构建 → 打包压缩。仅手动调用。
 ---
 
