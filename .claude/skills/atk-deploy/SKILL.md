@@ -84,27 +84,30 @@ npm run build:standalone-kylin
 #### 5.2 确定版本号
 
 从 `package.json` 的 `version` 字段获取。打包文件命名：
-- `ATK-doc-standalone-v{version}.zip`
-- `ATK-doc-standalone-kylin-v{version}.zip`
-- `ATK-doc-source-v{version}.zip`
+- `.deploy/ATK-doc-standalone-v{version}.zip`
+- `.deploy/ATK-doc-standalone-kylin-v{version}.zip`
+- `.deploy/ATK-doc-source-v{version}.zip`
 
 #### 5.3 打包 Windows 版和麒麟版
 
+确保 `.deploy/` 目录存在：
+
 ```bash
-cd .dist/standalone && zip -r "../../ATK-doc-standalone-v{version}.zip" . && cd ../..
-cd .dist/standalone-kylin && zip -r "../../ATK-doc-standalone-kylin-v{version}.zip" . && cd ../..
+mkdir -p .deploy
+cd .dist/standalone && zip -r "../../.deploy/ATK-doc-standalone-v{version}.zip" . && cd ../..
+cd .dist/standalone-kylin && zip -r "../../.deploy/ATK-doc-standalone-kylin-v{version}.zip" . && cd ../..
 ```
 
 #### 5.4 打包源码（必选）
 
 1. 用 `git ls-files` 获取候选文件列表（自动遵循 `.gitignore`）
 2. 读取 `.deployignore`，按其规则过滤（忽略空行和 `#` 注释；`!` 为白名单；`/` 结尾匹配目录；`/` 开头从根目录匹配；其余按 gitignore 语义）
-3. 额外排除：`.git/`、`node_modules/`、`.dist/`、已有的 `.zip`/`.rar`/`.7z` 文件
-4. 将过滤后的文件列表打包为 `ATK-doc-source-v{version}.zip`
+3. 额外排除：`.git/`、`node_modules/`、`.dist/`、`.deploy/`、已有的 `.zip`/`.rar`/`.7z` 文件
+4. 将过滤后的文件列表打包为 `.deploy/ATK-doc-source-v{version}.zip`
 
 #### 5.5 验证
 
-确认三个压缩包：
+确认 `.deploy/` 目录下三个压缩包：
 - 文件大小合理（非 0 字节）
 - Windows 版和麒麟版含 `index.html`
 - 源码包含 `.md`、`.vue`、`.ts` 等源文件
@@ -113,6 +116,8 @@ cd .dist/standalone-kylin && zip -r "../../ATK-doc-standalone-kylin-v{version}.z
 
 ```markdown
 ## 部署打包完成
+
+输出目录：`.deploy/`
 
 | 文件 | 大小 |
 |------|------|
