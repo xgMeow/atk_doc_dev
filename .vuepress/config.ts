@@ -24,6 +24,7 @@ export const useConfig = ({type, plat=""}) => {
       "@theme-hope/modules/sidebar/components/SidebarChild": path.resolve(__dirname,"./modules/sidebar/components/SidebarChild",),
       "@theme-hope/modules/sidebar/components/SidebarGroup": path.resolve(__dirname,"./modules/sidebar/components/SidebarGroup",),
       "@theme-hope/modules/sidebar/components/SidebarLinks": path.resolve(__dirname,"./modules/sidebar/components/SidebarLinks",),
+      "@theme-hope/modules/sidebar/utils/index": path.resolve(__dirname,"./modules/sidebar/utils/index",),
       "@components": path.resolve(__dirname,"./components",),
     },
     markdown:{
