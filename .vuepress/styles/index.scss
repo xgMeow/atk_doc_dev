@@ -741,8 +741,15 @@ p, ul, ol{
   line-height: 32px;
 }
 
-.theme-hope-content{
-  p, ul, ol{
+.theme-hope-content {
+
+  p,ul,ol {
     line-height: 2;
+  }
+}
+
+a {
+  .external-link-icon {
+    color: inherit;
   }
 }

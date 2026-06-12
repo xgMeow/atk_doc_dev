@@ -36,10 +36,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import { siteBase } from '../../shared/config.js'
 
 const getLink = (path) => {
-  const normalizedBase = siteBase.replace(/\/+$/, '')
+  const normalizedBase = __VUEPRESS_BASE__.replace(/\/+$/, '')
   const normalizedPath = path.replace(/\/+/g, '/')
   return normalizedBase + normalizedPath
 }
