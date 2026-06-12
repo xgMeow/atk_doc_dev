@@ -261,30 +261,6 @@ h3 {
   // transition: inset 0.2s ease-in-out;
   background: rgb(255 255 255 / 80%); 
 }
-.vp-sidebar-link{
-  margin: 2px 0;
-  border-radius: 0 20px 20px 0;
-}
-.vp-sidebar-link:hover {
-  background: #edeeee;
-  color: var(--menu-text-color);
-  // border-radius: 6px;
-}
-.vp-sidebar-link.active {
-  // 扁平
-  background: #027cfb;
-  color: #fff;
-  font-weight: 500;
-}
-
-.vp-sidebar-header.clickable:hover {
-  // background: #edeeee;
-  background: #fff;
-  font-weight: bold;
-  // border-radius: 0 20px 20px 0;
-}
-
-
 // .toggle-sidebar-wrapper {
 //   position: fixed;
 //   top: var(--navbar-height);
