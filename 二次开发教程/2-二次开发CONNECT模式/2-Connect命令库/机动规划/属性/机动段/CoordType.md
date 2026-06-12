@@ -1,17 +1,23 @@
 # CoordType
 
- 
+## 作用
 
-作用：设置坐标方式
+设置坐标方式
 
-用法： 
+## 语法
+
 ```
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.CoordType <Value>
 ```
 
-说明： Value 包括属性 Cartesian 和 Spherical
+## 补充说明
 
-举例： 
+- `Value` 包括属性 `Cartesian` 和 `Spherical`
+
+## 示例
+
+::: details open **设置坐标方式为 Cartesian**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.CoordType Cartesian
 ```
+:::

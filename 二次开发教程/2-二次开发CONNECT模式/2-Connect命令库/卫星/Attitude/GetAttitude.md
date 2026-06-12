@@ -1,16 +1,24 @@
 # GetAttitude
 
-作用：获得卫星的姿态类型
+## 作用
 
-用法：
+获得卫星的姿态类型。
+
+## 语法
+
 ```
 GetAttitude <ObjectPath> {AttOption}
 ```
 
-- 说明：`AttOption` 包括属性为 `Profile ConnectName`、`Profile LongName`
+## 参数说明
 
-::: note 举例
+| 参数 | 说明 |
+|------|------|
+| `AttOption` | 包括属性为 `Profile ConnectName`、`Profile LongName` |
 
+## 示例
+
+::: details open **获得卫星的姿态类型**
 ```
 GetAttitude */Satellite/Satellite1 Profile LongName
 ```

@@ -1,6 +1,19 @@
 # SetAttitude Standard
 
-- 作用：设置姿态模式
+## 作用
 
-- 用法： `SetAttitude <ObjectPath> Standard`
-- 举例： `SetAttitude */Satellite/Satellite1 Standard`
+设置姿态模式。
+
+## 语法
+
+```
+SetAttitude <ObjectPath> Standard
+```
+
+## 示例
+
+::: details open **设置姿态模式**
+```
+SetAttitude */Satellite/Satellite1 Standard
+```
+:::

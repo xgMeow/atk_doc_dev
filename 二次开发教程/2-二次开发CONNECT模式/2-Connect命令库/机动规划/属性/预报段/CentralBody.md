@@ -1,18 +1,22 @@
 # CentralBody
 
-作用：设置中心天体
+## 作用
 
-::: note 用法
+设置 `CentralBody` 中心天体
+
+## 语法
+
 ```
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.CalcObjectAttributes.CentralBody {Value}
 ```
-:::
 
-::: info 说明
-- `Stopping Condition` 目前包括属性 `Altitude` ，`Apoapsis` ，`Latitude`，`Longitude` ，`Mean_Anomaly` ，`Periapsis` ，`True_Anomaly` 。`Value` 包括属性 `Earth，Mars` ，`Moon`
-:::
+## 补充说明
 
-::: tip 举例
+- `Stopping Condition` 目前包括属性 `Altitude`，`Apoapsis`，`Latitude`，`Longitude`，`Mean_Anomaly`，`Periapsis`，`True_Anomaly`。`Value` 包括属性 `Earth，Mars`，`Moon`
+
+## 示例
+
+::: details open **设置 Apoapsis 停止条件的中心天体为 Moon**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Propagate.StoppingConditions.Apoapsis.CalcObjectAttributes.CentralBody Moon
 ```

@@ -1,32 +1,35 @@
 # Propagator
 
-作用：设置轨道预报器参数
+## 作用
 
-用法： 
+设置轨道预报器参数
+
+## 语法
 
 ```
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.ForceModel.{Parameters} {Value}
 ```
 
-| Parameters                                    |Value                                             | 说明                                             | 
-| --------------------------------------------- |------------------------------  | ---------------------------------------------    |
-| `Gravity.GravModel`                           | 如下类型说明                    | 引力场模型                    |
-| `Gravity.MaxDegree`                           |                                | 引力阶数                      |
-| `Gravity.MaxOrder`                            |                                | 引力次数                      |
-| `Drag.UseDrag`                                | {true | false}                 | 是否采用大气阻力摄动           |
-| `Drag.AtmModel`                               |                                | 大气阻力摄动大气模型           |
-| `Drag.UseFluxGeoFile`                         |                                | 是否采用太阳辐射和地磁文件      |
-| `Drag.F10p7`                                  |                                | 平均F10.7                     |
-| `Drag.DailyF10p7`                             |                                | 每日F10.7                     |
-| `Drag.Ap`                                     |                                | 地磁指数AP                    |
-| `SRP.UseSRP`                                  |                                | 是否采用太阳光压摄动           |
-| `ThirdBodies.CentralBodyName.UseGravity`      |                                | 是否采用当前中心天体三体摄动    |
-| `ThirdBodies.CentralBodyName.Gm`              |                                | 当前中心天体引力值             |
-| `ThirdBodies.CentralBodyName.Degree`          |                                | 当前中心天体阶数               |
-| `ThirdBodies.CentralBodyName.Order`           |                                | 当前中心天体次数               |
-| `ThirdBodies.CentralBodyName.GravModel`       |                                | 当前中心天体模型               |
-| `ThirdBodies.CentralBodyName.GravType`        |                                | 当前中心天体类型               |
+## 参数说明
 
+| 参数 | 取值 | 说明 |
+| ---- | ---- | ---- |
+| `Gravity.GravModel` | 如下类型说明 | 引力场模型 |
+| `Gravity.MaxDegree` | | 引力阶数 |
+| `Gravity.MaxOrder` | | 引力次数 |
+| `Drag.UseDrag` | {true \| false} | 是否采用大气阻力摄动 |
+| `Drag.AtmModel` | | 大气阻力摄动大气模型 |
+| `Drag.UseFluxGeoFile` | | 是否采用太阳辐射和地磁文件 |
+| `Drag.F10p7` | | 平均 F10.7 |
+| `Drag.DailyF10p7` | | 每日 F10.7 |
+| `Drag.Ap` | | 地磁指数 AP |
+| `SRP.UseSRP` | | 是否采用太阳光压摄动 |
+| `ThirdBodies.CentralBodyName.UseGravity` | | 是否采用当前中心天体三体摄动 |
+| `ThirdBodies.CentralBodyName.Gm` | | 当前中心天体引力值 |
+| `ThirdBodies.CentralBodyName.Degree` | | 当前中心天体阶数 |
+| `ThirdBodies.CentralBodyName.Order` | | 当前中心天体次数 |
+| `ThirdBodies.CentralBodyName.GravModel` | | 当前中心天体模型 |
+| `ThirdBodies.CentralBodyName.GravType` | | 当前中心天体类型 |
 
 ::: note 类型说明
 <br>
@@ -48,12 +51,14 @@ Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Seque
 <br><br>CentralBodyName包括：Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune,Pluto,Moon,Sun
 :::
 
-
 ::: note 注意：
 获得此属性值暂未实现
 :::
 
-举例： 
+## 示例
+
+::: details open **设置引力场模型为 EGM96**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.LambertTarget.ForceModel.Gravity.GravModel EGM96
 ```
+:::

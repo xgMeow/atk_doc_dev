@@ -1,25 +1,25 @@
 # Graphics Label
 
-作用：设置恒星标签属性
+## 作用
 
-::: note 用法
+设置恒星标签属性
+
+## 语法
+
 ```
 Graphics <ObjectPath> Label {Options}
 ```
-:::
 
-::: info 说明
+## 参数说明
 
-| Options            | 说明           |
-| ----------------   | -------------- | 
-| `Show {on \| off}` | 显示或隐藏标签  |
+| 参数 | 说明 |
+|------|------|
+| `Show {on \| off}` | 显示或隐藏标签 |
 
-:::
+## 示例
 
-::: tip 举例
-
+::: details open **显示恒星标签**
 ```
 Graphics */Star/Star1 Label Show on
 ```
-
 :::

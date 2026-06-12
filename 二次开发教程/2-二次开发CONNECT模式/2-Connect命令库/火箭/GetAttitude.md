@@ -1,16 +1,24 @@
 # GetAttitude
 
-作用：获得火箭的姿态类型
+## 作用
 
-用法：
+获得火箭的姿态类型
+
+## 语法
+
 ```
 GetAttitude <ObjectPath> {AttOption}
 ```
 
-- 说明：`AttOption` 包括属性为 `Profile ConnectName`、`Profile LongName`
+## 参数说明
 
-::: note 举例
+| 参数 | 说明 |
+|------|------|
+| `AttOption` | 可选 `Profile ConnectName` 或 `Profile LongName` |
 
+## 示例
+
+::: details open **获取火箭姿态类型**
 ```
 GetAttitude */LaunchVehicle/LaunchVehicle1 Profile LongName
 ```

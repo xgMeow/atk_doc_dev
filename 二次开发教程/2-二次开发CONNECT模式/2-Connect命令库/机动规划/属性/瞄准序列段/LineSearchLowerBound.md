@@ -1,13 +1,19 @@
-# LineSearchLowerBound    
+# LineSearchLowerBound
 
-作用：设置瞄准段属性页一维搜索下限
+## 作用
 
-用法： 
+设置瞄准段属性页**一维搜索下限**。
+
+## 语法
+
 ```
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> 
 ```
 
-举例： 
+## 示例
+
+::: details open **设置一维搜索下限为 0.1**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector.LineSearchLowerBound 0.1
 ```
+:::

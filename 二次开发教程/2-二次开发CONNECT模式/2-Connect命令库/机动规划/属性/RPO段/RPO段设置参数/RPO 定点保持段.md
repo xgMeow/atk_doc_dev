@@ -1,24 +1,26 @@
 # RPO 定点保持段
 
-作用： 设置 `RPOPerchEqualSpacing` 段属性
+## 作用
 
-用法： 
+设置 `RPOPerchEqualSpacing` 段属性
+
+## 语法
+
 ```
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
 ```
 
-::: info 说明：
+## 参数说明
 
- 
+| 参数 | 说明 |
+| ---- | ---- |
+| `Perch_Duration` | 数据类型：sec，范围：`[0.001,8640000]` |
+| `Perch_MaxDegrees` | 数据类型：rad，范围：`[0.001,360]` |
+| `SolveMethod` | 范围：`[-1,4]` |
 
-| 参数名称            | 数据类型 | 范围               |
-| ------------------ | -------- | ----------------- |
-| `Perch_Duration`   | sec      | `[0.001,8640000]` |
-| `Perch_MaxDegrees` | rad      | `[0.001,360]`     |
-| `SolveMethod`      |          | `[-1,4]`          |
-:::
+## 示例
 
-::: tip 举例： 
+::: details open **设置定点保持段属性**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOPerchEqualSpacing.Perch_Duration 7200
 ```

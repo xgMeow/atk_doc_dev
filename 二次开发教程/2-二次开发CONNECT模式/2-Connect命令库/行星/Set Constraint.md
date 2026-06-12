@@ -1,26 +1,25 @@
 # Set Constraint
- 
-作用：设置行星约束
 
-::: details 详细说明（点击展开）
+## 作用
 
-基本约束：
- 
+设置行星约束
 
-| ConstraintName   | Parameters                                                   |
-| ---------------- | ------------------------------------------------------------ |
-| LineOfSight      | `{On \| Off}`                                                  |
-| TerrainMask      | `{On \| Off}`                                                  |
-:::
+## 语法
 
-
-::: note 用法
 ```
 SetConstraint <ObjectPath> {ConstraintName} {State}
 ```
-:::
 
-::: tip 举例
+## 参数说明
+
+| 参数 | 说明 |
+| ---- | ---- |
+| `LineOfSight` | `{On \| Off}` |
+| `TerrainMask` | `{On \| Off}` |
+
+## 示例
+
+::: details open **设置行星视距约束**
 ```
 SetConstraint */Planet/Jupiter LineOfSight On
 ```

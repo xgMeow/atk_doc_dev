@@ -1,14 +1,18 @@
 # Graphics Show
 
-- 作用：设置卫星是否在窗口显示
+## 作用
 
-- 用法：
+设置卫星是否在窗口显示。
+
+## 语法
 
 ```
 Graphics <ObjectPath> Show {On | Off}
 ```
 
-::: note 举例
+## 示例
+
+::: details open **设置卫星是否在窗口显示**
 ```
 Graphics */Satellite/Satellite1 Show Off
 ```

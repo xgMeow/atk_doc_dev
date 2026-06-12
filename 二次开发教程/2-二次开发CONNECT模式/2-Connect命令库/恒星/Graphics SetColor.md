@@ -1,18 +1,22 @@
 # Graphics SetColor
 
-作用：设置恒星轨迹标签颜色
+## 作用
 
-::: note 用法
+设置恒星轨迹标签颜色
+
+## 语法
+
 ```
 Graphics <ObjectPath> SetColor {Color} [{Item}]
 ```
-:::
 
-::: info 说明
+## 补充说明
+
 - `Color` 可用属性请查看常用设置格式-常用图形格式
-:::
 
-::: tip 举例
+## 示例
+
+::: details open **设置恒星标签颜色**
 ```
 Graphics */Star/Star1 SetColor %255000000
 ```

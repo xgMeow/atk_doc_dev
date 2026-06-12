@@ -1,18 +1,23 @@
 # ComponentName
 
+## 作用
 
-作用：段重命名
+段重命名
 
-用法： 
+## 语法
+
 ```
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.ComponentName <Value>
 ```
- 
+
 ::: info 注意
 此属性值暂不支持获取
 :::
 
-举例： 
+## 示例
+
+::: details open **重命名停止段**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Stop.ComponentName abc
 ```
+:::

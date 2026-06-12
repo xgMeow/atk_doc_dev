@@ -3,4 +3,4 @@ title: 跟随段
 index: false
 ---
 
-<Catalog />
+<ConnectCommandSummary />

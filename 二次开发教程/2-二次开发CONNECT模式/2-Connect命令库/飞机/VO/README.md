@@ -3,4 +3,4 @@ title: VO
 index: false
 ---
 
-<Catalog />
+<ConnectCommandSummary />

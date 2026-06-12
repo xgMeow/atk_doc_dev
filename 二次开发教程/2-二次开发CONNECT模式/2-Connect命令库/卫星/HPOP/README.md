@@ -3,4 +3,4 @@ title: HPOP
 index: false
 ---
 
-<Catalog />
+<ConnectCommandSummary />

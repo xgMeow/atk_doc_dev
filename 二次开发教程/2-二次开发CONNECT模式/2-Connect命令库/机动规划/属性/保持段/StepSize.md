@@ -1,13 +1,19 @@
 # StepSize
 
-作用： 设置保持段步长
+## 作用
 
-用法： 
+设置**保持段**步长。
+
+## 语法
+
 ```
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StepSize <Value> [{Unit}]
 ```
 
-举例： 
+## 示例
+
+::: details open **设置保持段步长为 10 秒**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Hold.StepSize 10 sec
 ```
+:::

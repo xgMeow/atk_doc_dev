@@ -1,69 +1,61 @@
 # Keplerian
 
- 
+## 作用
 
-作用：为初始段坐标类型轨道根数设置属性值
+为初始段坐标类型轨道根数设置属性值
 
-用法： 
+## 语法
+
 ```
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Keplerian.{Attribute} <Value> [{Unit}]
 ```
 
-::: details 参数详细说明说明（点击展开）
+## 参数说明
 
-- Size Attributes：
- 
+### Size Attributes
 
-| Attribute              | 说明                                                         |
-| ---------------------- | ------------------------------------------------------------ |
-| Element type for  Size | 设置属性使用 SizeType                                        |
-| Semi-major Axis        | 半长轴默认单位是 m，包括单位 km ，m，设置属性 使用 sma       |
-| Apoapsis  Radius       | 远拱点半径默认单位是 m，包括单位 km ，m，设置 属性使用 ApoapsisRadSize |
-| Apoapsis Altitude      | 远拱点高度默认单位是 m，包括单位 km ，m，设置 属性使用 ApoapsisAltSize |
-| Period                 | 周期默认单位是 sec，包括单位 sec ，min ，hr，设置属性使用 Period |
-| Mean Motion            | 每天圈数默认单位是 rad/sec，包括单位 rad/sec， rad/min，设置属性使用 MeanMotion |
+| 参数 | 说明 |
+| --- | --- |
+| Element type for Size | 设置属性使用 SizeType |
+| `Semi-major Axis` | 半长轴默认单位是 m，包括单位 km ，m，设置属性 使用 sma |
+| `Apoapsis Radius` | 远拱点半径默认单位是 m，包括单位 km ，m，设置 属性使用 ApoapsisRadSize |
+| `Apoapsis Altitude` | 远拱点高度默认单位是 m，包括单位 km ，m，设置 属性使用 ApoapsisAltSize |
+| `Period` | 周期默认单位是 sec，包括单位 sec ，min ，hr，设置属性使用 Period |
+| `Mean Motion` | 每天圈数默认单位是 rad/sec，包括单位 rad/sec， rad/min，设置属性使用 MeanMotion |
 
-- Shape Attributes：
+### Shape Attributes
 
- 
+| 参数 | 说明 |
+| --- | --- |
+| Element type for Shape | 设置属性使用 ShapeType |
+| `Eccentricity` | 偏心率，设置属性使用 ecc |
+| `Periapsis Altitude` | 近拱点高度默认单位是 m，设置属性使用 PeriapsisAltShape |
+| `Periapsis Radius` | 近拱点半径默认单位是 m，设置属性使用 PeriapsisRadShape |
 
-| Attribute               | 说明                                       |
-| ----------------------- | ------------------------------------------ |
-| Element type  for Shape | 设置属性使用 ShapeType                     |
-| Eccentricity            | 偏心率，设置属性使用 ecc                   |
-| Periapsis Altitude      | 近拱点高度默认单位是 m，设置属性使用 PeriapsisAltShape |
-| Periapsis  Radius       | 近拱点半径默认单位是 m，设置属性使用 PeriapsisRadShape |
+### Node Elements
 
-- Node Elements：
+| 参数 | 说明 |
+| --- | --- |
+| `Right Asc. of Asc. Node` | 升交点赤经默认单位是 rad，设置属性使用 RAAN |
 
- 
+### Anomaly Attributes
 
-| Attribute               | 说明                          |
-| ----------------------- | ----------------------------- |
-| Right Asc. of Asc. Node | 升交点赤经默认单位是 rad，设置属性使用 RAAN |
+| 参数 | 说明 |
+| --- | --- |
+| Element type for Anomaly | 类型，设置属性使用 AnomType |
+| `True Anomaly` | 真近点角默认单位是 rad，设置属性使用 TA |
+| `Argument of Latitude` | 纬度辐角默认单位是 rad，设置属性使用 ArgLat |
+| `Eccentric Anomaly` | 偏近点角默认单位是 rad，设置属性使用 EccAnomaly |
+| `Mean Anomaly` | 平近点角默认单位是 rad，设置属性使用 MeanAnomaly |
+| `Time Past Asc. Node` | 过升交点时刻默认单位是 sec，设置属性使用 TimePastAN |
+| `Time Past Periapsis` | 过近拱点时刻默认单位是 sec，设置属性使用  TimePastPeriapsis |
 
-- Anomaly Attributes：
+### Other Attributes
 
-
-| Attribute                 | 说明                                          |
-| ------------------------- | --------------------------------------------- |
-| Element type  for Anomaly | 类型，设置属性使用 AnomType                   |
-| True Anomaly              | 真近点角默认单位是 rad，设置属性使用 TA                     |
-| Argument of Latitude      | 纬度辐角默认单位是 rad，设置属性使用 ArgLat                 |
-| Eccentric Anomaly         | 偏近点角默认单位是 rad，设置属性使用 EccAnomaly             |
-| Mean Anomaly              | 平近点角默认单位是 rad，设置属性使用 MeanAnomaly            |
-| Time PastAsc. Node        | 过升交点时刻默认单位是 sec，设置属性使用 TimePastAN         |
-| Time Past  Periapsis      | 过近拱点时刻默认单位是 sec，设置属性使用  TimePastPeriapsis |
-
-- Other Attributes：
- 
-
-| Attribute             | 说明                       |
-| --------------------- | -------------------------- |
-| Inclination           | 轨道倾角默认单位是 rad，设置属性使用 inc |
-| Argument of Periapsis | 近拱点角距默认单位是 rad，设置属性使用 w |
-
-:::
+| 参数 | 说明 |
+| --- | --- |
+| `Inclination` | 轨道倾角默认单位是 rad，设置属性使用 inc |
+| `Argument of Periapsis` | 近拱点角距默认单位是 rad，设置属性使用 w |
 
 ::: warning 注意
 
@@ -73,12 +65,16 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Keplerian.{A
 
 :::
 
-举例：
+## 示例
 
+::: details open **设置 Keplerian SizeType 为 Apoapsis Radius**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.SizeType "Apoapsis Radius"
 ```
+:::
 
+::: details open **设置 Keplerian 半长轴值**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.sma 8000 km
 ```
+:::

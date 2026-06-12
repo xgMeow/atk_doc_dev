@@ -3,4 +3,4 @@ title: Graphics
 index: false
 ---
 
-<Catalog />
+<ConnectCommandSummary />

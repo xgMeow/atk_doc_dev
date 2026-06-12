@@ -3,4 +3,4 @@ title: SetAttitude
 index: false
 ---
 
-<Catalog />
+<ConnectCommandSummary />

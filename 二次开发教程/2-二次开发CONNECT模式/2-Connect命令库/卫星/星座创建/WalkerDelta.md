@@ -1,25 +1,35 @@
 # WalkerDelta
 
-- 作用：创建WalkerDelta星座
-- 用法： 
-```
-（1）WalkerDelta / {WalkerDeltaOptions} [{AdditionalOptions}]
-（2）WalkerDelta <SatObjectPath> Semimajoraxis <Value> Eccentricity <Value> Inclination <Value> RAAN <Value> ArgumentOfPerigee <Value> TureAnomaly <Value> {WalkerDeltaOptions}
-```
-- 说明：
+## 作用
 
-| WalkerDeltaOptions          | Options                  |
-| --------------------------   | ---------------------------- |
-| `NumPlanes`        | `<num> `      |
+创建 WalkerDelta 星座。
+
+## 语法
+
+```
+WalkerDelta / {WalkerDeltaOptions} [{AdditionalOptions}]
+```
+
+## 参数说明
+
+| `WalkerDeltaOptions` | `Options` |
+| --- | --- |
+| `NumPlanes` | `<num>` |
 | `NumSatsPerPlane` | `<num>` |
-| `InterPlanePhaseIncrement`           | `<Value> `            |
-| `RAANSpread`           | `<Value> `            |
-| `ColorByPlane`           | `{Yes \| No}`             |
+| `InterPlanePhaseIncrement` | `<Value>` |
+| `RAANSpread` | `<Value>` |
+| `ColorByPlane` | `{Yes \| No}` |
 
+## 示例
 
-::: note 举例
+::: details open **创建 WalkerDelta 星座（使用已有卫星）**
 ```
-（1）WalkerDelta */Satellite/Satellite1 NumPlanes 2 NumSatsPerPlane 11 InterPlanePhaseIncrement 1 RAANSpread 360 ColorByPlane Yes
-（2）WalkerDelta / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TureAnomaly 180 NumPlanes 2 NumSatsPerPlane 8 InterPlanePhaseIncrement 1 RAANSpread 360 ColorByPlane Yes
+WalkerDelta */Satellite/Satellite1 NumPlanes 2 NumSatsPerPlane 11 InterPlanePhaseIncrement 1 RAANSpread 360 ColorByPlane Yes
+```
+:::
+
+::: details open **创建 WalkerDelta 星座（直接创建新卫星）**
+```
+WalkerDelta / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TureAnomaly 180 NumPlanes 2 NumSatsPerPlane 8 InterPlanePhaseIncrement 1 RAANSpread 360 ColorByPlane Yes
 ```
 :::
