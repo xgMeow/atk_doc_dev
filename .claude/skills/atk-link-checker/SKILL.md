@@ -32,6 +32,7 @@ description: 检查并修复 ATK VuePress 文档中的链接问题，逐条核�
 额外检查以下 VuePress 配置文件中的链接：
 
 - `.vuepress/components/OverView/OverView.vue` 中模块数据配置的 `link` 字段
+- `.vuepress/components/ConnectCommandSummary/ConnectCommandSummary.vue` 中 `import.meta.glob` 的扫描路径（确认路径模式与文件系统一致），以及提取后生成的 `RouteLink` 目标路径（确认每个路径都能解析到存在的 .md 文件）
 - `.vuepress/redirect.ts` 中的重定向源地址和目标地址
 
 除非某个文件是上述范围内链接的目标候选，否则不要主动扫描其他 Markdown 目录。
@@ -76,8 +77,9 @@ description: 检查并修复 ATK VuePress 文档中的链接问题，逐条核�
 - Markdown 图片：`![alt](target)`
 - HTML 图片：`<img src="target">`
 - HTML 链接：`<a href="target">`
-- VuePress/Vue 组件中明显的链接属性：如 `to`、`href`
+- VuePress/Vue 组件中明显的链接属性：如 `to`、`href`、`RouteLink :to`
 - `.vuepress/components/OverView/OverView.vue` 模块数据配置中的 `link`
+- `.vuepress/components/ConnectCommandSummary/ConnectCommandSummary.vue` 中 `import.meta.glob` 扫描模式匹配到的文件路径，以及生成的命令表 `RouteLink :to` 目标
 - `.vuepress/redirect.ts` 中的重定向地址
 
 跳过以下内容：
