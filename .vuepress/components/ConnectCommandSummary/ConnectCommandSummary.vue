@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<{
 
 const route = useRoute();
 
-const commandModules = import.meta.glob('../../../二次开发教程/2-二次开发CONNECT模式/2-Connect命令库/**/*.md', {
+const commandModules = import.meta.glob('../../../二次开发教程/2-二次开发CONNECT模式/**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -212,11 +212,14 @@ onMounted(() => {
   --accent: #1456f0;
   --accent-subtle: rgba(20, 86, 240, 0.08);
 
+  /* 搜索栏高度，用于计算 group-header 吸顶偏移 */
+  --cmd-search-h: 60px;
+
   margin-top: 1.5rem;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 8px;
-  overflow: hidden;
+  /* 注：不能 overflow:hidden，否则 position:sticky 失效 */
 }
 
 /* ── Header ──────────────────────────────── */
@@ -227,6 +230,8 @@ onMounted(() => {
   justify-content: space-between;
   padding: 16px 20px;
   border-bottom: 1px solid var(--border);
+  border-radius: 8px 8px 0 0;
+  background: #fff;
 }
 
 .cmd-title {
@@ -256,6 +261,11 @@ onMounted(() => {
   padding: 12px 20px;
   border-bottom: 1px solid var(--border);
   background: #fafbfc;
+
+  /* 吸顶：navbar + breadcrumb(54px=35+0.5rem+0.3rem+6px border) 之下，+2px 呼吸 */
+  position: sticky;
+  top: calc(var(--navbar-height) + 52px);
+  z-index: 5;
 }
 
 .cmd-search-input-wrap {
@@ -379,7 +389,16 @@ onMounted(() => {
   padding: 12px 20px;
   cursor: pointer;
   user-select: none;
-  transition: background 0.15s;
+  transition: background 0.15s, box-shadow 0.15s;
+
+  /* 吸顶：navbar + breadcrumb + search 之下 */
+  position: sticky;
+  top: calc(var(--navbar-height) + 52px + var(--cmd-search-h));
+  z-index: 4;
+  background: #fff;
+
+  /* 吸顶时底部阴影分隔 */
+  box-shadow: 0 1px 0 0 var(--border);
 
   &:hover {
     background: var(--bg-hover);
@@ -625,6 +644,10 @@ onMounted(() => {
 /* ── Responsive ──────────────────────────── */
 
 @media (max-width: 860px) {
+  .cmd-summary {
+    --cmd-search-h: 56px;
+  }
+
   .cmd-header {
     padding: 14px 16px;
   }
@@ -663,12 +686,17 @@ onMounted(() => {
 }
 
 @media (max-width: 520px) {
+  .cmd-summary {
+    --cmd-search-h: 50px;
+  }
+
   .cmd-header {
     padding: 12px 12px;
   }
 
   .cmd-search {
     padding: 8px 12px;
+    flex-wrap: wrap;
   }
 
   .cmd-search-input {
@@ -676,6 +704,10 @@ onMounted(() => {
     padding-left: 30px;
   }
 
+  .cmd-search-btn {
+    font-size: 12px;
+    padding: 0 10px;
+  }
 
   .cmd-group-header {
     padding: 8px 12px;
