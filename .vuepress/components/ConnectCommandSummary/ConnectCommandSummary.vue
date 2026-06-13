@@ -33,6 +33,36 @@ const commandModules = import.meta.glob('../../../二次开发教程/2-二次开
 
 const keyword = ref('');
 
+const copiedCommand = ref('');
+
+async function copyUsage(entry: CommandEntry) {
+  try {
+    await navigator.clipboard.writeText(entry.usage);
+    copiedCommand.value = `${entry.path}-${entry.command}`;
+    setTimeout(() => {
+      if (copiedCommand.value === `${entry.path}-${entry.command}`) {
+        copiedCommand.value = '';
+      }
+    }, 2000);
+  } catch {
+    // Fallback for older browsers
+    const textarea = document.createElement('textarea');
+    textarea.value = entry.usage;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    copiedCommand.value = `${entry.path}-${entry.command}`;
+    setTimeout(() => {
+      if (copiedCommand.value === `${entry.path}-${entry.command}`) {
+        copiedCommand.value = '';
+      }
+    }, 2000);
+  }
+}
+
 const collapsed = reactive<Record<string, boolean>>({});
 function toggleGroup(cat: string) {
   collapsed[cat] = !collapsed[cat];
@@ -132,7 +162,21 @@ onMounted(() => {
                   <RouteLink :to="entry.path">{{ entry.command }}</RouteLink>
                 </td>
                 <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect)"></td>
-                <td class="cmd-cell-usage"><code class="cmd-code">{{ entry.usage }}</code></td>
+                <td class="cmd-cell-usage">
+                  <div class="cmd-usage-row">
+                    <code class="cmd-code">{{ entry.usage }}</code>
+                    <button
+                      class="cmd-copy-btn"
+                      :class="{ 'is-copied': copiedCommand === `${entry.path}-${entry.command}` }"
+                      :aria-label="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
+                      :title="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
+                      @click.stop="copyUsage(entry)"
+                    >
+                      <svg v-if="copiedCommand !== `${entry.path}-${entry.command}`" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                      <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </button>
+                  </div>
+                </td>
               </tr>
             </tbody>
             </table>
@@ -455,6 +499,49 @@ onMounted(() => {
   :deep(strong) {
     font-weight: 600;
     color: var(--text);
+  }
+}
+
+/* ── Usage Row + Copy ───────────────────── */
+
+.cmd-usage-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.cmd-usage-row .cmd-code {
+  flex: 1;
+  min-width: 0;
+}
+
+.cmd-copy-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  margin: 0;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.15s, color 0.15s, background 0.15s, border-color 0.15s;
+
+  &:hover {
+    color: var(--accent);
+    background: var(--accent-subtle);
+    border-color: var(--border);
+  }
+
+  &.is-copied {
+    opacity: 1;
+    color: #16a34a;
+    background: rgba(22, 163, 74, 0.08);
+    border-color: rgba(22, 163, 74, 0.2);
   }
 }
 
