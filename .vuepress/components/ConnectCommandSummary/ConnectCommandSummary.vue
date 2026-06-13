@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, reactive, ref } from 'vue';
+import { computed, nextTick, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { RouteLink } from 'vuepress/client';
 import { buildCommandGroups } from './extractCommandInfo.mjs';
@@ -103,25 +103,17 @@ const filteredGroups = computed(() => {
 });
 
 const commandCount = computed(() => commandGroups.value.reduce((sum, group) => sum + group.entries.length, 0));
-const shownCount = computed(() => filteredGroups.value.reduce((sum, group) => sum + group.entries.length, 0));
+const shownCount = computed(() => sections.value.reduce((sum, sec) => sum + sec.entries.length, 0));
 
 /* ── 类别索引（分组模式） ─────────────────── */
 
 const categoryIndex = computed(() =>
-  filteredGroups.value.map(g => ({
-    category: g.category,
-    count: g.entries.length,
-  })),
+  filteredGroups.value.map(g => g.category),
 );
 
-function scrollToCategory(cat: string) {
-  const el = document.getElementById(sectionId(cat));
-  if (el) {
-    const navbarH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height') || '60');
-    const top = el.getBoundingClientRect().top + window.scrollY
-      - navbarH - 52 - 60 - 34; // navbar + breadcrumb + search + index bar
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
+/** 平滑滚到指定 section，偏移由 CSS scroll-margin-top 处理 */
+function scrollToSection(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
 
 /* 平铺模式：所有条目按命令名字母排序 */
@@ -165,18 +157,25 @@ const abcdLetters = computed(() => {
   }));
 });
 
-function scrollToLetter(letter: string) {
-  const el = document.getElementById(`cmd-letter-${letter}`);
-  if (el) {
-    const navbarH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height') || '60');
-    const top = el.getBoundingClientRect().top + window.scrollY
-      - navbarH    // navbar
-      - 52         // breadcrumb
-      - 60         // search bar (desktop)
-      - 34;        // abcd bar
-    window.scrollTo({ top, behavior: 'smooth' });
+/* ── 统一 Section 视图（两种模式共用渲染） ─── */
+interface Section { id: string; title: string; entries: CommandEntry[] }
+
+const sections = computed<Section[]>(() => {
+  if (displayMode.value === 'grouped') {
+    return filteredGroups.value.map(g => ({
+      id: sectionId(g.category),
+      title: g.category,
+      entries: g.entries,
+    }));
   }
-}
+  return letterGroups.value.map(lg => ({
+    id: `cmd-letter-${lg.letter}`,
+    title: lg.letter,
+    entries: lg.entries,
+  }));
+});
+
+const hasResults = computed(() => sections.value.length > 0);
 
 onMounted(() => {
   nextTick(() => {
@@ -211,118 +210,72 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- ── 分组模式：类别索引 + 分组表格 ────────── -->
-    <template v-if="filteredGroups.length && displayMode === 'grouped'">
-      <nav class="cmd-index-bar" aria-label="分类索引">
-        <span class="cmd-index-label">分类</span>
-        <button
-          v-for="ci in categoryIndex" :key="ci.category"
-          class="cmd-index-btn cmd-index-btn--cat"
-          @click="scrollToCategory(ci.category)"
-        >{{ ci.category }}</button>
-      </nav>
+    <!-- ── 索引栏（两种模式标签不同） ────────── -->
+    <nav v-if="hasResults && displayMode === 'grouped'" class="cmd-index-bar" aria-label="分类索引">
+      <span class="cmd-index-label">分类</span>
+      <button
+        v-for="ci in categoryIndex" :key="ci"
+        class="cmd-index-btn cmd-index-btn--cat"
+        @click="scrollToSection(sectionId(ci))"
+      >{{ ci }}</button>
+    </nav>
+    <nav v-if="hasResults && displayMode === 'flat'" class="cmd-index-bar" aria-label="字母索引">
+      <span class="cmd-index-label">索引</span>
+      <button
+        v-for="ch in abcdLetters" :key="ch.letter"
+        class="cmd-index-btn"
+        :class="{ active: ch.active }"
+        :disabled="!ch.active"
+        :aria-label="`跳转到 ${ch.letter}`"
+        @click="ch.active && scrollToSection('cmd-letter-' + ch.letter)"
+      >{{ ch.letter }}</button>
+    </nav>
 
-      <div class="cmd-sections">
-        <div v-for="group in filteredGroups" :key="group.category" class="cmd-section">
-          <div class="cmd-section-header" :id="sectionId(group.category)">
-            <span class="cmd-section-title">{{ group.category }}</span>
-            <span class="cmd-section-count">{{ group.entries.length }}</span>
-          </div>
-          <div class="cmd-table-wrap">
-            <table class="cmd-table">
-            <thead>
-              <tr>
-                <th>命令</th>
-                <th>作用</th>
-                <th>用法</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="entry in group.entries" :key="`${entry.path}-${entry.command}`">
-                <td class="cmd-cell-cmd">
-                  <RouteLink :to="entry.path">{{ entry.command }}</RouteLink>
-                </td>
-                <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect)"></td>
-                <td class="cmd-cell-usage">
-                  <div class="cmd-usage-row">
-                    <code class="cmd-code" v-html="highlightUsage(entry.usage)"></code>
-                    <button
-                      class="cmd-copy-btn"
-                      :class="{ 'is-copied': copiedCommand === `${entry.path}-${entry.command}` }"
-                      :aria-label="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
-                      :title="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
-                      @click.stop="copyUsage(entry)"
-                    >
-                      <svg v-if="copiedCommand !== `${entry.path}-${entry.command}`" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                      <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-            </table>
-          </div>
+    <!-- ── 共用 Section 列表 ──────────────────── -->
+    <div v-if="hasResults" class="cmd-sections">
+      <div v-for="sec in sections" :key="sec.id" class="cmd-section">
+        <!-- 非 sticky 锚点，scrollIntoView 目标 -->
+        <span :id="sec.id" class="cmd-section-anchor"></span>
+        <div class="cmd-section-header">
+          <span class="cmd-section-title">{{ sec.title }}</span>
+          <span class="cmd-section-count">{{ sec.entries.length }}</span>
+        </div>
+        <div class="cmd-table-wrap">
+          <table class="cmd-table">
+          <thead>
+            <tr>
+              <th>命令</th>
+              <th>作用</th>
+              <th>用法</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="entry in sec.entries" :key="`${entry.path}-${entry.command}`">
+              <td class="cmd-cell-cmd">
+                <RouteLink :to="entry.path">{{ entry.command }}</RouteLink>
+              </td>
+              <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect)"></td>
+              <td class="cmd-cell-usage">
+                <div class="cmd-usage-row">
+                  <code class="cmd-code" v-html="highlightUsage(entry.usage)"></code>
+                  <button
+                    class="cmd-copy-btn"
+                    :class="{ 'is-copied': copiedCommand === `${entry.path}-${entry.command}` }"
+                    :aria-label="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
+                    :title="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
+                    @click.stop="copyUsage(entry)"
+                  >
+                    <svg v-if="copiedCommand !== `${entry.path}-${entry.command}`" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          </table>
         </div>
       </div>
-    </template>
-
-    <!-- ── 平铺模式：吸顶字母索引 + 字母分组 ──── -->
-    <template v-if="filteredFlat.length && displayMode === 'flat'">
-      <nav class="cmd-index-bar" aria-label="字母索引">
-        <span class="cmd-index-label">索引</span>
-        <button
-          v-for="ch in abcdLetters" :key="ch.letter"
-          class="cmd-index-btn"
-          :class="{ active: ch.active }"
-          :disabled="!ch.active"
-          :aria-label="`跳转到 ${ch.letter}`"
-          @click="ch.active && scrollToLetter(ch.letter)"
-        >{{ ch.letter }}</button>
-      </nav>
-
-      <div class="cmd-sections">
-        <div v-for="lg in letterGroups" :key="lg.letter" class="cmd-section">
-          <div class="cmd-section-header" :id="`cmd-letter-${lg.letter}`">
-            <span class="cmd-section-title">{{ lg.letter }}</span>
-            <span class="cmd-section-count">{{ lg.entries.length }}</span>
-          </div>
-          <div class="cmd-table-wrap">
-            <table class="cmd-table">
-            <thead>
-              <tr>
-                <th>命令</th>
-                <th>作用</th>
-                <th>用法</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="entry in lg.entries" :key="`${entry.path}-${entry.command}`">
-                <td class="cmd-cell-cmd">
-                  <RouteLink :to="entry.path">{{ entry.command }}</RouteLink>
-                </td>
-                <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect)"></td>
-                <td class="cmd-cell-usage">
-                  <div class="cmd-usage-row">
-                    <code class="cmd-code" v-html="highlightUsage(entry.usage)"></code>
-                    <button
-                      class="cmd-copy-btn"
-                      :class="{ 'is-copied': copiedCommand === `${entry.path}-${entry.command}` }"
-                      :aria-label="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
-                      :title="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
-                      @click.stop="copyUsage(entry)"
-                    >
-                      <svg v-if="copiedCommand !== `${entry.path}-${entry.command}`" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                      <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </template>
+    </div>
 
     <div v-else class="cmd-empty">未找到匹配的 CONNECT 命令。</div>
   </section>
@@ -619,6 +572,14 @@ onMounted(() => {
   &:last-child {
     border-bottom: none;
   }
+}
+
+.cmd-section-anchor {
+  /* 非 sticky 锚点，scrollIntoView 目标 */
+  display: block;
+  height: 0;
+  overflow: hidden;
+  scroll-margin-top: calc(var(--navbar-height) + 52px + var(--cmd-search-h) + var(--cmd-abcd-h));
 }
 
 .cmd-section-header {
