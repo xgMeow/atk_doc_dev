@@ -4,15 +4,17 @@ description: 设置传感器的向量几何属性，支持添加、修改和删�
 
 # VO SetVectorGeometry
 
-作用：设置传感器向量。
+## 作用
 
-用法：
+设置传感器向量。
+
+## 语法
 
 ```
 VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 ```
 
-::: details 详细说明（点击展开）
+## 参数说明
 
 | {Option} | `<Parameters>`                                              |
 | -------- | ----------------------------------------------------------- |
@@ -48,16 +50,16 @@ ReferenceCrdn 必须使用双引号。
 | ---------------- | ------------------------- |
 | usetruescale     | `{On \| Off}`             |
 
-:::
+## 示例
 
-::: note 举例
-
+::: details open **添加传感器向量**
 ```
 VO */Satellite/Satellite1/Sensor/Sen1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
 ```
+:::
 
+::: details open **修改传感器向量**
 ```
 VO */Satellite/Satellite1/Sensor/Sen1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
 ```
-
 :::

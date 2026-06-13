@@ -4,15 +4,17 @@ description: 设置传感器的各种约束条件，包括基本方位角/高度
 
 # Set Constraint
 
-作用：设置约束。
+## 作用
 
-用法：
+设置约束。
+
+## 语法
 
 ```
 SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ```
 
-::: details 说明（点击展开）
+## 参数说明
 
 - 基本约束：
 
@@ -43,22 +45,26 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | BSSunExclusion       | `{Off \| <Value1>}`                       |
 | BSLunarExclusion     | `{Off \| <Value1>}`                       |
 
-:::
-
 ::: warning 注意
 当输入 AzimuthAngle 值时，最大值和最小值必须同时输入。
 :::
 
-举例：
+## 示例
 
+::: details open **设置方位角约束**
 ```
 SetConstraint */Satellite/Sate1/Sensor/Sen1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
 ```
+:::
 
+::: details open **设置仰角约束**
 ```
 SetConstraint */Satellite/Satellite1/Sensor/Sen1 ElevationAngle Min 10.0
 ```
+:::
 
+::: details open **设置太阳排除约束**
 ```
 SetConstraint */Satellite/Sate1/Sensor/Sen1 BSSunExclusion 30
 ```
+:::

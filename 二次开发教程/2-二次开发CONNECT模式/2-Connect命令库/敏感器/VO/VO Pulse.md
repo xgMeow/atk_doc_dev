@@ -4,15 +4,17 @@ description: 设置传感器的脉冲显示属性，包括脉冲开关、幅度�
 
 # VO Pulse
 
-作用：设置脉冲属性。
+## 作用
 
-用法：
+设置脉冲属性。
+
+## 语法
 
 ```
 VO <SensorObjectPath> Pulse {PulseOption1} <Value1> [{PulseOption2} <Value2>...]
 ```
 
-说明：
+## 参数说明
 
 | PulseOption | Value            | 说明                                    |
 | ----------- | ---------------- | --------------------------------------- |
@@ -22,8 +24,10 @@ VO <SensorObjectPath> Pulse {PulseOption1} <Value1> [{PulseOption2} <Value2>...]
 | Frequency   | `<Value>`        | 输入脉冲频率值应介于 0.0 至 100.0 之间。 |
 | FreqReverse | `{On \| Off}`    | 若输入值为 On，则实现脉冲反向。          |
 
-举例：
+## 示例
 
+::: details open **设置脉冲属性**
 ```
 VO */Satellite/Satellite1/Sensor/Sensor1 Pulse Show On Amplitude 0.67 PulseLength 100 Frequency 2.1 FreqReverse on
 ```
+:::

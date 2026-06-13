@@ -4,15 +4,17 @@ description: 设置传感器的固定指向属性，支持方位角-高度角、
 
 # Point Fixed
 
-作用：设置固定指向属性。
+## 作用
 
-用法：
+设置固定指向属性。
+
+## 语法
 
 ```
 Point <SensorObjectPath> Fixed {OrientMethod} <MethodData>
 ```
 
-说明：
+## 参数说明
 
 | OrientMethod | MethodData                         | 说明                                                                                                                              |
 | ------------ | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -22,8 +24,10 @@ Point <SensorObjectPath> Fixed {OrientMethod} <MethodData>
 | YPR          | `<Sequence> <Yaw> <Pitch> <Roll>`  | 偏航角，俯仰角，滚转角，转序序列包括值 RPY、RYP、PRY、PYR、YPR、YRP                                                               |
 | matrix       | `<d11> <d21> <d22> <d31> <d32> <d33>` | N/A                                                                                                                               |
 
-举例：
+## 示例
 
+::: details open **设置传感器固定指向**
 ```
 Point */Satellite/Satellite1/Sensor/Sensor1 Fixed Quaternion 0.0 0.0 0.0 1.0
 ```
+:::

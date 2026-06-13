@@ -4,15 +4,17 @@ description: 定义传感器类型及其参数，支持矩形、简单锥形、�
 
 # Define
 
-作用：设置传感器类型及其参数。
+## 作用
 
-用法：
+设置传感器类型及其参数。
+
+## 语法
 
 ```
 Define <SensorObjectPath> {Type} <TypeData>
 ```
 
-说明：
+## 参数说明
 
 | Type        | TypeData                                                                                                                                    |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -26,8 +28,10 @@ Define <SensorObjectPath> {Type} <TypeData>
 输入角度值默认单位为度。
 :::
 
-举例：
+## 示例
 
+::: details open **定义传感器**
 ```
 Define */Satellite/Satellite1/Sensor/Sensor1 Rectangular 25.1 36.8
 ```
+:::
