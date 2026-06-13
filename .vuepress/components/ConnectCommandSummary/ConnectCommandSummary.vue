@@ -32,6 +32,7 @@ const commandModules = import.meta.glob('../../../二次开发教程/2-二次开
 }) as Record<string, string>;
 
 const keyword = ref('');
+const searchInputRef = ref<HTMLInputElement>();
 
 const copiedCommand = ref('');
 
@@ -131,7 +132,10 @@ onMounted(() => {
     <div class="cmd-search">
       <div class="cmd-search-input-wrap">
         <svg class="cmd-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input v-model="keyword" type="search" placeholder="搜索命令、作用、用法..." class="cmd-search-input" />
+        <input ref="searchInputRef" v-model="keyword" type="search" placeholder="搜索命令、作用、用法..." class="cmd-search-input" />
+        <button v-if="keyword" class="cmd-search-clear" @click="keyword = ''; searchInputRef?.focus()" aria-label="清除搜索" title="清除搜索">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+        </button>
         <span v-if="keyword.trim()" class="cmd-search-count">{{ shownCount }}/{{ commandCount }}</span>
       </div>
       <button v-if="filteredGroups.length" class="cmd-search-btn" @click="expandAll">全部展开</button>
@@ -306,6 +310,34 @@ onMounted(() => {
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
   pointer-events: none;
+}
+
+.cmd-search-clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+
+  &:hover {
+    color: var(--text);
+    background: var(--bg-badge);
+  }
+}
+
+.cmd-search-clear + .cmd-search-count {
+  right: 36px;
 }
 
 .cmd-search-btn {
