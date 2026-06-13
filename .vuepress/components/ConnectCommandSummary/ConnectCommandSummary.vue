@@ -38,6 +38,14 @@ function toggleGroup(cat: string) {
   collapsed[cat] = !collapsed[cat];
 }
 
+function expandAll() {
+  Object.keys(collapsed).forEach(k => delete collapsed[k]);
+}
+
+function collapseAll() {
+  commandGroups.value.forEach(g => { collapsed[g.category] = true; });
+}
+
 function renderInlineMarkdown(text: string): string {
   return text
     .replace(/`([^`]+)`/g, '<code>$1</code>')
@@ -91,9 +99,13 @@ onMounted(() => {
     </div>
 
     <div class="cmd-search">
-      <svg class="cmd-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input v-model="keyword" type="search" placeholder="搜索命令、作用、用法..." class="cmd-search-input" />
-      <span v-if="keyword.trim()" class="cmd-search-count">{{ shownCount }}/{{ commandCount }}</span>
+      <div class="cmd-search-input-wrap">
+        <svg class="cmd-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input v-model="keyword" type="search" placeholder="搜索命令、作用、用法..." class="cmd-search-input" />
+        <span v-if="keyword.trim()" class="cmd-search-count">{{ shownCount }}/{{ commandCount }}</span>
+      </div>
+      <button v-if="filteredGroups.length" class="cmd-search-btn" @click="expandAll">全部展开</button>
+      <button v-if="filteredGroups.length" class="cmd-search-btn" @click="collapseAll">全部折叠</button>
     </div>
 
     <div v-if="filteredGroups.length" class="cmd-groups">
@@ -134,41 +146,56 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+/* ═══════════════════════════════════════════════
+   ATK Connect 命令速查表
+   与站点整体风格统一，简洁规整
+   ═══════════════════════════════════════════════ */
+
 .cmd-summary {
-  --text: #1a1a1a;
-  --text-secondary: #555;
-  --text-muted: #888;
-  --border: #e5e5e5;
-  --border-light: #f0f0f0;
-  --bg-hover: #f8f8f8;
-  --bg-badge: #eee;
-  --bg-code: #f5f5f5;
-  --accent: #2563eb;
+  --text: #3c3c43;
+  --text-muted: #8f959e;
+  --border: #dfe2e5;
+  --border-light: #eaecef;
+  --bg-hover: #f6f8fa;
+  --bg-badge: #f0f0f2;
+  --bg-code: #f1f1f1;
+  --code-fg: #476582;
+  --accent: #1456f0;
+  --accent-subtle: rgba(20, 86, 240, 0.08);
 
   margin-top: 1.5rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 /* ── Header ──────────────────────────────── */
 
 .cmd-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
 }
 
 .cmd-title {
   margin: 0;
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 600;
   color: var(--text);
-  letter-spacing: -0.02em;
 }
 
 .cmd-total {
-  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 12px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  font-size: 13px;
   font-weight: 600;
-  color: var(--text-secondary);
+  border-radius: 12px;
 }
 
 /* ── Search ──────────────────────────────── */
@@ -176,37 +203,46 @@ onMounted(() => {
 .cmd-search {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-top: 1rem;
-  padding: 0.4rem 0.7rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: #fff;
-  transition: border-color 0.15s;
+  gap: 8px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: #fafbfc;
 }
 
-.cmd-search:focus-within {
-  border-color: #bbb;
+.cmd-search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
 }
 
 .cmd-search-icon {
-  flex-shrink: 0;
-  display: flex;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--text-muted);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .cmd-search-input {
-  flex: 1;
-  min-width: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 0.82rem;
+  width: 100%;
+  padding: 8px 48px 8px 34px;
+  font-size: 14px;
   color: var(--text);
-  line-height: 1.4;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
 
   &::placeholder {
-    color: #bbb;
+    color: #b0b5bd;
+  }
+
+  &:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(20, 86, 240, 0.12);
   }
 
   &::-webkit-search-decoration,
@@ -218,55 +254,82 @@ onMounted(() => {
 }
 
 .cmd-search-count {
-  flex-shrink: 0;
-  font-size: 0.72rem;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.cmd-search-btn {
+  flex-shrink: 0;
+  align-self: stretch;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+
+  &:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-subtle);
+  }
 }
 
 /* ── Groups ──────────────────────────────── */
 
-.cmd-groups {
-  margin-top: 1.25rem;
-  display: grid;
-  gap: 1.5rem;
+.cmd-group {
+  border-bottom: 1px solid var(--border);
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .cmd-group-header {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--border);
+  gap: 8px;
+  padding: 12px 20px;
   cursor: pointer;
   user-select: none;
   transition: background 0.15s;
 
   &:hover {
     background: var(--bg-hover);
-    // margin: 0 -0.5rem;
-    // padding: 0.5rem 0.5rem 0.2rem 0;
-    border-radius: 4px;
   }
 }
 
 .cmd-group-title {
+  flex: 1;
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text);
-  scroll-margin-top: 120px;
 }
 
 .cmd-group-count {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 20px;
+  padding: 0 7px;
   background: var(--bg-badge);
-  padding: 0.05rem 0.4rem;
-  border-radius: 4px;
-  line-height: 1.5;
-  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 10px;
+  font-variant-numeric: tabular-nums;
 }
 
 .cmd-chevron {
@@ -280,54 +343,93 @@ onMounted(() => {
   }
 }
 
-/* ── Table ───────────────────────────────── */
+/* ── Table Wrapper ───────────────────────── */
 
 .cmd-table-wrap {
   overflow-x: auto;
+  padding: 0 20px 16px;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #d0d3d8;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #b0b5bd;
+  }
 }
+
+/* ── Table ───────────────────────────────── */
 
 .cmd-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  font-size: 14px;
+  line-height: 1.8;
 
-  th {
-    padding: 0.55rem 0.75rem;
-    font-size: 0.72rem;
+  thead th {
+    padding: 0.6em 1em;
+    font-size: 14px;
     font-weight: 600;
-    color: var(--text-muted);
+    color: #67676c;
+    background: #f6f6f7;
+    border: 1px solid var(--border);
     text-align: left;
-    letter-spacing: 0.04em;
-    border-bottom: 1px solid var(--border-light);
+    white-space: nowrap;
   }
 
-  th:nth-child(1) { width: 18%; }
-  th:nth-child(2) { width: 30%; }
-  th:nth-child(3) { width: 52%; }
-
-  td {
-    padding: 0.65rem 0.75rem;
+  tbody td {
+    padding: 0.6em 1em;
+    border: 1px solid var(--border);
     vertical-align: top;
-    border-bottom: 1px solid var(--border-light);
     color: var(--text);
-    line-height: 1.6;
+    background: #fff;
   }
 
   tbody tr {
     transition: background 0.12s;
   }
 
-  tbody tr:hover {
+  tbody tr:hover td {
     background: var(--bg-hover);
   }
-
 }
+
+/* ── Table Column Widths ─────────────────── */
+
+.cmd-cell-cmd {
+  width: 18%;
+  min-width: 140px;
+}
+
+.cmd-cell-effect {
+  width: 28%;
+  min-width: 140px;
+}
+
+.cmd-cell-usage {
+  width: 54%;
+  min-width: 240px;
+}
+
+/* ── Command Name Link ───────────────────── */
 
 .cmd-cell-cmd a {
   color: var(--accent);
-  font-weight: 600;
   text-decoration: none;
-  word-break: break-word;
+  font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.2s;
+  word-break: break-all;
 
   &:hover {
     text-decoration: underline;
@@ -335,17 +437,18 @@ onMounted(() => {
   }
 }
 
+/* ── Effect Description ──────────────────── */
+
 .cmd-cell-effect {
-  color: var(--text-secondary);
+  color: var(--text);
 
   :deep(code) {
-    padding: 0.1rem 0.35rem;
-    border: 1px solid var(--border-light);
+    padding: 0.15em 0.5em;
     border-radius: 4px;
     background: var(--bg-code);
-    color: var(--text);
-    font-size: 0.82em;
-    font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+    color: var(--code-fg);
+    font-size: inherit;
+    font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
     word-break: break-word;
   }
 
@@ -355,63 +458,124 @@ onMounted(() => {
   }
 }
 
+/* ── Usage Code ──────────────────────────── */
+
 .cmd-code {
-  display: block;
-  padding: 0.35rem 0.55rem;
-  border: 1px solid var(--border-light);
-  border-radius: 5px;
+  display: inline;
+  padding: 0.15em 0.5em;
+  font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--code-fg);
   background: var(--bg-code);
-  color: var(--text-secondary);
-  font-size: 0.78rem;
-  line-height: 1.55;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  border-radius: 4px;
+  word-break: break-all;
 }
 
 /* ── Transition ──────────────────────────── */
 
 .fade-enter-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .fade-leave-active {
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition: opacity 0.1s ease, transform 0.1s ease;
 }
 
 .fade-enter-from {
   opacity: 0;
-  transform: translateY(-6px);
+  transform: translateY(-4px);
 }
 
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 /* ── Empty ───────────────────────────────── */
 
 .cmd-empty {
-  margin-top: 1rem;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1.5rem;
   text-align: center;
   color: var(--text-muted);
-  font-size: 0.85rem;
-  border: 1px dashed var(--border);
-  border-radius: 6px;
+  font-size: 14px;
+  border-top: 1px solid var(--border-light);
 }
 
 /* ── Responsive ──────────────────────────── */
 
-@media (max-width: 760px) {
-  .cmd-table {
-    min-width: 600px;
+@media (max-width: 860px) {
+  .cmd-header {
+    padding: 14px 16px;
   }
 
+  .cmd-search {
+    padding: 10px 16px;
+  }
+
+  .cmd-search-input {
+    padding: 8px 42px 8px 30px;
+  }
+
+  .cmd-group-header {
+    padding: 10px 16px;
+  }
+
+  .cmd-table-wrap {
+    padding: 0 16px 12px;
+  }
+
+  .cmd-table {
+    font-size: 13px;
+  }
+
+  .cmd-cell-cmd {
+    min-width: 120px;
+  }
+
+  .cmd-cell-effect {
+    min-width: 120px;
+  }
+
+  .cmd-cell-usage {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 520px) {
   .cmd-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
+    padding: 12px 12px;
+  }
+
+  .cmd-search {
+    padding: 8px 12px;
+  }
+
+  .cmd-search-input {
+    font-size: 13px;
+    padding-left: 30px;
+  }
+
+
+  .cmd-group-header {
+    padding: 8px 12px;
+  }
+
+  .cmd-table-wrap {
+    padding: 0 12px 8px;
+  }
+
+  .cmd-table {
+    font-size: 12px;
+  }
+
+  .cmd-table thead th,
+  .cmd-table tbody td {
+    padding: 0.5em 0.6em;
+  }
+
+  .cmd-title {
+    font-size: 16px;
   }
 }
 </style>
