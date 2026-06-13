@@ -65,18 +65,7 @@ async function copyUsage(entry: CommandEntry) {
   }
 }
 
-const collapsed = reactive<Record<string, boolean>>({});
-function toggleGroup(cat: string) {
-  collapsed[cat] = !collapsed[cat];
-}
-
-function expandAll() {
-  Object.keys(collapsed).forEach(k => delete collapsed[k]);
-}
-
-function collapseAll() {
-  commandGroups.value.forEach(g => { collapsed[g.category] = true; });
-}
+const displayMode = ref<'grouped' | 'flat'>('grouped');
 
 function renderInlineMarkdown(text: string): string {
   return text
@@ -85,8 +74,8 @@ function renderInlineMarkdown(text: string): string {
     .replace(/\*([^*]+)\*/g, '<em>$1</em>');
 }
 
-function groupId(text: string): string {
-  return text.trim().toLowerCase()
+function sectionId(text: string): string {
+  return 'cmd-sec-' + text.trim().toLowerCase()
     .replace(/[\s]+/g, '-')
     .replace(/[`~!@#$%^&*()_=+[\]{}|;:'",.<>/?·！￥……（）——【】‘；：”“。，、？\s]/g, '-')
     .replace(/--+/g, '-')
@@ -116,6 +105,79 @@ const filteredGroups = computed(() => {
 const commandCount = computed(() => commandGroups.value.reduce((sum, group) => sum + group.entries.length, 0));
 const shownCount = computed(() => filteredGroups.value.reduce((sum, group) => sum + group.entries.length, 0));
 
+/* ── 类别索引（分组模式） ─────────────────── */
+
+const categoryIndex = computed(() =>
+  filteredGroups.value.map(g => ({
+    category: g.category,
+    count: g.entries.length,
+  })),
+);
+
+function scrollToCategory(cat: string) {
+  const el = document.getElementById(sectionId(cat));
+  if (el) {
+    const navbarH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height') || '60');
+    const top = el.getBoundingClientRect().top + window.scrollY
+      - navbarH - 52 - 60 - 34; // navbar + breadcrumb + search + index bar
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+}
+
+/* 平铺模式：所有条目按命令名字母排序 */
+const flatEntries = computed<CommandEntry[]>(() =>
+  commandGroups.value
+    .flatMap(g => g.entries)
+    .sort((a, b) => a.command.localeCompare(b.command)),
+);
+
+const filteredFlat = computed(() => {
+  const value = keyword.value.trim().toLowerCase();
+  if (!value) return flatEntries.value;
+  return flatEntries.value.filter(entry =>
+    [entry.command, entry.effect, entry.usage, entry.category].some(text =>
+      text.toLowerCase().includes(value),
+    ),
+  );
+});
+
+/* 平铺模式：按首字母分组，非字母归入 # */
+interface LetterGroup { letter: string; entries: CommandEntry[] }
+
+const letterGroups = computed<LetterGroup[]>(() => {
+  const map: Record<string, CommandEntry[]> = {};
+  for (const e of filteredFlat.value) {
+    const ch = e.command.charAt(0).toUpperCase();
+    const key = /[A-Z]/.test(ch) ? ch : '#';
+    (map[key] ??= []).push(e);
+  }
+  return Object.entries(map)
+    .sort(([a], [b]) => a === '#' ? 1 : b === '#' ? -1 : a.localeCompare(b))
+    .map(([letter, entries]) => ({ letter, entries }));
+});
+
+/* 全量字母表 A-Z + #，标记当前是否有该字母的命令 */
+const abcdLetters = computed(() => {
+  const active = new Set(letterGroups.value.map(lg => lg.letter));
+  return [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ', '#'].map(ch => ({
+    letter: ch,
+    active: active.has(ch),
+  }));
+});
+
+function scrollToLetter(letter: string) {
+  const el = document.getElementById(`cmd-letter-${letter}`);
+  if (el) {
+    const navbarH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height') || '60');
+    const top = el.getBoundingClientRect().top + window.scrollY
+      - navbarH    // navbar
+      - 52         // breadcrumb
+      - 60         // search bar (desktop)
+      - 34;        // abcd bar
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+}
+
 onMounted(() => {
   nextTick(() => {
     window.dispatchEvent(new CustomEvent('cmd-summary-rendered'));
@@ -139,20 +201,34 @@ onMounted(() => {
         </button>
         <span v-if="keyword.trim()" class="cmd-search-count">{{ shownCount }}/{{ commandCount }}</span>
       </div>
-      <button v-if="filteredGroups.length" class="cmd-search-btn" @click="expandAll">全部展开</button>
-      <button v-if="filteredGroups.length" class="cmd-search-btn" @click="collapseAll">全部折叠</button>
+      <div class="cmd-mode-toggle">
+        <button class="cmd-mode-btn" :class="{ active: displayMode === 'grouped' }" @click="displayMode = 'grouped'" title="按目录分组">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <button class="cmd-mode-btn" :class="{ active: displayMode === 'flat' }" @click="displayMode = 'flat'" title="按字母排列">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h6"/><path d="M15 6h6"/><path d="m3 13 3.553-7.724a.5.5 0 0 1 .894 0L11 13"/><path d="M3 18h18"/><path d="M4 11h6"/></svg>
+        </button>
+      </div>
     </div>
 
-    <div v-if="filteredGroups.length" class="cmd-groups">
-      <div v-for="group in filteredGroups" :key="group.category" class="cmd-group">
-        <div class="cmd-group-header" role="button" tabindex="0" @click="toggleGroup(group.category)" @keydown.enter.prevent="toggleGroup(group.category)" @keydown.space.prevent="toggleGroup(group.category)">
-          <svg class="cmd-chevron" :class="{ 'is-collapsed': collapsed[group.category] }" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          <h3 :id="groupId(group.category)" class="cmd-group-title">{{ group.category }}</h3>
-          <span class="cmd-group-count">{{ group.entries.length }}</span>
-        </div>
+    <!-- ── 分组模式：类别索引 + 分组表格 ────────── -->
+    <template v-if="filteredGroups.length && displayMode === 'grouped'">
+      <nav class="cmd-index-bar" aria-label="分类索引">
+        <span class="cmd-index-label">分类</span>
+        <button
+          v-for="ci in categoryIndex" :key="ci.category"
+          class="cmd-index-btn cmd-index-btn--cat"
+          @click="scrollToCategory(ci.category)"
+        >{{ ci.category }}</button>
+      </nav>
 
-        <Transition name="fade">
-          <div v-if="!collapsed[group.category]" class="cmd-table-wrap">
+      <div class="cmd-sections">
+        <div v-for="group in filteredGroups" :key="group.category" class="cmd-section">
+          <div class="cmd-section-header" :id="sectionId(group.category)">
+            <span class="cmd-section-title">{{ group.category }}</span>
+            <span class="cmd-section-count">{{ group.entries.length }}</span>
+          </div>
+          <div class="cmd-table-wrap">
             <table class="cmd-table">
             <thead>
               <tr>
@@ -186,9 +262,67 @@ onMounted(() => {
             </tbody>
             </table>
           </div>
-        </Transition>
+        </div>
       </div>
-    </div>
+    </template>
+
+    <!-- ── 平铺模式：吸顶字母索引 + 字母分组 ──── -->
+    <template v-if="filteredFlat.length && displayMode === 'flat'">
+      <nav class="cmd-index-bar" aria-label="字母索引">
+        <span class="cmd-index-label">索引</span>
+        <button
+          v-for="ch in abcdLetters" :key="ch.letter"
+          class="cmd-index-btn"
+          :class="{ active: ch.active }"
+          :disabled="!ch.active"
+          :aria-label="`跳转到 ${ch.letter}`"
+          @click="ch.active && scrollToLetter(ch.letter)"
+        >{{ ch.letter }}</button>
+      </nav>
+
+      <div class="cmd-sections">
+        <div v-for="lg in letterGroups" :key="lg.letter" class="cmd-section">
+          <div class="cmd-section-header" :id="`cmd-letter-${lg.letter}`">
+            <span class="cmd-section-title">{{ lg.letter }}</span>
+            <span class="cmd-section-count">{{ lg.entries.length }}</span>
+          </div>
+          <div class="cmd-table-wrap">
+            <table class="cmd-table">
+            <thead>
+              <tr>
+                <th>命令</th>
+                <th>作用</th>
+                <th>用法</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="entry in lg.entries" :key="`${entry.path}-${entry.command}`">
+                <td class="cmd-cell-cmd">
+                  <RouteLink :to="entry.path">{{ entry.command }}</RouteLink>
+                </td>
+                <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect)"></td>
+                <td class="cmd-cell-usage">
+                  <div class="cmd-usage-row">
+                    <code class="cmd-code" v-html="highlightUsage(entry.usage)"></code>
+                    <button
+                      class="cmd-copy-btn"
+                      :class="{ 'is-copied': copiedCommand === `${entry.path}-${entry.command}` }"
+                      :aria-label="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
+                      :title="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
+                      @click.stop="copyUsage(entry)"
+                    >
+                      <svg v-if="copiedCommand !== `${entry.path}-${entry.command}`" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                      <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </template>
 
     <div v-else class="cmd-empty">未找到匹配的 CONNECT 命令。</div>
   </section>
@@ -212,8 +346,9 @@ onMounted(() => {
   --accent: #1456f0;
   --accent-subtle: rgba(20, 86, 240, 0.08);
 
-  /* 搜索栏高度，用于计算 group-header 吸顶偏移 */
+  /* 搜索栏 / 索引栏高度，用于计算吸顶偏移 */
   --cmd-search-h: 60px;
+  --cmd-abcd-h: 36px;
 
   margin-top: 1.5rem;
   background: #fff;
@@ -372,9 +507,113 @@ onMounted(() => {
   }
 }
 
-/* ── Groups ──────────────────────────────── */
+/* ── Mode Toggle ──────────────────────────── */
 
-.cmd-group {
+.cmd-mode-toggle {
+  display: flex;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cmd-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--text-muted);
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+
+  &:first-child {
+    border-right: 1px solid var(--border);
+  }
+
+  &:hover {
+    background: var(--bg-hover);
+  }
+
+  &.active {
+    color: var(--accent);
+    background: var(--accent-subtle);
+  }
+}
+
+/* ── 索引栏（两种模式共用，吸顶） ──────────── */
+
+.cmd-index-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 5px 20px;
+  border-bottom: 1px solid var(--border);
+  background: #fafbfc;
+
+  /* 吸顶：navbar + breadcrumb + search 之下 */
+  position: sticky;
+  top: calc(var(--navbar-height) + 52px + var(--cmd-search-h));
+  z-index: 4;
+}
+
+.cmd-index-label {
+  flex-shrink: 0;
+  margin-right: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+.cmd-index-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 26px;
+  padding: 0 5px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    background: var(--accent-subtle);
+    border-color: var(--accent);
+  }
+
+  &:disabled {
+    color: #d0d3d8;
+    cursor: default;
+  }
+
+  /* 类别名可能较长 */
+  &--cat {
+    font-family: inherit;
+    padding: 0 8px;
+  }
+}
+
+/* ── 分组段落（两种模式共用） ──────────────── */
+
+.cmd-sections {
+  /* spacer */
+}
+
+.cmd-section {
   border-bottom: 1px solid var(--border);
 
   &:last-child {
@@ -382,38 +621,28 @@ onMounted(() => {
   }
 }
 
-.cmd-group-header {
+.cmd-section-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  cursor: pointer;
-  user-select: none;
-  transition: background 0.15s, box-shadow 0.15s;
+  justify-content: space-between;
+  padding: 8px 20px;
+  color: var(--text);
 
-  /* 吸顶：navbar + breadcrumb + search 之下 */
+  /* 吸顶：navbar + breadcrumb + search + index 之下 */
   position: sticky;
-  top: calc(var(--navbar-height) + 52px + var(--cmd-search-h));
-  z-index: 4;
+  top: calc(var(--navbar-height) + 52px + var(--cmd-search-h) + var(--cmd-abcd-h));
+  z-index: 3;
   background: #fff;
-
-  /* 吸顶时底部阴影分隔 */
   box-shadow: 0 1px 0 0 var(--border);
-
-  &:hover {
-    background: var(--bg-hover);
-  }
 }
 
-.cmd-group-title {
-  flex: 1;
-  margin: 0;
+.cmd-section-title {
   font-size: 15px;
   font-weight: 600;
-  color: var(--text);
 }
 
-.cmd-group-count {
+.cmd-section-count {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -426,17 +655,6 @@ onMounted(() => {
   font-weight: 500;
   border-radius: 10px;
   font-variant-numeric: tabular-nums;
-}
-
-.cmd-chevron {
-  flex-shrink: 0;
-  color: var(--text-muted);
-  transition: transform 0.2s ease;
-  transform: rotate(90deg); /* expanded: points down */
-
-  &.is-collapsed {
-    transform: rotate(0deg); /* collapsed: points right */
-  }
 }
 
 /* ── Table Wrapper ───────────────────────── */
@@ -646,6 +864,7 @@ onMounted(() => {
 @media (max-width: 860px) {
   .cmd-summary {
     --cmd-search-h: 56px;
+    --cmd-abcd-h: 34px;
   }
 
   .cmd-header {
@@ -660,7 +879,11 @@ onMounted(() => {
     padding: 8px 42px 8px 30px;
   }
 
-  .cmd-group-header {
+  .cmd-index-bar {
+    padding: 5px 16px;
+  }
+
+  .cmd-section-header {
     padding: 10px 16px;
   }
 
@@ -688,6 +911,7 @@ onMounted(() => {
 @media (max-width: 520px) {
   .cmd-summary {
     --cmd-search-h: 50px;
+    --cmd-abcd-h: 32px;
   }
 
   .cmd-header {
@@ -709,7 +933,22 @@ onMounted(() => {
     padding: 0 10px;
   }
 
-  .cmd-group-header {
+  .cmd-mode-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cmd-index-bar {
+    padding: 4px 12px;
+  }
+
+  .cmd-index-btn {
+    min-width: 24px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+  .cmd-section-header {
     padding: 8px 12px;
   }
 
