@@ -3,6 +3,7 @@ import { computed, nextTick, onMounted, reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { RouteLink } from 'vuepress/client';
 import { buildCommandGroups } from './extractCommandInfo.mjs';
+import { highlightUsage } from './highlightCommand.mjs';
 
 interface CommandEntry {
   command: string;
@@ -168,7 +169,7 @@ onMounted(() => {
                 <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect)"></td>
                 <td class="cmd-cell-usage">
                   <div class="cmd-usage-row">
-                    <code class="cmd-code">{{ entry.usage }}</code>
+                    <code class="cmd-code" v-html="highlightUsage(entry.usage)"></code>
                     <button
                       class="cmd-copy-btn"
                       :class="{ 'is-copied': copiedCommand === `${entry.path}-${entry.command}` }"

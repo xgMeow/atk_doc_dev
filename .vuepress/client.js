@@ -7,6 +7,7 @@ import EnhancedToc from './components/EnhancedToc.vue'
 import NotFound from './components/NotFound.vue'
 import CatalogCard from './components/CatalogCard/CatalogCard.vue'
 import ConnectCommandSummary from './components/ConnectCommandSummary/ConnectCommandSummary.vue'
+import './styles/atk-command-tokens.scss'
 
 // 定义目录信息获取器，传入文档元数据，返回目录信息对象
 defineCatalogInfoGetter((meta) => {
