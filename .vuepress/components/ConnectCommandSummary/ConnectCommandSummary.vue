@@ -191,45 +191,47 @@ onMounted(() => {
       <span class="cmd-total">{{ commandCount }} 条</span>
     </div>
 
-    <div class="cmd-search">
-      <div class="cmd-search-input-wrap">
-        <svg class="cmd-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input ref="searchInputRef" v-model="keyword" type="search" placeholder="搜索命令、作用、用法..." class="cmd-search-input" />
-        <button v-if="keyword" class="cmd-search-clear" @click="keyword = ''; searchInputRef?.focus()" aria-label="清除搜索" title="清除搜索">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-        </button>
-        <span v-if="keyword.trim()" class="cmd-search-count">{{ shownCount }}/{{ commandCount }}</span>
+    <div class="cmd-toolbar">
+      <div class="cmd-search">
+        <div class="cmd-search-input-wrap">
+          <svg class="cmd-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input ref="searchInputRef" v-model="keyword" type="search" placeholder="搜索命令、作用、用法..." class="cmd-search-input" />
+          <button v-if="keyword" class="cmd-search-clear" @click="keyword = ''; searchInputRef?.focus()" aria-label="清除搜索" title="清除搜索">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          </button>
+          <span v-if="keyword.trim()" class="cmd-search-count">{{ shownCount }}/{{ commandCount }}</span>
+        </div>
+        <div class="cmd-mode-toggle">
+          <button class="cmd-mode-btn" :class="{ active: displayMode === 'grouped' }" @click="displayMode = 'grouped'" title="按目录分组">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </button>
+          <button class="cmd-mode-btn" :class="{ active: displayMode === 'flat' }" @click="displayMode = 'flat'" title="按字母排列">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h6"/><path d="M15 6h6"/><path d="m3 13 3.553-7.724a.5.5 0 0 1 .894 0L11 13"/><path d="M3 18h18"/><path d="M4 11h6"/></svg>
+          </button>
+        </div>
       </div>
-      <div class="cmd-mode-toggle">
-        <button class="cmd-mode-btn" :class="{ active: displayMode === 'grouped' }" @click="displayMode = 'grouped'" title="按目录分组">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-        </button>
-        <button class="cmd-mode-btn" :class="{ active: displayMode === 'flat' }" @click="displayMode = 'flat'" title="按字母排列">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h6"/><path d="M15 6h6"/><path d="m3 13 3.553-7.724a.5.5 0 0 1 .894 0L11 13"/><path d="M3 18h18"/><path d="M4 11h6"/></svg>
-        </button>
-      </div>
-    </div>
 
-    <!-- ── 索引栏（两种模式标签不同） ────────── -->
-    <nav v-if="hasResults && displayMode === 'grouped'" class="cmd-index-bar" aria-label="分类索引">
-      <span class="cmd-index-label">分类</span>
-      <button
-        v-for="ci in categoryIndex" :key="ci"
-        class="cmd-index-btn cmd-index-btn--cat"
-        @click="scrollToSection(sectionId(ci))"
-      >{{ ci }}</button>
-    </nav>
-    <nav v-if="hasResults && displayMode === 'flat'" class="cmd-index-bar" aria-label="字母索引">
-      <span class="cmd-index-label">索引</span>
-      <button
-        v-for="ch in abcdLetters" :key="ch.letter"
-        class="cmd-index-btn"
-        :class="{ active: ch.active }"
-        :disabled="!ch.active"
-        :aria-label="`跳转到 ${ch.letter}`"
-        @click="ch.active && scrollToSection('cmd-letter-' + ch.letter)"
-      >{{ ch.letter }}</button>
-    </nav>
+      <!-- ── 索引栏（两种模式标签不同） ────────── -->
+      <nav v-if="hasResults && displayMode === 'grouped'" class="cmd-index-bar" aria-label="分类索引">
+        <span class="cmd-index-label">分类</span>
+        <button
+          v-for="ci in categoryIndex" :key="ci"
+          class="cmd-index-btn cmd-index-btn--cat"
+          @click="scrollToSection(sectionId(ci))"
+        >{{ ci }}</button>
+      </nav>
+      <nav v-if="hasResults && displayMode === 'flat'" class="cmd-index-bar" aria-label="字母索引">
+        <span class="cmd-index-label">索引</span>
+        <button
+          v-for="ch in abcdLetters" :key="ch.letter"
+          class="cmd-index-btn"
+          :class="{ active: ch.active }"
+          :disabled="!ch.active"
+          :aria-label="`跳转到 ${ch.letter}`"
+          @click="ch.active && scrollToSection('cmd-letter-' + ch.letter)"
+        >{{ ch.letter }}</button>
+      </nav>
+    </div>
 
     <!-- ── 共用 Section 列表 ──────────────────── -->
     <div v-if="hasResults" class="cmd-sections">
@@ -284,29 +286,35 @@ onMounted(() => {
 <style scoped lang="scss">
 /* ═══════════════════════════════════════════════
    ATK Connect 命令速查表
-   与站点整体风格统一，简洁规整
+   高对比、层级分明、字体舒适
    ═══════════════════════════════════════════════ */
 
 .cmd-summary {
-  --text: #3c3c43;
-  --text-muted: #8f959e;
-  --border: #dfe2e5;
-  --border-light: #eaecef;
-  --bg-hover: #f6f8fa;
-  --bg-badge: #f0f0f2;
-  --bg-code: #f1f1f1;
-  --code-fg: #476582;
-  --accent: #1456f0;
-  --accent-subtle: rgba(20, 86, 240, 0.08);
+  --text: #18181b;              /* zinc-900  近黑，主文字 */
+  --text-secondary: #52525b;    /* zinc-600  次级文字 */
+  --text-muted: #71717a;        /* zinc-500  辅助/徽标文字 */
+  --border: #d4d4d8;            /* zinc-300  边框 */
+  --border-light: #e4e4e7;      /* zinc-200  浅边框 */
+  --bg-page: #fafafa;           /* zinc-50   页面底色 */
+  --bg-hover: #f4f4f5;          /* zinc-100  悬停 */
+  --bg-subtle: #f8f9fa;         /* 比 page 稍暖，索引栏 */
+  --bg-badge: #e4e4e7;          /* zinc-200  徽标背景 */
+  --bg-code: #f4f4f5;           /* zinc-100  内联代码背景 */
+  --code-fg: #3f3f46;           /* zinc-700  内联代码文字 */
+  --accent: #2563eb;            /* blue-600  主强调色 */
+  --accent-subtle: rgba(37, 99, 235, 0.08);
+  --divider: #eeeef0;           /* 表格横线，极淡 */
 
-  /* 搜索栏 / 索引栏高度，用于计算吸顶偏移 */
-  --cmd-search-h: 60px;
-  --cmd-abcd-h: 36px;
+  /* 吸顶偏移：navbar + breadcrumb（54px）+ 2px 呼吸 */
+  --cmd-stick-top: calc(var(--navbar-height) + 52px);
+  /* 工具栏高度（搜索 + 索引），用于 section 偏移 */
+  --cmd-toolbar-h: 92px;
 
   margin-top: 1.5rem;
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   /* 注：不能 overflow:hidden，否则 position:sticky 失效 */
 }
 
@@ -316,28 +324,40 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 18px 24px;
   border-bottom: 1px solid var(--border);
-  border-radius: 8px 8px 0 0;
+  border-radius: 10px 10px 0 0;
   background: #fff;
 }
 
 .cmd-title {
   margin: 0;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 .cmd-total {
   display: inline-flex;
   align-items: center;
-  padding: 2px 12px;
+  padding: 3px 14px;
   background: var(--accent-subtle);
   color: var(--accent);
   font-size: 13px;
   font-weight: 600;
   border-radius: 12px;
+  letter-spacing: 0.02em;
+}
+
+/* ── Toolbar（搜索 + 索引，整体吸顶） ────────── */
+
+.cmd-toolbar {
+  position: sticky;
+  top: var(--cmd-stick-top);
+  z-index: 5;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
 }
 
 /* ── Search ──────────────────────────────── */
@@ -345,15 +365,9 @@ onMounted(() => {
 .cmd-search {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-bottom: 1px solid var(--border);
-  background: #fafbfc;
-
-  /* 吸顶：navbar + breadcrumb(54px=35+0.5rem+0.3rem+6px border) 之下，+2px 呼吸 */
-  position: sticky;
-  top: calc(var(--navbar-height) + 52px);
-  z-index: 5;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #fff;
 }
 
 .cmd-search-input-wrap {
@@ -364,7 +378,7 @@ onMounted(() => {
 
 .cmd-search-icon {
   position: absolute;
-  left: 12px;
+  left: 14px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--text-muted);
@@ -374,22 +388,22 @@ onMounted(() => {
 
 .cmd-search-input {
   width: 100%;
-  padding: 8px 48px 8px 34px;
-  font-size: 14px;
+  padding: 9px 48px 9px 38px;
+  font-size: 15px;
   color: var(--text);
   background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 
   &::placeholder {
-    color: #b0b5bd;
+    color: #a1a1aa;
   }
 
   &:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(20, 86, 240, 0.12);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 
   &::-webkit-search-decoration,
@@ -402,10 +416,10 @@ onMounted(() => {
 
 .cmd-search-count {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
   pointer-events: none;
@@ -413,14 +427,14 @@ onMounted(() => {
 
 .cmd-search-clear {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   padding: 0;
   color: var(--text-muted);
   background: transparent;
@@ -436,19 +450,19 @@ onMounted(() => {
 }
 
 .cmd-search-clear + .cmd-search-count {
-  right: 36px;
+  right: 40px;
 }
 
 .cmd-search-btn {
   flex-shrink: 0;
   align-self: stretch;
-  padding: 0 12px;
-  font-size: 13px;
+  padding: 0 14px;
+  font-size: 14px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
   cursor: pointer;
   white-space: nowrap;
   transition: color 0.15s, border-color 0.15s, background 0.15s;
@@ -466,8 +480,8 @@ onMounted(() => {
   display: flex;
   flex-shrink: 0;
   background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -475,8 +489,8 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   padding: 0;
   color: var(--text-muted);
   background: #fff;
@@ -485,11 +499,12 @@ onMounted(() => {
   transition: color 0.15s, background 0.15s;
 
   &:first-child {
-    border-right: 1px solid var(--border);
+    border-right: 1.5px solid var(--border);
   }
 
   &:hover {
     background: var(--bg-hover);
+    color: var(--text-secondary);
   }
 
   &.active {
@@ -498,29 +513,26 @@ onMounted(() => {
   }
 }
 
-/* ── 索引栏（两种模式共用，吸顶） ──────────── */
+/* ── 索引栏（从属于工具栏） ────────────────── */
 
 .cmd-index-bar {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 2px;
-  padding: 5px 20px;
-  border-bottom: 1px solid var(--border);
-  background: #fafbfc;
-
-  /* 吸顶：navbar + breadcrumb + search 之下 */
-  position: sticky;
-  top: calc(var(--navbar-height) + 52px + var(--cmd-search-h));
-  z-index: 4;
+  padding: 4px 24px;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-subtle);
 }
 
 .cmd-index-label {
   flex-shrink: 0;
   margin-right: 6px;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   user-select: none;
 }
 
@@ -528,15 +540,15 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 28px;
-  height: 26px;
+  min-width: 22px;
+  height: 22px;
   padding: 0 5px;
   font-size: 12px;
   font-weight: 600;
   font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
   color: var(--accent);
   background: transparent;
-  border: 1px solid transparent;
+  border: 1.5px solid transparent;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
@@ -549,14 +561,12 @@ onMounted(() => {
   }
 
   &:disabled {
-    color: #d0d3d8;
+    color: #d4d4d8;
     cursor: default;
   }
 
-  /* 类别名可能较长 */
   &--cat {
     font-family: inherit;
-    padding: 0 8px;
   }
 }
 
@@ -567,7 +577,7 @@ onMounted(() => {
 }
 
 .cmd-section {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--divider);
 
   &:last-child {
     border-bottom: none;
@@ -579,27 +589,28 @@ onMounted(() => {
   display: block;
   height: 0;
   overflow: hidden;
-  scroll-margin-top: calc(var(--navbar-height) + 52px + var(--cmd-search-h) + var(--cmd-abcd-h));
+  scroll-margin-top: calc(var(--cmd-stick-top) + var(--cmd-toolbar-h) + 4px);
 }
 
 .cmd-section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 20px;
+  padding: 9px 24px;
   color: var(--text);
 
-  /* 吸顶：navbar + breadcrumb + search + index 之下 */
+  /* 吸顶：navbar + breadcrumb + toolbar 之下 */
   position: sticky;
-  top: calc(var(--navbar-height) + 52px + var(--cmd-search-h) + var(--cmd-abcd-h));
+  top: calc(var(--cmd-stick-top) + var(--cmd-toolbar-h));
   z-index: 3;
   background: #fff;
-  box-shadow: 0 1px 0 0 var(--border);
+  border-bottom: 1px solid var(--divider);
 }
 
 .cmd-section-title {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .cmd-section-count {
@@ -608,13 +619,13 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   min-width: 24px;
-  height: 20px;
-  padding: 0 7px;
+  height: 22px;
+  padding: 0 8px;
   background: var(--bg-badge);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 12px;
-  font-weight: 500;
-  border-radius: 10px;
+  font-weight: 600;
+  border-radius: 11px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -622,7 +633,7 @@ onMounted(() => {
 
 .cmd-table-wrap {
   overflow-x: auto;
-  padding: 0 20px 16px;
+  padding: 0 24px 20px;
 
   &::-webkit-scrollbar {
     height: 6px;
@@ -633,12 +644,12 @@ onMounted(() => {
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #d0d3d8;
+    background: #d4d4d8;
     border-radius: 3px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #b0b5bd;
+    background: #a1a1aa;
   }
 }
 
@@ -646,36 +657,37 @@ onMounted(() => {
 
 .cmd-table {
   width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
   line-height: 1.8;
 
   thead th {
-    padding: 0.6em 1em;
-    font-size: 14px;
+    padding: 0.55em 1em;
+    font-size: 12px;
     font-weight: 600;
-    color: #67676c;
-    background: #f6f6f7;
-    border: 1px solid var(--border);
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--divider);
     text-align: left;
     white-space: nowrap;
   }
 
   tbody td {
-    padding: 0.6em 1em;
-    border: 1px solid var(--border);
+    padding: 0.7em 1em;
+    border: none;
+    border-bottom: 1px solid var(--divider);
     vertical-align: top;
     color: var(--text);
     background: #fff;
+    font-size: 14px;
   }
 
-  tbody tr {
-    transition: background 0.12s;
+  tbody tr:last-child td {
+    border-bottom: none;
   }
 
-  tbody tr:hover td {
-    background: var(--bg-hover);
-  }
 }
 
 /* ── Table Column Widths ─────────────────── */
@@ -701,34 +713,38 @@ onMounted(() => {
   color: var(--accent);
   text-decoration: none;
   font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
-  font-size: 13px;
-  font-weight: 500;
-  transition: color 0.2s;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s, background 0.2s;
   word-break: break-all;
 
   &:hover {
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
   }
 }
 
 /* ── Effect Description ──────────────────── */
 
 .cmd-cell-effect {
-  color: var(--text);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
 
   :deep(code) {
-    padding: 0.15em 0.5em;
+    padding: 0.2em 0.55em;
     border-radius: 4px;
     background: var(--bg-code);
     color: var(--code-fg);
-    font-size: inherit;
+    font-size: 0.92em;
     font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
+    font-weight: 500;
     word-break: break-word;
   }
 
   :deep(strong) {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text);
   }
 }
@@ -738,7 +754,7 @@ onMounted(() => {
 .cmd-usage-row {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
+  gap: 8px;
 }
 
 .cmd-usage-row .cmd-code {
@@ -751,28 +767,27 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   padding: 0;
-  margin: 0;
+  margin: 1px 0 0 0;
   color: var(--text-muted);
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  border: 1.5px solid transparent;
+  border-radius: 5px;
   cursor: pointer;
   transition: opacity 0.15s, color 0.15s, background 0.15s, border-color 0.15s;
 
   &:hover {
     color: var(--accent);
     background: var(--accent-subtle);
-    border-color: var(--border);
+    border-color: var(--accent);
   }
 
   &.is-copied {
-    opacity: 1;
     color: #16a34a;
-    background: rgba(22, 163, 74, 0.08);
-    border-color: rgba(22, 163, 74, 0.2);
+    background: rgba(22, 163, 74, 0.1);
+    border-color: rgba(22, 163, 74, 0.25);
   }
 }
 
@@ -780,13 +795,13 @@ onMounted(() => {
 
 .cmd-code {
   display: inline;
-  padding: 0.15em 0.5em;
+  padding: 0.2em 0.55em;
   font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.8;
   color: var(--code-fg);
   background: var(--bg-code);
-  border-radius: 4px;
+  border-radius: 5px;
   word-break: break-all;
 }
 
@@ -813,10 +828,10 @@ onMounted(() => {
 /* ── Empty ───────────────────────────────── */
 
 .cmd-empty {
-  padding: 2rem 1.5rem;
+  padding: 3rem 2rem;
   text-align: center;
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 15px;
   border-top: 1px solid var(--border-light);
 }
 
@@ -824,35 +839,47 @@ onMounted(() => {
 
 @media (max-width: 860px) {
   .cmd-summary {
-    --cmd-search-h: 56px;
-    --cmd-abcd-h: 34px;
+    --cmd-toolbar-h: 84px;
   }
 
   .cmd-header {
-    padding: 14px 16px;
+    padding: 14px 18px;
   }
 
   .cmd-search {
-    padding: 10px 16px;
+    padding: 10px 18px;
   }
 
   .cmd-search-input {
-    padding: 8px 42px 8px 30px;
+    padding: 8px 44px 8px 34px;
+    font-size: 14px;
   }
 
   .cmd-index-bar {
-    padding: 5px 16px;
+    padding: 3px 18px;
   }
 
   .cmd-section-header {
-    padding: 10px 16px;
+    padding: 9px 18px;
   }
 
   .cmd-table-wrap {
-    padding: 0 16px 12px;
+    padding: 0 18px 14px;
   }
 
   .cmd-table {
+    font-size: 14px;
+  }
+
+  .cmd-table tbody td {
+    font-size: 13px;
+  }
+
+  .cmd-cell-cmd a {
+    font-size: 13px;
+  }
+
+  .cmd-code {
     font-size: 13px;
   }
 
@@ -871,63 +898,82 @@ onMounted(() => {
 
 @media (max-width: 520px) {
   .cmd-summary {
-    --cmd-search-h: 50px;
-    --cmd-abcd-h: 32px;
+    --cmd-toolbar-h: 74px;
   }
 
   .cmd-header {
-    padding: 12px 12px;
+    padding: 12px 14px;
+  }
+
+  .cmd-title {
+    font-size: 17px;
   }
 
   .cmd-search {
-    padding: 8px 12px;
+    padding: 8px 14px;
     flex-wrap: wrap;
   }
 
   .cmd-search-input {
-    font-size: 13px;
-    padding-left: 30px;
+    font-size: 14px;
+    padding: 8px 40px 8px 32px;
   }
 
   .cmd-search-btn {
-    font-size: 12px;
+    font-size: 13px;
     padding: 0 10px;
   }
 
   .cmd-mode-btn {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
   }
 
   .cmd-index-bar {
-    padding: 4px 12px;
+    padding: 3px 14px;
   }
 
   .cmd-index-btn {
-    min-width: 24px;
+    min-width: 22px;
     height: 22px;
     font-size: 11px;
   }
 
+  .cmd-index-label {
+    font-size: 10px;
+  }
+
   .cmd-section-header {
-    padding: 8px 12px;
+    padding: 8px 14px;
+  }
+
+  .cmd-section-title {
+    font-size: 14px;
   }
 
   .cmd-table-wrap {
-    padding: 0 12px 8px;
+    padding: 0 14px 10px;
   }
 
   .cmd-table {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .cmd-table thead th,
   .cmd-table tbody td {
-    padding: 0.5em 0.6em;
+    padding: 0.55em 0.65em;
   }
 
-  .cmd-title {
-    font-size: 16px;
+  .cmd-table tbody td {
+    font-size: 12px;
+  }
+
+  .cmd-cell-cmd a {
+    font-size: 12px;
+  }
+
+  .cmd-code {
+    font-size: 12px;
   }
 }
 </style>
