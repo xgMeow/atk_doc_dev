@@ -1,5 +1,5 @@
 ---
-name: deploy-dev
+name: atk-deploy-to-dev-pages
 description: 将本地 develop 分支强制推送到 github-dev 远程的 main 分支，用于部署开发版。
 ---
 

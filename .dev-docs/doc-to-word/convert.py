@@ -1,12 +1,23 @@
 """
 VuePress 文档转 Word (.docx) 工具
-用法: python convert.py            # 转换全部文档
-      python convert.py 02-案例教程  # 只转换指定目录
+用法: python convert.py                        # 转换全部文档
+      python convert.py 02-案例教程              # 只转换指定目录
+      python convert.py -d 03-基础使用指南/02-场景管理  # -d 指定目录
+      python convert.py -l 1                    # 只输出第一层标题，子内容合并
+      python convert.py 02-案例教程 -l 2         # 指定目录 + 输出到第二层标题
+      python convert.py 03-基础使用指南/02-场景管理 -m   # 合并为一个 docx
+
+参数:
+  target_dir          位置参数，要转换的目录（相对于仓库根目录）
+  -d, --dir DIR       指定转换目录（与位置参数等效）
+  -l, --level N       输出标题层级，-1=全部(默认)，1=仅一级标题，2=到二级标题...
+  -m, --merge         合并为一个 Word 文件（默认每个 md 生成一个 docx）
 """
 import sys
 import re
 import shutil
 import subprocess
+import argparse
 from pathlib import Path
 from docx import Document
 from docx.shared import Pt, RGBColor
@@ -15,8 +26,8 @@ from docx.oxml import OxmlElement
 
 # 路径：工具目录 / doc-to-word
 TOOL_DIR = Path(__file__).parent.resolve()
-# 仓库根目录（doc-to-word 的上级）
-REPO_ROOT = TOOL_DIR.parent.resolve()
+# 仓库根目录（doc-to-word 的上上级: .dev-docs/doc-to-word → atk-doc）
+REPO_ROOT = TOOL_DIR.parent.parent.resolve()
 # 输出到工具目录下的 word_output
 OUTPUT_DIR = TOOL_DIR / "word_output"
 # 参考模板
@@ -127,6 +138,35 @@ def preprocess_markdown(md_path: Path) -> str:
     return text
 
 
+# ── 标题层级调整 ────────────────────────────────────
+
+def adjust_heading_levels(text: str, max_level: int) -> str:
+    """调整标题层级。max_level=-1 保留全部标题；>=1 时将更深层标题转为粗体文本。
+
+    例如 max_level=1:
+      # 一级标题        → 保留为 # 一级标题
+      ## 二级标题       → 转为 **二级标题**（粗体文本）
+      ### 三级标题      → 转为 **三级标题**（粗体文本）
+    所有正文内容完整保留，只改变标题的呈现方式。
+    """
+    if max_level == -1:
+        return text
+
+    def replace_heading(match):
+        hashes = match.group(1)
+        title = match.group(2)
+        level = len(hashes)
+        if level > max_level:
+            # 深层标题转为粗体文本，内容完整保留
+            return f"\n**{title}**\n"
+        else:
+            return match.group(0)
+
+    # 匹配 ATX 标题 (^#{1,6} +标题内容)
+    text = re.sub(r'^(#{1,6})\s+(.+)$', replace_heading, text, flags=re.MULTILINE)
+    return text
+
+
 # ── 后处理 ───────────────────────────────────────────
 
 def postprocess_docx(docx_path: Path):
@@ -186,8 +226,9 @@ def postprocess_docx(docx_path: Path):
 
 # ── 主流程 ───────────────────────────────────────────
 
-def convert_one(md_path: Path, out_dir: Path, pandoc: str) -> bool:
+def convert_one(md_path: Path, out_dir: Path, pandoc: str, max_level: int = -1) -> bool:
     clean_md = preprocess_markdown(md_path)
+    clean_md = adjust_heading_levels(clean_md, max_level)
 
     if len(clean_md.strip()) < 50:
         print(f"  [SKIP] {md_path.name}")
@@ -224,7 +265,53 @@ def convert_one(md_path: Path, out_dir: Path, pandoc: str) -> bool:
     return True
 
 
-def main(target_dir: str = ""):
+def convert_merge(files: list, out_dir: Path, pandoc: str, max_level: int, dir_name: str) -> bool:
+    """将多个 md 文件合并为一个 docx。"""
+    merged_parts = []
+    for fp in sorted(files):
+        clean = preprocess_markdown(fp)
+        clean = adjust_heading_levels(clean, max_level)
+        if len(clean.strip()) >= 50:
+            merged_parts.append(clean)
+
+    if not merged_parts:
+        print("  没有足够内容的文件可合并")
+        return False
+
+    # 用分隔线连接各文件内容
+    merged_md = "\n\n---\n\n".join(merged_parts)
+
+    out_file = out_dir / f"{dir_name}.docx"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+
+    tmp_md = out_file.with_suffix(".tmp.md")
+    tmp_md.write_text(merged_md, encoding="utf-8")
+
+    cmd = [pandoc, str(tmp_md), "-o", str(out_file),
+           "--from=markdown", "--to=docx",
+           "--metadata", "lang=zh-CN", "--standalone"]
+    if REFERENCE_DOC.exists():
+        cmd += ["--reference-doc", str(REFERENCE_DOC)]
+
+    try:
+        subprocess.run(cmd, check=True, capture_output=True, timeout=300)
+    except subprocess.CalledProcessError as e:
+        stderr = e.stderr.decode("utf-8", errors="replace")
+        if "ERROR" in stderr:
+            print(f"  [ERR] {dir_name}: {stderr[:200]}")
+    finally:
+        tmp_md.unlink(missing_ok=True)
+
+    try:
+        postprocess_docx(out_file)
+    except Exception:
+        pass
+
+    print(f"  [OK] {dir_name}.docx ({len(merged_parts)} 个文件合并)")
+    return True
+
+
+def main(target_dir: str = "", max_level: int = -1, merge: bool = False):
     pandoc = find_pandoc()
     if not pandoc:
         print("错误: 未找到 Pandoc，请先安装:")
@@ -261,23 +348,63 @@ def main(target_dir: str = ""):
     out_dir = OUTPUT_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"\nMD → DOCX: {len(files)} 个文件")
+    level_info = f"，标题层级: {max_level}（{'全部' if max_level == -1 else f'≤ H{max_level}'}）"
+    mode_info = "，合并模式" if merge else ""
+    print(f"\nMD → DOCX: {len(files)} 个文件{mode_info}{level_info}")
     print(f"输出目录: {out_dir}\n")
 
-    ok = 0
-    for fp in sorted(files):
-        try:
-            if convert_one(fp, out_dir, pandoc):
-                ok += 1
-        except Exception as e:
-            print(f"  [ERR] {fp.relative_to(REPO_ROOT)}: {e}")
+    if merge:
+        dir_name = scan_dir.name if target_dir else "全文档"
+        convert_merge(files, out_dir, pandoc, max_level, dir_name)
+        print(f"\n完成! 输出: {out_dir / dir_name}.docx")
+    else:
+        ok = 0
+        for fp in sorted(files):
+            try:
+                if convert_one(fp, out_dir, pandoc, max_level):
+                    ok += 1
+            except Exception as e:
+                print(f"  [ERR] {fp.relative_to(REPO_ROOT)}: {e}")
+        print(f"\n完成! {ok}/{len(files)}")
+        print(f"输出: {out_dir}")
 
-    print(f"\n完成! {ok}/{len(files)}")
-    print(f"输出: {out_dir}")
+
+def _parse_args():
+    """解析命令行参数，同时兼容旧的位置参数用法。"""
+    parser = argparse.ArgumentParser(
+        description="VuePress Markdown 文档转 Word (.docx)",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""示例:
+  python convert.py                          转换全部文档
+  python convert.py 02-案例教程                转换指定目录
+  python convert.py -d 03-基础使用指南/02-场景管理  用 -d 指定目录
+  python convert.py -l 1                      只输出一级标题
+  python convert.py 02-案例教程 -l 2           指定目录 + 输出到二级标题
+        """,
+    )
+    parser.add_argument(
+        "target_dir", nargs="?", default="",
+        help="要转换的目录（相对于仓库根目录），默认转换全部",
+    )
+    parser.add_argument(
+        "-d", "--dir", dest="dir_opt", default=None,
+        help="指定转换目录（与位置参数等效，优先级高于位置参数）",
+    )
+    parser.add_argument(
+        "-l", "--level", type=int, default=-1,
+        help="输出标题层级：-1=全部(默认)，1=仅一级标题，2=到二级标题...",
+    )
+    parser.add_argument(
+        "-m", "--merge", action="store_true", default=False,
+        help="合并为一个 Word 文件（默认每个 md 生成一个 docx）",
+    )
+    args = parser.parse_args()
+
+    # -d 优先级高于位置参数
+    target_dir = args.dir_opt if args.dir_opt is not None else args.target_dir
+    return target_dir, args.level, args.merge
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        main(sys.argv[1])
-    else:
-        main()
+    target_dir, max_level, merge = _parse_args()
+    main(target_dir, max_level, merge)

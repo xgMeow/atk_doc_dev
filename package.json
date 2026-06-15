@@ -1,7 +1,7 @@
 {
-	"name": "vuepress-theme-hope-template",
-	"version": "2.0.0",
-	"description": "A project of vuepress-theme-hope",
+	"name": "atk-doc",
+	"version": "4.0.1",
+	"description": "ATK 帮助文档 — 加快工业软件国产化，服务航天强国建设",
 	"license": "MIT",
 	"scripts": {
 		"update-package": "npx vp-update",
