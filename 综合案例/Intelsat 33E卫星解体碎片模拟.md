@@ -1,11 +1,9 @@
 ---
 description: 基于 ATK 二次开发 Connect 模块，使用 NASA 标准解体模型对 Intelsat 33E 卫星解体碎片进行轨道演化仿真分析。
-thumbnail: /综合案例/media/Intelsat 33E卫星解体碎片模拟/image01-Intelsat33E卫星爆炸解体模拟图.png
+thumbnail: /综合案例/media/Intelsat33E卫星解体碎片模拟/image05-插入碎片后的ATK界面.png
 ---
 
 # Intelsat 33E卫星解体碎片模拟
-
-完成人：舒鹏（中国科学院云南天文台），邹新强 | 完成日期：2026 年 06 月 15 日 | ATK 版本号：ATK 4.0
 
 ## 内容简介
 
@@ -13,7 +11,7 @@ thumbnail: /综合案例/media/Intelsat 33E卫星解体碎片模拟/image01-Inte
 
 ![Intelsat33E卫星爆炸解体模拟图](./media/Intelsat33E卫星解体碎片模拟/image01-Intelsat33E卫星爆炸解体模拟图.png)
 
-本文以此次 Intelsat 33E 解体事件为背景，基于航天器标准解体模型和 [ATK 仿真平台](https://www.osredm.com/atknudt/atk)二次开发的 Connect 模式对本次事故产生的解体碎片进行演化分析。首先利用 C++ 编写解体模型，通过离散采样的方式生成大量解体碎片，得到不同解体碎片的速度矢量。然后，利用 ATK.connect 动态库将碎片对象以自定义位置速度的方式插入 ATK 场景中，并使用内置预报器对碎片群进行为期 7 天的演化分析，得到碎片的分布特性，直观地揭示解体碎片在 GEO 区域持续分布演化。
+本文以此次 Intelsat 33E 解体事件为背景，基于航天器标准解体模型和 ATK 仿真平台二次开发的 Connect 模式对本次事故产生的解体碎片进行演化分析。首先利用 C++ 编写解体模型，通过离散采样的方式生成大量解体碎片，得到不同解体碎片的速度矢量。然后，利用 ATK.connect 动态库将碎片对象以自定义位置速度的方式插入 ATK 场景中，并使用内置预报器对碎片群进行为期 7 天的演化分析，得到碎片的分布特性，直观地揭示解体碎片在 GEO 区域持续分布演化。
 
 ## 解体碎片生成
 
@@ -25,50 +23,52 @@ thumbnail: /综合案例/media/Intelsat 33E卫星解体碎片模拟/image01-Inte
 
 ## 场景创建与碎片对象插入
 
-1. **创建想定**：安装并运行 ATK.exe，显示ATK界面后不要进行任何操作！
+1. **创建想定**：安装并运行 ATK.exe，显示 ATK 界面后不要进行任何操作！
 
-2. **插入碎片对象**：首先将 ATK Connect 动态库文件从安装目录（`IntegratingWithATK/connect/Matlab/Win_2015b`）拷贝至 MATLAB 工作目录，并使用 `atkOpen` 命令使 MATLAB 与 ATK 建立连接。
+2. **插入碎片对象**
 
-![ATK Connect动态库文件](./media/Intelsat33E卫星解体碎片模拟/image04-ATK-Connect动态库文件.png)
+   首先将 ATK Connect 动态库文件从安装目录（`IntegratingWithATK/connect/Matlab/Win_2015b`）拷贝至 MATLAB 工作目录，并使用 `atkOpen` 命令使 MATLAB 与 ATK 建立连接。
 
-然后，读取解体碎片位置速度参数，逐个利用 `New` 命令新建碎片对象，并利用 `SetState` 命令设置其位置速度信息。待所有碎片插入后，使用 `Save` 命令保存 ATK 场景文件，并使用 `atkClose` 命令关闭 ATK 与 MATLAB 的连接。整个流程的 MATLAB 代码如下：
+   ![ATK Connect动态库文件](./media/Intelsat33E卫星解体碎片模拟/image04-ATK-Connect动态库文件.png)
 
-```matlab
-% 链接ATK接口
-conID = atkOpen();
+   然后，读取解体碎片位置速度参数，逐个利用 `New` 命令新建碎片对象，并利用 `SetState` 命令设置其位置速度信息。待所有碎片插入后，使用 `Save` 命令保存 ATK 场景文件，并使用 `atkClose` 命令关闭 ATK 与 MATLAB 的连接。整个流程的 MATLAB 代码如下：
 
-%新建场景同时设置仿真时间
-atkConnect(conID, 'New', '/ Scenario Intelsat33E-explosion');
-atkConnect(conID, 'SetAnalysisTimePeriod', '* "2024-10-19 04:30:00.000" "2024-10-26 04:30:00.000"');
-atkConnect(conID, 'Animate', '* Reset');
+   ```matlab
+    % 链接ATK接口
+    conID = atkOpen();
 
-% 读取数据文件
-filename = 'is33e_result_10cm.csv';
-data = importdata(filename);
-data = data.textdata;
-vdata = data(2:end,9); rdata = data(2:end,10);
-% vdata = data(2:300,9); rdata = data(2:300,10);
+    %新建场景同时设置仿真时间
+    atkConnect(conID, 'New', '/ Scenario Intelsat33E-explosion');
+    atkConnect(conID, 'SetAnalysisTimePeriod', '* "2024-10-19 04:30:00.000" "2024-10-26 04:30:00.000"');
+    atkConnect(conID, 'Animate', '* Reset');
 
-for ic = 1:1:size(vdata,1)
-    r  = char(rdata(ic,:)); r = r(2:end-1);
-    v  = char(vdata(ic,:)); v = v(2:end-1);
-    rv = [r,' ',v];
-    name = ['DB',num2str(ic)];
+    % 读取数据文件
+    filename = 'is33e_result_10cm.csv';
+    data = importdata(filename);
+    data = data.textdata;
+    vdata = data(2:end,9); rdata = data(2:end,10);
+    % vdata = data(2:300,9); rdata = data(2:300,10);
 
-    % 新建卫星对象
-    atkConnect(conID, 'New', ['/ Satellite ',name]);
-    % 设置位置速度信息
-    cmd = ['*/Satellite/',name,' Cartesian TwoBody NoProp 60.0 J2000 "27 May 2024 00:00:00.00" ',rv]; % 
-    atkConnect(conID, 'SetState',cmd(1:end-1));
-end
+    for ic = 1:1:size(vdata,1)
+        r  = char(rdata(ic,:)); r = r(2:end-1);
+        v  = char(vdata(ic,:)); v = v(2:end-1);
+        rv = [r,' ',v];
+        name = ['DB',num2str(ic)];
 
-% 重置场景信息，加载卫星数据！！！
-atkConnect(conID, 'Animate', '* Reset');
+        % 新建卫星对象
+        atkConnect(conID, 'New', ['/ Satellite ',name]);
+        % 设置位置速度信息
+        cmd = ['*/Satellite/',name,' Cartesian TwoBody NoProp 60.0 J2000 "27 May 2024 00:00:00.00" ',rv]; % 
+        atkConnect(conID, 'SetState',cmd(1:end-1));
+    end
 
-% ATK保存退出
-atkConnect(conID,'Save','/ *');
-atkClose(conID);
-```
+    % 重置场景信息，加载卫星数据！！！
+    atkConnect(conID, 'Animate', '* Reset');
+
+    % ATK保存退出
+    atkConnect(conID,'Save','/ *');
+    atkClose(conID);
+   ```
 
 插入碎片后的 ATK 界面如下图所示。为使碎片的显示更清晰，框选所有碎片对象，右键点击 <kbd>批量设置属性</kbd>，在【二维视图－显示】内，取消勾选【显示三维轨道】，单击 <kbd>批量应用当前页</kbd> 以更改设置。
 

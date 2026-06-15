@@ -5,8 +5,6 @@ thumbnail: /综合案例/media/基于ATK.Connect模式的轨道快速转移的C+
 
 # 基于ATK.Connect模式的轨道快速转移的C++实现
 
-完成人：董敏，杨震，王华，陈明畅 | 完成日期：2026 年 6 月 12 日 | ATK 版本号：ATK 4.0
-
 ## 内容简介
 
 本案例实现半径为 6700 km 的近地停泊轨道（LEO 轨道）快速转移到半径为 42164.197 km 的地球同步轨道（GEO 轨道）的轨道机动规划设计。案例使用基于 Connect 模式的集成客户端实现。
@@ -29,38 +27,21 @@ thumbnail: /综合案例/media/基于ATK.Connect模式的轨道快速转移的C+
 
 1. 启动 ATK 软件，在 <kbd>集成</kbd> 菜单栏中，单击 <kbd>客户端</kbd> 按钮，弹出客户端对话框；
 
-2. 在 <kbd>HOME</kbd> 菜单栏中，点击 <kbd>New</kbd> 按钮，在【Command Script】对话框输入参数设置命令（代码可以直接拷贝到对话框）。执行代码说明如下：
+2. 在 <kbd>HOME</kbd> 菜单栏中，点击 <kbd>New</kbd> 按钮，在【Command Script】对话框输入参数设置命令（代码可以直接拷贝到对话框）：
 
 ```lua
-# 代码结构功能流程说明
-#（1）ATK与客户端连接
-#（2）想定新建并设置属性
-#（3）卫星新建与轨道预报设置为机动规划
-#（4）机动规划添加段，新添加卫星会有默认初始段
-#（5）初始段属性设置
-#（6）第一个预报段属性设置
-#（7）第一个瞄准段中机动段属性设置
-#（8）第一个瞄准段添加属性页，并设置属性页中控制变量与约束条件的属性
-#（9）第二个预报段属性设置
-#（10）第二个瞄准段中机动段属性设置
-#（11）第二个瞄准段添加属性页，并设置属性页中控制变量与约束条件的属性
-#（12）第三个预报段属性设置
-#（13）机动规划运行
-#（14）想定保存
-#（15）ATK与客户端断开连接
-
-# ATK与客户端连接
+# (1) ATK与客户端连接
 conID = atkOpen();
 
-# 想定新建并设置属性
+# (2) 想定新建并设置属性
 atkConnect(conID, 'New', '/ Scenario FastTransfer');
 atkConnect(conID, 'SetAnalysisTimePeriod', '* "5 Nov 2022 00:00:00.000" "8 Nov 2022 00:00:00.000"');
 
-# 卫星新建与轨道预报设置为机动规划
+# (3) 卫星新建与轨道预报设置为机动规划
 atkConnect(conID, 'New', '/ Satellite FastTransfer');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetProp');
 
-# 机动规划添加段，新添加卫星会有默认初始段
+# (4) 机动规划添加段（新添加卫星会有默认初始段）
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer InsertSegment MainSequence.SegmentList.- Propagate');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer InsertSegment MainSequence.SegmentList.- Target_Sequence');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer InsertSegment MainSequence.SegmentList.Target_Sequence.SegmentList.- Maneuver');
@@ -69,7 +50,7 @@ atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer InsertSegment MainSequ
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer InsertSegment MainSequence.SegmentList.Target_Sequence1.SegmentList.- Maneuver');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer InsertSegment MainSequence.SegmentList.- Propagate');
 
-# 初始段属性设置
+# (5) 初始段属性设置
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Initial_State.InitialState.Epoch "5 Nov 2022 00:00:00.000" UTCG');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Initial_State.CoordinateType "Modified Keplerian"');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.sma 6700000 m');
@@ -79,25 +60,25 @@ atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.w 0');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.ta 0');
 
-# 第一个预报段属性设置
+# (6) 第一个预报段属性设置
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate.SegmentColor -16776961');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate.StoppingConditions Duration');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate.StoppingConditions.Duration.TripValue 7200 sec');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate.StoppingConditions.Duration.Tolerance 0.0001 sec');
 
-# 第一个瞄准段中机动段属性设置
+# (7) 第一个瞄准段中机动段属性设置
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Maneuver.ImpulsiveMnvr.ThrustAxes "Satellite VNC(Earth)"');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer AddMCSSegmentControl MainSequence.SegmentList.Target_Sequence.SegmentList.Maneuver ImpulsiveMnvr.Cartesian.X');
 
-# 第一个瞄准段添加属性页，并设置属性页中控制变量与约束条件的属性
+# (8) 第一个瞄准段添加属性页
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Target_Sequence.Profiles Differential_Corrector');
-# 设置属性页中控制变量属性
+# 控制变量
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X Active true');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X MaxStep 100 m/sec');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X Correction 2781.50365947627 m/sec');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X Perturbation 0.1 m/sec');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X Scale 1 m/sec');
-# 设置属性页中约束条件属性
+# 约束条件
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Maneuver.Results "RadiusOfApoapsis"');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver StateCalcRadiusOfApoapsis Active true');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver StateCalcRadiusOfApoapsis Desired 84328394 m');
@@ -105,21 +86,21 @@ atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue 
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver StateCalcRadiusOfApoapsis tolerance 0.1 m');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver StateCalcRadiusOfApoapsis Weight 1');
 
-# 第二个预报段属性设置
+# (9) 第二个预报段属性设置
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate1.SegmentColor -16711936');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate1.StoppingConditions Apoapsis');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate1.StoppingConditions.Apoapsis.Tolerance 1e-4 m');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate1.StoppingConditions.Apoapsis.RepeatCount 1');
 
-# 第二个瞄准段中机动段属性设置
+# (10) 第二个瞄准段中机动段属性设置
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Target_Sequence1.SegmentList.Maneuver.SegmentColor -16711681');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Target_Sequence1.SegmentList.Maneuver.ImpulsiveMnvr.ThrustAxes "Satellite VNC(Earth)"');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer AddMCSSegmentControl MainSequence.SegmentList.Target_Sequence1.SegmentList.Maneuver ImpulsiveMnvr.Cartesian.X');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer AddMCSSegmentControl MainSequence.SegmentList.Target_Sequence1.SegmentList.Maneuver ImpulsiveMnvr.Cartesian.Z');
 
-# 第二个瞄准段添加属性页
+# (11) 第二个瞄准段添加属性页
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Target_Sequence1.Profiles Differential_Corrector');
-# 设置属性页中控制变量属性
+# 控制变量
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X Active true');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X MaxStep 300 m/sec');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X Correction 1581.97670664023 m/sec');
@@ -130,7 +111,7 @@ atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue Mai
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.Z Correction 30.0 m/sec');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.Z Perturbation 0.1 m/sec');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.Z Scale 1 m/sec');
-# 设置属性页中约束条件属性
+# 约束条件
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Target_Sequence1.SegmentList.Maneuver.Results "Eccentricity" "CosineVFPA"');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver StateCalcEccentricity Active true');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver StateCalcEccentricity Desired 0');
@@ -143,21 +124,21 @@ atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue 
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver StateCalcCosineVFPA tolerance 0.1');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetMCSConstraintValue MainSequence.SegmentList.Target_Sequence1.Profiles.Differential_Corrector Maneuver StateCalcCosineVFPA Weight 1');
 
-# 第三个预报段属性设置
+# (12) 第三个预报段属性设置
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate2.SegmentColor -65536');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate2.StoppingConditions Duration');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate2.StoppingConditions.Duration.TripValue 259200 sec');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer SetValue MainSequence.SegmentList.Propagate2.StoppingConditions.Duration.Tolerance 0.0001 sec');
 
-# 机动规划运行
+# (13) 机动规划运行
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer RunMCS');
 atkConnect(conID, 'Animate', '* Reset');
 atkConnect(conID, 'Astrogator', '*/Satellite/FastTransfer ApplyAllProfileChanges');
 
-# 想定保存
+# (14) 想定保存
 atkConnect(conID, 'Save', '/ *');
 
-# ATK与客户端断开连接
+# (15) ATK与客户端断开连接
 atkClose(conID);
 ```
 
