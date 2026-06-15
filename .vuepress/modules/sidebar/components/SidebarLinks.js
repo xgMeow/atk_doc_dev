@@ -1,4 +1,4 @@
-import { defineComponent, h, ref, watch, onMounted, onUnmounted } from "vue";
+import { computed, defineComponent, h, ref, watch, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vuepress/client";
 import SidebarChild from "@theme-hope/modules/sidebar/components/SidebarChild";
 import SidebarGroup from "@theme-hope/modules/sidebar/components/SidebarGroup";
@@ -98,16 +98,16 @@ export default defineComponent({
             return false;
         };
 
-        // 过滤配置
-        const filteredConfig = props.config.map((item, index) => {
+        // 过滤配置（使用 computed 确保 props.config 或 searchQuery 变化时重新计算）
+        const filteredConfig = computed(() => props.config.map((item, index) => {
             if (!props.searchQuery) return { item, index };
             if (hasMatchedChild(item)) {
                 return { item, index };
             }
             return null;
-        }).filter(Boolean);
+        }).filter(Boolean));
 
-        return () => h("ul", { class: "vp-sidebar-links" }, filteredConfig.map(({ item, index }) => {
+        return () => h("ul", { class: "vp-sidebar-links" }, filteredConfig.value.map(({ item, index }) => {
             return h("li", {
                 class: ["sidebar-item-wrapper"]
             }, item.type === "group"
