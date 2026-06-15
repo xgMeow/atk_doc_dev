@@ -242,24 +242,25 @@ h3 {
 .vp-navbar .vp-nav-item > .nav-link {
   font-size: 18px;
   color: var(--titile-color);
-  padding: 20px 10px 7px 10px;
+  padding: 20px 10px 5px 10px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+
+  // 禁用主题的 ::after 下划线动画
+  &::after {
+    content: none;
+  }
 }
+
 .vp-navbar .vp-nav-item > .nav-link.active {
   color: var(--titile-color);
   font-weight: bold;
+  border-bottom-color: rgb(255 255 255 / 80%);
 }
+
 .vp-navbar .vp-nav-item > .nav-link:hover {
   font-weight: bold;
-}
-.vp-navbar .vp-nav-item > .nav-link::after {
-  // position: relative;
-  // inset: auto 50% 0;
-  // height: 2px;
-  // border-radius: 1px;
-
-  // visibility: hidden;
-  // transition: inset 0.2s ease-in-out;
-  background: rgb(255 255 255 / 80%); 
+  border-bottom-color: rgb(255 255 255 / 80%);
 }
 // .toggle-sidebar-wrapper {
 //   position: fixed;
