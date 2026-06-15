@@ -1,29 +1,19 @@
 ---
-description: 基于 ATK.Component 组件模式，使用 C++ 语言实现近地停泊轨道（LEO）到地球同步轨道（GEO）的快速轨道机动规划设计与分析。
+description: 使用 C++ 基于 ATK.Component 组件模式实现 LEO 到 GEO 快速轨道机动规划设计。
 thumbnail: /综合案例/media/轨道快速转移的C++实现/image06-快速转移轨道.png
 ---
 
 # 基于ATK.Component模式的轨道快速转移的C++实现
 
-完成人：董敏，杨震，王华，陈明畅 | 完成日期：2026 年 6 月 12 日 | ATK 版本号：ATK 4.0
-
 ## 内容简介
 
 本案例实现半径为 6700 km 的近地停泊轨道（LEO 轨道）快速转移到半径为 42164.197 km 的地球同步轨道（GEO 轨道）的轨道机动规划设计。案例使用 C++ 语言基于组件模式的 ATK.Component 动态库编码实现。
 
-本案例使用 VS 工程，通过提供的头文件及库文件，使用 C++ 语言进行代码编译，完成案例实现，并保存想定文件。提供的文件及路径如下表所示：
+本案例使用 VS 工程，通过提供的头文件及库文件，使用 C++ 语言进行代码编译，完成案例实现，并保存想定文件。提供的文件如下所示：
 
-|       文件分类       |                      文件路径                      |                       说明                       |
-|:--------------------:|:--------------------------------------------------:|:------------------------------------------------:|
-|    头文件（`.h`）    | `(ATK根目录)\IntegratingWithATK\component\include` | 包含 `IAtkObjectH.h` 等 ATK Component 接口头文件 |
-| 动态库文件（`.dll`） |   `(ATK根目录)\IntegratingWithATK\component\bin`   |     ATK Component 运行时所需的动态链接库文件     |
-| 静态库文件（`.lib`） |   `(ATK根目录)\IntegratingWithATK\component\lib`   |       ATK Component 编译时所需的静态库文件       |
-|     辅助数据文件     |               `(ATK根目录)\AstroData`              |    ATK 运行所需的引力模型、星历等辅助数据文件    |
-
-::: tip 说明
-`(ATK根目录)` 指 ATK 软件的安装目录，与用户的实际设置有关。
-示例： `D:\ATK-4.0.0`。
-:::
+<PathViewer
+  :relative-paths="files"
+/>
 
 本案例会生成想定文件 "FastTransfer.atk"、报告文件 "J2000位置速度.txt"，生成文件均在工程输出目录的 Output 文件夹中，如下图所示：
 
@@ -45,9 +35,7 @@ thumbnail: /综合案例/media/轨道快速转移的C++实现/image06-快速转�
 
 4. 新建 "FastTransfer.cpp" 文件，包含头文件 "IAtkObjectH.h"，添加 main() 函数，编写案例代码（代码可以直接拷贝编译运行）。
 
-FastTransfer.cpp 文件代码说明如下：
-
-```cpp
+```cpp title="FastTransfer.cpp"
 // 代码结构功能流程说明
 //（1）包含所需头文件，并添加执行函数
 //（2）添加根节点
@@ -238,7 +226,9 @@ int main()
 ```
 
 ::: warning 注意
+
 将上述代码复制到 VS 工程前，务必确保 cpp 文件编码格式选择的是 `简体中文(GB2312) - 代码页936`，否则在可执行文件编译生成阶段会出现错误和警告：`该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失`。
+
 :::
 
 5. 点击 <kbd>本地 Windows 调试器</kbd> 运行程序，使用保存想定接口，会生成想定文件，在项目目录 Output 文件夹中可查看生成文件。
@@ -262,14 +252,16 @@ int main()
 ![卫星快速转移轨迹三维展示](./media/轨道快速转移的C++实现/image10-卫星快速转移轨迹三维展示.png)
 
 ::: tip 说明
+
 若发现快速转移轨迹显示不全，请在 ATK 图形界面中，右键点击 "Satellite1" 卫星对象，选择 <kbd>属性</kbd>，进入卫星对象属性设置界面，然后选择【二维视图 -> 轨迹】设置，将轨迹类型由【时间】更改为【所有】。
+
 :::
 
 ## 附录：工程配置
 
 以 Visual Studio 2015 为例（库文件可支持 VS 更高版本），进行项目配置。假设用户已新建工程 "Test"，并新建 cpp 文件 "FastTransfer.cpp"。
 
-1.**文件配置**
+1. **文件配置**
 
 二次开发所需的文件及路径如下表所示。
 
@@ -284,7 +276,7 @@ int main()
 
 ![期望工程配置图](./media/轨道快速转移的C++实现/image19-工程配置示意图.png)
 
-2.**项目添加文件**
+2. **项目添加文件**
 
 右键单击 "Test" 项目 -> <kbd>添加</kbd> -> <kbd>新建项</kbd>。
 
@@ -294,19 +286,19 @@ int main()
 
 ![新建文件对话框](./media/轨道快速转移的C++实现/image14-新建文件对话框.png)
 
-3.**修改工程输出目录**
+3. **修改工程输出目录**
 
 右键单击 "Test" 项目 -> <kbd>属性</kbd>。配置平台改为`所有配置、所有平台`模式，点击 <kbd>常规</kbd> -> <kbd>输出目录</kbd>，将输出目录修改为 "Test" 工程根目录。
 
 ![修改输出目录](./media/轨道快速转移的C++实现/image15-修改输出目录.png)
 
-4.**附加包含目录设置**
+4. **附加包含目录设置**
 
 点击 <kbd>C/C++</kbd> -> <kbd>常规</kbd> -> <kbd>附加包含目录</kbd>，将头文件目录(`include`文件夹)添加至附加包含目录。点击 <kbd>应用</kbd> 按钮将环境配置应用到项目，点击 <kbd>确定</kbd> 按钮。
 
 ![附加包含目录设置](./media/轨道快速转移的C++实现/image16-附加包含目录设置.png)
 
-5.**附加库目录和附加依赖项设置**
+5. **附加库目录和附加依赖项设置**
 
 点击 <kbd>链接器</kbd> -> <kbd>常规</kbd> -> <kbd>附加库目录</kbd>，将库文件目录(`lib`文件夹)添加至附加库目录。再点击 <kbd>链接器</kbd> -> <kbd>输入</kbd> -> <kbd>附加依赖项</kbd>，将库文件目录下的 `IAtkObject.lib`和`IAtkObjectD.lib` 添加至附加依赖项。点击 <kbd>应用</kbd> 按钮将环境配置应用到项目，点击 <kbd>确定</kbd> 按钮。
 
@@ -314,7 +306,7 @@ int main()
 
 ![附加依赖项设置](./media/轨道快速转移的C++实现/image21-附加依赖项添加.png)
 
-6.**配置动态库文件和辅助数据文件**
+6. **配置动态库文件和辅助数据文件**
 
 推荐将 "Test" 项目配置选择为 `Release` 模式，右键单击 "Test" 项目 -> <kbd>生成</kbd>，此时终端将输出生成成功标志：
 
@@ -327,3 +319,14 @@ int main()
 可以看出，`Test.exe` 可执行文件已生成，然而尝试运行后会发现输出结果与预期不符，这是因为动态库文件(`bin`文件夹)和辅助数据文件(`AstroData`文件夹)未完成配置。需要将 **`bin` 文件夹下的所有 `dll` 文件** 和 **`AstroData` 文件夹** 移动到 `"Test" 工程根目录(与可执行文件在同一目录)`下，完成后 "Test" 工程根目录结构如下图所示：
 
 ![最终工程根目录结构](./media/轨道快速转移的C++实现/image24-最终工程根目录结构.png)
+
+<script setup>
+import PathViewer from "@components/PathViewer/PathViewer.vue";
+
+const files = [
+  { path: 'IntegratingWithATK\\component\\include', name: '头文件（.h）', description: '包含 IAtkObjectH.h 等 ATK Component 接口头文件' },
+  { path: 'IntegratingWithATK\\component\\bin', name: '动态库文件（.dll）', description: 'ATK Component 运行时所需的动态链接库文件' },
+  { path: 'IntegratingWithATK\\component\\lib', name: '静态库文件（.lib）', description: 'ATK Component 编译时所需的静态库文件' },
+  { path: 'AstroData', name: '辅助数据文件', description: 'ATK 运行所需的引力模型、星历等辅助数据文件' },
+];
+</script>
