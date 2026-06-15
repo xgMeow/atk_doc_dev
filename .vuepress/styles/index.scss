@@ -610,6 +610,16 @@ body{
   }
 }
 
+// 当 breadcrumb: false 时隐藏空的面包屑容器（避免残留灰色边框）
+.vp-breadcrumb.disable {
+  display: none;
+}
+
+// 面包屑隐藏后减少页面标题顶部的空白
+.vp-breadcrumb.disable + .vp-page-title {
+  padding-top: 0;
+}
+
 .vp-breadcrumb li.is-active a{
   font-weight: bold;
 }
