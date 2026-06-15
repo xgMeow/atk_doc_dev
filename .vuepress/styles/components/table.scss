@@ -27,6 +27,7 @@
   text-align: left !important; // 如果居中的话，有些内容长的表格显示会很奇怪，不便于阅读
   word-break: keep-all;
   overflow-wrap: break-word;
+  line-height: 2;
 }
 
 .theme-hope-content th {
@@ -35,4 +36,11 @@
   font-weight: 600;
   color: #67676c;
   background-color: #f6f6f7;
+}
+
+li {
+  ul {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+  }
 }

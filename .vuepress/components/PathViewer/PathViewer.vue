@@ -43,20 +43,22 @@
           📂 暂无文件列表
         </div>
         <div v-else v-for="(item, index) in displayPaths" :key="index" class="list-item">
-          <div class="path-content">
-            <span class="path-icon" v-html="getIconHtml(item)"></span>
-            <div class="path-info">
-              <div class="display-name" v-if="item.displayName !== item.fullPath">
-                {{ item.displayName }}
-              </div>
-              <div class="full-path" :class="{ 'no-name': item.displayName === item.fullPath }">
-                {{ item.fullPath }}
-              </div>
+          <span class="path-icon" v-html="getIconHtml(item)"></span>
+          <div class="path-info">
+            <div class="display-name">
+              {{ item.displayName }}
+            </div>
+            <div v-if="item.description" class="path-description">
+              {{ item.description }}
+            </div>
+            <div class="path-row" v-if="item.displayName !== item.fullPath">
+              <code class="full-path">{{ item.fullPath }}</code>
+              <button class="copy-btn" @click="copyPath(item.fullPath, index)" :title="'复制路径: ' + item.fullPath">
+                <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                复制
+              </button>
             </div>
           </div>
-          <button class="copy-btn" @click="copyPath(item.fullPath, index)" title="复制完整路径">
-            复制路径
-          </button>
         </div>
       </div>
     </div>
@@ -485,12 +487,14 @@ const displayPaths = computed(() => {
     .map((item) => {
       let originalPath = ''
       let customName = null
+      let description = null
 
       if (typeof item === 'string') {
         originalPath = item
       } else if (item && typeof item === 'object') {
         originalPath = item.path || ''
         customName = item.name || null
+        description = item.description || null
       } else {
         console.warn('无效的路径项:', item)
         return null
@@ -507,7 +511,7 @@ const displayPaths = computed(() => {
         if (!displayName) displayName = fullPath
       }
 
-      return { original: originalPath, fullPath, displayName, isFile }
+      return { original: originalPath, fullPath, displayName, isFile, description }
     })
     .filter((item) => item !== null)
 })
@@ -519,50 +523,53 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.quick-config-hint {
-  margin-top: 8px;
-  font-size: 12px;
-  color: #28a745;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  background: #d4edda;
-  padding: 6px 10px;
-  border-radius: 4px;
+/* ==================== CSS 变量 ==================== */
+.path-viewer {
+  --primary: #006fee;
+  --primary-hover: #005bc4;
+  --primary-light: #eef5ff;
+  --success: #16a34a;
+  --success-light: #f0fdf4;
+  --warning: #dc2626;
+  --warning-hover: #b91c1c;
+  --gray-50: #f6f8fb;
+  --gray-100: #eef1f6;
+  --gray-200: #dde1e8;
+  --gray-300: #c2c8d2;
+  --gray-400: #97a0af;
+  --gray-500: #6b7480;
+  --gray-600: #505862;
+  --gray-700: #383e47;
+  --gray-800: #282d35;
+  --gray-900: #1c2025;
+  --border-radius-sm: 5px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12);
+  --transition-fast: 0.12s ease;
 }
 
-.quick-config-btn {
-  background: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 2px 10px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.quick-config-btn:hover {
-  background: #218838;
-}
 /* 整体容器 */
 .path-viewer {
-  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
   background: #ffffff;
-  border-radius: 10px;
-  border: 2px solid #edf1fa;
-  padding: 20px;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--gray-200);
+  padding: 20px 24px;
   margin: 20px auto;
-  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
 }
 
+/* 头部区域 */
 .title-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
+  margin-bottom: 4px;
 }
 
 .title {
@@ -573,12 +580,12 @@ onMounted(() => {
 .title-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
 .collapse-arrow {
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   user-select: none;
   display: inline-flex;
@@ -586,125 +593,147 @@ onMounted(() => {
   justify-content: center;
   width: 24px;
   height: 24px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-  color: #495057;
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  color: var(--gray-600);
+  background: var(--gray-50);
 }
 
 .collapse-arrow:hover {
-  background-color: #e9ecef;
-  color: #1c7ed6;
+  background-color: var(--primary-light);
+  color: var(--primary);
 }
 
 .title-text {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--gray-900);
 }
 
 .config-hint {
   font-size: 12px;
-  color: #868e96;
-  padding-left: 32px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  color: var(--gray-600);
+  padding-left: 34px;
+  line-height: 1.4;
 }
 
 .config-btn {
-  padding: 6px 12px;
-  border: 1px solid #007bff;
-  border-radius: 4px;
-  background: #fff;
+  padding: 7px 16px;
+  border: 1px solid var(--primary);
+  border-radius: var(--border-radius-md);
+  background: white;
+  color: var(--primary);
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s;
-  background: #007bff;
-  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
   flex-shrink: 0;
-  align-self: flex-start;
+  align-self: center;
 }
 
 .config-btn:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  background: var(--primary);
+  color: white;
 }
 
+/* 根路径状态栏 */
 .root-status {
-  font-size: 14px;
-  color: #213545;
-  background: #f3f4f6;
-  font-weight: bold;
-  padding: 8px 14px;
-  border-radius: 8px;
+  font-size: 13px;
+  color: var(--gray-700);
+  background: var(--gray-50);
+  padding: 10px 14px;
+  border-radius: var(--border-radius-md);
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
   word-break: break-all;
   margin: 16px 0;
+  border: 1px solid var(--gray-200);
 }
 
+.root-status .label {
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+/* 提示框 */
 .tip-alert {
   margin: 16px 0;
-  background: #ecf5ff;
-  color: #409eff;
-  border-radius: 4px;
+  background: var(--primary-light);
+  color: var(--primary-hover);
+  border-radius: var(--border-radius-sm);
   font-size: 12px;
-  padding: 6px 10px;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 111, 238, 0.1);
 }
 
-/* 文件列表区域包装器（用于折叠过渡） */
+.quick-config-hint {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--success);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  background: var(--success-light);
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+}
+
+.quick-config-btn {
+  background: var(--success);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.quick-config-btn:hover {
+  background: #116329;
+}
+
+/* 文件列表包装器 */
 .file-list-wrapper {
-  transition: all 0.2s ease;
+  /* 无动画，直接显示/隐藏 */
 }
 
 /* 文件列表区域 */
 .file-list {
-  max-height: 320px;
+  max-height: 360px;
   overflow-y: auto;
-  border-radius: 8px;
+  border-radius: var(--border-radius-md);
+  margin-top: 8px;
+  border: 1px solid var(--gray-200);
+  background: white;
 }
 
 .empty-state {
   text-align: center;
-  padding: 40px 20px;
-  color: #adb5bd;
+  padding: 48px 20px;
+  color: var(--gray-500);
   font-size: 14px;
-  background: #f8f9fa;
-  border-radius: 8px;
+  background: var(--gray-50);
+  border-radius: var(--border-radius-md);
 }
 
-.icon-img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  vertical-align: middle;
-}
-
+/* 列表项 */
 .list-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 16px;
-  background: #ffffff;
-  border-radius: 0px;
-  transition: all 0.2s;
-  border-bottom: 1px solid #f1f3f5;
-}
-
-.list-item:hover {
-  background: #f8f9fa;
-  border-color: #e9ecef;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-}
-
-.path-content {
-  display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-  flex: 1;
-  min-width: 0;
+  padding: 12px 14px;
+  background: white;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.list-item:last-child {
+  border-bottom: none;
 }
 
 .path-icon {
@@ -715,12 +744,12 @@ onMounted(() => {
   justify-content: center;
   width: 24px;
   height: 24px;
-  overflow: hidden;
+  margin-top: 1px;
 }
 
-.path-icon img {
-  width: 100%;
-  height: 100%;
+.icon-img {
+  width: 18px;
+  height: 18px;
   object-fit: contain;
 }
 
@@ -734,246 +763,272 @@ onMounted(() => {
 
 .display-name {
   font-size: 14px;
-  font-weight: 500;
-  color: #212529;
+  font-weight: 600;
+  color: var(--gray-800);
   line-height: 1.4;
   word-break: break-word;
+}
+
+.path-description {
+  font-size: 12px;
+  color: var(--gray-600);
+  line-height: 1.45;
+}
+
+/* 路径行：全路径 + 复制按钮 */
+.path-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.path-row:hover .full-path {
+  background: #e6f0fd;
+  color: var(--gray-700);
 }
 
 .full-path {
   font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
   font-size: 11px;
-  color: #868e96;
+  color: var(--gray-600);
   word-break: break-all;
   line-height: 1.4;
+  user-select: all;
+  background: var(--gray-50);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  flex: 1;
+  min-width: 0;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
-.full-path.no-name {
-  font-size: 13px;
-  color: #212529;
-  font-weight: normal;
-}
-
+/* 复制按钮 */
 .copy-btn {
-  background: none;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
-  padding: 6px 12px;
+  background: white;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--border-radius-sm);
+  padding: 4px 10px;
   font-size: 12px;
   font-weight: 500;
-  color: #495057;
+  color: var(--gray-600);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
   display: flex;
   align-items: center;
   gap: 4px;
   white-space: nowrap;
   flex-shrink: 0;
-  margin-left: 12px;
 }
 
 .copy-btn:hover {
-  background: #e7f5ff;
-  border-color: #4dabf7;
-  color: #228be6;
-  transform: scale(0.98);
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
-/* 弹窗样式 */
+.copy-icon {
+  flex-shrink: 0;
+  stroke-width: 2;
+}
+
+/* 模态弹窗 */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  backdrop-filter: blur(2px);
+  animation: fadeIn 0.15s ease;
 }
 
 .modal-container {
-  background: #ffffff;
-  border-radius: 16px;
+  background: white;
+  border-radius: var(--border-radius-lg);
   width: 90%;
-  max-width: 500px;
-  padding: 24px;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
-  animation: modalSlideIn 0.2s ease;
+  max-width: 540px;
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+  animation: modalFadeIn 0.15s ease;
 }
 
 .modal-container h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.25rem;
+  margin: 0 0 6px 0;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: #212529;
+  color: var(--gray-900);
 }
 
 .modal-desc {
   font-size: 0.85rem;
-  color: #6c757d;
-  margin-bottom: 20px;
+  color: var(--gray-600);
+  margin-bottom: 18px;
+  line-height: 1.45;
 }
 
 .input-group {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
 .modal-container input {
   flex: 1;
-  padding: 12px 14px;
-  border: 1px solid #dee2e6;
-  border-radius: 10px;
-  font-size: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--border-radius-md);
+  font-size: 13px;
   font-family: 'SF Mono', 'Fira Code', monospace;
-  transition: all 0.2s;
-  box-sizing: border-box;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  background: white;
+  color: var(--gray-800);
 }
 
 .modal-container input:focus {
   outline: none;
-  border-color: #4dabf7;
-  box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 111, 238, 0.12);
 }
 
 .btn-auto-fetch {
   padding: 0 16px;
-  background: #f0f2f5;
-  border: 1px solid #dee2e6;
-  border-radius: 10px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--border-radius-md);
   font-size: 13px;
   font-weight: 500;
-  color: #495057;
+  color: var(--gray-600);
   cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .btn-auto-fetch:hover {
-  background: #e9ecef;
-  border-color: #adb5bd;
+  background: var(--gray-100);
+  border-color: var(--gray-400);
+  color: var(--gray-800);
 }
 
 .auto-detect-hint {
   font-size: 12px;
-  color: #28a745;
-  margin-bottom: 12px;
-  padding: 6px 10px;
-  background: #d4edda;
-  border-radius: 6px;
+  color: var(--success);
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  background: var(--success-light);
+  border-radius: var(--border-radius-sm);
   word-break: break-all;
 }
 
-/* 新增示例提示样式 */
 .example-hint {
   font-size: 12px;
-  background: #f0f7ff;
-  border-left: 3px solid #0083fe;
-  padding: 10px 12px;
-  border-radius: 8px;
-  margin: 12px 0;
-  color: #2c3e50;
+  background: var(--primary-light);
+  border: 1px solid rgba(0, 111, 238, 0.1);
+  padding: 12px 14px;
+  border-radius: var(--border-radius-md);
+  margin: 14px 0;
+  color: var(--gray-700);
   line-height: 1.5;
-  word-break: break-word;
 }
+
 .example-hint code {
-  background: #e9ecef;
-  padding: 2px 4px;
-  border-radius: 4px;
+  background: rgba(0, 111, 238, 0.08);
+  padding: 2px 6px;
+  border-radius: 3px;
   font-family: monospace;
   font-size: 11px;
-  color: #d63384;
+  color: #8250df;
 }
 
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
-  margin-top: 8px;
+  gap: 10px;
+  margin-top: 14px;
 }
 
 .modal-actions button {
-  padding: 6px 18px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: var(--border-radius-md);
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color var(--transition-fast);
   border: none;
 }
 
 .btn-save {
-  background: #0083fe;
+  background: var(--primary);
   color: white;
 }
 
 .btn-save:hover {
-  background: #0053cc;
+  background: var(--primary-hover);
 }
 
 .btn-clear {
-  background: #ff284b;
-  color: #ffffff;
-  border: 1px solid #dee2e6;
+  background: var(--warning);
+  color: white;
 }
 
 .btn-clear:hover {
-  background: #e90023;
-  border-color: #dc3545;
+  background: var(--warning-hover);
 }
 
 .btn-cancel {
-  background: #f5f5f5;
-  color: #495057;
-  border: 1px solid #dee2e6;
+  background: var(--gray-50);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-300);
 }
 
 .btn-cancel:hover {
-  background: #ebebeb;
+  background: var(--gray-100);
 }
 
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Toast 提示 */
 .toast-message {
   position: fixed;
-  bottom: 24px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  background: #2c3e50;
+  background: rgba(26, 30, 35, 0.94);
   color: white;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 40px;
   font-size: 13px;
   font-weight: 500;
   z-index: 1100;
   pointer-events: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(4px);
-  white-space: nowrap;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(8px);
   max-width: 90vw;
-  white-space: normal;
-  word-break: break-all;
+  word-break: break-word;
   text-align: center;
+  line-height: 1.4;
+  animation: toastIn 0.15s ease;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
 }
 
 .fade-enter-from,
@@ -981,22 +1036,57 @@ onMounted(() => {
   opacity: 0;
 }
 
-/* 滚动条样式 */
+/* 滚动条 */
 .file-list::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 .file-list::-webkit-scrollbar-track {
-  background: #fff !important;
-  border-radius: 10px;
+  background: transparent;
 }
 
 .file-list::-webkit-scrollbar-thumb {
-  background: #adb5bd;
+  background: var(--gray-300);
   border-radius: 10px;
 }
 
 .file-list::-webkit-scrollbar-thumb:hover {
-  background: #9ba2aa;
+  background: var(--gray-400);
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  .path-viewer {
+    padding: 16px;
+    margin: 12px;
+  }
+
+  .title-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .config-btn {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .config-hint {
+    padding-left: 0;
+  }
+
+  .list-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .path-row {
+    flex-wrap: wrap;
+  }
+
+  .modal-container {
+    padding: 20px;
+  }
 }
 </style>

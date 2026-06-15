@@ -116,7 +116,6 @@ mjx-container {
 .vp-breadcrumb li{
   position: relative;
   padding-left: 1em; /* 为箭头留空间 */
-  line-height: 32px;
 }
 // 面包屑li之间的箭头
 .vp-breadcrumb li + li::before{
@@ -182,7 +181,6 @@ p{
   --navbar-bg-color:linear-gradient(to top, #003cb4, #0084ff);
   --title-color:#213545;
   --note-bg-color:#f6f6f7;
-  --detail-bg-color: #f3f4f6; //收缩栏背景色
 }
 
 // 收缩栏
@@ -263,30 +261,6 @@ h3 {
   // transition: inset 0.2s ease-in-out;
   background: rgb(255 255 255 / 80%); 
 }
-.vp-sidebar-link{
-  margin: 2px 0;
-  border-radius: 0 20px 20px 0;
-}
-.vp-sidebar-link:hover {
-  background: #edeeee;
-  color: var(--menu-text-color);
-  // border-radius: 6px;
-}
-.vp-sidebar-link.active {
-  // 扁平
-  background: #027cfb;
-  color: #fff;
-  font-weight: 500;
-}
-
-.vp-sidebar-header.clickable:hover {
-  // background: #edeeee;
-  background: #fff;
-  font-weight: bold;
-  // border-radius: 0 20px 20px 0;
-}
-
-
 // .toggle-sidebar-wrapper {
 //   position: fixed;
 //   top: var(--navbar-height);
@@ -531,8 +505,6 @@ h4 {
 
 p{
   font-size: 17px;
-  line-height: 32px;
-  // text-indent: 2em; // 缩进2个字符
 }/*正文首行缩进*/
 
 li p {
@@ -595,7 +567,6 @@ figcaption{
 }
 
 body{
-  line-height: 24px;
   color: #3c3c43;
 }
 
@@ -740,6 +711,17 @@ li.vp-toc-item.active{
 
 strong {
   font-weight: bolder;
+}
+
+p, ul, ol{
+  line-height: 32px;
+}
+
+.theme-hope-content {
+
+  p,ul,ol {
+    line-height: 2;
+  }
 }
 
 a {
