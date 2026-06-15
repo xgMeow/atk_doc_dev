@@ -8,7 +8,7 @@
 .. toctree::
    :glob:
    
-   2-Connect命令库/contents
+   1-Connect对象命令库/contents
    3-客户端接口/contents
    4-Matlab接口/contents
    5-Java接口/contents

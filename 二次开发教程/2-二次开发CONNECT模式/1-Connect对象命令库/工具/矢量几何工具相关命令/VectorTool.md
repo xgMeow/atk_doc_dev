@@ -14,7 +14,7 @@ VectorTool <ScenarioPath> {Options}
 
 | 参数 | 说明 |
 | ------------------------------------- | ------------------  |
-| `{Create \| Modify \| Delete}` | 有关使用 `VectorTool` 命令创建、修改和删除向量几何组件及模板的详细信息，请参阅以下链接。[VectorTool Angle](./17-工具.md#vectortool-angle)、[VectorTool Axes](./17-工具.md#vectortool-axes)、[VectorTool Plane](./17-工具.md#vectortool-plane)、[VectorTool Point](./17-工具.md#vectortool-point)、[VectorTool System](./17-工具.md#vectortool-system)、[VectorTool Vector](./17-工具.md#vectortool-vector) |
+| `{Create \| Modify \| Delete}` | 有关使用 `VectorTool` 命令创建、修改和删除向量几何组件及模板的详细信息，请参阅以下链接。[VectorTool Angle](./VectorTool%20Angle.md)、[VectorTool Axes](./VectorTool%20Axes.md)、[VectorTool Plane](./VectorTool%20Plane.md)、[VectorTool Point](./VectorTool%20Point.md)、[VectorTool System](./VectorTool%20System.md)、[VectorTool Vector](./VectorTool%20Vector.md) |
 
 ## 示例
 
