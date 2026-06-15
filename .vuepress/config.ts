@@ -13,7 +13,7 @@ export const useConfig = ({type, plat=""}) => {
     // GitHub Pages 部署路径。仓库名是 atk_doc，所以网站在 /atk_doc/ 子目录下
     base: siteBase,
     lang: "zh-CN",
-    title: standalone ? "ATK 帮助文档(离线版)": "ATK 帮助文档",
+    title: standalone ? "Aerospace Tool Kit(离线版)": "Aerospace Tool Kit",
     description: "加快工业软件国产化，服务航天强国建设",
     // 配置网站图标
     head: [['link', { rel: 'icon', href: '/images/logo.png'}]],

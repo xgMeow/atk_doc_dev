@@ -43,11 +43,7 @@ export const useHopeTheme = ({ type, plat="" }) =>
     navbar: useNavbar({ type }),
     sidebarSorter: ["readme", "order", "filename", "title"],
     // 侧边栏
-    // sidebar,
-    sidebar: {
-      "/": "structure",
-      // "/二次开发教程/": "structure"
-    },
+    sidebar,
 
     // 页脚
     footer: "加快工业软件国产化，服务航天强国建设",
