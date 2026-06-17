@@ -4,7 +4,7 @@ export default sidebar({
   "/综合案例/": "structure",
   "/二次开发教程/": "structure",
   "/": [
-    "",
+    // "",
     {
       text: "安装",
       prefix: "01-安装/",

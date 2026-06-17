@@ -12,6 +12,7 @@
 // 代码块样式
 @import "components/code.scss";
 
+
 // 文章中的链接
 a{
   color: #235ee1;
@@ -561,7 +562,7 @@ figcaption{
 
 
 // 所有标题都加粗
-.vp-page h1 a, .vp-page h2 a, .vp-page h3 a, .vp-page h4 a, .vp-page h5 a, .vp-page h6 a, .vp-catalog-main-title {
+.vp-page h1 a, .vp-page h2 a, .vp-page h3 a, .vp-page h4 a, .vp-page h5 a, .vp-page h6 a{
   font-weight: bold !important;
   color: var(--title-color);
   font-family: var(--font-family-heading);
@@ -619,6 +620,9 @@ body{
 // 面包屑隐藏后减少页面标题顶部的空白
 .vp-breadcrumb.disable + .vp-page-title {
   padding-top: 0;
+  h1{
+    padding-top: 32px !important;
+  }
 }
 
 .vp-breadcrumb li.is-active a{
@@ -633,16 +637,6 @@ body{
 } 
 .page-info .icon {
   color: #8f959e;
-}
-
-.vp-sub-catalogs-wrapper{
-  a{
-    color:#646a73;
-    &:hover{
-      color: #646a73;
-      background-color: #e8e9e9;
-    }
-  }
 }
 
 blockquote {

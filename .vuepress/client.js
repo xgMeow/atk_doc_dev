@@ -5,6 +5,7 @@ import { useRoutes } from 'vuepress/client';
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 import EnhancedToc from './components/EnhancedToc.vue'
 import NotFound from './components/NotFound.vue'
+import Catalog from './components/Catalog.vue'
 import CatalogCard from './components/CatalogCard/CatalogCard.vue'
 import ConnectCommandSummary from './components/ConnectCommandSummary/ConnectCommandSummary.vue'
 import './styles/atk-command-tokens.scss'
@@ -26,6 +27,7 @@ var root_dir = "";              // 用于在离线模式下缓存当前文档所
 
 export default defineClientConfig({
   enhance ({ app, router, siteData }) {
+    app.component('Catalog', Catalog);
     app.component('CatalogCard', CatalogCard);
     app.component('ConnectCommandSummary', ConnectCommandSummary);
     // console.log("__VUEPRESS_SSR__=", __VUEPRESS_SSR__)

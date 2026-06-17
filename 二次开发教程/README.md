@@ -2,7 +2,7 @@
 description: 介绍 ATK 二次开发模块的 Connect、MBSE 和 Component 三种模式及其使用方法。
 ---
 
-# 二次开发介绍
+# 二次开发
 
 ## 功能介绍
 
