@@ -1,0 +1,51 @@
+// ==========================================================================
+// Details 折叠块样式 — slate 板岩灰，素雅且与其他 hint 结构统一
+// ==========================================================================
+
+.hint-container.details {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+// 展开箭头：隐藏默认背景
+.hint-container.details summary::before {
+  background: transparent;
+}
+
+.hint-container.details summary::after {
+  left: 6px;
+  top: 16px;
+}
+
+// Details 容器 — slate 基调，柔和底色的统一模式
+.hint-container.details {
+  border-color: rgba(100, 116, 139, 0.2) !important;
+  background-color: #ffffff !important;
+}
+
+// Summary 标题 — 清晰可辨，hover 有反馈
+.hint-container.details summary {
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  margin: 0;
+  padding-block: 0;
+  padding: 8px 0 8px 32px;
+
+  &:hover {
+    color: #1e293b;
+  }
+}
+
+.hint-container.details[open]>summary {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.hint-container.details>summary {
+  padding: 16px 32px;
+}
+
+// Details 内行内代码
+.hint-container.details code {
+  background: rgba(100, 116, 139, 0.1);
+  color: #475569;
+}
