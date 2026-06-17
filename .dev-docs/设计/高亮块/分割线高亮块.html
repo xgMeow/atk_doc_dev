@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>一比一复刻带渐变背景提示块</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+  padding: 40px;
+  background: #ffffff;
+}
+
+/* 通用块容器，精准还原渐变背景、圆角、边框、阴影 */
+.vp-block {
+  border: 1px solid #b8d8f5;
+  border-radius: 12px;
+  /* 原图从左上浅白到右下极浅蓝线性渐变 */
+  background: linear-gradient(120deg, #ffffff 0%, #f0f8ff 100%);
+  padding: 32px;
+  box-shadow: 0 2px 12px rgba(120, 170, 220, 0.08);
+  margin-bottom: 28px;
+}
+
+/* 头部行：图标 + 标题 */
+.block-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+/* 圆形i图标，原图青蓝色 */
+.icon-info {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #48b0d8;
+  color: #fff;
+  font-size: 28px;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+/* 标题文字 */
+.block-title {
+  font-size: 42px;
+  font-weight: 600;
+  color: #374151;
+}
+/* 分割虚线，和原图完全一致 */
+.divider-dashed {
+  width: 100%;
+  height: 1px;
+  background-image: linear-gradient(to right, #c9d6e3 50%, transparent 50%);
+  background-size: 12px 1px;
+  margin-bottom: 24px;
+}
+/* 正文内容区域 */
+.block-content {
+  font-size: 40px;
+  color: #4b5563;
+  line-height: 1.7;
+}
+/* 高亮加粗文本（Matlab、Java、Python、客户端） */
+.block-content strong {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* ========== 各类型配色区分（带专属渐变背景） ========== */
+/* info 信息块（你截图原版，左上白→右下浅蓝渐变） */
+.vp-info {
+  border-color: #a1caf1;
+  background: linear-gradient(120deg, #ffffff 0%, #f0f8ff 100%);
+}
+.vp-info .icon-info {
+  background: #42a6d9;
+}
+
+/* tip 提示、小技巧 白→浅绿渐变 */
+.vp-tip {
+  border-color: #93e0b7;
+  background: linear-gradient(120deg, #ffffff 0%, #effff7 100%);
+}
+.vp-tip .icon-info {
+  background: #38b97f;
+}
+
+/* note 注释、备注 白→浅黄渐变 */
+.vp-note {
+  border-color: #f9d89c;
+  background: linear-gradient(120deg, #ffffff 0%, #fff9e8 100%);
+}
+.vp-note .icon-info {
+  background: #f7a82d;
+}
+
+/* warning 警告 白→浅橙渐变 */
+.vp-warning {
+  border-color: #f9b89e;
+  background: linear-gradient(120deg, #ffffff 0%, #fff3ee 100%);
+}
+.vp-warning .icon-info {
+  background: #ff7c48;
+}
+
+/* important 重要 白→浅紫渐变 */
+.vp-important {
+  border-color: #d4b8f2;
+  background: linear-gradient(120deg, #ffffff 0%, #f7f0ff 100%);
+}
+.vp-important .icon-info {
+  background: #9c5cd0;
+}
+
+/* caution 危险、谨慎 白→浅红渐变 */
+.vp-caution {
+  border-color: #f2a3a3;
+  background: linear-gradient(120deg, #ffffff 0%, #fff0f0 100%);
+}
+.vp-caution .icon-info {
+  background: #e64343;
+}
+</style>
+</head>
+<body>
+
+<!-- 【1: info 原版截图一比一复刻，渐变背景完全匹配】 -->
+<div class="vp-block vp-info">
+  <div class="block-header">
+    <div class="icon-info">i</div>
+    <div class="block-title">支持接口方式</div>
+  </div>
+  <div class="divider-dashed"></div>
+  <div class="block-content">
+    此模式支持 <strong>Matlab</strong>、<strong>Java</strong>、<strong>Python</strong> 和 <strong>客户端</strong> 四种接口方式<br>调用。
+  </div>
+</div>
+
+<!-- 2: tip 提示、小技巧 -->
+<div class="vp-block vp-tip">
+  <div class="block-header">
+    <div class="icon-info">i</div>
+    <div class="block-title">提示、小技巧</div>
+  </div>
+  <div class="divider-dashed"></div>
+  <div class="block-content">
+    执行批量仿真前，可预先缓存模型参数，大幅缩短计算耗时。
+  </div>
+</div>
+
+<!-- 3: note 注释、注意、备注 -->
+<div class="vp-block vp-note">
+  <div class="block-header">
+    <div class="icon-info">i</div>
+    <div class="block-title">注释、注意、备注</div>
+  </div>
+  <div class="divider-dashed"></div>
+  <div class="block-content">
+    导出结果文件路径不可包含中文、空格与特殊符号，否则会读取失败。
+  </div>
+</div>
+
+<!-- 4: warning 警告 -->
+<div class="vp-block vp-warning">
+  <div class="block-header">
+    <div class="icon-info">!</div>
+    <div class="block-title">警告</div>
+  </div>
+  <div class="divider-dashed"></div>
+  <div class="block-content">
+    批量删除操作无撤销通道，执行前请务必备份全部工程数据。
+  </div>
+</div>
+
+<!-- 5: important 重要 -->
+<div class="vp-block vp-important">
+  <div class="block-header">
+    <div class="icon-info">!</div>
+    <div class="block-title">重要</div>
+  </div>
+  <div class="divider-dashed"></div>
+  <div class="block-content">
+    交付正式版本前，必须完成全接口联调、边界用例与长时间稳定性测试。
+  </div>
+</div>
+
+<!-- 6: caution 危险、谨慎 -->
+<div class="vp-block vp-caution">
+  <div class="block-header">
+    <div class="icon-info">!</div>
+    <div class="block-title">危险、谨慎</div>
+  </div>
+  <div class="divider-dashed"></div>
+  <div class="block-content">
+    该操作会清空数据库所有业务数据表，仅超级管理员账号拥有操作权限。
+  </div>
+</div>
+
+</body>
+</html>

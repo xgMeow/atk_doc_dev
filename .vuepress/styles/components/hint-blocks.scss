@@ -1,50 +1,102 @@
 // ==========================================================================
 // Hint 高亮块样式
+// 设计参考：全边框 + 圆角 + 彩色标题栏 + 白色内容区
 // ==========================================================================
 
 // ==========================================================================
-// Details 折叠块样式 — slate 板岩灰，素雅且与其他 hint 结构统一
+// Details 折叠块样式 — 与高亮块统一风格：全边框 + 标题栏 + 白色内容区
+// 配色：暖灰/石头色，与其他 hint 区分
 // ==========================================================================
 
-// 展开箭头：隐藏默认背景
-.hint-container.details summary::before {
-  background: transparent;
-}
-
-.hint-container.details summary::after {
-  left: 0;
-  top: 8px;
-}
-
-// Details 容器 — slate 基调，柔和底色的统一模式
+// 容器
 .hint-container.details {
-  border-color: rgba(100, 116, 139, 0.2) !important;
+  border-color: #a8a29e !important;
   background-color: #ffffff !important;
+  margin: 20px 0 !important;
+  padding: 0 !important;
 }
 
-// Summary 标题 — 清晰可辨，hover 有反馈
+// Summary 标题栏 — 可点击的彩色标题栏
 .hint-container.details summary {
-  font-weight: 500;
-  color: #334155;
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-weight: 600;
+  color: #44403c;
+  background-color: #fafaf9;
   cursor: pointer;
-  margin: 0;
-  padding-block: 0;
-  padding: 8px 0 8px 32px;
+  margin: 0 !important;
+  padding: 12px 20px 12px 48px !important;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::marker {
+    color: transparent;
+    font-size: 0;
+  }
 
   &:hover {
-    color: #1e293b;
+    color: #1c1917;
+    background-color: #f5f5f4;
+  }
+
+  // 隐藏默认圆点
+  &::before {
+    display: none;
+  }
+
+  // 展开/折叠箭头
+  &::after {
+    left: 20px;
+    top: calc(50% - 0.625em);
+    width: 1.25em;
+    height: 1.25em;
   }
 }
 
-.hint-container.details[open]>summary {
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
-  padding: 8px 0 16px 32px;
+// 展开状态：标题与内容之间加分隔线
+.hint-container.details[open] > summary {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 0 !important;
+}
+
+// 内容区域
+.hint-container.details {
+  > p {
+    padding: 0 20px;
+    color: #4b5563;
+    line-height: 2;
+  }
+
+  > ul,
+  > ol {
+    padding: 0 20px 0 44px;
+    margin: 8px 0;
+
+    li {
+      line-height: 2.2;
+      margin: 4px 0;
+    }
+  }
+
+  > :last-child {
+    padding-bottom: 16px;
+  }
+
+  > *:not(summary) {
+    &:first-child {
+      padding-top: 16px;
+    }
+  }
 }
 
 // Details 内行内代码
 .hint-container.details code {
-  background: rgba(100, 116, 139, 0.1);
-  color: #475569;
+  background: rgba(120, 113, 108, 0.1);
+  color: #57534e;
 }
 
 // ==========================================================================
@@ -60,128 +112,198 @@
   position: inherit;
 }
 
-// 高亮块标题首行不缩进
-.hint-container-title{
-  text-indent: 0em;
-  margin-bottom: 12px;
+// ==========================================================================
+// 图标颜色覆盖 — 与参考设计标题色一致
+// ==========================================================================
+
+// tip 图标 → #2563eb
+.hint-container.tip > .hint-container-title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232563eb' d='M7.941 18c-.297-1.273-1.637-2.314-2.187-3a8 8 0 1 1 12.49.002c-.55.685-1.888 1.726-2.185 2.998H7.94zM16 20v1a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-1h8zm-3-9.995V6l-4.5 6.005H11v4l4.5-6H13z'/%3E%3C/svg%3E");
 }
 
-// 高亮块基础样式
+// note 图标 → #009688
+.hint-container.note > .hint-container-title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23009688' d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z'/%3E%3C/svg%3E");
+}
+
+// info 图标 → #334155
+.hint-container.info > .hint-container-title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23334155' d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z'/%3E%3C/svg%3E");
+}
+
+// warning 图标 → #d97706
+.hint-container.warning > .hint-container-title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath d='M576.286 752.57v-95.425q0-7.031-4.771-11.802t-11.3-4.772h-96.43q-6.528 0-11.3 4.772t-4.77 11.802v95.424q0 7.031 4.77 11.803t11.3 4.77h96.43q6.528 0 11.3-4.77t4.77-11.803zm-1.005-187.836 9.04-230.524q0-6.027-5.022-9.543-6.529-5.524-12.053-5.524H456.754q-5.524 0-12.053 5.524-5.022 3.516-5.022 10.547l8.538 229.52q0 5.023 5.022 8.287t12.053 3.265h92.913q7.032 0 11.803-3.265t5.273-8.287zM568.25 95.65l385.714 707.142q17.578 31.641-1.004 63.282-8.538 14.564-23.354 23.102t-31.892 8.538H126.286q-17.076 0-31.892-8.538T71.04 866.074q-18.582-31.641-1.004-63.282L455.75 95.65q8.538-15.57 23.605-24.61T512 62t32.645 9.04 23.605 24.61z' fill='%23d97706'/%3E%3C/svg%3E");
+}
+
+// important 图标 → #9333ea
+.hint-container.important > .hint-container-title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath d='M512 981.333a84.992 84.992 0 0 1-84.907-84.906h169.814A84.992 84.992 0 0 1 512 981.333zm384-128H128v-42.666l85.333-85.334v-256A298.325 298.325 0 0 1 448 177.92V128a64 64 0 0 1 128 0v49.92a298.325 298.325 0 0 1 234.667 291.413v256L896 810.667v42.666zm-426.667-256v85.334h85.334v-85.334h-85.334zm0-256V512h85.334V341.333h-85.334z' fill='%239333ea'/%3E%3C/svg%3E");
+}
+
+// caution 图标 → #dc2626
+.hint-container.caution > .hint-container-title::before,
+.hint-container.danger > .hint-container-title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c5.523 0 10 4.477 10 10v3.764a2 2 0 0 1-1.106 1.789L18 19v1a3 3 0 0 1-2.824 2.995L14.95 23a2.5 2.5 0 0 0 .044-.33L15 22.5V22a2 2 0 0 0-1.85-1.995L13 20h-2a2 2 0 0 0-1.995 1.85L9 22v.5c0 .171.017.339.05.5H9a3 3 0 0 1-3-3v-1l-2.894-1.447A2 2 0 0 1 2 15.763V12C2 6.477 6.477 2 12 2zm-4 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z' fill='%23dc2626'/%3E%3C/svg%3E");
+}
+
+// 高亮块标题首行不缩进
+.hint-container-title {
+  text-indent: 0em;
+}
+
+// ==========================================================================
+// 高亮块基础样式 — 全边框 + 圆角 + 溢出隐藏
+// ==========================================================================
 .hint-container {
   margin: 20px 0 !important;
-  padding: 6px 22px !important;
-  border-radius: 4px !important;
-  border: 1px solid transparent !important;
-  border-left-width: 4px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
-  transition: all 0.25s ease !important;
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%) !important;
-}
-
-// 旧版统一样式（保留兼容）
-.hint-container.important,
-.hint-container.info,
-.hint-container.note,
-.hint-container.tip,
-.hint-container.warning,
-.hint-container.caution{
-  padding: 1rem;
-  border-radius: 0;
+  padding: 0 !important;
+  border: 1px solid !important;
+  border-radius: .2rem;
+  overflow: hidden !important;
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+  background-image: none !important;
 }
 
 // ==========================================================================
-// 各类型高亮块样式
+// 各类型高亮块 — 边框颜色 + 标题栏配色
 // ==========================================================================
 
-// Tip - 提示/成功（绿色）
+// Tip - 提示（浅蓝）
 .hint-container.tip {
-  border-color: rgba(0, 148, 0, 0.2) !important;
-  border-left-color: #009400 !important;
-  background-color: #f0faf0 !important;
+  border-color: #60a5fa !important;
+
+  .hint-container-title {
+    background-color: #eff6ff;
+  }
 }
 
-// Warning - 警告（黄色）
+// Note - 注释（薄荷青）
+.hint-container.note {
+  border-color: #42d3bd !important;
+
+  .hint-container-title {
+    background-color: #e6f9f6;
+  }
+}
+
+// Info - 信息（冷灰蓝）
+.hint-container.info {
+  border-color: #64748b !important;
+
+  .hint-container-title {
+    background-color: #f1f5f9;
+  }
+}
+
+// Warning - 警告（橙黄）
 .hint-container.warning {
-  border-color: rgba(230, 167, 0, 0.2) !important;
-  border-left-color: #e6a700 !important;
-  background-color: #fffcf0 !important;
+  border-color: #fbbf24 !important;
+
+  .hint-container-title {
+    background-color: #fffbeb;
+  }
 }
 
-// Danger / Caution - 危险/注意（红色）
+// Important - 重要（紫色）
+.hint-container.important {
+  border-color: #a855f7 !important;
+
+  .hint-container-title {
+    background-color: #faf5ff;
+  }
+}
+
+// Caution / Danger - 危险谨慎（红色）
 .hint-container.danger,
 .hint-container.caution {
-  border-color: rgba(225, 50, 56, 0.2) !important;
-  border-left-color: #e13238 !important;
-  background-color: #fff5f5 !important;
-}
+  border-color: #f87171 !important;
 
-// Info - 信息（蓝色）
-.hint-container.info {
-  border-color: #3387e03f !important;
-  border-left-color: #3387e0 !important;
-  background-color: #ecf5fd !important;
-}
-
-// Note - 备注（灰色）
-.hint-container.note {
-  border-color: rgba(153, 153, 153, 0.2) !important;
-  border-left-color: #6b7280 !important;
-  background-color: #f8f9fa !important;
+  .hint-container-title {
+    background-color: #fef2f2;
+  }
 }
 
 // ==========================================================================
 // 高亮块内部元素样式
 // ==========================================================================
 
-// 标题
+// 标题 — 作为彩色标题栏（全宽，圆角由父容器 overflow:hidden 裁剪）
 .hint-container-title {
   font-weight: 600 !important;
-  margin-bottom: 8px !important;
-  margin-top: 0 !important;
-  padding: 8px 0 !important;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+  color: #000000de !important;
+  margin: 0 !important;
+  padding: 12px 20px !important;
   display: flex !important;
   align-items: center !important;
-  padding-inline-start: 0 !important;
+  gap: 12px;
+  border-bottom: none !important;
 
   &::before {
-    margin-right: 8px !important;
     position: inherit;
   }
 }
 
-// 段落文本
-.hint-container p {
+// 内容段落
+.hint-container > p:not(.hint-container-title) {
+  padding: 0 20px;
   color: #4b5563 !important;
   line-height: 2 !important;
+
+  &:first-of-type {
+    padding-top: 16px;
+  }
+}
+
+// 内容列表
+.hint-container > ul,
+.hint-container > ol {
+  padding: 0 20px 0 44px;
+  margin: 8px 0;
+
+  li {
+    line-height: 2.2;
+    margin: 4px 0;
+  }
+}
+
+// 最后一个子元素提供底部间距
+.hint-container > :last-child {
+  padding-bottom: 16px;
 }
 
 // ==========================================================================
-// 各类型高亮块中的代码样式
+// 各类型高亮块中的行内代码样式
 // ==========================================================================
 
 .tip code {
-  background: rgb(0 148 0 / 12%);
-  color: #007a00;
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+.note code {
+  background: rgba(0, 150, 136, 0.12);
+  color: #00897b;
+}
+
+.info code {
+  background: rgba(51, 65, 85, 0.1);
+  color: #475569;
 }
 
 .warning code {
-  background: rgb(230 167 0 / 12%);
-  color: #997500;
+  background: rgba(217, 119, 6, 0.12);
+  color: #b45309;
+}
+
+.important code {
+  background: rgba(147, 51, 234, 0.1);
+  color: #7c3aed;
 }
 
 .danger code,
 .caution code {
-  background: rgb(225 50 56 / 12%);
-  color: #c53030;
-}
-
-.info code {
-  background: rgb(76 179 212 / 12%);
-  color: #0c7a9d;
-}
-
-.note code {
-  background: rgb(212 213 216 / 20%);
-  color: #4b5563;
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
 }
