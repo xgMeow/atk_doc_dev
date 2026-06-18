@@ -155,7 +155,7 @@ const totalCount = computed(() => {
   return n;
 });
 
-const localeTitle = '目录';
+const localeTitle = '内容结构';
 const localeEmpty = '暂无目录';
 </script>
 
@@ -264,12 +264,10 @@ $bg-hover:       #f4f4f5;
 $bg-badge:       #e4e4e7;
 $accent:         #1456f0;
 $accent-subtle:  rgba(20, 86, 240, 0.08);
-$white:          #fff;
 
 // ── 容器 ──
 .atk-catalog {
   margin: 1.5rem 0;
-  background: $white;
   border: 1px solid $border;
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
@@ -343,7 +341,6 @@ $white:          #fff;
   align-items: center;
   justify-content: space-between;
   padding: 12px 24px 9px;
-  background: $white;
 
   .atk-catalog__link--l1 {
     font-weight: 700;

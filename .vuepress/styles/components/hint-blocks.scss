@@ -191,33 +191,33 @@
 // 各类型高亮块中的行内代码样式
 // ==========================================================================
 
-.tip code {
+.hint-container.tip code {
   background: rgba(37, 99, 235, 0.1);
   color: #2563eb;
 }
 
-.note code {
+.hint-container.note code {
   background: rgba(0, 150, 136, 0.12);
   color: #00897b;
 }
 
-.info code {
+.hint-container.info code {
   background: rgba(51, 65, 85, 0.1);
   color: #475569;
 }
 
-.warning code {
+.hint-container.warning code {
   background: rgba(217, 119, 6, 0.12);
   color: #b45309;
 }
 
-.important code {
+.hint-container.important code {
   background: rgba(147, 51, 234, 0.1);
   color: #7c3aed;
 }
 
-.danger code,
-.caution code {
+.hint-container.danger code,
+.hint-container.caution code {
   background: rgba(220, 38, 38, 0.1);
   color: #dc2626;
 }

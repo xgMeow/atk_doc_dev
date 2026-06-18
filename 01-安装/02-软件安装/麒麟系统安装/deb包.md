@@ -1,10 +1,16 @@
+---
+description: 麒麟操作系统下通过 deb 包安装 ATK 的完整流程，包含图形界面与命令行两种安装方式。
+---
+
 # deb 包
 
 ## 安装
 
-> 安装包后缀：`.deb`
+::: info 安装包格式
+安装包后缀：`.deb`
+:::
 
-### 1. 前置条件
+### 前置条件
 
 - 操作系统：麒麟操作系统 V10 及以上
 - CPU 架构：x86_64 或 arm64
@@ -14,7 +20,7 @@
 架构不匹配将导致软件无法启动。请通过 `uname -m` 命令确认系统架构，再下载对应安装包。
 :::
 
-### 2. 安装 deb 包
+### 安装 deb 包
 
 #### 方式一：图形界面安装（推荐）
 
@@ -24,26 +30,34 @@
 
 若桌面无法识别安装包，打开终端并执行：
 
-    sudo dpkg -i <deb文件路径>
+```bash :no-line-numbers
+sudo dpkg -i <deb文件路径>
+```
 
-> 示例：`sudo dpkg -i ./ATK_3.0.0_x86_64.deb`
+::: info 安装示例
+示例：`sudo dpkg -i ./ATK_3.0.0_x86_64.deb`
+:::
 
 若安装时提示依赖错误，执行以下命令修复依赖后重新安装：
 
-    sudo apt -f install
+```bash :no-line-numbers
+sudo apt -f install
+```
 
 安装完成后，软件默认部署至 `/opt/ATK` 目录，并自动在应用菜单生成快捷方式。
 
-### 3. 启动软件
+### 启动软件
 
 通过应用菜单快捷方式启动 ATK。
 
 若快捷方式异常，可进入 `/opt/ATK` 目录，执行以下命令启动：
 
-    cd /opt/ATK
-    ./ATK.sh
+```bash :no-line-numbers
+cd /opt/ATK
+ ./ATK.sh
+```
 
-### 4. 软件注册
+### 软件注册
 
 ATK 采用 **免费使用模式**，但**首次使用必须完成注册**，否则功能将无法正常使用。
 
@@ -63,11 +77,15 @@ ATK 采用 **免费使用模式**，但**首次使用必须完成注册**，否�
 
 deb 包方式安装的 ATK，可通过以下命令卸载：
 
-    sudo apt remove ATK
+```bash :no-line-numbers
+sudo apt remove ATK
+```
 
 或
 
-    sudo dpkg -r ATK
+```bash :no-line-numbers
+sudo dpkg -r ATK
+```
 
 ::: warning 注意
 卸载前请确保已备份重要数据文件（如想定文件、报告等）。软件运行期间产生的数据文件默认存放于 **用户文档目录下的 ATK 文件夹中**（路径如 `~/文档/ATK/` 或 `~/Documents/ATK/`，具体取决于系统设置），不在安装目录内。
