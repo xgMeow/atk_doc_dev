@@ -41,8 +41,8 @@ description: 将 ATK 二次开发 CONNECT 命令库中的单个 Markdown 文件�
 示例：
 
 ```text
-2-Connect命令库/3-敏感器.md
-→ 2-Connect命令库/3-敏感器/
+2-Connect命令库/3-传感器.md
+→ 2-Connect命令库/3-传感器/
 ```
 
 ## README 规则
@@ -71,7 +71,7 @@ index: false
 
 标题取值规则：
 
-- 根目录 title：去掉文件名前缀编号后的名称，例如 `3-敏感器.md` → `敏感器`。
+- 根目录 title：去掉文件名前缀编号后的名称，例如 `3-传感器.md` → `传感器`。
 - 子目录 title：使用对应 `##` 标题原文，例如 `Graphics`、`VO`、`Attitude`。
 
 ## 拆分规则
@@ -162,7 +162,7 @@ import re
 import shutil
 
 base = Path('二次开发教程/2-二次开发CONNECT模式/2-Connect命令库')
-src = base / '3-敏感器.md'
+src = base / '3-传感器.md'
 out_dir = base / src.with_suffix('').name
 text = src.read_text(encoding='utf-8')
 
@@ -223,12 +223,12 @@ index: false
 
 结果：`Attitude`、`Graphics`、`HPOP`、`SetAttitude`、`SetState`、`VO`、`星座创建` 等生成子目录，其余生成根级文件。
 
-### 敏感器命令
+### 传感器命令
 
 源文件：
 
 ```text
-2-Connect命令库/3-敏感器.md
+2-Connect命令库/3-传感器.md
 ```
 
 特点：`Graphics` 和 `VO` 含有 `###` 子命令。
