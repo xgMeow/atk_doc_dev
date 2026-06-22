@@ -195,7 +195,7 @@ onMounted(() => {
       <div class="cmd-search">
         <div class="cmd-search-input-wrap">
           <svg class="cmd-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input ref="searchInputRef" v-model="keyword" type="search" placeholder="搜索命令、作用、用法..." class="cmd-search-input" />
+          <input ref="searchInputRef" v-model="keyword" type="search" placeholder="搜索命令、作用、语法..." class="cmd-search-input" />
           <button v-if="keyword" class="cmd-search-clear" @click="keyword = ''; searchInputRef?.focus()" aria-label="清除搜索" title="清除搜索">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
           </button>
@@ -248,7 +248,7 @@ onMounted(() => {
             <tr>
               <th>命令</th>
               <th>作用</th>
-              <th>用法</th>
+              <th>语法</th>
             </tr>
           </thead>
           <tbody>
