@@ -228,7 +228,7 @@ onBeforeUnmount(() => {
   position: absolute;
   left: 50%;
   bottom: calc(100% + 14px);
-  z-index: 20;
+  z-index: 100;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 10px;

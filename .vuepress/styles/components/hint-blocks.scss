@@ -160,7 +160,7 @@
   }
 }
 
-.hint-container > .language-text:not(.hint-container-title) {
+.hint-container > div[class*=language-]:not(.hint-container-title) {
   margin: 1.5rem 20px !important;
   padding: 0;
 }
@@ -180,11 +180,6 @@
     line-height: 2.2;
     margin: 4px 0;
   }
-}
-
-// 最后一个子元素提供底部间距
-.hint-container > :last-child {
-  padding-bottom: 16px;
 }
 
 // ==========================================================================
