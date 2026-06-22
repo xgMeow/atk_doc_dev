@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Window2D <ScenarioPath> {2DGfxWinOption} <Value> [WindowID <WinNumber>]
 ```
 

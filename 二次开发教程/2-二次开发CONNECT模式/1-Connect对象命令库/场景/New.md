@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 New <ApplicationPath> <ClassPath> <NewObjectName> {NewOptions}
 ```
 

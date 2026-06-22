@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 AddWaypoint <VehObjectPath> {AddMethod} <Parameters> [<TurnRadius>]
 ```
 

@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 AddAttitude <ObjectPath> ECIYPR {StartTime} {Sequence} <Yaw> <Pitch> <Roll>
 ```
 

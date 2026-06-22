@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Cov <CovDefnObjectPath> Interval {TimeInterval}
 ```
 

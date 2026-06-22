@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Access <ObjectPath> <AccessObjectPath> {TimePeriod <StartTime> <StopTime>}
 ```
 

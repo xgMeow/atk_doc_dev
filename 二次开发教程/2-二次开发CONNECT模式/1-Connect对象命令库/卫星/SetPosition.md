@@ -6,7 +6,7 @@ Realtime 模式下设置对象位置点。
 
 ## 语法
 
-```
+```atk-command
 SetPosition <ObjectPath> {PositionType} {TimeValue} <PositionData>
 ```
 

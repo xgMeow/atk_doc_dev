@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 ACAT <AdvCatObjPath> {CalculateOptions} <Parameters>
 ```
 

@@ -10,7 +10,7 @@ description: 设置传感器的各种约束条件，包括基本方位角/高度
 
 ## 语法
 
-```
+```atk-command
 SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ```
 

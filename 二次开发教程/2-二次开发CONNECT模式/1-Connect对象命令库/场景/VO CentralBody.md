@@ -6,11 +6,11 @@
 
 ## 语法
 
-```
+```atk-command
 VO <ScenarioPath> CentralBody <CBName> [<WinNumber>]
 ```
 
-```
+```atk-command
 VO <ScenarioPath> CentralBody "<ObjectPath> <Point> <Axes>"
 ```
 

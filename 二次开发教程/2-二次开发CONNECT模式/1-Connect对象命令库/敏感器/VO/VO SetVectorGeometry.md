@@ -10,7 +10,7 @@ description: 设置传感器的向量几何属性，支持添加、修改和删�
 
 ## 语法
 
-```
+```atk-command
 VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 ```
 

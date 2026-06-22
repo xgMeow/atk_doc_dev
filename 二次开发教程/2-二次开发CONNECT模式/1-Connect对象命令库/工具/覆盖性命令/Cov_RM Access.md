@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Cov_RM <ObjectPath> Access Compute "<ReportStyle>" [{TimeIntervals} | UseObjectTimes]
 ```
 

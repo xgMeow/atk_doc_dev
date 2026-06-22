@@ -10,7 +10,7 @@ description: 设置传感器的固定指向属性，支持方位角-高度角、
 
 ## 语法
 
-```
+```atk-command
 Point <SensorObjectPath> Fixed {OrientMethod} <MethodData>
 ```
 

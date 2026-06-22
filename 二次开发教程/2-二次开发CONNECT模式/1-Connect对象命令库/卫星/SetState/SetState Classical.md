@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 SetState <VehObjectPath> Classical {Propagator} {NoProp | {TimeInterval}} <StepSize> {CoordSystem} "<OrbitEpoch>" <SemiMajorAxis> <Eccentricity> <Inclination> <ArgOfPerigee> <RAAN> <MeanAnom> ["<CoordEpoch>"]
 ```
 

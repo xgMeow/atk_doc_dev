@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 CovMulti / Objects <CovObjectPath> <CovObjectPath> …
 ```
 

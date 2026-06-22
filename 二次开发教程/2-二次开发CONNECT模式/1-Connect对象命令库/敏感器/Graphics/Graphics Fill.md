@@ -10,7 +10,7 @@ description: 设置传感器图形是否填充，控制二维图形窗口中传�
 
 ## 语法
 
-```
+```atk-command
 Graphics <SensorObjectPath> Fill {On | Off}
 ```
 

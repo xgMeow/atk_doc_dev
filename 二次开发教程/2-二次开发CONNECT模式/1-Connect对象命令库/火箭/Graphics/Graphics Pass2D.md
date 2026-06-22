@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Graphics <ObjectPath> Pass2D ({LeadTrailOption} <Parameters>)
 ```
 

@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 AddAttitude <ObjectPath> Euler {StartTime} {Sequence} <Angle1> <Angle2> <Angle3>
 ```
 

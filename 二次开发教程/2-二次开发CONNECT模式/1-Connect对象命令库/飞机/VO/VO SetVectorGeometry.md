@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 ```
 

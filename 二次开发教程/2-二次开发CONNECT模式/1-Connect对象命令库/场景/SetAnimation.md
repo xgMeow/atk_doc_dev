@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 SetAnimation <ScenarioPath> {AnimateOption} <Parameters>
 ```
 

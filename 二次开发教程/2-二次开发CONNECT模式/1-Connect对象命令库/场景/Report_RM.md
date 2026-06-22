@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Report_RM <ObjectPath> ({Option} <Value>)...
 ```
 

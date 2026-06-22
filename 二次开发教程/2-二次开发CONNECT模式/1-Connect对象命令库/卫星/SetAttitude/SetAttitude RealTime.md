@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 SetAttitude <ObjectPath> RealTime {LookAheadMethod} [<LookAheadDuration> <LookBehindDuration>]
 ```
 

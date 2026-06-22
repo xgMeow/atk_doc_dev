@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Units_SetConnect <AppOrScenPath> {Default | Internal | {Dimension} {Unit}... }
 ```
 

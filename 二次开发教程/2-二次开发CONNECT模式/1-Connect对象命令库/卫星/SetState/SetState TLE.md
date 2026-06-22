@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 SetState <SatObjectPath> TLE "<TLECard1>" "<TLECard2>" [{Options}]
 ```
 

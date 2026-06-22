@@ -10,7 +10,7 @@ description: 定义传感器类型及其参数，支持矩形、简单锥形、�
 
 ## 语法
 
-```
+```atk-command
 Define <SensorObjectPath> {Type} <TypeData>
 ```
 
