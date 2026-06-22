@@ -33,7 +33,7 @@ conID = atkOpen();
 
 ::: details open **连接指定远程设备**
 ```cpp
-conID = atkOpen('192.168.1.100', 6655);
+conID = atkOpen("192.168.1.100", 6655);
 ```
 :::
 
@@ -81,7 +81,7 @@ strOutPut = atkConnect(conID, command, cmdString);
 
 ::: details open **调用 Graphics 命令设置卫星颜色（无返回值）**
 ```cpp
-atkConnect(conID, 'Graphics', '*/Satellite/Satellite1 SetColor 12');
+atkConnect(conID, "Graphics", "*/Satellite/Satellite1 SetColor 12");
 ```
 :::
 
@@ -112,16 +112,18 @@ atkClose(conID);
 ### 示例
 
 ::: details open **关闭默认连接**
-```cpp {3}
-conID = atkOpen();          // 建立连接
+```cpp
+conID = atkOpen();
+// 建立连接
 // ... 执行若干 atkConnect 操作 ...
-atkClose(conID);            // 关闭连接
+atkClose(conID);
+// 关闭连接
 ```
 :::
 
 ::: details open **关闭指定远程连接**
-```cpp {3}
-conID = atkOpen('192.168.1.100', 6655);
+```cpp
+conID = atkOpen("192.168.1.100", 6655);
 // ... 执行操作 ...
 atkClose(conID);
 ```
