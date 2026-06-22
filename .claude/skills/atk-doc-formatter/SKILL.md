@@ -9,7 +9,7 @@ description: 规范化 ATK/VuePress Markdown 文档格式，统一标题层级�
 
 ## 核心原则
 
-1. **内容不可变**：只调整格式与排版，不新增、删除或改动原文的任何信息、结论、数据、链接和图片路径。除 frontmatter `description` 和提醒块标题等格式所需的简短归纳外，不添加原文没有的内容。
+1. **内容不可变**：只调整格式与排版，不新增、删除或改动原文的任何信息、结论、数据、链接和图片路径。除 frontmatter `description`、提醒块标题等格式所需的简短归纳外，不添加原文没有的内容。ATK 根目录路径转为 `<PathCopy>` 组件属于展示格式变更，路径字符串本身保持不变。
 2. **最小改动**：只处理影响结构、排版、渲染或规范一致性的问题，不做不必要的润色。
 3. **先读后改**：完整阅读目标文档后再动手，确认文档类型、标题结构和未提交改动。
 4. **如实汇报**：完成后说明改了什么格式问题，不夸大为内容修订。
@@ -17,14 +17,14 @@ description: 规范化 ATK/VuePress Markdown 文档格式，统一标题层级�
 
 ## 适用与不适用
 
-**适用**：统一标题层级、按钮标记、对话框名称、图片格式、表格结构、公式分隔符、提醒块、中文引号、frontmatter 描述、参考文献内联等格式问题。
+**适用**：统一标题层级、按钮标记、对话框名称、图片格式、表格结构、公式分隔符、提醒块、中文引号、frontmatter 描述、参考文献内联、ATK 路径转 `PathCopy`/`PathViewer` 组件等格式问题。
 
 **不适用**：重写文案、扩写内容、补充技术结论、专项排查链接/图片路径/公式渲染/构建失败，或未经要求大幅调整章节顺序。
 
 ## 工作流程
 
 1. 通读全文，识别大纲结构、图片、链接、公式、表格、提醒块等元素。
-2. 按 `frontmatter → 标题 → 按钮/窗口 → 图片 → 表格 → 公式 → 提醒块 → 引用 → 段落/空行 → 引号` 顺序逐项处理。
+2. 按 `frontmatter → 标题 → 按钮/窗口 → 路径转组件 → 图片 → 表格 → 公式 → 提醒块 → 引用 → 段落/空行 → 引号` 顺序逐项处理。
 3. 每改完一个类别，对照验证清单自检。
 4. 完成后通读全文，确认无内容丢失或语义变化。
 5. **不要运行构建命令**，用户自行验证。
@@ -68,6 +68,124 @@ description: 规范化 ATK/VuePress Markdown 文档格式，统一标题层级�
 - 行内小图标：`<img src="..." alt="..." no-view />`，必须含 `no-view`。
 - 不修改图片路径，不重命名图片文件。
 - **alt 文本**：缺少或仅写 `image`、`图片` 等无意义内容时，结合上下文补充有意义的描述；原文已清晰则不擅自改动。
+
+### VuePress 路径组件 — 路径转组件
+
+ATK 文档中，凡引用 **ATK 安装根目录下的文件或文件夹路径**，都应使用 `PathViewer` / `PathCopy` 组件展示，而非裸写纯文本路径。这两个组件配合文档末尾的 `<script setup>` 块工作，渲染为可点击复制的路径标签。
+
+**两组件分工：**
+- **`PathViewer`**：页面顶部文件清单。放在 `#` 主标题之后、第一个 `##` 章节之前，展示该案例/教程涉及的全部文件与目录，让读者一目了然。**案例教程类文档必备**。
+- **`PathCopy`**：行内路径引用。在正文、列表、表格中提及具体文件/文件夹时，替换裸路径为可点击复制标签。
+
+#### 识别需要转换的路径
+
+扫描全文，找出所有引用 ATK 根目录下文件/文件夹的**纯文本路径**。典型特征：
+
+- 包含反斜杠路径段，如 `IntegratingWithATK\connect\Matlab\Win_2015b`、`Help\Examples\07-碰撞规避案例\xxx.txt`
+- 常见根目录前缀：`IntegratingWithATK\`、`Help\`、`AstroData\`、`Matlab\` 等
+- 常出现在"位于…目录下""在…文件夹中""读取…文件"等上下文
+- 路径可能在正文、表格、列表项中
+
+**不转换的情况：**
+- 已经是 `<PathCopy :entry="..." />` 或 `<PathViewer ...>` 的保持不变
+- 代码块内的路径不转换
+- 行内代码 `` `...` `` 包裹的路径先评估是否应转为组件
+- 非 ATK 安装目录下的路径（如系统路径 `C:\...`、用户自定义路径）
+
+#### 转换步骤
+
+1. **收集全文中所有 ATK 相对路径**，按出现顺序记录每条路径的完整字符串和上下文。同时梳理这些路径所属的案例/功能目录（即共同的父目录），用于后续 `files` 数组。
+
+2. **为每条路径创建变量名**：取路径末尾的文件名或文件夹名，转为 camelCase。如 `Win_2015b` → `matlabDir`、`state_chaser0805.txt` → `stateChaserFile`。若多条路径指向同一目录，可共用一个变量。
+
+3. **将正文中的纯文本路径替换为 `<PathCopy>`**：
+   - 单个文件/文件夹路径 → `<PathCopy :entry="变量名" />`
+   - 替换时保留路径前后的中文语义（如"位于…文件夹中"→"位于 <PathCopy … /> 文件夹中"）
+
+4. **添加 `<PathViewer>` 文件清单**：在 `#` 主标题之后、第一个 `##` 章节之前，放置 `<PathViewer :relative-paths="files" />`。**只要文档涉及 ATK 案例/功能目录下的文件路径，就应添加 `PathViewer`**，不限于 ≥2 个文件。`PathViewer` 让读者在阅读正文前即了解涉及的全部文件。
+
+   `files` 数组按以下顺序组织：
+   1. **案例目录**（首条）：`{ path: 'Help\\Examples\\XX-案例名', name: '案例名称' }`
+   2. **想定文件**（如有 `.atk` 文件）：`{ path: 'Help\\Examples\\XX-案例名\\xxx.atk', name: '想定文件' }`
+   3. **数据文件**（`.txt`、`.csv` 等），引用已定义的变量或直接写对象
+   4. **结果文件**（转换/计算输出文件）
+
+5. **在文档末尾生成 `<script setup>` 块**（如已有则更新）：
+
+   ```html
+   <script setup>
+   import PathViewer from "@components/PathViewer/PathViewer.vue";
+   import PathCopy from "@components/PathCopy/PathCopy.vue";
+
+   const 变量A = { path: '相对路径', name: '显示名称' };
+   const 变量B = { path: '相对路径', name: '显示名称' };
+
+   const files = [
+     { path: '案例目录路径', name: '案例名称' },
+     { path: '案例目录路径\\想定文件.atk', name: '想定文件' },
+     变量A,
+     变量B,
+   ];
+   </script>
+   ```
+
+   **规范：**
+   - 仅导入实际使用的组件（用了 `PathCopy` 才 import，用了 `PathViewer` 才 import）
+   - `path` 使用反斜杠 `\\`，从 ATK 安装根目录起
+   - `name` 为简洁有意义的前端展示名（文件名或简短中文描述）
+   - `files` 数组列出所有相关路径，可直接写对象或引用已定义的变量；案例目录放在第一条
+   - `<script setup>` 放在文档最后一行
+
+#### 示例
+
+**转换前：**
+```markdown
+# 碰撞规避案例
+
+ATK 与 Matlab 通信库文件位于安装包目录下的 IntegratingWithATK\connect\Matlab\Win_2015b 文件夹中。
+
+读取 Help\Examples\07-碰撞规避案例\state_chaser0805.txt 文件作为航天器星历数据。
+```
+
+**转换后：**
+```markdown
+# 碰撞规避案例
+
+<PathViewer
+  :relative-paths="files"
+/>
+
+## 环境准备
+
+ATK 与 Matlab 通信库文件位于安装包目录下的 <PathCopy :entry="matlabDir" /> 文件夹中。
+
+读取 <PathCopy :entry="stateChaserFile" /> 文件作为航天器星历数据。
+
+<script setup>
+import PathViewer from "@components/PathViewer/PathViewer.vue";
+import PathCopy from "@components/PathCopy/PathCopy.vue";
+
+const matlabDir = { path: 'IntegratingWithATK\\connect\\Matlab\\Win_2015b', name: 'Win_2015b' };
+const stateChaserFile = { path: 'Help\\Examples\\07-碰撞规避案例\\state_chaser0805.txt', name: 'state_chaser0805.txt' };
+
+const files = [
+  { path: 'Help\\Examples\\07-碰撞规避案例', name: '碰撞规避案例' },
+  { path: 'Help\\Examples\\07-碰撞规避案例\\碰撞规避案例.atk', name: '碰撞规避案例想定文件' },
+  stateChaserFile,
+];
+</script>
+```
+
+#### 检查项
+
+- [ ] 所有 ATK 根目录下的纯文本路径已转为 `<PathCopy>` 或纳入 `<PathViewer>`
+- [ ] `<PathViewer>` 已放在 `#` 主标题之后、第一个 `##` 之前，`files` 数组首条为案例目录
+- [ ] 每条 `<PathCopy>` 对应的变量已在 `<script setup>` 中定义
+- [ ] `path` 使用反斜杠 `\\`，相对路径正确
+- [ ] `name` 有意义的显示名称
+- [ ] `<script setup>` 位于文档末尾，仅导入实际使用的组件
+- [ ] 代码块内的路径未被误改
+- [ ] 原文语义完整，"文件夹""文件"等上下文词未丢失
 
 ### 段落、列表、空行、加粗
 
@@ -174,6 +292,7 @@ description: 规范化 ATK/VuePress Markdown 文档格式，统一标题层级�
 | `行内 \( a^2 \)` | `行内 $ a^2 $` |
 | `安装[1]并运行` + `[1] https://...` | `[安装](https://...)并运行`，移除参考文献章节 |
 | `参见文献[2]` + `[2] 某某论文，2020`（无链接） | 保持原样不变 |
+| `位于 IntegratingWithATK\connect\Matlab\Win_2015b 文件夹中` | `位于 <PathCopy :entry="matlabDir" /> 文件夹中`，`#` 标题后加 `<PathViewer>`，末尾补 `<script setup>` |
 
 ## 验证清单
 
@@ -189,6 +308,13 @@ description: 规范化 ATK/VuePress Markdown 文档格式，统一标题层级�
 - [ ] 操作按钮用 `<kbd>`，标题/表头/列表项标题未误用 `<kbd>`
 - [ ] 窗口、对话框、页面、面板名称用【】
 - [ ] 中文弯引号方向正确，代码和路径中直引号未被误改
+
+**VuePress 路径组件：**
+- [ ] 文中所有 ATK 根目录下的纯文本路径已转为 `<PathCopy>` 组件
+- [ ] 每条 `<PathCopy>` 的变量已在 `<script setup>` 中定义，`path` 用反斜杠、`name` 有意义
+- [ ] 已添加 `<PathViewer>`，位置在 `#` 主标题之后、第一个 `##` 之前；`files` 数组首条为案例目录
+- [ ] `<script setup>` 在文档末尾，仅导入实际使用的组件，无多余变量
+- [ ] 代码块内路径未被误改，路径上下文（"文件夹""文件"等）未丢失
 
 **块级元素：**
 - [ ] 独立图片前后各一个空行，列表项内图片与上方文字间也保留空行
