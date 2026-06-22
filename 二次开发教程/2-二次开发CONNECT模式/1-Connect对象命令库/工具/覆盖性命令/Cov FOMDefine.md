@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Cov <FOMObjectPath> FOMDefine {Satisfaction | Definition} <Parameters>
 ```
 

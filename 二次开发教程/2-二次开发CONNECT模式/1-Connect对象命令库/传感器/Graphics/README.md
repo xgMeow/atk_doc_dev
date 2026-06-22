@@ -4,4 +4,4 @@ description: 传感器图形显示命令目录，包含填充、线宽、投影�
 index: false
 ---
 
-<ConnectCommandSummary />
+<ConnectCommandSummary syntax-guide="/二次开发教程/2-二次开发CONNECT模式/命令语法约定.md" />

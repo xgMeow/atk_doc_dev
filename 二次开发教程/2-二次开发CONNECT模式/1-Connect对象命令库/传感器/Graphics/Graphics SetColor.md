@@ -10,7 +10,7 @@ description: 设置传感器轨迹和标签的颜色属性。
 
 ## 语法
 
-```
+```atk-command
 Graphics <ObjectPath> SetColor {Color} [{Item}]
 ```
 

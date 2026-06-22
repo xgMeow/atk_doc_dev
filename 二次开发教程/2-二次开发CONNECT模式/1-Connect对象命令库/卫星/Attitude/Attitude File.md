@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 AddAttitude <VehObjectPath> File "<FilePath.a>"
 ```
 

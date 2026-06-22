@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 SetState <LVObjectPath> SimpleAscent {StartTime} [{StopTime}] <StepSize> Geodetic <LaunchLat> <LaunchLon> <LaunchAlt> <BurnoutVelocity> <BurnoutLat> <BurnoutLon> <BurnoutAlt>
 ```
 

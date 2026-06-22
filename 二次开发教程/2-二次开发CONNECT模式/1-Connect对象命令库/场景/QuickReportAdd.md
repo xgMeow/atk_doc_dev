@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 QuickReportAdd <ScenarioPath> Name "<QuickReportName>" Type {RptType} Style "<StyleName>" Object <TruncObjPath> [FromObject <TruncObjPath>]
 ```
 

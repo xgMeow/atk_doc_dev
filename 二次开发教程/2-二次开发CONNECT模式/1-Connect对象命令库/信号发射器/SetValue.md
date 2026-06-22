@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Transmitter <XmObjectPath> SetValue <AttributePath> [<Value>] [<Unit>]
 ```
 

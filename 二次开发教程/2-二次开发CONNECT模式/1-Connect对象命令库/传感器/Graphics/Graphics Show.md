@@ -10,7 +10,7 @@ description: 设置传感器是否在二维图形窗口中显示。
 
 ## 语法
 
-```
+```atk-command
 Graphics <ObjectPath> Show {On | Off}
 ```
 

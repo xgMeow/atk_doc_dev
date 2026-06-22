@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Receiver_RM <RcObjectPath> GetValue [<AttributePath>]
 ```
 

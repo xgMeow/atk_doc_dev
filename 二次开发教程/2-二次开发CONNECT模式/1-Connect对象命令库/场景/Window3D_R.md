@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Window3D_R <ScenarioPath> {WindowOption} [WindowID <WinNumber>]
 ```
 

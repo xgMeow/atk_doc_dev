@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 SetState <SatObjectPath> SGP4 {NoProp | {TimeInterval}} <StepSize> <SSCNumber> TLESource {Automatic | DefineElements} [<Parameters >]
 ```
 

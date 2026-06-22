@@ -10,7 +10,7 @@ description: 设置传感器的投影属性，支持固定高度投影模式。
 
 ## 语法
 
-```
+```atk-command
 Graphics <SensorObjectPath> Projection {Option}
 ```
 

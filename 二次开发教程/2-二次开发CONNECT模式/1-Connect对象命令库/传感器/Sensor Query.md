@@ -10,7 +10,7 @@ description: 查询传感器属性，支持指向模式、方向图名称和定�
 
 ## 语法
 
-```
+```atk-command
 SensorQuery <SensorObjectPath> [{QueryType}]
 ```
 

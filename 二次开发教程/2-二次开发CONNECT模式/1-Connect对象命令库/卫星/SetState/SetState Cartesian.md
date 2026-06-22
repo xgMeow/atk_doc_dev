@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 SetState <VehObjectPath> Cartesian {Propagator} {NoProp | {TimeInterval}} <StepSize> {CoordSystem} "<OrbitEpoch>" <X> <Y> <Z> <vX> <vY> <vZ> ["<CoordEpoch>"]
 ```
 

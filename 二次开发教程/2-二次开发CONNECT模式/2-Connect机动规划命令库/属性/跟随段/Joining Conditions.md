@@ -6,11 +6,11 @@
 
 ## 语法
 
-```
+```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.JoiningConditions <List of Joining Conditions>
 ```
 
-```
+```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.JoiningConditions.{Joining Condition} <Value> [{Unit}]
 ```
 

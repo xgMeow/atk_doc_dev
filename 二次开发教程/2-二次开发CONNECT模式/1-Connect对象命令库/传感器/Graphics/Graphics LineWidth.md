@@ -10,7 +10,7 @@ description: 设置传感器轨迹线宽，控制二维图形窗口中传感器�
 
 ## 语法
 
-```
+```atk-command
 Graphics <ObjectPath> LineWidth <LineWidth>
 ```
 

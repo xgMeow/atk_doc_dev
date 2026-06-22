@@ -10,7 +10,7 @@ description: 设置传感器的目标跟踪指向属性，支持跟踪和固定�
 
 ## 语法
 
-```
+```atk-command
 Point <SensorObjectPath> Targeted {OrientMethod} <MethodData>
 ```
 

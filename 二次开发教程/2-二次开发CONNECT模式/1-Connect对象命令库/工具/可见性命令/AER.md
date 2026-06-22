@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 AER <ObjectPath> <AccessObjectPath> {TimePeriod <StartTime> <StopTime>}
 ```
 

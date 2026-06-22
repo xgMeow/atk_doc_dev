@@ -10,7 +10,7 @@ description: 设置传感器的外部指向属性，通过外部文件定义传�
 
 ## 语法
 
-```
+```atk-command
 Point <SensorObjectPath> External "<FilePath.sp>"
 ```
 

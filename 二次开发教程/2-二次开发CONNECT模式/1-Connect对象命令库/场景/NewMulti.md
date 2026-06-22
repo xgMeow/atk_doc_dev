@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 NewMulti <ApplicationPath> <ClassPathOfObjectToCreate> <NumToCreate> <NewName1> [<NewName2>...] [NoDefault] [Ignore]
 ```
 

@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 HPOP <ObjectPath> Drag {DragState} <Coeff> <AreaMassRatio> {"AtmDensModel"}
 ```
 

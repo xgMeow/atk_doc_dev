@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 SetAttitude <ObjectPath> Profile {ProfileType} <Parameters>
 ```
 

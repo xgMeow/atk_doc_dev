@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 QuickReport_RM <ScenarioPath> {GetList | GetReport "<QuickReportName>"}
 ```
 

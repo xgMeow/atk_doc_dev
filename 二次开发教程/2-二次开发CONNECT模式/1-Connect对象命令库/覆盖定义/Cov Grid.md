@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Cov <CovDefnObjectPath> Grid {GridOption} <Parameters>
 ```
 

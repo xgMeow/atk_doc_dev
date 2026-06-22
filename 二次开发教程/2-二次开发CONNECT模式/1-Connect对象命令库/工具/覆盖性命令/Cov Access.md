@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Cov <ObjectPath> Access {ComputeOption} [<Parameters>]
 ```
 

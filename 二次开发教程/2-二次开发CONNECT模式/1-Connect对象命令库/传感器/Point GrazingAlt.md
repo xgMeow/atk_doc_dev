@@ -10,7 +10,7 @@ description: 设置传感器的入射高度指向属性，定义方位角和掠�
 
 ## 语法
 
-```
+```atk-command
 Point <SensorObjectPath> GrazingAlt <Azimuth> <GrazingAltitude>
 ```
 

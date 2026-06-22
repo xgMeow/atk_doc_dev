@@ -10,7 +10,7 @@ description: 设置传感器的旋转指向属性，支持连续、单向和双�
 
 ## 语法
 
-```
+```atk-command
 Point <SensorObjectPath> Spinning <Azimuth> <Elevation> <ConeAngle> {ScanMethod} [<ScanMethodParams>] <Rate> <Offset>
 ```
 

@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 VO <CovDefnObjectPath> CovAttributes {DisplayOption} <Value> [{DisplayOption} <Value>...]
 ```
 

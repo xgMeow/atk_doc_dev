@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 CovMulti_RM / MultiFOMDefine Definition <FOMType> { Parameters }
 ```
 

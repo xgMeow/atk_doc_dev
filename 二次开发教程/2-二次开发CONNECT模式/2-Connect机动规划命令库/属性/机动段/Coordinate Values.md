@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.<Coordinate Type>.<Attribute> <Value> <Unit>
 ```
 

@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 VectorTool <ScenarioPath> <ParentObject> {Action} Plane <PlaneName> [{PlaneType} <PlaneTypeParams>]
 ```
 

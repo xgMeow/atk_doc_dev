@@ -10,7 +10,7 @@ description: 设置传感器的脉冲显示属性，包括脉冲开关、幅度�
 
 ## 语法
 
-```
+```atk-command
 VO <SensorObjectPath> Pulse {PulseOption1} <Value1> [{PulseOption2} <Value2>...]
 ```
 

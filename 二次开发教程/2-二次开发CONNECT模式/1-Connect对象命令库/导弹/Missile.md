@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Missile <ObjectPath> Trajectory {TimeValue} <StepSize> LnLatGeoD <GeodeticLatitude> <Longitude> <Altitude> {TrajOption} <Value> ImLatGeoD <GeodeticLatitude> <Longitude> <Altitude>
 ```
 

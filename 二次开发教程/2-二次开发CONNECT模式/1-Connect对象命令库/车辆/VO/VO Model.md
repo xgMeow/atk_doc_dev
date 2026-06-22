@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 VO <ObjectPath> Model {Option1} <Value1> [{Option2} <Value2>]...
 ```
 

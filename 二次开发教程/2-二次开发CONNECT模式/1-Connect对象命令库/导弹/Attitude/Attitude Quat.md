@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 AddAttitude <ObjectPath> Quat {StartTime} <Q1> <Q2> <Q3> <Q4>
 ```
 

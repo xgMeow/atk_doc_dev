@@ -6,7 +6,7 @@
 
 ## 语法
 
-```
+```atk-command
 Receiver <RcObjectPath> SetValue <AttributePath> [<Value>] [<Unit>]
 ```
 

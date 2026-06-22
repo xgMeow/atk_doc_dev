@@ -20,8 +20,10 @@ interface CommandGroup {
 
 const props = withDefaults(defineProps<{
   base?: string;
+  syntaxGuide?: string;
 }>(), {
   base: '',
+  syntaxGuide: '',
 });
 
 const route = useRoute();
@@ -191,6 +193,11 @@ onMounted(() => {
       <span class="cmd-total">{{ commandCount }} 条</span>
     </div>
 
+    <div v-if="props.syntaxGuide" class="cmd-syntax-notice">
+      <svg class="cmd-syntax-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+      <span class="cmd-syntax-text">命令语法中的 <code>&lt; &gt;</code> <code>[ ]</code> <code>{ }</code> <code>|</code> <code>" "</code> <code>...</code> <code>*</code> <code>/</code> 等符号均有特定含义，请先阅读 <RouteLink class="cmd-syntax-link" :to="props.syntaxGuide">命令语法约定</RouteLink>。</span>
+    </div>
+
     <div class="cmd-toolbar">
       <div class="cmd-search">
         <div class="cmd-search-input-wrap">
@@ -348,6 +355,42 @@ onMounted(() => {
   font-weight: 600;
   border-radius: 12px;
   letter-spacing: 0.02em;
+}
+
+/* ── Syntax Guide Notice ──────────────────── */
+
+.cmd-syntax-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #f0f4ff;
+  border-bottom: 1px solid #dbe4f5;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.cmd-syntax-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+.cmd-syntax-text {
+  :deep(code) {
+    padding: 0.15em 0.4em;
+    background: rgba(0, 0, 0, 0.07);
+    border-radius: 3px;
+    font-size: 0.92em;
+    font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
+    color: var(--text-secondary);
+  }
+
+  .cmd-syntax-link {
+    color: var(--accent);
+    font-weight: bold;
+  }
 }
 
 /* ── Toolbar（搜索 + 索引，整体吸顶） ────────── */

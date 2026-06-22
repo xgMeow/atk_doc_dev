@@ -10,7 +10,7 @@ description: 设置序列段和逆向序列段颜色，包含颜色值的 RGB �
 
 ## 语法
 
-```
+```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.SegmentColor <Value>
 ```
 
