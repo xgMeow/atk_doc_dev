@@ -133,3 +133,8 @@ div[class*=language-].line-numbers-mode .line-numbers{
 html[data-theme=light] .token.comment, html[data-theme=light] .token.italic {
     font-style: normal !important;
 }
+.vp-code-tabs{
+  div[class*=language-]{
+    margin: 0;
+  }
+}
