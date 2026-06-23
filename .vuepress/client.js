@@ -115,6 +115,13 @@ export default defineClientConfig({
     // 或者 vue-router 实例
     const router = useRouter();
     let routes = useRoutes();
+
+    // 修复代码复制按钮会在末尾多加换行符的问题：
+    // 拦截 navigator.clipboard.writeText，统一去掉末尾多余换行
+    if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
+      const origWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);
+      navigator.clipboard.writeText = (text) => origWriteText(text.replace(/[\r\n]+$/, ''));
+    }
   },
   rootComponents: [EnhancedToc],
   layouts: {
