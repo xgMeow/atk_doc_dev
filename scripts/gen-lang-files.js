@@ -52,7 +52,7 @@ const root = path.resolve(__dirname, '..');
 // 接口说明模板
 const atkCommandTemplate = path.join(
   root,
-  '二次开发教程/2-二次开发CONNECT模式/操作流程/.include/atkCommand.mixcode.md'
+  '二次开发教程/2-二次开发CONNECT模式/5-操作流程/.include/atkCommand.mixcode.md'
 );
 
 console.log('生成语言文件...\n');
