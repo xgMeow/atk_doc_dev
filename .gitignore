@@ -15,3 +15,5 @@ Help
 # Python
 __pycache__/
 *.pyc
+
+.agents
