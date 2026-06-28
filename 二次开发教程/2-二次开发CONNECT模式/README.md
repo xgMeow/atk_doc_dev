@@ -7,7 +7,7 @@ index: false
 
 CONNECT 模式使用 TCP 网络方式与 ATK 软件进行连接，用户通过编写脚本发送命令的方式对 ATK 软件进行操控。
 
-核心 API 由三组接口组成：`atkOpen`（建立连接）、`atkConnect`（发送命令）、`atkClose`（断开连接）。所有开发方式均基于此三组接口，命令格式统一使用 [CONNECT 命令语法](4-命令语法约定.md)。
+核心 API 由三组接口组成：`atkOpen`（建立连接）、`atkConnect`（发送命令）、`atkClose`（断开连接）。所有开发方式均基于此三组接口，命令格式统一使用 [CONNECT 命令语法](5-命令语法约定.md)。
 
 ## 开发方式对比
 

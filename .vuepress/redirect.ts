@@ -63,8 +63,8 @@ export default {
         "/topics/Objects/SatelliteCollection":                "/03-基础使用指南/03-对象管理/02-属性配置/卫星集群.html",             //卫星集群-属性：右下角的“help”按钮 
         "/topics/Objects/CoverageDefinition":                 "/03-基础使用指南/03-对象管理/02-属性配置/覆盖定义.html",     //覆盖定义-属性：右下角的“help”按钮 
         "/topics/Scenario/CoverageDefinition":                "/03-基础使用指南/02-场景管理/03-场景属性配置/",     //场景-属性：右下角的“help”按钮
-        "/topics/Intergrating/Client":                        "/二次开发教程/2-二次开发CONNECT模式/1-ATK客户端.html",
-        "/topics/Intergrating/Introduction":                  "/二次开发教程/1-二次开发介绍.html",
+        "/topics/Intergrating/Client":                        "/二次开发教程/2-二次开发CONNECT模式/2-Python客户端工具/",
+        "/topics/Intergrating/Introduction":                  "/二次开发教程/",
         "/topics/Release/ChangeLog":                          "/发布说明/发布说明.html",
         "/topics/Attitude/AttitudeFixedInAxes":               "/03-基础使用指南/03-对象管理/06-姿态定义/1-固定姿态.html",
         "/topics/Attitude/AttitudeFixedInCBF":                "/03-基础使用指南/03-对象管理/06-姿态定义/2-固定于天体固定系姿态.html",

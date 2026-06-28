@@ -1,4 +1,4 @@
-ATK CONNECT 模式通过以下三组核心 API 与 ATK 交互：`atkOpen` 建立连接、`atkConnect` 发送命令、`atkClose` 断开连接。所有命令均遵循 [CONNECT 命令语法约定](../4-命令语法约定.md)。
+ATK CONNECT 模式通过以下三组核心 API 与 ATK 交互：`atkOpen` 建立连接、`atkConnect` 发送命令、`atkClose` 断开连接。所有命令均遵循 [CONNECT 命令语法约定](../5-命令语法约定.md)。
 
 ## atkOpen
 
