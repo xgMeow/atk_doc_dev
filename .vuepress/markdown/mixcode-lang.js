@@ -76,7 +76,7 @@ function processContent(content, lang) {
 
   const commentPrefix = rules.comment('').trim();
 
-  return content.split('\n').map((line) => {
+  return content.split(/\r?\n/).map((line) => {
     let processed = processLine(line, lang);
     const trimmed = processed.trim();
 
