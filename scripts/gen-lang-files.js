@@ -31,12 +31,12 @@ function generateLangFiles(templatePath, outDir = null) {
     // 1. 替换 ```atk → ```{lang}
     // 2. 在 ```atk ... ``` 代码块内处理 {S:...} 和 {C:...}
     let result = template.replace(
-      /```\s*mixcode\s*\r?\n([\s\S]*?)```/g,
-      (_match, content) => {
+      /```\s*mixcode([^\n]*)\r?\n([\s\S]*?)```/g,
+      (_match, extra, content) => {
         // 去掉代码块末尾多余的换行，避免生成文件中出现空行
         const trimmed = content.replace(/\n+$/, '');
         const processed = processContent(trimmed, lang);
-        return '```' + rules.tag + '\n' + processed + '\n```';
+        return '```' + rules.tag + extra + '\n' + processed + '\n```';
       }
     );
 
@@ -52,7 +52,7 @@ const root = path.resolve(__dirname, '..');
 // 接口说明模板
 const atkCommandTemplate = path.join(
   root,
-  '二次开发教程/2-二次开发CONNECT模式/5-操作流程/.include/atkCommand.mixcode.md'
+  '二次开发教程/2-二次开发CONNECT模式/.include/atkCommand.mixcode.md'
 );
 
 console.log('生成语言文件...\n');
