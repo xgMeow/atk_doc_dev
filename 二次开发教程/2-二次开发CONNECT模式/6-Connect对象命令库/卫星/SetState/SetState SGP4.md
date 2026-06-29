@@ -16,7 +16,7 @@ SetState <SatObjectPath> SGP4 {NoProp | {TimeInterval}} <StepSize> <SSCNumber> T
 
 | `Parameter` | 说明 |
 | --- | --- |
-| `{NoProp \| {TimeInterval}}` | TimeInterval 格式请查看常用设置格式–常用日期/时间格式 |
+| `{NoProp \| {TimeInterval}}` | TimeInterval 格式请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/常用设置格式/日期时间格式.md) |
 | `TLESource {Automatic \| DefineElements}` | 请查看下列表格 |
 
 - 若 `TLESource` 输入值为 `Automatic`，可包括以下参数：

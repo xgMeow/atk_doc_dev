@@ -17,17 +17,17 @@ SetState <VehObjectPath> Classical {Propagator} {NoProp | {TimeInterval}} <StepS
 | `Parameters` | 说明 |
 | --- | --- |
 | `{Propagator}` | 卫星可得属性值为 `TwoBody`, `J2Perturbation`, `J4Perturbation`, `HPOP` 和 `LOP` |
-| `{NoProp \| {TimeInterval}}` | 输入 NoProp 可以设置卫星状态但是不进行预报，输入 TimeInterval 定义卫星预报的开始结束时间段，设置格式请查看常用设置格式-常用日期/时间格式 |
+| `{NoProp \| {TimeInterval}}` | 输入 NoProp 可以设置卫星状态但是不进行预报，输入 TimeInterval 定义卫星预报的开始结束时间段，设置格式请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/常用设置格式/日期时间格式.md) |
 | `<StepSize>` | 输入必须大于等于 0.001 秒。若选择 LOP 预报器，输入必须大于等于一天（86164.09 秒） |
 | `{CoordSystem}` | 坐标系可设置为 `ICRF`,`J2000`, `TrueOfDate`,`MeanOfDate`,`TEMEOfDate` |
-| `"<OrbitEpoch>"` | 请查看常用设置格式-常用日期/时间格式 |
+| `"<OrbitEpoch>"` | 请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/常用设置格式/日期时间格式.md) |
 | `<SemiMajorAxis>` | 输入半长轴参数 |
 | `<Eccentricity>` | 输入离心率参数，参数值应大于等于 0.0 且小于等于 1.0 |
 | `<Inclination>` | 输入轨道倾角参数，默认单位是度 |
 | `<ArgOfPerigee>` | 输入近地点角参数，默认单位是度 |
 | `<RAAN>` | 输入升交点赤经参数，默认单位是度 |
 | `<MeanAnom>` | 输入平近点角参数，默认单位是度 |
-| `["<CoordEpoch>"]` | 请查看常用设置格式-常用日期/时间格式 |
+| `["<CoordEpoch>"]` | 请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/常用设置格式/日期时间格式.md) |
 
 :::
 

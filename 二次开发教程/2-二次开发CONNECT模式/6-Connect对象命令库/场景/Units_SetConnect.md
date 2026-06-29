@@ -12,7 +12,7 @@ Units_SetConnect <AppOrScenPath> {Default | Internal | {Dimension} {Unit}... }
 
 ## 补充说明
 
-- `{Dimension} {Unit}` 请查看常用设置格式-常用单位格式
+- `{Dimension} {Unit}` 请查看[常用单位格式](/二次开发教程/2-二次开发CONNECT模式/常用设置格式/单位格式.md)
 - Connect 模式仅支持 `{Dimension}` 设置 `Date`、`Distance`、`Time`、`Angle`
 
 ## 示例

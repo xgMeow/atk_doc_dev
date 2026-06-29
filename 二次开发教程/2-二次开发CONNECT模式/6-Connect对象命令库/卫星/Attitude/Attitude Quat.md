@@ -13,7 +13,7 @@ AddAttitude <ObjectPath> Quat {StartTime} <Q1> <Q2> <Q3> <Q4>
 ## 补充说明
 
 - `<Q1>`、`<Q2>`、`<Q3>` 设置 qx，qy，qz，`<Q4>` 设置 qs
-- `{StartTime}` 格式设置请查看常用设置格式--常用日期/时间格式
+- `{StartTime}` 格式设置请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/常用设置格式/日期时间格式.md)
 - 命令输入时间必须是递增序列
 
 ## 示例

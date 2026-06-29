@@ -24,7 +24,7 @@ VO <ObjectPath> AttitudeView {AttitudeViewOption} <Parameters>
 | 参数 | 取值 | 说明 |
 |------|------|------|
 | `Show` | `{On \| Off}` | 姿态球是否显示 |
-| `SphereColor` | `{Color}` | 颜色设置请参考常用设置格式-常用图形格式 |
+| `SphereColor` | `{Color}` | 颜色设置请参考[常用图形格式](/二次开发教程/2-二次开发CONNECT模式/常用设置格式/颜色格式.md) |
 | `ZeroDegLineWidth` | `<Value>` | 设置零度线宽，范围 `1 - 10` |
 | `GridLineWidth` | `<Value>` | 设置线宽，范围 `1 - 10` |
 | `Frame` | `"Type Axes {CrdnDefOptions}"` | `CrdnDefOptions` 目前仅包括 `Name Body` 和 `Name J2000` |
@@ -39,7 +39,7 @@ VO <ObjectPath> AttitudeView {AttitudeViewOption} <Parameters>
 | `Name` | `<CBName>` | 目前仅包括 Sun 和 Moon |
 | `Show` | `{On \| Off}` | 需要输入投影名称，才会设置是否显示 |
 | `ShowLabel` | `{On \| Off}` | 需要输入投影名称，才会设置标签是否显示 |
-| `Color` | `{Color}` | 颜色设置请查看常用格式设置-常用图形格式 |
+| `Color` | `{Color}` | 颜色设置请查看[常用图形格式](/二次开发教程/2-二次开发CONNECT模式/常用设置格式/颜色格式.md) |
 | `PointSize` | `<Value>` | 设置点大小 |
 
 ## 示例

@@ -15,7 +15,7 @@ ACAT <AdvCatObjPath> {CalculateOptions} <Parameters>
 | 参数 | 说明 |
 | --- | --- |
 | `Compute On` | 计算接近事件 |
-| `TimePeriod {TimeInterval}` | `TimeInterval` 请查看常用设置格式-常用日期/时间格式 |
+| `TimePeriod {TimeInterval}` | `TimeInterval` 请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/常用设置格式/日期时间格式.md) |
 | `Primary {Parameters}` | 设置主目标 |
 | `PrimaryMulti {Parameters}` | 设置多个主目标 |
 | `Secondary {Parameters}` | 设置次目标 |
