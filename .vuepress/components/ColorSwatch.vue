@@ -1,12 +1,15 @@
 <template>
-  <span class="color-swatch">
+  <span
+    class="color-swatch"
+    :class="{ copied }"
+    role="button"
+    tabindex="0"
+    title="点击复制"
+    @click="copyValue"
+  >
     <span
       class="color-swatch-block"
-      :class="{ copied }"
       :style="{ background: bgColor }"
-      role="button"
-      tabindex="0"
-      @click="copyValue"
     >
       <span class="swatch-icon">
         <svg v-if="copied" viewBox="0 0 1024 1024" width="13" height="13">
@@ -92,6 +95,7 @@ const copyValue = async () => {
   align-items: center;
   gap: 6px;
   white-space: nowrap;
+  cursor: pointer;
 }
 .color-swatch-block {
   display: inline-flex;
@@ -102,9 +106,8 @@ const copyValue = async () => {
   border: 1px solid #999;
   border-radius: 2px;
   flex-shrink: 0;
-  cursor: pointer;
 }
-.color-swatch-block:hover {
+.color-swatch:hover .color-swatch-block {
   border-color: #333;
 }
 .swatch-icon {
@@ -116,8 +119,8 @@ const copyValue = async () => {
   opacity: 0;
   transition: opacity 0.15s;
 }
-.color-swatch-block:hover .swatch-icon,
-.color-swatch-block.copied .swatch-icon {
+.color-swatch:hover .swatch-icon,
+.color-swatch.copied .swatch-icon {
   opacity: 1;
 }
 </style>
