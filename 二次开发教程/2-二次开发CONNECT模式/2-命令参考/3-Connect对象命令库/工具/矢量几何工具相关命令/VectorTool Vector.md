@@ -39,13 +39,13 @@ VectorTool <ScenarioPath> <ParentObject> {Action} Vector <VectorName> [{VectorTy
 
 ::: details open **创建 Vector 组件**
 ```
-VectorTool * Satellite/Satellite1 Create Vector SatVector1 "LaunchInertial"
+VectorTool * Satellite/Satellite1 Create Vector SatVector1 "Acceleration"
 ```
 :::
 
 ::: details open **修改 Vector 组件**
 ```
-VectorTool * Satellite/Satellite1 Modify Vector SatVector1 "LaunchInertial" "CentralBody/Earth ICRF.Origin" Moon 30 "26 Mar 2026 00:00:00.000"
+VectorTool * Satellite/Satellite1 Modify Vector SatVector1 "Acceleration" "CentralBody/Earth ICRF.Origin" Moon 30 "26 Mar 2026 00:00:00.000"
 ```
 :::
 
