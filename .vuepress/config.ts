@@ -10,6 +10,8 @@ import { include } from "@mdit/plugin-include";
 export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
   return defineUserConfig({
+    // 用来决定哪些文件会被当作页面处理的过滤规则
+    pagePatterns: ["**/*.md", "!**/node_modules", "!**/.vuepress", "!**/CLAUDE.md"],
     // GitHub Pages 部署路径。仓库名是 atk_doc，所以网站在 /atk_doc/ 子目录下
     base: siteBase,
     lang: "zh-CN",
