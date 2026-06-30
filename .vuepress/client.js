@@ -8,6 +8,7 @@ import NotFound from './components/NotFound.vue'
 import Catalog from './components/Catalog.vue'
 import CatalogCard from './components/CatalogCard/CatalogCard.vue'
 import ConnectCommandSummary from './components/ConnectCommandSummary/ConnectCommandSummary.vue'
+import ColorSwatch from './components/ColorSwatch.vue'
 import './styles/atk-command-tokens.scss'
 
 // 定义目录信息获取器，传入文档元数据，返回目录信息对象
@@ -30,6 +31,7 @@ export default defineClientConfig({
     app.component('Catalog', Catalog);
     app.component('CatalogCard', CatalogCard);
     app.component('ConnectCommandSummary', ConnectCommandSummary);
+    app.component('ColorSwatch', ColorSwatch);
     // console.log("__VUEPRESS_SSR__=", __VUEPRESS_SSR__)
     if (!__VUEPRESS_SSR__) {
         if(location.href.startsWith("file://")){

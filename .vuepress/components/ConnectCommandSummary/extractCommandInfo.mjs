@@ -1,4 +1,4 @@
-export const connectCommandRoot = '二次开发教程/2-二次开发CONNECT模式/1-Connect对象命令库';
+export const connectCommandRoot = '二次开发教程/2-二次开发CONNECT模式/2-命令参考/3-Connect对象命令库';
 
 export const buildCommandGroups = (modules, currentPath = `/${connectCommandRoot}/`) => {
   const groups = new Map();

@@ -30,6 +30,8 @@ description: 检查并修复 ATK VuePress 文档中的链接问题，逐条核�
 - `发布说明`
 - `综合案例`
 
+**重要：上述目录下的 `.include` 子目录也必须扫描。** `.include` 目录中的文件通过 `<!--@include:...-->` 指令嵌入到其他 Markdown 文件中，其内部的链接同样会被 VuePress 解析，必须纳入检查。
+
 额外检查以下 VuePress 配置文件中的链接：
 
 - `.vuepress/components/OverView/OverView.vue` 中模块数据配置的 `link` 字段
@@ -82,6 +84,17 @@ description: 检查并修复 ATK VuePress 文档中的链接问题，逐条核�
 - `.vuepress/components/OverView/OverView.vue` 模块数据配置中的 `link`
 - `.vuepress/components/ConnectCommandSummary/ConnectCommandSummary.vue` 中 `import.meta.glob` 扫描模式匹配到的文件路径，以及生成的命令表 `RouteLink :to` 目标
 - `.vuepress/redirect.ts` 中的重定向地址
+
+**特殊处理 `<!--@include:...-->` 指令：**
+
+Markdown 文件可能通过 `<!--@include:path/to/file.md-->` 嵌入其他文件的内容。VuePress 构建时会将 include 文件的内容直接复制到源文件中，include 文件内的相对链接**以 include 文件自身的位置为基准解析**，而非以包含它的源文件位置为基准。
+
+检查步骤：
+1. 扫描所有文件时，对检查范围内的每个 `.md` 文件，查找 `<!--@include:RELATIVE_PATH-->` 指令。
+2. 解析 `RELATIVE_PATH` 得到实际的 include 文件路径。
+3. **读取 include 文件内容**，从中提取所有 Markdown 链接 `[text](target)`。
+4. 对 include 文件中的每个相对链接，**以 include 文件所在目录为基准**解析目标路径，验证目标是否存在。
+5. 注意：同一个 include 文件可能被多个位于不同目录层级的源文件引用。如果 include 中的链接使用相对路径，必须确保从 include 文件自身位置出发能够正确解析到目标。如果 include 被不同深度的文件引用会导致相对路径失效，这是一个需要报告的真正问题。
 
 跳过以下内容：
 
