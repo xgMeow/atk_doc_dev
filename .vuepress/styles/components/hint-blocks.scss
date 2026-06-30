@@ -160,8 +160,8 @@
   }
 }
 
-.hint-container > div[class*=language-]:not(.hint-container-title) {
-  margin: 1.5rem 20px !important;
+.hint-container > div:not(.hint-container-title) {
+  margin: 10px 20px !important;
   padding: 0;
 }
 
