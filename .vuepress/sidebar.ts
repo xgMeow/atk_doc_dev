@@ -3,6 +3,27 @@ import { sidebar } from "vuepress-theme-hope";
 export default sidebar({
   "/综合案例/": "structure",
   "/二次开发教程/": "structure",
+  "/二次开发教程/2-二次开发CONNECT模式/": [
+    {
+      text: "CONNECT模式说明",
+      link: "README.md",
+    },
+    "0-ATK启动与端口配置",
+    {
+      text: "开发方式",
+      prefix: "1-开发方式/",
+      children: "structure",
+      collapsible: false,
+    },
+    {
+      text: "命令参考",
+      prefix: "2-命令参考/",
+      children: "structure",
+      collapsible: false,
+    },
+  ],
+  "/二次开发教程/3-MBSE接口/": "structure",
+  "/二次开发教程/4-二次开发COMPONENT模式/": "structure",
   "/": [
     // "",
     {

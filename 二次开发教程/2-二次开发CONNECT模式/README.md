@@ -1,6 +1,6 @@
 ---
 description: ATK CONNECT 模式概述。CONNECT 模式通过 TCP 网络通信操控 ATK，支持 Python 客户端工具、Java 命令行客户端，以及 Python、Matlab、C++ 三种语言 SDK，另有 ATK 脚本工具作为补充。
-index: false
+index: true
 ---
 
 # CONNECT模式
