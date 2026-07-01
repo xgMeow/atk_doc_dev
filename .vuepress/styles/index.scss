@@ -33,11 +33,18 @@ strong {
   scroll-behavior: auto;
 }
 
-/*不加图标时sidebar对不齐，调整一下*/
-// .vp-sidebar-header 
-// {
-//   margin-left: 0.5rem;
-// }
+// 侧边栏分组标题与链接左对齐
+.vp-sidebar-header {
+  padding-inline-start: 0.5rem;
+}
+.vp-sidebar-header .vp-sidebar-title{
+  padding: 8px 0px;
+}
+
+// 顶层分组标题样式与同层直链一致
+.vp-sidebar > .vp-sidebar-links > li > .vp-sidebar-group > .vp-sidebar-header {
+  color: var(--text-color);
+}
 
 /* 兼容老浏览器 */
 #toc{
@@ -159,12 +166,6 @@ p{
   color: #fff;
   font-weight: bold;
 }
-// .vp-nav-item:hover a{
-//   background-color: #d8d8d8;
-//   font-color: #000;
-//   background-color: #fff;
-//   border-radius: 5px;
-// }
 
 :root{
   --menu-text-color:#000;
@@ -190,13 +191,7 @@ p{
 summary {
   cursor: pointer;
 }
-// html[data-theme=lignt]  #app  {
-//   --menu-color-black:#000;
-//   --menu-color-blue:#096dd9;
-//   // (9, 109, 217, 0.15)
-//   --menu-color-white:#FFF;
-//   --menu-color-blue-low:#dae9f9;
-// }
+
 html[data-theme=dark] {
   --page-color:#2b2c2e;
   --menu-text-color:#fff;
@@ -242,12 +237,15 @@ h2 {
 h3 {
   font-size: 1.2rem;
 }
-.vp-navbar .vp-nav-item > .nav-link {
+// 导航栏链接与下拉菜单标题的统一样式
+.vp-navbar .vp-nav-item > .nav-link,
+.vp-navbar .vp-nav-item .dropdown-wrapper .dropdown-title {
   font-size: 18px;
+  font-weight: normal;
   color: var(--titile-color);
-  padding: 20px 10px 5px 10px;
   border-bottom: 2px solid transparent;
   transition: border-color 0.2s ease;
+  background: transparent;
 
   // 禁用主题的 ::after 下划线动画
   &::after {
@@ -261,22 +259,14 @@ h3 {
   border-bottom-color: rgb(255 255 255 / 80%);
 }
 
-.vp-navbar .vp-nav-item > .nav-link:hover {
+.vp-navbar .vp-nav-item>.nav-link:hover,
+.vp-navbar .vp-nav-item .dropdown-wrapper:hover .dropdown-title {
   font-weight: bold;
+}
+
+.vp-navbar .vp-nav-item>.nav-link:hover {
   border-bottom-color: rgb(255 255 255 / 80%);
 }
-// .toggle-sidebar-wrapper {
-//   position: fixed;
-//   top: var(--navbar-height);
-//   bottom: 0;
-//   inset-inline-start: var(--sidebar-menu);
-//   z-index: 100;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   font-size: 2rem;
-//   transition: inset-inline-start var(--transform-transition);
-// }
 
 .toggle-sidebar-wrapper {
   position: fixed;
