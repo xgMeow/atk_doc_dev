@@ -8,7 +8,11 @@ export default sidebar({
       text: "CONNECT模式说明",
       link: "README.md",
     },
-    "0-ATK启动与端口配置",
+    {
+      text: "ATK启动与端口配置",
+      prefix: "0-ATK启动与端口配置/",
+      children: "structure",
+    },
     {
       text: "开发方式",
       prefix: "1-开发方式/",
