@@ -32,11 +32,41 @@ description: 检查并修复 ATK VuePress 文档中的链接问题，逐条核�
 
 **重要：上述目录下的 `.include` 子目录也必须扫描。** `.include` 目录中的文件通过 `<!--@include:...-->` 指令嵌入到其他 Markdown 文件中，其内部的链接同样会被 VuePress 解析，必须纳入检查。
 
-额外检查以下 VuePress 配置文件中的链接：
+额外检查以下目录和配置文件中的链接：
 
-- `.vuepress/components/OverView/OverView.vue` 中模块数据配置的 `link` 字段
-- `.vuepress/components/ConnectCommandSummary/ConnectCommandSummary.vue` 中 `import.meta.glob` 的扫描路径（确认路径模式与文件系统一致），以及提取后生成的 `RouteLink` 目标路径（确认每个路径都能解析到存在的 .md 文件）
-- `.vuepress/redirect.ts` 中的重定向源地址和目标地址
+### `.vuepress/components/` 目录（所有文件）
+
+检查该目录下所有 Vue 组件（`.vue`）、JavaScript（`.js`/`.mjs`）和 Markdown（`.md`）文件中的链接，包括但不限于：
+
+- `RouteLink :to` / `router-link to` 的目标路径
+- `<a href>` / `:href` 的目标路径
+- `<img src>` / `:src` 的图片路径
+- `import.meta.glob` / `import.meta.globEager` 的扫描模式（确认模式能匹配到实际文件）
+- 组件代码中硬编码的文件路径引用（如 `path.join`、`require`、`import` 引用项目内文件）
+- Markdown 文件中的链接（如 `ConnectCommandSummary/atk-command-syntax-highlighting.md`）
+
+其中重点文件：
+
+- `OverView/OverView.vue` — 模块数据配置中的 `link` 字段
+- `ConnectCommandSummary/ConnectCommandSummary.vue` — `import.meta.glob` 扫描路径，以及提取后生成的 `RouteLink` 目标路径
+- `CatalogCard/CatalogCard.vue` — `import.meta.glob` 扫描路径，动态生成的 `RouteLink :to` 和 `<img :src>`
+
+### `scripts/` 目录
+
+检查该目录下所有脚本文件（`.js`/`.cjs`/`.mjs`）中的文件路径引用，确保以下类型路径能正确解析到实际存在的文件：
+
+- `require()` / `import` 引用项目内相对路径
+- `fs.readFileSync()` / `fs.readdirSync()` 等文件操作的目标路径
+- `path.join()` / `path.resolve()` 引用的项目内文件或目录路径
+- 脚本注释或配置中明确指定的文档目录路径
+
+排除以下文件：
+
+- `scripts/link_check_results.json` — 链接检查结果输出文件，非源文件
+
+### `.vuepress/redirect.ts`
+
+- 重定向源地址和目标地址
 
 除非某个文件是上述范围内链接的目标候选，否则不要主动扫描其他 Markdown 目录。
 
@@ -80,9 +110,19 @@ description: 检查并修复 ATK VuePress 文档中的链接问题，逐条核�
 - Markdown 图片：`![alt](target)`
 - HTML 图片：`<img src="target">`
 - HTML 链接：`<a href="target">`
-- VuePress/Vue 组件中明显的链接属性：如 `to`、`href`、`RouteLink :to`
-- `.vuepress/components/OverView/OverView.vue` 模块数据配置中的 `link`
-- `.vuepress/components/ConnectCommandSummary/ConnectCommandSummary.vue` 中 `import.meta.glob` 扫描模式匹配到的文件路径，以及生成的命令表 `RouteLink :to` 目标
+- VuePress/Vue 组件中明显的链接属性：如 `to`、`href`、`RouteLink :to`、`router-link to`
+- `.vuepress/components/` 目录下所有 `.vue`/`.js`/`.mjs` 文件中的：
+  - `RouteLink :to` 和 `router-link to` 的目标路径
+  - `<a href>` / `:href` 的目标路径
+  - `<img src>` / `:src` 的图片路径
+  - `import.meta.glob` / `import.meta.globEager` 的扫描模式（确认模式能匹配到实际文件）
+  - 硬编码的文件路径引用
+- `.vuepress/components/` 目录下的 `.md` 文件中的 Markdown 链接和文件路径引用
+- `scripts/` 目录下所有 `.js`/`.cjs`/`.mjs` 文件中的：
+  - `require()` / `import` 引用的项目内相对路径
+  - `fs.readFileSync()` / `fs.readdirSync()` 等文件操作的目标路径
+  - `path.join()` / `path.resolve()` 引用的项目内文件或目录路径
+  - 注释或配置中明确指定的文档目录路径
 - `.vuepress/redirect.ts` 中的重定向地址
 
 **特殊处理 `<!--@include:...-->` 指令：**
