@@ -1,5 +1,7 @@
 # Manipulate
 
+## 作用
+
 创建一个操作器
 
 ## 语法
@@ -8,17 +10,15 @@
 Manipulate(func, [a, b])
 ```
 
-## 说明
+## 补充说明
 
-输入一个回调函数与一个范围
-
-`func`: 回调函数
-`[a, b]`: 范围
+- 输入一个回调函数与一个范围
+- `func` ：回调函数
+- `[a, b]` ：范围
 
 ## 示例
 
-
-### 动态控制曲线图中的参数
+::: details open **动态控制曲线图中的参数**
 
 ```atks
 function func(n)
@@ -36,3 +36,4 @@ Manipulate(func, [1, 10])
 
 ![效果图](media/Manipulate/image.png)
 
+:::

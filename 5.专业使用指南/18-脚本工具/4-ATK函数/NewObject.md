@@ -1,7 +1,8 @@
 # NewObject
 
-新建 ATK 算法模型/对象
+## 作用
 
+新建 ATK 算法模型/对象
 
 ## 语法
 
@@ -9,11 +10,17 @@
 NewObject(typeName)
 ```
 
-## 说明
+## 补充说明
 
-输入对象类型`typeName`，返回一个新建的ATK对象
+输入对象类型 `typeName`，返回一个新建的ATK对象
+
+## 示例
+
+::: details open **新建ATK对象**
 
 ```atks
 sat = NewObject("Satellite")
 fac = NewObject("Facility")
 ```
+
+:::

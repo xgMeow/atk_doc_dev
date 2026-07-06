@@ -1,7 +1,8 @@
 # ShowMainWindow
 
-打开ATK主界面
+## 作用
 
+打开ATK主界面
 
 ## 语法
 

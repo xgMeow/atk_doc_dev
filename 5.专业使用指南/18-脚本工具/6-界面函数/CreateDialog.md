@@ -1,5 +1,7 @@
 # CreateDialog
 
+## 作用
+
 创建一个对话框，并显示它
 
 ## 语法
@@ -10,8 +12,7 @@ CreateDialog()
 
 ## 示例
 
-
-### 创建一个具有多个控件的对话框
+::: details open **创建一个具有多个控件的对话框**
 
 ```atks
 value = 0.55
@@ -27,3 +28,4 @@ CreateDialog(
 
 ![效果图](media/CreateDialog/image.png)
 
+:::

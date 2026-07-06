@@ -1,5 +1,7 @@
 # DefaultButton
 
+## 作用
+
 创建一个主按钮，点击后会关闭其所在对话框
 
 ## 语法
@@ -8,11 +10,9 @@
 DefaultButton()
 ```
 
-
 ## 示例
 
-### 将主按钮放在对话框，点击后会关闭其所在对话框
-
+::: details open **将主按钮放在对话框，点击后会关闭其所在对话框**
 
 ```atks
 CreateDialog(
@@ -23,6 +23,4 @@ CreateDialog(
 
 ![效果图](media/DefaultButton/image.png)
 
-
-
-
+:::

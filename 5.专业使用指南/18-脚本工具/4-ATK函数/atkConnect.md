@@ -1,5 +1,7 @@
 # atkConnect
 
+## 作用
+
 向已建立连接的远程ATK通过网络通信发送Connect命令
 
 ## 语法
@@ -15,13 +17,10 @@ atkConnect(conID, "command", "objPath", "cmdParamString")
 `objPath`        - 接受命令的对象路径
 `cmdParamString` - 命令属性字符串
 
-
 ## 返回参数
 
 拥有返回值的命令，会直接输出返回值字符串。
 
-
 ## 另请参阅
 
 [atkOpen](atkOpen.md) | [atkClose](atkClose.md)
-

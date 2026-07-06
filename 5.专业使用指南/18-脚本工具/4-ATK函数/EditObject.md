@@ -1,7 +1,8 @@
 # EditObject
 
-打开相关的Ui界面对ATK算法模型/对象进行编辑
+## 作用
 
+打开相关的Ui界面对ATK算法模型/对象进行编辑
 
 ## 语法
 
@@ -9,5 +10,3 @@
 sat = NewObject("Satellite")
 EditObject(sat)
 ```
-
-

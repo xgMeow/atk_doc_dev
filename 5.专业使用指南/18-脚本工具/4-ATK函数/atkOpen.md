@@ -1,5 +1,7 @@
 # atkOpen
 
+## 作用
+
 与远程ATK建立网络连接（TCP协议）
 
 ## 语法
@@ -13,9 +15,6 @@ conID = atkOpen("127.0.0.1", 6655)
 
 `conID`: 连接句柄，如果返回`-1`，则说明连接失败
 
-
-
 ## 另请参阅
 
 [atkConnect](atkConnect.md) | [atkClose](atkClose.md)
-
