@@ -3,6 +3,7 @@ import { computed, nextTick, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { RouteLink } from 'vuepress/client';
 import { buildCommandGroups } from './extractCommandInfo.mjs';
+import { buildFunctionGroups } from './extractFunctionInfo.mjs';
 import { highlightUsage } from './highlightCommand.mjs';
 
 interface CommandEntry {
@@ -21,18 +22,52 @@ interface CommandGroup {
 const props = withDefaults(defineProps<{
   base?: string;
   syntaxGuide?: string;
+  mode?: 'connect' | 'script';
 }>(), {
   base: '',
   syntaxGuide: '',
+  mode: 'connect',
 });
 
 const route = useRoute();
 
-const commandModules = import.meta.glob('../../../二次开发教程/2-二次开发CONNECT模式/**/*.md', {
+const connectModules = import.meta.glob('../../../二次开发教程/2-二次开发CONNECT模式/**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
 }) as Record<string, string>;
+
+const scriptModules = import.meta.glob('../../../5.专业使用指南/18-脚本工具/**/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+// ── Mode-aware labels ──────────────────────────
+
+const isScript = computed(() => props.mode === 'script');
+
+const activeModules = computed(() =>
+  isScript.value ? scriptModules : connectModules,
+);
+
+const uiTitle = computed(() =>
+  isScript.value ? '函数速查表' : '命令速查表',
+);
+
+const uiCommandLabel = computed(() =>
+  isScript.value ? '函数' : '命令',
+);
+
+const uiSearchPlaceholder = computed(() =>
+  isScript.value ? '搜索函数、作用、语法...' : '搜索命令、作用、语法...',
+);
+
+const uiEmptyMessage = computed(() =>
+  isScript.value ? '未找到匹配的脚本函数。' : '未找到匹配的 CONNECT 命令。',
+);
+
+// ── State ──────────────────────────────────────
 
 const keyword = ref('');
 const searchInputRef = ref<HTMLInputElement>();
@@ -85,7 +120,28 @@ function sectionId(text: string): string {
     .replace(/\./g, '-');
 }
 
-const commandGroups = computed<CommandGroup[]>(() => buildCommandGroups(commandModules, props.base || route.path));
+// ── Build groups ───────────────────────────────
+
+const commandGroups = computed<CommandGroup[]>(() => {
+  const modules = activeModules.value;
+  if (isScript.value) {
+    // Normalize script function entries (name → command) to fit CommandEntry
+    const fnGroups = buildFunctionGroups(modules, props.base || route.path);
+    return fnGroups.map(g => ({
+      category: g.category,
+      entries: g.entries.map(e => ({
+        command: e.name,
+        effect: e.effect,
+        usage: e.usage,
+        path: e.path,
+        category: e.category,
+      })),
+    }));
+  }
+  return buildCommandGroups(modules, props.base || route.path);
+});
+
+// ── Filtering ──────────────────────────────────
 
 const filteredGroups = computed(() => {
   const value = keyword.value.trim().toLowerCase();
@@ -189,11 +245,11 @@ onMounted(() => {
 <template>
   <section class="cmd-summary">
     <div class="cmd-header">
-      <h2 class="cmd-title">命令速查表</h2>
+      <h2 class="cmd-title">{{ uiTitle }}</h2>
       <span class="cmd-total">{{ commandCount }} 条</span>
     </div>
 
-    <div v-if="props.syntaxGuide" class="cmd-syntax-notice">
+    <div v-if="props.syntaxGuide && !isScript" class="cmd-syntax-notice">
       <svg class="cmd-syntax-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
       <span class="cmd-syntax-text">命令语法中的 <code>&lt; &gt;</code> <code>[ ]</code> <code>{ }</code> <code>|</code> <code>" "</code> <code>...</code> <code>*</code> <code>/</code> 等符号均有特定含义，请先阅读 <RouteLink class="cmd-syntax-link" :to="props.syntaxGuide">命令语法约定</RouteLink>。</span>
     </div>
@@ -202,7 +258,7 @@ onMounted(() => {
       <div class="cmd-search">
         <div class="cmd-search-input-wrap">
           <svg class="cmd-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input ref="searchInputRef" v-model="keyword" type="search" placeholder="搜索命令、作用、语法..." class="cmd-search-input" />
+          <input ref="searchInputRef" v-model="keyword" type="search" :placeholder="uiSearchPlaceholder" class="cmd-search-input" />
           <button v-if="keyword" class="cmd-search-clear" @click="keyword = ''; searchInputRef?.focus()" aria-label="清除搜索" title="清除搜索">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
           </button>
@@ -253,7 +309,7 @@ onMounted(() => {
           <table class="cmd-table">
           <thead>
             <tr>
-              <th>命令</th>
+              <th>{{ uiCommandLabel }}</th>
               <th>作用</th>
               <th>语法</th>
             </tr>
@@ -266,7 +322,8 @@ onMounted(() => {
               <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect)"></td>
               <td class="cmd-cell-usage">
                 <div class="cmd-usage-row">
-                  <code class="cmd-code" v-html="highlightUsage(entry.usage)"></code>
+                  <code v-if="isScript" class="cmd-code">{{ entry.usage }}</code>
+                  <code v-else class="cmd-code" v-html="highlightUsage(entry.usage)"></code>
                   <button
                     class="cmd-copy-btn"
                     :class="{ 'is-copied': copiedCommand === `${entry.path}-${entry.command}` }"
@@ -286,7 +343,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div v-else class="cmd-empty">未找到匹配的 CONNECT 命令。</div>
+    <div v-else class="cmd-empty">{{ uiEmptyMessage }}</div>
   </section>
 </template>
 
