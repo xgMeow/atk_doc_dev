@@ -50,11 +50,6 @@ strong {
   color: var(--text-color);
 }
 
-/* 兼容老浏览器 */
-#toc{
-  // left: calc(100% + 8rem)
-  right: -37%;
-}
 
 .search-pro-box label {
   right: calc(.5rem);
@@ -353,14 +348,6 @@ h4 {
 #appearance-switch:focus{
   outline: -webkit-focus-ring-color auto 0px;
 }
-#toc {
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  background: var(--bg-color);
-  right: -49%;
-  width: 30%;
-}
-
 p{
   font-size: 17px;
 }/*正文首行缩进*/
@@ -568,5 +555,27 @@ p, ul, ol{
 a {
   .external-link-icon {
     color: inherit;
+  }
+}
+
+// ========================================================
+//  布局优化：固定侧边栏宽度 + 正文自适应
+// ========================================================
+
+// 1. PC 端固定侧边栏宽度：覆盖主题的 clamp 动态计算，保持 320px
+@media (min-width: 1440px) {
+  #app {
+    --sidebar-space: var(--sidebar-width);
+  }
+}
+
+// 2. 正文区域充分利用屏幕空间，增大内容最大宽度
+//    "min(calc(...), 960px)" 保证超大屏也不超过 960px（保持可读性）
+@media (min-width: 1440px) {
+  :root {
+    --content-width: min(
+      calc(100vw - var(--sidebar-width) - 18rem),
+      960px
+    );
   }
 }
