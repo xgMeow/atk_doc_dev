@@ -15,6 +15,8 @@
 @import "components/table.scss";
 // 代码块样式
 @import "components/code.scss";
+// 侧边栏折叠按钮样式
+@import "components/toggle-sidebar-wrapper.scss";
 
 
 // 文章中的链接
@@ -66,21 +68,6 @@ strong {
   width: 100%;
 }
 
-@media (max-width: 1000px){
-  #main-content.vp-page
-  {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 719px)
-{
-  .theme-container .vp-page {
-    margin-left: 0px;
-    padding-inline: 0;
-}
-}
 /* 减轻使用那么夸张的切换动画 */
 .fade-slide-y-enter-active {
   transition: all 0.05s ease !important;
@@ -96,18 +83,10 @@ strong {
   transform: translateY(0px);
 }
 
-
 mjx-container {
   overflow-x:visible;
 }
-.vp-page{
-  --sidebar-space: -2%;
-  --content-width:82%;
-  margin-left: 320px;
-  padding-left: 0%;
-  padding-inline-start:calc(var(--sidebar-space) + 2rem);
-  padding-inline-end: calc(100vw - var(--content-width) - var(--sidebar-space) - 6rem);
-}
+
 #toc{
   margin-top: 2rem;
 }
@@ -231,63 +210,6 @@ h3 {
   border-bottom-color: rgb(255 255 255 / 80%);
 }
 
-.toggle-sidebar-wrapper {
-  position: fixed;
-  top: var(--navbar-height);
-  bottom: 0;
-  inset-inline-start: var(--sidebar-space);
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  transition: inset-inline-start var(--transform-transition);
-}
-@media (max-width: 719px) {
-  .toggle-sidebar-wrapper {
-    display: none;
-  }
-}
-@media (min-width: 1440px) {
-  .toggle-sidebar-wrapper {
-    display: none;
-  }
-}
-.toggle-sidebar-wrapper:hover {
-  background: rgba(127, 127, 127, 0.05);
-  cursor: pointer;
-}
-.toggle-sidebar-wrapper .arrow {
-  display: inline-block;
-  vertical-align: middle;
-  width: 1em;
-  height: 1em;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(0,0,0,0.5)' d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/%3E%3C/svg%3E");
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: all 0.3s;
-}
-html[data-theme=dark] .toggle-sidebar-wrapper .arrow {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(255,255,255,0.5)' d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/%3E%3C/svg%3E");
-}
-.toggle-sidebar-wrapper .arrow.down {
-  transform: rotate(180deg);
-}
-html[dir=rtl] .toggle-sidebar-wrapper .arrow.down {
-  transform: rotate(-180deg);
-}
-.toggle-sidebar-wrapper .arrow.end {
-  transform: rotate(90deg);
-}
-html[dir=rtl] .toggle-sidebar-wrapper .arrow.end {
-  transform: rotate(-90deg);
-}
-.toggle-sidebar-wrapper .arrow.start {
-  transform: rotate(-90deg);
-}
-html[dir=rtl] .toggle-sidebar-wrapper .arrow.start {
-  transform: rotate(90deg);
-}
 
 .theme-container {
   display: flex;
@@ -295,21 +217,7 @@ html[dir=rtl] .toggle-sidebar-wrapper .arrow.start {
   justify-content: space-between;
   min-height: 100vh;
 }
-.theme-container .vp-page {
-  padding-top: var(--navbar-height);
-  padding-inline-start: calc(var(--sidebar-space) + 2rem);
-  background:var(--page-color);
-}
-@media (max-width: 719px) {
-  .theme-container .vp-page {
-    padding-inline: 0;
-  }
-}
-@media (min-width: 1440px) {
-  .theme-container .vp-page {
-    padding-inline-end: calc(100vw - var(--content-width) - var(--sidebar-space) - 6rem);
-  }
-}
+
 .theme-container .vp-sidebar {
   top: var(--navbar-height);
 }
@@ -339,9 +247,6 @@ html[dir=rtl] .toggle-sidebar-wrapper .arrow.start {
 html[dir=rtl] .theme-container.sidebar-collapsed .vp-sidebar {
   transform: translateX(100%);
 }
-.theme-container.sidebar-collapsed .toggle-sidebar-wrapper {
-  inset-inline-start: 0;
-}
 .theme-container.no-sidebar .vp-page {
   padding-inline: 0;
 }
@@ -349,10 +254,6 @@ html[dir=rtl] .theme-container.sidebar-collapsed .vp-sidebar {
   .theme-container.no-sidebar.has-toc .vp-page {
     padding-inline-end: 16rem;
   }
-}
-.theme-container.no-sidebar .vp-toggle-sidebar-button,
-.theme-container.no-sidebar .toggle-sidebar-wrapper {
-  display: none;
 }
 .theme-container.no-sidebar .vp-sidebar {
   display: none;

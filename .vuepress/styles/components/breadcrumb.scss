@@ -1,16 +1,15 @@
 // 面包屑导航样式
 
 .vp-breadcrumb{
-  padding-right: 11rem;
   position: fixed;
   top: var(--navbar-height);
-  left: 320px;                // 与侧边栏宽度对齐
+  left: var(--sidebar-space);                // 与侧边栏宽度对齐
   right: 0;
   width: auto;
+  max-width: none; // 覆盖主题 mixin 的 max-width: var(--content-width)
   background-color: var(--bg-color);
   z-index: 10;
   height: 35px;
-  padding-left: 10px;
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
 
@@ -72,6 +71,12 @@
     min-width: 100%;
     // max-content 确保内容超出父容器时 <ol> 跟随扩展
     width: max-content;
+  }
+}
+
+.theme-container.sidebar-collapsed {
+  .vp-breadcrumb {
+    left: 0;                  // 侧边栏收起时，面包屑通栏
   }
 }
 

@@ -1,0 +1,109 @@
+// ==================== 侧边栏折叠按钮（小屏专用） ====================
+// 在 720px–1440px 之间显示为悬浮于侧边栏右边缘的小药丸，
+// 只占局部高度而非整条，视觉上更轻盈，与侧边栏风格融合。
+.toggle-sidebar-wrapper {
+  position: fixed;
+  top: 50%;
+  inset-inline-start: var(--sidebar-space);
+  z-index: 100;
+
+  // 药丸形状：窄而短，不占满高度
+  width: 18px;
+  height: 56px;
+  margin-top: -28px; // 纯 margin 方式垂直居中，不与 transition 冲突
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--sidebar-bg-color);
+  border: 1px solid var(--border-color);
+  border-inline-start: none;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.04);
+
+  font-size: 1rem;
+  cursor: pointer;
+
+  transition:
+    inset-inline-start var(--transform-transition),
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+
+  // 悬浮高亮
+  &:hover {
+    background: var(--bg-color-secondary);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+  }
+
+  // 箭头图标
+  .arrow {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(0,0,0,0.45)' d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: transform 0.3s ease;
+  }
+
+  // 箭头方向变体（由 JS 切换 class）
+  .arrow.down {
+    transform: rotate(180deg);
+  }
+  html[dir=rtl] & .arrow.down {
+    transform: rotate(-180deg);
+  }
+  .arrow.end {
+    transform: rotate(90deg);
+  }
+  html[dir=rtl] & .arrow.end {
+    transform: rotate(-90deg);
+  }
+  .arrow.start {
+    transform: rotate(-90deg);
+  }
+  html[dir=rtl] & .arrow.start {
+    transform: rotate(90deg);
+  }
+}
+
+// 黑暗模式
+html[data-theme=dark] .toggle-sidebar-wrapper {
+  border-color: var(--border-color, #30363d);
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background: var(--bg-color-secondary, #2d3035);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .arrow {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(255,255,255,0.45)' d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/%3E%3C/svg%3E");
+  }
+}
+
+// 小屏和超大屏均隐藏
+@media (max-width: 719px) {
+  .toggle-sidebar-wrapper {
+    display: none;
+  }
+}
+@media (min-width: 1440px) {
+  .toggle-sidebar-wrapper {
+    display: none;
+  }
+}
+
+// 侧边栏折叠时按钮紧贴左边缘
+.theme-container.sidebar-collapsed .toggle-sidebar-wrapper {
+  inset-inline-start: 0;
+}
+
+// 无侧边栏时隐藏
+.theme-container.no-sidebar .vp-toggle-sidebar-button,
+.theme-container.no-sidebar .toggle-sidebar-wrapper {
+  display: none;
+}
