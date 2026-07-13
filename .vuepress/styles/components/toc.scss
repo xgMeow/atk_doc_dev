@@ -7,11 +7,22 @@
   }
 }
 
+// =========================================
+//  通用 TOC 样式
+// =========================================
+
 #toc {
   margin-top: 2rem;
   margin-bottom: 1rem;
   border-radius: 8px;
   background: var(--bg-color);
+
+  @media (max-width: 1439px) {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    background: transparent;
+  }
 }
 
 // PC 端：TOC 浮动到内容右侧
@@ -27,7 +38,84 @@
   }
 }
 
-// 当前活动 TOC 项高亮
+// =========================================
+//  小屏优化（< 1440px）
+// =========================================
+
+@media (max-width: 1439px) {
+  // 吸顶容器：毛玻璃效果，避免白色实心块
+  .vp-toc-placeholder {
+    top: calc(var(--navbar-height) + 3rem) !important;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    html[data-theme="dark"] & {
+      background: rgba(58, 59, 62, 0.88);
+    }
+  }
+
+  // 导航栏隐藏时（仅小屏 ≤719px），面包屑已滑走，TOC 移到最顶部
+  @media (max-width: 719px) {
+    .theme-container.hide-navbar .vp-toc-placeholder {
+      top: 0rem !important;
+    }
+  }
+
+  // 去掉左侧装饰线
+  .vp-toc-wrapper::before {
+    display: none;
+  }
+
+  // 头部 hover 提示可点击（用 ::before 做背景，避免 padding 导致文本错位）
+  .vp-toc-header {
+    position: relative;
+    z-index: 0;
+    padding: 0.35rem 0;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0 -0.75rem;
+      z-index: -1;
+      border-radius: 4px;
+      background: transparent;
+      transition: background-color 0.2s;
+    }
+
+    &:hover::before {
+      background: rgba(0, 0, 0, 0.04);
+
+      html[data-theme="dark"] & {
+        background: rgba(255, 255, 255, 0.06);
+      }
+    }
+  }
+
+  // 展开的列表也透明
+  .vp-toc-wrapper {
+    margin: 0;
+
+    // 加粗滚动条，便于触摸操作
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb:vertical {
+      background: #c0c4cc;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+    &::-webkit-scrollbar-thumb:vertical:hover {
+      background: #90949c;
+    }
+  }
+}
+
+// =========================================
+//  活动项高亮
+// =========================================
+
 li.vp-toc-item.active {
   background: #f0f4ff;
 }
