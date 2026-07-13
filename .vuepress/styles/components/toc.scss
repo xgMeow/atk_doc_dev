@@ -1,0 +1,33 @@
+// TOC（目录）样式
+
+// PC 端无侧边栏时，为右侧 TOC 预留空间
+@media (min-width: 1440px) {
+  .theme-container.no-sidebar.has-toc .vp-page {
+    padding-inline-end: 16rem;
+  }
+}
+
+#toc {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background: var(--bg-color);
+}
+
+// PC 端：TOC 浮动到内容右侧
+@media (min-width: 1440px) {
+  #toc {
+    position: absolute;
+    inset-inline-start: calc(100% + 1rem);
+    min-width: 10rem;
+    max-width: 22rem;
+    margin-bottom: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+}
+
+// 当前活动 TOC 项高亮
+li.vp-toc-item.active {
+  background: #f0f4ff;
+}

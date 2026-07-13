@@ -17,6 +17,8 @@
 @import "components/code.scss";
 // 侧边栏折叠按钮样式
 @import "components/toggle-sidebar-wrapper.scss";
+// 目录样式
+@import "components/toc.scss";
 
 
 // 文章中的链接
@@ -82,9 +84,6 @@ mjx-container {
   overflow-x:visible;
 }
 
-#toc{
-  margin-top: 2rem;
-}
 #app{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -245,11 +244,6 @@ html[dir=rtl] .theme-container.sidebar-collapsed .vp-sidebar {
 .theme-container.no-sidebar .vp-page {
   padding-inline: 0;
 }
-@media (min-width: 1440px) {
-  .theme-container.no-sidebar.has-toc .vp-page {
-    padding-inline-end: 16rem;
-  }
-}
 .theme-container.no-sidebar .vp-sidebar {
   display: none;
 }
@@ -281,11 +275,6 @@ html[dir=rtl] .theme-container.sidebar-collapsed .vp-sidebar {
   border-radius: 0.05em;
   background: var(--titile-color);
   transition: transform 0.2s ease-in-out;
-}
-#toc {
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  background: var(--bg-color);
 }
 
 h1 {
@@ -334,17 +323,6 @@ h4 {
   padding-block:0.5rem;
 }
 
-@media (min-width: 1440px){
-  #toc {
-      position: absolute;
-      inset-inline-start: calc(100% + 1rem);
-      min-width: 10rem;
-      max-width: 22rem;
-      margin-bottom: 0;
-      border-radius: 0;
-      background: transparent;
-  }
-}
 #appearance-switch:focus{
   outline: -webkit-focus-ring-color auto 0px;
 }
@@ -511,9 +489,6 @@ details[open] {
   padding-top: 120px;   /* 用内边距撑开实际内容区域，避免文字与顶部的面包屑重叠 */
 }
 
-li.vp-toc-item.active{
-  background: #f0f4ff;
-}
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -579,3 +554,4 @@ a {
     );
   }
 }
+
