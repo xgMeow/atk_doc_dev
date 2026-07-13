@@ -152,3 +152,11 @@
 .vp-navbar .vp-nav-links{
   gap: 1rem;
 }
+
+.vp-toggle-navbar-button .vp-top, .vp-toggle-navbar-button .vp-middle, .vp-toggle-navbar-button .vp-bottom{
+  background: #ffffff;
+}
+
+.vp-toggle-navbar-button.is-active:hover .vp-top, .vp-toggle-navbar-button.is-active:hover .vp-middle, .vp-toggle-navbar-button.is-active:hover .vp-bottom{
+  background: #75ecff;
+}
