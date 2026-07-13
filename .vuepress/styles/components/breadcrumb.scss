@@ -10,6 +10,8 @@
   background-color: var(--bg-color);
   z-index: 10;
   height: 35px;
+  transition: transform 0.3s ease;
+  will-change: transform;
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
 
@@ -77,6 +79,15 @@
 .theme-container.sidebar-collapsed {
   .vp-breadcrumb {
     left: 0;                  // 侧边栏收起时，面包屑通栏
+  }
+}
+
+// 导航栏隐藏时面包屑一起滑出屏幕（仅小屏，与 navbar auto-hide 同步）
+@media (max-width: 719px) {
+  .theme-container.hide-navbar {
+    .vp-breadcrumb {
+      transform: translateY(calc(-100% - var(--navbar-height)));
+    }
   }
 }
 
