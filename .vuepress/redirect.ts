@@ -3,7 +3,7 @@ export default {
     config:{ 
         // 高级工具（路径尽可能短一点，将ProfessionalTools改为Tool，下面这些不动了，也别添加新的了）
         "/topics/ProfessionalTools/Access":                       "/5.专业使用指南/01-可见性与覆盖分析/01-可见性工具.html",     //在工具-可见性弹出的右下角增加“help”按钮 
-        "/topics/ProfessionalTools/Coverage":                     "/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具.html",       //在工具-覆盖性弹出的右下角增加“help”按钮 
+        "/topics/ProfessionalTools/Coverage":                     "/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具/02-覆盖性工具.html",       //在工具-覆盖性弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/BatchedCoordTransformation":   "/5.专业使用指南/04-批量坐标转换工具.html",   //在工具-批量坐标转换弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/CAT":                          "/5.专业使用指南/07-接近分析.html",       //在工具-接近分析弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/CamSafetyAnalysis":            "/5.专业使用指南/08-碰撞规避.html",           //在工具-碰撞规避弹出的右下角增加“help”按钮 
@@ -18,7 +18,7 @@ export default {
         
         // 工具
         "/topics/Tool/Access":                       "/5.专业使用指南/01-可见性与覆盖分析/01-可见性工具.html",             //在工具-可见性弹出的右下角增加“help”按钮 
-        "/topics/Tool/Coverage":                     "/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具.html",               //在工具-覆盖性弹出的右下角增加“help”按钮 
+        "/topics/Tool/Coverage":                     "/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具/02-覆盖性工具.html",               //在工具-覆盖性弹出的右下角增加“help”按钮 
         "/topics/Tool/BatchedCoordTransformation":   "/5.专业使用指南/04-批量坐标转换工具.html",       //在工具-批量坐标转换弹出的右下角增加“help”按钮 
         "/topics/Tool/CAT":                          "/5.专业使用指南/07-接近分析.html",           //在工具-接近分析弹出的右下角增加“help”按钮 
         "/topics/Tool/CamSafetyAnalysis":            "/5.专业使用指南/08-碰撞规避.html",           //在工具-碰撞规避弹出的右下角增加“help”按钮 
@@ -61,7 +61,7 @@ export default {
         "/topics/Objects/Receiver":                           "/03-基础使用指南/03-对象管理/02-属性配置/接收器.html",      //接收器-属性；右下角的“help”按钮 
         "/topics/Objects/Transmitter":                        "/03-基础使用指南/03-对象管理/02-属性配置/发射器.html",      //发射器-属性；右下角的“help”按钮 
         "/topics/Objects/SatelliteCollection":                "/03-基础使用指南/03-对象管理/02-属性配置/卫星集群.html",             //卫星集群-属性：右下角的“help”按钮 
-        "/topics/Objects/CoverageDefinition":                 "/03-基础使用指南/03-对象管理/02-属性配置/覆盖定义.html",     //覆盖定义-属性：右下角的“help”按钮 
+        "/topics/Objects/CoverageDefinition":                 "/03-基础使用指南/03-对象管理/02-属性配置/覆盖定义/覆盖定义.html",     //覆盖定义-属性：右下角的"help"按钮
         "/topics/Scenario/CoverageDefinition":                "/03-基础使用指南/02-场景管理/03-场景属性配置/",     //场景-属性：右下角的“help”按钮
         "/topics/Intergrating/Client":                        "/二次开发教程/2-二次开发CONNECT模式/1-开发方式/2-Python客户端工具/",
         "/topics/Intergrating/Introduction":                  "/二次开发教程/",
