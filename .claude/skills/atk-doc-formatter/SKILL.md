@@ -1,11 +1,8 @@
 ---
 name: atk-doc-formatter
-description: 规范化 ATK/VuePress Markdown 文档格式，统一标题层级、按钮、对话框、图片、表格、公式、提示块、引号和 frontmatter 描述。仅手动调用。
 ---
 
 # ATK 文档格式化
-
-> **手动触发技能。** 不根据上下文自动激活——即使用户在讨论文档格式或 ATK 文档话题，也不要主动调用。仅当用户明确输入 `/atk-doc-formatter`、`用 atk-doc-formatter 格式化`、`调用文档格式化技能` 等指令时执行。
 
 ## 核心原则
 

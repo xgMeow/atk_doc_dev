@@ -27,6 +27,7 @@ export const useNavbar = ({ type }) => {
         },
       ],
     },
+    { text: "AI助手", link: "/06-AI助手/" },
     { text: "综合案例", link: "/综合案例/" },
   ])
 };

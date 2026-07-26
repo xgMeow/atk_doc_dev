@@ -28,6 +28,20 @@ export default sidebar({
   ],
   "/二次开发教程/3-MBSE接口/": "structure",
   "/二次开发教程/4-二次开发COMPONENT模式/": "structure",
+  "/06-AI助手/": [
+    {
+      text: "场景生成智能体",
+      prefix: "场景生成智能体/",
+      children: "structure",
+      collapsible: false,
+    },
+    {
+      text: "知识问答助手",
+      prefix: "知识问答助手/",
+      children: "structure",
+      collapsible: false,
+    },
+  ],
   "/": [
     // "",
     {
