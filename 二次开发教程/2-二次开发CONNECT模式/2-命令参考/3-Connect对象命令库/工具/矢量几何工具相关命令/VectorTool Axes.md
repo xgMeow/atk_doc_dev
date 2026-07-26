@@ -15,8 +15,8 @@ VectorTool <ScenarioPath> <ParentObject> {Action} Axes <AxesName> [{AxesType} <A
 | `{Action}` | Parameters | 说明 |
 | ------------------------------------- | ------------------  | ------------------  |
 | Create | `{AxesType} [<AxesTypeParams>]` | `<AxesTypeParams>` 是可选的，详细参数请看下表。若未指定 `<AxesTypeParams>`，则使用默认值。 |
-| Modify | `{AxesType} [<AxesTypeParams>]` | `<AxesName> {AxesType}` 必须定义一个现有的角度组件。`{AxesType}` 不可修改。`<AxesTypeParams>` 为必填项。 |
-| Delete | | 删除 `<AxesName>` 定义的角度组件。 |
+| Modify | `{AxesType} [<AxesTypeParams>]` | `<AxesName> {AxesType}` 必须定义一个现有的坐标系组件。`{AxesType}` 不可修改。`<AxesTypeParams>` 为必填项。 |
+| Delete | | 删除 `<AxesName>` 定义的坐标系组件。 |
 
 | `{AxesType}` | `<AxesTypeParams>` |
 | ------------------------------------- | ------------------  |
@@ -48,5 +48,65 @@ VectorTool * Satellite/Satellite1 Modify Axes SatAxes1 "Aligned and Constrained"
 ::: details open **删除 Axes 组件**
 ```
 VectorTool * Satellite/Satellite1 Delete Axes SatAxes1 
+```
+:::
+
+::: details open **创建 Aligned and Constrained（对齐约束）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesAlignCnstn "Aligned and Constrained" Y "CentralBody/Earth ICRF.Axes.X" -Y "Satellite/Satellite2 VVLH.Axes.Y"
+```
+:::
+
+::: details open **创建 Angular Offset（角度偏移）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesAngoffset "Angular Offset" SpinVector "CentralBody/Earth ICRF.Axes.X" RotationAngle "CentralBody/Earth AngleRotation" Offset 121 ReferenceAxes "CentralBody/Earth Fixed.Axes"
+```
+:::
+
+::: details open **创建 Fixed in Axes（固定于坐标系）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesFixed "Fixed in Axes" Euler 11 22 33 131 "CentralBody/Earth Fixed.Axes"
+```
+:::
+
+::: details open **创建 Fixed at Epoch（历元固定）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesFixedEpoch "Fixed at Epoch" "13 Mar 2026 00:00:00.000" "CentralBody/Earth Fixed.Axes" "Satellite/Satellite2 VVLH.Axes"
+```
+:::
+
+::: details open **创建 Launch（发射）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesLaunch "Launch" Moon "CentralBody/Earth ICRF.Origin" 12
+```
+:::
+
+::: details open **创建 Launch Inertial（发射惯性）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesLaunchInertial "Launch Inertial" Moon "CentralBody/Earth ICRF.Origin" 12 "13 Mar 2026 00:00:00.000"
+```
+:::
+
+::: details open **创建 Libration（平动）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesLibration "Libration" Moon L3 Sun Earth
+```
+:::
+
+::: details open **创建 Spinning（自旋）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesSpinning "Spinning" Epoch "13 Mar 2026 01:00:00.000" SpinVector "CentralBody/Earth ICRF.Axes.X" Offset 11 RotationRate 12 ReferenceAxes "CentralBody/Earth Fixed.Axes"
+```
+:::
+
+::: details open **创建 Topocentric（站心）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesTopocentric "Topocentric" "CentralBody/Earth ICRF.Origin" Moon
+```
+:::
+
+::: details open **创建 Trajectory（轨迹）Axes**
+```
+VectorTool * Satellite/Satellite1 Create Axes SatAxesTraj "Trajectory" "CentralBody/Earth ICRF.Origin" "CentralBody/Earth ICRF" ICR
 ```
 :::

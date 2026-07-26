@@ -46,3 +46,33 @@ VectorTool * Satellite/Satellite1 Modify Angle SatAngle1 "Between Vectors" "Cent
 VectorTool * Satellite/Satellite1 Delete Angle SatAngle1 
 ```
 :::
+
+::: details open **创建 Between Planes（平面间）Angle**
+```
+VectorTool * Satellite/Satellite1 Create Angle SatAngleBtnPlane "Between Planes" "CentralBody/Earth PlaneNormal" "Satellite/Satellite2 PlaneQuadrant"
+```
+:::
+
+::: details open **创建 Between Vectors（向量间）Angle**
+```
+VectorTool * Satellite/Satellite1 Create Angle SatAngleBtnVector "Between Vectors" "CentralBody/Earth ICRF.Axes.X" "Satellite/Satellite2 VVLH.Axes.Y"
+```
+:::
+
+::: details open **创建 Dihedral Angle（二面角）**
+```
+VectorTool * Satellite/Satellite1 Create Angle SatAngleDihe "Dihedral Angle" "CentralBody/Earth ICRF.Axes.X" "CentralBody/Earth Fixed.Axes.X" "Satellite/Satellite2 VVLH.Axes.Y" 0-360 Positive
+```
+:::
+
+::: details open **创建 Rotation（旋转）Angle**
+```
+VectorTool * Satellite/Satellite1 Create Angle SatAngleRotation "Rotation" "CentralBody/Earth Fixed.Axes" "Satellite/Satellite2 VVLH.Axes" Y
+```
+:::
+
+::: details open **创建 To Plane（到平面）Angle**
+```
+VectorTool * Satellite/Satellite1 Create Angle SatAngleToPlane "To Plane" "CentralBody/Earth ICRF.Axes.X" "Satellite/Satellite2 PlaneQuadrant" off Negative
+```
+:::

@@ -15,8 +15,8 @@ VectorTool <ScenarioPath> <ParentObject> {Action} Plane <PlaneName> [{PlaneType}
 | `{Action}` | Parameters | 说明 |
 | ------------------------------------- | ------------------  | ------------------  |
 | Create | `{PlaneType} [<PlaneTypeParams>]` | `<PlaneTypeParams>` 是可选的，详细参数请看下表。若未指定 `<PlaneTypeParams>`，则使用默认值。 |
-| Modify | `{PlaneType} [<PlaneTypeParams>]` | `<PlaneName> {PlaneType}` 必须定义一个现有的角度组件。`{PlaneType}` 不可修改。`<PlaneTypeParams>` 为必填项。 |
-| Delete | | 删除 `<PlaneName>` 定义的角度组件。 |
+| Modify | `{PlaneType} [<PlaneTypeParams>]` | `<PlaneName> {PlaneType}` 必须定义一个现有的平面组件。`{PlaneType}` 不可修改。`<PlaneTypeParams>` 为必填项。 |
+| Delete | | 删除 `<PlaneName>` 定义的平面组件。 |
 
 | `{PlaneType}` | `<PlaneTypeParams>` |
 | ------------------------------------- | ------------------  |
@@ -43,5 +43,35 @@ VectorTool * Satellite/Satellite1 Modify Plane SatPlane1 "Containing Two Vectors
 ::: details open **删除 Plane 组件**
 ```
 VectorTool * Satellite/Satellite1 Delete Plane SatPlane1 
+```
+:::
+
+::: details open **创建 Containing Two Vectors（含两向量）Plane**
+```
+VectorTool * Satellite/Satellite1 Create Plane SatPlaneCtnTVec "Containing Two Vectors" Vector1 "CentralBody/Earth ICRF.Axes.X" Vector2 "Satellite/Satellite2 VVLH.Axes.Y" ReferencePoint "CentralBody/Earth ICRF.Origin"
+```
+:::
+
+::: details open **创建 Normal（法向）Plane**
+```
+VectorTool * Satellite/Satellite1 Create Plane SatPlaneNormal "Normal" "CentralBody/Earth ICRF.Axes.X" "Satellite/Satellite2 VVLH.Axes.Y" "CentralBody/Earth ICRF.Origin"
+```
+:::
+
+::: details open **创建 Quadrant（象限）Plane**
+```
+VectorTool * Satellite/Satellite1 Create Plane SatPlaneQuadrant "Quadrant" ZX "CentralBody/Earth ICRF"
+```
+:::
+
+::: details open **创建 Trajectory（轨迹）Plane**
+```
+VectorTool * Satellite/Satellite1 Create Plane SatPlaneTraj "Trajectory" "CentralBody/Earth ICRF.Origin" "CentralBody/Earth ICRF" 11
+```
+:::
+
+::: details open **创建 Triad（三点）Plane**
+```
+VectorTool * Satellite/Satellite1 Create Plane SatPlaneTriad "Triad" "CentralBody/Earth ICRF.Origin" "CentralBody/Moon ICRF.Origin" "CentralBody/Earth Fixed.Origin" 11
 ```
 :::
