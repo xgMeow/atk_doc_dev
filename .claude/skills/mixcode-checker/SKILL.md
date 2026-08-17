@@ -1,11 +1,8 @@
 ---
 name: mixcode-checker
-description: 改写 ATK 文档中的单语言代码块为 ```mixcode 模板格式。仅手动调用或由其他 skill 调用。默认执行改写。
 ---
 
-# ATK 代码块改写
-
-> **仅手动触发。** 不根据上下文自动激活。由用户输入 `/mixcode-checker` 或被其他 skill 调用才执行。
+# ATK 多语言代码块改写
 
 ## 触发条件
 
@@ -81,7 +78,7 @@ description: 改写 ATK 文档中的单语言代码块为 ```mixcode 模板格�
    ```
    # 转换前
    atkConnect(conID, 'New', '/ Scenario'); # 创建场景
-
+   
    # 转换后
    {C:创建场景}
    atkConnect(conID, {S:New}, {S:/ Scenario})
@@ -91,7 +88,7 @@ description: 改写 ATK 文档中的单语言代码块为 ```mixcode 模板格�
    ```
    # 转换前
    atkConnect(conID, "SetState", "*/Satellite1 HPOP \"2026-03-06\"");
-
+   
    # 转换后
    atkConnect(conID, {S:SetState}, {S:*/Satellite1 HPOP "2026-03-06"})
    ```

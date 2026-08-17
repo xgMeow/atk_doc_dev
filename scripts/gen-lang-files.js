@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { LANGS, ALL_LANGS, processContent } = require('../.vuepress/markdown/mixcode-lang');
+const { LANGS, ALL_LANGS, processContent } = require('../src/.vuepress/markdown/mixcode-lang');
 
 /**
  * 处理单个模板文件，生成各语言版本
@@ -52,7 +52,7 @@ const root = path.resolve(__dirname, '..');
 // 接口说明模板
 const atkCommandTemplate = path.join(
   root,
-  '二次开发教程/2-二次开发CONNECT模式/.include/atkCommand.mixcode.md'
+  'src/zh/二次开发教程/2-二次开发CONNECT模式/.include/atkCommand.mixcode.md'
 );
 
 console.log('生成语言文件...\n');

@@ -9,14 +9,15 @@
 const fs = require('fs');
 const path = require('path');
 
-const { expandToCodeTabs } = require('../.vuepress/markdown/mixcode-lang');
+const { expandToCodeTabs } = require('../src/.vuepress/markdown/mixcode-lang');
 
 const MIXCODE_BLOCK_RE = /```\s*mixcode\s*\r?\n([\s\S]*?)```/g;
 const ROOT_DIR = path.resolve(__dirname, '..');
 const BACKUP_DIR = path.join(ROOT_DIR, '.mixcode-backups');
 
 const SCAN_DIRS = [
-  '02-案例教程/8-二次开发案例',
+  'src/zh/02-案例教程/8-二次开发案例',
+  'src/en/02-案例教程/8-二次开发案例',
 ];
 
 // ============ 工具函数 ============

@@ -15,7 +15,7 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob'); // 可能需要手动遍历
 
-const CASE_DIR = path.resolve(__dirname, '..', '02-案例教程/8-二次开发案例');
+const CASE_DIR = path.resolve(__dirname, '..', 'src/zh/02-案例教程/8-二次开发案例');
 
 /**
  * 转换一行 Python 代码为 atk 模板格式

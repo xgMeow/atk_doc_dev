@@ -1,11 +1,8 @@
 ---
 name: atk-link-checker
-description: 检查并修复 ATK VuePress 文档中的链接问题，逐条核验 Markdown 链接、图片路径、OverView link 和 redirect 地址。仅手动调用。
 ---
 
 # ATK VuePress 链接检查与修复工具
-
-> **手动触发技能。** 不根据上下文自动激活——即使用户在讨论链接检查或文档链接话题，也不要主动调用。仅当用户明确输入 `/atk-link-checker`、`调用链接检查技能`、`检查链接`、`修复坏链` 等指令时执行。
 
 ## 核心原则
 
@@ -19,22 +16,14 @@ description: 检查并修复 ATK VuePress 文档中的链接问题，逐条核�
 
 ## 检查范围
 
-只主动检查以下 Markdown 文档目录：
+默认检查以下 Markdown 文档目录里的所有`.md`文档：
 
-- `01-安装`
-- `02-案例教程`
-- `03-基础使用指南`
-- `04-理论基础`
-- `5.专业使用指南`
-- `二次开发教程`
-- `发布说明`
-- `综合案例`
-
-**重要：上述目录下的 `.include` 子目录也必须扫描。** `.include` 目录中的文件通过 `<!--@include:...-->` 指令嵌入到其他 Markdown 文件中，其内部的链接同样会被 VuePress 解析，必须纳入检查。
+- `src/en`
+- `src/zh`
 
 额外检查以下目录和配置文件中的链接：
 
-### `.vuepress/components/` 目录（所有文件）
+### `src/.vuepress/components` 目录（所有文件）
 
 检查该目录下所有 Vue 组件（`.vue`）、JavaScript（`.js`/`.mjs`）和 Markdown（`.md`）文件中的链接，包括但不限于：
 
@@ -59,10 +48,6 @@ description: 检查并修复 ATK VuePress 文档中的链接问题，逐条核�
 - `fs.readFileSync()` / `fs.readdirSync()` 等文件操作的目标路径
 - `path.join()` / `path.resolve()` 引用的项目内文件或目录路径
 - 脚本注释或配置中明确指定的文档目录路径
-
-排除以下文件：
-
-- `scripts/link_check_results.json` — 链接检查结果输出文件，非源文件
 
 ### `.vuepress/redirect.ts`
 

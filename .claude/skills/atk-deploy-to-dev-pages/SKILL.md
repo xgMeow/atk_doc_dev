@@ -34,10 +34,12 @@ description: 将本地 develop 分支强制推送到 github-dev 远程的 main �
 git branch --show-current
 ```
 
-如果不是 `develop` 分支，先切换到 `develop`：
+如果不是 `develop` 分支，向用户确认是否要先切换到 `develop`：
 ```bash
 git checkout develop
 ```
+
+检查本地仓库是否有未提交的内容，如果有向用户确认。
 
 ### 第 2 步：推送到远程
 
@@ -47,14 +49,11 @@ git push -f github-dev develop:main
 
 ### 第 3 步：报告结果
 
-- 推送成功时，显示远程 main 的更新摘要（old...new commit hash），并输出以下链接：
+- 推送成功时，显示远程 main 的更新摘要，并输出以下链接：
 
   - **Pages 页面**：`https://xgmeow.github.io/atk_doc_dev/`
   - **仓库地址**：`https://github.com/xgMeow/atk_doc_dev`
-- 推送失败时，分析错误原因并给出建议：
-  - **权限错误 (403)**：凭据问题，需要更新 GitHub Token 或改用 SSH
-  - **连接错误 (10054 / Empty reply)**：HTTPS 网络干扰，切换到 SSH 地址
-  - **non-fast-forward**：远程有本地没有的提交，确认后使用 `-f` 强制推送
+- 推送失败时，分析错误原因并给出建议。
 
 ## 禁止事项
 
