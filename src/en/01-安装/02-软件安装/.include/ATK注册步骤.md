@@ -1,15 +1,15 @@
-## ATK 注册
+## ATK Registration
 
-ATK 采用 **免费使用模式**，但**首次使用必须完成注册**，否则功能将无法正常使用。
+ATK is **free to use**, but **registration is required on first launch**; otherwise, features will not work properly.
 
-1. 双击运行 `ATK.exe`，自动弹出【ATK使用协议】对话框；
+1. Double-click `ATK.exe`. The **ATK License Agreement** dialog will appear automatically.
 
-2. 仔细阅读协议后，勾选 **我已经认真阅读该协议**，点击 <kbd>同意</kbd>，进入【ATK注册机】界面；
+2. After reading the agreement carefully, check **I have read the agreement**, and click <kbd>Agree</kbd> to enter the **ATK Registration** window.
 
-![ATK使用协议](./media/ATK注册步骤/image-20260330090751358.png)
+![ATK License Agreement](./media/ATK注册步骤/image-20260330090751358.png)
 
-3. 注册机界面中**机器码**将自动生成，无需手动修改；
+3. The **machine code** in the registration window is generated automatically and does not need to be modified.
 
-4. 在注册码输入框填写获取到的注册码，点击 <kbd>注册</kbd> 完成激活。
+4. Enter the obtained Register Id in the input field, and click <kbd>Register</kbd> to activate.
 
-![ATK软件注册工具](./media/ATK注册步骤/image-20260408191451877.png)
+![ATK software registration tool](./media/ATK注册步骤/image-20260408191451877.png)

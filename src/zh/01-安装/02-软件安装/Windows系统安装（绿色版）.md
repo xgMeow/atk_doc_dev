@@ -53,7 +53,6 @@ ATK Windows 平台提供 **绿色免安装版**，解压后即可直接运行。
 
 `Help` 目录存放软件内置帮助文档及相关资源，结构如下：
 
-
 ```text :no-line-numbers
 Help/
 ├── Examples/        # 示例文件目录，包含软件功能演示案例

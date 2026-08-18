@@ -1,98 +1,97 @@
 ---
-description: Windows 平台 ATK 绿色免安装版的解压、启动、注册及卸载操作指南。
+description: Guide to extracting, launching, registering, and uninstalling the portable Windows version of ATK.
 ---
 
-# Windows 系统安装（绿色版）
+# Windows (Portable)
 
-## 安装
+## Installation
 
-ATK Windows 平台提供 **绿色免安装版**，解压后即可直接运行。
+ATK for Windows is provided as a **portable version** — simply extract and run.
 
-### 前置条件
+### Prerequisites
 
-- 操作系统：Windows 7 SP1 / Windows 8 / Windows 10 / Windows 11
-- CPU 架构：x86_64（AMD64）
+- Operating system: Windows 7 SP1 / Windows 8 / Windows 10 / Windows 11
+- CPU architecture: x86_64 (AMD64)
 
-::: warning 重要提醒
-请通过 系统设置 → 系统 → 关于 → 系统类型 确认 CPU 架构为 64 位操作系统，再下载对应安装包。
+::: warning Important
+Confirm that your CPU architecture is 64-bit via **Settings → System → About → System type**, then download the corresponding installation package.
 :::
 
-### 解压安装包
+### Extract the Package
 
-1. 下载 ATK 绿色版压缩包，解压至本地任意文件夹；
+1. Download the ATK portable archive and extract it to any local folder.
 
-2. 建议解压至非系统盘独立文件夹，例如 `D:\ATK`（目录名可自定义），避免路径中包含中文、空格及特殊符号；
+2. It is recommended to extract it to a separate folder on a non-system drive, such as `D:\ATK` (the folder name can be customized). Avoid paths that contain Chinese characters, spaces, or special symbols.
 
-3. 解压后目录结构如下：
+3. The directory structure after extraction is as follows:
 
     ```text :no-line-numbers
-    <解压目录>/               # 主程序目录
-    ├── ATK.exe               # 主程序
-    ├── AstroData/            # 天体数据目录
-    ├── config/               # 配置文件目录
-    ├── Help/                 # 帮助文档目录
-    ├── IntegratingWithATK/   # 外部集成接口目录
-    ├── licenses/             # 开源许可证目录
-    ├── platforms/            # 平台插件目录
-    ├── translations/         # 界面翻译文件目录
-    └── ...                   # 其他运行依赖文件
+    <Extraction Directory>/    # Main program directory
+    ├── ATK.exe               # Main executable
+    ├── AstroData/            # Astronomical data directory
+    ├── config/               # Configuration files directory
+    ├── Help/                 # Help documentation directory
+    ├── IntegratingWithATK/   # External integration interfaces directory
+    ├── licenses/             # Open-source licenses directory
+    ├── platforms/            # Platform plugins directory
+    ├── translations/         # UI translation files directory
+    └── ...                   # Other runtime dependency files
     ```
 
-#### 重要目录说明
+#### Important Directories
 
-| 目录 | 说明 |
-|------|------|
-| `ATK.exe` | 主程序可执行文件，双击启动软件 |
-| `config/` | 存放软件配置文件，包含界面布局、用户设置等 |
-| `Help/` | 帮助文档目录，内置软件使用说明与示例（详见下方） |
-| `IntegratingWithATK/` | 外部系统集成相关文件，供二次开发或接口调用使用 |
-| `translations/` | 多语言翻译文件，支持中英文界面切换 |
-| `licenses/` | 第三方开源组件的许可证文件 |
+| Directory | Description |
+|-----------|-------------|
+| `ATK.exe` | Main executable file. Double-click to launch the software. |
+| `config/` | Stores software configuration files, including UI layout and user settings. |
+| `Help/`   | Help documentation directory, containing built-in user guides and examples (see below). |
+| `IntegratingWithATK/` | Files related to external system integration, for secondary development or API calls. |
+| `translations/` | Multilingual translation files, supporting Chinese and English UI switching. |
+| `licenses/` | License files for third-party open-source components. |
 
-#### Help 目录说明
+#### Help Directory
 
-`Help` 目录存放软件内置帮助文档及相关资源，结构如下：
-
+The `Help` directory contains the built-in help documentation and related resources:
 
 ```text :no-line-numbers
 Help/
-├── Examples/        # 示例文件目录，包含软件功能演示案例
-├── html/            # HTML 格式离线版帮助文档
-└── VC运行库/        # Visual C++ 运行库依赖
+├── Examples/        # Example files directory, containing software feature demos
+├── html/            # Offline help documentation in HTML format
+└── VC运行库/        # Visual C++ runtime library dependencies
 ```
 
-::: note Help 目录说明
-其中 `Examples/` 目录内置了多个典型场景的示例文件，用户可直接打开参考学习；`html/` 目录包含软件帮助手册的网页版本。
+::: note Help Directory
+The `Examples/` directory contains example files for various typical scenarios that users can open directly for reference. The `html/` directory contains the web version of the software help manual.
 :::
 
-### 启动软件
+### Launching the Software
 
-双击 `ATK.exe` 启动图标，即可直接运行软件。
+Double-click `ATK.exe` to launch the software.
 
-### 软件注册
+### Software Registration
 
-ATK 采用 **免费使用模式**，但**首次使用必须完成注册**，否则功能将无法正常使用。
+ATK is free to use, but **registration is required on first launch**. Without registration, the software features will not be available.
 
-::: warning 重要提醒
-注册前请确保已获取注册码。如尚未获取，请参考 [ATK 注册码获取指南](../03-ATK注册码获取指南/README.md)。
+::: warning Important
+Before registering, make sure you have obtained a Register Id. If you have not yet obtained one, refer to [How to Get a Register Id](../03-ATK注册码获取指南/README.md).
 :::
 
-1. 双击运行 `ATK.exe`，自动弹出【ATK使用协议】对话框；
+1. Double-click `ATK.exe`. The **ATK License Agreement** dialog will appear automatically.
 
-2. 仔细阅读协议后，勾选 **我已经认真阅读该协议**，点击 <kbd>同意</kbd>，进入【ATK注册机】界面；
+2. After reading the agreement carefully, check **I have read the agreement**, and click <kbd>Agree</kbd> to enter the **ATK Registration** window.
 
-3. 注册机界面中**机器码**将自动生成，无需手动修改；
+3. The **Machine Code** in the registration window is generated automatically and does not need to be modified.
 
-4. 在注册码输入框填写获取到的注册码，点击 <kbd>注册</kbd> 完成激活。
+4. Enter the obtained Register Id in the input field, and click <kbd>Register</kbd> to activate.
 
-::: tip 提示
-绿色版无需安装，注册信息保存在软件目录中，更换电脑需重新注册。
+::: tip Note
+The portable version requires no installation. Registration information is stored in the software directory. If you change computers, you need to register again.
 :::
 
-## 卸载
+## Uninstall
 
-Windows 绿色版 ATK 无需执行卸载程序，直接删除解压目录即可清理。
+The Windows portable version of ATK does not require an uninstaller. Simply delete the extraction directory to remove it.
 
-::: warning 注意
-删除前请确保已备份重要数据文件（如想定文件、报告等）。软件运行期间产生的数据文件默认存放于 **用户文档目录下的 ATK 文件夹中**（路径如 `C:\Users\<用户名>\Documents\ATK\`），不在安装目录内。
+::: warning Caution
+Before deleting, make sure you have backed up any important data files (such as scenario files, reports, etc.). Data files generated during runtime are stored by default in the **ATK folder under the user's Documents directory** (e.g., `C:\Users\<username>\Documents\ATK\`), not in the installation directory.
 :::

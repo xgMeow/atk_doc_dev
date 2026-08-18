@@ -1,15 +1,16 @@
 ---
-title: ATK 注册码获取指南
 index: false
-description: ATK 注册码的多种获取方式汇总，包括小程序自助申请、邮件申请、人工协助及远程服务注册。
+description: An overview of the ways to obtain an ATK Register Id, including self-service application via WeChat Mini Program, email application, personal assistance, and remote service registration.
 ---
 
-ATK 采用 **免费使用模式**，首次使用需完成注册激活。
+# How to Get a Register Id
 
-本章介绍获取注册码的多种方式，请根据您的使用场景选择：
+ATK is free to use, but registration is required on first launch to activate the software.
 
-- [使用须知](01-使用须知.md) — 注册前必须了解的信息
-- [小程序申请](02-小程序申请.md) — 个人用户自助申请，最快捷
-- [邮件申请](03-邮件申请.md) — 填写PDF申请表发送邮件申请
-- [直接联系我们](05-直接联系我们.md) — 添加微信人工协助
-- [ATK 远程服务注册操作指南](04-ATK远程服务注册操作指南.md) — 企业/团队远程部署
+This chapter introduces the various ways to obtain a Register Id. Choose the method that best fits your situation:
+
+- [Before You Begin](01-使用须知.md) — Essential information to read before registering
+- [WeChat Mini Program](02-小程序申请.md) — Self-service application for individual users, the fastest method
+- [Email](03-邮件申请.md) — Fill out the PDF application form and send it by email
+- [Contact Us](05-直接联系我们.md) — Add us on WeChat for personal assistance
+- [Remote Service Registration](04-ATK远程服务注册操作指南.md) — Remote deployment for enterprises/teams

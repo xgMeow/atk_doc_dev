@@ -1,92 +1,89 @@
 ---
-description: 麒麟操作系统下通过 deb 包安装 ATK 的完整流程，包含图形界面与命令行两种安装方式。
+description: Complete guide to installing ATK on Kylin OS using the deb package, including both graphical and command-line installation methods.
 ---
 
-# deb 包
+# deb Package
 
-## 安装
+## Installation
 
-::: info 安装包格式
-安装包后缀：`.deb`
+::: info Package Format
+Package extension: `.deb`
 :::
 
-### 前置条件
+### Prerequisites
 
-- 操作系统：麒麟操作系统 V10 及以上
-- CPU 架构：x86_64 或 arm64
-- 系统已安装 `dpkg` 包管理工具（麒麟系统默认已安装）
+- Operating system: Kylin OS V10 or later
+- CPU architecture: x86_64 or arm64
+- The `dpkg` package manager must be installed (installed by default on Kylin OS)
 
-::: warning 重要提醒
-架构不匹配将导致软件无法启动。请通过 `uname -m` 命令确认系统架构，再下载对应安装包。
+::: warning Important
+An architecture mismatch will prevent the software from starting. Confirm your system architecture with the `uname -m` command before downloading the installation package.
 :::
 
-### 安装 deb 包
+### Installing the deb Package
 
-#### 方式一：图形界面安装（推荐）
+#### Method 1: Graphical Installation (Recommended)
 
-双击 deb 安装包，系统将自动启动安装流程。
+Double-click the deb package to start the installation process automatically.
 
-#### 方式二：命令行安装
+#### Method 2: Command-Line Installation
 
-若桌面无法识别安装包，打开终端并执行：
+If the desktop environment cannot recognize the package, open a terminal and run:
 
 ```bash :no-line-numbers
-sudo dpkg -i <deb文件路径>
+sudo dpkg -i <deb-file-path>
 ```
 
-::: info 安装示例
-示例：`sudo dpkg -i ./ATK_3.0.0_x86_64.deb`
+::: info Example
+Example: `sudo dpkg -i ./ATK_3.0.0_x86_64.deb`
 :::
 
-若安装时提示依赖错误，执行以下命令修复依赖后重新安装：
+If you encounter dependency errors during installation, run the following command to fix dependencies and then reinstall:
 
 ```bash :no-line-numbers
 sudo apt -f install
 ```
 
-安装完成后，软件默认部署至 `/opt/ATK` 目录，并自动在应用菜单生成快捷方式。
+After installation, the software is deployed to `/opt/ATK` by default, and a shortcut is automatically created in the application menu.
 
-### 启动软件
+### Launching the Software
 
-通过应用菜单快捷方式启动 ATK。
+Launch ATK from the application menu shortcut.
 
-若快捷方式异常，可进入 `/opt/ATK` 目录，执行以下命令启动：
+If the shortcut does not work, navigate to `/opt/ATK` and run the following command:
 
 ```bash :no-line-numbers
 cd /opt/ATK
  ./ATK.sh
 ```
 
-### 软件注册
+### Software Registration
 
-ATK 采用 **免费使用模式**，但**首次使用必须完成注册**，否则功能将无法正常使用。
+ATK is free to use, but **registration is required on first launch**. Without registration, the software features will not be available.
 
-::: warning 重要提醒
-注册前请确保已获取注册码。如尚未获取，请参考 [ATK 注册码获取指南](../../03-ATK注册码获取指南/README.md)。
+::: warning Important
+Before registering, make sure you have obtained a Register Id. If you have not yet obtained one, refer to [How to Get a Register Id](../../03-ATK注册码获取指南/README.md).
 :::
 
-1. 启动软件，自动弹出【ATK使用协议】对话框；
+1. Launch the software. The **ATK License Agreement** dialog will appear automatically.
+2. After reading the agreement carefully, check **I have read the agreement**, and click <kbd>Agree</kbd> to enter the **ATK Registration** window.
+3. The **Machine Code** in the registration window is generated automatically and does not need to be modified.
+4. Enter the obtained Register Id in the input field, and click <kbd>Register</kbd> to activate.
 
-2. 仔细阅读协议后，勾选 **我已经认真阅读该协议**，点击 <kbd>同意</kbd>，进入【ATK注册机】界面；
+## Uninstall
 
-3. 注册机界面中**机器码**将自动生成，无需手动修改；
-
-4. 在注册码输入框填写获取到的注册码，点击 <kbd>注册</kbd> 完成激活。
-
-## 卸载
-
-deb 包方式安装的 ATK，可通过以下命令卸载：
+To uninstall ATK installed via the deb package, run one of the following commands:
 
 ```bash :no-line-numbers
 sudo apt remove ATK
 ```
 
-或
+or
 
 ```bash :no-line-numbers
 sudo dpkg -r ATK
 ```
 
-::: warning 注意
-卸载前请确保已备份重要数据文件（如想定文件、报告等）。软件运行期间产生的数据文件默认存放于 **用户文档目录下的 ATK 文件夹中**（路径如 `~/文档/ATK/` 或 `~/Documents/ATK/`，具体取决于系统设置），不在安装目录内。
+::: warning Caution
+Before uninstalling, make sure you have backed up any important data files (such as scenario files, reports, etc.). Data files generated during runtime are stored by default in the **ATK folder under the user's documents directory** (e.g., `~/Documents/ATK/`, depending on system locale settings), not in the installation directory.
 :::

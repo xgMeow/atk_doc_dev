@@ -1,74 +1,74 @@
 ---
-description: 企业/团队远程部署 ATK 服务的完整操作指南，涵盖服务端注册与客户端远程配置。
+description: Complete guide to remote deployment of ATK services for enterprises/teams, covering server-side registration and client-side remote configuration.
 ---
 
-# ATK 远程服务注册操作指南
+# Remote Service Registration
 
-## 服务端前置清理
+## Server Prerequisites: Cleanup
 
-若此前完成过ATK本地注册，需先清理注册表残留配置：
+If you have previously completed a local ATK registration on this machine, you need to clean up leftover registry entries first:
 
-1. 打开注册表编辑器（按下 `Win + R` 输入 `regedit` 回车）；
+1. Open the Registry Editor (press `Win + R`, type `regedit`, and press Enter).
 
-2. 定位到路径：`计算机\HKEY_CURRENT_USER\Software\SIM.SM`；
+2. Navigate to: `Computer\HKEY_CURRENT_USER\Software\SIM.SM`.
 
-3. 右键删除名为 `Key` 的注册表项。
+3. Right-click and delete the registry entry named `Key`.
 
-![注册表清理路径](./media/ATK远程服务注册/image-20260508095207350.png)
+![Registry cleanup path](./media/ATK远程服务注册/image-20260508095207350.png)
 
-## 服务端启动与注册
+## Server Startup and Registration
 
-### 首次启动注册流程
+### First-Time Startup Registration Process
 
-1. 登录ATK服务端所在服务器，通过终端进入服务程序所在目录；
+1. Log in to the server where the ATK server is installed, and navigate to the directory containing the server program via the terminal.
 
-2. 执行服务端启动命令：
+2. Run the server startup command:
 
    ```bash
    ./ATKServerConsole
    ```
 
-3. 程序启动后自动生成**机器码**（示例：`30C48ACB13924C96`），并提示「输入注册码」；
+3. After the program starts, it automatically generates a **machine code** (example: `30C48ACB13924C96`) and prompts "Enter Register Id".
 
-4. 联系官方获取注册码（邮箱：`atk_service@163.com`，电话：`13739092019`），输入官方提供的注册码后按下 <kbd>Enter</kbd> 确认。
+4. Contact us to obtain a Register Id (email: `atk_service@163.com`, phone: `13739092019`), enter the provided Register Id, and press <kbd>Enter</kbd> to confirm.
 
-<img src="./media/ATK远程服务注册/image-20260408111224401.png" alt="服务端输入注册码" style="zoom:43%;" />
+<img src="./media/ATK远程服务注册/image-20260408111224401.png" alt="Server: entering Register Id" style="zoom:43%;" />
 
-5. 注册成功后，终端输出启动日志，显示**配置文件加载成功**及**服务端口**（默认/自定义端口，示例：`8090`）。
+5. After successful registration, the terminal outputs startup logs, showing **configuration file loaded successfully** and the **service port** (default or custom port, example: `8090`).
 
-<img src="./media/ATK远程服务注册/image-20260408105851655.png" alt="服务端注册成功日志" style="zoom:30%;" />
+<img src="./media/ATK远程服务注册/image-20260408105851655.png" alt="Server: successful registration log" style="zoom:30%;" />
 
-### 已注册服务端快速启动
+### Quick Start for Registered Server
 
-若服务端已完成服务端注册，无需重复清理和输入注册码，直接执行启动命令：
+If the server has already been registered, you do not need to repeat cleanup or enter the Register Id. Simply run the startup command:
 
 ```bash
 ./ATKServerConsole
 ```
 
-终端输出日志中记录**服务端口号**（核心用于客户端配置），示例端口为 `8090`。
+The terminal output logs include the **service port number** (critical for client configuration). The example port is `8090`.
 
-<img src="./media/ATK远程服务注册/image-20260408102915548.png" alt="已注册服务端启动日志" style="zoom:30%;" />
+<img src="./media/ATK远程服务注册/image-20260408102915548.png" alt="Registered server startup log" style="zoom:30%;" />
 
-::: warning 端口自定义
-服务端配置文件 `server_config.ini` 支持修改端口，默认端口为 `8090`，修改后需重启服务使配置生效。
+::: warning Custom Port
+The server configuration file `server_config.ini` supports changing the port. The default port is `8090`. After changing the port, restart the service for the change to take effect.
 :::
 
-## 客户端协议确认
+## Client License Agreement
 
-1. 启动ATK客户端，自动弹出「ATK-使用协议」窗口；
-2. 勾选【我已认真阅读该协议】复选框；
-3. 点击【同意】按钮，进入软件主界面。
+1. Launch the ATK client. The **ATK License Agreement** window appears automatically.
+2. Check the **I have read the agreement** checkbox.
+3. Click **Agree** to enter the main interface.
 
-<img src="./media/ATK远程服务注册/image-20260408101813102.png" alt="ATK客户端协议确认" style="zoom: 18%;" />
+<img src="./media/ATK远程服务注册/image-20260408101813102.png" alt="ATK client license agreement" style="zoom: 18%;" />
 
-## 客户端远程注册配置
+## Client Remote Registration Configuration
 
-客户端需关联服务端IP与端口，完成远程注册，操作步骤如下：
+The client needs to be linked to the server IP and port to complete remote registration. Follow these steps:
 
-1. 在「ATK-注册」窗口中，选择【远程】单选框；
-2. 【服务器IP】输入框填写服务端所在服务器IP（示例：`192.168.1.252`）；
-3. 【服务器端口】输入框填写服务端启动时的端口号（示例：`8090`）；
-4. 点击【注册】按钮，完成远程服务注册。
+1. In the **ATK Registration** window, select the **Remote** radio button.
+2. In the **Server IP** field, enter the IP address of the server where the ATK server is running (example: `192.168.1.252`).
+3. In the **Server Port** field, enter the port number used by the server at startup (example: `8090`).
+4. Click **Register** to complete remote service registration.
 
-<img src="./media/ATK远程服务注册/image-20260408110058314.png" alt="客户端远程注册配置" style="zoom: 20%;" />
+<img src="./media/ATK远程服务注册/image-20260408110058314.png" alt="Client remote registration configuration" style="zoom: 20%;" />

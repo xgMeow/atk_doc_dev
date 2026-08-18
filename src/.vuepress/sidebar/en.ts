@@ -44,7 +44,7 @@ export const enSidebarConfig = sidebar({
   ],
   "/en/": [
     {
-      text: "Installation",
+      text: "Getting Started",
       prefix: "01-安装/",
       children: "structure",
       collapsible: true,
