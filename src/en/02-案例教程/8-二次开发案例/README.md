@@ -1,5 +1,5 @@
 ---
-title: Secondary Development Tutorial Examples
+title: Secondary Development
 index: false
 dir:
     link: false

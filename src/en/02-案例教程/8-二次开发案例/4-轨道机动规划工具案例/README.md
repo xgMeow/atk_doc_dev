@@ -1,5 +1,5 @@
 ---
-title: Orbit Maneuver Planning Tool Examples
+title: Orbit Maneuver Planning
 index: false
 dir:
     link: false

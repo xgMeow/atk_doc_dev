@@ -3,7 +3,7 @@ description: Simulate an on-orbit servicing observation mission for a geosynchro
 thumbnail: '/zh/02-案例教程/media/3.12RPO案例/cover.png'
 ---
 
-# RPO Example
+# RPO
 
 <PathViewer
   :relative-paths="files"
