@@ -38,7 +38,7 @@ name: atk-link-checker
 
 - `OverView/OverView.vue` — 模块数据配置中的 `link` 字段
 - `ConnectCommandSummary/ConnectCommandSummary.vue` — `import.meta.glob` 扫描路径，以及提取后生成的 `RouteLink` 目标路径
-- `CatalogCard/CatalogCard.vue` — `import.meta.glob` 扫描路径，动态生成的 `RouteLink :to` 和 `<img :src>`
+- `CatalogCard/CatalogCard.vue` — `import.meta.glob` 扫描路径，动态生成的 `RouteLink :to` 和 `<img :src>`；其中 `resolveImagePath` 负责把文档第一张图片（默认封面）归一化为站点路径，需正确解析 `../`、`./`，en 文档图片指向 `../../zh/...` 时才能命中 `imageUrlMap`
 
 ### `scripts/` 目录
 
@@ -71,6 +71,14 @@ name: atk-link-checker
 - **含括号的 URL**：markdown-it（VuePress 底层 Markdown 解析器）支持 URL 中平衡括号的解析。例如 `![alt](./path/file(1).jpg)` 是合法链接——解析器会正确匹配括号对，不会将 URL 内部的 `(1)` 截断。脚本用正则 `[^)]+` 提取 URL 时会误截断，但这**不是真实断链**，必须结合文件系统验证而非仅依赖正则结果
 
 只有在确认 VuePress 不能解析该链接，或构建明确报错，且正确目标能够唯一确定时，才进行修复。
+
+### 多语言站点（/zh/ 与 /en/）的额外规则
+
+本项目通过 `.vuepress/config.ts` 配置了 `/zh/` 与 `/en/` 两个 locale，多语言下页面实际路由为 `/zh/...`、`/en/...`。以下链接形式虽然「看起来合法」，实际是坏链，检查时必须特别注意：
+
+- **不带语言前缀的绝对路由链接**（如 `/二次开发教程/`）：不会落到正确的 locale，是坏链，应改为相对路径（如 `../../二次开发教程/`）。单语言站点里这种绝对路径可用，多语言下必须改用相对路径。
+- **frontmatter `thumbnail` 的绝对路径**（如 `/02-案例教程/media/...`）：`CatalogCard` 组件通过 `imageUrlMap`（键为 `/zh/...`、`/en/...`）解析缩略图，不带语言前缀命中不到，图片渲染不出来。应改为 `/zh/02-案例教程/...`；en 文档复用中文图片，同样指向 `/zh/...`。
+- **en 文档复用 zh 图片**：en 侧不保留重复 media 文件，图片链接统一指向 `../../zh/02-案例教程/...`。
 
 ## 工作流程
 
@@ -153,6 +161,8 @@ Markdown 文件可能通过 `<!--@include:path/to/file.md-->` 嵌入其他文件
 - **`.md` 链接指向同名目录**：链接是 `xxx.md` 但只有 `xxx/` 目录存在（且目录内有 `README.md`），应改为 `xxx/`。
 - **子目录文件缺少 `../` 前缀**：链接目标实际在父目录而非当前目录，应补充 `../` 前缀。
 - 链接指向已重命名文件，且通过上下文和文件内容能确认唯一目标。
+- **绝对路由链接改相对路径**：多语言站点下不带语言前缀的绝对路由（如 `/二次开发教程/`）是坏链，应改为相对路径（保留原目录路由 `/` 结尾风格）。
+- **thumbnail 缩略图补语言前缀**：`thumbnail` 用绝对路径且不带 `/zh/`、`/en/` 前缀时，应补全为 `/zh/...`（en 文档复用中文图片，同样用 `/zh/...`）。
 
 自动修复时必须遵守：
 
