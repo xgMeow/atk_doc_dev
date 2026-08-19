@@ -6,41 +6,41 @@
           <span
             class="collapse-arrow"
             @click="toggleCollapse"
-            :aria-label="isListCollapsed ? '展开文件列表' : '折叠文件列表'"
+            :aria-label="isListCollapsed ? t.expand : t.collapse"
           >
             {{ isListCollapsed ? '▶' : '▼' }}
           </span>
-          <span class="title-text">文件列表</span>
+          <span class="title-text">{{ t.fileList }}</span>
         </div>
         <div class="config-hint">
-          配置后文件列表将自动拼接为完整路径，点击“复制”按钮即可复制路径
+          {{ t.configHint }}
         </div>
       </div>
       <div>
-        <button class="config-btn" @click="openConfigDialog">配置软件根路径</button>
+        <button class="config-btn" @click="openConfigDialog">{{ t.configBtn }}</button>
       </div>
     </div>
 
     <!-- 文件列表（支持折叠/展开） -->
     <div class="file-list-wrapper" v-show="!isListCollapsed">
       <div v-if="rootPath" class="root-status">
-        <span class="label">ATK 根路径：</span>
+        <span class="label">{{ t.rootPathLabel }}</span>
         <span>{{ rootPath }}</span>
       </div>
      <template v-if="!rootPath">
         <div class="tip-alert">
-          当前未配置软件安装路径，展示的是相对路径，配置后可获取完整绝对路径
+          {{ t.noRootTip }}
         </div>
         <!-- 如果检测到路径但未配置，显示快速配置提示 -->
         <div v-if="isLocalFile && autoDetectedPath && !rootPath" class="quick-config-hint">
-          🔍 检测到可能的软件路径：{{ autoDetectedPath }}
-          <button class="quick-config-btn" @click="quickFillAndOpen">点击配置</button>
+          {{ t.detectedPath(autoDetectedPath) }}
+          <button class="quick-config-btn" @click="quickFillAndOpen">{{ t.quickConfig }}</button>
         </div>
       </template>
-  
+
       <div class="file-list">
         <div v-if="displayPaths.length === 0" class="empty-state">
-          📂 暂无文件列表
+          {{ t.emptyList }}
         </div>
         <div v-else v-for="(item, index) in displayPaths" :key="index" class="list-item">
           <span class="path-icon" v-html="getIconHtml(item)"></span>
@@ -53,9 +53,9 @@
             </div>
             <div class="path-row" v-if="item.displayName !== item.fullPath">
               <code class="full-path">{{ item.fullPath }}</code>
-              <button class="copy-btn" @click="copyPath(item.fullPath, index)" :title="'复制路径: ' + item.fullPath">
+              <button class="copy-btn" @click="copyPath(item.fullPath, index)" :title="t.copyTitle(item.fullPath)">
                 <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                复制
+                {{ t.copy }}
               </button>
             </div>
           </div>
@@ -66,15 +66,15 @@
     <!-- 配置弹窗 -->
     <div v-if="showDialog" class="modal-overlay" @click.self="closeDialog">
       <div class="modal-container">
-        <h3>配置软件根路径</h3>
+        <h3>{{ t.modalTitle }}</h3>
         <p class="modal-desc">
-          请输入软件安装目录的绝对路径，之后文件列表会自动拼接为完整路径。
+          {{ t.modalDesc }}
         </p>
         <div class="input-group">
           <input
             v-model="modalPath"
             type="text"
-            placeholder="例如: D:\ProgramTool\ATK-4.0-rc.4"
+            :placeholder="t.placeholder"
             @keyup.enter="saveConfig"
           />
           <!-- 只在本地 file:// 协议下显示自动获取按钮 -->
@@ -82,25 +82,20 @@
             v-if="isLocalFile"
             class="btn-auto-fetch"
             @click="autoFetchFromUrl"
-            title="从当前页面URL自动提取软件根路径"
+            :title="t.autoFetchTitle"
           >
-            自动获取
+            {{ t.autoFetch }}
           </button>
         </div>
         <div v-if="autoDetectedPath && isLocalFile" class="auto-detect-hint">
-          🔍 检测到可能的软件路径：{{ autoDetectedPath }}
+          {{ t.detectedPath(autoDetectedPath) }}
         </div>
         <!-- 新增的功能示例提示 -->
-        <div class="example-hint">
-          💡 <strong>使用示例：</strong>假设您输入根路径 <code>D:\ProgramTool\ATK-4.0-rc.4</code>，
-          文件列表中如有路径 <code>Help\Examples\01-入门案例</code>，
-          系统会自动拼接为 <code>D:\ProgramTool\ATK-4.0-rc.4\Help\Examples\01-入门案例</code>，
-          点击对应项的“复制路径”按钮即可一键复制完整路径。
-        </div>
+        <div class="example-hint" v-html="t.exampleHint"></div>
         <div class="modal-actions">
-          <button class="btn-clear" @click="clearAndClose">清除配置</button>
-          <button class="btn-save" @click="saveConfig">保存</button>
-          <button class="btn-cancel" @click="closeDialog">取消</button>
+          <button class="btn-clear" @click="clearAndClose">{{ t.clearConfig }}</button>
+          <button class="btn-save" @click="saveConfig">{{ t.save }}</button>
+          <button class="btn-cancel" @click="closeDialog">{{ t.cancel }}</button>
         </div>
       </div>
     </div>
@@ -116,7 +111,16 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { usePageData } from 'vuepress/client'
+import { zhPathViewerText } from './zh'
+import { enPathViewerText } from './en'
 // import scenarioIcon from './images/scenario.png'
+
+// ==================== 国际化文案 ====================
+const page = usePageData()
+const isEn = computed(() => page.value.path.startsWith('/en/'))
+
+const t = computed(() => (isEn.value ? enPathViewerText : zhPathViewerText))
 
 // ==================== 工具函数 ====================
 /**
@@ -230,7 +234,7 @@ const extractRootPathFromUrl = (url, softwareIdentifier) => {
 
     return null
   } catch (error) {
-    console.error('提取根路径失败:', error)
+    console.error(t.value.extractRootFail, error)
     return null
   }
 }
@@ -301,7 +305,7 @@ const getIconHtml = (item) => {
   if (customIcon) {
     // 如果是 URL 或绝对路径，使用 img 标签
     if (customIcon.startsWith('/') || customIcon.startsWith('http')) {
-      return `<img src="${customIcon}" alt="${ext}图标" class="icon-img" />`
+      return `<img src="${customIcon}" alt="${t.value.iconAlt(ext)}" class="icon-img" />`
     }
     return customIcon
   }
@@ -327,12 +331,12 @@ const setRootPathValue = (newPath) => {
       localStorage.removeItem(props.storageKey)
     }
   } catch (error) {
-    console.error('保存本地配置失败:', error)
+    console.error(t.value.saveConfigFail, error)
   }
   if (normalized) {
-    showMessage(`✅ 根路径已设置: ${normalized}`)
+    showMessage(t.value.rootSet(normalized))
   } else {
-    showMessage('🔄 已清除根路径配置，现显示原始相对路径')
+    showMessage(t.value.rootCleared)
   }
 }
 
@@ -349,7 +353,7 @@ const detectAndAutoFetch = () => {
     if (detectedPath) {
       autoDetectedPath.value = detectedPath
       if (!rootPath.value) {
-        showMessage(`🔍 检测到软件根路径: ${detectedPath}，请点击“配置软件根路径”并保存`)
+        showMessage(t.value.detectedRoot(detectedPath))
       }
     } else {
       autoDetectedPath.value = ''
@@ -370,7 +374,7 @@ const loadRootPath = () => {
       rootPath.value = saved
     }
   } catch (error) {
-    console.error('读取本地配置失败:', error)
+    console.error(t.value.readConfigFail, error)
   }
   // 无论是否有保存的配置，都执行检测（用于显示自动获取按钮和提示）
   detectAndAutoFetch()
@@ -413,16 +417,16 @@ const autoFetchFromUrl = () => {
   // 测试用固定 URL 进行调试
   // const currentUrl = "file:///D:/ProgramTool/ATK-4.0-rc.4/Help/html/3.案例教程/1-入门案例.html";
   if (!currentUrl.startsWith('file://')) {
-    showMessage('❌ 当前不在本地文件环境，无法自动获取')
+    showMessage(t.value.notLocalEnv)
     return
   }
   const detectedPath = extractRootPathFromUrl(currentUrl, props.softwareIdentifier)
   if (detectedPath) {
     modalPath.value = detectedPath
     autoDetectedPath.value = detectedPath // 更新检测到的路径
-    showMessage(`✅ 已自动获取软件路径: ${detectedPath}，请点击“保存”生效`)
+    showMessage(t.value.autoFetched(detectedPath))
   } else {
-    showMessage('❌ 未能自动识别软件根路径，请手动输入')
+    showMessage(t.value.autoFetchFail)
   }
 }
 
@@ -456,18 +460,18 @@ const copyPath = async (text) => {
     const success = document.execCommand('copy')
     document.body.removeChild(textarea)
     if (success) {
-      showMessage(`✅ 复制成功: ${text}`)
+      showMessage(t.value.copySuccess(text))
     } else {
-      showMessage('❌ 复制失败，请手动复制')
+      showMessage(t.value.copyFail)
     }
   }
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
     try {
       await navigator.clipboard.writeText(text)
-      showMessage(`✅ 复制成功: ${text}`)
+      showMessage(t.value.copySuccess(text))
     } catch (err) {
-      console.error('Clipboard API 复制失败:', err)
+      console.error(t.value.clipboardFail, err)
       fallbackCopy()
     }
   } else {
@@ -496,7 +500,7 @@ const displayPaths = computed(() => {
         customName = item.name || null
         description = item.description || null
       } else {
-        console.warn('无效的路径项:', item)
+        console.warn(t.value.invalidItem, item)
         return null
       }
 
@@ -532,6 +536,7 @@ onMounted(() => {
   --success-light: #f0fdf4;
   --warning: #dc2626;
   --warning-hover: #b91c1c;
+  --warning-light: #fef2f2;
   --gray-50: #f6f8fb;
   --gray-100: #eef1f6;
   --gray-200: #dde1e8;
@@ -639,8 +644,8 @@ onMounted(() => {
 /* 根路径状态栏 */
 .root-status {
   font-size: 13px;
-  color: var(--gray-700);
-  background: var(--gray-50);
+  color: var(--primary-hover);
+  background: var(--primary-light);
   padding: 10px 14px;
   border-radius: var(--border-radius-md);
   display: flex;
@@ -648,24 +653,24 @@ onMounted(() => {
   gap: 8px;
   flex-wrap: wrap;
   word-break: break-all;
-  margin: 16px 0;
-  border: 1px solid var(--gray-200);
+  margin: 16px 0 8px 0;
+  border: 1px solid rgba(0, 111, 238, 0.15);
 }
 
 .root-status .label {
   font-weight: 600;
-  color: var(--gray-800);
+  color: var(--primary);
 }
 
 /* 提示框 */
 .tip-alert {
-  margin: 16px 0;
-  background: var(--primary-light);
-  color: var(--primary-hover);
+  margin: 16px;
+  background: var(--warning-light);
+  color: var(--warning-hover);
   border-radius: var(--border-radius-sm);
   font-size: 12px;
   padding: 8px 12px;
-  border: 1px solid rgba(0, 111, 238, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.15);
 }
 
 .quick-config-hint {
@@ -708,8 +713,6 @@ onMounted(() => {
   max-height: 360px;
   overflow-y: auto;
   border-radius: var(--border-radius-md);
-  margin-top: 8px;
-  border: 1px solid var(--gray-200);
   background: white;
 }
 
@@ -783,7 +786,7 @@ onMounted(() => {
   margin-top: 2px;
 }
 
-.path-row:hover .full-path {
+.path-row:has(.copy-btn:hover) .full-path {
   background: #e6f0fd;
   color: var(--gray-700);
 }
@@ -924,23 +927,23 @@ onMounted(() => {
 }
 
 .example-hint {
-  font-size: 12px;
+  font-size: 13px;
   background: var(--primary-light);
-  border: 1px solid rgba(0, 111, 238, 0.1);
+  border: 1px solid rgba(0, 111, 238, 0.15);
   padding: 12px 14px;
   border-radius: var(--border-radius-md);
   margin: 14px 0;
-  color: var(--gray-700);
-  line-height: 1.5;
+  color: var(--gray-800);
+  line-height: 1.6;
 }
 
-.example-hint code {
-  background: rgba(0, 111, 238, 0.08);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-family: monospace;
-  font-size: 11px;
-  color: #8250df;
+.example-hint :deep(code){
+  background: rgba(0, 111, 238, 0.1);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 12px;
+  color: #0f4c81;
 }
 
 .modal-actions {
