@@ -34,7 +34,7 @@ If the desktop environment cannot recognize the package, open a terminal and run
 sudo dpkg -i <deb-file-path>
 ```
 
-::: info Example
+::: info Installation Example
 Example: `sudo dpkg -i ./ATK_3.0.0_x86_64.deb`
 :::
 
