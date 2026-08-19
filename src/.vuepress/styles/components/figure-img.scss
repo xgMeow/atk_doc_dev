@@ -38,6 +38,11 @@
       content: "图：";
     }
 
+    // 英文版使用 "Figure: " 前缀
+    html[lang="en-US"] & figcaption:not(:empty)::before {
+      content: "Figure: ";
+    }
+
     figcaption:empty {
       display: none;
     }
