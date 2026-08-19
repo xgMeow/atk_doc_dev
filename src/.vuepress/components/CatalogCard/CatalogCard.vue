@@ -100,7 +100,14 @@ const resolveImagePath = (imgPath: string, mdDir: string): string => {
   if (imgPath.startsWith('/') || imgPath.startsWith('http://') || imgPath.startsWith('https://')) {
     return imgPath;
   }
-  return `/${mdDir}/${imgPath.replace(/^\.\//, '')}`;
+  // 解析 ../ 与 ./ 片段，归一化相对路径（en 文档图片指向 ../../zh/ 时也能解析回站点路径）
+  const segments = `${mdDir}/${imgPath}`.split('/').filter((seg) => seg && seg !== '.');
+  const resolved: string[] = [];
+  for (const seg of segments) {
+    if (seg === '..') resolved.pop();
+    else resolved.push(seg);
+  }
+  return `/${resolved.join('/')}`;
 };
 
 const firstImageMap: Record<string, string> = {};
