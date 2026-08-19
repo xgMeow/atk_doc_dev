@@ -1,31 +1,31 @@
 ---
-description: 通过二次开发 Connect 模式创建 RPO 水滴绕飞案例，演示工作星与服务星设置及水滴绕飞段参数配置等操作。
+description: Create an RPO teardrop fly-around example using the secondary development Connect mode, demonstrating operations such as target and servicer satellite setup, and teardrop fly-around segment parameter configuration.
 ---
 
-# RPO案例
+# RPO Example
 
-通过二次开发 Connect 模式，创建RPO-水滴绕飞模式案例，具体细节与“案例三-12-RPO案例”相同。期间必须保持 ATK 为打开状态，具体命令分类包括：
+Through the secondary development Connect mode, create an RPO teardrop fly-around example. The specific details are the same as "Example 3-12 - RPO Example". ATK must remain open. The specific command categories include:
 
-1. 与 ATK 进行连接。
-2. 新建场景并进行属性设置。
-3. 新建工作星并进行属性设置
-4. 新建服务星并进行属性设置
-5. 插入RPO并设置轨道预报器
-6. 水滴绕飞段参数
-7. 运行任务
-8. 查看报告数据
-9. 保存场景后与 ATK 断开连接。
+1. Connecting to ATK.
+2. Creating a new scenario and setting its properties.
+3. Creating the target satellite and setting its properties.
+4. Creating the servicer satellite and setting its properties.
+5. Inserting the RPO segment and configuring the orbit propagator.
+6. Teardrop fly-around segment parameters.
+7. Running the mission.
+8. Viewing report data.
+9. Saving the scenario and disconnecting from ATK.
 
-## 脚本展示
+## Script Demonstration
 
-### 与 ATK 进行连接
+### Connecting to ATK
 
 ```mixcode
 {C:1, 与 ATK 进行连接}
 conID = atkOpen()
 ```
 
-### 新建场景并进行属性设置
+### Creating a New Scenario and Setting Its Properties
 
 ```mixcode
 {C:2, 创建任务场景}
@@ -36,7 +36,7 @@ atkConnect(conID, {S:SetAnalysisTimePeriod}, {S:* "2007-03-08 00:00:00.000" "200
 atkConnect(conID, {S:Animate}, {S:* Reset})
 ```
 
-### 新建工作星并进行属性设置
+### Creating the Target Satellite and Setting Its Properties
 
 ```mixcode
 {C:3, 创建工作星卫星对象}
@@ -45,7 +45,7 @@ atkConnect(conID, {S:New}, {S:/ Satellite WorkSatellite})
 atkConnect(conID, {S:SetState}, {S:*/Satellite/WorkSatellite Classical HPOP "2007-03-08 00:00:00.000" "2007-03-13 00:00:00.000" 60 J2000 "2007-03-08 00:00:00.000" 42164000 0 0 0 0 0})
 ```
 
-### 新建服务星并进行属性设置
+### Creating the Servicer Satellite and Setting Its Properties
 
 ```mixcode
 {C:4, 创建服务星卫星对象}
@@ -62,7 +62,7 @@ atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainS
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.TA 0})
 ```
 
-### 插入RPO并设置轨道预报器
+### Inserting the RPO Segment and Configuring the Orbit Propagator
 
 ```mixcode
 {C:5, 插入 RPO 段}
@@ -79,7 +79,7 @@ atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainS
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainSequence.SegmentList.RPOTearDrop.SolarPressure "On"})
 ```
 
-### 水滴绕飞段参数
+### Teardrop Fly-Around Segment Parameters
 
 ```mixcode
 {C:6, 设置水滴绕飞段参数}
@@ -89,14 +89,14 @@ atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainS
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainSequence.SegmentList.RPOTearDrop.WaitTime 21600}) {C:等待时间为21600秒}
 {C:设置真近点角变化量最大值}
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainSequence.SegmentList.RPOTearDrop.MaxDeltaTrueAnomaly 5})
-{C:设置求解算法为“序列二次规划”}
+{C:设置求解算法为"序列二次规划"}
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainSequence.SegmentList.RPOTearDrop.SolveMethod 2})
 {C:设置参考航天器为工作星}
 atkConnect(conID, {S:Reference},  {S:*/Satellite/ServiceSatellite SetRefSatellite */Satellite/WorkSatellite})
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainSequence.SegmentList.RPOTearDrop.Reference "Satellite/WorkSatellite"})
 ```
 
-### 运行任务
+### Running the Mission
 
 ```mixcode
 {C:7, 运行任务控制序列}
@@ -105,14 +105,14 @@ atkConnect(conID, {S:Animate}, {S:* Reset})
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite ApplyAllProfileChanges})
 ```
 
-### 查看报告数据
+### Viewing Report Data
 
 ```mixcode
 {C:8, 打印查看报告数据}
 atkConnect(conID, {S:Report_RM}, {S:*/Satellite/ServiceSatellite Style "Position" TimePeriod "8 Mar 2007 00:00:00.000" "13 Mar 2007 00:00:00.000"})
 ```
 
-### 保存场景后与 ATK 断开连接
+### Saving the Scenario and Disconnecting from ATK
 
 ```mixcode
 {C:9, 保存文件并断开连接}
@@ -120,13 +120,13 @@ atkConnect(conID, {S:Save}, {S:/ *})
 atkClose(conID)
 ```
 
-## 报告数据结果
+## Report Data Results
 
-本案例运行结果为：成功进行水滴绕飞。具体如下图所示：
+The result of this example is: successfully performing a teardrop fly-around. The result is shown below:
 
-![相对轨迹](../../../zh/02-案例教程/8-二次开发案例/media/12RPO案例/image_12_1.png)
+![Relative Trajectory](../../../zh/02-案例教程/8-二次开发案例/media/12RPO案例/image_12_1.png)
 
-## 完整脚本
+## Complete Script
 
 ```mixcode
 {C:1, 连接ATK}
@@ -177,7 +177,7 @@ atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainS
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainSequence.SegmentList.RPOTearDrop.WaitTime 21600})
 {C:设置真近点角变化量最大值}
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainSequence.SegmentList.RPOTearDrop.MaxDeltaTrueAnomaly 5})
-{C:设置求解算法为“序列二次规划”}
+{C:设置求解算法为"序列二次规划"}
 atkConnect(conID, {S:Astrogator}, {S:*/Satellite/ServiceSatellite SetValue MainSequence.SegmentList.RPOTearDrop.SolveMethod 2})
 {C:设置参考航天器为工作星}
 atkConnect(conID, {S:Reference},  {S:*/Satellite/ServiceSatellite SetRefSatellite */Satellite/WorkSatellite})

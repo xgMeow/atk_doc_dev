@@ -1,116 +1,116 @@
 ---
-description: 通过水滴绕飞模式模拟地球同步轨道卫星在轨服务前的环绕观测任务，掌握 RPO 段配置与伴飞轨迹分析方法。
+description: Simulate an on-orbit servicing observation mission for a geosynchronous satellite using a teardrop fly-around pattern, and master RPO segment configuration and accompanying trajectory analysis methods.
 thumbnail: '/zh/02-案例教程/media/3.12RPO案例/cover.png'
 ---
 
-# RPO 案例
+# RPO Example
 
 <PathViewer
   :relative-paths="files"
 />
 
-## 案例想定
+## Scenario Description
 
-为了更好地为卫星提供服务（维修、加注燃料等），接触前的环绕观测必不可少。
+To better provide satellite services (repair, refueling, etc.), pre-contact observation fly-around is essential.
 
-本案例将模拟一次为地球同步轨道卫星在轨服务前的环绕观测任务，水滴绕飞模式。
+This example simulates an on-orbit servicing observation mission for a geosynchronous satellite, using a teardrop fly-around pattern.
 
-## 任务控制序列说明
+## Mission Control Sequence Description
 
-为了模拟该水滴绕飞任务过程，构建以下任务序列：
+To simulate the teardrop fly-around mission, the following task sequence is constructed:
 
-- 一个初始状态段：包含工作卫星的一个初始状态段。
-- 一个水滴绕飞段：用于执行对目标的水滴绕飞任务。
+- An initial state segment: contains an initial state segment for the target satellite.
+- A teardrop fly-around segment: used to perform the teardrop fly-around mission around the target.
 
-## 创建任务场景
+## Creating the Scenario
 
-1. 运行 ATK.exe，点击 <kbd>新建一个想定文件</kbd> 新建一个想定 **Teardrop**。
+1. Run ATK.exe and click <kbd>Create a new scenario file</kbd> to create a scenario named **Teardrop**.
 
-2. 设置仿真时间。在【ATK：新建想定向导】对话框中设置时间段。
+2. Set the simulation time. In the **ATK: New Scenario Wizard** dialog, set the time period.
 
-   | 开始历元                | 结束历元                |
-   | ----------------------- | ----------------------- |
+   | Start Epoch                | End Epoch                  |
+   | -------------------------- | -------------------------- |
    | 2007-03-08 00:00:00.000 | 2007-03-13 00:00:00.000 |
 
-3. 点击 <kbd>确定</kbd> 完成场景建立。
+3. Click <kbd>OK</kbd> to complete scenario creation.
 
-## 创建卫星并进行属性设置
+## Creating Satellites and Setting Properties
 
-1. **创建及编辑卫星对象**
+1. **Create and Edit Satellite Objects**
 
-   - 点击工具栏 <kbd>开始</kbd> 中的 <kbd>插入!</kbd> 创建卫星对象。
-   - 选择 **想定对象** —— **卫星**，**选择插入方式** —— **插入默认类型**，点击 <kbd>插入…</kbd>，点击 <kbd>关闭</kbd>。
-   - 右键单击卫星 **卫星1** 和 **卫星2**，选择 <kbd>重命名</kbd>，将其命名为 **工作星** 和 **服务星**。
+   - In the toolbar, click <kbd>Insert!</kbd> under <kbd>Start</kbd> to create satellite objects.
+   - Select **Scenario Object** – **Satellite**, **Insertion Method** – **Insert Default Type**, click <kbd>Insert…</kbd>, then click <kbd>Close</kbd>.
+   - Right‑click **Satellite 1** and **Satellite 2**, select <kbd>Rename</kbd>, and rename them to **Target Satellite** and **Service Satellite**.
 
-2. **设置工作星轨道参数**
+2. **Set Target Satellite Orbital Parameters**
 
-   - 预报模型设置。右键单击卫星 **工作星**，选择 <kbd>属性</kbd>，进入卫星参数设置界面，选择 **轨道预报器** —— **HPOP**。
-   - 设置 **轨道历元(UTCG_MM)** —— **2007-03-08 00:00:00.000**。
-   - 选择 **坐标系统** —— **J2000**，**坐标类型** —— **轨道根数**，设置轨道根数。
+   - Propagator model settings. Right‑click **Target Satellite**, select <kbd>Properties</kbd> to enter the satellite parameter settings interface, and select **Orbit Propagator** – **HPOP**.
+   - Set **Orbit Epoch (UTCG_MM)** – **2007-03-08 00:00:00.000**.
+   - Select **Coordinate System** – **J2000**, **Coordinate Type** – **Orbital Elements**, and set the orbital elements.
 
-   | 参数            | 数值  |
-   | --------------- | ----- |
-   | 半长轴(km)      | 42164 |
-   | 偏心率          | 0     |
-   | 轨道倾角(deg)   | 0     |
-   | 升交点赤经(deg) | 0     |
-   | 近拱点角距(deg) | 0     |
-   | 真近点角(deg)   | 0     |
+   | Parameter                | Value |
+   | ------------------------ | ----- |
+   | Semi-major Axis (km)     | 42164 |
+   | Eccentricity             | 0     |
+   | Inclination (deg)        | 0     |
+   | RAAN (deg)               | 0     |
+   | Argument of Perigee (deg)| 0     |
+   | True Anomaly (deg)       | 0     |
 
-3. **设置服务星初始状态**
+3. **Set Service Satellite Initial State**
 
-   - 定义初始状态段，案例参照轨道机动规划中的[霍曼转移](../02-案例教程/3.4轨道机动规划工具案例/3.4.1霍曼转移.md)的初始段设置的方式定义服务星的初始状态。
-   - 或者采用相对于 **工作星** 的相对坐标系的方式定义初始状态段：右键单击卫星 **服务星**，选择 <kbd>属性</kbd>，进入卫星参数设置界面，选择 **轨道预报器** —— **机动规划**。在左上方【参考卫星】中选中 **工作星** 添加为参考卫星。**InitialState** 初始段的坐标系选择 **参考航天器** —— **工作星** 的 **VVLH 坐标系**。
+   - Define the initial state segment. For the initial state setup of the Service Satellite, refer to the initial segment configuration in the [Hohmann Transfer](../02-案例教程/3.4轨道机动规划工具案例/3.4.1霍曼转移.md) section of the Orbit Maneuver Planning example.
+   - Alternatively, define the initial state segment using a relative coordinate system with respect to the **Target Satellite**: Right‑click **Service Satellite**, select <kbd>Properties</kbd> to enter the satellite parameter settings interface, and select **Orbit Propagator** – **Maneuver Planning**. In the upper left, under **Reference Satellite**, select **Target Satellite** and add it as a reference. For the **InitialState** segment, select **Reference Spacecraft** – **Target Satellite**'s **VVLH Coordinate System**.
 
-4. **水滴绕飞段的轨道预报器设置**
+4. **Orbit Propagator Settings for the Teardrop Fly-Around Segment**
 
-   - 选择 **新增** —— **插入 RPO 段** —— **伴飞** —— **水滴绕飞段**。
-   - 点击 **轨道预报** —— <kbd>高级设置…</kbd>。
-   - 选择 **中心天体** —— **Earth**；**引力** 中选择 **模型** —— **WGS84**；**三体引力** 中选择 **太阳、月球** —— **Point-Mass Model**（点质量模型）；勾选 **大气阻力摄动**，大气模型选取 **NRLMSISE00**；勾选 **太阳光压**；其余不勾选。
-   - 点击 <kbd>确定</kbd>。
-   - 左上方点击 <kbd>参考卫星</kbd>，添加 **工作星**；RPO 参数下的参考航天器选择 **工作星**。
-   - 水滴受控绕飞的参数设置。设置参数如下：
+   - Select **New** – **Insert RPO Segment** – **Accompanying Flight** – **Teardrop Fly-Around Segment**.
+   - Click **Orbit Propagation** – <kbd>Advanced Settings…</kbd>.
+   - Select **Central Body** – **Earth**; under **Gravity**, select **Model** – **WGS84**; under **Third-Body Gravity**, select **Sun, Moon** – **Point-Mass Model**; check **Atmospheric Drag Perturbation** and select **NRLMSISE00** as the atmospheric model; check **Solar Radiation Pressure**; leave others unchecked.
+   - Click <kbd>OK</kbd>.
+   - In the upper left, click <kbd>Reference Satellite</kbd> and add **Target Satellite**; under RPO parameters, select **Target Satellite** as the reference spacecraft.
+   - Set the teardrop controlled fly-around parameters as follows:
 
-   | 参数名称           | 数值       |
-   | ------------------ | ---------- |
-   | 圈数               | 5          |
-   | 起始点距离         | -300m      |
-   | 机动点距离         | -800m      |
-   | 等待时间           | 21600      |
-   | 真近点角变化量最大值 | 5          |
-   | 求解算法           | 序列二次规划 |
+   | Parameter Name                      | Value               |
+   | ----------------------------------- | ------------------- |
+   | Number of Revolutions               | 5                   |
+   | Starting Point Distance             | -300m               |
+   | Maneuver Point Distance             | -800m               |
+   | Waiting Time                        | 21600               |
+   | Maximum True Anomaly Change         | 5                   |
+   | Solution Algorithm                  | Sequential Quadratic Programming |
 
-## 运行任务控制序列
+## Running the Mission Control Sequence
 
-由于 RPO 段是预先构建好的，具有便于操作的特性，整个水滴绕飞任务控制序列构建仅由两部分构成，设置完毕后左侧的段节点操作区呈现为如图所示。
+Since the RPO segment is pre‑constructed and easy to operate, the entire teardrop fly-around mission control sequence consists of only these two parts. After configuration, the segment node operation area on the left appears as shown below.
 
-![水滴绕飞段序列](../../zh/02-案例教程/media/3.12RPO案例/image-3-12-1.png)
+![Teardrop Fly-Around Segment Sequence](../../zh/02-案例教程/media/3.12RPO案例/image-3-12-1.png)
 
-1. **运行结果显示**
+1. **Run Results Display**
 
-   - 点击 <kbd>运行</kbd> 按钮，任务控制序列开始计算。弹窗可以查看运行状态和计算时间。
+   - Click <kbd>Run</kbd> to start computing the mission control sequence. A pop‑up window shows the run status and computation time.
 
-     ![运行状态显示](../../zh/02-案例教程/media/3.12RPO案例/image-51.png)
+     ![Run Status Display](../../zh/02-案例教程/media/3.12RPO案例/image-51.png)
 
-   - 点击 **水滴绕飞段** 右侧页面的 **结果数据**，可查看任务控制序列中每一次脉冲施加的时刻与脉冲量大小。
+   - Click **Results Data** on the right panel of the **Teardrop Fly-Around Segment** to view the impulse application times and magnitudes for each maneuver in the mission control sequence.
 
-2. **三维视图显示**
+2. **3D View Display**
 
-   点击 <kbd>视图</kbd> 下的 <kbd>三维视图</kbd> 按钮，选择左上角的 **局部视点**，然后依次选择 **卫星**，**工作星**，即可将视角规定在 **工作星** 上。
+   Click the <kbd>3D View</kbd> button under <kbd>Views</kbd>, select **Local Viewpoint** in the upper left, then select **Satellites** – **Target Satellite** to center the view on the **Target Satellite**.
 
-   添加伴飞轨迹显示：点击服务星 <kbd>属性</kbd> —— <kbd>三维视图</kbd> —— <kbd>轨道系统</kbd> —— <kbd>添加 VVLH 系</kbd>，并勾选 **显示** 工作星 VVLH。
+   To display the accompanying trajectory: click **Service Satellite** <kbd>Properties</kbd> – <kbd>3D View</kbd> – <kbd>Orbit System</kbd> – <kbd>Add VVLH System</kbd>, and check **Show** for the Target Satellite's VVLH.
 
-   ![水滴绕飞相对轨迹](../../zh/02-案例教程/media/3.12RPO案例/image-3-12-3.png)
+   ![Teardrop Fly-Around Relative Trajectory](../../zh/02-案例教程/media/3.12RPO案例/image-3-12-3.png)
 
-   图中白色水滴形轨迹是 **服务星** 相对于 **工作星** 的水滴绕飞轨迹。
+   The white teardrop‑shaped trajectory in the figure is the teardrop fly-around trajectory of the **Service Satellite** relative to the **Target Satellite**.
 
 <script setup>
 import PathViewer from "@components/PathViewer/PathViewer.vue";
 
 const files = [
-  { path: 'Help\\Examples\\12-RPO案例', name: 'RPO案例' },
-  { path: 'Help\\Examples\\12-RPO案例\\RPO案例.atk', name: 'RPO案例想定文件' },
-  { path: 'Help\\Examples\\12-RPO案例\\水滴绕飞轨迹.png', name: '水滴绕飞相对轨迹图' },
-  { path: 'Help\\Examples\\12-RPO案例\\RPO计算结果.txt', name: 'RPO脉冲控制结果' }
+  { path: 'Help\\Examples\\12-RPO案例', name: 'RPO Example' },
+  { path: 'Help\\Examples\\12-RPO案例\\RPO案例.atk', name: 'RPO Example Scenario File' },
+  { path: 'Help\\Examples\\12-RPO案例\\水滴绕飞轨迹.png', name: 'Teardrop Fly-Around Trajectory Rendering' },
+  { path: 'Help\\Examples\\12-RPO案例\\RPO计算结果.txt', name: 'RPO Impulse Control Results' }
 ];
 </script>
