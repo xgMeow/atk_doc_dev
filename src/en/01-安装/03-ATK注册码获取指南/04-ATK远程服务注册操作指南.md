@@ -14,7 +14,7 @@ If you have previously completed a local ATK registration on this machine, you n
 
 3. Right-click and delete the registry entry named `Key`.
 
-![Registry cleanup path](./media/ATK远程服务注册/image-20260508095207350.png)
+![Registry cleanup path](../../../zh/01-安装/03-ATK注册码获取指南/media/ATK远程服务注册/image-20260508095207350.png)
 
 ## Server Startup and Registration
 
@@ -32,11 +32,11 @@ If you have previously completed a local ATK registration on this machine, you n
 
 4. Contact us to obtain a Register Id (email: `atk_service@163.com`, phone: `13739092019`), enter the provided Register Id, and press <kbd>Enter</kbd> to confirm.
 
-<img src="./media/ATK远程服务注册/image-20260408111224401.png" alt="Server: entering Register Id" style="zoom:43%;" />
+<img src="../../../zh/01-安装/03-ATK注册码获取指南/media/ATK远程服务注册/image-20260408111224401.png" alt="Server: entering Register Id" style="zoom:43%;" />
 
 5. After successful registration, the terminal outputs startup logs, showing **configuration file loaded successfully** and the **service port** (default or custom port, example: `8090`).
 
-<img src="./media/ATK远程服务注册/image-20260408105851655.png" alt="Server: successful registration log" style="zoom:30%;" />
+<img src="../../../zh/01-安装/03-ATK注册码获取指南/media/ATK远程服务注册/image-20260408105851655.png" alt="Server: successful registration log" style="zoom:30%;" />
 
 ### Quick Start for Registered Server
 
@@ -48,7 +48,7 @@ If the server has already been registered, you do not need to repeat cleanup or 
 
 The terminal output logs include the **service port number** (critical for client configuration). The example port is `8090`.
 
-<img src="./media/ATK远程服务注册/image-20260408102915548.png" alt="Registered server startup log" style="zoom:30%;" />
+<img src="../../../zh/01-安装/03-ATK注册码获取指南/media/ATK远程服务注册/image-20260408102915548.png" alt="Registered server startup log" style="zoom:30%;" />
 
 ::: warning Custom Port
 The server configuration file `server_config.ini` supports changing the port. The default port is `8090`. After changing the port, restart the service for the change to take effect.
@@ -60,7 +60,7 @@ The server configuration file `server_config.ini` supports changing the port. Th
 2. Check the **I have read the agreement** checkbox.
 3. Click **Agree** to enter the main interface.
 
-<img src="./media/ATK远程服务注册/image-20260408101813102.png" alt="ATK client license agreement" style="zoom: 18%;" />
+<img src="../../../zh/01-安装/03-ATK注册码获取指南/media/ATK远程服务注册/image-20260408101813102.png" alt="ATK client license agreement" style="zoom: 18%;" />
 
 ## Client Remote Registration Configuration
 
@@ -71,4 +71,4 @@ The client needs to be linked to the server IP and port to complete remote regis
 3. In the **Server Port** field, enter the port number used by the server at startup (example: `8090`).
 4. Click **Register** to complete remote service registration.
 
-<img src="./media/ATK远程服务注册/image-20260408110058314.png" alt="Client remote registration configuration" style="zoom: 20%;" />
+<img src="../../../zh/01-安装/03-ATK注册码获取指南/media/ATK远程服务注册/image-20260408110058314.png" alt="Client remote registration configuration" style="zoom: 20%;" />

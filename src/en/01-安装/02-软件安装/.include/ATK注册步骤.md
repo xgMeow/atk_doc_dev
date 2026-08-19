@@ -6,10 +6,10 @@ ATK is **free to use**, but **registration is required on first launch**; otherw
 
 2. After reading the agreement carefully, check **I have read the agreement**, and click <kbd>Agree</kbd> to enter the **ATK Registration** window.
 
-![ATK License Agreement](./media/ATK注册步骤/image-20260330090751358.png)
+![ATK License Agreement](../../../../zh/01-安装/02-软件安装/.include/media/ATK注册步骤/image-20260330090751358.png)
 
 3. The **machine code** in the registration window is generated automatically and does not need to be modified.
 
 4. Enter the obtained Register Id in the input field, and click <kbd>Register</kbd> to activate.
 
-![ATK software registration tool](./media/ATK注册步骤/image-20260408191451877.png)
+![ATK software registration tool](../../../../zh/01-安装/02-软件安装/.include/media/ATK注册步骤/image-20260408191451877.png)
