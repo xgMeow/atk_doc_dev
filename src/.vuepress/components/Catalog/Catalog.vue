@@ -15,6 +15,9 @@ import {
   startsWith,
 } from '@vuepress/helper/client';
 import { useCatalogInfoGetter } from '@vuepress/plugin-catalog/client';
+import type { CatalogLocaleStrings } from './types';
+import { zhCatalogStrings } from './zh';
+import { enCatalogStrings } from './en';
 
 // ==========================================
 //  Props
@@ -155,21 +158,27 @@ const totalCount = computed(() => {
   return n;
 });
 
-const localeTitle = '内容结构';
-const localeEmpty = '暂无目录';
+// ==========================================
+//  国际化
+// ==========================================
+const isEn = computed(() => page.value.path.startsWith('/en/'));
+const localeStrings = computed<CatalogLocaleStrings>(() =>
+  isEn.value ? enCatalogStrings : zhCatalogStrings,
+);
+const countText = computed(() => localeStrings.value.count(totalCount.value));
 </script>
 
 <template>
   <div class="atk-catalog" :class="{ 'atk-catalog--index': props.index }">
     <!-- ── 标题栏 ── -->
     <div v-if="!props.hideHeading" class="atk-catalog__header">
-      <span class="atk-catalog__header-title">{{ localeTitle }}</span>
-      <span v-if="catalogData.length" class="atk-catalog__header-count">{{ totalCount }} 篇</span>
+      <span class="atk-catalog__header-title">{{ localeStrings.title }}</span>
+      <span v-if="catalogData.length" class="atk-catalog__header-count">{{ countText }}</span>
     </div>
 
     <!-- ── 空态 ── -->
     <p v-if="!catalogData.length" class="atk-catalog__empty">
-      {{ localeEmpty }}
+      {{ localeStrings.empty }}
     </p>
 
     <!-- ── 有数据 ── -->

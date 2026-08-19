@@ -5,7 +5,7 @@ import { useRoutes } from 'vuepress/client';
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 import EnhancedToc from './components/EnhancedToc.vue'
 import NotFound from './components/NotFound.vue'
-import Catalog from './components/Catalog.vue'
+import Catalog from './components/Catalog/Catalog.vue'
 import CatalogCard from './components/CatalogCard/CatalogCard.vue'
 import ConnectCommandSummary from './components/ConnectCommandSummary/ConnectCommandSummary.vue'
 import ColorSwatch from './components/ColorSwatch.vue'
