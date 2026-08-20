@@ -39,19 +39,6 @@ strong {
   scroll-behavior: auto;
 }
 
-// 侧边栏分组标题与链接左对齐
-.vp-sidebar-header {
-  padding-inline-start: 0.5rem;
-}
-.vp-sidebar-header .vp-sidebar-title{
-  padding: 8px 0px;
-}
-
-// 顶层分组标题样式与同层直链一致
-.vp-sidebar > .vp-sidebar-links > li > .vp-sidebar-group > .vp-sidebar-header {
-  color: var(--text-color);
-}
-
 
 .search-pro-box label {
   right: calc(.5rem);
@@ -212,69 +199,16 @@ h3 {
   min-height: 100vh;
 }
 
-.theme-container .vp-sidebar {
-  top: var(--navbar-height);
-}
+// 侧边栏自身的定位/折叠状态规则已迁移到 modules/sidebar/styles/sidebar.scss
+// 这里仅保留随侧边栏/导航栏状态调整的页面内容规则
 .theme-container.no-navbar .vp-page {
   padding-top: 0;
-}
-.theme-container.no-navbar .vp-sidebar {
-  top: 0;
-}
-@media (max-width: 719px) {
-  .theme-container.no-navbar .vp-sidebar {
-    top: 0;
-  }
-}
-@media (max-width: 719px) {
-  .theme-container.hide-navbar .vp-sidebar {
-    top: 0;
-  }
 }
 .theme-container.sidebar-collapsed .vp-page {
   padding-inline-start: 0;
 }
-.theme-container.sidebar-collapsed .vp-sidebar {
-  box-shadow: none;
-  transform: translateX(-100%);
-}
-html[dir=rtl] .theme-container.sidebar-collapsed .vp-sidebar {
-  transform: translateX(100%);
-}
 .theme-container.no-sidebar .vp-page {
   padding-inline: 0;
-}
-.theme-container.no-sidebar .vp-sidebar {
-  display: none;
-}
-.theme-container.sidebar-open .vp-sidebar {
-  box-shadow: 2px 0 8px var(--card-shadow);
-  transform: translateX(0);
-}
-
-// .vp-toggle-sidebar-button::after{
-//   display: block;
-//     width: 100%;
-//     height: 2px;
-//     border-radius: 0.05em;
-//     background: var(--titile-color);
-//     transition: transform 0.2s ease-in-out;
-// }
-.vp-toggle-sidebar-button .icon {
-  display: block;
-  width: 100%;
-  height: 2px;
-  border-radius: 0.05em;
-  background: #fff;
-  transition: transform 0.2s ease-in-out;
-}
-.vp-toggle-sidebar-button::before, .vp-toggle-sidebar-button::after, .vp-toggle-sidebar-button .icon {
-  display: block;
-  width: 100%;
-  height: 2px;
-  border-radius: 0.05em;
-  background: var(--titile-color);
-  transition: transform 0.2s ease-in-out;
 }
 
 h1 {

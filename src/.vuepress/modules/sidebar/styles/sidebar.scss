@@ -121,6 +121,40 @@
   }
 }
 
+// ==================== 与主题容器的布局联动 ====================
+// 侧边栏在导航栏下方的定位、折叠/展开/隐藏状态
+
+.theme-container .vp-sidebar {
+  top: var(--navbar-height);
+}
+.theme-container.no-navbar .vp-sidebar {
+  top: 0;
+}
+@media (max-width: 719px) {
+  .theme-container.no-navbar .vp-sidebar {
+    top: 0;
+  }
+}
+@media (max-width: 719px) {
+  .theme-container.hide-navbar .vp-sidebar {
+    top: 0;
+  }
+}
+.theme-container.sidebar-collapsed .vp-sidebar {
+  box-shadow: none;
+  transform: translateX(-100%);
+}
+html[dir=rtl] .theme-container.sidebar-collapsed .vp-sidebar {
+  transform: translateX(100%);
+}
+.theme-container.no-sidebar .vp-sidebar {
+  display: none;
+}
+.theme-container.sidebar-open .vp-sidebar {
+  box-shadow: 2px 0 8px var(--card-shadow);
+  transform: translateX(0);
+}
+
 // ==================== 搜索和工具栏样式 ====================
 
 // 搜索框容器
@@ -263,8 +297,11 @@
 $sidebar-gap: 0.625rem;
 $sidebar-item-height: 38px;
 $sidebar-font-size: 1em;
+$sidebar-line-height: 1.5;
 
 // 文档链接 & 目录标题：基础尺寸统一
+// 说明：min-height 保证单行时仍是 38px；line-height 用紧凑值，
+// 使标题换行时多行行距紧凑，可一眼分辨是换行而非新条目。
 .vp-sidebar-link,
 .vp-sidebar-header {
   width: calc(100% - 2 * $sidebar-gap);
@@ -273,7 +310,8 @@ $sidebar-font-size: 1em;
   padding-top: 0;
   padding-bottom: 0;
   font-size: $sidebar-font-size;
-  line-height: $sidebar-item-height;
+  min-height: $sidebar-item-height;
+  line-height: $sidebar-line-height;
   box-sizing: border-box;
 }
 
@@ -348,7 +386,7 @@ $sidebar-font-size: 1em;
   position: relative;
   border-radius: 4px;
   transition: background-color 0.2s ease;
-  height: 100%;
+  height: $sidebar-item-height;
   width: auto;
   aspect-ratio: 1;
 
@@ -389,7 +427,10 @@ $sidebar-font-size: 1em;
 .vp-sidebar-header .vp-sidebar-title {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 8px 4px;
+  // 去掉垂直 padding，配合 min-height + flex 居中，单行保持 38px；
+  // 水平 0 与原样式一致，避免额外内边距导致标题更早换行
+  padding: 0;
+  min-width: 0;
 }
 
 // ---- 全局字号兜底（覆盖主题 sidebar-links.scss 的高特异性规则） ----

@@ -28,4 +28,9 @@
       }
     }
   }
+
+  // 嵌套子节点间距：与最外层一致，避免同一层级的节点紧贴在一起
+  .vp-sidebar-group .vp-sidebar-links > li{
+    margin-top: 4px;
+  }
 }
