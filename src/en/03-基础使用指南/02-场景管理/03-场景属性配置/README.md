@@ -1,5 +1,5 @@
 ---
-title: 场景属性配置
+title: Scenario Properties
 index: false
 ---
 <Catalog />

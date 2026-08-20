@@ -1,5 +1,5 @@
 ---
-title: 基本
+title: Basic
 index: false
 ---
 <Catalog />

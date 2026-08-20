@@ -1,5 +1,5 @@
 ---
-title: 场景管理
+title: Scenario
 index: false
 ---
 <Catalog />
