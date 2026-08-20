@@ -1,7 +1,9 @@
-import { defineComponent, h, onMounted, shallowRef, watch, ref } from "vue";
-import { useRoute } from "vuepress/client";
+import { computed, defineComponent, h, onMounted, shallowRef, watch, ref } from "vue";
+import { usePageData, useRoute } from "vuepress/client";
 import SidebarLinks from "@theme-hope/modules/sidebar/components/SidebarLinks";
 import { useSidebarItems } from "@theme-hope/modules/sidebar/composables/index";
+import { zhSidebarText } from "./zh";
+import { enSidebarText } from "./en";
 import "../styles/sidebar.scss";
 
 export default defineComponent({
@@ -14,6 +16,11 @@ export default defineComponent({
 
         // 搜索功能
         const searchQuery = ref("");
+
+        // 国际化文案（英文页用 /en/ 前缀，其余默认中文）
+        const page = usePageData();
+        const isEn = computed(() => page.value.path.startsWith("/en/"));
+        const t = computed(() => (isEn.value ? enSidebarText : zhSidebarText));
 
         onMounted(() => {
             if (typeof window !== "undefined") {
@@ -136,14 +143,14 @@ export default defineComponent({
             h("line", { x1: "3", y1: "21", x2: "10", y2: "14" })
         ]);
 
-        // 搜索框组件
-        const searchBox = h("div", { class: "sidebar-search-box" }, [
+        // 搜索框组件（文案随语言变化，放在渲染函数中构建）
+        const renderSearchBox = (t) => h("div", { class: "sidebar-search-box" }, [
             h("div", { class: "sidebar-search-input-wrapper" }, [
                 searchIcon,
                 h("input", {
                     type: "text",
                     class: "sidebar-search-input",
-                    placeholder: "目录搜索...",
+                    placeholder: t.searchPlaceholder,
                     value: searchQuery.value,
                     onInput: (e) => {
                         searchQuery.value = e.target.value;
@@ -154,23 +161,23 @@ export default defineComponent({
             ])
         ]);
 
-        // 工具栏组件
-        const toolbar = h("div", { class: "sidebar-toolbar" }, [
+        // 工具栏组件（文案随语言变化，放在渲染函数中构建）
+        const renderToolbar = (t) => h("div", { class: "sidebar-toolbar" }, [
             h("button", {
                 class: "sidebar-toolbar-btn",
-                title: "全部折叠",
+                title: t.collapseAllTitle,
                 onClick: collapseAll
             }, [
                 collapseIcon,
-                h("span", { class: "sidebar-toolbar-text" }, "全部折叠")
+                h("span", { class: "sidebar-toolbar-text" }, t.collapseAllText)
             ]),
             h("button", {
                 class: "sidebar-toolbar-btn",
-                title: "全部展开",
+                title: t.expandAllTitle,
                 onClick: expandAll
             }, [
                 expandIcon,
-                h("span", { class: "sidebar-toolbar-text" }, "全部展开")
+                h("span", { class: "sidebar-toolbar-text" }, t.expandAllText)
             ])
         ]);
 
@@ -180,10 +187,10 @@ export default defineComponent({
             id: "sidebar",
             class: "vp-sidebar",
         }, [
-            searchBox,
-            toolbar,
+            renderSearchBox(t.value),
+            renderToolbar(t.value),
             slots.top?.(),
-            slots.default?.() || h(SidebarLinks, { 
+            slots.default?.() || h(SidebarLinks, {
                 config: sidebarItems.value,
                 searchQuery: searchQuery.value
             }),
