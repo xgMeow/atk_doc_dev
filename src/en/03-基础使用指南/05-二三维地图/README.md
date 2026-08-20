@@ -1,5 +1,5 @@
 ---
-title: 二三维地图
+title: 2D/3D Map
 index: false
 ---
 <Catalog />

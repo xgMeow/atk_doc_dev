@@ -81,7 +81,7 @@ export const enOverViewData: OverViewModule[] = [
       ],
       [
         { name: 'ATK.Connect', link: '/en/二次开发教程/2-二次开发CONNECT模式/' },
-        { name: 'Built-in Scripts', link: '/en/5.专业使用指南/18-脚本工具/' },
+        { name: 'ATK Script', link: '/en/5.专业使用指南/18-脚本工具/' },
       ],
     ],
   },

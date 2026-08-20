@@ -1,117 +1,115 @@
-# ECF对速度定向
+# ECF Velocity Alignment
 
-## 定义
+## Definition
 
-对固连系速度定向且指向天体约束
+Velocity alignment with respect to the Central Body Fixed (CBF) frame with nadir constraint.
 
-## 介绍
+## Introduction
 
-X轴：朝向中心天体固连系速度方向
+- X‑axis: points toward the CBF velocity direction.
+- Z‑axis: points toward the object's central body (not necessarily coincident).
+- Y‑axis: completes the right‑handed coordinate system with X and Z.
 
-Z轴：指向对象的中心天体（不一定重合）
+## Tutorial
 
-Y轴：与X轴和Z轴组成右手坐标系
+### Selecting the Attitude Operation
 
-## 使用教程
+Open the satellite's **Properties**, select **Attitude**, and choose **ECF Velocity Alignment** as the attitude type.
 
-###  选择姿态操作
+![Attitude](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-7.png)
 
-点击卫星【属性】，选择【姿态】，选择姿态类型为【ECF对速度定向】
+Click the satellite's **Properties**, select **Attitude**, and choose the **Attitude Type**.
 
-![姿态](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-7.png)
+### Configuring Parameters
 
-点击卫星【属性】，选择【姿态】，选择【姿态类型】
+1. **Offset Angle**: The angular offset of the nadir‑pointing vector.
 
-### 配置参数
+![Configure Parameters](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/16-ECI对速度定向/image-1.png)
 
-1. 偏移角：指向地心的向量偏移的角度
+The example uses an offset angle of 0.
 
-![配置参数](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/16-ECI对速度定向/image-1.png)
+## Attitude Report
 
-配置偏移角0为例
+1. **Open Data Report**
 
-## 姿态报告
+Right-click **Satellite1**, click **Report**, and select **Satellite1**.
 
-1. 打开数据报告
+![Data Report](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-8.png)
 
-右键【卫星1】，点击【数据报告】，选中【卫星1】
+2. **Create a New Report**
 
-![数据报告](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-8.png)
+Click **New**, select the newly created **New Style1**, and click **Properties** to configure it.
 
-2. 新建报告
+![New Report](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-9.png)
 
-点击【新建】，选中新建好的【新样式1】，点击【属性】进行配置
+3. **Configure Properties**
 
-![新建报告](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-9.png)
+Locate **Attitude Quaternions in Select Axes**, select qs, qx, qy, qz, and click the right arrow **→**.
 
-3. 配置属性
+![Configure Properties](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-11.png)
 
-找到【Attitude Quaternions in Select Axes】, 选中 qs, qx, qy, qz, 点击【→】
+4. **Generate the Report**
 
-![配置属性](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-11.png)
+Select the configured data report style **New Style1** and click **Generate**.
 
-4. 点击生成
+![Generate Report](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-12.png)
 
-选择配置好的数据报告样式【新样式1】，点击【生成】
+5. **Select the Reference Frame**
 
-![点击生成](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-12.png)
+Using the central body inertial frame as an example, select **Satellite1**, choose **Central Body Inertial Axes**, and click **OK**.
 
-5. 选择参考系
+![Select Reference Frame](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-1.png)
 
-以配置天体惯性系为例，选择【卫星1】，选择【国际天球惯性系】，点击【确定】
+6. **Display the Report**
 
-![选择参考系](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-1.png)
+The attitude report is generated.
 
-6. 显示报告z
+![Attitude Report](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-2.png)
 
-生成姿态报告
+## Visualization
 
-![姿态报告](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-2.png)
+1. **Add a Coordinate System**
 
-## 可视化
+Click **Satellite1**, select **Vector**, click **Add** to add a coordinate system for Satellite1.
 
-1. 添加坐标系
+![Add Coordinate System](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-14.png)
 
-点击【卫星1】，选择【向量】，点击【添加】，给卫星1添加坐标系
+2. **Select the Coordinate System**
 
-![添加坐标系](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-14.png)
+In the added component, select **Satellite1** as the object, choose **Body Axes**, and click **OK**.
 
-2. 选择坐标系
+![Select Coordinate System](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-3.png)
 
-在添加的组件中，选中【卫星1】对象，选中【体坐标系】，点击【确定】
+3. **Coordinate System Configuration**
 
-![选择坐标系](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-3.png)
+Check **Show** and click **Apply**.
 
-3. 坐标系配置
+![Coordinate System Configuration](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-6.png)
 
-勾选【显示】，点击【应用】
+4. **Add Vectors**
 
-![坐标系配置](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-6.png)
+Select **Vector**, click **Add**.
 
-4. 添加向量
+![Add Vectors](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-8.png)
 
-选择【向量】，点击【添加】
+5. **Select Vectors**
 
-![添加向量](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-8.png)
+Select **Satellite1**, click **Nadir(Detic)** to add it, which represents the vector from the satellite to the center of the central body.
 
-5. 选择向量
+![Select Vector](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-3.png)
 
-选择【卫星1】，点击【Nadir(Detic)】进行添加，其含义为卫星指向地心向量
+Select **Satellite1**, click **Velocity(CBF)** to add it.
 
-![选择向量](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-3.png)
+![Select Vector](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-4.png)
 
-选择【卫星1】，点击【速度】进行添加
+6. **Vector Configuration**
 
-![选择向量](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-4.png)
+Check **Show** and click **Apply** or **OK**.
 
-6. 向量配置
+![Vector Configuration](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-5.png)
 
-勾选【显示】，点击【应用】或【确定】
+7. **3D Visualization**
 
-![向量配置](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-5.png)
+In the main menu, click **3D View**, select **View From/To**, choose the **Satellite1** viewpoint, and click **▶** to play the animation. The satellite's X‑axis will point along the velocity vector (aligned), and the Z‑axis will attempt to point toward the central body (constrained). The nadir vector should lie within the XZ plane.
 
-7. 三维可视化
-
-在主菜单栏中点击【三维视图】，选中【局部视点】，选择【卫星1】视角，点击【▶】播放动画，卫星的X轴将指向速度向量（对齐），卫星的Z轴将尽量指向地心（约束），指向地心向量应约束在XZ平面内
-
-![三维可视化](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-6.png)
+![3D Visualization](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-6.png)

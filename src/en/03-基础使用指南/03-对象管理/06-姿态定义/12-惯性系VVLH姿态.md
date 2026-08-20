@@ -1,116 +1,113 @@
-# 惯性系VVLH姿态
+# VVLH(CBI) Attitude
 
-## 定义
+## Definition
 
-对天体定向且惯性系速度约束
+Body-pointing to central body with CBI velocity constraint.
 
-## 介绍
+## Introduction
 
-Z轴：指向对象的中心天体
+- Z‑axis: points toward the object's central body.
+- X‑axis: points toward the inertial velocity direction (not necessarily aligned exactly).
+- Y‑axis: forms a right‑handed system with the X and Z axes.
 
-X轴：朝向中心天体惯性系速度方向（不一定重合）
+## Usage
 
-Y轴：与X轴和Z轴组成右手坐标系
+### Selecting the Attitude Operation
 
+Open the satellite's **Properties**, select **Attitude**, and choose the attitude type [ ].
 
-## 使用方法
+![Attitude](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/12-惯性系VVLH姿态/image.png)
 
-###  选择姿态操作
+### Configuring Parameters
 
-点击卫星【属性】，选择【姿态】，选择姿态类型为【】
+**Constraint Offset**: Fixed offset from the reference attitude.
 
-![姿态](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/12-惯性系VVLH姿态/image.png)
+![Configure Parameters](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/12-惯性系VVLH姿态/image-1.png)
 
-### 配置参数
+The example uses an offset angle of 0.
 
-约束偏移角：参考姿态基础上的固定偏移量
+## Attitude Report
 
-![配置参数](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/12-惯性系VVLH姿态/image-1.png)
+1. **Open Data Report**
 
-配置偏移角0为例
+Right-click **Satellite1**, select **Report**, and choose **Satellite1**.
 
-## 姿态报告
+![Data Report](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-8.png)
 
-1. 打开数据报告
+2. **Create a New Report**
 
-右键【卫星1】，点击【数据报告】，选中【卫星1】
+Click **New**, select the newly created **New Style1**, and click **Properties** to configure it.
 
-![数据报告](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-8.png)
+![New Report](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-9.png)
 
-2. 新建报告
+3. **Configure Properties**
 
-点击【新建】，选中新建好的【新样式1】，点击【属性】进行配置
+Locate **Attitude Quaternions in Select Axes**, select qs, qx, qy, qz, and click the right arrow **→**.
 
-![新建报告](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-9.png)
+![Configure Properties](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-11.png)
 
-3. 配置属性
+4. **Generate the Report**
 
-找到【Attitude Quaternions in Select Axes】, 选中 qs, qx, qy, qz, 点击【→】
+Select the configured data report style **New Style1** and click **Generate**.
 
-![配置属性](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-11.png)
+![Generate Report](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-12.png)
 
-4. 点击生成
+5. **Select the Reference Frame**
 
-选择配置好的数据报告样式【新样式1】，点击【生成】
+Using the central body inertial frame as an example, select **Satellite1**, choose **Central Body Inertial Axes**, and click **OK**.
 
-![点击生成](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-12.png)
+![Select Reference Frame](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-1.png)
 
-5. 选择参考系
+6. **Display the Report**
 
-以配置天体惯性系为例，选择【卫星1】，选择【国际天球惯性系】，点击【确定】
+The attitude report is generated.
 
-![选择参考系](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-1.png)
+![Attitude Report](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/12-惯性系VVLH姿态/image-4.png)
 
-6. 显示报告z
+## Visualization
 
-生成姿态报告
+1. **Add a Coordinate System**
 
-![姿态报告](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/12-惯性系VVLH姿态/image-4.png)
+Click **Satellite1**, select **Vector**, click **Add** to add a coordinate system for Satellite1.
 
-## 可视化
+![Add Coordinate System](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-14.png)
 
-1. 添加坐标系
+2. **Select the Coordinate System**
 
-点击【卫星1】，选择【向量】，点击【添加】，给卫星1添加坐标系
+In the added component, select **Satellite1** as the object, choose **Body Axes**, and click **OK**.
 
-![添加坐标系](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/image-14.png)
+![Select Coordinate System](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-3.png)
 
-2. 选择坐标系
+3. **Coordinate System Configuration**
 
-在添加的组件中，选中【卫星1】对象，选中【体坐标系】，点击【确定】
+Check **Show** and click **Apply**.
 
-![选择坐标系](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-3.png)
+![Coordinate System Configuration](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-6.png)
 
-3. 坐标系配置
+4. **Add Vectors**
 
-勾选【显示】，点击【应用】
+Select **Vector**, click **Add**.
 
-![坐标系配置](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-6.png)
+![Add Vectors](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-8.png)
 
-4. 添加向量
+5. **Select Vectors**
 
-选择【向量】，点击【添加】
+Select **Satellite1**, click **Nadir(Detic)** to add it, which represents the vector from the satellite to the center of the central body.
 
-![添加向量](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/4-对齐约束姿态/image-8.png)
+![Select Vector](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-3.png)
 
-5. 选择向量
+Select **Satellite1**, click **Velocity** to add it.
 
-选择【卫星1】，点击【Nadir(Detic)】进行添加，其含义为卫星指向地心向量
+![Select Vector](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-4.png)
 
-![选择向量](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-3.png)
+6. **Vector Configuration**
 
-选择【卫星1】，点击【速度】进行添加
+Check **Show** and click **Apply** or **OK**.
 
-![选择向量](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-4.png)
+![Vector Configuration](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-5.png)
 
-6. 向量配置
+7. **3D Visualization**
 
-勾选【显示】，点击【应用】或【确定】
+In the main menu, click **3D View**, select **View From/To**, choose the **Satellite1** viewpoint, and click **▶** to play the animation. The satellite's Z‑axis will point toward the central body (aligned), and the X‑axis will attempt to align with the velocity direction (constrained). The velocity vector should lie within the XZ plane.
 
-![向量配置](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/15-ECF对速度定向/image-5.png)
-
-7. 三维可视化
-
-在主菜单栏中点击【三维视图】，选中【局部视点】，选择【卫星1】视角，点击【▶】播放动画，卫星的Z轴将指向天体中心（对齐），卫星的x轴将尽量指向速度方向（约束），速度向量应约束在XZ平面内
-
-![三维可视化](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/12-惯性系VVLH姿态/image-3.png)
+![3D Visualization](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/12-惯性系VVLH姿态/image-3.png)

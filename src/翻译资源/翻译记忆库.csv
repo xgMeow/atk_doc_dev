@@ -1,0 +1,5739 @@
+Source（原文）	Translation（译文）
+Sun	太阳
+Moon	月球
+Mercury	水星
+Venus	金星
+Earth	地球
+Mars	火星
+Jupiter	木星
+Saturn	土星
+Uranus	天王星
+Neptune	海王星
+Pluto	冥王星
+Satellite	卫星
+Facility	地面站
+Aircraft	飞机
+GroundVehicle	车辆
+Ship	舰船
+LaunchVehicle	火箭
+Missile	导弹
+Submarine	潜艇
+CBF View	天体固定系视点
+CBI View	天体惯性系视点
+Central Bodies	中心天体
+3D Graphics Window's Central Body	三维视图窗口中心天体
+Others...	其他...
+Property	属性
+Snap	快照
+RecordMovie	录像
+Globe Manager	全局管理
+Local View	局部视点
+View From/To	视点选择
+ToolBars	工具栏
+3D Window Defaults	三维窗口默认
+3D Graphics	三维视图
+Fixed in axes	固定轴
+Real time	实时
+LookAheadMethod	前瞻模式
+LookAheadDuration	前瞻期间
+LookBehindDuration	后视期间
+Satellte legacy attitude	卫星传统姿态
+Central body alignment with CBF velcocity constraint	中心天体对齐（含 CBF 速度约束）
+Central body alignment with CBI velcocity constraint	中心天体对齐（含 CBI 速度约束）
+SpinVector	旋转向量
+RotationAngle	旋转角
+RotationOffset	旋转偏移
+ReferenceAxes	参考轴系
+AttitudeType	姿态类型
+RotSequence	旋转顺序
+Yaw	偏航角
+Pitch	俯仰角
+Roll	滚转角
+Quaternion	四元数
+EulerAngles	欧拉角
+YPRAngles	偏航俯仰滚转角
+EulerAngle1	欧拉角1
+EulerAngle2	欧拉角2
+EulerAngle3	欧拉角3
+RPY	RPY
+RYP	RYP
+PRY	PRY
+PYR	PYR
+YRP	YRP
+YPR	YPR
+AxesEpoch	轴系历元
+SourceAxes	源轴系
+RotationEpoch	参考历元
+RotationRate	旋转角速度
+Point	点
+ReferenceSystem	参考坐标系
+AxesType	轴类型
+Distance from (%.5lf, %.5lf) to (%.5lf, %.5lf) = %.3lf km and bearing = %.3lf deg.	(%.5lf, %.5lf) 与 (%.5lf, %.5lf) 间的距离 = %.3lfkm，方位角 = %.3lf deg。
+PNG Files (*.png)	PNG 文件(*.png)
+BMP Files (*.bmp)	BMP文件 (*.bmp)
+JPG Files (*.jpg)	JPG文件 (*.jpg)
+All files (*)	所有文件 (*)
+2D View Snap Property	二维视图快照属性
+Snap to File	快照至文件
+Snap to Clipboard	快照至剪切板
+File Format	文件格式
+OK	确定
+Cancel	取消
+PNG files (*.png)	PNG文件(*.png)
+BMP files (*.bmp)	BMP文件(*.bmp)
+JPG files (*.jpg)	JPG文件(*.jpg)
+2D Window Defaults	二维窗口默认
+2D Graphics	二维视图
+Reset	重置
+Zoom In	放大
+Zoom Out	缩小
+Snap Property	快照属性
+Measure	测量
+2:1 Aspect Ratio	横纵比2:1
+2D Graphics Window's Central Body	二维视图窗口中心天体
+ToolBar	工具栏
+Warning	警告
+Close current video and start a new video?	是否结束上一段录屏，开始新录屏？
+PNG Format(*.png)	PNG格式(*.png)
+BMP Format(*.bmp)	BMP格式(*.bmp)
+JPG Format(*.jpg)	JPG格式(*.jpg)
+Map Details	地图细节
+Detail Item	细节选项
+Show	显示
+Color	颜色
+Show Label	显示标签
+Lat/Lon Lines	经纬线
+Lat Spacing	纬度间隔
+Lon Spacing	经度间隔
+Line Style	线型
+crater	环形山
+mare	月海
+mons	山丘
+Coastlines	海岸线
+International Borders	国界
+Lakes	湖泊
+Provincial Borders	省界
+Rivers	河流
+Image File	图片文件
+MapCenterLon(deg)	地图中心经度(deg)
+Background Color	背景颜色
+Inlay Images	嵌入图
+Images	图片
+Type	类型
+South Lat (deg)	南侧纬度(deg)
+West Lon (deg)	西侧经度(deg)
+North Lat (deg)	北侧纬度(deg)
+East Lon (deg)	东侧经度(deg)
+Translucency	透明度
+Transparent	背景透明
+Add	添加
+Remove	删除
+Move Up	向上移动
+Move Down	向下移动
+Image Display Options	图片显示选项
+Show Image Extents	显示图片范围
+Show Image Filenames	显示图片名称
+Zoom To	缩放至
+Map Background	地图背景
+All Supported Types(*.bmp *.gif *.ico *.jpe *.jpeg *.jpg *.png *.tif *.tiff)	所有支持格式(*.bmp *.gif *.ico *.jpe *.jpeg *.jpg *.png *.tif *.tiff)
+Map Images	地图图片
+The northern latitude must be greater than the southern latitude for images!	图片北侧纬度必须大于南侧纬度！
+The eastern longitude must be greater than the western longitude for images!	图片东侧经度必须大于西侧经度！
+Sunlight/Penumbra/Umbra Transitions	阳光/半影/本影转换
+Sunlight/Penumbra	阳光/半影
+Show Outline	显示轮廓线
+Style	线型
+Width	线宽
+Penumbra/Umbra	半影/本影
+Subsolar Point	太阳直射点
+Marker	标识
+Nightlights	夜晚灯光
+File	文件
+Level	等级
+Shading	明暗
+Day	白天
+% Translucency at Subsolar Point	太阳直射点透明度(%)
+% Translucency at Edge of Day	白天边界处透明度(%)
+Night	夜晚
+% Translucency at Darkest Point	夜晚最暗点透明度(%)
+% Translucency at Edge of Night	夜晚边界处透明度(%)
+Nightlights File	夜晚灯光文件
+Image	图片
+X Origin	X轴原点
+Y Origin	Y轴原点
+Scale	比例
+Reload	重新加载
+Left	左
+Right	右
+Center	中心
+Top	上
+Bottom	下
+Equidistant Cylindrical	等距圆柱
+Mercator	墨卡托
+Miller	米勒
+Mollweide	摩尔维特
+Sinusoidal	正弦
+Hammer-Aitoff	哈默-艾托夫
+Projection Format	投影格式
+Lon	经度
+Aspect Ratio	横纵比
+Always Keep 2:1 Aspect Ratio	总是保持横纵比为2:1
+Imagery	图像
+Projection	投影
+Details	细节
+Lighting	光照
+Time Display	时间显示
+Overlays	覆盖层
+Record Movie	录屏
+Apply	应用
+None	无
+PNG Files(*.png)	PNG 文件(*.png)
+BMP Files(*.bmp)	BMP 文件(*.bmp)
+JPG Files(*.jpg)	JPG 文件(*.jpg)
+Video	视频
+Custom	自定义
+Low Quality @ 1080 - 6000 Kbps	低质量 @ 1080 - 6000 Kbps
+High Quality @ 1080 - 10000 Kbps	高质量 @ 1080 - 10000 Kbps
+Low Quality @ 4K - 30000 Kbps	低质量 @ 4K - 30000 Kbps
+High Quality @ 4K - 40000 Kbps	高质量 @ 4K - 40000 Kbps
+Off	关闭
+Record	录制
+Output Options	输出选项
+Directory	目录
+File Name Prefix	文件名前缀
+Start Frame	开始帧
+Min Digits in File Name	文件名最少数字
+Codec	编码
+Framerate (fps)	帧率 (fps)
+Bitrate (kbps)	比特率 (kbps)
+Select Directory	选择目录
+Animation Time	动画时间
+Time System	时间系统
+X Pixel Posion	X轴像素位置
+Y Pixel Posion	Y轴像素位置
+Text	文字
+Background	背景
+ObjectBase	对象基类
+Object Base	对象基类
+SolarSystem	太阳系
+Solar System	太阳系
+CelestialBody	天体
+VGTBase	VGT 基类
+VGT Element	VGT 元素
+System	系统
+Axes	轴系
+ObjectClass	对象类
+Object Class	对象类
+CoordAxes	坐标轴系
+Coordinate Axes	坐标轴系
+CoordAxesOfEpoch	历元坐标轴系
+Coordinate Axes Of Epoch	历元坐标轴系
+CoordPoint	坐标点
+Coordinate Point	坐标点
+CoordFrame	坐标框架
+Coordinate Frame	坐标框架
+Origin	原点
+Latitude	纬度
+Longitude	经度
+Altitude	高度
+ClockAngle	时钟角
+Name	名称
+ParentObj	父对象
+International Celestial Reference Frame	国际天球参考系
+Earth Mean Equator and Equinox of J2000 epoch	J2000历元地球平赤道平春分点轴系
+Name of the object	对象名称
+JPL DE code of the celestial body	天体的 JPL DE 代码
+Spice code of the celestial body	天体的 SPICE 代码
+Gravity of the celestial body	天体引力
+reference point of the celestialbody	天体参考点
+TETEGM	TETEGM
+True Equator True Equinox Axes of Greenwich Midnight	格林尼治午夜真赤道真春分点轴系
+Z along Mean Axis of Rotation of Date, X along cross_product(ICRF.Z, Z)	Z 轴沿历元日期平均自转轴，X 轴沿 ICRF.Z 与 Z 轴的叉积方向
+Z along Fixed.Z Axis of Date, X along cross_product(ICRF.Z, Z)	Z 轴沿历元日期固连系 Z 轴，X 轴沿 ICRF.Z 与 Z 轴的叉积方向
+VelocityAzimuth	速度方位角
+???	???
+SunMoon	日月
+Sideslip	侧滑
+Sideslip angle	侧滑角
+Right Ascension	赤经
+Re-entry	再入
+True Earth Right Ascension	地球真赤经
+EarthRA(True)	地球赤经（真）
+MoonRA(True)	月球赤经（真）
+True Moon Right Ascension)	月球真赤经
+SunRA(True)	太阳赤经（真）
+True Sun Right Ascension	太阳真赤经
+EarthRA(Apparent)	地球赤经（视）
+Apparent Earth Right Ascension	地球视赤经
+MoonRA(Apparent)	月球赤经（视）
+Apparent Moon Right Ascension	月球视赤经
+SunRA(Apparent)	太阳赤经（视）
+Apparent Sun Right Ascension	太阳视赤经
+Azimuth of the velocity vector	速度矢量方位角
+BoreSun	视轴-太阳
+Attack	攻角
+Angle of attack	攻角
+FlightBank	飞行倾斜角
+Flight bank angle	飞行倾斜角
+FlightPath	飞行路径角
+Flight path angle	飞行路径角
+FlightPitch	飞行俯仰角
+Flight pitch angle	飞行俯仰角
+FlightRoll	飞行滚转角
+Flight roll angle	飞行滚转角
+FlightVelAzimuth	飞行速度方位角
+Azimuth of Flight Direction in the Body XY plane	本体XY平面内飞行方向方位角
+FlightVelElevation	飞行速度仰角
+Elevation of the Flight Direction wrt the Body XY plane	飞行方向相对于本体XY平面的仰角
+FlightYaw	飞行偏航角
+Flight yaw angle	飞行偏航角
+Heading	航向角
+RA	赤经
+Re-entry angle	再入角
+SEET_GeomagneticDeclination	SEET_地磁偏角
+Geomagnetic declination (aka variation) as defined by SEET	SEET定义的地磁偏角（磁差）
+SEET_GeomagneticInclination	SEET_地磁倾角
+Geomagnetic inclination as defined by SEET	SEET定义的地磁倾角
+SunAzimuth	太阳方位角
+Azimuth of the apparent Sun	视太阳方位角
+SunZenithDistance	太阳天顶距
+Angle between zenith and the apparent Sun	天顶与视太阳之间的夹角
+VertFlightPath	垂直飞行路径角
+Angle between the position and velocity vectors	位置与速度矢量之间的夹角
+Dec	赤纬
+Declination	赤纬
+Theta	θ
+B-plane rotation angle theta	B 平面旋转角 θ
+Angle between boresight and the apparent Sun	视轴与视太阳之间的夹角
+Heading angle	航向角
+VVLH	VVLH
+VVLH Axes	VVLH 轴系
+VNC	VNC
+VNC Axes	VNC 轴系
+LVLH	LVLH
+LVLH Axes	LVLH 轴系
+ICR	ICR
+RIC	RIC
+Radial In-Track Cross-Track Axes	径向-迹向-法向轴系
+ICR(CBF)	ICR（中心天体固连系）
+RIC(CBF)	RIC（中心天体固连系）
+RIC Axes based on Velocity with respect to Central Body Fixed System	基于中心天体固连系速度的 RIC 轴系
+TopoCentric	地平轴系
+Topocentric Axes	地平轴系
+MSL	平均海平面
+Mean Sea Level Topocentric Axes	平均海平面地平轴系
+RadialCentric	径向地心轴系
+Radial Centric Axes	径向地心轴系
+PositionCovPrincipal	位置协方差主轴系
+Principal Axes of Position Covariance Ellipsoid	位置协方差椭球的主轴系
+Model	模型
+L1	L1
+L2	L2
+L3	L3
+L4	L4
+L5	L5
+Outgoing	离开的
+Outgoing B-Plane  Axes	出射 B 平面轴系
+TargetBody	目标天体
+Target central body inertial axes	目标中心天体惯性轴系
+Mean Equator Mean Equinox Axes of Date	历元日期平赤道平春分点轴系
+J2000	J2000
+Earth Mean Equator and Equinox of the J2000 Epoch	J2000 历元地球平赤道平春分点轴系
+ICRF	ICRF
+Inertial	惯性
+Central Body Inertial Axes as constant offset from ICRF Axes	相对于 ICRF 轴系具有恒定偏移的中心天体惯性轴系
+B1950	B1950
+B1950 Axes as constant offset from J2000 Axes	相对于 J2000 轴系具有恒定偏移的 B1950 轴系
+B1950_FK4	B1950_FK4
+B1950 Axes using FK4 theory of motion	采用 FK4 运动理论的 B1950 轴系
+PseudoFixed	伪固定
+Central Body Fixed Axes without accounting for pole wander	不考虑极移的中心天体固连轴系
+Fixed	固定
+Central Body Fixed Axes	中心天体固连轴系
+FixedAtJ2000	FixedAtJ2000
+Central Body Fixed Axes of J2000 epoch	J2000 历元的中心天体固连轴系
+MOD	MOD
+MOE	MOE
+Mean Equator Mean Equinox Axes of Reference Epoch	参考历元平赤道平春分点轴系
+MOJ2000	MOJ2000
+Mean Equator Mean Equinox Axes of J2000 Epoch	J2000 历元平赤道平春分点轴系
+TOD	TOD
+True Equator True Equinox Axes of Date	历元日期真赤道真春分点轴系
+TOE	TOE
+True Equator True Equinox Axes of Reference Epoch	参考历元真赤道真春分点轴系
+TrueOfOrbitEpoch	TrueOfOrbitEpoch
+True Equator True Equinox Axes of Orbit Epoch	轨道历元真赤道真春分点轴系
+TOJ2000	TOJ2000
+True Equator True Equinox Axes of J2000 Epoch	J2000 历元真赤道真春分点轴系
+TEMEE	TEMEE
+True Equator Mean Equinox  Axes of Reference Epoch	参考历元真赤道平春分点轴系
+TEMEJ2000	TEMEJ2000
+True Equator Mean Equinox Axes of J2000 Epoch	J2000 历元真赤道平春分点轴系
+TEME	TEME
+True Equator Mean Equinox Axes of Date	历元日期真赤道平春分点轴系
+MODEc	MODEc
+Mean Ecliptic Axes of Date	历元日期平黄道轴系
+TODEc	TODEc
+True Ecliptic Axes of Date	历元日期真黄道轴系
+MOEEc	MOEEc
+Mean Ecliptic Axes of Reference Epoch	参考历元平黄道轴系
+MOJ2000Ec	MOJ2000Ec
+Mean Ecliptic Axes of J2000 Epoch	J2000 历元平黄道轴系
+TOEEc	TOEEc
+True Ecliptic Axes of Reference Epoch	参考历元真黄道轴系
+TOJ2000Ec	TOJ2000Ec
+True Ecliptic Axes of J2000 Epoch	J2000 历元真黄道轴系
+BBR	BBR
+Body-body rotating Axes	两体连线旋转坐标轴系
+Body	本体
+Body Fixed Axes	本体固连轴系
+Principal	主轴
+Axes aligned along the principal directions computed from inertia matrix	沿惯性矩阵所确定主方向对齐的轴系
+In-Track Cross-Track Radial Axes	迹向-法向-径向轴系
+VVLH(CBF)	VVLH(CBF)
+VVLH Axes based on Velocity with respect to Central Body Fixed System	基于中心天体固连系速度的 VVLH 轴系
+VVLH(Earth)	VVLH(地球)
+VVLH(Mars)	VVLH(火星)
+VVLH(Moon)	VVLH(月球)
+VNC(CBF)	VNC(CBF)
+VNC Axes based on Velocity with respect to Central Body Fixed System	基于中心天体固连系速度的 VNC 轴系
+VNC(Earth)	VNC(地球)
+VNC(Mars)	VNC(火星)
+VNC(Moon)	VNC(月球)
+VNC(Sun)	VNC(太阳)
+VNC(Venus)	VNC(金星)
+LVLH(CBF)	LVLH(CBF)
+LVLH Axes based on Velocity with respect to Central Body Fixed System	基于中心天体固连系速度的 LVLH 轴系
+LVLH(Earth)	LVLH(地球)
+Local-Vertical Local-Horizontal axes with X-axis along position vector and Y-axis toward inertial velocity vector	当地垂直-当地水平轴系，X 轴沿位置矢量，Y 轴指向惯性速度矢量方向
+ICR Axes based on Velocity with respect to Central Body Fixed System	基于中心天体固连系速度的 ICR 轴系
+3D Model based Axes	基于三维模型的轴系
+L1 Libration point axes	L1 平动点轴系
+L3 Libration point axes	L3 平动点轴系
+L4 Libration point axes	L4 平动点轴系
+L5 Libration point axes	L5 平动点轴系
+Incoming	新来的
+Incoming B-Plane  Axes	入射 B 平面轴系
+Velocity aligned axes constrained to local horizontal	约束于当地水平面的速度对齐轴系
+NorthEastDown	北-东-地
+Local horizontal axes constrained to north	约束于当地北向的当地水平轴系
+EastSouthDown	东-南-地
+Local horizontal axes constrained to east	约束于当地东向的当地水平轴系
+NorthWestUp	北-西-天
+MeanEarth	平地球
+Mean Earth (ME) axes (a fixed frame of the Moon)	平地球（ME）轴系（月球固连坐标系）
+PrincipalAxes_403	PrincipalAxes_403
+Principal Axes (PA) using DE403(a fixed frame of the Moon)	采用 DE403 的主轴（PA）（月球固连坐标系）
+PrincipalAxes_421	PrincipalAxes_421
+Principal Axes (PA) using DE421 (a fixed frame of the Moon)	采用 DE421 的主轴（PA）（月球固连坐标系）
+IAU2003	IAU2003
+A fixed frame of the Moon defined using IAU 2003 theory	采用 IAU 2003 理论定义的月球固连坐标系
+Fixed_NoLibration	Fixed_NoLibration
+A fixed frame of the Moon not modeling lunar libration	不考虑月球天平动的月球固连坐标系
+SEET_GeomagneticSolarMagnetic	SEET_地心太阳磁层
+X-axis aligned with the Earth-Sun line, z-axis constrained toward magnetic north pole (aka GSM axes)	X 轴沿日地连线，Z 轴约束指向磁北极（即 GSM 轴系）
+SEET_Geomagnetic	SEET_地磁
+SEET_SolarMagnetic	SEET_太阳磁
+Object Centered J2000 Axes	对象中心 J2000 轴系
+Object centered Local-Vertical Local-Horizontal axes with X-axis along position vector and Y-axis toward inertial velocity vector.	对象中心当地垂直-当地水平轴系，X 轴沿位置矢量，Y 轴指向惯性速度矢量方向。
+Object centered Local-Vertical Local-Horizontal axes with X-axis along position vector and Y-axis toward central body fixed (CBF) velocity vector.	对象中心当地垂直-当地水平轴系，X 轴沿位置矢量，Y 轴指向中心天体固连系（CBF）速度矢量方向。
+Mean Sea Level topocentric axes with Z-axis along mean sea level surface normal and X-axis toward local south direction centered at mean sea level surface sub-point.	平均海平面地平轴系，Z 轴沿平均海平面法线，X 轴指向当地南向，原点位于平均海平面上的星下点。
+Object centered North East Down axes with Z-axis opposite to surface normal of central body reference ellipsoid and X-axis toward local north direction.	对象中心北-东-地轴系，Z 轴与中心天体参考椭球面法线方向相反，X 轴指向当地北向。
+Object centered North West Up axes with Z-axis along surface normal of central body reference ellipsoid and X-axis toward local north direction.	对象中心北-西-天轴系，Z 轴沿中心天体参考椭球面法线，X 轴指向当地北向。
+System aligned with principal axes of position covariance ellipsoid centered on object.	对象中心轴系，与位置协方差椭球的主轴对齐。
+Object centered Radial In-Track Cross-Track axes with X-axis along position vector and Y-axis toward inertial velocity vector.	对象中心径向-迹向-法向轴系，X 轴沿位置矢量，Y 轴指向惯性速度矢量方向。
+Object centered Radial In-Track Cross-Track axes with X-axis along position vector and Y-axis toward central body fixed (CBF) velocity vector.	对象中心径向-迹向-法向轴系，X 轴沿位置矢量，Y 轴指向中心天体固连系（CBF）速度矢量方向。
+Object centered radial centric axes with Z-axis along position vector and X-axis toward local south direction.	对象中心径向地心轴系，Z 轴沿位置矢量，X 轴指向当地南向。
+Object centered topocentric axes with Z-axis along surface normal of central body reference ellipsoid and X-axis toward local south direction.	对象中心地平轴系，Z 轴沿中心天体参考椭球面法线，X 轴指向当地南向。
+with Z-axis along surface normal of central body reference ellipsoid and X-axis toward local south direction.	Z轴沿中心天体参考椭球面法线方向，X轴指向本地南方向。
+Object centered Velocity Normal Co-Normal axes with X-axis along central body fixed (CBF) velocity vector and Z-axis toward position vector.	对象中心速度-法向-副法向轴系，X 轴沿中心天体固连系（CBF）速度矢量，Z 轴指向位置矢量方向。
+Object centered Vehicle Velocity Local Horizontal axes with Z-axis opposite to position vector and X-axis toward inertial velocity vector.	对象中心飞行器速度-当地水平轴系，Z 轴与位置矢量方向相反，X 轴指向惯性速度矢量方向。
+Object centered Vehicle Velocity Local Horizontal axes with Z-axis opposite to position vector and X-axis toward central body fixed (CBF) velocity vector.	对象中心飞行器速度-当地水平轴系，Z 轴与位置矢量方向相反，X 轴指向中心天体固连系（CBF）速度矢量方向。
+Object Centered ICRF Axes	对象中心 ICRF 轴系
+Central Body centered ICRF Axes	中心天体中心 ICRF 轴系
+Central Body centered J2000 Axes	中心天体中心 J2000 轴系
+Central Body centered B1950 Axes	中心天体中心 B1950 轴系
+Central Body centered TOD Axes	中心天体中心 TOD 轴系
+Celestial Body centered TOJ2000 Axes	天体中心 TOJ2000 轴系
+Celestial Body centered MOD Axes	天体中心 MOD 轴系
+Celestial Body centered MOJ2000 Axes	天体中心 MOJ2000 轴系
+Celestial Body centered TrueEclpDate Axes	天体中心历元日期真黄道轴系
+Celestial Body centered TrueEclpJ2000 Axes	天体中心 J2000 历元真黄道轴系
+Celestial Body centered MeanEclpDate Axes	天体中心历元日期平黄道轴系
+Celestial Body centered MeanEclpJ2000 Axes	天体中心 J2000 历元平黄道轴系
+Celestial Body centered TEMED Axes	天体中心 TEMED 轴系
+Celestial Body centered TEMEJ2000 Axes	天体中心 TEMEJ2000 轴系
+Object centered J2000 Axes	对象中心 J2000 轴系
+Object centered ICRF Axes	对象中心 ICRF 轴系
+Celestial Body Inertial System	天体惯性系
+Celestial Body Fixed System	天体固连系
+Celestial Body Fixed System without accounting for pole wander	未考虑极移的天体固连系
+Celestial Body centered Fixed Axes of J2000 epoch	天体中心 J2000 历元固连轴系
+Body Fixed System	本体固连系
+Object centered In-Track Cross-Track Radial axes with Z-axis along position vector and X-axis toward inertial velocity vector.	对象中心迹向-法向-径向轴系，Z 轴沿位置矢量，X 轴指向惯性速度矢量方向。
+ICRCBF	ICRCBF
+Object centered In-Track Cross-Track Radial axes with Z-axis along position vector and X-axis toward central body fixed (CBF) velocity vector.	对象中心迹向-法向-径向轴系，Z 轴沿位置矢量，X 轴指向中心天体固连系（CBF）速度矢量方向。
+Target body centered system based on incoming B-plane	基于入射 B 平面的目标天体中心坐标系
+Target body centered system based on outgoing B-plane	基于出射 B 平面的目标天体中心坐标系
+Target central body centered system	目标中心天体中心坐标系
+Object centered flight topocentric axes	对象中心飞行地平轴系
+Object centered flight path axes	对象中心飞行路径轴系
+L1 Libration point system	L1 平动点坐标系
+L2 Libration point system	L2 平动点坐标系
+L3 Libration point system	L3 平动点坐标系
+L4 Libration point system	L4 平动点坐标系
+L5 Libration point system	L5 平动点坐标系
+Mean Sea Level Topocentric Axes centered at the surface point	以表面点为原点的平均海平面地平轴系
+Moon-centered Mean Earth (ME) axes	月心平地球（ME）轴系
+Moon-centered Principal Axes (PA) using DE403	采用 DE403 的月心主轴（PA）
+Moon-centered Principal Axes (PA) using DE421	采用 DE421 的月心主轴（PA）
+Moon-centered with axes defined using IAU 2003 theory	采用 IAU 2003 理论定义轴系的月心坐标系
+Moon-centered with axes not modeling lunar libration	不考虑月球天平动的月心坐标系
+Geocentered system with geomagentic axes	采用地磁轴的地心坐标系
+Vector from object center to Earth.	从物体中心指向地球的矢量
+Vector from object center to Moon.	从物体中心指向月球的矢量
+Vector from object center to Sun.	从物体中心指向太阳的矢量
+Unit vector along Body Z-axis.	沿本体Z轴的单位矢量
+ICRF.X	ICRF.X
+ICRF.Z	ICRF.Z
+LiftAxis	升力轴
+LineOfNodes(J2000Equator)	交点线（J2000赤道）
+LineOfNodes(TEMEJ2000Equator)	交点线（TEMEJ2000赤道）
+Location	目录
+MagField(IGRF)	磁场（IGRF）
+MagField(WMM)	磁场（WMM）
+Moonlight	月光
+Nadir(Centric)	天底（地心）
+Nadir(Detic)	天底（大地）
+NegZAxisProjYZ	负 Z 轴在 YZ 平面上的投影
+North	北
+Osculating orbit specific angular momentum vector.	密切轨道比角动量矢量。
+Orbit specific angular momentum vector based on Brouwer-Lyddane mean elements (short and long period terms).	基于 Brouwer-Lyddane 平根数（含短周期项和长周期项）的轨道比角动量矢量。
+Orbit specific angular momentum vector based on Brouwer-Lyddane mean elements (short period terms only).	基于 Brouwer-Lyddane 平根数（仅含短周期项）的轨道比角动量矢量。
+Orbit Angular momentum relative to Earth center with respect to Fixed axes	相对于地心、在固连轴系中表示的轨道角动量
+Orbit Angular momentum relative to Earth center with respect to Inertial axes	相对于地心、在惯性轴系中表示的轨道角动量
+Position relative to Earth center	相对于地球中心的位置
+Position relative to Mars center	相对于火星中心的位置
+Position relative to Moon center	相对于月球中心的位置
+Position relative to Sun center	相对于太阳中心的位置
+Position relative to Venus center	相对于金星中心的位置
+Orbit_AngMomentum	轨道角动量
+Earth(Apparent)	地球（视位置）
+Apparent Earth vector from object center.	从对象中心指向地球视位置的矢量。
+Earth(True)	地球（真位置）
+Moon(Apparent)	月球（视位置）
+Apparent Moon vector from object center.	从对象中心指向月球视位置的矢量。
+Moon(True)	月球（真位置）
+Sun(Apparent)	太阳（视位置）
+Apparent Sun vector from object center.	从对象中心指向太阳视位置的矢量。
+Sun(True)	太阳（真位置）
+Body_AngMomentum	本体角动量
+Angular momentum vector of satellite body based on its inertia tensor.	基于其惯性张量的卫星本体角动量矢量。
+Body_AngVelocity	本体角速度
+Body angular velocity vector.	本体角速度矢量。
+Apoapsis	远拱点
+Osculating apoapsis vector.	密切轨道远心点矢量。
+Apoapsis(BLL)	远心点（BLL）
+Apoapsis vector based on Brouwer-Lyddane mean elements (short and long period terms).	基于 Brouwer-Lyddane 平根数（含短周期项和长周期项）的远心点矢量。
+Apoapsis(BLS)	远心点（BLS）
+Apoapsis vector based on Brouwer-Lyddane mean elements (short period terms only).	基于 Brouwer-Lyddane 平根数（仅含短周期项）的远心点矢量。
+Apoapsis(K)	远心点（K）
+Osculating apoapsis vector	密切轨道远心点矢量
+Used to report the selected vector and its derivative in the object&apos;s body axes. The vector must be defined in Vector geometry tool	用于在对象的本体轴系中报告所选矢量及其导数。该矢量必须在矢量几何工具（VGT）中定义
+Boresight	视轴
+CrossWindAxis	侧风轴
+Vector defined by a cross product of the flight direction and the -Z body axis of the aircraft; directed to along the right wing of the aircraft when in level flight	由飞行方向与飞行器本体 -Z 轴的叉积定义；水平飞行时沿飞行器右翼方向。
+Depth	深度
+Depth vector with respect to Mean Sea Level surface	相对于平均海平面表面的深度矢量
+DragAxis	阻力轴
+Unit vector in the direction opposite to the direction of flight	与飞行方向相反的单位矢量
+East	东
+Unit vector in the local horizontal plane pointing east	当地水平面内指向东的单位矢量
+Ecc	偏心率
+Osculating eccentricity vector	密切偏心率矢量
+Ecc(BLL)	偏心率(BLL)
+Eccentricity vector based on Brouwer-Lyddane mean elements (short and long period terms). Mean elements are computed in the central body True Of Date reference frame (if available)	基于 Brouwer-Lyddane 平根数（含短周期项和长周期项）的偏心率矢量。平根数在中心天体历元日期真坐标系中计算（如该坐标系可用）。
+Ecc(BLS)	偏心率(BLS)
+Eccentricity vector based on Brouwer-Lyddane mean elements (short period terms only). Mean elements are computed in the central body True Of Date reference frame (if available)	基于 Brouwer-Lyddane 平根数（仅含短周期项）的偏心率矢量。平根数在中心天体历元日期真坐标系中计算（如该坐标系可用）。
+Ecc(Earth)	偏心率（地球）
+Vehicle Eccentricity Vector	飞行器偏心率矢量
+Ecc(K)	偏心率(K)
+Eccentricity vector based on Kozai mean elements. Mean elements are computed in the central body True Of Date reference frame (if available)	基于 Kozai 平根数的偏心率矢量。平根数在中心天体历元日期真坐标系中计算（如该坐标系可用）。
+EclipticNormal	黄道法向
+Unit vector along normal to mean ecliptic plane of J2000 epoch.	沿 J2000 历元平黄道面法线方向的单位矢量。
+FlightDir	飞行方向
+Unit vector along direction of flight in central body fixed (CBF) system	中心天体固连系（CBF）中沿飞行方向的单位矢量
+GrvGrdTorque	重力梯度力矩
+Gravity gradient torque	重力梯度力矩
+Unit vector along direction of lift force	沿升力方向的单位矢量
+LineOfNodes	交点线
+Unit vector along osculating line of nodes	沿密切轨道交点线方向的单位矢量
+Unit vector to apparent celestial star location	指向视恒星位置的单位矢量
+Earth magnetic field vector using International Geomagnetic Reference Field model	使用国际地磁参考场模型的地球磁场矢量
+Earth magnetic field vector using World Magnetic Model model	使用世界地磁模型的地球磁场矢量
+Direction of apparent vector from Moon to body multiplied by lunar intensity (accounting for lit portion of Moon)	从月球指向本体的视矢量方向乘以月光强度（已考虑月球受照部分）
+Unit vector directed to central body center opposite to position vector	指向中心天体中心且与位置矢量方向相反的单位矢量
+Unit vector directed down opposite to surface normal of central body reference ellipsoid	指向下方且与中心天体参考椭球面法线方向相反的单位矢量
+Projection of unit vector opposite to Body Z-axis onto Flight Path YZ-plane	与本体 Z 轴方向相反的单位矢量在飞行路径 YZ 平面上的投影
+Unit vector perpendicular to surface normal of central body reference ellipsoid and directed toward local north	垂直于中心天体参考椭球面法线并指向当地北方的单位矢量
+NorthPole	北极
+Unit vector along Z-axis of celestial body fixed (CBF) axes.	沿天体固连系（CBF）Z 轴方向的单位矢量。
+Orbit_AngMomentum(BLL)	轨道角动量（BLL）
+Orbit_AngMomentum(BLS)	轨道角动量（BLS）
+Orbit_AngMomentum(ECF)	轨道角动量（ECF）
+Orbit_AngMomentum(Earth)	轨道角动量（地球）
+Orbit_AngMomentum(K)	轨道角动量（K）
+Orbit specific angular momentum vector based on Kozai mean elements. Mean elements are computed in the central body True Of Date reference frame (if available).	基于 Kozai 平根数的轨道比角动量矢量。平根数在中心天体历元日期真坐标系中计算（如该坐标系可用）。
+Orbit_AngMomentum(Moon)	轨道角动量（月球）
+Orbit Angular momentum relative to Moon center with respect to Inertial axes	相对于月心、在惯性轴系中表示的轨道角动量
+Orbit_Normal	轨道法向
+Unit vector along normal to osculating orbit plane	沿密切轨道平面法线的单位矢量
+Periapsis	近拱点
+Osculating perisapsis vector	密切轨道近心点矢量
+Periapsis(BLL)	近心点（BLL）
+Perisapsis vector based on Brouwer-Lyddane mean elements (short and long period terms). Mean elements are computed in the central body True Of Date reference frame (if available)	基于 Brouwer-Lyddane 平根数（含短周期项和长周期项）的近心点矢量。平根数在中心天体历元日期真坐标系中计算（如该坐标系可用）。
+Periapsis(BLS)	近心点（BLS）
+Perisapsis vector based on Brouwer-Lyddane mean elements (short period terms only). Mean elements are computed in the central body True Of Date reference frame (if available).	基于 Brouwer-Lyddane 平根数（仅含短周期项）的近心点矢量。平根数在中心天体历元日期真坐标系中计算（如该坐标系可用）。
+Periapsis(K)	近心点（K）
+Perisapsis vector based on Kozai mean elements. Mean elements are computed in the central body True Of Date reference frame (if available).	基于 Kozai 平根数的近心点矢量。平根数在中心天体历元日期真坐标系中计算（如该坐标系可用）。
+Position	位置
+Position vector relative to it's central body center.	相对于其中心天体中心的位置矢量。
+Position(Apparent)	位置（视）
+Apparent position vector relative to it's central body center.	相对于其中心天体中心的视位置矢量。
+Position(Earth)	位置（地球）
+Position(Mars)	位置（火星）
+Position(Moon)	位置（月球）
+Position(Sun)	位置（太阳）
+Position(Venus)	位置（金星）
+RollAxis	滚转轴
+Unit vector along Body X-axis about which roll is performed	沿执行滚转运动的本体 X 轴方向的单位矢量
+RotorThrustAxis	旋翼推力轴
+Unit vector along direction of rotor thrust force	沿旋翼推力方向的单位矢量
+SEET_GeomagneticField	SEET_地磁场
+Geomagnetic field as defined by SEET	由SEET定义的地磁场
+SEET_GeomagneticNorthPole	SEET_地磁北极
+Magnetic north pole	地磁北极
+SEET_GeomagneticSouthPole	SEET_地磁南极
+Magnetic south pole	地磁南极
+SEET_HorizontalGeomagneticField	SEET_水平地磁场
+Horizontal geomagnetic field as defined by SEET	由SEET定义的水平地磁场
+SEET_LorentzForce	SEET_洛伦兹力
+Force on a 1 Coulomb charge from movement through the magnetic field	1库仑电荷在磁场中运动所受的力
+SEET_VerticalGeomagneticField	SEET_垂直地磁场
+Vertical geomagnetic field as defined by SEET	由SEET定义的垂直地磁场
+SideForceAxis	侧向力轴
+Unit vector along direction of side force	沿侧向力方向的单位矢量
+South	南
+Unit vector perpendicular to surface normal of central body reference ellipsoid and directed toward local south.	垂直于中心天体参考椭球表面法线并指向当地南方的单位矢量。
+Spin	自旋
+Spin vector	自旋矢量
+Displacement vector to Sun apparent glint point	指向太阳视反辉点的位移矢量
+Unit vector directed up along surface normal of central body reference ellipsoid	沿中心天体参考椭球表面法线向上的单位矢量
+SubPointCentric	中心星下点
+SubPointMSL	MSL星下点
+Sub point MSL	MSL星下点
+SubPointDetic	探测器星下点
+Solar System Barycenter point	太阳系质心点
+Barycenter	质心
+Barycenter point	质心点
+Center point	中心点
+Sub point centric	中心星下点
+Sub point detic	探测器星下点
+SunGlint	太阳反辉
+Sun Glint point	太阳反辉点
+Point on the Mean Sea Level surface whose normal passes through the object's position	平均海平面上的点，其法线穿过物体位置
+SubPoint(Detic)	星下点（探测器）
+Point on the surface whose normal passes through the object's position	表面上的点，其法线穿过物体位置
+SubPoint(Centric)	星下点（中心）
+Point on the surface along the object's position vector	沿物体位置矢量的表面点
+B	B
+B point on incoming plane	入射平面上的B点
+Bout	出射B点
+B point on outgoing plane	出射平面上的B点
+Btraj	入射轨迹B点
+B point on incoming plane based on two-body trajectory	基于二体轨迹的入射平面上的B点
+Btrajout	出射轨迹B点
+B point on outgoing plane based on two-body trajectory	基于二体轨迹的出射平面B点
+Target	目标
+Target point on incoming B plane	入射B平面上的目标点
+Targetout	目标出射点
+Target point on outgoing B plane	出射B平面上的目标点
+Target central body center point	目标中心体中心点
+L1 libration point	L1拉格朗日点
+L2 libration point	L2拉格朗日点
+L3 libration point	L3拉格朗日点
+L4 libration point	L4拉格朗日点
+L5 libration point	L5拉格朗日点
+BoresightIntersection	视轴交点
+Point of intersection along boresight direction with surface of central body reference ellipsoid.	沿视轴方向与中心体参考椭球表面的交点。
+BoresightIntersectionTerrain	地形视轴交点
+Point of intersection along boresight direction with terrain surface or, if absent, with surface of central body reference ellipsoid.	沿视轴方向与地形表面的交点，若不存在，则与中心体参考椭球表面的交点。
+GeoBeltEasternLimit	地质带东边界
+Most eastward point on geo belt visible from the site (i.e., at zero elevation from ground)	从站点可见的地质带最东点（即地面零仰角处）
+GeoBeltWesternLimit	地质带西边界
+Most westward point on geo belt visible from the site (i.e., at zero elevation from ground)	从站点可见的地质带最西点（即地面零仰角处）
+SEET_NorthFootprint	SEET_北向足迹
+The intersection point of the current field line, travelling north, with the ground	当前场线向北延伸与地面的交点
+SEET_SouthFootprint	SEET_南向足迹
+The intersection point of the current field line, travelling south, with the ground	当前场线向南延伸与地面的交点
+ServicePosition	服务位置
+Position of STK Object based on service call for AgCCBIPositionSvc	基于AgCCBIPositionSvc服务调用得到的STK对象位置
+Sunlight	太阳相关量
+Direction of apparent vector from Sun to body multiplied by solar intensity	从太阳到天体的视矢量方向乘以太阳强度
+TotalThrust	总推力
+Total thrust vector	总推力矢量
+TotalTorque	总扭矩
+Total external torque applied to body	施加于天体的总外部扭矩
+Up	向上
+Unit vector along Body X-axis	沿天体X轴的单位矢量
+Velocity	速度
+Velocity vector with respect to central body inertial system	相对于中心天体惯性系的速度矢量
+Velocity(CBF)	速度（CBF）
+Velocity vector with respect to central body fixed (CBF) system	相对于中心天体固定（CBF）系的速度矢量
+Velocity(Earth(CBF))	速度（地球（CBF））
+Velocity relative to Earth center with respect to Fixed axes	相对于地球中心在固定轴系下的速度
+Velocity(Earth)	速度（地球）
+Velocity relative to Earth center with respect to Inertial axes	相对于地球中心在惯性轴系下的速度
+Velocity(Mars)	速度（火星）
+Velocity relative to Mars center with respect to Inertial axes	相对于火星中心在惯性轴系下的速度
+Velocity(Moon)	速度（月球）
+Velocity relative to Moon center with respect to Inertial axes	相对于月球中心在惯性轴系下的速度
+Velocity(SubPoint)	速度（星下点）
+Velocity vector of detic sub-point on central body reference ellipsoid with respect to central body fixed (CBF)	探测器星下点在中心天体参考椭球上相对于中心天体固定坐标系（CBF）的速度矢量
+Velocity(Sun)	速度（太阳）
+Velocity relative to Sun center with respect to Inertial axes	相对于太阳中心在惯性轴系下的速度
+Velocity(Venus)	速度（金星）
+Velocity relative to Venus center with respect to Inertial axes	相对于金星中心、以惯性轴为基准的速度
+West	西
+Unit vector perpendicular to surface normal of central body reference ellipsoid and directed toward local west	垂直于中心体参考椭球面法线并指向当地西方的单位矢量
+Zenith(Centric)	天顶（中心）
+Unit vector along position vector from central body center	沿中心天体中心位置矢量的单位矢量
+Zenith(Detic)	天顶（探测器）
+XY	XY
+XY Quadrant Of Reference System.	参考系的XY象限
+XZ	XZ
+XZ Quadrant Of Reference System.	参考系的XZ象限
+YX	YX
+YX Quadrant Of Reference System.	参考系的YX象限
+YZ	YZ
+YZ Quadrant Of Reference System.	参考系的YZ象限
+ZX	ZX
+ZX Quadrant Of Reference System.	参考系的ZX象限
+ZY	ZY
+ZY Quadrant Of Reference System.	参考系的ZY象限
+Spacescraft	航天器
+Axes Aligned Constrained	轴对齐约束
+Point CBGrazing	中心天体擦地点
+Point Fixed At Epoch	历元固定点
+Point Glint	反辉点
+Point Intersection	交点
+Point Projection	投影点
+Point Proxy	代理点
+System ENU	东北天系统
+Launch System	发射系统
+Angle	角
+AngleBetweenPlane	平面间角度
+AngleBetweenVector	矢量间角度
+AngleDihedral	二面角
+AngleProxy	代理角度
+AngleRotation	旋转角
+AngleVectorToPlane	矢量到平面角度
+AngleConstant	常值角
+Angle Between Plane	平面间角度
+Angle Between Vector	矢量间角度
+Angle Dihedral	二面角
+Angle Proxy	代理角度
+Angle Ratation	旋转角度
+Angle Vector To Plane	矢量到平面角度
+Angle Constant	恒定角度
+AxesAlignedConstrained	对准-约束轴系
+AxesAngularOffset	角偏移轴系
+AxesFixed	固定轴系
+AxesFixedAtEpoch	历元固定轴系
+AxesProxy	代理轴系
+AxesSpinning	自旋轴系
+AxesSurface	表面轴系
+AxesFromFunc	函数生成轴系
+AxesFromObj	对象引用轴系
+AxesLibration	拉格朗日点轴系
+AxesTrajectory	轨迹轴系
+AxesTopocentric	站心轴系
+AxesLaunch	发射轴系
+AxesLaunchInertial	发射惯性轴系
+AxesENU	东北天（ENU）轴系
+Axes Angular Offset	轴角度偏移
+Axes Fixed	固定轴
+Axes Fixed At Epoch	历元固定轴
+Axes Proxy	代理轴
+Axes Spinning	旋转轴
+Axes Surface	表面轴
+Axes From Func	从函数获取轴
+Axes From Obj	从对象获取轴
+Axes Libration	天平动轴
+Axes Trajectory	轨迹轴
+Axes Topocentric	地心俯仰轴
+Axes Launch	发射轴
+Axes Launch Inertial	惯性发射轴
+Axes ENU	东北天轴
+Plane	面
+PlaneNormal	平面法线
+PlaneProxy	代理平面
+PlaneQuadrant	平面象限
+PlaneTrajectory	平面轨迹
+PlaneTriad	平面三元组
+PlaneTwoVectors	平面双矢量
+Plane Normal	平面法线
+Plane Proxy	代理平面
+Plane Quadrant	平面象限
+Plane Trajectory	平面轨迹
+Plane Triad	平面三元组
+Plane TwoVectors	平面双矢量
+PointBPlane	B平面点
+PointCBGrazing	中心天体擦地点
+PointFixed	固定点
+PointFixedAtEpoch	历元固定点
+PointGlint	反辉点
+PointIntersection	交点
+PointProjection	投影点
+PointProxy	代理点
+PointFromFunc	从函数获取点
+PointFromObj	从对象获取点
+PointFromObjFunc	从对象函数获取点
+PointLibration	天平动点
+Point BPlane	B平面点
+Point Fixed	固定点
+Point From Func	从函数获取点
+Point From Obj	从对象获取点
+Point From Obj Func	从对象函数获取点
+Point Libration	天平动点
+SystemAssembled	系统组装
+SystemProxy	系统代理
+SystemSurface	系统表面
+SystemLaunch	发射坐标系
+SystemLaunchInertial	发射惯性坐标系
+SystemENU	系统东北天
+SystemLC	LC坐标系
+SystemLCI	LCI坐标系
+SystemTopocentric	站心坐标系
+System Assembled	系统组装
+System Proxy	系统代理
+System Surface	系统表面
+Launch Inertial System	惯性发射系统
+Topocentric System	站心坐标系
+Vector	向量
+VectorAcc	加速度矢量
+VectorAngVelocity	角速度矢量
+VectorConstant	常值矢量
+VectorCross	叉积矢量
+VectorDerivative	导数矢量
+VectorDisplacement	位移矢量
+VectorFixed	固定矢量
+VectorIntersection	两平面交线矢量
+VectorLinearCombination	线性组合矢量
+VectorOrbit	轨道矢量
+VectorProjection	投影矢量
+VectorProjectionAlong	沿指定方向投影的矢量
+VectorProxy	代理矢量
+VectorRefelection	反射矢量
+VectorScaled	缩放矢量
+VectorVel	速度矢量
+VectorFile	文件矢量
+VectorFromObj	对象引用矢量
+VectorVelAcc	矢量速度加速度
+Vector Acc	矢量加速度
+Vector AngVelocity	矢量角速度
+Vector Constant	矢量常量
+Vector Cross	矢量叉积
+Vector Derivative	矢量导数
+Vector Displacement	矢量位移
+Vector Fixed	固定矢量
+Vector Intersection	矢量交点
+Vector Linear Combination	矢量线性组合
+Vector Orbit	矢量轨道
+Vector Projection	矢量投影
+Vector Projection Along	沿矢量投影
+Vector Proxy	矢量代理
+Vector Refelection	矢量反射
+Vector Scaled	矢量缩放
+Vector Vel	矢量速度
+Vector FromObj	来自对象的矢量
+AlignedVector	选择对齐的轴
+AlignedAxis	选择某一轴对齐
+ConstrainedVector	选择约束的轴
+ConstrainedAxis	选择某一轴约束
+UseLightTimeDelay	使用光延时
+StartPoint	起点
+EndPoint	终点
+IgnoreAberration	忽略光行差
+SignalSense	信号感知
+Segment	段相关量
+STKAttitude	STK姿态
+RightAscension	赤经
+Magnitude	星等
+CoordType	坐标类型
+ScaleFactorA	缩放因子A
+ScaleFactorB	缩放因子B
+NormalizeA	归一化A
+NormalizeB	归一化B
+InheritDimension	继承维度
+Dimenstion	维度
+ReferencePoint	参考点
+LaunchTime	发射时间
+CentralBody	中心天体
+CoordSystem	坐标系
+TripValue	触发值
+Active	激活
+IntegratedDeltaV	速度增量积分
+RefSpacecraft	参考航天器
+OtherSegment	其他段
+SegmentStateToUse	要使用的段状态
+CalcObject	计算对象
+FinalState	最终状态
+InitialState	初始段
+ReferenceBody	参考天体
+ReferenceType	参考类型
+Use specified reference body	使用指定的参考天体
+Use parent celestial body as reference	使用父级天体作为参考
+ReferenceVector	参考矢量
+AtmosModel	大气模型
+SolarFluxAtOneAU	一个天文单位处的太阳通量
+Eccentricity	偏心率
+Mean Motion (Revs/Day)	平均运动（圈数/天）
+Periapsis Radius	近拱点半径
+Periapsis Altitude	近心点高度
+Apoapsis Radius	远拱点半径
+Apoapsis Altitude	远心点高度
+Period	周期
+Time Past AN	过升交点后时间
+Time Past Perigee	过近地点后时间
+Revolution per day	每天圈数
+Semimajor axis	半长轴
+Variables	变量
+RAAN	升交点赤经
+Lon Ascn Node	升交点经度
+Longitude of Perigee	近地点经度
+Mean Longitude	平经度
+LAN	升交点经度
+True anomaly	真近点角
+Mean anomaly	平近点角
+Eccentric anomaly	偏近点角
+Latitude of Argument	纬度辐角
+Time Past Asc Node	过升交点时刻
+Time Past Periapsis	过近拱点时刻
+ProfileScript	脚本配置
+ProfileDirect	Direct方法配置
+ProfileUq	UQ方法配置
+ProfileIPOPT	IPOPT方法配置
+ProfileSNOPT	SNOPT方法配置
+ProfileMinpack	Minpack方法配置
+ProfileMonteCarlo	MonteCarlo方法配置
+ProfileInitialGuess	初始猜测配置
+CAsShooterProfile	CAs打靶方法配置
+Differential Corrector	微分修正器
+Sequential Quadratic Programming	序列二次规划
+Intelligent Optimization Method	智能优化方法
+CAsUncertQuantifyProfile	CAs不确定性量化配置
+Polynomial Chaos Expansion	多项式混沌展开
+Monte Carlo Simulation	蒙特卡洛模拟
+Adaptive GMM-PCE	自适应高斯混合模型-多项式混沌展开
+InheritType	继承类型
+InheritInitialState	继承初状态
+InheritFinalState	继承末状态
+InheritPassState	继承通过状态
+CAsStopDuration	预报时长
+CAsStopEpoch	历元时刻
+CAsStopAltitude	高度
+CAsStopLongitude	经度
+CAsStopLatitude	纬度
+CAsStopApoapsis	远拱点
+CAsStopPeriapsis	近拱点
+CAsStopAscendingNode	升交点
+CAsStopDescendingNode	降交点
+CAsStopXYPlaneCross	XY平面交点
+CAsStopYZPlaneCross	YZ平面交点
+CAsStopZXPlaneCross	ZX平面交点
+CAsStopAscToDesc	南纬最低点
+CAsStopDescToAsc	北纬最高点
+CAsStopRMagnitude	与中心天体距离
+CAsStopTrueAnomaly	真近点角
+CAsStopMeanAnomaly	平近点角
+CAsStopArgLat	纬度辐角
+CAsStopStateCalc	约束计算值
+Average	平均值
+Derivative	导数
+Orbit	轨道
+Attitude	姿态
+Trajectory	轨迹
+Cartesian	笛卡尔
+Keplerian	轨道根数
+Equinoctial	赤道的
+AngularVelocity	角速度
+Matrix	矩阵
+AngleAxis	角轴
+EulerAngle	欧拉角
+Spherical	球形的
+Epoch	历元
+Elapsed Time	经过时间
+Position and Velocity in Central Body Inertial	中心天体惯性系中的位置和速度
+Position and Velocity in Central Body Fixed	中心天体固连系中的位置和速度
+Position and Velocity in Central Body J2000	中心天体J2000系中的位置和速度
+Position and Velocity in Central Body ICRF	中心天体ICRF系中的位置与速度
+Position and Velocity in Select System	选定系统中的位置与速度
+Attitude Quaternions in Select Axes	选定轴系中的姿态四元数
+Attitude Euler Angles 123 in Select Axes	选定轴系中的姿态欧拉角123
+Attitude Euler Angles 132 in Select Axes	选定轴系中的姿态欧拉角132
+Attitude Euler Angles 213 in Select Axes	选定轴系中的姿态欧拉角213
+Attitude Euler Angles 231 in Select Axes	选定轴系中的姿态欧拉角231
+Attitude Euler Angles 312 in Select Axes	选定轴系中的姿态欧拉角312
+Attitude Euler Angles 321 in Select Axes	选定轴系中的姿态欧拉角321
+Attitude Euler Angles 121 in Select Axes	选定轴系中的姿态欧拉角121
+Attitude Euler Angles 131 in Select Axes	选定轴系中的姿态欧拉角131
+Attitude Euler Angles 212 in Select Axes	选定轴系中的姿态欧拉角212
+Attitude Euler Angles 232 in Select Axes	选定轴系中的姿态欧拉角232
+Attitude Euler Angles 313 in Select Axes	选定轴系中的姿态欧拉角313
+Attitude Euler Angles 323 in Select Axes	选定轴系中的姿态欧拉角323
+Position and Velocity in Moon J2000	月球J2000系中的位置与速度
+Position and Velocity in Moon Inertial	月球惯性系中的位置与速度
+Position and Velocity in Moon Fixed	月球固连系中的位置与速度
+Position and Velocity in Moon ICRF	月球ICRF系中的位置与速度
+Position and Velocity in Earth Inertial	地球惯性系中的位置与速度
+Position and Velocity in Earth Fixed	地球固连系中的位置与速度
+Position and Velocity in Earth ICRF	地球ICRF系中的位置与速度
+Position and Velocity in Earth J2000	地球J2000系中的位置与速度
+StepSize	步长
+Moon Position	月球位置
+Simulation Information	仿真信息
+Position and Velocity in Inertial	惯性系位置与速度
+Attitude LH Euler Angles	姿态左旋欧拉角
+Attitude LH Quaternions	姿态左旋四元数
+Brouwer-Lyd Mean Long	Brouwer-Lyd 平均长半轴
+Brouwer-Lyd Mean Short	Brouwer-Lyd 平均短半轴
+Kozai-Izsak Mean	Kozai-Izsak 平均根数
+Liu Mean	Liu 平均根数
+ATK Mean	ATK 平均根数
+Position and Velocity in Fixed	固定系位置与速度
+Position and Velocity in TEME	TEME系位置与速度
+Spherical Elements in J2000	J2000系球面要素
+Spherical Elements in Fixed	固定系球面要素
+Classical Elements in J2000	J2000系经典轨道根数
+LLR State in J2000	J2000系LLR状态
+LLR State in Fixed	固定系LLR状态
+LLA State	大地经纬高状态
+Attitude Euler Angles 123	姿态欧拉角 123
+Attitude Euler Angles 132	姿态欧拉角 132
+Attitude Euler Angles 213	姿态欧拉角 213
+Attitude Euler Angles 231	姿态欧拉角 231
+Attitude Euler Angles 312	姿态欧拉角 312
+Attitude Euler Angles 321	姿态欧拉角 321
+Attitude Euler Angles 121	姿态欧拉角 121
+Attitude Euler Angles 131	姿态欧拉角 131
+Attitude Euler Angles 212	姿态欧拉角 212
+Attitude Euler Angles 232	姿态欧拉角 232
+Attitude Euler Angles 313	姿态欧拉角 313
+Attitude Euler Angles 323	姿态欧拉角 323
+Attitude Quaternions	姿态四元数
+Attitude Quaternions in VVLH	VVLH中的姿态四元数
+Attitude Euler Angles 123 in VVLH	VVLH中的姿态欧拉角 123
+Attitude Euler Angles 132 in VVLH	VVLH中的姿态欧拉角 132
+Attitude Euler Angles 213 in VVLH	VVLH中的姿态欧拉角 213
+Attitude Euler Angles 231 in VVLH	VVLH中的姿态欧拉角 231
+Attitude Euler Angles 312 in VVLH	VVLH中的姿态欧拉角 312
+Attitude Euler Angles 321 in VVLH	VVLH中的姿态欧拉角 321
+Attitude Euler Angles 121 in VVLH	VVLH中的姿态欧拉角 121
+Attitude Euler Angles 131 in VVLH	VVLH中的姿态欧拉角 131
+Attitude Euler Angles 212 in VVLH	VVLH中的姿态欧拉角 212
+Attitude Euler Angles 232 in VVLH	VVLH中的姿态欧拉角 232
+Attitude Euler Angles 313 in VVLH	VVLH中的姿态欧拉角 313
+Attitude Euler Angles 323 in VVLH	VVLH中的姿态欧拉角 323
+Mass	质量
+Eclipse	地影
+Pass Number	圈次编号
+Beta Angle	β角
+Sun Position	太阳位置
+Sun Position in VVLH	VVLH坐标系下的太阳位置
+Sun Position in LVLH	LVLH坐标系下的太阳位置
+Sun Vector in VVLH	VVLH坐标系下的太阳矢量
+Sun Vector in LVLH	LVLH坐标系下的太阳矢量
+Angle Between Sunlight And Other Satellite Position	太阳光方向与另一卫星位置矢量的夹角
+Sun AER VVLH	VVLH坐标系下的太阳AER
+Relative Position and Velocity in VVLH	VVLH坐标系下的相对位置与速度
+Relative Position and Velocity in LVLH	LVLH坐标系下的相对位置与速度
+Relative Position and Velocity in Fixed LVLH	Fixed LVLH坐标系下的相对位置与速度
+Solar Intensity	太阳圆盘可见百分比
+Position Covariance Inertia	惯性坐标系下的位置协方差
+Attitude Euler Angles	姿态欧拉角
+Attitude Euler Angles in VVLH	VVLH坐标系下的姿态欧拉角
+Access AER Data	可见性AER数据
+Complete Access	完整链路可见区间
+Link Information	链路预算信息
+Attitude Euler Angles in Parent Body	母天体坐标系下的姿态欧拉角
+Attitude Quaternions in Parent Body	母天体坐标系下的姿态四元数
+Attitude Euler Angles in J2000	J2000坐标系下的姿态欧拉角
+Attitude Quaternions in J2000	J2000坐标系下的姿态四元数
+Intersect LL	交点经纬度
+Position in J2000	J2000坐标系下的位置
+Declination and Right Ascension	赤纬与赤经
+Position and Velocity in J2000	J2000坐标系下的位置与速度
+EventsByDuration	按持续时间排序的事件
+EventsByMinRange	按最小距离排序的事件
+EventsByMinSep	按最小分离距离排序的事件
+EventsBySSC	按SSC编号排序的事件
+EventsByTimeIn	按进入时间排序的事件
+EventsByPrimIDThenDuration	先按主对象ID、再按持续时间排序的事件
+EventsByPrimIDThenMinRange	先按主对象ID、再按最小距离排序的事件
+EventsByPrimIDThenMinSep	先按主对象ID、再按最小分离距离排序的事件
+EventsByPrimIDThenTimeIn	先按主对象ID、再按进入时间排序的事件
+EventsUnsorted	未排序事件
+Classical Elements in Central Body Inertial	中心天体惯性坐标系下的经典轨道根数
+Classical Elements in Central Body Fixed	中心天体固连坐标系下的经典轨道根数
+Classical Elements in Central Body ICRF	中心天体ICRF坐标系下的经典轨道根数
+Classical Elements in Central Body J2000	中心天体J2000坐标系下的经典轨道根数
+Classical Elements in Moon Inertial	月心惯性坐标系下的经典轨道根数
+Classical Elements in Moon Fixed	月固坐标系下的经典轨道根数
+Classical Elements in Moon ICRF	月心ICRF坐标系下的经典轨道根数
+Classical Elements in Moon J2000	月心J2000坐标系下的经典轨道根数
+Classical Elements in Earth Inertial	地心惯性坐标系下的经典轨道根数
+Classical Elements in Earth Fixed	地固坐标系下的经典轨道根数
+Classical Elements in Earth ICRF	地心ICRF坐标系下的经典轨道根数
+Classical Elements in Earth J2000	地心J2000坐标系下的经典轨道根数
+Classical Elements in Select System	所选坐标系下的经典轨道根数
+Spherical Elements in Central Body Inertial	中心天体惯性坐标系下的球坐标状态参数
+Spherical Elements in Central Body Fixed	中心天体固连坐标系下的球坐标状态参数
+Spherical Elements in Central Body ICRF	中心天体ICRF坐标系下的球坐标状态参数
+Spherical Elements in Central Body J2000	中心天体J2000坐标系下的球坐标状态参数
+Spherical Elements in Moon Inertial	月心惯性坐标系下的球坐标状态参数
+Spherical Elements in Moon Fixed	月固坐标系下的球坐标状态参数
+Spherical Elements in Moon ICRF	月心ICRF坐标系下的球坐标状态参数
+Spherical Elements in Moon J2000	月心J2000坐标系下的球坐标状态参数
+Spherical Elements in Earth Inertial	地心惯性坐标系下的球坐标状态参数
+Spherical Elements in Earth Fixed	地固坐标系下的球坐标状态参数
+Spherical Elements in Earth ICRF	地心ICRF坐标系下的球坐标状态参数
+Spherical Elements in Earth J2000	地心J2000坐标系下的球坐标状态参数
+Spherical Elements in Select System	所选坐标系下的球坐标状态参数
+LLR State in Central Body Inertial	中心天体惯性坐标系下的LLR状态
+LLR State in Central Body Fixed	中心天体固连坐标系下的LLR状态
+LLR State in Central Body ICRF	中心天体ICRF坐标系下的LLR状态
+LLR State in Central Body J2000	中心天体J2000坐标系下的LLR状态
+LLR State in Moon Inertial	月心惯性坐标系下的LLR状态
+LLR State in Moon Fixed	月固坐标系下的LLR状态
+LLR State in Moon ICRF	月心ICRF坐标系下的LLR状态
+LLR State in Moon J2000	月心J2000坐标系下的LLR状态
+LLR State in Earth Inertial	地心惯性坐标系下的LLR状态
+LLR State in Earth Fixed	地固坐标系下的LLR状态
+LLR State in Earth ICRF	地心ICRF坐标系下的LLR状态
+LLR State in Earth J2000	地心J2000坐标系下的LLR状态
+LLR State in Select System	所选坐标系下的LLR状态
+LLA State in Select Celestial Body	所选天体的LLA状态
+Apogee Altitude	远地点高度
+Apogee Radius	远拱点半径
+Arg of Latitude	纬度幅角
+Arg of Perigee	近地点幅角
+Eccentric Anomaly	偏近点角
+Flt Path Azimuth	飞行路径方位角
+Horiz Flt Path Angle	水平飞行路径角
+Inclination	轨道倾角
+Mean Anomaly	平近点角
+Perigee Altitude	近地点高度
+Perigee Radius	近拱点半径
+r	r
+Radius	半径
+Right Ascen	赤经
+Semi-major Axis	半长轴
+True Anomaly	真近点角
+v	v
+vx	vx
+vy	vy
+vz	vz
+x	x
+y	y
+z	z
+ATK Object	ATK对象
+Analysis Object	分析对象
+Orbital Segment	轨道段
+Orbital Segment Result	轨道段结果
+Stopping Condition	停止条件
+Vector Geometry	矢量几何
+Vector Geometry Vector	矢量几何—矢量
+Vector Geometry Axes	矢量几何—轴系
+Vector Geometry Point	矢量几何—点
+Vector Geometry System	矢量几何—坐标系
+Vector Geometry Angle	矢量几何—角
+Vector Geometry Plane	矢量几何—平面
+Attitude Define	姿态定义
+State	状态
+State Cartesian	笛卡尔状态
+State Keplerian	开普勒轨道状态
+AttitudeDefine	姿态
+AttitudeSatelliteLegacy	卫星姿态旧版
+AttitudeSpinning	旋转姿态
+AttitudeVVLH	轨道局部坐标系姿态
+AttitudeVVLHCBI	惯性系VVLH姿态
+AttitudeVVLHCBF	固连系VVLH姿态
+AttitudeEciAligndVel	ECI对速度定向
+AttitudeEcfAligndVel	ECF对速度定向
+AttitudeFixedInAxes	固定姿态
+AttitudeFixedInCBF	固定于天体固定系姿态
+AttitudeFixedInCBI	固定于天体惯性系姿态
+AttitudeAlignedConstrained	对齐约束姿态
+AttitudeMultiSegment	多段姿态
+AttitudeTargetPointing	目标指向姿态
+AttitudeRealTime	实时姿态
+AttitudeSTK	STK姿态
+AttitudeRotation	旋转姿态
+StateCartesian	笛卡尔状态
+StateKeplerian	开普勒状态
+AxesLC	LC轴系
+AxesLCI	LCI轴系
+<invalid file>	<无效文件>
+ATKClient	ATK客户端
+HOME	主页
+New	新建
+Open	打开
+Save	保存
+Run	运行
+IMPORT	导入
+BeiDou Ex	北斗转换
+FastTransfer Ex	快速转换
+HELP	帮助
+ATKClient Help	ATK客户端帮助
+About ATKClient	关于ATK客户端
+Command Script	命令脚本
+"<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0//EN"" ""http://www.w3.org/TR/REC-html40/strict.dtd"">
+<html><head><meta name=""qrichtext"" content=""1"" /><style type=""text/css"">
+p, li { white-space: pre-wrap; }
+</style></head><body style="" font-family:'新宋体'; font-size:12pt; font-weight:400; font-style:normal;"">
+<p style=""-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;""><br /></p></body></html>"	"<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0//EN"" ""http://www.w3.org/TR/REC-html40/strict.dtd"">
+<html><head><meta name=""qrichtext"" content=""1"" /><style type=""text/css"">
+p, li { white-space: pre-wrap; }
+</style></head><body style="" font-family:'新宋体'; font-size:12pt; font-weight:400; font-style:normal;"">
+<p style=""-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;""><br /></p></body></html>"
+Command Window	命令窗口
+Warning	告警
+Save or not?	是否保存？
+Save As	另存为
+Open ATK Script	打开ATK脚本
+Access Graph	可见性分析图表
+Start Time:	开始历元:
+yyyy-MM-dd hh:mm:ss.zzz	yyyy-MM-dd hh:mm:ss.zzz
+End Time:	结束历元:
+Refresh	更新
+Duration %1: %2(sec) = %3%	可见段%1: %2(sec) = %3%
+Access Duration: %2(sec) = %3%	可见段: %2(sec) = %3%
+Unaccessible Duration: %2(sec) = %3%	不可见段: %2(sec) = %3%
+Duration Percentage of %1 to %2	%1对%2的可见时段百分比
+Global Duration Percentage of %1 to %2	%1对%2的全任务周期可见时段百分比
+Az El polar of %1 to %2	%1对%2的俯仰角方位角极坐标曲线
+PNG Files(*.png);;BMP Files(*.bmp);;JPG Files(*.jpg)	PNG文件(*.png);;BMP文件(*.bmp);;JPG文件(*.jpg)
+Error Time Setting, Time Out of Simulation Period!	时间设置错误，超出仿真区间！
+Access User-Defined Report	可见性自定义分析报告
+Create	创建
+Close	关闭
+Access Summary Report	可见性分析报告
+Access Summary Graph	可见性分析图表
+Access Summary Curve	可见性分析曲线
+Access	可见性分析
+Access for	访问对象
+Select Object...	选择对象...
+Update	更新
+Clear	清除
+Clear All	全部清除
+Compute	计算
+Show Filter	显示过滤
+End Time(UTC)	结束历元(UTC)
+AER	视线参数
+Start Time(UTC)	开始历元(UTC)
+Step(s)	分析步长(s)
+Orbital Data	轨道数据
+Simulated Orbital Data	仿真轨道数据
+User Defined Orbital Data	自定义轨道数据
+Use Light Time Delay	使用光延迟
+Figure of Merit	品质参数
+Define...	定义...
+Value	覆盖品质值
+Report	报告
+Reports	报告
+AER Rate	视线参数变化率
+Link Budget	通信明细
+Coverage Intervals	覆盖时段
+FOM Satisfaction Intervals	有效覆盖时段
+FOM Values	品质因子值
+More...	更多...
+Partial Coverage	部分覆盖时段
+Regional Reports...	更多区域报告...
+FOM Reports...	品质因子报告...
+Graphics	图表
+Regional Graphics...	更多区域图表...
+FOM Graphics...	品质因子图表...
+Grid Inspector	网格检查工具
+Graphics Displays...	可视化显示...
+Playback Graphics	数据回放可视化
+Show Static Track	显示静态轨迹
+Show Animate Line	显示动态连线
+Help	帮助
+Access Report	可见性分析报告
+Select an object	选择一个对象
+Coverage Report	覆盖分析报告
+Coverage for	分析对象
+Regional Coverage Report	区域覆盖报告
+warning	警告
+Separate	独立计算
+Grouped	打包计算
+Any Of	任意
+All Of	全部
+At Least	至少
+No Valid %1!	未生成有效%1！
+Select Access Object	选择访问对象
+Select the Analysis Object!	请选择分析对象！
+Select Coverage Object	选择访问对象
+All Objects	所有对象
+ATK-Registe	ATK-注册
+Compute Id	机器码
+Register Id	注册码
+Server IP	服务器IP
+000.000.000.000	000.000.000.000
+Server Port	服务器端口
+Register	注册
+Local	本地
+Remote	远程
+Application form	申请表
+QR Code	二维码
+Elapsed Time(s)	相对时间(s)
+Time(UTCG)	时间(UTCG)
+"Start time:%1
+End time:%2"	"开始时间:%1
+结束时间:%2"
+Maximize	最大化
+Restore	还原
+Minimize	最小化
+Attitude Type	姿态类型
+Sequence	转序序列
+Unit	单位
+rad	rad
+deg	deg
+Attitude	姿态文件
+Import	导入
+Euler Angles	欧拉角
+YPR Angles	YPR角
+Relative Time(s)	相对时间(s)
+Failed to open file!	文件打开失败！
+Invalid data exists!	存在无效数据！
+Incomplete Data!	数据不完整！
+Import Attitude Data	导入姿态数据
+Attitude Data files (*.txt)	姿态数据文件 (*.txt)
+Save Scenario %1	保存想定 %1
+Chart Config	曲线配置
+General	常规
+Grid Lines	网格线
+X	X轴
+Y	Y轴
+XY	XY轴
+Font Size	字体大小
+Small	小
+Medium	中
+Large	大
+Title	标题
+Chart Style	曲线风格
+Single Curve	单条曲线
+Line Pattern	曲线样式
+Line Width	线宽
+Max Data Num	最大数据量
+Shaded Curve	带阴影曲线
+Scatter	离散点
+Data	数据
+Delete	删除
+Today	今天
+Yesterday	昨天
+Earlier	更早
+Conversation %1	会话%1
+New Conversation	新建会话
+Load failed	加载失败
+"Unable to load session list: %1
+
+Using local cached data."	"无法加载会话列表： %1
+
+使用本地缓存数据。"
+Unable to load conversation detail: %1	无法加载会话详情：%1
+Deletion failed	删除失败
+"Unable to delete conversation: %1
+
+Please check if the backend service is running properly."	"无法删除会话：%1
+
+请确认服务正常运行。"
+Please wait for the current reply to complete before deleting the session!	请等待当前回复完成后再删除会话！
+Confirm deletion	确认删除
+Are you sure you want to delete conversation '%1'? This operation is irrevocable.	是否确认删除会话“%1”？该操作不可取消。
+"File %1 upload finished.
+%2"	"文件%1上传完成
+%2"
+File upload failed: %1	文件上传失败：%1
+offline	离线
+online	在线
+Knowledge	知识问答
+Assistant	场景生成
+Upload	上传
+Settings	设置
+upload	上传
+send	发送
+Enter message... (Supports multi-line text, press Enter to send)	输入消息...(支持多行文本，按Enter发送)
+Please wait for the current reply to complete before creating a new session!	请等待当前回复完成后再创建新的会话！
+Please wait for the current reply to complete before sending a new message!	请等待当前回复完成后再发送新消息！
+Please wait for the current reply to complete before uploading files!	请等待当前回复完成后再上传文件！
+Text files (*.txt);	文本文件(*.txt);
+Select Files	选择文件
+Waiting for response...	等待回复...
+upload file: %1	上传文件：%1
+"The file upload has been successful
+
+file: %1
+
+response:
+%2"	"文件上传成功
+
+文件：%1
+
+后端响应：
+%2"
+"Network Error: %1
+Please check if the service is running properly."	"网络错误：%1
+请确认服务正常运行。"
+CAT	接近分析
+%1 will be closed, are you sure to continue?	%1 将被关闭，是否继续？
+Insert Satellite Object	插入卫星对象
+Catlog File Import(TLE/CTLE/AOE)	编目文件导入(TLE/CTLE/AOE)
+Select Catlog File	选择编目文件
+TLE files (*.tle);;Text files (*.txt);;All files (*)	TLE文件(*.tle);;文本文件(*.txt);;所有文件(*)
+Browse Folders	浏览文件夹
+ATK User	ATK 用户
+Desktop	桌面
+My Documents	我的文档
+My Computer	我的电脑
+Folder	文件夹
+New Folder	新建文件夹
+NewFolder	新建文件夹
+Standard Color	标准颜色
+Basic Color	基本颜色
+Other Color...	其他颜色...
+Alpha	透明度
+100%	100%
+Select Color	选择颜色
+Units	单位
+Set to today	设置为今天
+Set to tomorrow	设置为明天
+Set to Date	设置日期
+Select Date	选择日期
+Value is invalid!Please enter a integer number	无效值！请输入一个整数
+Value is invalid!Please enter a double number	无效值！请输入一个浮点数
+"Value is invalid!Please enter a number whose 
+range is %1 to %2"	无效值！请输入一个%1至%2范围内的数
+Tips	提示
+Found to bottom!	已查找至底部！
+Found to top!	已查找至顶部！
+Agent Settings	代理设置
+LLM Configuration	LLM设置
+API	接口
+Local Model Name:	本地模型名称：
+e.g., llama2, gpt-3.5-turbo	例如：llama2, gpt-3.5-turbo
+Base URL:	服务URL：
+e.g., http://localhost:11434	例如：http://localhost:11434
+API Key:	接口密钥：
+Enter API key (if required)	输入接口密钥（必填）
+Embedding Configuration	嵌入模型配置
+e.g., nomic-embed-text, text-embedding-ada-002	例如：nomic-embed-text, text-embedding-ada-002
+Parameters	参数
+Retrieval K:	检索返回相关文档数：
+3	3
+Number of documents to retrieve	检索返回的文档数量
+Temperature:	温度：
+0.7	0.7
+0.0 - 1.0, higher = more creative	0.0 - 1.0，更高 = 更多创造性
+API Model Name:	网络模型名称：
+TLE Download	TLE下载
+User Name	用户名
+Password	密码
+Login	登录
+Download Data	下载数据
+Newest	最新数据
+History	历史数据
+Two Line	两行
+Three Line	三行
+Last	最近
+day	天
+>	>
+<	<
+--	--
+Inclination	倾角
+s	s
+km	km
+Epoch	历元
+Start	开始
+yyyy-MM-dd	yyyy-MM-dd
+Stop	结束
+Sort	排序
+Ascending	升序
+Descending	降序
+Norad Cat ID	美卫星标识
+Country	国家
+Download	下载
+Loading...	下载中...
+NORAD_CAT_ID	美卫星标识
+SATNAME	卫星名
+INTLDES	国际编号
+LAUNCH	发射时间
+PERIOD	周期
+INCLINATION	倾角
+APOGEE	远地点
+PERIGEE	近地点
+Invalid range of Inclination!	无效的倾角范围！
+Invalid range of Eccentricity!	无效的偏心率范围！
+Invalid range of Apoapsis!	无效的远拱点范围！
+Invalid range of Periapsis!	无效的近拱点范围！
+Loging in...	登陆中...
+Login Successed	登陆成功
+Login Failed!	登陆失败！
+Download Successed	下载成功
+Download Failed!	下载失败！
+Epoch start must not larger than stop!	开始历元不能大于结束历元！
+Please choose a Satellite to download!	请选择一个卫星下载！
+Ephemeris Transform Tool	星历转换工具
+Attitude Transform Tool	姿态转换工具
+PosX(m)	位置X(m)
+PosY(m)	位置Y(m)
+PosZ(m)	位置Z(m)
+VelX(m/s)	速度X(m/s)
+VelY(m/s)	速度Y(m/s)
+VelZ(m/s)	速度Z(m/s)
+LC	发射系
+LCI	发射惯性系
+CBI	天体惯性系
+CBF	天体固连系
+ICRF	国际天球参考坐标系
+Generate Ephemeris File	生成星历文件
+Ephemeris file (*.e)	星历文件 (*.e)
+Generate Attitude File	生成姿态文件
+STK Attitude file (*.a)	STK姿态文件 (*.a)
+There are duplicate data column indexes!	存在重复的数据列索引！
+Import Trajectory Data	导入弹道/轨道数据
+Trajectory Data files (*.txt)	弹道/轨道数据文件 (*.txt)
+Launch azimuth is invalid!	发射方位角为无效值！
+Launch longitude is invalid!	发射经度为无效值！
+Launch latitude is invalid!	发射纬度为无效值！
+Launch altitude is invalid!	发射高度为无效值！
+Epoch(UTC)	历元(UTC)
+yyyy-MM-dd hh:mm:ss.zzzzzz	yyyy-MM-dd hh:mm:ss.zzzzzz
+Source Coord	源坐标系
+Target Coord	目标坐标系
+Launching Azimuth (deg)	发射方位角 (deg)
+Longitude of Launch Site (deg)	发射场经度 (deg)
+Latitude of Launch Site (deg)	发射场纬度 (deg)
+Altitude of Launch Site (m)	发射场高度 (m)
+Trajectory	弹道/轨道
+Data Column	数据列
+Generate	生成
+support files (*.pdf *.docx *.md *.txt);;PDF files (*.pdf);;Word files (*.docx);;Markdown files (*.md);;text files (*.txt)	支持文件(*.pdf *.docx *.md *.txt);;PDF文件(*.pdf);;Word文件(*.docx);;Markdown文件(*.md);;文本文件(*.txt)
+Unsupported file type, only supports PDF、DOCX、MD、TXT format.	不支持的文件类型，仅支持PDF、DOCX、MD、TXT格式。
+Failed to open file: %1	文件%1打开失败
+Secondary Input	次目标输入
+Add Potential Victims to Scenario	添加潜在风险目标到场景
+Maximum Number	最大数
+"Start time:%1
+End time:%2"	"开始时间：%1
+结束时间：%2"
+Start Time	开始时间
+Stop Time	结束时间
+Duration(s)	时长（s）
+Elapsed Time(s)	相对时间（s）
+Azimuth(deg)	方位角(deg)
+Elevation(deg)	仰角(deg)
+Range(m)	距离(m)
+ATK	ATK
+Ai Assistant	智能助手
+Dynamic Data	实时数据
+Insert Object	插入对象
+Insert	插入
+Insert Defult Object	插入默认对象
+Default	插入默认
+2D View	二维视图
+3D View	三维视图
+Decrease Time Step	减速
+Reverse	倒放
+Pause	暂停
+Increase Time Step	加速
+Speed	速度
+Edit	编辑
+Copy	复制
+Paste	粘贴
+View	视图
+Timeline View	时间视图
+Object Browser	对象视图
+Message View	消息视图
+Insert Objects From Database	从数据库插入对象
+From Database	从数据库
+Constellation	星座
+Outpput	输出
+Report	数据报告
+Chart	曲线图表
+Dynamic Display	动态报告
+Quick Report	快捷报告
+Calculation	计算
+Create Data File	生成数据文件
+Data File	数据文件
+Tool	工具
+Resource Manager	资源管理
+Model Hub	模型中心
+Access Analysis	可见性分析
+Access	可见性
+Coverage Analysis	覆盖性分析
+Coverage	覆盖性
+Regional Coverage Analysis	区域覆盖分析
+Region Coverage	区域覆盖
+Batched Coordinates Transformation	坐标批量转换
+Coordinates	批量坐标转换
+Constellation Analysis	星座设计
+ConsAnalysis	星座设计
+Constellation Design	高级星座设计
+ConsDesign	高级星座设计
+Uncertainty Propagation	偏差分析
+Uncertainty	偏差分析
+Close Approach Analysis	接近分析
+Collision Avoidance Maneuver	碰撞规避
+Collision Aviodance	碰撞规避
+Reenrty And Recovery	再入与回收
+Reenrty/Recovery	再入回收
+Vector Geometry Tool	矢量几何工具
+Script Tool	脚本工具
+AI	AI
+AI Assistant	智能助手
+Integrating	集成
+Client	客户端
+Console	控制台
+Connect Library	开发包
+ATK Script	ATK脚本
+Ui Recoder	UI录制
+About	关于
+ATK Help	ATK帮助
+About ATK	关于ATK
+Preferences	设置
+语言/Language	语言/Language
+Dark	深色
+Report Manager	报告管理
+Object	对象
+Message	消息
+Batched Setting	批量设置属性
+ReentryRecovery	再入回收
+Display:	动态报告：
+Report:	数据报告：
+Chart:	曲线：
+Chart 3D:	三维曲线：
+Chain Report:	链报告：
+Another program instance is running!Do you want to close the scenario?	当前存在其他实例正在计算！是否关闭想定？
+Save current scenario?	是否保存当前想定？
+Close scenario	关闭想定
+Maximum Speed	最大倍速
+Speed: 5-times	5倍速
+Speed: 10-times	10倍速
+Speed: 100-times	100倍速
+Speed: 500-times	500倍速
+Rate Mode	倍率模式
+RealTime Mode	实时模式
+Step Mode	步长模式
+Original Coord Transform	旧版批量坐标转换
+Python Client	Python客户端
+English	英语
+Simplified Chinese	简体中文
+Spanish	西班牙语
+ATK files (*.atk);;XML files (*.xml);;Text files (*.txt);;All files (*)	ATK场景文件(*.atk);;XML文件(*.xml);;文本文件(*.txt);;所有文件(*)
+Saving the scenario...	正在保存想定...
+Save Scenario Failed.	想定保存失败。
+ReentryRecovery - %1	再入回收 - %1
+Menu	主菜单
+Failed to create scenario!	创建想定失败！
+Another program instance is running, please waiting!	当前存在其他实例正在计算，请稍等！
+2D Visual Plugin Not Loaded!	二维可视化插件未加载！
+The OpenGL version is too low, only one 2D graphics window can be opened!	OpenGL版本过低，仅能打开一个二维可视化窗口！
+3D Visual Plugin Not Loaded!	三维可视化插件未加载！
+The OpenGL version is too low, 3D Visual Plugin Not Loaded!	OpenGL版本太低，无法加载三维视图插件！
+No simulation object,please create a scenario or open a file!	无仿真对象，请新建场景或打开一个文件！
+Simulation reverse	仿真倒放
+Simulation pause	仿真暂停
+Scenario files (*.atk *.xml *.sc);;All files (*)	想定文件(*.atk *.xml *.sc);;所有文件(*)
+Open Scenario	打开想定
+Failed to open Scenario file %1!	打开想定文件 %1 失败!
+New Scenario	新建想定
+Open Scenario %1	打开想定 %1
+Data of %1 loading......	%1 数据加载中......
+Unkown report type %1......	未知的报告类型 %1......
+SaveAs Scenario %1	另存为想定 %1
+Step	步长
+Client limit reached!	客户端连接超限！
+disconnected!	连接断开！
+%1 load finish.	%1 加载完成。
+Property - %1	属性 - %1
+Editing %1	编辑%1
+The feature is not currently supported!	暂不支持该功能！
+Tool Invocation	工具调用
+Reference Documentation	参考文档
+Connection refused	连接被拒绝
+Remote host closed	远程主机关闭连接
+HostNotFound	主机未找到
+Socket access error	套接字访问错误
+Socket resource error	套接字资源不足
+Socket timeout	套接字超时
+Datagram too large	数据报过大
+Network error	网络错误
+Address in use	地址已被使用
+Socket address not available	套接字地址不可用
+Unsupported socket operation	不支持的套接字操作
+Unfinished socket operation	未完成的套接字操作
+Proxy authentication required	代理需要认证
+Ssl handshake failed	SSL握手失败
+Proxy connection refused	代理连接被拒绝
+Proxy connection closed	代理连接关闭
+Proxy connection timeout	代理连接超时
+Proxy not found	代理未找到
+Proxy protocol error	代理协议错误
+Operation error	操作错误
+Ssl internal error	SSL内部错误
+Ssl invalid user data	SSL无效用户数据
+Temporary	连接被拒绝
+Unknown socket error	未知的连接错误
+Connected	已连接
+Connecting %1:%2...	正在连接 %1:%2...
+Not connected, unable to send heartbeat	未连接，无法发送心跳
+send heartbeat	发送心跳
+send secret key	发送密钥
+Disconnected	已断开
+Error: %1	错误：%1
+Regional Coverage	区域覆盖
+No Valid %1!	未生成有效的%1！
+Select Coverage Definition Object	选择覆盖定义对象
+Failed to load image!	加载图片失败！
+The Lat/Lon of these rows are out of range!	以下行的经纬度超出范围！
+Start Time	开始历元
+Stop Time	结束历元
+Scenario	场景
+SatelliteCollection	卫星集群
+Star	恒星
+Chain	链路
+CoverageDefinition	覆盖定义
+Sensor	传感器
+Planet	行星
+Transmitter	发射器
+Receiver	接收器
+SatelliteSystem	卫星系统
+FigureOfMerit	品质因子
+AreaTarget	区域目标
+Antenna	天线
+AdvCat	高级接近分析
+Constellation	集群
+LineTarget	线目标
+Insert Default	插入默认类型
+From Standard Object Database	从数据库
+From City Database	从城市数据库
+Orbit Wizard	轨道生成向导
+From Catlog File(TLE/CTLE/AOE)	从编目文件(TLE/CTLE/AOE)
+From STK File	从STK文件
+From External Ephemeris File(.e)	从外部星历文件
+Select Counties and Regions	选择国家和地区
+Cartesian	笛卡尔坐标
+Geodetic	地理坐标
+Cylindrical	柱坐标
+Geoditic	地心坐标
+Spherical	球坐标
+Cartesian Elems	笛卡尔坐标
+CStateCalcX	位置X
+CStateCalcY	位置Y
+CStateCalcZ	位置Z
+CStateCalcVx	速度X
+CStateCalcVy	速度Y
+CStateCalcVz	速度Z
+CStateCalcRMag	位置模
+CStateCalcVMag	速度模
+X component of Position	位置X
+Y component of Position	位置Y
+Z component of Position	位置Z
+X component of Velocity	速度X
+Y component of Velocity	速度Y
+Z component of Velocity	速度Z
+Magnitude of position vector	位置大小
+Magnitude of velocity vector	速度大小
+CStateCalcAltitude	高度
+CStateCalcLatitude	纬度
+CStateCalcLongitude	经度
+CStateCalcLAN	升交点经度
+True altitude above central body	高度
+Latitude with respect to central body	纬度
+Longitude with respect to central body	经度
+Longitude of ascending node	升交点经度
+Keplerian Elems	开普勒根数
+CStateCalcSemiMajorAxis	半长轴
+CStateCalcEccentricity	偏心率
+CStateCalcInclination	倾角
+CStateCalcRAAN	升交点赤经
+CStateCalcArgPeriapsis	近拱点角距
+CStateCalcTrueAnomaly	真近点角
+CStateCalcMeanAnomaly	平近点角
+CStateCalcEccAnomaly	偏近点角
+CStateCalcArgLat	纬度辐角
+CStateCalcRadiusOfPeriapsis	近拱点半径
+CStateCalcRadiusOfApoapsis	远拱点半径
+CStateCalcAltitudeOfPeriapsis	近拱点高度
+CStateCalcAltitudeOfApoapsis	远拱点高度
+CStateCalcOrbitPeriod	轨道周期
+CStateCalcMeanMotion	平均运动
+Half the major axis of the conic orbit	半长轴
+Eccentricity of the conic orbit	偏心率
+Inclination of the plane of the orbit	轨道平面倾角
+Right Ascension of the Ascending Node of the plane of the orbit	升交点赤经
+Angular distance from the ascending node to periapsis	近拱点角距
+Angular distance between the orbiting object and periapsis	真近点角
+Mean anomaly of the orbiting object	平近点角
+Eccentric anomaly of conic orbit	偏近点角
+Sum of argument of periapsis and true anomaly	真近点角和近地点幅角之和
+Radius at periapsis of the conic orbit	近拱点半径
+Radius at apoapsis of the conic orbit	远拱点半径
+Altitude at periapsis of the conic orbit	近拱点高度
+Altitude at apoapsis of the conic orbit	远拱点高度
+Period of the conic orbit	轨道周期
+The average number of orbit's a spacecraft completes around a central body per unit time	航天器单位时间内绕中心天体运行的平均圈数
+Mean Elems	平根数
+CStateCalcMeanSemiMajorAxis	平半长轴
+CStateCalcMeanEccentricity	平偏心率
+CStateCalcMeanInclination	平倾角
+CStateCalcMeanRAAN	平升交点赤经
+CStateCalcMeanArgPeriapsis	平近心角
+CStateCalcMeanTrueAnomaly	平真近点角
+CStateCalcMeanMeanAnomaly	平近点角
+CStateCalcMeanArgLat	平纬度角
+CStateCalcMeanOrbitPeriod	平均轨道周期
+Calculate Mean SemiMajor Axis	计算平均半长轴
+Calculate Mean Eccentricity	计算平均偏心率
+Calculate Mean Inclination	计算平均倾角
+Calculate Mean RAAN	计算平均升交点赤经
+Calculate Mean Argument of Periapsis	计算平均近心角
+Calculate Mean True Anomaly	计算平均真近点角
+Calculate Mean Mean Anomaly	计算平均平近点角
+Calculate Mean Argument of Latitude	计算平均纬度角
+Mean Period of the Orbit	平均轨道周期
+GeoStationary	相对地球变量
+CStateCalcLongitudeDriftRate	经度漂移率
+CStateCalcMeanEarthLongitude	平均地球经度
+Calculate the Longitude Drift Rate	计算经度漂移率
+Equinoctial Elems	春分点根数
+CStateCalcEquinoctial_h	春分点根数h
+CStateCalcEquinoctial_k	春分点根数k
+CStateCalcEquinoctial_p	春分点根数p
+CStateCalcEquinoctial_q	春分点根数q
+CStateCalcMeanLongitude	平均经度
+CStateCalcTrueLongitude	真经度
+eccentricity * sin(ascending node right ascension + periapsis argument)	偏心率*sin（升交点赤经+近地点幅角）
+eccentricity * cos(ascending node right ascension + periapsis argument)	偏心率*cos（升交点赤经+近地点幅角）
+tan(inclination / 2) * sin(ascending node right ascension)	tan(轨道倾角/2)*sin(升交点赤经)
+tan(inclination / 2) * cos(ascending node right ascension)	tan(轨道倾角/2)*cos(升交点赤经)
+ascending node right ascension + periapsis argument + mean anomaly	升交点赤经+近地点幅角+真近点角
+Spherical Elems	球坐标根数
+CStateCalcRightAsc	赤经
+CStateCalcDeclination	赤纬
+CStateCalcSphRMag	球半径模
+CStateCalcFlightPathAngle	飞行路径角
+CStateCalcVelocityAzimuth	速度方位角
+CStateCalcSphVMag	球坐标速度模
+Horizontal Flight Path Angle	水平飞行路径角
+Velocity Azimuth	水平飞行路径角
+Maneuver	机动量
+CStateCalcDeltaV	速度模
+Magnitude of accumulated DeltaV integrated	累计速度增量和
+MultiBody	多天体
+CStateCalcDeltaRightAsc	相对赤经
+CStateCalcDeltaDeclination	相对赤纬
+CStateCalcBDotR	B与R矢量内积
+CStateCalcBMagnitude	B矢量大小
+CStateCalcBDotT	B与T矢量内积
+CStateCalcBTheta	B矢量与T矢量夹角
+Formation	编队
+CStateCalcRelMeanSemiMajorAxis	相对平均半长轴
+CStateCalcRelMeanEccentricity	相对平均偏心率
+CStateCalcRelMeanInclination	相对平均轨道倾角
+CStateCalcRelMeanRAAN	相对平均升交点赤经
+CStateCalcRelMeanArgPeriapsis	相对平均近地点幅角
+CStateCalcRelMeanTrueAnomaly	相对平均真近点角
+CStateCalcRelMeanMeanAnomaly	相对平均平近点角
+CStateCalcRelMeanArgLat	相对平均维度角
+CStateCalcRelMeanOrbitPeriod	相对平均轨道周期
+CStateCalcRelMeanMeanMotion	相对平均角速度
+Calculate Relative Mean SemiMajor Axis	计算相对平均半长轴
+Calculate Relative Mean Eccentricity	计算相对平均偏心率
+Calculate Relative Mean Inclination	计算相对平均轨道倾角
+Calculate Relative Mean RAAN	计算相对平均升交点赤经
+Calculate Relative Mean Argument of Periapsis	计算相对平均近地点幅角
+Calculate Relative Mean True Anomaly	计算相对平均真近点角
+Calculate Relative Mean Mean Anomaly	计算相对平均平近点角
+Calculate Relative Mean Argument of Latitude	计算相对平均维度角
+Calculate Relative Mean Period of the Orbit	计算相对平均轨道周期
+Calculate Relative Mean Mean Motion	计算相对平均角速度
+CStateCalcSunlight	太阳直射
+CStateCalcBetaAngle	光照角
+-StateCalcSunlight-	太阳直射
+-StateCalcBetaAngle-	光照角
+CStateCalcSegEpochDifference	段历元差
+CStateCalcSegPosDifference	段位置差
+CStateCalcSegVelDifference	段速度差
+CStateCalcSegPosVelDifference	段位置速度差
+CStateCalcSegStateCalcDifference	段状态差
+StateCalcSegMeanRev	段平均圈数
+-Epoch difference relative another segment -	相对于另一段的历元差
+-Positon difference relative another segment -	相对于另一端的位置差
+-Velocity difference relative another segment -	相对于另一段的速度差
+-Positon and velocity difference relative another segment -	相对于另一段的位置速度差
+Difference of a specified function relative to another segment	相对于另一段的指定函数差
+The mean revlotion in SegEpochDifference	段时间差下的平均圈数
+Delaunay Elems	德洛奈元素
+CStateCalcDelaunay_G	德洛奈变量G
+CStateCalcDelaunay_H	德洛奈变量H
+CStateCalcDelaunay_L	德洛奈变量L
+CStateCalcSemi_latusRectum	半通径p
+The magnitude of the orbital angular momentum: sqrt (GM * p).	轨道角动量h=sqrt(GM*p)。
+The Z component of the orbital angular momentum: G cos(inc).	轨道角动量Z方向分量h_z=h*cos(i)。
+sqrt (GM * a).	sqrt (GM * a).
+The distance from focus to orbit at true anomaly of 90 degrees.	真近点角90°时的距离。
+Environment	环境
+CStateCalcSolarFlux	太阳辐射通量
+CStateCalcCosineVFPA	垂直飞行路径角的余弦
+The cosine of the vertical flight path angle	垂直飞行路径角的余弦
+StateCalcScript	计算脚本
+CStateCalcScriptExpression	脚本演示
+script	脚本
+script expression	脚本演示
+Object View	对象视图
+Group View	分组视图
+Graphics On/Off Toggles	可选框
+Failed to rename object %1, %2 existed.	对象%1重命名失败，%2已存在。
+Paste object failed.	粘贴对象失败。
+Paste object success.	粘贴对象成功。
+Eidt property of %1	编辑%1属性
+Rename object %1 to %2	重命名对象%1为%2
+Check	勾选
+Uncheck	不勾选
+Reverse Check	反选
+Check All	全选
+Uncheck All	全不选
+Batched Property Setting	批量设置属性
+Batched Rename	批量重命名
+Batched Insert	批量插入
+Attribute Inspector	属性检查器
+Dependency Inspector	依赖检查器
+Rename	重命名
+Export...	导出...
+Create Group	新建分组
+Remove Group	删除分组
+Remove(Not Del)	移除(不删除)
+"You are using an experimental feature. 
+It does not support the conversion of all the parameters of stk object."	你正在使用一个实验特性，仅支持STK对象部分参数的转换。
+STK files (*.%1);;All files (*)	STK文件(*.%1);;所有文件(*)
+failed to load object from stk file, maybe it contains currently unsupported parameters.	导入STK文件失败，可能存在目前ATK尚不支持的参数。
+Ephemeris files (*.e);;All files (*)	星历文件(*.e);;All Files (*)
+Failed to insert object,please check the configuration file!	创建对象失败，请检查配置文件是否齐全！
+failed to transform stk object to atk object, maybe it contains currently unsupported parameters.	STK对象转为ATK对象失败，可能存在目前ATK尚不支持的参数。
+Insert object %1	插入对象%1
+No object with SSC number of %1	未找到SSC编号为%1的卫星
+Orbit simulation is in progress...	正在轨道推演中...
+Copy Object %1	复制对象 %1
+Failed to copy object %1!	复制对象%1失败！
+No Batched Property Setting!	未选择多个对象！
+Error	错误
+The selected objects have different class!	选择的对象中存在不同的分类！
+No batched setting object %1!	不支持批量修改对象%1！
+Property Multiset - %1	属性批量修改 - %1
+Batched property setting of %1	批量修改%1属性
+Program instance is running, prohibit deleting objects!	正在运行算例，禁止删除对象！
+Confirm to delete object?	确认删除对象？
+Delete object %1	删除对象%1
+Please select CoverageDefinition or FigureOfMerit  object!	请选择覆盖定义或品质因子对象！
+%1 is invalid terrain file!	%1为无效的地形文件！
+Viewing	视场
+Field of View	视场约束
+Time	时间
+Size	大小
+Y	Y
+X	X
+Object Num	对象数目
+UTCG	UTCG
+BJT	北京时
+Celestial	星体
+Stars	星空
+DispalyPlanet	显示行星
+Dispaly Planet Orbit	显示行星轨迹
+Dispaly Planet Label	显示行星标签
+Orbit Color	轨迹颜色
+Label Color	标签颜色
+Line Sytle	线型
+3D View Details	三维场景细节
+Window Background	背景颜色
+From Position to Position	从点到点
+Along a Direction	沿一个方向
+From Position	从点
+To Position	至点
+Direction	方向
+Outward	向外
+Inward	向内
+Reference Frame	参考坐标
+Add...	添加...
+Constrained "Up" Vector	限制向上向量
+Points	点
+Invalid Reference Frame Selected!	无效的参考坐标！
+Invalid Direction Vector Selected!	无效的方向向量！
+Hierarchy	层级
+Render Order	渲染顺序
+Space Grid	空间网格
+Animation	动画
+Show Grid Spacing	显示网格空间
+Size	尺寸
+CBI Coordinates	天体惯性坐标系
+Ecliptic Coordinates	黄道面坐标
+Show Radial Lines	显示射线
+Enable Lighting	开启光照
+Sun Lighting	太阳光
+Ambient	环境光
+Diffuse	漫反射
+Grids	网格
+Annotation	注释
+Advanced	高级设置
+Directory:	目录：
+File Name Prefix:	文件名前缀：
+Start Frame:	开始帧：
+Min Digits in File Name:	文件名最少数字：
+File Format:	文件格式：
+Codec:	编码：
+Framerate (fps):	帧率 (fps)：
+Bitrate (kbps):	比特率 (kbps)：
+Maneuver Parameter	机动参数
+Pos y(m)	位置y(m)
+Startup Duration(s)	开机时长(s)
+Pos x(m)	位置x(m)
+Pos z(m)	位置z(m)
+Thrust X(N)	推力X(N)
+Thrust Y(N)	推力Y(N)
+Thrust Z(N)	推力Z(N)
+Thrust Elevation Angle(deg)	推力仰角(deg)
+Thrust Yaw(deg)	推力偏航角(deg)
+Thrust(N)	推力(N)
+Name	名称
+Thrust Type	推力类型
+Relative Start Time(s)	开始相对时刻(s)
+Operation	操作
+Modify	修改
+Impulse	冲量
+Finite Thrust	有限推力
+Rectangular	直角坐标
+Fuel Flow Rate(kg/s)	质量秒耗量(kg/s)
+Specific Impulse(m/s)	比冲(m/s)
+Thrust 1	推力1
+Number	序号
+Thrust 2	推力2
+Thrust 3	推力3
+Pos X	位置X
+Pos Y	位置Y
+Pos Z	位置Z
+Fuel Flow Rate	质量秒耗量
+Add Components	添加组件
+Please select ont Point and one Axes!	请选择一个点和一个轴！
+Axes	坐标
+Components for:	组件：
+Properties	属性
+Select component types to display	选择显示组件类型
+Duplicate component	复制组件
+Delete	删除
+Import components form a file	从文件导入组件
+Export components to a file	导出组件到文件
+Filter by:	筛选：
+Origin of Coordinate:	坐标原点：
+Show To-Vectors	显示向量
+Angle for:	角：
+Axes for:	坐标：
+Point for:	点：
+Vector for:	向量：
+Plane for:	面：
+System for:	系统：
+select ont Point and one Axes	选择一个点和一个轴
+You must be selcect a component of type: %1.	必须选择类型为%1的组件。
+All ATK Object	所有ATK对象
+Spacecraft	航天器
+Custom Components	自定义组件
+To Vectors	向量
+Predefined Components	预定义组件
+Type is wrong!	类型错误！
+Point and Axes has been selected!	已选择点和轴！
+No object selected!	未选择对象！
+Type can not copy!	无法复制！
+Sure to delete choose?	确认删除选中？
+xml file(*.xml)	xml文件(*.xml)
+Failed to load file!	加载文件失败！
+Export	导出
+Failed to export!	导出失败！
+The component does not exist!	组件不存在！
+Add Gemometry Component	添加几何组件
+Edit Gemometry Components	编辑几何组件
+Select...	选择...
+Parent	父对象
+Waring	告警
+Name cannot be empty,pleae edit it.	名称不能为空，请编辑。
+Name already exists,please rename.	名称已存在，请重命名。
+Failed to create component!	创建组件失败！
+Basic	基本
+Main	主配置
+Advanced	高级
+Nonelinear Probability	非线性计算
+Graphics	可视化
+Advanced Ellipsoid Properties	高级椭球属性
+Ellipsoid Scaling Factor	椭球比例因子
+Ellipsoid Database	误差椭球数据库
+...	…
+Fixed Orbit Class Database	固定轨道类型数据库
+Quad / Orbit Class Database	二次/固定类型数据库
+Quadratic In Time Database	时间二次曲线数据库
+Max Sample Step	最大采样步长
+Min Sample Step	最小采样步长
+Conjunction Type	碰撞类型
+Pre-Filters	筛选器
+SSC Hard Body Radius File	SSC目标半径文件
+File name	文件名
+Use File	读取文件
+Global Only	全局解
+Local Only	局部解
+Global + Local	全局解+局部解
+Local + EndPoints	局部解+边界解
+Select Library Target	选择库目标
+Time Period	分析时段
+Primary List	主目标列表
+Secondary List	次目标列表
+Threshold	阈值
+Use Range Measure	使用距离测量
+Invalid threshold!	无效阈值！
+AdvCAT computation begin	高级接近分析计算开始
+AdvCAT computation end	高级接近分析计算结束
+AdvCAT computation time: %1 s	高级接近分析计算耗时：%1 秒
+Compute finished.	计算完成。
+No events found to have access!	未找到接近事件！
+Primary	主目标
+Secondary	次目标
+Combined HardBodyRadius (km)	联合包络球半径（km）
+Time In	接近开始时刻
+Time Out	接近结束时刻
+Duration (s)	接近时长(s)
+Min Separation (km)	最短椭距(km)
+Time at Min Separation	最短椭距时刻
+Time of Close Approach	接近时刻
+Miss-Dist (km)	相对距离(km)
+R-Dist (km)	径向距离(km)
+T-Dist (km)	横向距离(km)
+N-Dist (km)	法相距离(km)
+Close Approach Angle (deg)	接近夹角(deg)
+Relative Velocity (km/s)	相对速度(km/s)
+Min Relative Velocity (km/s)	接近期间最小相对速度(km/s)
+Collision Probability (Chan)	碰撞概率(Chan)
+Collision Probability (Alfano)	碰撞概率(Alfano)
+Collision Probability (Patera)	碰撞概率(Patera)
+Max Collision Probability	最大碰撞概率
+Collision Probability (Maha)	碰撞概率(马氏距离)
+Dilution Threshold (km)	冲淡概率阈值(km)
+Compute AdvCAT	高级接近分析计算
+Primary Object	主目标
+Secondary Object	次目标
+Time of Closest Approach	最近时刻
+Dilution	概率冲淡阈值
+Maximum Prob	最大碰撞概率
+Parameter Settings	参数设置
+Integration Duration	积分时长
+Max Time Step	最大时间步长
+Max Angular Bend	最大弯角
+Resolution	分辨率
+Fractional Limit of Probability	概率分数极限
+End Sigma	末端标准差
+Max Sigma Step	最大标准差步长
+Nonelinear Compute	非线性计算
+Compute Linearity Test	线性检测计算
+TCA Rel Vel	最近时刻相对速度
+Approx Min Rel Vel	最小估计相对速度
+Linear Prob	线性碰撞概率
+Compute Prob (Cylinders)	碰撞概率计算（Cylinders）
+Probability	碰撞概率
+Compute Prob (Bundles)	碰撞概率计算（Bundles）
+Please choose the Primary Object!	请选择主目标！
+Please choose the Secondary Object!	请选择次目标！
+Conjunction appears to be nonlinear!	接近情形是非线性的！
+Current resulution value may result in a long calculation time.	当前输入的分辨率将会导致较长的计算时间。
+Defaults:	默认:
+Tangential	切向
+CrossTrack	径向
+Normal	法向
+Class	类别
+LibTarget	库目标
+Chosen	已选中
+Tangential (km)	切向(km)
+CrossTrack (km)	径向(km)
+Normal (km)	法向(km)
+HardBodyRadius (km)	包络球半径(km)
+Fixed	固定
+OrbitClass	轨道类型
+Quadratic	二次曲线
+Quad/Orbit	二次/轨道
+Covariance	协方差
+Validation error:Value range is 0 km to 1000 km	有效值错误：取值范围应为0km至1000km
+Visibility	可视性
+Show Primary Ellipsoids	显示主椭球
+Show Secondary Ellipsoids	显示次椭球
+All	所有
+With Conjunctions	带碰撞
+Aerodynamic Model	气动模型
+chartview	图示：
+add	添加一行
+delete	删除一行
+reload	重置
+save	保存
+CL0_vehicle	飞行器升力系数
+CD0_vehicle	飞行器阻力系数
+Atmospheric Constabnt	常值气动
+Atmosphere	插值气动
+Mach-Drag	马赫数-阻力系数
+Mach-Coefficient	马赫数-升力系数
+Mach	马赫数
+Coefficient	升力系数
+Drag	阻力系数
+Route	航线
+Attitude	姿态
+Ground Track	轨迹
+Constraints	约束
+Temporal	时间
+LaserCAT	激光接近分析
+Definition	定义
+Orientation	指向
+Use	使用
+Reference Axis	参考轴
+Tilt Angle (deg)	极化角度(deg)
+Cross-Pol Leakage Threshold(dB)	交叉极化泄露阈值(dB)
+X Axis	X轴
+Y Axis	Y轴
+Z Axis	Z轴
+Linear	线极化
+Horizontal	水平极化
+Vertical	垂直极化
+Left-hand Circular	左旋圆极化
+Right-hand Circular	右旋圆极化
+Reference Type	引用类型
+Embed	嵌入
+Link	链接
+Model Specs	模型规格
+Polarization	极化
+Design Frequency	设计频率
+Efficiency(%)	效率(%)
+Black-lobe Gain(dB)	后波瓣增益(dB)
+Diameter(m)	直径(m)
+External FileName	外部文件
+Antenna Name	天线名称
+Gaussian	高斯天线
+Isotropic	全向天线
+Parabolic	抛物面天线
+External Antenna Pattern	外部天线
+Boundary	边界
+Centroid	质心
+Display Results	显示结果
+Calculate Cost:	计算耗时：
+Run State:	运行状态：
+Iteration data	迭代数据
+Segment Table	段列表
+Follow	跟随
+Available Results	可选约束
+Description	描述
+Display Results	运行结果显示
+:	：
+Sample Size	样本量
+Calculate	计算
+Sample	样本
+Input	输入
+Output	输出
+Mean Value	均值
+Standard Deviation	标准差
+Probability distribution	概率密度分布
+X axis	X轴
+Y axis	Y轴
+Uncertainty distribution	偏差分布
+Z axis	Z轴
+Sensitivity analysis	灵敏度分析
+Total effect index	总效应指数
+DataTable is empty.	数据表格为空。
+Text files (*.txt);;All files (*))	文本文件(*.txt);;所有文件(*))
+Save Successfully!	保存成功！
+PNG files (*.png);;All files (*)	PNG文件(*.png);;所有文件(*)
+Copy Successfully!	复制成功！
+Not Used	不采用
+Select Counties And Regions	选择国家和地区
+Auto Select Color	自动选择颜色
+Selections	选项
+Counties	国家
+Regions	地区
+Primary Area Only	仅主要区域
+All Areas	所有区域
+Minimum Elevation	最小俯仰角
+Access to Whole Object	访问整个对象
+Line of Sight	视线约束
+Min	最小值
+Max	最大值
+Bearing	方位角
+Semi-Minor Axis	半短轴
+Semi-Major Axis	半长轴
+Latitude(deg)	纬度(deg)
+Longitude(deg)	经度(deg)
+Response Map	响应地图
+Remove All	删除全部
+Area Type	区域类型
+Central Body:	中心天体：
+Ellipse	椭圆
+Pattern	模式
+Clicking on Map Changes Current Point	点击地图改变当前点数据
+Insert After the Current Row	在当前行后面插入一行
+Insert After the Last Row	在最后一行后面插入一行
+Auto Compute Centroid	自动计算质心
+Longitude	经度
+Latitude	纬度
+Z	Z
+% Translucency	透明度(%)
+Show Centroid	显示中心点
+Show Boundary Points	显示边界点
+Show Bounding Rectangle	显示边界矩形
+Fill	填充
+Offset Attitude Form	偏置姿态形式
+Azimuth	方位角
+Elevation	高度角
+About Boresight	视轴
+qx	qx
+qs	qs
+qy	qy
+qz	qz
+Euler1	欧拉角1
+Euler3	欧拉角3
+Euler2	欧拉角2
+X	X
+Y	Y
+Z	Z
+Invalid input parameter!	无效的输入参数！
+Orientation Method	定向模式
+Hold	保持
+Rotate	旋转
+Az-El	方位角-仰角
+Transformation Matrix	转换矩阵
+Start Recode	开始录制
+Stop Recode	停止录制
+Screenshot	截图
+Validator	校验器
+Load	加载
+Param	参数
+ATK Ui Auto files (*.atkauto);;All files (*)	ATK界面自动化文件(*.atkauto);;所有文件(*)
+Ui Recoder	界面录制
+action	动作
+type	类型
+name	名称
+text	文本
+class	分类
+path	路径
+Azimuth Angle(deg)	方位角(deg)
+Exclude Time Intervals	反向选择
+Range Rate(m/s)	距离变化率(m/s)
+Elevation Angle(deg)	仰角(deg)
+Azimuth Rate(deg/s)	方位角变化率(deg/s)
+Elevation Rate(deg/s)	仰角变化率(deg/s)
+Angular Rate(deg/s)	角变化率(deg/s)
+Altitude(m)	高度(m)
+Propagation Delay(s)	传播延时(s)
+Terrain Mask	地形约束
+error	错误
+AzimuthAngle constraint -The maximum must be greater than the mimimum	方位角约束-最大值必须大于最小值
+ElevationAngle constraint -The maximum must be greater than the mimimum	仰角约束-最大值必须大于最小值
+Range constraint -The maximum must be greater than the mimimum	距离约束-最大值必须大于最小值
+AzimuthRate constraint -The maximum must be greater than the mimimum	方位角变化率约束-最大值必须大于最小值
+ElevationRate constraint -The maximum must be greater than the mimimum	仰角变化率约束-最大值必须大于最小值
+RangeRate constraint -The maximum must be greater than the mimimum	距离变化率约束-最大值必须大于最小值
+AngularRate constraint -The maximum must be greater than the mimimum	角变化率约束-最大值必须大于最小值
+Altitude constraint -The maximum must be greater than the mimimum	高度约束-最大值必须大于最小值
+Propagation delay constraint -The maximum must be greater than the mimimum	传播延时约束-最大值必须大于最小值
+Data Base	数据库
+Cross Reference	相互参照
+Cross Ref Name:	名称：
+...	……
+Pre-Filters	过滤器
+Method	方法
+Dist Threshold	等效距离告警门限
+Yellow	黄色告警
+Red	红色告警
+Value	值
+equivalent range factor(k)	等效距离系数(k)
+equivalent range = max(relative range / k, radial range)	等效距离 = max(相对距离 / k, 径向距离)
+Conjunctions	连接
+Add Conjuncting Satellites to Scenario	添加连接卫星到场景
+Maximum Number:	最大数量：
+Set Satellite Model Scale:	设置卫星尺寸：
+Access Graphics	接近图表
+Show Line	显示线
+Animate Highlight	动态高亮
+Static Highlight	静态高亮
+Ok	确定
+analytical method	解析法
+numerical method	数值法
+Text File(*.sd )(* .tce)	文本文件(*.sd )(* .tce)
+Failed to save!	文件保存失败！
+Save file succeed.	文件保存成功。
+Static Graphics	静态可视化
+Animation Graphics	动态可视化
+Show Highlight	显示高亮
+Show Direction	显示方向
+Form	窗体
+Chart	曲线
+Show Terminal Point Position	显示终点位置
+Terminal Point Position	终点位置
+Time-Height	时间-高度
+Time-Longitudinal Range	时间-纵程
+Longitudinal Range-Height	纵程-高度
+Lon-Lat	经度-纬度
+Time-Velocity	时间-速度
+Time-Path Angle	时间-航迹角
+Time-Azimuth	时间-航向角
+Time-Bank Angle	时间-倾侧角
+Time-Over Load	时间-过载
+Time-Heat Flux	时间-热流密度
+Time-Total Amount of Heating	时间-总加热量
+AsAPIConnect	AsAPIConnect
+AsAPIComponent	AsAPIComponent
+AsScriptCPP	AsScriptCPP
+AsScriptJava	AsScriptJava
+AsScriptPython	AsScriptPython
+AsScriptMatlab	AsScriptMatlab
+Seed Satellite	种子卫星
+Constellation Type	星座类型
+Argument Of Perigee(deg)	近地点幅角（deg）
+Inclination(deg)	倾角(deg)
+RAAN(deg)	升交点赤经(deg)
+Semimajor Axis(m)	半长轴(m)
+True Anomaly(deg)	真近点角(deg)
+Mean Anomaly(deg)	平近点角(deg)
+Number Of Planes	轨道面个数
+Inter Plane Spacing	相邻平面相位因子
+RAAN Spread(deg)	RAAN分布范围(deg)
+RAAN Increment(deg)	相邻平面RAAN差值(deg)
+True Anomaly Phasing(deg)	相邻平面真近点角增量(deg)
+Molecule Of Cofactor	协因子分子
+Return Day	回归天数
+Phase Density	相位密度
+Total Number of Satellites	总卫星数
+Total Number Of Satellites	总卫星数
+RAAN Increment (deg)	升交点赤经差
+Object inserting...	对象插入中...
+Insert	插入卫星
+Walker-Delta	Walker-Delta
+Walker-Custom	Walker-自定义
+Rosette	玫瑰星座
+Flower	花星座
+Asymmetric Flower	非对称花星座
+Number of Satellites per Plane	每个轨道面内卫星个数
+Return Circle	回归圈数
+Non-intersect Return Circle	不自相交圈数
+Argument of Perigee(deg)	近拱点角距(deg)
+No Calculation Results!	无计算结果！
+"Invalid Walker seed vehicle!
+Check the current propagator selection"	无效的种子星！请确认种子星的预报器类型
+Invalid Total Number of Satellites!	无效的总卫星数！
+Please select a satellite!	请选择一个卫星！
+Invalid Molecule of Cofactor!	无效的协因子分子！
+Insert object finished.	插入对象完成。
+Total Number Of Satellites Error！	总卫星数量错误！
+Out Of Range	超出范围
+CUiConstellationDesign	高级星座设计
+Design Requriement	设计需求
+Coverage Requirement	覆盖性能
+Region Type	区域类型
+Min Value	最小值
+Coverage Type	覆盖类型
+Revisit Time	重访时间
+N Asset	覆盖重数
+Max Value	最大值
+Min Latitude	最小纬度
+Max Latitude	最大纬度
+Lat Lon Region	设置经纬度范围
+Min Longitude	最小经度
+Max Longitude	最大经度
+Select	选择文件
+Single Target	单目标点
+Latitude	经度
+Longitude	纬度
+Orbit Constraints	轨道约束
+Constellation Parameter	星座参数
+"Number of 
+Satellites"	卫星数量
+"Min Satellite
+Distance"	最小星间距
+Orbit Parameter Set	轨道参数
+Semimajor Axis	半长轴
+Inclination	轨道倾角
+"Argument of 
+Perigee"	近地点幅角
+Sensor Constraints	覆盖参数
+Sensor Type	覆盖类型
+Semi-Angle	圆锥半角
+Hori Half Angle	水平半角
+Verti Half Angle	垂直半角
+Start Design	开始设计
+Design Result	设计结果
+Constellation Parameters Design Result	星座参数设计结果
+Type Of Constellation	星座类型
+Count Of Constellation	子星座数量
+Total Satellite Count	总卫星数
+Satellite Parameter	卫星参数
+Insert Sate	插入卫星
+Continuous-Coverage	连续覆盖
+Global	全球
+Latitude Zone	纬度带
+Region	局部区域
+Gnd Point	地面点
+Simple Cone	简单圆锥
+Gnd Elev Angle	地面仰角
+Rectangular	矩形
+Num	编号
+T	卫星数
+P	轨道面
+d_Phase(deg)	相位角（deg）
+Inclination(deg)	轨道倾角(deg)
+Height(m)	高度（m）
+Argument of Perigee(deg)	近地点幅角(deg)
+True Anomaly(deg)	真近点角（deg）
+Save Path	保存路径
+Open  File	打开文件
+Text (*.txt);;All files (*)	文本文件(*.txt);;所有文件(*)
+Control Parameter Model	控制模式
+chartview	图示
+Control Parameter	控制参数
+Bank Angle	常值倾侧角
+UnBank Angle	插值倾侧角
+Time-Angle	时间-角度
+Angel	角度
+Grid Area of Interest	网格区域配置参数
+Max Latitude (deg)	最大纬度(deg)
+Max Longitude (deg)	最大经度(deg)
+Longitude (deg)	经度(deg)
+Min Latitude (deg)	最小纬度(deg)
+Min Longitude (deg)	最小经度(deg)
+Latitude (deg)	纬度(deg)
+Grid Definition	网格定义
+Point Altitude	点高度
+Auto Refresh	自动刷新
+Refresh	刷新
+Point Locations	点位置
+Custom Point Altitude Method	点高度定义
+Custom Locations	自定义文件
+Compute Location Based on Granularity	按间隔计算
+Use Parallel	使用并行计算
+Global	全球范围
+LatLon Region	经纬度区域
+Latitude Bounds	纬度边界
+Latitude Line	纬度线
+Lontitude Line	经度线
+Custom Region	自定义区域
+Custom Boundary	自定义边界
+Area Targets	区域目标对象
+Countries/Regions	国家/区域
+Distance (km)	距离(km)
+Area (km^2)	面积 (km^2)
+Lat/Lon (deg)	经纬度(deg)
+Altitude above WGS84	WGS84
+Altitude above Terrain	地形
+Distance	等距离
+Angle	等角度
+Standard	标准网格
+Override	使用点高度值
+Use File Values	使用文件值
+Open File	打开文件
+Pnt files (*.pnt);;Text files (*.txt);;All files (*)	Pnt文件(*.pnt);;文本文件(*.txt);;所有文件(*)
+The maximum latitude cannot be less than the minimum latitude!	纬度最大值不能小于最小值！
+The maximum longitude cannot be less than the minimum longitude!	经度最大值不能小于最小值！
+Grid	网格
+Point Size	点大小
+Show Region	显示区域
+Show Points	显示点
+Batched Coord Transformation	批量坐标转换
+Time Options	时间选项
+UTC Time	历元时间
+Time Mode	时间格式
+Relative Time	相对时间
+Initial Time (UTCG)	初始时间 (UTC)
+Transformation Parameters	转换参数
+All Option	所有参数
+Select Option	所选参数
+Data Unit	长度单位
+Time Unit	时间单位
+Source Coordinate Frame	源坐标系
+Latitude of Launch Site (deg)	发射点纬度 (deg)
+Altitude of Launch Site (m)	发射点高度 (m)
+Longitude of Launch Site (deg)	发射点经度 (deg)
+Launch Time (UTCG)	发射时间 (UTCG)
+Destination Coordinate Frame	目标坐标系
+Altitude of Observer (m)	测控点高度 (m)
+Latitude of Observer (deg)	测控点纬度 (deg)
+Longitude of Observer (deg)	测控点经度 (deg)
+Computation Mode	计算模式
+Export FileType	导出文件类型
+Current System Time:	当前系统时间：
+Import FileType	导入文件类型
+Source Coordinate Data	源坐标系数据
+Destination Coordinate Data	目标坐标系数据
+Data Format	日期格式
+Time Error	时间 错误
+SWitch Object	转换对象
+Object Error	对象 错误
+Data Input	数据输入
+File Error	文件错误
+Text File(*.txt )	文本文件(*.txt)
+Failed	失败
+Success	成功
+Ephemeris File(*.e)	星历文件(*.e)
+Txt file	TXT文件
+Ephemeris File	星历文件
+J2000 Geocentric Inertial	J2000地心惯性系
+ECF Geocentric Fixed	ECF地固系
+LC Launch	LC发射系
+LCI Launch Inertial	LCI发射惯性系
+ENU East-North-Up	ENU东北天坐标系
+Initial Time (UTC)	初始时间(UTC)
+Select	选择
+Txt file	文本文件
+Text File(*.txt)	文本文件(*.txt)
+transform-vel must transform with position data	速度转换必须包含位置数据
+Switch Success	转换成功
+The data of export is empty	导出数据为空
+When the type of export file is EPHEMERIS_FILE, the type of import file must be EPHEMERIS_FILE	导出文件类型为星历文件时，导入文件类型也必须为星历文件
+There no exists on switching by EPHEMERIS	未进行星历转换
+When the Dst System has Changed , EPHEMERIS_FILE cann't be exported, You need to compute again	目的坐标系存在变更，星历文件无法导出，需要重新计算
+the Dst System has been saved into	目标坐标系添加至场景
+Save File	保存文件
+Open Failed	打开失败
+Export Success	导出成功
+Create Data File for	生成数据文件
+External File Type	外部文件类型
+Ephemeris Type	星历类型
+Details	详情
+Coordinate	坐标系
+Time Period	周期
+Steps	步长
+Use Ephemeris steps	使用星历步长
+Use Step Size	使用步长
+Output File	输出文件
+Ephemeris	星历
+STK Ephemeris	STK星历
+Fixed	地固系
+Invalid step size!	无效的步长值！
+Export File	导出文件
+Data Resource	数据源
+Select File	选择文件
+Database Search Options	搜索项
+Misson	任务
+Advanced Search	高级搜索
+SSC Number	SSC编号
+SSC Name	SSC名称
+China Num	中文编号
+China Name	中文名称
+Apogee Attitude	远地点高度
+Perigee Attitude	近地点高度
+Search	搜索
+First Page	首页
+Page Up	上一页
+0/0	0/0
+Page Down	下一页
+Last Page	尾页
+Data Loading...	数据加载中...
+Total:	总数：
+Unique:	唯一：
+Selected:	已选：
+Insert Options	插入项
+Start	开始历元
+Please confirm the file is correct!	请确认文件正确！
+TLE Epoch(UTC)	轨道历元(UTC)
+TLE Epoch(YYDDD)	轨道历元(YYDDD)
+RAAN(deg)	升交点赤经(deg)
+Apogee Altitude(m)	远地点高度(m)
+Perigee Altitude(m)	近地点高度(m)
+Orbit Period(s)	周期(s)
+Invalid value range!	取值范围无效！
+All files (*);;TCE files (*.tce);;Text files (*.txt);;TLE files (*.tle)	所有文件(*);;TCE文件(*.tce);;文本文件(*.txt);;TLE文件(*.tle)
+Settings	缓存设置
+Data Step (Number of Points)	间隔点数
+Max History Points	最大缓存数据个数
+Erase History	定期清除缓存
+copy	复制
+Owned	树分支子类
+UsedBy	上层使用者
+Dependency	依赖底层
+Object Dependency Inspector	对象依赖检查器
+Altered Unit	可选单位
+Dimension	量纲
+Current Unit	当前单位
+Altitude Reference	高度参考
+WGS84	WGS84
+Height Above Ground	离地高度
+Use terrain data	使用地形数据
+Life Time	寿命预报
+Animation	动态
+Static	静态
+Additional Options	附加选项
+Joining	开始跟随
+Separation	分离
+Spacecraft and FuelTank Configuration	航天器参数设置方式
+Leader	参考航天器
+Offset From Leader	偏移量
+X	位置X
+"Leader's Body
+Frame"	参考航天器本体系
+Z	位置Z
+Y	位置Y
+Join at Beginning of Leader's Ephemeris	在参考航天器起始历元时刻开始跟随
+Join at End of Leader's Ephemeris	在参考航天器结束历元时刻开始跟随
+Join at Final Epoch of Previous Segment	在上一段结束时刻开始跟随
+Specify Joining Conditions	自定义开始跟随条件
+Separate at End of Leader's Ephemeris	在参考航天器结束历元时刻分离
+Specify Separation Conditions	自定义分离条件
+Inherit Configuration From Previous Segment	从上一段继承
+Specify Configuration	自定义设置
+Contours...	热力图...
+Ignore Intervals without Coverage	忽略未覆盖时段
+Ignore FOM values exceeding max contour level	忽略超出最大级别的品质因子值
+Show Marker Animation Highlight	显示图标高亮标记
+Show FOM Graphics on Vehicle Track	显示品质因子热力图在运动目标轨迹上
+Level Adding	添加分级
+Add Levels	添加
+Level	级别
+Start	起始
+Add Method	添加方式
+Level Attributes	分级属性
+Legend...	图例...
+Start Color	起始颜色
+End Color	结束颜色
+Color Method	取色方法
+All Levels	所有分级
+Explicit	指定
+Start,Stop,Step	起始，结束，步长
+Color Ramp	色阶
+Step size can not be equal to 0!	步长不能等于0！
+The values as entered produce no level!	当前输入值未能分级！
+The Maximum number of contour levels is 100!	最多设置100个级别！
+Invalid Data Indicator	无效数据指标
+Fom Value Limits	有效值限制
+Use FOM Value in Limits for Satistics	使用范围内的值
+Exclude FOM Value in Limits	反向选择
+Time Step	步长
+Command	指令
+Receive	接收
+Best N Metric	度量指标
+Across Assets	跨对象
+Best N	最优N
+End Gap	结尾间隔段
+Allow Forward Crosslink	允许交叉传输
+Constraint	约束
+Downlink	下传时间
+Min Assets	最少重数
+Percent Level	百分比
+Invalid Value Action	无效值
+Collection Time	数据收集时间
+Uncertainties...	不确定度...
+Post-Collection Time	数据处理时间
+Pre-Collection Time	数据准备时间
+Command Prep Time	指令准备时间
+Commanding Time	指令传输时间
+Show Contours	显示热力图
+Satisfaction	有效条件
+Satisfied If	条件
+Enable	启动
+Start Gap	起始间隔段
+Simple Coverage	简单覆盖
+Access Duration	访问时长
+Access Separation	访问间隔
+Coverage Time	覆盖时间
+N Asset Coverage	多重覆盖
+Number Of Accesses	访问次数
+Number Of Gaps	覆盖间隔次数
+Response Time	响应时间
+Time Average Gap	时间平均间隔
+Age Of Data	数据时龄
+System Response Time	系统响应时间
+System Age Of Data	系统数据时龄
+Dilution of Precision	精度衰减因子
+Navigation Accuracy	导航精度
+Access Constraint	可见性约束
+Maximum	最大值
+Minimum	最小值
+Sum	总值
+Angular Rate	视线角速度
+Azimuth Angle	方位角
+Azimuth Rate	方位角速率
+Elevation Angle	俯仰角
+Elevation Rate	俯仰角速率
+LOS Lunar Exclusion	月球视线规避角
+LOS Sun Exclusion	太阳视线规避角
+Lunar Elevation Angle	月球高度角
+Sun Elevation Angle	太阳高度角
+Propagation Delay	传播延时
+Range	距离
+Range Rate	速率
+Ignore	忽略
+Include	包括
+Over Determined	超定
+Best Four	最优4
+Greater Than	大于
+At Least	大于等于
+Equal to	等于
+At Most	小于等于
+Less Than	小于
+False	否
+True	是
+Percent Above	百分比高于
+Std Deviation	标准差
+Max Per Day	每日最大
+Max Percent Per Day	每日最大百分比
+Min Per Day	每日最小
+Min Percent Per Day	每日最小百分比
+Per Day	每日
+Per Day Std Dev	每日标准差
+Percent	百分比
+Percent Per Day	每日百分比
+Percent Per Day Std Dev	每日百分比标准差
+Percent Time Above	百分比时间高于
+Total	总计
+Total Time Above	总计时间高于
+Avg Per Day	每日平均
+In Span	在范围内
+In Span Per Day	每日在范围内
+Percent Below	百分比低于
+Percent Below Gaps Only	间隔时间百分比低于
+Num Percent Below	百分比低于 的值
+Best Four Acc	最优4精度
+Best N Acc	最优N精度
+Best 4 Metric	度量指标
+Show Points As	显示网格点为
+Markers	标识
+Filled Area	填充区域
+Translucency(%)	透明度(%)
+Display Metric	显示指标
+Show Contours	显示分级轮廓
+Show Satisfaction	显示有效区域
+Levels	分级颜色
+"Do not show areas where FOM value
+exceeds max contour level"	不显示品质因子值超出最大级别的区域
+Contour Interpolation (points must be filled)	轮廓线插值
+Sampling	采样
+Grid Undefined	网格未定义
+Show lines at level boundaries	显示等高线
+Natural Neighbor	自然近邻
+None (Block Fill)	无（整格填充）
+Color Gradient	颜色渐变
+Custom Color	自定义颜色
+Show Static Graphics	显示静态图像
+Show Animation Graphics	显示动态图像
+Coarse Sampling	粗糙采样
+Medium Sampling	中等采样
+Smooth Sampling	平滑采样
+Custom # of Samples per Grid Point	自定义每个网格点采样数
+Sample Grid Size: %1 * %2	采样网格尺寸：%1 * %2
+Advanced Settings	高级设置
+Solid Tides	固体潮汐
+Truncate to Gravity Field Size	截断与引力场阶次一致
+Include Time Dependent Terms	采用时间相关项
+Min.Amplitude	最小振幅
+Additional	附加
+Incldue Relativistic Accelerations	采用相对论加速度
+Ocean Tides	海洋潮汐
+Use Ocean Tides	采用海洋潮汐
+Maximum Order	最大次数
+Maximum Degree	最大阶数
+Full tide	所有潮汐
+Permanent tide only	仅永久性潮汐
+TLE Data	TLE数据
+TLE Epoch	TLE历元
+Int'l.	国际编号.
+Element Number	根数组数
+Classification	密级分类
+Drag	大气阻力摄动
+Solve for Drag	求解阻力系数
+BStart	BStart
+Create Satellite	创建场景卫星
+Graphs	图表
+TEME Residuals	TEME残差
+Element Set	两行根数
+Solution Summary	总结
+Convergence Criteria	收敛条件
+Max Iterations	最大迭代次数
+Convergence	精度
+Generation Options	生成选项
+Trajectory Sampling	轨迹采样
+Single Point	单点
+Calculate finished.	计算完成。
+Calculate failed!	计算失败！
+Observation Time (UTCG)	观测历元（UTCG）
+TEME Position Residuals	TEME的位置残差
+Final X Residual (km)	X轴最终残差（km）
+Final Y Residual (km)	Y轴最终残差（km）
+Final Z Residual (km)	Z轴最终残差（km）
+Final Range Residual (km)	最终距离残差（km）
+Source	数据源
+Open Folder	打开所在文件夹
+Auto Update	自动下载
+yyyy-MM-dd HH:mm:ss.zzz	yyyy-MM-dd HH:mm:ss.zzz
+End Time	结束时间
+PNG Files (*.png);;BMP Files (*.bmp);;JPG Files (*.jpg);;All files (*)	PNG文件(*.png);;BMP文件(*.bmp);;JPG文件(*.jpg);;所有文件(*)
+Find	查找
+Jump to	跳转
+Normal text file (*.txt);;All files (*)	文本文件(*.txt);;所有文件(*)
+Heat Flux Model	热流密度模型
+Empirical Coefficient	经验系数
+Index Coefficient	指数系数
+Launch Window Advanced	发射窗口高级设置
+Launch Trajectory	发射轨迹
+Segment start MET	飞行时段开始时间
+Segment end MET	飞行时段结束时间
+Launch Window Step	发射窗口步长
+Primary Trajectory Max Step	主轨迹最大步长
+Max Rel Motion	最大相对运动
+Consider entire trajectory	计算完整轨迹
+MET at Ephemeris start	飞行时段在星历的开始时间
+Filter Name	筛选器名称
+Apogee/Perigee	远地点/近地点
+Pad	门限
+Out of Date	过期门限
+Launch Area	发射区域
+Launch may occur anywhere within a defined area	指定区域内发射地点随机
+Launch Window Area	发射窗口区域
+Area orientation	区域定向
+Reference	参考基准
+Launch Trajectories	发射轨迹
+Target same endpoint	目标结束点相同
+Alt Ref	相对半径
+Area extents	区域范围
+X Min	X最小值
+Y Min	Y最小值
+X Max	X最大值
+Y Max	Y最大值
+X Interior Samples	X内部采样
+Y Interior Samples	Y内部采样
+Sampling	采样中
+Reference Ellipsoid	参考椭球
+Terrain	地形
+Mean Sea Level	平均海平面
+Parent Object	母目标
+Report of LaserCAT compute is empty.	激光接近分析计算的报告为空。
+Advanced ...	高级...
+Clear Firing ...	安全跟踪时段...
+Potential Victims ...	潜在风险目标…
+Pointing Method	指向方法
+Database	数据库
+File Name	文件名
+Use At Risk File	使用风险文件
+Filters	筛选器
+Use Geometric Filters	使用几何筛选器
+Max Element Set Age	根数集的最长时效
+Near Earth	近地
+Deep Space	深空
+Laser Properties	激光属性
+Maximum Laser Range	最大作用距离
+<html><head/><body><p>Min.Topocentric Elevation Ang</p></body></html>	<html><head/><body><p>最小站心仰角</p></body></html>
+Exclusion Half-Angle	排除半角
+Duration Constraint	时长约束
+LaserCAT Analyses for	执行激光接近分析
+Select Object	选择对象
+LaserCAT Report	激光接近分析报告
+Target Object	跟踪目标
+Catlog Database File	编目数据库文件
+At Risk File	风险文件
+LaserCAT Advanced	激光接近分析高级设置
+Please select target object.	请选择跟踪目标。
+Please fill the Maximum Laser Range.	请输入激光的最大作用距离。
+Please fill the Exdusion Half-Angle.	请输入排除半角。
+Please fill the Min.Topocentric Elevation Ang.	请输入最小站心仰角。
+Please fill the Duration Constraint.	请输入时长约束。
+Please select station object.	请选择激光站。
+Don't support current type of station	暂不支持当前类型的激光站
+Don't support current type of target	暂不支持当前类型的跟踪目标
+Please select the database file.	请选择空间目标数据库。
+Please select the risk file.	请选择风险文件。
+There is no temporal overlap between the selected object and the target object !	所选对象与跟踪目标不存在重合的时间区间！
+Error time setting, time period will be changed !	错误的时间设置，分析时间区间将会被改变！
+Compute finished !	计算完成!
+Propagator	轨道预报器
+Start	发射开始时刻
+Stop	发射终点时刻
+Step Size	仿真步长
+Launch Latitude	发射点纬度
+Launch Longitude	发射点经度
+Launch Altitude	发射点高度
+Burnout Velocity	发射终点速度
+Burnout Latitude	发射终点纬度
+Burnout Longitude	发射终点经度
+Burnout Altitude	发射终点高度
+SimpleAscent	简单上升轨道
+STK File	STK星历
+Trajectory	弹道
+Trajectory System	轨道系统
+Launch Window Analusis	发射窗口接近分析
+Launch Window	发射窗口
+Clear Intervals	安全窗口
+BlackOuts	危险窗口
+Details	详细
+Range Constraint	距离约束
+Max Range	最大距离
+Ephemeris source of secondaries	空间目标编目库文件
+File Name:	文件名：
+Launch Window Analysis for:	发射窗口接近分析：
+Compute Results	计算结果
+%1 events found to have access	已找到%1接近事件
+No events found to have access	未找到接近事件
+Launch Window processing completed	发射窗口计算已完成
+TXT files (*.txt);;All files (*)	文本文件(*.txt);;所有文件(*)
+SSC Number	接近目标SSC编号
+Start Time (UTCG)	开始时刻 (UTCG)
+End Time (UTCG)	结束时刻 (UTCG)
+Duration (s)	时长(s)
+Clear Window Start (UTCG)	安全窗口开始时间(UTCG)
+Clear Window Stop (UTCG)	安全窗口结束时间(UTCG)
+Clear Window Duration (s)	安全窗口时长(s)
+Min Range (km)	最近距离 (km)
+Min Range Time (UTCG)	最近时刻 (UTCG)
+Window Blackout Start (UTCG)	危险窗口开始 (UTCG)
+Window Blackout Stop (UTCG)	危险窗口结束 (UTCG)
+Window Blackout Duration (s)	危险窗口时长 (s)
+Min Range Launch Time (UTCG)	危险窗口最近时刻 (UTCG)
+Start Time Past Launch (s)	相对发射时刻的开始时间(s)
+End Time Past Launch (s)	相对发射时刻的结束时间(s)
+Time of Min Range Past Launch (s)	相对发射时刻的最近时间(s)
+Atmosphere Density	大气密度
+Ap	Ap
+Daily F10.7	F10.7
+Average F10.7	平均F10.7
+Use flux file	采用插值查表
+Model	模型
+Satellite Characteristics	卫星属性
+Drag Area	阻力面积
+Cd	大气阻力系数
+Limit Parameters	陨落预报参数
+Duration Limit	预报时间限制
+Limit Method	限制方式
+Orbit Count Limit	预报圈数限制
+Decay Altitude Limit	陨落高度限制
+Orbit Decay	轨道衰减
+Decay Altitude	累计衰减量
+Stop Time	计算停止时间
+Life Time	轨道寿命
+Decay Time	陨落时间
+Remain Orbit Count	剩余轨道圈数
+Graphic	图表
+Stop Time Limit	衰减量计算停止时间
+Orbit Count & Duration	轨道预报圈数或时间
+Duration	轨道预报时间
+Orbit Count	轨道预报圈数
+Distance(km)	距离(km)
+Load Catlog File(TLE/CTLE/AOE)	加载编目文件(TLE/CTLE/AOE)
+TLE	TLE
+CTLE	CTLE
+TCE files (*.tce);;Text files (*.txt);;TLE files (*.tle);;All files (*)	TCE文件(*.tce);;文本文件(*.txt);;TLE文件(*.tle);;所有文件(*)
+Burn Type	机动类型
+Burn Coord Type	机动格式
+Relative Start(s)	开始相对时刻(s)
+Burn Coord System	机动坐标系
+Thrust Rate X(N/s)	推力变化率X(N/s)
+Thrust Rate Y(N/s)	推力变化率Y(N/s)
+Thrust Rate Z(N/s)	推力变化率Z(N/s)
+Thrust Rate(N/s)	推力偏航角(deg)
+Pitch Rate(deg/s)	仰角变化率(deg/s)
+Thrust Pitch(deg)	推力仰角(deg)
+Yaw Rate(deg/s)	偏航角变化率(deg/s)
+DeltaV X(m/s)	X方向的脉冲分量(m/s)
+DeltaV Y(m/s)	Y方向的脉冲分量(m/s)
+DeltaV Z(m/s)	Z方向的脉冲分量(m/s)
+DeltaV(m/s)	脉冲大小(m/s)
+DeltaV Pitch(deg)	脉冲俯仰角(deg)
+DeltaV Yaw(deg)	脉冲偏航角(deg)
+Jet Velocity(m/s)	喷气速度(m/s)
+Mass Flow Rate(kg/s)	质量秒耗量(kg/s)
+Cartesian	位置速度
+Maneuver Parameters	机动参数
+Start Time	开始时刻
+Burn Value 1	机动值1
+Burn Value 2	机动值2
+Burn Value 3	机动值3
+Startup Duration	开机时间
+Jet Velocity/Mass Flow Rate (kg/s)	喷气速度/质量秒耗量
+Launch Window Analysis	发射窗口接近分析
+LaunchWinAnaly	发射窗口接近分析
+Stop	结束历元
+Impact Longitude	落点经度
+Impact Altitude	落点高度
+Launch Azimuth	发射点方位角
+Missile Type	导弹类型
+Calculate Range	计算射程
+Ballisitc	弹道学
+Realistic Ballisitc	真实弹道学
+LRM	远程弹道弹
+MRM	中程弹道弹
+SRM	近程弹道弹
+Fixed Delta-V	固定速度增量
+Fixed Delta-V Min Ecc	固定速度增量与最小偏心率
+Fixed Apogee Alt	固定远地点距离
+Fixed Time of Flight	固定飞行时间
+Impact Latitude	落点纬度
+Launch Elevation	发射仰角
+Reference range:	参考射程：
+Range: %1 km	射程：%1 km
+Add	添加
+XML File(*.xml);;JSON File(*.json)	XML 文件 (*.xml);;JSON 文件 (*.json)
+XML File(*.xml)	XML 文件 (*.xml)
+Undeal with attitude Ui	未处理的姿态界面
+Propagator	预报器
+Top	顶部
+Bottom	底部
+The settings result in a report size containing too many points.Please adjust your step size or interval bounds.	当前设置会导致报告包含太多点。请调整仿真步长或历元时间区。
+The settings may generate a large amount of data.This may take a long time or there may be insufficient system resources available to complete the task.Do you want to continue?	当前设置会生成大量数据。这将需要很长时间或可能没有足够的系统资源完成任务。是否继续生成？
+text file(*.txt)	文本文件(*.txt)
+ATK:New Scenario Wizard	ATK: 新建想定向导
+File already exists!	文件已经存在！
+ATK Console	ATK控制台
+In[*]:	In[*]:
+run	运行
+Out[*]:	Out[*]:
+Batched Settings Apply	批量应用当前页
+Cut	剪切
+Attibutes	属性
+Search Standard Object Data	查询标准对象数据库
+Search Option	查找项
+Province	省份
+Populated Place	聚居地
+Administration Center	行政中心
+National Capital	首都
+Network	网络
+Name or ID	名称或编号
+Periapsis Altitude(km)	近地点高度(km)
+Mission	任务
+Owner	所属
+Apoapsis Altitude(km)	远地点高度(km)
+Period(min)	周期(min)
+Status	状态
+SAO Number	SAO星表编号
+Magnitude	星等
+Right Ascension(deg)	赤经(deg)
+Declination(deg)	赤纬(deg)
+Result:	结果：
+Export TLE	导出TLE
+Insert SateSystem	插入卫星系统
+Cities	城市
+Facilities	地面站
+Satellites	卫星
+Stars	恒星
+City Name	城市名
+Facility Name	地面站名
+Common Name	通用名
+Official Name	官方名称
+Apogee(km)	远地点(km)
+Perigee(km)	近地点(km)
+PM of Right Asc(arcSec/yr)	赤经自行(arcSec/yr)
+PM of Dec(arcSec/yr)	赤纬自行(arcSec/yr)
+Export successful.	导出成功。
+Option	选项
+Report Title	报告标题
+Number of Decimal Digit	小数点位数
+Option: %1	选项:%1
+Element	元素
+Option...	选项...
+Report Contents	报告内容
+New Line	新建行
+UnitConfig	单位设置
+Report Interval Points	报告间隔点数
+Line	行
+Multiple elements selected!	多个元素被选中！
+Please config axis x!	请配置x轴元素！
+Please config axis y!	请配置y轴元素！
+Please config axis z!	请配置z轴元素！
+Show...	显示...
+Report Name	报告名称
+Select Reference Object	参考对象选择
+Double Click To Select Object	双击选择参考对象
+No reference object!	无可参考对象！
+2D Chart	二维曲线
+Report Type	报告类型
+3D Chart	三维曲线
+Object Type	对象类型
+Add To Quick Report	加入快捷报告
+Display	显示
+Generate...	生成...
+Style	样式
+Property...	属性...
+Predefined	预定义
+New Style	新样式
+TextLabel	文本标签
+Object Attribute Inspector	对象属性检查器
+Select An Object To Be Inserted	选择一个插入对象
+Select A Method	选择插入方式
+Scenario Objects	想定对象
+Attached Objects	附加对象
+Insert...	插入...
+Multi-Rename	批量重命名
+Model	方式
+Prefix	前缀
+Suffix	后缀
+Key	关键词
+Replace	替换
+Add Affixes	添加词缀
+Central Body	中心天体
+Coord System	坐标系统
+Copy Cartesian	复制位置速度
+Numerical Method	数值算法
+Paste Cartesian	粘贴位置速度
+Orbit Epoch	轨道历元
+Integral Method...	积分算法...
+Force Models...	受力模型...
+Coord Type	坐标类型
+Coord Epoch	坐标历元
+Orbit Model	轨道模型
+Propagation Frame	预报系
+Covariance...	协方差...
+Vel X	速度X
+Vel Z	速度Z
+Vel Y	速度Y
+Argument of Perigee	近拱点角距
+Node Parameter	交点参数
+Time of Ascending Node	升交点时间
+Time of Descending Node	降交点时间
+Local Time of Ascending Node	升交点地方时
+Local Time of Descending Node	降交点地方时
+Hor FPA	水平航迹角
+J2000Ec	J2000历元平黄道系
+Fixed	天体固连系
+Inertial	天体惯性系
+TEMEOfDate	真赤道平春分点系
+TrueEclipticOfDate	真黄道系
+TrueOfDate	真赤道系
+MeanEclipticOfDate	平黄道系
+MeanOfDate	平赤道系
+TIRF	TIRF
+GTOD	GTOD
+CIRF	CIRF
+TrueEclipticOfEpoch	历元真黄道系
+MeanEclipticOfEpoch	历元平黄道系
+TrueOfEpoch	历元真赤道系
+MeanOfEpoch	历元平赤道系
+TEMEOfEpoch	历元真赤道平春分点系
+Apogee Altitude	远拱点高度
+Mean Motion	平均运动
+Perigee Altitude	近拱点高度
+Lon. A.N. Crossing	过升交点时刻经度
+Lon. A.N. OrbitEpoch	轨道历元时刻升交点经度
+Argument of Latitude	纬度幅角
+Eccentricity greater than 0.00000001 is effective, reset argument of perigee to 0	偏心率需大于0.00000001才有效，重置近拱点角距为0
+Gravity	引力
+Max Degree	阶数
+Max Order	次数
+Solar Radiation Pressure	太阳光压
+Cr	光压系数
+Area(m^2)	面积(m^2)
+Advanced Setting	高级设置
+SolarFlux/GeoMag	太阳辐射通量/地磁指数
+Third body Gravity	三体引力
+Enter Manually	手动输入
+Geomagnetic Index(Ap)	地磁指数(Ap)
+Order can not be larger than degree!	次数不能大于阶数！
+Celestial Body	天体
+Auto-Rename	自动重命名
+Scan Mode	扫描模式
+Start Angle	开始角
+Stop Angle	结束角
+Spin Rate	旋转速度
+Initial Offset Angle	初始偏差角
+Spin Axis	旋转轴
+Cone Angle	圆锥角
+Bidirectional	双向
+Continuous	连续
+Unidirectional	单向
+Track Mode	追踪模式
+Boresight Type	瞄准类型
+Advanced...	高级...
+Save Targeted Pointing Times	保存目标指向时间
+Target Times...	瞄准时间...
+Tracking	追踪
+Fixed	固定指向
+Transmit	发射
+Transpond	转发
+Level	水平
+Target Times	瞄准时间
+Simulation Step	仿真分析步长
+Time	时间筛选器门限
+Oribit Path	轨道路径筛选器门限
+Apogee/Perigee	远/近地点门限
+Out of Date	轨道历元过期门限
+Visualization	可视化
+Object View Icon	对象视图图标
+Default	默认图标
+Same As 2DView	与二维地图一致
+Auto Save Scenario	自动保存场景
+Auto Save Interval	自动保存时间间隔
+min	分钟
+Auto Save Before Compute	计算前自动保存配置
+Enabled	使能
+Parallel Computing	并行计算
+Global Data Manage	全局数据管理
+Scripts	脚本
+Control Variable	控制变量
+%1 iteration for %2	第 %1 次迭代（共 %2 次）
+There exists looped-dependence, Object cann't added	存在循环依赖，对象不可添加
+Position Offset	位置偏移量
+Azimuth Elevation	方位-高度角
+Range Contours	范围轮廓线
+% Translucency	半透明度(%)
+Number of Decimal Digits	小数位数
+Level	分级
+End	结束
+Remove All	删除所有
+Level (km)	分级(km)
+Translucent Lines	半透明线条
+Flux Density (dBW/m^2)	通量密度(dBW/m^2)
+Frequency (GHz)	频率(GHz)
+Band	波段
+Rcvd Isotropic Power (dBW)	接收到的各向同性功率(dBW)
+System Noise Temperature (K)	系统噪声温度(K)
+Link EIRP (dBW)	链路等效各向同性辐射功率(dBW)
+Bite Error Rate	误码率
+C/No (dB*Hz)	C/No (dB*Hz)
+Power at Receiver Input (dBW)	接收机输入功率(dBW)
+Eb/No (dB)	Eb/No (dB)
+Link Margin	链路裕量
+Doppler Shift (GHz)	多普勒频移(GHz)
+G/T (dB/K)	天线性能品质因子(dB/K)
+C/N (dB)	C/N（dB）
+Polarization Relative Angle	极化相对角
+Polarization	天线极化
+Frequency	频率
+Auto Track	自动识别
+G/T (dB/K)	品质因子G/T (dB/K)
+Gain (dB)	接收增益(dB)
+Antenna Design Frequency	天线设计频率
+Antenna To LNA Line	天线到LNA路线损耗
+LNA	LNA
+LNA To Receiver Line	LNA到接收机馈线损耗
+System Noise Temperature	系统噪声温度
+LNA to Receiver Transmission Line	LNA至接收器传输线
+Temperature (K)	温度(K)
+Noise (dB)	噪声(dB)
+Antenna to LNA Transmission Line	天线至LNA传输线
+Antenna Noise	温度(K)
+Constant (K)	常量(K)
+Atmosphere	大气
+Rain	降雨
+Cloud && Fog	云雾
+Cosmic Background	宇宙背景噪声
+Demodulator	解调器
+Auto-select Demodulator	自动设置解调
+Filter	滤波器
+Receiver Bandwidth	接收带宽
+Bandwidth	带宽
+Auto Scale	自动调整
+Filter Model	滤波器模型
+Additional Gains and Losses	额外损益
+Gains/Losses (dB)	增益/损耗(dB)
+Simple Receiver Model	简单接收机模型
+Medium Receiver Model	中等接收机模型
+Complex Receiver Model	复杂接收器模型
+Comm	通信
+Text file(*.txt);;Data file(*.dat);;Any file(*)	文本文档(*.txt);;数据文件(*.dat);;所有文件(*.*)
+Reference	参考系
+select	选择
+Select Referent System	选择参考系
+Show Component Type	显示组件类型
+Source Filter	源过滤器
+Show table columns	显示表格列
+All Components	所有组件
+Collections	类别
+Communications Components	通信组件
+Radar Components	雷达组件
+Astrogator Components	机动规划组件
+User Comment	用户评论
+Source	来源
+FilePath	文件路径
+All Sources	所有来源
+All Columns	所有列
+Walker Properties	Walker星座参数
+Subsets	分组
+Objects in Group	分组中对象数
+Label	显示标签
+TwoBody	二体
+J2	J2
+Designation	构型设计
+Planes	平面数
+Slots	单轨卫星数
+Inclination (deg)	轨道倾角(deg)
+Semimajor Axis (km)	半长轴(km)
+AllSatellites	所有卫星
+Plane_%1	平面_%1
+Edit Shell	子星座参数编辑
+Shell Name	子星座名称
+Shell Properties	子星座参数
+Pattern Type	子星座构型类型
+Satellites in Planes (Slots)	单轨道卫星数
+Inter-plane Phase Offset	相位因子
+Omega Spread (deg)	升交点赤经分布范围(deg)
+Plane1:Slots 1	平面1：单轨卫星1
+RAAN (deg)	升交点赤经(deg)
+Argument of Periapsis (deg)	近地点角距(deg)
+Mean Anomaly (deg)	真近点角(deg)
+Epoch	轨道历元
+Shell name is required!	子星座名称为必填项！
+Satellite Num:	卫星数量：
+0	0
+Generate TLE	生成TLE
+Maneuver Detection and Analysis	机动检测与分析
+Maneuver	机动分析
+Lifetime - %1	寿命预报 - %1
+Generate TLE for %1	%1生成TLE
+Remov All	删除所有
+SW Latitude (deg)	最小纬度(deg)
+SW Longitude (deg)	最小经度(deg)
+NE Latitude (deg)	最大纬度(deg)
+NE Longitude (deg)	最大经度(deg)
+Resolution (deg)	清晰度(deg)
+Tagged Image files (*.tif);;XML files (*.xml)	标记图像文件(*.tif);;XML文件(*.xml)
+Invalid terrain file!	无效的地形文件！
+Earth Orientation Parameters	地球方向参数
+Filename	文件名
+ReloadEOPfile	重载EOP文件
+Earth Orientation Convention	地球指向惯例
+Convention	惯例
+IERS 1996	IERS 1996
+IERS 2003	IERS 2003
+IERS 2010	IERS 2010
+ITRF CIO Based	基于CIO的ITRF
+ITRF Equiox Based	基于春分点的ITRF
+Data Load	数据下载
+Fail	失败
+Font	字体
+B	B
+I	I
+Text Outline	字体外框
+Microsoft YaHei	微软雅黑
+Analysis Period	仿真区间
+Reference Time	参考历元
+Simulation Step Size	仿真步长
+Step Size(ms)	步长(ms)
+Invalid Time Format!	无效的时间格式！
+Stop time must be greater than start time!	结束历元必须大于开始历元！
+Reference hms	参考时分秒
+Reference s	参考秒
+Reference UTCG	参考UTCG
+Reference BJT	参考北京时
+Reference TDT	参考TDT
+Time	仿真时间
+Earth Data	地球数据
+Scenario Save	场景保存
+2D Font	二维字体
+3D Font	三维字体
+language	语言
+workspace	工作区
+script editor	脚本编辑器
+Run Script	运行脚本
+Scope Attribute	作用域属性
+Last Error	上一个错误
+Selected Variable	已选择变量
+Select Variable	选择变量
+Expression	表达式
+default path setting	默认路径设置
+matlab path	matlab目录
+please choose the python3*.dll	请选择python3*.dll
+python path	python目录
+please choose the libeng.dll	请选择libeng.dll
+Please choose the libeng.dll	请选择libeng.dll
+*.dll	*.dll
+Please choose the python3*.dll	请选择python3*.dll
+Select Celestial Body	选择天体
+Primary Celestial Body	主要天体
+Secondary Celestial Body	次要天体
+The primary celestial body is same as secondary celestial body!	主要天体与次要天体相同！
+Available Central Bodies	可用中心天体
+Assigned Central Bodies	已选中心天体
+Select Parent	选择父对象
+Select Type	选择类型
+Selection Filter	选项过滤器
+Select All Filters	选择所有过滤器
+Clear All Filters	清除所有过滤器
+Available Objects	可选对象
+Assigned Objects	已选对象
+Available Targets	可选目标
+Assigned Targets	已选目标
+Objects	对象
+Selected Objects	已选择对象
+Python Launcher	Python启动器
+Select Reference	选择引用
+Terrain Type	地形类型
+Image	影像
+Elevation	高程
+Inner cone angle must be less than outer cone angle	内部半锥角必须小于外部半锥角
+Minimum clock angle must be less than maximum clock angle	最小钟角必须小于最大钟角
+Minimum elevation angle must be less than maximum elevation angle	最小仰角必须小于最大仰角
+Simple Conic	简单圆锥
+Complex Conic	复杂圆锥
+Half Power	半功率
+SAR	SAR
+Enter from Pattern File	样式文件导入
+Enter from Area Target	区域目标导入
+Latitude, Longitude	纬度，经度
+Azimuth,Elevation	方位角，俯仰角
+Elevation	俯仰角
+If one or more points of the original Area Target are out of the Field of Regard, then the Pattern may not appear as expected.	如果区域目标有点在可视域外，则样式显示可能与预设不同。
+The sensor pattern must have at least three valid points!	传感器样式必须有至少三个有效点！
+Save Pattern File	保存样式文件
+Sensor Type	敏感器类型
+Relative Position	相对位置
+Definition Parameter	定义参数
+Cone Half Angle	半锥角
+Vert Half Angle	垂直半角
+Half Angles	半锥角
+Outer	外部
+Inner	内部
+Clock Angles	钟角
+Diameter	直径
+Half Angle	半锥角
+Elevation Angles	地面仰角
+Exclusion Angles	排除角
+Forward	前排除锥的半角
+Aft	后排除锥的半角
+Track parent altitude	跟踪父对象高度
+Point Type	点类型
+Point Entry	点条目
+Save Pattern...	保存样式...
+Area Target Name	区域目标名称
+Load...	导入...
+Pattern File	样式文件
+Import...	导入...
+Delete Point	删除点
+Insert Point	插入点
+Delete All Points	删除所有点
+Do not interpolate between points	不在点间插值
+Show Boresight	显示视轴
+Show Field of Regard	显示可视域
+Optional Observed Object	可选探测对象
+Selected Observed Object	已选探测对象
+The object already exist!	已存在该对象，不需要重复添加！
+Spinning	旋转
+Targeted	目标定向
+Grazing Altitude	入射高度
+Azimuth Offset	方位角偏移量
+External Pointing	外部指向
+Pointing Type	指向类型
+GrazingAlt	入射高度
+Extemal	外部
+Projection Type	投影类型
+Projection Radius	投影半径
+Radius(m)	半径(m)
+Projection Object	投影对象
+Const Alt	固定半径
+Object Alt	对象半径
+Settings File	配置文件
+Save History Data	保存历史数据
+Auto Save	自动保存
+Auto save quick report at the end of simulation	仿真结束时自动保存快捷报告
+Show Intersections	显示相交类型
+Filling	填充
+Pointing	指向
+Space Projection	空间投影
+Pulse	脉冲
+Observed Object	探测对象
+Swath	刈幅
+Use Maximum Cone	使用最大锥角
+Max Step	最大步长
+Min Step	最小步长
+Stop Time	停止时间
+Swath for %1	%1的刈幅
+Show 3D Ground Trace	显示三维地面轨迹
+Show 2D Ground Trace	显示二维地面轨迹
+Show 3D Orbit	显示三维轨道
+Keep Track	保留轨迹
+Marker Style	标识类型
+Num	序号
+Speed(m/s)	速度(m/s)
+Use Turn Radius	采用转动半径
+Turn Radius(m)	转动半径(m)
+CreateArc	路径生成
+Specify Rate/Acc	指定速度/加速度
+Specify Rate	指定速度
+Specify Time	指定时间
+Route Calculation Method	路径计算方式
+[INFO]	[事件]
+[WARN]	[告警]
+J2000 Inertial	J2000惯性系
+Intrinsic Motion	自行
+Right Ascension(arc sec/year)	赤经(arc sec/year)
+Declination(darc sec/year)	赤纬(darc sec/year)
+Year Parallax	年视差
+Override the times contained in the file	覆盖文件时间
+Import Data	导入数据
+Time of first ephemeris point	首个星历点的时间
+Ephemeris files (*.e);;All files (*)	星历文件(*.e);;所有文件(*)
+Trigger Value	触发值
+Repeat Counter	重复次数
+Trigger Condition	触发条件
+Difference	误差值
+Calculate Object	计算对象
+Cross Increasing	上升经过
+Cross Descending	下降经过
+Cross Either	任意经过
+No Graphics	不显示
+Edge Limits	显示边缘
+Filled Limits	显示填充
+Ground Elevation	地面仰角
+Vehicle Half Angle	飞行器半锥角
+Swath Half Width	刈幅半幅宽
+Ground Elevation Envelope	地面仰角包络
+Vehicle Half Angle Envelope	飞行器半锥角包络
+Results	结果
+Current Row Count:	当前行数：
+Access Times	可见时间
+Use Access Times	使用可见时间
+Scheduled Times	预定时间
+Duration	时长
+HH:mm:ss.zzz	HH:mm:ss.zzz
+Local	当地时间
+GMT	格林威治标准时间
+Local Apparent	当地太阳时
+Exclude Intervals	排除
+Intervals	时段
+Show full file paths	显示文件全路径
+Add Files	添加文件
+Enter intervals	输入间隔
+Select interval files	选择间隔文件
+Local Time Start value must be less than Local Time Stop value!	当地时间的开始时间必须小于结束时间！
+GMT Time Start value must be less than GMT Time Stop value!	格林威治标准时间的开始时间必须小于结束时间！
+Apparent Time Start value must be less than Apparent Time Stop value!	当地太阳时的开始时间必须小于结束时间！
+Duration minimum value must be less than Duration maximum value!	持续时间的最小值必须小于最大值！
+Start (UTC)	开始时间(UTC)
+Stop (UTC)	结束时间(UTC)
+Files	文件
+There are %1 intervals in the selected files.	选择的文件中有%1个间隔。
+Are you sure you want to remove all files?	是否删除所有文件？
+Are you sure you want to remove all intervals?	是否删除所有间隔？
+Find Content	查找内容
+Find Option	查找选项
+match whole	全词匹配
+case sensitive	忽略大小写
+Find Previous	查找上一个
+Find Next	查找下一个
+Save as text	另存为文本
+Save as csv	另存为CSV
+Set	设置
+Jump To	跳转至
+SaveTxt	保存文本
+SaveCsv	保存CSV
+Save Text	保存文本
+Use Scenario Interval	使用场景区间
+Interval	区间
+%1 AnalysisInterval	%1分析间隔
+The start time must be earlier than the end time!	开始时间必须早于结束时间！
+Exceeding time range of scenario!	超出想定历元时间范围！
+TopUser Object	顶层用户对象
+Torque Model	力矩模型
+Moment	力矩
+Control Torque	控制力矩
+No Use	不采用
+Engine Troque	发动机力矩
+Earth Parameter Model	地球引力模式
+Orbit Parameter	轨道参数
+Spacecraft Model	航天器模型
+Nose Radius	球头半径
+Terminal Conditions	终端条件
+Height	高度
+Initial Conditions	初始条件
+Path Angle	倾角
+Circle Model	圆球模式
+J2 Model	J2项模型
+Reentry System	再入坐标系
+Data Rate (Mb/sec)	数据速率(Mb/sec)
+Sat.Flux Density (dBW/m^2)	饱和通量密度 (dBW/m^2)
+EIRP (dBW)	EIRP(dBW)
+Power (dBW)	功率(dBW)
+Gain (dB)	发射增益(dB)
+Modulator	调制器
+Use Signal PSD	选择信号PSD
+Number of Spectrum Nulls	空频谱数量
+Signal Bandwidth	信号带宽
+Upper Band Limit	高频段截止频率
+Lower Band Limit	低频段截止频率
+Auto Scale	自动调整带宽
+Symmetric	对称调节
+Transfer Functions	转换方法
+Simple Transmitter Model	简单发射机模型
+Medium Transmitter Model	中等发射机模型
+Complex Transmitter Model	复杂发射机模型
+Simple Re-Transmitter Model	简单转发器模型
+Medium Re-Transmitter Model	中等转发器模型
+Complex Re-Transmitter Model	复杂转发器模型
+Sat.EIRP (dBW)	卫星 EIRP (dBW)
+Sat.Power (dBW)	功率 (dBW)
+Insertion Loss(dB)	插入损耗(dB)
+Cut-off Frequency	截止频率
+Sampling Frequency	采样频率
+Ripple(dB)	脉冲因子(dB)
+Order	次数
+Roll-off Factor(%)	滚降因子(%)
+Symbol Rate(Mb/s)	符号率(Mb/s)
+Bessel	贝塞尔
+Butterworth	巴特沃兹
+Chbyshev	切比雪夫
+Gaussian Windows	高斯窗
+Raised Consine	升余弦
+Atmospheric Absorption	大气吸收
+ITU-R P676-9	ITU-R P.676-9
+Use Fast Approx.Method 1-350GHz	使用快速近似方法 1-350GHz
+Use Seasonal/Regional Atmosphere Method	使用季节/局部大气方法
+Surface Temperature	表面温度
+Water Vapor Concentration	水蒸气密度
+Rain Cloud && Fog	云雨雾衰减参数
+Rain Model	雨天模型
+Enable Cross Polarization Loss	激活交叉极化衰减
+Clouds and Fog Model	云和雾模型
+Liquid Water Density	水密度
+Cloud Layer Thickness	云层厚度
+Cloud Temperature	云层温度
+Cloud Ceiling	云层上限
+Custom Models	自定义模型
+Use A	使用A
+Use B	使用B
+Use C	使用C
+Move Up	上移
+Move Down	下移
+Power Back Off	功率回退
+Index	索引
+Coefficient	系数
+added node %1 have the same name	新增节点“%1”与现有节点同名
+Parameter Setting	参数设置
+maxVal	最大值
+minVal	最小值
+strategy	策略
+expect	预期
+Standard	标准
+Multi Segment	多分段
+Dynamic Solution	动力学解算
+Nadir alignment with ECI velocity constraint	ECI对地定向
+Nadir alignment with ECF velocity constraint	ECF对地定向
+ECI velocity alignment with nadir constraint	ECI对速度定向
+ECF velocity alignment with nadir constraint	ECF对速度定向
+Sun alignment with nadir constraint	对太阳定向
+Start time is out of simulation interval!	开始时间超出仿真区间！
+Segment has a duplicate start time!	分段存在相同的开始时间！
+No segment selected!	未选择分段！
+Start time of segment is earlier than the previous one!	分段开始时间早于上一个分段！
+Start time of segment is later than the next one!	分段开始时间晚于下一个分段！
+Select STK File	选择STK姿态文件
+STK attitude files (*.a)	STK姿态文件 (*.a)
+Attitude Mode	姿态模式
+qx	qx
+qs	qs
+qy	qy
+qz	qz
+Euler2(deg)	欧拉角2(deg)
+Sequence	转序
+Euler1(deg)	欧拉角1(deg)
+Euler3(deg)	欧拉角3(deg)
+Attitude File	姿态文件
+Compute Covariance	计算协方差
+Representation	表现形式
+Frame	参考坐标系
+Cartesian covariance units are m^2,m^2/s,m^2/s^2	笛卡尔系下的协方差单位为：m^2,m^2/s,m^2/s^2
+HPOP Covariance - %1	HPOP协方差 - %1
+Cartesian	笛卡尔
+FG J2000	FG J2000
+FG TOD	FG TOD
+Position / Velocity sub-matrix is not positive definite.	位置/速度协方差矩阵非正定。
+Force Model	力模型
+Initial Orbit	按相对状态生成-根据参考卫星轨道及相对位置速度生成初始轨道
+From Orbit Epoch	按轨道历元生成
+From Relative State	按相对状态生成
+State Relative to Reference Satellite (VVLH Frame)	相对参考卫星的状态 (参考卫星VVLH坐标系)
+Relative VelX(m/s)	相对速度X(m/s)
+Relative PosZ(m)	相对位置Z(m)
+Relative VelY(m/s)	相对速度Y(m/s)
+Relative PosY(m)	相对位置Y(m)
+Relative PosX(m)	相对位置X(m)
+Relative VelZ(m/s)	相对速度Z(m/s)
+Initial State	初始状态生成结果
+Please confirm that the reference satellite has been selected!	请确认已选择参考卫星！
+Integral Method	积分算法
+Error Tolerance	积分精度
+Report Ephemeris on a Fixed Time Step	固定步长输出星历
+Centroid Pos y (m)	质心位置y (m)
+Centroid Pos z (m)	质心位置z (m)
+Centroid Pos x (m)	质心位置x (m)
+Total Mass (kg)	总质量 (kg)
+Mass Moment of Inertia Matrix (kg.m^2)	转动惯量 (kg.m^2)
+Satellite Name	卫星名称
+Orbit Type	轨道类型
+Posigrade	顺行
+Retrograde	逆行
+Longitude of Ascending Node	升交点地理经度
+Subsatellite Point	星下点经度
+Apogee Longitude	远地点经度
+"Approximate Revs 
+Per Day"	每天大致圈数
+"Approximate
+Altitude"	大致高度
+Number of Revs to Repeat	回归圈数
+Longitude of First Ascending Node	首个升交点经度
+"Approximate 
+Altitude"	大致高度
+"Local time of 
+ascending node
+(Hour:Min:Sec)"	升交点地方时 (时分秒)
+00:00:00.000	00:00:00.000
+"Local time of 
+descending node
+(Hour:Min:Sec)"	降交点地方时 (时分秒)
+Node Definition	交点定义
+Ascending	升轨
+Descending	降轨
+Orbit Altitude	轨道高度
+Analysis Time	分析时间
+Lat,Lon:	纬度,经度：
+Circular	圆轨道
+Critically Inclined	临界倾角轨道
+Geosynchronous	静止轨道
+Repeating Ground Trace	回归轨道
+Orbit Designer	自定义轨道
+Satellite Subpoint	星下点定义轨道
+Repeating Satellite Subpoint	星下点定义回归轨道
+Critically Inclined, Sun Sync	临界倾角，太阳同步轨道
+Molniya	闪电轨道
+Repeating Sun Sync	太阳同步回归轨道
+Sun Synchronous	太阳同步轨道
+Data Verification	数据校验
+Unreasonable input value!	输入值不合理！
+Lat,Lon:(%1, %2)	纬度,经度：(%1, %2)
+Initial Revolution	初始圈次
+Coordinate System	坐标系统
+Description	说明
+The orbit add one revolution when passing the defined value.	轨道每穿过定义一次，圈数增加一圈。
+Inertial	惯性系
+Orbit Wizard...	轨道生成向导...
+Orbit Design Tool...	轨道生成工具...
+Catlog File Import...	编目文件导入...
+Catlog Data Import(TLE/CTLE/AOE)	编目数据导入(TLE/CTLE/AOE)
+Catlog Data Import...	编目数据导入...
+Orbit Epoch (UTCG)	轨道历元(UTCG)
+Orbit Epoch (day)	轨道历元(天)
+Mean Motion (revs/day)	平均运动(revs/day)
+Mean Motion Dot	平动一阶时间导数
+Mean Dot Dot	平动二阶时间导数
+Argument of Perigee (deg)	近拱点角距(deg)
+BStar	BStar
+Rev.Number	圈数
+Mean Anomaly (deg)	平近点角(deg)
+Intl Designator	国际编号
+Center Number	中心编号
+China Name	中文名
+Organization	组织
+Sate Type	卫星类型
+Launch Time	发射时间
+Update Time	更新时间
+Perigee (m)	远拱点距离(m)
+Apogee (m)	近拱点距离(m)
+RCS (m^2)	RCS (m^2)
+Program is running!	机动规划实例正在运行！
+J2 Perturbation	J2平根
+J4 Perturbation	J4平根
+SGP4	SGP4
+HPOP	HPOP
+Astromaster	机动规划
+SSPM	J4瞬根
+Real Time	实时
+SPICE	SPICE
+AstroUq	偏差分析
+Catlog Data Import	编目数据导入
+Look Ahead Properties	前瞻预报器属性
+Look Ahead Propagator	前瞻预报器
+Durations	持续时间
+Look Ahead	前瞻
+Look Bhead	后视
+HoldCBIPosition	保持CBI位置
+HoldCBFPosition	保持CBF位置
+J2Perturbation	J2解析
+J4Perturbation	J4解析
+Start	开始
+Stop	停止
+Spice File	SPICE文件
+Body Name	天体名称
+Available interval of body	天体可用时间区间
+<empty>	<空>
+SPICE SPK File	SPICE SPK文件
+basic	基础
+custom intervals	自定义
+Display Coverage Belt	显示覆盖带
+Show Marker	显示标识
+Asc and Desc Display	升降轨显示
+Half Cone Angle of Coverage Belt(deg)	覆盖带半锥角(deg)
+Default Attributes	默认属性
+Display Ascending and Descending	显示升降轨
+Only Display Ascending	只显示升轨
+Only Display Descending	只显示降轨
+Ground Track	二维地面轨迹
+3D Ground Track	三维地面轨迹
+Pass Break	轨道圈数
+Orbit System	轨道系统
+Libration Point	平动点
+Secondary CelestialBody	次要天体
+Primary CelestialBody	主要天体
+RotationOffset	旋转补偿
+VectorFrom	起始矢量
+VectorTo	终止矢量
+VectorAbout	旋转轴矢量
+RightHanded	按右手定则
+Signed	签署
+PlaneTo	目标平面
+SignedAngle	有符号角
+vecAlign	对准矢量
+vecConstrain	约束矢量
+axisAlign	对准轴
+axisConstrain	约束轴
+ReferenceAxes	参考坐标
+TrajectortPoint	轨迹点
+CentrialBody	天体
+Direction	方位
+DiffTimeStep	差分时间步长
+VGT Report	VGT报告
+This component does not exists.	组件不存在。
+object %1 not exists!	对象 %1 不存在！
+Welcome to ATK	欢迎使用ATK
+Exit	退出
+Create a Scenario	新建一个想定文件
+Open a Scenario	打开一个想定文件
+file not accessible!	文件无法访问！
+Scientific Notation	科学计数法
+XY Plane	XY平面
+XZ Plane	XZ平面
+YZ Plane	YZ平面
+Save Graph	保存图片
+Bitmap Pictures (*.bmp);;JPEG Pictures (*.jpg);;PNG Pictures (*.png)	Bitmap 图片(*.bmp);;JPEG 图片(*.jpg);;PNG 图片(*.png)
+Start Time:	开始时间：
+End Time:	结束时间：
+Show Annotations	显示注释
+Copy to Clipboard	复制到粘贴板
+Configure	配置
+Unit Config	单位设置
+Coverage User-Defined Report	覆盖性自定义分析报告
+Coverage Reports	覆盖性分析报告
+Coverage Graphs	覆盖性分析图表
+Coverage	覆盖性分析
+No Valid FOM Static Values Report!	未生成有效的品质因子统计报告！
+Displacement	位移
+Select Compenent Type	选择组件类型
+Acceleration	加速度
+Angle Rate	角速率
+Angular Velocity	角速度
+Coining	锥旋
+Axes	坐标系
+Aligned	对准
+Angular Offset	角偏移
+B-Plane	B平面
+Between Planes	两平面夹角
+No.	序号
+Start time(UTCG)	开始历元(UTCG)
+End time(UTCG)	结束历元(UTCG)
+%1 to %2 %3	%1对%2的%3
+%1 to %2	%1对%2
+Inability to analyze data!	无分析数据！
+Global Statistics	全局统计结果
+Access Mean Duration(s)	平均可见时长(s)
+Unaccess Mean Duration(s)	平均不可见时长(s)
+Total Duration(s)	总时长(s)
+Section Statistics	分段统计结果
+Elevation(deg)	俯仰角(deg)
+Unaccessible Min Duration(s)	最小不可见时长(s)
+Unaccessible Max Duration(s)	最大不可见时长(s)
+Unaccessible Mean Duration(s)	平均不可见时长(s)
+Unaccessible Total Duration(s)	总不可见时长(s)
+Elevation Rate(deg/s)	俯仰角变化率(deg/s)
+From Angular Rate(deg/s)	角变化率(deg/s)
+Sun Elevation(deg)	太阳高度角(deg)
+Sun Gnd Elevation(deg)	当地太阳高度角(deg)
+Lunar Elevation(deg)	月球高度角(deg)
+LOS Solar Exclusion(deg)	太阳视线规避角(deg)
+LOS Lunar Exclusion(deg)	月球视线规避角(deg)
+BS Solar Exclusion(deg)	太阳视轴规避角(deg)
+BS Lunar Exclusion(deg)	月球视轴规避角(deg)
+Free Space Loss(dB)	自由空间损耗(dB)
+Atmos Loss(dB)	大气吸收损耗(dB)
+Rain Loss(dB)	雨衰损耗(dB)
+CloudsFog Loss(dB)	云雾损耗(dB)
+TropoScintill Loss(dB)	对流层闪烁损耗(dB)
+Prop Loss(dB)	传播损耗(dB)
+Flux Density(dBW/m^2)	通量密度(dBW/m^2)
+Rcvr Gain(dB)	接收天线增益(dB)
+Tatmos(K)	大气噪温(K)
+Train(K)	雨衰噪温(K)
+TcloudsFog(K)	云雾噪温(K)
+TtropoScintill(K)	对流层闪烁噪温(K)
+Tsun(K)	太阳噪温(K)
+Tearth(K)	地球噪温(K)
+Tcosmic(K)	宇宙背景辐射噪温(K)
+Tantenna(K)	天线噪温(K)
+Tequivalent(K)	等效噪声温度(K)
+Bandwidth(kHz)	带宽(kHz)
+Bandwidth Overlap(units)	带宽重叠因子(units)
+C/N(dB)	接收信息副载波和单位噪声功率比(dB)
+Eb/No(dB)	接收信噪比(dB)
+BER	误码率
+Local Time(HMS)	当地时(HMS)
+Local Apparent Time(HMS)	当地太阳时(HMS)
+Max	最大
+Min	最小
+Mean	平均
+Total	总
+Angle(deg)	角度
+Angle Rate(deg/s)	角度变化率(deg/s)
+Distance(m)	距离(m)
+Distance Rate(m/s)	距离变化率(m/s)
+Power(dBW)	发射功率(dBW)
+Gain or Loss(dB)	增益或损耗(dB)
+Frequency(kHz)	频率(kHz)
+Frequency(GHz)	频率(GHz)
+Temperature(K)	温度(K)
+Time(s)	时间(s)
+Start time(s)	开始时间(s)
+End time(s)	结束时间(s)
+Duration(s)	时长(s)
+Access Min Duration(s)	最小可见时长(s)
+Access Max Duration(s)	最大可见时长(s)
+Reference Time(UTCG)	参考时间(UTCG)
+Range	范围
+Azimuth Rate	方位角变化率
+Elevation Rate	俯仰角变化率
+Range Rate	距离变化率
+Angular Rate	视线角变化率
+Sun Elevation	太阳高度角
+Access Total Duration(s)	总可见时长(s)
+Access Custom Report	可见性自定义报告
+Access Report	可见性报告
+Access Report (Elapsed Time)	可见性报告（相对时间）
+AER Report	视线参数报告
+AER Rate Report	视线参数变化率报告
+Unaccessible Report	不可见报告
+Unaccessible Report (Elapsed Time)	不可见报告（相对时间）
+Unaccessible AER Report	不可见视线参数报告
+Access Summary Report	可见性统计报告
+Access Summary Report (Elapsed Time)	可见性统计报告（相对时间）
+AER Summary Report	视线参数统计报告
+Unaccessible Summary Report	不可见统计报告
+Unaccessible Summary Report (Elapsed Time)	不可见统计报告（相对时间）
+Range Rate Report	距离变化率报告
+Access Curve	可见性曲线
+Access Curve (Elapsed Time)	可见性曲线（相对时间）
+AER Curve	视线参数曲线
+AER Rate Curve	视线参数变化率曲线
+Unaccessible Curve	不可见时段曲线
+Unaccessible Curve (Elapsed Time)	不可见时段曲线（相对时间）
+Unaccessible AER Curve	不可见视线参数曲线
+Access Elevation Curve	可见俯仰角曲线
+Access Azimuth Curve	可见方位角曲线
+Access Range Curve	可见视线距曲线
+Access Angle Rate Curve	可见角度变化率曲线
+Access Az El Polar	可见俯仰角方位角极坐标曲线
+Access Segment Percentage Pie	可见时段百分比饼图
+Access Segment Percentage Pie of Full-Period	全任务周期可见百分比饼图
+Access Custom Curve	可见性自定义图表
+Coverage Intervals Report (Elapsed Time)	覆盖时段报告（相对时间）
+Coverage Gaps Report (Elapsed Time)	覆盖间隔报告（相对时间）
+FOM Satisfaction Intervals Report (Elapsed Time)	有效覆盖时段报告（相对时间）
+All DOP Report	所有DOP值报告
+Best N Report	最优N报告
+Coverage Intervals Curve (Elapsed Time)	覆盖时段曲线（相对时间）
+Coverage Gaps Curve (Elapsed Time)	覆盖间隔曲线（相对时间）
+Probability of Coverage Curve	覆盖概率曲线
+FOM Values Curve	品质因子值曲线
+FOM Satisfaction Intervals Curve	有效覆盖时段曲线
+FOM Satisfaction Intervals Curve (Elapsed Time)	有效覆盖时段曲线（相对时间）
+All DOP Curve	所有DOP值曲线
+All Accuracy Curve	所有精度值曲线
+Access Duration Report	覆盖时段报告
+Gap Duration Report	间隔时段报告
+Partial Coverage Report	部分覆盖时段报告
+Partial Coverage Report (Elapsed Time)	部分覆盖时段报告（相对时间）
+Global Coverage Report (Elapsed Time)	全局覆盖时段报告（相对时间）
+Gaps in Global Coverage Report (Elapsed Time)	全局覆盖间隔报告（相对时间）
+Grid Point Information Report	网格点信息报告
+Grid Point Visible Assets Report	网格点可见对象报告
+Percent Coverage Report	区域覆盖率报告
+Accumulative Coverage Report	累积覆盖报告
+Coverage By Assets Report	单个对象资源覆盖率统计报告
+Coverage By Latitude Report	纬度覆盖报告
+Access Duration Curve	覆盖时段曲线
+Gap Duration Curve	间隔时段曲线
+Partial Coverage Curve	部分覆盖时段曲线
+Global Coverage Curve	全局覆盖时段曲线
+Gaps in Global Coverage Curve	全局覆盖间隔曲线
+Partial Coverage Curve (Elapsed Time)	部分覆盖时段曲线（相对时间）
+Global Coverage Curve (Elapsed Time)	全局覆盖时段曲线（相对时间）
+Gaps in Global Coverage Curve (Elapsed Time)	全局覆盖间隔曲线（相对时间）
+Percent Coverage Curve	区域覆盖率曲线
+Accumulative Coverage Curve	累积覆盖曲线
+Coverage By Latitude Curve	纬度覆盖曲线
+Grid Stats Over Time Report	各时刻网格FOM统计值报告
+Grid Stats Report	网格FOM统计值报告
+Percent Satisfied Report	有效区域百分比报告
+Satisfied by Time Report	各时刻有效区域报告
+Value By Grid Point At Time Report	指定时刻网格点FOM值报告
+Value By Grid Point Report	网格点FOM值报告
+Value By Latitude Report	各纬度FOM值报告
+Value By Longitude Report	各经度FOM值报告
+Grid Stats Over Time Curve	各时刻网格FOM统计值曲线
+Satisfied by Time Curve	各时刻有效区域曲线
+Value By Latitude Curve	各纬度FOM值曲线
+Value By Longitude Curve	各经度FOM值曲线
+Point Coverage Intervals Report (Elapsed Time)	覆盖时段报告（相对时间）
+Point FOM Satisfaction Intervals Report (Elapsed Time)	有效覆盖时段报告（相对时间）
+Point Coverage Intervals Curve	覆盖时段曲线
+Point Coverage Intervals Curve (Elapsed Time)	覆盖时段曲线（相对时间）
+Point Probability of Coverage Curve	覆盖概率曲线
+Point FOM Values Curve	品质因子值曲线
+Point FOM Satisfaction Intervals Curve	有效覆盖时段曲线
+Point FOM Satisfaction Intervals Curve (Elapsed Time)	有效覆盖时段曲线（相对时间）
+Coverage Intervals Curve	覆盖时段曲线
+Coverage Gaps Curve	覆盖间隔曲线
+% Under	低于比例(%)
+% Over	高于比例(%)
+Gap Duration	间隔时段报告
+Grid Point Information	网格点信息
+Point Number	点索引
+Latitude Span(deg)	纬度步长(deg)
+Longitude Span(deg)	经度步长(deg)
+Grid Point Visible Assets	网格点可见目标分析报告
+Visible Assets By Full Name	可见对象全称
+Percent Coverage	区域覆盖率报告
+Asset Full Name	覆盖对象
+%1 %2	%1的%2
+Max Duration(s)	最大时长(s)
+Mean Duration(s)	平均时长(s)
+FOM Value	品质因子值
+Percent(%)	比例(%)
+Min Duration(s)	最小时长(s)
+Total Percent(%)	总比例(%)
+Percent Time Covered(%)	覆盖占比(%)
+Simple Coverage	是否覆盖
+Access Duration	覆盖时段
+Time Average Gap	平均时间间隔
+N Asset Coverage	覆盖重数
+Coverage Duration	覆盖时间
+Point Coverage Intervals Report	覆盖时段报告
+Point FOM Satisfaction Intervals Report	有效覆盖时段报告
+Point Daily Coverage Report	每日覆盖报告
+Point Probability of Coverage Report	覆盖概率报告
+Point FOM Values Report	品质因子值报告
+Percent Above	百分比大于
+Percent Per Day Std Dev	每日标准差百分比
+Percent Time Above	时长大于百分比
+Total	总值
+Total Time Above	总时长大于
+Num Percent Below	百分比小于的值
+Percent Below	百分比小于
+Percent Below Gaps Only	间隔时长百分比小于
+Coverage Intervals Report	覆盖时段报告
+Coverage Gaps Report	覆盖间隔报告
+FOM Satisfaction Intervals Report	有效覆盖时段报告
+Global Coverage Report	全局覆盖时段报告
+Gaps in Global Coverage Report	全局覆盖间隔报告
+Daily Coverage Report	每日覆盖报告
+Date(UTCG)	时间(UTCG)
+Probability of Coverage Report	覆盖概率报告
+Time From Request(sec)	请求时间(sec)
+Probability of Collection(%)	统计概率(%)
+FOM Values Report	品质因子值报告
+FOM Value%1	品质因子%1
+FOM Static Values Report	品质因子静态值报告
+Object Name	对象名称
+FOM Static Value%1	品质因子静态值%1
+All Dilutions of Precision Report	所有几何精度衰减因子值报告
+Best N Asset Selections Report	最优N个对象选择报告
+DOP Value	DOP值
+Best N Full Names	最优N个对象
+Coverage Custom Report	覆盖自定义报告
+Less than four assets available	可用对象少于4个
+FOM Properties	品质因子属性
+Equal To %1	等于%1
+All Accuracy Report	所有精度值报告
+Acc Value	精度值
+Lunar Elevation	月球高度角
+Not Enabled	有效覆盖条件未使能
+Greater Than %1	大于%1
+At Least %1	大于等于%1
+Less Than %1	小于%1
+At Most %1	小于等于%1
+Satisfied if:	有效覆盖条件：
+Min Per Day	每天最小
+Max Per Day	每天最大
+Avg Per Day	每天平均
+Link Budget Report	通信明细报告
+Xmtr Power(dBW)	发射功率(dBW)
+Xmtr Gain(dB)	发射增益(dB)
+EIRP(dBW)	发射EIRP(dBW)
+Freq. Doppler Shift(kHz)	多普勒频移(kHz)
+Rcvd. Frequency(GHz)	接收频率(GHz)
+Rcvd. Iso. Power(dBW)	接收功率(dBW)
+g/T(dB/K)	接收机增益(dB/K)
+C/No(dB*Hz)	接收天线载噪比(dB*Hz)
+Summary Begin	开头
+Summary End	结尾
+LatLon Region Coverage	经纬度区域覆盖
+Coverage Properties	覆盖属性
+% Coverage	覆盖率(%)
+% Accum Coverage	累计覆盖率(%)
+Asset Name	资产名
+Minimum % Coverage	最小覆盖率(%)
+Maximum % Coverage	最大覆盖率(%)
+Average % Coverage	平均覆盖率(%)
+Accumulated % Coverage	累计覆盖率(%)
+Coverage By Assets	单个对象资源覆盖率统计报告
+Accumulative Coverage	累积覆盖
+Coverage By Latitude	纬度覆盖报告
+Percent Time Covered	覆盖占比(%)
+Total Time Covered(s)	覆盖总时长(s)
+% Accesses	时段比例(%)
+Grid Stats Over Time	各时刻网格FOM统计值
+Grid Stats	网格FOM统计值
+Percent Satisfied	有效区域百分比
+% Satisfied	有效比例(%)
+Area Satisfied (m^2)	有效面积 (m^2)
+Satisfied by Time	各时刻有效区域
+Value By Grid Point At Time	指定时刻网格点FOM值
+Value By Grid Point	网格点FOM值
+Value By Latitude	各纬度FOM值
+Value By Longitude	各经度FOM值
+Points Coverage Intervals Report	各网格点可见时段报告
+Access Object	可见对象
+Points Coverage Gaps Report	各网格点不可见时段报告
+Points FOM Satisfaction Intervals Report	各网格点有效覆盖时段报告
+Points FOM Values Report	各网格点品质因子值报告
+Points FOM Satatic Values Report	各网格点品质因子静态值报告
+Reference Time	参考时间
+NumberOfUnaccesses	不可见时段数
+NumberOfSatisfiedIntervals	有效覆盖时段数
+Global Coverage	全球范围覆盖
+Lat Region Coverage	纬度区域覆盖
+Min Lat:	最小纬度：
+Max Lat:	最大纬度：
+Lon Line Coverage	经度线覆盖
+Lon:	经度：
+Lat Line Coverage	纬度线覆盖
+Lat:	纬度：
+Min Lon:	最小经度：
+Max Lon:	最大经度：
+Custom Regions Coverage	自定义区域覆盖
+Custom Boundaries Coverage	自定义边界覆盖
+Region Type:	区域类型：
+Area Target Objects	区域目标对象
+Grid Altitude Above Terrain:	点高度高于地形：
+Above Terrain	地形
+Grid Altitude Above MSL:	点高度高于MSL：
+Grid Altitude:	网格点高度：
+Ground Altitude set from grid altitude reference (%1)	网格点高度设置基于(%1)
+Resolution:	网格精度：
+Point Locations:	点位置：
+Compute Locations Based on Granularity	按间隔计算
+Number of Points:	网格点数量：
+Assigned Assets:	目标对象：
+Access Interval: %1 to %2	分析时间区间：%1 至 %2
+Above MSL	平均海平面以上
+Above WGS84	WGS84 椭球高
+Custom Locations	自定义位置
+Coverage for Point (Lat / Lon): %1 / %2 deg	覆盖分析网格点(纬度/经度)：%1 / %2 deg
+Report Interval	报告区间
+to	至
+Report Time Step	报告步长
+PointNumber	网格
+Lat	纬度
+Alt	高度
+NumberOfAccesses	可见时段数
+Error Time Period Setting, Time Out of Simulation Period!	设置计算时间有误,时间不在仿真数据之间!
+Yes	是
+No	否
+The current user dose not have read permission of %1	当前用户没有%1的读取权限
+The current user dose not have write permission of %1	当前用户没有%1的写入权限
+The current user dose not have read and write permission of %1	当前用户没有%1的读写权限
+%1 does not exist.	%1不存在。
+Proximity Analysis	接近分析
+Cam Safety Analysis	碰撞规避
+Area of Uncertainty - Control Box	不确定区域的控制器
+Value Range	取值范围
+Ground Ellipses	地面椭圆
+Contours	等高线
+Attitude Sphere	姿态球
+Proximity	接近
+Data Display	数据显示
+RF	RF
+Data Cache	数据缓存
+Report - Generated TLE:	报告-生成的TLE:
+Report - TLE Solution Summary:	报告-TLE总结:
+Report - TLE TEME Residuals:	报告-TLE的TEME残差:
+Chart - TLE TEME Residuals:	曲线-TLE的TEME残差:
+Report - Lifetime:	报告-寿命预报:
+Chart - Lifetime:	曲线-寿命预报:
+LaserCAT - %1	激光接近分析 - %1
+%1 :  %2  to  %3	%1：  %2 到  %3
+%1  to  %2	%1  到  %2
+Verification failed!	验证失败！
+Choose Spacecraft	选择飞行器
+Choose Reference Coordinate	选择参考系
+Choose Segment Object	选择段对象
+Invalid value exists, please correct it!	存在无效值，请修正！
+New Stopping Condition	新建停止条件
+Choose Central Body	选择中心天体
+Choose Coordinate	选择坐标系
+Confirm Delete？	继续删除吗？
+Delete Profile	删除配置
+Selected	选中
+Name	名字
+Degree	阶数
+Gravity Value	引力值
+Point-Mass Model	点质量模型
+Gravitation Field Model	引力场模型
+Exist Same CentralBody	存在相同的天体
+Add a Data Display	添加显示数据
+Invalid column index, please confirm it!	无效的列索引，请确认！
+Failed to obtain machine code!	获取机器码失败！
+Registered successfully!	注册成功！
+"Registered failed!
+Contact Email:atk_service@163.com
+Contact Number:13739092019"	"注册失败！
+联系邮箱：atk_service@163.com
+联系电话：13739092019"
+the input quaternion is not a unit quaternion, it will be normlized.	输入的四元数不是标准四元数，必须先被标准化。
+Show State	显示状态
+English	英文
+Chinese	简体中文
+Read port from configuration file:	从配置文件读取端口号：
+Log file:	日志文件：
+Warning: Unable to open log file	警告：无法打开日志文件
+, the log will only be output to the console.	，日志将仅输出到控制台。
+The software is not registered!	软件未注册！
+The system tray is unavailable and the program will exit.	系统托盘不可用，程序将退出。
+语言/Language	语言/Language
+Client connection	客户端连接
+Connection from %1[%2]	来自 %1[%2] 的连接
+Client disconnected	客户端断开
+%1[%2] has been disconnected	%1[%2] 已断开
+Connection not permitted	连接被拒绝
+The connection from %1[%2] exceeds the maximum limit (%3)	来自 %1[%2] 的连接超过最大限制(%3)
+Heartbeat timeout	心跳超时
+%1[%2] heartbeat timeout, removed	%1[%2] 心跳超时，已移除
+Server Error	服务器错误
+Unable to start server, please check if port %1 is occupied.	无法启动服务器，请检查端口 %1 是否被占用。
+"Current number of connections:%1
+Connected User List:"	"当前连接数: %1
+已连接用户列表:"
+Empty	空
+Server Status	服务器状态
+Unable to listen on port %1: %2	无法监听端口 %1: %2
+Server started, listening port	服务器已启动，监听端口
+The server has stopped	服务器已停止
+Reject connection:	拒绝连接：
+, has reached the maximum number of connections	，已达最大连接数
+New client connection:	新客户端连接：
+Current number of connections:	当前连接数：
+Received heartbeat from	收到心跳从
+Received an unknown message from	收到未知消息从
+Client timeout:	客户端超时：
+Client disconnection:	客户端断开：
+Remaining connections:	剩余连接数：
+Beijing Time	北京时
+Primary SSC(ID)	主目标(ID)
+Secondary SSC(ID)	次目标(ID)
+Time of Close Approach(UTC)	接近时刻(UTC)
+Time In(UTC)	开始时刻(UTC)
+Time Out(UTC)	结束时刻(UTC)
+Equivalent Dist(km)	等效距离(km)
+Miss Dist(km)	相对距离(km)
+R-Dist(km)	径向距离(km)
+T-Dist(km)	横向距离(km)
+N-Dist(km)	法向距离(km)
+Relative Velocity(km/s)	相对速度(km/s)
+The current %1 rows of data	当前%1行数据
+Add to Scenario	添加到场景
+Equivalent Dist(m)	等效距离(m)
+Equiv Dist Lower Bound(m)	等效距离下界(m)
+Miss Dist(m)	相对距离(m)
+R-Dist(m)	径向距离(m)
+T-Dist(m)	横向距离(m)
+N-Dist(m)	法向距离(m)
+Close Aproach Angle(deg)	接近夹角(deg)
+Relative Velocity(m/s)	相对速度(m/s)
+Orbital Data Type	目标数据类型
+config error!	配置错误！
+Maneuvering Traverse Result	机动遍历结果
+Optimized Analytic Result	优化分析结果
+No Ephemeris Data, Please Compute First!	无星历数据，请先计算星历！
+CSV files (*.csv);;TXT files (*.txt);;All files (*)	CSV文件(*.csv);;文本文件(*.txt);;所有文件(*)
+Advanced setup of Cam Safety Analysis	轨控安全性分析高级设置
+view details	查看详情
+Second level Result for Ergodic analysis	遍历分析二级结果
+Advanced setup of CAT	高级设置
+Cat computation cost %1 s	接近分析计算耗时 %1 s
+Please Enter the Correct Time Format!	请输入正确的时间格式！
+Error Drawing Data!	错误的绘制数据！
+Not Running	暂未运行
+Running	正在运行
+Execute	开始运行算例
+End	运行结束
+Maneuver Time (UTC)	机动时间(UTC)
+Outliers	异常值
+Semi-major Axis Deviation(km)	半长轴偏差(km)
+Radial Maneuver(m/s)	径向机动(m/s)
+Transverse Maneuver(m/s)	迹向机动(m/s)
+Normal Maneuver(m/s)	法向机动(m/s)
+Dip angle Deviation(deg)	倾角偏差(deg)
+RAAN Deviation(deg)	升交点赤经偏差(deg)
+Maneuver Spacecraft	机动航天器
+Target Spacecraft	目标航天器
+Ephemeris Operation	星历操作
+Ephemeris Operation Error!	星历操作失败！
+Reminder:%1	提示：%1
+Warning:%1	警告：%1
+Orbital Maneuver Planning	轨道规划
+Uncertainty Quantification	偏差分析段
+Monte Carlo Simulation	蒙特卡洛
+Polynomial Chaos Expansion	多项式混沌
+Adaptive GMM-PCE	自适应高斯混合模型与多项式混沌展开
+All Samples Simulation	所有样本仿真
+Nominal Trajectory Simulation	标称仿真
+One Sample Simulation	一次样本仿真
+Iterate	迭代
+Not Active	不激活
+Run Once	运行一次
+Minimize and Constraint	最小化和约束
+Maximize and Constraint	最大化和约束
+Ascending Pass	上升经过
+Descending Pass	下降经过
+Arbitrary Pass	任意经过
+Impulsive	脉冲
+Run active profiles	迭代运行
+Run Nominal Sequence	不迭代运行
+Run active profiles ONCE	应用迭代结果运行
+Run to Return and Continue	运行完本段后继续
+Run to Return and Stop	运行完本段后停止
+No change in value	不变
+Add value	增加
+Subtract value	减少
+Set to new value	设为新值
+Set to Scenario Time	设置场景时间
+Update	更新段
+Initial State	初始段
+Maneuver	机动段
+Stop	停止段
+Return	返回段
+Parameters of BackwardSequence	逆向序列参数
+Basic	基础信息
+Final Value	最终值
+Display Unit	显示的单位
+Invalid value exists!	存在无效值！
+Uncertainty Quantification Method -	偏差分析算法 -
+The segment following this sequence will start with the final state of segment Initial State %1.	在本序列段后的段将以本序列段的 %1 段 终端状态 为初始状态。
+The segment following this sequence will start with the initial state of segment Initial State %1.	在本序列段后的段将以本序列段的 %1 段 初始状态 为初始状态。
+Variable	变量
+Achieved Value	当前值
+Desired Value	期望值
+Iteration Number	迭代序号
+Goal	是否目标函数
+Iteration%1	迭代%1
+Input Uncertainty	输入偏差量
+Output Uncertainty	输出偏差量
+Apoapsis Altitude	远拱点高度
+Revolution Per Day	每日圈数
+Periapsis Altitude	近拱点高度
+Lon. Ascn. Node	升交点经度
+General	通用
+Spacecraft Parameters	航天器参数
+Joining	跟随
+Gauss Distribution	高斯分布
+Uniform Distribution	均匀分布
+Mixture Distribution	混合分布
+Failed to Save!	保存失败！
+Orbital	轨道设置
+Orbital Propagator	轨道预报器
+User Selected Results -	选择约束 -
+User Selected Results -%1	选择约束 - %1
+Must Choose One Item!	必须选择一个选项！
+Spacecraft	参考航天器
+Must choose an Origin!	必须选择一个原点！
+Must choose an Axes!	必须选择一个轴！
+Sequence Parameters	序列参数
+New Profiles	新建配置
+Confirm Delete?	继续删除吗？
+Result Data	结果数据
+Algorithm Parameters	算法参数
+Uncertainty Setting	偏差分析设置
+Burnout	发射终点
+Launch	发射点
+Profiles	配置
+Rebuild Model	重建模型
+Incompatible embedding model dimensions,should we rebuild?	嵌入模型维度不兼容，是否重建？
+ATK-ReadRegiste	ATK-使用协议
+"Aerospace Tool Kit (ATK) Software License Agreement
+    This agreement is made between the user of the software (hereinafter referred to as ""User"") and the School of Aerospace Science and Technology, National University of Defense Technology (hereinafter referred to as ""the School""), regarding the use of the ""Aerospace Tool Kit (ATK) Software"" (hereinafter referred to as ""ATK Software""). Please read carefully and fully understand all the terms, especially those concerning exemption or limitation of liability.
+1.	User once uses ATK Software, it signifies complete acceptance of this agreement and all its terms and conditions.
+2.	User downloads and uses ATK Software, the School grants a personal, non-transferable, and non-exclusive license. User may only install, use, display, and run ATK Software on terminal devices for non-commercial purposes.
+3.	If ATK Software is used for academic research, the resulting papers shall cite Aerospace Tool Kit (ATK) Software; if used for other purposes, prominent acknowledgment ""Based on Aerospace Tool Kit ATK Software"" shall be displayed.
+4.	All intellectual property rights of ATK Software, including but not limited to: text, icons, charts, colors, layouts, data, printed materials, or electronic documents, are protected by Copyright Law, Software Protection Regulations, Trademark Law, Patent Law, Anti-Unfair Competition Law of the People's Republic of China, and relevant international treaties. Except for third-party authorized software, all rights belong to the School.
+5.	User is prohibited from reverse engineering, decompiling, or attempting to obtain ATK Software source code. User only obtains limited usage rights. If User violates this clause, the School has the right to immediately revoke all usage rights.
+6.	User shall comply with national laws and regulations when using ATK Software. The School assumes no responsibility for User's usage behavior.
+7.	If User needs to use ATK Software for commercial purposes, corresponding permission must be obtained.
+8.	This software is currently free for non-commercial users. The School reserves the right to charge fees for all or part of the software's functions in the future.
+9.	The final interpretation right of this agreement belongs to the School.
+
+Contact Email: atk_nudt@163.com; Contact Phone: 16670175501"	"航天任务工具箱 ATK（Aerospace Tool Kit）软件使用协议
+    本协议是软件使用者（以下简称“用户”）与中国人民解放军国防科技大学空天科学学院（以下简称“学院”），关于“航天任务工具箱 ATK（Aerospace Tool Kit）软件”（以下简称“ATK 软件”）的使用协议，请认真阅读、充分理解各条款内容，特别是免除或限制责任条款。
+1.用户一旦使用ATK软件，即表示完全同意本协议，接受本协议的各项条件约束。 
+2.用户下载使用ATK 软件，学院授予一项仅个人的、不可转让的及非排他性的许可，用户仅为非商业目的在终端设备上安装、使用、显示、运行 ATK 软件。 
+3.若ATK 软件被用于学术研究，则相关论文成果中应引用航天任务工具箱ATK软件;若用于其它用途,需在显要处标注“基于航天任务工具箱 ATK软件”。
+4.ATK 软件一切知识产权，以及与软件相关的所有信息内容，包括但不限于：文字表述及其组合、图标、图饰、图表、色彩、版面框架、有关数据、印刷材料、或电子文档等均受《中华人民共和国著作权法》、《中华人民共和国计算机软件保护条例》、《中华人民共和国商标法》、《中华人民共和国专利法》、《反不正当竞争法》和相应的国际条约以及其他知识产权法律法规的保护，除涉及第三方授权的软件或技术外，归学院享有。 
+5.用户禁止对ATK 软件进行反向工程、反向编译，或者以其他方式尝试获取 ATK 软件源代码，用户获得的只是ATK软件的有限使用权。 若用户违反本条约定，学院有权立即收回全部使用权限。
+6.用户使用ATK软件应当遵守国家法律法规，学院不对用户的使用行为负责。 
+7.如用户需要将ATK软件用于商业行为，需获得相应许可。 
+8.本软件目前对非商业用途用户免费开放。学院保留在未来（包括但不限于版本升级、功能扩充、服务模式调整等情形下）对软件全部或部分功能、服务、版本设置收费的权利。
+9.本协议的最终解释权归学院。
+
+联系邮箱：atk_nudt@163.com；联系电话：16670175501"
+Agree	同意
+Disagree	不同意
+Understand	我已认真阅读该协议
+Regional Coverage Reports	区域覆盖报告
+FOM	品质因子
+New	新增
+Figure of Merit Reports	品质因子报告
+Regional Coverage Graphics	区域覆盖图表
+Figure of Merit Graphics	品质因子图表
+Please add FOM objects!	请添加品质因子对象！
+No selected FOM object!	未选择品质因子对象！
+"This coverage definition has no FOM object!
+Click button New to add FOM object."	"当前覆盖定义对象未附加品质因子对象！
+点击新增按钮添加品质因子对象。"
+Pop Window	弹出窗口
+Select Object:	选择对象：
+Elevation Contours	仰角轮廓线
+Elevation Ellipse	仰角椭圆
+Level (deg)	分级(deg)
+Ellipse Set	椭圆设置
+Show Name	显示名称
+Show Center	显示中心点
+Line Type	线型
+Show Contours Cones	显示轮廓锥
+Model File	模型文件
+Log Scale	Log比例
+Euler	欧拉角
+Euler1(deg)	欧拉角1(度)
+Euler2(deg)	欧拉角2(度)
+Euler3(deg)	欧拉角3(度)
+Label Offset	标签偏移量
+Y(m)	Y(m)
+Z(m)	Z(m)
+X(m)	X(m)
+Translational Offset	平移补偿
+Preview	预览示意图
+Default Viewpoint	默认视点
+Pixel Size	像素大小
+%1 not exist	%1 不存在
+Open Model File	打开模型文件
+OpenSceneGraph (*.ive);;3D Studio (*.3ds);;Flight Studio OpenFlight (*.flt);;Autodesk (*.fbx);;All files (*)	OpenSceneGraph (*.ive);;3D Studio (*.3ds);;Flight Studio OpenFlight (*.flt);;Autodesk (*.fbx);;所有文件(*)
+Select Image File	选中图标文件
+PNG Files(*.png);;BMP Files(*.bmp);;JPG Files(*.jpg);;TIF Files(*.tif)	PNG文件(*.png);;BMP文件(*.bmp);;JPG文件(*.jpg);;TIF文件(*.tif)
+Software Agreement	软件协议
+Release Note	发布说明
+Version	版本
+1	1
+Basic	基础
+Main	主要配置
+Instant Pc	瞬时碰撞
+Advanced	高级配置
+3D Graphics	3D 制图
+Attributes	属性
+In Development	开发中
+Simulation Start Time and Stop Time	仿真开始和结束历元
+Threshold	门槛
+Measurement Range	测量范围
+Confirm After Computed	测量范围
+Primary Object	主要对象
+Secondary Object	次要对象
+σz(m)	σz(m)
+σvy(m/s)	σvy(m/s)
+Y(m)	Y(m)
+σvx(m/s)	σvx(m/s)
+σy(m)	σy(m)
+σx(m)	σx(m)
+Vy(m/s)	Vy(m/s)
+X(m)	X(m)
+0~10000	0~10000
+Time(UTC)	时间(UTC)
+Vx(m/s)	Vx(m/s)
+Z(m)	Z(m)
+0~10	0~10
+J2000 Frame	J2000坐标系
+Vz(m/s)	Vz(m/s)
+σvz(m/s)	σvz(m/s)
+yyyy-MM-dd hh:mm:ss zzz	yyyy-MM-dd hh:mm:ss zzz
+LVLH Frame	LVLH坐标系
+Precise Orbit Determination of Object A	A目标定轨数据
+Precise Orbit Determination of Object B	B目标定轨数据
+Time of Close Approach	接近时刻(UTC)
+Orbit Propagator	预报模型
+Two-body	二体
+J2 Mean	J2平均
+Vinti	Vinti
+Combined Body Radius(m)	联合包络球半径(m)
+Instant Pc Probability	瞬时碰撞概率
+Filter	过滤器
+Using	使用
+Content	内容
+Limit of Date	轨道历元过期门限
+Limit of Apogee and Perigee	远近地点门限
+Overview	简述
+Detail	详细描述
+Metadata	元数据
+Visibility	可见性
+Display Main Ellipsoid	显示主要椭球体
+Display Secondary Ellipsoid	显示次要椭球体
+All	全部
+Available	空闲的
+Chosen	选择
+Default	默认
+tangential	切线
+Cross Track	交叉轨道
+Nomal	通用
+Class	类型
+CovOffset	协方差偏移量
+Quad/Orb	二次/轨道
+Quadratic	二次方程
+AstroLab	客户端
+ATK Script files (*.atks)	ATK脚本文件(*.atks)
+ATK Script files (*.atks);;All files (*)	ATK脚本文件(*.atks);;所有文件(*)
+Copy Data	复制数据
+Input/Output Uncertainty	输入输出偏差量
+Type of Distribution	分布类型
+Input Covariance Matrix	输入协方差
+Lower Bound	偏差量下界
+Upper Bound	偏差量上界
+Output Covariance Matrix	输出协方差
+Number of Samples	样本点数量
+Initial Sample Size	初始样本量
+Expansion Order	最大展开阶数
+q Norm	q范数
+Expected relative error	预期相对误差
+Apply Changes	应用修改
+When Profiles Converge	收敛时
+Action	动作
+Properties	内容
+Profile Type	配置类型
+Mode	模式
+User Comment	用户描述
+AlignedVector	对准矢量
+ConstrainedVector	约束矢量
+AlignedAxis	对准轴
+ConstrainedAxis	约束轴
+The alignment and constraint body vectors cannot be co-linear.	对准体矢量与约束体矢量不能共线。
+ConstaintOffset	约束偏移角
+Properties Error	属性错误
+"Errors remain on the following pages(s)
+Attitude
+Errors must be corrected before values can be applied(or OK)"	"以下页面仍存在错误：
+姿态
+必须先修正错误，才能应用设置或单击“确定”。"
+ReferenceAxes	参考轴
+Qx	Qx
+Qy	Qy
+Qz	Qz
+Qs	Qs
+Add segment	添加段
+Remove segment	删除段
+AttitudeFile	姿态文件
+STK Files (*.a)	STK文件(*.a)
+RotationOffset	初始偏移角
+Axis	轴
+aligned with	指向
+constrained to	约束于
+Spherical	球形坐标系
+Cartesian	笛卡尔坐标系
+Eular Angles	欧拉角
+PR Angles	PR角
+Ellipse Data	椭圆数据
+Custom Position	自定义位置
+Semi-Major Axis (m)	半长轴(m)
+Semi-Minor Axis (m)	半短轴(m)
+Bearing (deg)	方位角(deg)
+Compute da_3s	半长轴偏差估算
+Elevation(deg)	推力俯仰角(deg)
+Standard Deviation 3σ	标准差3σ
+Mean	均值
+Burning Duration(sec)	开机时长(sec)
+Engine Thrust(N)	发动机推力(N)
+Spacecraft Mass(kg)	航天器质量(kg)
+Azimuth(deg)	推力方位角(deg)
+Standard Deviation 3σ(m)	标准差3σ(m)
+compute	计算
+Trend of Close Approach	交会距离趋势
+Table of Close Approach	交会距离列表
+Time	历元
+Equivalent Distance(m)	等效距离(m)
+Relative Distance(m)	总距离(m)
+R(m)	径向（m）
+T(m)	横向（m）
+N(m)	法向（m）
+Close Approach Angle(deg)	接近角(deg)
+Select the result file	选择结果文件
+result (*.txt)	结果 (*.txt)
+Calculating	计算
+Please Wait While Calculating...	正在计算，请稍后...
+Stop Calculation	停止计算
+Result of CAM Enumeration	机动遍历结果
+Load The Selected Maneuver Time And Semimajor Axis	将选中项的 时刻 和 半长轴控制量
+Add to Verification	载入到机动复核
+Excluded Object	排除目标
+SSC Number of Excluded Object	排除目标SSC编号
+CAM	轨控安全性分析
+UTC	UTC
+Add Satellite To Scenario	添加卫星到场景
+Target Ephemeris File	目标星历
+Space Objects Catlog File	目标编目数据库
+Use TLE	使用TLE
+Use CTLE	使用CTLE
+Setting...	设置...
+Max range of Close Approach(m)	交会分析门限(m)
+Relative Orbit Model	相对轨道预报模型
+Linear model	线性方程
+Nonlinear Model	非线性方程
+Vinti Propgation Model	解析绝对预报
+Advanced...	高级设置...
+Time of Close Approach(UTC)	交会时刻(UTC)
+Close Approach Angle(°)	接近角(°)
+yyyy/MM/dd HH:mm:ss.zzz	yyyy/MM/dd HH:mm:ss.zzz
+Close Approach Analysis	自然交会
+Collision Aviodance Maneuver	避撞机动规划
+Lower Bound of Control Time(UTC)	控制时刻前限(UTC)
+Upper Bound of Control Time(UTC)	控制时刻后限(UTC)
+Lower Bound of da(m)	半长轴控制量下限(m)
+Upper Bound of da(m)	半长轴控制量上限(m)
+CAM Enumeration	遍历分析
+Control Time Optimization	时间规划
+Control da Optimization	控制量规划
+Enumeration Time Step(s)	时间步长(s)
+Enumeration da Step(m)	半长轴控制步长(m)
+Result	结果
+CAM Optimization	优化分析
+Min Range for CAM(m)	规避门限(m)
+Maneuver Time(UTC)	控制时刻(UTC)
+The Controlled da(m)	半长轴控制量(m)
+Maneuver Verification	机动复核
+In-track Manenver(m/s)	横向机动量(m/s)
+Maneuver Verification with Uncertianty	偏差机动复核
+Semimajor Axis Deviation 3σ(m)	半长轴标准差3σ(m)
+"Uncertainty 
+Propagation"	控制偏差预报
+Objects Loaded.	个条目已加载。
+Select Target Ephemeris	选择目标星历
+Eph Files (*.txt)	星历文件(*.txt)
+Select Ephemeris	选择卫星星历
+Satellite not selected!	未选择卫星！
+Target not selected!	未选择目标！
+The selected satellite is the same as target!	选择的卫星与目标相同！
+Add an satellite to scenario	添加卫星对象到场景
+Select from Scenario	从场景选择
+Select from Ephemeris	从星历选择
+Uncertainty Propagation	控制偏差预报
+Propagation Time(s)	预报时间(s)
+Propagation Step(s)	预报步长(s)
+Figure	坐标图
+X-axis	横坐标
+Y-axis	纵坐标
+Table	表格
+Time(UTC)	历元时刻(UTC)
+Mean or R(m)	偏差均值R(m)
+Mean or T(m)	偏差均值T(m)
+Mean or N(m)	偏差均值N(m)
+Standard Deviation 3σ for R(m)	偏差标准差R_3σ(m)
+Standard Deviation 3σ for T(m)	偏差标准差T_3σ(m)
+Standard Deviation 3σ for N(m)	偏差标准差N_3σ(m)
+Close Approach	接近分析
+Select Primary Object	选择主目标
+Select Satellite from Scenario	从场景对象选择卫星
+Select Missile/LaunchVehicle from Scenario	从场景对象选择导弹/火箭
+Input Object SSC Number	输入目标国际编号
+Enumerate All Catlog Objects	编目数据库目标遍历计算
+Object SSC Number	目标国际编号
+STK Ephemeris File	STK星历文件
+Primary Object Ephemeris	第一目标星历
+Secondary Object Ephemeris	第二目标星历
+Objects Catlog File	目标编目数据库
+Time Period	仿真分析时间
+Access Constraint	接近约束
+Max Range	相对距离门限
+Result...	结果...
+Update	刷新
+open File	打开文件
+sys err!	系统错误！
+Please select catlog file!	请选择编目文件！
+"Eph File does not Exist!
+%1"	"Eph 文件不存在!
+%1"
+%1 does not exist!	%1 不存在！
+Apply setting to this field	应用设置
+Temporary	临时
+for all Satelite objects	应用至所有目标
+remove for all Satelite objects	从所有目标移除
+for only Satellite Satellite 1	应用至目标1
+remove for only Satellite Satellite 1	从目标1移除
+Minimum Width	最小宽度
+Use Default	采用默认
+Precision	精度
+Leading Zeros	前导零
+Require Sign	请求签名
+sec	秒
+min	分
+hr	时
+cd	cd
+EarthTU	EarthTU
+SunTU	SunTU
+FN	FN
+yr	年
+Unit:	单位：
+Notation	符号
+Floating Point	浮点数
+Scientific	科学计数法
+Calculating	计算中
+Please Wait While Calculating	正在计算，请等待
+Constellation insertion	星座插入
+BEUDOU	北斗
+TIANLIAN	天链
+GALILEO	伽利略
+GLONASS	格洛纳斯
+GPS	GPS
+DSP	DSP
+yyyy-MM-dd HH:mm:ss.zzz	yyyy-MM-dd HH:mm:ss.zzz
+Export Accesses for %1	导出%1的可见性
+Export FOM Values for %1	导出%1的品质因子值
+Text File (*.txt);;All File (*)	文本文件(*.txt);;所有文件(*)
+"Value is invalid!Please enter a number whose 
+range is %1 to %2"	"无效值！请输入一个范围在 
+ %1 至 %2之间的值"
+Custom Report	自定义报告
+Access Custom Graph	可见性自定义图表
+Sun Gnd Elevation	当地太阳高度角
+LOS Solar Exclusion	太阳视线规避角
+BS Solar Exclusion	太阳视轴规避角
+BS Lunar Exclusion	月球视轴规避角
+Local Time	当地时
+Local Apparent Time	当地太阳时
+Access Report Items	可见性报告项
+Access Curve Items	可见性曲线项
+Graphics Data Display	可视化数据显示
+Data Location	显示位置
+Target Object	目标对象
+Show FOM Value	显示品质因子值
+Border	边框
+Window	窗口
+Coverage Object	访问对象
+Angular Rate	角变化率
+Select Target Object	选择目标对象
+Fuel Mass	推进剂质量
+Fuel Density	推进剂密度
+Tank Volume	燃料箱容量
+Maximum Fuel Mass	最大推进剂质量
+Tank Pressure	燃料箱压力
+Tank Temperature	燃料箱温度
+Inspect	检查
+Point FOM	品质因子值
+Point Satisfaction	有效覆盖时段
+Point Coverage	覆盖时段
+Point Daily Coverage	每日覆盖
+Point Prob Of Coverage	覆盖概率
+Grid Point Report	网格点报告
+Please select an inspect object	请选择检查对象
+Please select a grid point of %1 in 2D graphics	请在二维窗口中选择%1的网格点
+Point Location (Lat/Lon): %1 / %2 deg	网格点位置(纬度/经度)：%1 / %2 deg
+Point Area: %1 km^2	网格点面积：%1 km^2
+Point is Covered %1 % of the time by up to %2 assets	网格点有%1%的时间被至多%2个对象覆盖
+Point is not covered	网格点未被覆盖
+The value of %1 is %2	%1的值为%2
+Trail Type	轨迹类型
+Figure of Merit Legend Layout	品质因子图例布局
+2D Graphics Window	2D视图窗口
+Show at Pixel Location	显示位置
+3D Graphics Window	3D视图窗口
+Transparency(%)	透明度(%)
+Text Options	文字选项
+Number of Dicimal Digits	小数位数
+Floating Point Format	浮点数格式
+Range Color Options	颜色范围选项
+Max Color Squares per Row	每行最多
+Level Order	色阶顺序
+Max Color Squares per Column	每列最多
+Color Square Width (pixels)	色块宽度(像素)
+Color Square Height (pixels)	色块高度(像素)
+Auto compute	自动计算
+Scientific (E)	科学计数法(E)
+Scientific (e)	科学计数法(e)
+Horizontal - Max to Min	横向-从大到小
+Horizontal - Min to Max	横向-从小到大
+Vertival - Max to Min	纵向-从大到小
+Vertival - Min to Max	纵向-从小到大
+Reentry	再入阶段
+Recovery	回收阶段
+ReentryAndRecovery	再入及回收阶段
+Maneuver Detection	机动检测
+Detection Type	检测类型
+TLE Data Based Detection	基于TLE的历史机动检测
+POD Data Based Detection	基于定轨数据的机动检测
+Modify	修改配置
+TLE Data of the Satellite	待检测卫星TLE数据
+Judgment Method	判断方法
+Confidence Level	置信概率
+Mahalanobis Distance	马氏距离
+RLOWESS	鲁棒低阶局部加权回归
+LOWESS	低阶局部加权回归
+No smoothing	不平滑
+Detected Orbital Element	检测参数
+Impulse Estimation Method	机动量估计方法
+Data Smoothing Method	平滑方法
+Cross-Propagation of Orbit	交叉弧段预报估计
+The Time Has Most Propagation Anomaly	引起最多异常点的数据时刻
+Step of Cross-Propagation(s)	交叉弧段预报步长(s)
+Width of Window	窗口宽度
+Auto Computation	自动计算
+X-axis	x轴
+Y-axis	y轴
+Semimajor axis(km)	半长轴(km)
+Argument of Latitude(deg)	纬度幅角(deg)
+J2 Mean	J2长期项
+Vinti	Vinti模型
+σz(m)	z轴距离均方差
+σvy(m/s)	y轴速度均方差
+Y(m)	Y轴
+σy(m)	y轴距离均方差
+σx(m)	x轴距离均方差
+σvx(m/s)	X轴速度均方差
+Vy(m/s)	Y轴速度
+X(m)	X轴
+Z(m)	Z轴
+Vx(m/s)	x轴速度
+Vz(m/s)	z轴速度
+σvz(m/s)	z轴速度均方差
+yyyy-MM-dd hh:mm:ss zzz	yyyy-MM-dd hh:mm:ss zzz
+Maneuver Reachable Domain	机动可达域
+Characteristic Velocity (DV,m/s)	最大机动能力(DV,m/s)
+Azimuth Computed Points	方位遍历点数
+Elevation Computed Points	俯仰遍历点数
+J2000 Reachable Domain	J2000系可达域包络点
+Potential Reachable Arc	潜在机动威胁弧段
+Start Time(s)	开始时间(s)
+End Time(s)	结束时间(s)
+Field Name	功能名
+Field Description	功能描述
+Form	添加一行
+Wind Control	是否考虑风场
+File...	文件...
+Altitude-WindDirection	风向-高度
+Altitude-WindVelocity	风向-速度
+WindDirection(deg)	风向（deg）
+WindVelocity(m/s)	风速（m/s）
+Dat Files (*.dat);;All files (*)	Dat文件(*.dat);;所有文件(*)
+Parameter Recovery  Sequence	开伞次数
+Time Sequence	时间序列
+MainDisreef0_0	主伞开伞时刻
+JianSuDeployed0_0	减速伞开伞时刻
+Main Chute Cd0_0	主伞全张满特征面积
+Drag Chute Cd0_0	减速伞全张满特征面积
+Pressure Key	压力高度开关
+JianSuDisreef1_0	减速伞解除收口时刻
+MainDeployed1_0	主伞开伞时刻
+MainDisreef1_0	主伞解除收口时刻
+JianSuDeployed1_0	减速开伞时刻
+Drag Chute Cd1_1	减速伞满张特征面积
+Main Chute Cd1_0	主伞收口特征面积
+Main Chute Cd1_1	主伞满张特征面积
+Drag Chute Cd1_0	减速伞收口特征面积
+JianSuDisreef2_1	减速伞解除一次收口时刻
+MainDeployed2_0	主伞开伞时刻
+JianSuDeployed2_0	减速伞开伞时刻
+MainDisreef2_1	主伞解除一次收口时刻
+JianSuDisreef2_2	减速伞解除二次收口时刻
+MainDisreef2_2	主伞解除二次收口时刻
+Drag Chute Cd2_0	减速伞一次收口特征面积
+Drag Chute Cd2_1	减速伞二次收口特征面积
+Drag Chute Cd2_2	减速伞全张满特征面积
+Main Chute Cd2_0	主伞一次收口特征面积
+Main Chute Cd2_2	主伞全张满特征面积
+Main Chute Cd2_1	主伞二次收口特征面积
+Size Error	尺寸错误
+Sequence 0s	未收口
+Sequence 1s	一次收口
+Sequence 2s	二次收口
+Newton Iterations	牛顿迭代次数
+Homotopic Iterations	同伦迭代次数
+Position Tolerance	瞄准位置误差
+Perturbed Solution	摄动迭代
+Limited to Ellipitc	限制为椭圆轨道
+One Maneuver	单脉冲
+Min Periapsis Height	最小近拱点高度
+Desired Final State	瞄准状态
+Coordinate Type	坐标类型
+Coordinate System	坐标系
+Vx	速度X
+Vz	速度Z
+Vy	速度Y
+Argument of Periapsis	近拱点角距
+Shoot Difference in Central Body ICS	瞄准误差(中心天体惯性系)
+DV1 in Central Body ICS	脉冲机动1(中心天体惯性系)
+△V	速度增量V
+△Vz	速度增量Vz
+△Vx	速度增量Vx
+△Vy	速度增量Vy
+DV2 in Central Body ICS	脉冲机动2(中心天体惯性系)
+State to Pass to Next Segment	传递给下一段的状态
+Inherit Attribute	继承属性
+Inherit From	继承自
+Inherit State	继承状态
+Basic Attribute	基础属性
+Please Select a Target Sequence!	请选择一个轨道规划段！
+Specify burnout state in	坐标系统
+Fixed Velocity	固定速度
+Inertial Velocity	惯性速度
+Inertial Velocity Azimuth	惯性速度方位角
+Inertial Horizontal Flight Path Angle	惯性速度航迹角
+Velocitye Type	速度类型
+Time of Flight	飞行时间
+Downrange Dist	水平距离
+X Component	位置X
+Y Component	位置Y
+Z Component	位置Z
+Vx Component	速度X
+Vy Component	速度Y
+Vz Component	速度Z
+A spherical coordinate system	球坐标系
+The central-body-fixed Cartesian system	中心天体固连直角坐标系
+Geocentric	地心坐标
+Launch Az / Alt	方位角-高度
+Launch Az / Radius	方位角-半径
+Available Components	可选计算组件
+Father Component Name	父组件名称
+Reference Coordinate	参考系
+Segment Object	段对象
+User-Calculation Object Selection	计算对象
+Control Variables and Constraints	控制变量与约束
+Control Variables	控制变量
+Initial Value	初值
+Correction	累积校正量
+Perturbation	摄动量
+Scaling Method	归一化方式
+Scaling	归一化参数
+Tolerance	收敛误差
+Weight	权重系数
+Maximum Number of Iteration	最大迭代次数
+PopulationSize	种群规模
+Root-Finding Algorithm	求根算法
+Newton’s Method	牛顿迭代法
+Secant Method	割线法
+Derivative Calculation	差分方法
+Line Search	一维搜索
+Lower Bound	下限
+Upper Bound	上限
+Homotopy	同伦
+Steps	步数
+Optimization Method	优化算法
+DE	差分进化算法
+GA	遗传算法
+History	历史
+No scaling	不归一化
+By initial value	按初值归一化
+By specified value	按给定值归一化
+By tolerance	按容许误差归一化
+By desired value	按期望值归一化
+Forward Difference	前向差分
+Central Difference	中心差分
+Signed Difference	按初值符号差分
+Horizontal Track Angle	水平航迹角
+Position Magnitude	位置大小
+Exception value input!	输入异常值！
+Field Editor	输入错误
+Hold Frame	保持
+Step Size	步长
+Integration Parameters	积分参数
+Maximum Propagation Duration	最大外推时间
+Stop Conditions	停止条件
+Propagator	轨道预报
+Stop after a specified duration	预报时长
+Stop on a specified date &amp; time	历元时刻
+Stop on a specified altitude from the central body	高度
+Stop on a specified longitude from the central body	经度
+Stop on a specified latitude from the central body	纬度
+Stop at the point farthest from the origin	远拱点
+Stop at the point closest to the origin	近拱点
+Stop when crossing the X-Y plane from South (-) to North (+)	升交点
+Stop when crossing the X-Y plane from North (+) to South (-)	降交点
+Stop when crossing the X-Y plane	XY平面交点
+Stop when crossing the Y-Z plane	YZ平面交点
+Stop when crossing the Z-X plane	ZX平面交点
+Stop on a specified distance from an origin	与中心天体距离
+Stop on a specified true anomaly	真近点角
+Stop on a specified mean anomaly	平近点角
+Stop on a specified Argument of Latitude	纬度辐角
+Stop on a specified value using specifed calulation object	约束计算值
+Ascent Type	上升类型
+Initial Acceleration	初始加速度
+Ellipse:Cubic Motion	三次曲线
+Ellipse:Quartic Motion	四次曲线
+Maneuver Planning	轨道机动规划
+Terminate	停止
+Summary	概要
+Add	新增
+Results...	约束配置...
+Satellite	参考卫星
+Start(UTC)	开始时间(UTC)
+Stop(UTC)	结束时间(UTC)
+File	文件操作
+Read configuration	读取配置
+Read the configuration?	是否读取配置文件？
+The directory to save the files	文件保存路径为
+Failed to read file, new configuration is created.	读取文件失败，创建新配置。
+Propagate	预报段
+Launch	发射段
+Follow	跟随段
+Target Sequence	瞄准序列段
+Sequence	序列段
+Backward Sequence	逆向序列段
+Hold	保持段
+Lambert Target	兰伯特瞄准段
+Inherit	继承段
+Digraph	框图建模段
+Insert RPO	插入RPO段
+Rendezvous	交会
+Around	伴飞
+Evacuation	撤离
+FMCircumnavigation	圆形受控绕飞段
+Perch	定点保持段
+TearDrop	水滴绕飞段
+FollowSun	太阳同步绕飞段
+NMCircumnavigation	自然绕飞段
+NMCircumnavToRbar	自然绕飞到Rbar
+RbarToNMCircumnav	Rbar到自然绕飞
+RbarToVbar	Rbar到Vbar
+VbarToNMCircumnav	Vbar到自然绕飞
+VbarToRbar	Vbar到Rbar
+SetInitialState	设定初值
+GEOExit	GEO轨道撤离段
+ConeApproach	圆锥走廊接近
+CorridorApproach	圆柱走廊接近
+FollowSunMotion	顺光接近
+FMWaypoints	直线逼近段
+Hop	单次跳跃段
+HopAndStop	跳跃并停止段
+StopPlaneCross	停止到平面
+StopRelMotion	停止相对运动
+SetDeltaV	机动
+Coast	滑行
+FastRendezvous	快速交会
+GEORendezvous	GEO轨道交会段
+GEODrift&Rendezvous	GEO轨道漂移交会段
+GEOTargetDrift	GEO目标漂移段
+GEOAltDrift	GEO高度漂移
+GEODrift	GEO漂移
+GEOTargetAltDrift	目标高度漂移
+NoncoplanarFastRendezvous	异面快速交会
+NoncoplanarRendezvous	异面交会
+No segment is selected!	未选择段！
+No target point is selected!	未选择目标节点！
+Program instance is running, prohibit deleting segments!	正在运行算例，禁止删除段！
+Delete segment	删除段
+Confirm Delete?	确认删除当前段？
+The Input Parameter is Incorrect, please Modify it!	输入参数存在错误，请修改！
+Run Entire Mission Control Sequence!	开始运行算例！
+This run is finished!	运行结束！
+Rename(F2)	重命名(F2)
+Insert Before	在上方插入
+Insert After	在下方插入
+Delete(Delete)	删除(删除)
+Cut(Ctrl + X)	剪切(Ctrl + X)
+Copy(Ctrl + C)	复制(Ctrl + C)
+Paste Before(Ctrl+Shift+V)	在上方粘贴(Ctrl+Shift+V)
+Paste After(Ctrl + V)	在下方粘贴(Ctrl + V)
+The Program is Running, Are you sure to Stop it?	正在执行算例，是否停止计算？
+Program is running, cannot read configuration!	正在运行算例，暂不能读取配置文件！
+Failed to open configuration!	读取配置失败！
+Program is running, cannot new configuration!	正在运行算例，暂不能新建配置文件！
+The directory to save the files:	文件保存路径为:
+Failed to new configuration!	新建配置失败！
+Failed to save configuration!	保存配置失败！
+Save As file	保存为文件
+Initial State Setting	初始段参数配置
+XML files (*.xml);;All files (*)	XML文件(*.xml);;所有文件(*)
+TargetSequence	瞄准序列段
+BackwardSequence	逆向序列段
+LambertTarget	兰伯特瞄准段
+RPOExitGEO	GEO轨道撤离段
+RPOGEORendezvousNolead	GEO轨道交会段
+RPOGEORendezvousDrifting	GEO轨道漂移交会段
+RPOGEOTargetDrift	GEO目标漂移段
+RPOForcedMotionWaypoint	直线逼近段
+RPOHop	单次跳跃段
+RPOHopAndStop	跳跃并停止段
+RPOForcedMotionCircumnav	圆形受控绕飞段
+RPOPerchEqualSpacing	定点保持段
+RPOTearDrop	水滴绕飞段
+RPOFollowSun	太阳同步绕飞段
+RPONaturalMotionCircumnav	自然绕飞段
+RPONMCircumnavToRbar	自然绕飞到Rbar
+RPORbarToNMCircumnav	Rbar到自然绕飞
+RPORbarToVbar	Rbar到Vbar
+RPOVbarToNMCircumnav	Vbar到自然绕飞
+RPOVbarToRbar	Vbar到Rbar
+RPOSetInitialState	设定初值
+RPOConeApproach	圆锥走廊接近
+RPOCorridorApproach	圆柱走廊接近
+RPOFollowSunMotion	顺光接近
+RPOStopPlaneCross	停止到平面
+RPOStopRelMotion	停止相对运动
+RPOSetDeltaV	机动
+RPOCoast	滑行
+RPOFastRendezvous	快速交会
+RPOGEOAltDrift	GEO高度漂移
+RPOGEODrift	GEO漂移
+RPOGEOTargetAltDrift	目标高度漂移
+RPONoncoplanarFastRendezvous	异面快速交会
+RPONoncoplanarRendezvous	异面交会
+Maneuver Type	机动类型
+Thrust Axes	推力坐标轴
+Cartesian	直角坐标
+Delta Vx	速度增量 Vx
+Delta Vy	速度增量 Vy
+Delta Vz	速度增量 Vz
+Elevation	仰角
+Magnitude	大小
+Engine	发动机
+Engine Model	推进力类型
+Isp(m/s)	比冲(m/s)
+Update Mass Based on Fuel Usage	根据推进剂消耗更新质量
+Unit Vector X	单位矢量 X
+Unit Vector Y	单位矢量 Y
+Unit Vector Z	单位矢量 Z
+Force Model	摄动力
+UTC	UTC
+General Options	通用选项
+1	1
+Save Results Achieved to File	保存约束量达到值到文件
+ExitGeo.DesiredDriftRate	漂移率
+ExitGeo.PropagatorTime	预报时间
+ExitGeo.SolveMethod	求解算法
+ExitGeo.Desired circular GEO drift rate after exit maneuvers in deg/day	同步轨道漂移率（度/天）
+ExitGeo.Propagator Time in Period	撤离段预报时间（以轨道周期计）
+ExitGeo.SolveMethod of Differential Corrector as integer	微分修正求解算法
+FMC.CircumnavRadius	绕飞半径
+FMC.NumPoints	瞄准点数
+FMC.FMCNumRevs	圈数
+FMC.TransferDuration	等待时间
+FMC.InitialOffsetAngle	天顶初始偏移角
+FMC.CrossTrackInTrackRotation	迹向旋转角度
+FMC.CrossTrackRadialRotation	径向旋转角度
+FMC.RadialOffset	径向偏移距离
+FMC.InTrackOffset	迹向偏移距离
+FMC.CrossTrackOffset	法向偏移距离
+FMC.WayMaxDegrees	真近点角变化量最大值
+FMC.TimeCompressionRatio	绕飞时间比
+FMC.SolveMethod	求解算法
+FMC.Radius of the Force Motion Circumnav circle in meters	圆形受控绕飞轨迹半径
+FMC.Number of points in the FMC per rev as integer	绕飞圆上瞄准点数
+FMC.Number of revs to persist in the FMC as double	圆形受控绕飞圈数
+FMC.Transfer duration from current time to start of FMC in seconds	当前时刻距绕飞开始时刻的时间间隔（秒）
+FMC.Initial offset angle of FMC from zenith direction in degress	天顶方向初始偏移角，以逆时针方向为正（度）
+FMC.Rotation angle of FMC about the intrack axis in degrees	绕飞平面绕迹向轴的旋转角度（度）
+FMC.Rotation angle of FMC about the radial axis in degrees	绕飞平面绕径向轴的旋转角度（度）
+FMC.Radial offset of FMC center from target in meters	绕飞中心相对目标在径向上的偏移距离（米）
+FMC.InTrack offset of FMC center from target in meters	绕飞中心相对目标在迹向上的偏移距离（米）
+FMC.CrossTrack offset of FMC center from target in meters	绕飞中心相对目标在法向上的偏移距离（米）
+FMC.Waypoint MaxDegrees between force motion sub-points in degrees	单次机动所引起轨迹角度改变量的最大值（度）
+FMC.Time elongation (val > 1) or compression (val < 1) ratio as double	目标周期与圆形受控绕飞周期之比
+FMC.SolveMethod of Differential Corrector as integer	微分修正求解算法
+FMWaypoint.WaypointRadial	径向偏移距离
+FMWaypoint.WaypointInTrack	迹向偏移距离
+FMWaypoint.WaypointCrossTrack	法向偏移距离
+FMWaypoint.WaypointDuration	逼近持续时间
+FMWaypoint.WaypointMaxDegrees	真近点角变化量最大值
+FMWaypoint.SolveMethod	求解算法
+FMWaypoint.Desired Radial offset to taget at hop duration in meters	最终瞄准点相对目标在径向上的偏移距离（米）
+FMWaypoint.Desired InTrack offset to taget at hop duration in meters	最终瞄准点相对目标在迹向上的偏移距离（米）
+FMWaypoint.Desired CrossTrack offset to taget at hop duration in meters	最终瞄准点相对目标在法向上的偏移距离（米）
+FMWaypoint.Hop duration in seconds	直线逼近段总时间（秒）
+FMWaypoint.Max number of spacecraft degrees allowed between mini maneuvers	单次转移真近点角变化量最大值（度）
+FMWaypoint.SolveMethod of Differential Corrector as integer	微分修正求解算法
+FollSun.StandoffDist	保持距离
+FollSun.NumPoints	瞄准点数
+FollSun.FSNumRevs	圈数
+FollSun.TransferDuration	等待时间
+FollSun.WayMaxDegrees	真近点角变化量最大值
+FollSun.SolveMethod	求解算法
+FollSun.Standoff distance from target in meters	在太阳光照方向上与目标的距离（米）
+FollSun.Number of points per rev to follow sun as integer	绕飞轨迹上瞄准点数
+FollSun.Number of revs to persist following sun as double	太阳同步绕飞圈数
+FollSun.Transfer Time from current position to start of follow sun in seconds	当前时刻距绕飞开始时刻的时间间隔（秒）
+FollSun.Waypoint MaxDegrees between force motion sub-points in degrees	单次转移真近点角变化量最大值（度）
+FollSun.SolveMethod of Differential Corrector as integer	微分修正求解算法
+GeoRendDrif.DesiredRadial	径向偏移距离
+GeoRendDrif.DesiredInTrack	迹向偏移距离
+GeoRendDrif.DesiredCrossTrack	法向偏移距离
+GeoRendDrif.DesiredRadialRate	径向漂移率
+GeoRendDrif.DesiredInTrackRate	迹向漂移率
+GeoRendDrif.DesiredCrossTrackRate	法向漂移率
+GeoRendDrif.WaitTime	等待时间
+GeoRendDrif.RendezvousTime	交会时刻
+GeoRendDrif.MaxIter	最大迭代次数
+GeoRendDrif.SolveMethod	求解算法
+GeoRendDrif.Desired Radial offset to target in meters	交会位置相对目标在径向上偏移的距离（米）
+GeoRendDrif.Desired InTrack offset to target in meters	交会位置相对目标在迹向上偏移的距离（米）
+GeoRendDrif.Desired CrossTrack offset to target in meters	交会位置相对目标在法向上偏移的距离（米）
+GeoRendDrif.Desired RadialRate offset to target in meters/second	交会时相对目标在径向上的漂移率（米/秒）
+GeoRendDrif.Desired InTrackRate offset to target in meters/second	交会时与目标在迹向上的漂移率（米/秒）
+GeoRendDrif.Desired CrossTrackRate offset to target in meters/second	交会时与目标在法向上的漂移率（米/秒）
+GeoRendDrif.Wait Time in Period	当前时刻距交会开始时刻时间间隔（以轨道周期计）
+GeoRendDrif.Rendezvous Time before Lambert maneuver in Period	交会瞄准时刻（具体时间点）
+GeoRendDrif.MaxIter of Differential Corrector as integer	微分修正最大迭代次数
+GeoRendDrif.SolveMethod of Differential Corrector as integer	微分修正求解算法
+GeoRendNole.DesiredDriftRate	撤离漂移率
+GeoRendNole.DesiredRadial	径向偏移距离
+GeoRendNole.DesiredInTrack	迹向偏移距离
+GeoRendNole.DesiredCrossTrack	法向偏移距离
+GeoRendNole.DesiredRadialRate	交会时相对目标的径向速度
+GeoRendNole.DesiredInTrackRate	交会时相对目标的迹向速度
+GeoRendNole.DesiredCrossTrackRate	交会时相对目标的法向速度
+GeoRendNole.PropagatorTime	撤离预报时间
+GeoRendNole.WaitTime	等待时间
+GeoRendNole.RendezvousTime	交会时刻
+GeoRendNole.MaxIter	最大迭代次数
+GeoRendNole.SolveMethod	最大迭代次数
+GeoRendNole.Desired circular GEO drift rate after exit maneuvers in deg/day	GEO撤离机动后相对目标漂移率（度/天）
+GeoRendNole.Desired Radial offset to target in meters	交会位置相对目标在径向上偏移的距离（米）
+GeoRendNole.Desired InTrack offset to target in meters	交会位置相对目标在迹向上偏移的距离（米）
+GeoRendNole.Desired CrossTrack offset to target in meters	交会位置相对目标在法向上偏移的距离（米）
+GeoRendNole.Desired RadialRate offset to target in meters/second	交会时相对目标在径向上的漂移率（米/秒）
+GeoRendNole.Calculate Mean Argument of Periapsis	交会时与目标在迹向上的漂移率（米/秒）
+GeoRendNole.Desired CrossTrackRate offset to target in meters/second	交会时与目标在法向上的漂移率（米/秒）
+GeoRendNole.Propagator Time of ExitGEO segment in Period	GEO撤离段预报时间（以轨道周期计）
+GeoRendNole.Wait Time before Lambert maneuver in Period	当前时刻距交会开始时刻时间间隔（以轨道周期计）
+GeoRendNole.Rendezvous Time before Lambert maneuver in Period	交会瞄准时刻（具体时间点）
+GeoRendNole.MaxIter of Differential Corrector as integer	微分修正最大迭代次数
+GeoRendNole.SolveMethod of Differential Corrector as integer	微分修正求解算法
+Hop.DesiredRadial	终点径向相对位置
+Hop.DesiredInTrack	终点迹向相对位置
+Hop.DesiredCrossTrack	终点法向相对位置
+Hop.HopDuration	跳跃持续时间
+Hop.SolveMethod	求解算法
+Hop.Radius of the Force Motion Circumnav circle in meters	最终瞄准点相对目标在径向上的偏移距离（米）
+Hop.Desired InTrack offset to taget at hop duration in meters	最终瞄准点相对目标在迹向上的偏移距离（米）
+Hop.Desired CrossTrack offset to taget at hop duration in meters	最终瞄准点相对目标在法向上的偏移距离（米）
+Hop.Hop duration in seconds	单次跳跃段总时间（秒）
+Hop.SolveMethod of Differential Corrector as integer	微分修正求解算法
+NMC.SemiMinorAxis	半短轴
+NMC.RBarCrossTrackOffset	RBar偏移距离
+NMC.VBarCrossTrackOffset	VBar偏移距离
+NMC.TransferDuration	等待时间
+NMC.InTrackOffset	目标偏移距离
+NMC.WayMaxDegrees	真近点角变化量最大值
+NMC.NMCNumRevs	圈数
+NMC.SolveMethod	求解算法
+NMC.Semi Minor axis of NMC in meters	绕飞轨迹半短轴大小（米）
+NMC.CrossTrack Offset When cross postive RBar in meters	绕飞轨迹上顶点距RBar正向的距离（米）
+NMC.CrossTrack Offset When cross postive VBar in meters	绕飞轨迹右顶点距VBar正向的距离（米）
+NMC.Hop duration from current position to NMC start in seconds	当前时刻距绕飞开始时刻的时间间隔（秒）
+NMC.NMC InTrack offset from target center in meters	绕飞中心距目标在迹向上的偏移距离（米）
+NMC.Waypoint MaxDegrees per sub-step	单次转移真近点角变化量最大值（度）
+NMC.Number of revs to persist in the NMC as double	自然绕飞圈数
+NMC.SolveMethod of Differential Corrector as integer	微分修正求解算法
+PercEquaSpac.PerchDuration	保持持续时间
+PercEquaSpac.PerchMaxDegrees	真近点角变化量最大值
+PercEquaSpac.SolveMethod	求解算法
+PercEquaSpac.Perch duration in seconds	定点保持持续时间（秒）
+PercEquaSpac.Max number of spacecraft degrees allowed between mini maneuvers	单次转移真近点角变化量最大值（度）
+PercEquaSpac.SolveMethod of Differential Corrector as integer	微分修正求解算法
+TearDrop.NumCircles	圈数
+TearDrop.TearDropTurnAround	起始点距离
+TearDrop.TearDropManeuver	机动点距离
+TearDrop.TransferDuration	等待时间
+TearDrop.WayMaxDegrees	真近点角变化量最大值
+TearDrop.SolveMethod	求解算法
+TearDrop.Number of Circles in the TearDrop per rev as integer	水滴绕飞圈数
+TearDrop.Tear Drop TurnAround radial distance from target in meters	水滴轨迹圆形底部距目标的径向距离（米）
+TearDrop.Tear Drop Maneuver radial distance from target in meters	水滴轨迹尖端顶部距目标的径向距离（米）
+TearDrop.Transfer duration from current time to start of TearDrop in seconds	当前时刻距绕飞开始时刻的时间间隔（秒）
+TearDrop.Maximum degrees between waypoints during transfer	单次转移真近点角变化量最大值（度）
+TearDrop.SolveMethod of Differential Corrector as integer	微分修正求解算法
+HopAndStop.DesiredRadial	终点径向相对位置
+HopAndStop.DesiredInTrack	终点迹向相对位置
+HopAndStop.DesiredCrossTrack	终点法向相对位置
+HopAndStop.DesiredRadialRate	跳跃持续时间
+HopAndStop.SolveMethod	求解算法
+HopAndStop.Radius of the Force Motion Circumnav circle in meters	最终瞄准点相对目标在径向上的偏移距离（米）
+HopAndStop.Desired InTrack offset to taget at hop duration in meters	最终瞄准点相对目标在迹向上的偏移距离（米）
+HopAndStop.Desired CrossTrack offset to taget at hop duration in meters	最终瞄准点相对目标在法向上的偏移距离（米）
+HopAndStop.Hop duration in seconds	单次跳跃段总时间（秒）
+HopAndStop.SolveMethod of Differential Corrector as integer	微分修正求解算法
+GeoTarDrif.DesiredDriftRate	撤离漂移率
+GeoTarDrif.SolveMethod	求解算法
+GeoTarDrif.Desired circular GEO drift rate after exit maneuvers in deg/day	GEO撤离机动后相对目标漂移率（度/天）
+GeoTarDrif.SolveMethod of Differential Corrector as integer	微分修正求解算法
+FollSunMoti.StartStandoffDist	开始接近距离
+FollSunMoti.StopStandoffDist	结束接近距离
+FollSunMoti.NumPoints	接近点数
+FollSunMoti.Duration	接近时长
+FollSunMoti.TransferDuration	转移时长
+FollSunMoti.WayMaxDegrees	转移最大度数
+FollSunMoti.SolveMethod	求解算法
+FollSunMoti.Start Standoff distance from target in meters	开始接近距离（米）
+FollSunMoti.Stop Standoff distance from target in meters	结束接近距离（米）
+FollSunMoti.Number of points per rev to follow sun as integer	接近点数
+FollSunMoti.Transfer Time from start of follow sun to stop of follow sun in seconds	接近时长（秒）
+FollSunMoti.Transfer Time from current position to start of follow sun in seconds	从当前点到开始接近点的转移时长（秒）
+FollSunMoti.Waypoint MaxDegrees between force motion sub-points in degrees	转移最大度数
+FollSunMoti.SolveMethod of Differential Corrector as integer	微分修正求解算法
+Coast.CoastDuration	滑行时间
+Coast.CoastDefinition	滑行定义
+Coast.CoastCondition	滑行停止条件
+Coast.SolveMethod	求解算法
+Coast.If CoastDefinition = Duration then this is the duration of the coast in seconds	滑行段：若 CoastDefinition = Duration，则此值为滑行段持续时间（秒）。
+Coast.Stopping condtion for the propate - either enter 0=Duration or 1=Condition	滑行段：传播终止条件，输入 0 表示 Duration，输入 1 表示 Condition。
+Coast.Stopping condition as 0=Apogee, 1=Perigee, 2=AscNode, 3=DesNode	停止条件 0=远拱点, 1=近拱点, 2=升交点, 3=降交点
+Coast.SolveMethod of Differential Corrector as integer	微分修正求解算法
+SetInitState.InitRadialPos	径向位置
+SetInitState.InitInTrackPos	迹向位置
+SetInitState.InitCrossTrackPos	法向位置
+SetInitState.InitRadialVel	径向速度
+SetInitState.InitInTrackVel	迹向速度
+SetInitState.InitCrossTrackVel	法向速度
+SetInitState.InitialEpoch	历元
+SetInitState.Initial radial position offset from reference satellite in meters	径向位置（米）
+SetInitState.Initial intrack position offset from reference satellite in meters	迹向位置（米）
+SetInitState.Initial crosstrack position offset from reference satellite in meters	法向位置（米）
+SetInitState.Initial radial velocity offset from reference satellite in meters/second	径向速度（米/秒）
+SetInitState.Initial intrack velocity offset from reference satellite in meters/second	迹向速度（米/秒）
+SetInitState.Initial crosstrack velocity offset from reference satellite in meters/second	法向速度（米/秒）
+SetInitState.Initial state epoch as UTCG	历元（UTCG）
+SetDeltaV.Radial	径向速度增量
+SetDeltaV.InTrack	迹向速度增量
+SetDeltaV.CrossTrack	法向速度增量
+SetDeltaV.Radial Delta-V in m/sec	径向速度增量（米/秒）
+SetDeltaV.InTrack Delta-V in m/sec	迹向速度增量（米/秒）
+SetDeltaV.CrossTrack Delta-V in m/sec	法向速度增量（米/秒）
+FastRend.DesiredRadial	终点径向位置
+FastRend.DesiredInTrack	终点迹向位置
+FastRend.DesiredCrossTrack	终点法向位置
+FastRend.DesiredRadialRate	终点径向速度
+FastRend.DesiredInTrackRate	终点迹向速度
+FastRend.DesiredCrossTrackRate	终点法向速度
+FastRend.TransferDuration	转移时长
+FastRend.RendezvousDuration	交会时长
+FastRend.SolveMethod	求解算法
+FastRend.Desired Radial offset to taget at hop duration in meters	终点径向位置（米）
+FastRend.Desired InTrack offset to taget at hop duration in meters	终点迹向位置（米）
+FastRend.Desired CrossTrack offset to taget at hop duration in meters	终点法向位置（米）
+FastRend.Desired Radial Rate offset to taget at hop duration in meters/second	终点径向速度（米/秒）
+FastRend.Desired InTrack Rate offset to taget at hop duration in meters/second	终点迹向速度（米/秒）
+FastRend.Desired CrossTrack Rate offset to taget at hop duration in meters/second	终点法向速度（米/秒）
+FastRend.Transfer Time from current position to start of follow sun in seconds	从初始到开始变轨的转移时长（秒）
+FastRend.Rendezvous Time from current position to start of follow sun in seconds	从开始变轨到交会结束的时长（秒）
+FastRend.SolveMethod of Differential Corrector as integer	微分修正求解算法
+GeoAltDrift.DesiredDriftAlt	相对GEO高度
+GeoAltDrift.SolveMethod	求解算法
+GeoAltDrift.Desired circular GEO drift Alt after exit maneuvers in m	相对GEO高度（米）
+GeoAltDrift.SolveMethod of Differential Corrector as integer	微分修正求解算法
+GeoDrift.DesiredDriftRate	相对GEO漂移率
+GeoDrift.SolveMethod	求解算法
+GeoDrift.Desired circular GEO drift rate after exit maneuvers in deg/day	GEO撤离机动后相对目标漂移率（度/天）
+GeoDrift.SolveMethod of Differential Corrector as integer	微分修正求解算法
+TarAltDrift.DesiredDriftAlt	相对目标高度
+TarAltDrift.SolveMethod	求解算法
+TarAltDrift.Desired circular GEO drift Alt after exit maneuvers in m	相对目标高度（米）
+TarAltDrift.SolveMethod of Differential Corrector as integer	微分修正求解算法
+NFR.DesiredRadial	终点径向位置
+NFR.DesiredInTrack	终点迹向位置
+NFR.DesiredCrossTrack	终点法向位置
+NFR.DesiredRadialRate	终点径向速度
+NFR.DesiredInTrackRate	终点迹向速度
+NFR.DesiredCrossTrackRate	终点法向速度
+NFR.NumberIntercept	NFR.拦截次数
+NFR.SolveMethod	求解算法
+NFR.Desired Radial offset to taget at hop duration in meters	终点径向位置（米）
+NFR.Desired InTrack offset to taget at hop duration in meters	终点迹向位置（米）
+NFR.Desired CrossTrack offset to taget at hop duration in meters	终点法向位置（米）
+NFR.Desired Radial Rate offset to taget at hop duration in meters/second	终点径向速度（米/秒）
+NFR.Desired InTrack Rate offset to taget at hop duration in meters/second	终点迹向速度（米/秒）
+NFR.Desired CrossTrack Rate offset to taget at hop duration in meters/second	终点法向速度（米/秒）
+NFR.Number of in the Intercept	NFR.拦截中的序号
+NFR.SolveMethod of Differential Corrector as integer	微分修正求解算法
+NoncRend.DesiredRadial	终点径向位置
+NoncRend.DesiredInTrack	终点迹向位置
+NoncRend.DesiredCrossTrack	终点法向位置
+NoncRend.DesiredRadialRate	终点径向速度
+NoncRend.DesiredInTrackRate	终点迹向速度
+NoncRend.DesiredCrossTrackRate	终点法向速度
+NoncRend.DesiredDriftRate	相对目标漂移率
+NoncRend.SolveMethod	求解算法
+NoncRend.Desired Radial offset to taget at hop duration in meters	终点径向位置（米）
+NoncRend.Desired InTrack offset to taget at hop duration in meters	终点迹向位置（米）
+NoncRend.Desired CrossTrack offset to taget at hop duration in meters	终点法向位置（米）
+NoncRend.Desired Radial Rate offset to taget at hop duration in meters/second	终点径向速度（米/秒）
+NoncRend.Desired InTrack Rate offset to taget at hop duration in meters/second	终点迹向速度（米/秒）
+NoncRend.Desired CrossTrack Rate offset to taget at hop duration in meters/second	终点法向速度（米/秒）
+NoncRend.Desired circular GEO drift rate after exit maneuvers in deg/day	相对目标漂移率（度/天）
+NoncRend.SolveMethod of Differential Corrector as integer	微分修正求解算法
+ConeAppr.CorridorStartRadial	起点径向位置
+ConeAppr.CorridorStartInTrack	起点迹向位置
+ConeAppr.CorridorStartCrossTrack	起点法向位置
+ConeAppr.CorridorStopRadial	终点径向位置
+ConeAppr.CorridorStopInTrack	终点迹向位置
+ConeAppr.CorridorStopCrossTrack	终点法向位置
+ConeAppr.TransferDuration	转移时长
+ConeAppr.WayMaxDegrees	转移最大度数
+ConeAppr.CircularConeAngle	圆锥角
+ConeAppr.CorridorDuration	圆锥飞行时长
+ConeAppr.SolveMethod	求解算法
+ConeAppr.Desired Radial offset to taget at hop duration in meters	起点径向位置（米）
+ConeAppr.Desired InTrack offset to taget at hop duration in meters	起点迹向位置（米）
+ConeAppr.Desired CrossTrack offset to taget at hop duration in meters	起点法向位置（米）
+ConeAppr.Desired Radial Rate offset to taget at hop duration in meters/second	终点径向位置（米/秒）
+ConeAppr.Desired InTrack Rate offset to taget at hop duration in meters/second	终点迹向位置（米/秒）
+ConeAppr.Desired CrossTrack Rate offset to taget at hop duration in meters/second	终点法向位置（米/秒）
+ConeAppr.Transfer duration in seconds	从当前点到开始接近点的转移时长
+ConeAppr.Max number of spacecraft degrees allowed between mini maneuvers	转移最大度数
+ConeAppr.Half cone angle of spacecraft approach in degrees	圆锥角
+ConeAppr.Corridor duration in seconds	在圆锥内的飞行时长
+ConeAppr.SolveMethod of Differential Corrector as integer	微分修正求解算法
+CorrAppr.CorridorStartRadial	起点径向位置
+CorrAppr.CorridorStartInTrack	起点迹向位置
+CorrAppr.CorridorStartCrossTrack	起点法向位置
+CorrAppr.CorridorStopRadial	终点径向位置
+CorrAppr.CorridorStopInTrack	终点迹向位置
+CorrAppr.CorridorStopCrossTrack	终点法向位置
+CorrAppr.TransferDuration	转移时长
+CorrAppr.WayMaxDegrees	转移最大度数
+CorrAppr.CorridorRadius	圆柱半径
+CorrAppr.CorridorDuration	圆柱飞行时长
+CorrAppr.SolveMethod	求解算法
+CorrAppr.Desired Radial offset to taget at hop duration in meters	起点径向位置（米）
+CorrAppr.Desired InTrack offset to taget at hop duration in meters	起点迹向位置（米）
+CorrAppr.Desired CrossTrack offset to taget at hop duration in meters	起点法向位置（米）
+CorrAppr.Desired Radial Rate offset to taget at hop duration in meters/second	终点径向位置（米）
+CorrAppr.Desired InTrack Rate offset to taget at hop duration in meters/second	终点迹向位置
+CorrAppr.Desired CrossTrack Rate offset to taget at hop duration in meters/second	终点法向位置
+CorrAppr.Transfer duration in seconds	转移时长（秒）
+CorrAppr.Max number of spacecraft degrees allowed between mini maneuvers	转移最大度数
+CorrAppr.Corridor radius of spacecraft approach in meters	圆柱半径（米）
+CorrAppr.Corridor duration in seconds	在圆柱内的飞行时长
+CorrAppr.SolveMethod of Differential Corrector as integer	微分修正求解算法
+StopPlaneCross.StopRelMotion	是否停止到平面
+StopPlaneCross.PlaneCrossingAxes	StopPlaneCross.平面穿越轴系
+StopPlaneCross.PlaneCrossingCondition	StopPlaneCross.平面穿越条件
+StopPlaneCross.SolveMethod	求解算法
+StopPlaneCross.Do you want to stop the relative motion at the stopping condition as Boolean	到达平面后是否停止相对运动
+StopPlaneCross.Enter either 0=RI, 1=IC, or 2=CR as string	StopPlaneCross.以字符串输入 0=RI、1=IC 或 2=CR
+StopPlaneCross.Enter either 0=Increasing, 1=Decreasing, or 2=Either	StopPlaneCross.输入 0=递增、1=递减或 2=任一方向
+StopPlaneCross.SolveMethod of Differential Corrector as integer	微分修正求解算法
+StopRelMotion.SolveMethod	求解算法
+StopRelMotion.SolveMethod of Differential Corrector as integer	微分修正求解算法
+NMCToRbar.PlusRBar	正或者负Rbar
+NMCToRbar.SolveMethod	求解算法
+NMCToRbar.Stop on 0=-RBar or 1=+RBar as Boolean	NMCToRbar.布尔停止条件：0=-R-bar，1=+R-bar
+NMCToRbar.SolveMethod of Differential Corrector as integer	微分修正求解算法
+RbarToNMC.DesiredCrossTrack	终点法向位置
+RbarToNMC.SolveMethod	求解算法
+RbarToNMC.Desired CrossTrack offset to taget at hop duration in meters	终点法向位置（米）
+RbarToNMC.SolveMethod of Differential Corrector as integer	微分修正求解算法
+RbarToVbar.PlusVBar	正或者负Vbar
+RbarToVbar.DesiredCrossTrack	终点法向位置
+RbarToVbar.SolveMethod	求解算法
+RbarToVbar.Stop on 0=-VBar or 1=+VBar as Boolean	RbarToVbar.布尔停止条件：0=-V-bar，1=+V-bar
+RbarToVbar.Desired CrossTrack offset to taget at hop duration in meters	终点法向位置（米）
+RbarToVbar.SolveMethod of Differential Corrector as integer	微分修正求解算法
+VbarToNMC.DesiredCrossTrack	终点法向位置
+VbarToNMC.SolveMethod	求解算法
+VbarToNMC.Desired CrossTrack offset to taget at hop duration in meters	终点法向位置（米）
+VbarToNMC.SolveMethod of Differential Corrector as integer	微分修正求解算法
+VbarToRbar.PlusRBar	正或者负Rbar
+VbarToRbar.DesiredCrossTrack	终点法向位置
+VbarToRbar.SolveMethod	求解算法
+VbarToRbar.Stop on 0=-RBar or 1=+RBar as Boolean	VbarToRbar.布尔停止条件：0=-R-bar，1=+R-bar
+VbarToRbar.Desired CrossTrack offset to taget at hop duration in meters	终点法向位置（米）
+VbarToRbar.SolveMethod of Differential Corrector as integer	微分修正求解算法
+Value	数值
+Newton's Method	牛顿迭代法
+Reference Spacecraft	参考航天器
+Satellite of Reference	参考卫星
+Initial	开始UTC
+yyyy/MM/dd HH:mm:ss.zzz	yyyy/MM/dd HH:mm:ss.zzz
+Final	结束UTC
+3D Graphics	3D展示
+Results Parameters	约束参数
+Reference System	参考系
+Use State	采用状态
+Final State	终端状态
+Initial State	初始状态
+The Specified Name Is Already In Use. Please Try Another Name.	这个名字已经被使用，请尝试用其他名字。
+This segment returns control to its parent sequence	该段返回控制变量到他的父级段
+Enable	开启
+Disable	关闭
+Enable(except Profiles bypass)	开启(排除配置)
+Field Name	字段名
+Field Description	字段描述
+Axes of Coordinate:	坐标轴：
+Script Editor	脚本编辑器
+Dry Mass	干重
+Drag	大气阻力
+Coefficient(Cd)	阻力系数(Cd)
+Coefficient(Cr)	光压系数(Cr)
+SRP Area	光压面积
+This segment stops the MCS	该段使任务控制序列停止
+invalid profile type	无效配置类型
+Drag Area	大气阻力面积
+Coefficient(Cd)	大气阻力系数
+SRP Area	太阳光压面积
+Coefficient(Cr)	太阳光压系数
+UiPropertyDialog	属性对话框
+Title:	标题：
+Reentry Parameter	再入阶段参数
+ControlPara	控制参数
+Heat Flux	热流密度
+Aerodynamic	气动
+Recovery Parameter	回收阶段参数
+Initial conditions	初始条件
+Parachute	回收参数
+Wind	风场参数
+Analysis Result	分析结果
+Result Display	结果显示
+Wind File	风场显示
+Report Time	报告时间
+Field Name	字段名称
+Select Attitude Type	选择姿态类型
+Selected Regions	已选区域
+Countries	国家
+China	中国
+Reverse Direction	反向
+Value(Hz)	值(Hz)
+Reset to Defaults	重置为缺省值
+Pulse Length	脉冲长度
+Amplitude	振幅
+Fast	快速
+Medium	中速
+Slow	慢速
+Space Projection(km)	空间投影(km)
+Use Range Constraint	使用距离约束
+Sun Elevation Angle(deg)	太阳仰角(deg)
+Sun Gnd Elev Angle(deg)	太阳地平仰角(deg)
+Lunar Elevation Angle(deg)	月球仰角(deg)
+Line Of Sight(deg)	视线(deg)
+Solar Exclusion Angle	太阳规避角
+Lunar Exclusion Angle	月球规避角
+Boresight(deg)	视轴(deg)
+Additional Central Body Obstruction	附加中心天体遮挡
+Third Body Exclusion Angle	天体规避角
+SunElevationAngleMax constraint -The maximum must be greater than the mimimum	太阳仰角约束-最大值必须大于最小值
+SunGndElevAngle constraint -The maximum must be greater than the mimimum	太阳地平仰角约束-最大值必须大于最小值
+LunarElevationAngle constraint -The maximum must be greater than the mimimum	月球仰角约束-最大值必须大于最小值
+Angle (deg)	角度(deg)
+Exclude	包含
+Search	查找
+Search Target	查找目标
+First	第一个
+Before	上一个
+Next	下一个
+Not Found!	未找到！
+Select Range Uncertainty Models	选择距离不确定度模型
+Assets	对象资源
+Receiver Range Uncertainty	接收距离不确定度
+Asset Range Uncertainty	资源距离不确定度
+Change	更改
+Change All	更改全部
+Constant	常数
+By Elevation Angle	俯仰角文件
+RE files (*.re);;Text files (*.txt);;All files (*)	RE文件(*.re);;文本文件(*.txt);;所有文件(*)
+A file must be specified!	请选择文件！
+Use Defaults	使用默认
+Show All Dimensions	显示所有量纲
+New Unit Value	新单位值
+Set As Default	设置为默认
+Positive	主动
+Negative	被动
+Use MSL	使用MSL
+X Axis Label	X轴标签
+Z Axis Label	Z轴标签
+Axis 1 Label	轴1标签
+Axis 2 Label	轴2标签
+Quadrant	象限
+PointA	点A
+PointB	点B
+Asymptote	渐近线
+Two-Body	二体
+Fixed Point Type	固定点类型
+Longtitude	经度
+DiffStep	微分步长
+IsApparent	是否显性
+Ignore Aberration	忽略异常值
+Nomalize A	归一化A
+Nomalize B	归一化B
+Inherit Dimension	继承维度
+Dimension	维度
+UseCBI	使用CBI
+MeanOscType	平瞬类型
+VecorType	向量类型
+RefSystem	参考坐标系
+VectorIn	输入矢量
+useOppo	使用反向矢量
+VectorNormal	向量归一化
+ReflectOnBack	反射率
+scaleFactor	比例因子
+scaleFac	比例因子
+Norm	归一化
+Sphere Color	颜色
+Zero Deg Color	零度颜色
+Zero Deg Line width	零度线宽
+Grid Line Width	线宽
+Projections	投影
+Z Axis Length	Z轴长度
+X Offset	X轴偏移量
+X Axis Length	X轴长度
+Y Axis Length	Y轴长度
+Z Offset	Z轴偏移量
+Y Offset	Y轴偏移量
+Show Text	显示文字
+Numerica Integrato	数值积分
+Integrator Properties	积分性能
+IntialStep	积分步长
+Step-size Control	步长大小控制
+Error Control	控制错误
+Minimum Step	最小步长
+Maximum Step	最大步长
+Maxmum Iterations	最大迭代次数
+Maxmum Absolute Error	最大绝对误差
+Maxmum Relative Error	最大相对误差
+High safety Coefficient	最高安全系数
+Low safety Coefficient	最低安全系数
+User fixed Step	使用固定步长
+Area of Uncertainty	不确定区域
+Contrl Box	控制盒
+Bearing	方位角
+Axes:	参考轴：
+Point:	点：
+Draw at Point	绘制在点上
+Draw at Central Body	绘制在中心天体上
+Use true scale	采用真实比例
+Show RA-Dec	显示RA-Dec
+Show Distance	显示距离
+Show Cartesian	显示笛卡尔坐标
+Log Scale	对应比例
+Thickness	粗细
+Font Color	字体颜色
+The object does not have a dynamic display report, please configure it!	对象没有对应的动态报告，请先配置！
+Oribit System	轨道系统
+Inertial by Window	窗口中心天体惯性系
+Fixed by Window	窗口中心天体固连系
+Add VVLH System	添加VVLH系
+Add VGT System	添加VGT系
+Add BBR System	添加BBR系
+Specify Figure of Merit	品质参数

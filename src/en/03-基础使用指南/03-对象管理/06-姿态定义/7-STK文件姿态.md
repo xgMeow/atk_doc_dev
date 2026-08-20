@@ -1,18 +1,21 @@
-# STK姿态
+# STK Attitude
 
-## 定义
-从STK姿态文件读取时间序列姿态。
+## Definition
 
-## 介绍
-姿态由外部.a文件提供，文件中记录时间、四元数等，按照时间插值计算姿态。
+Reads time-series attitude data from an STK attitude file.
 
-## 使用教程
+## Introduction
 
-###  选择姿态操作
-![姿态](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/STK姿态.png)
+The attitude is provided by an external `.a` file, which records time, quaternions, and other data. The attitude is computed by interpolating over time.
 
-点击卫星【属性】，选择【姿态】，选择【姿态类型】。
+## Tutorial
 
-### 配置参数
+### Selecting the Attitude Operation
 
-AttitudeFile：点击【...】打开文件夹进行STK文件选择。
+![Attitude](../../../../zh/03-基础使用指南/03-对象管理/06-姿态定义/media/1-固定姿态/STK姿态.png)
+
+Open the satellite's **Properties**, select **Attitude**, and choose the **Attitude Type**.
+
+### Configuring Parameters
+
+**AttitudeFile**: Click **...** to open the folder and select an STK file.

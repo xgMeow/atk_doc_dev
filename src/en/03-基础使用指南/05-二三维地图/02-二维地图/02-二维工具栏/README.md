@@ -1,5 +1,5 @@
 ---
-title: 二维工具栏
+title: 2D Toolbar
 index: false
 ---
 <Catalog />

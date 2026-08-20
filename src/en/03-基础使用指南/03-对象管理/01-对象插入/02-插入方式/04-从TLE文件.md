@@ -1,14 +1,15 @@
-# 从TLE文件
-**从TLE文件**是卫星对象专用的插入方式，支持通过外部TLE（两行根数）星历文件快速导入卫星轨道数据，适用于批量加载真实卫星轨道参数。
+# From TLE File
 
-1. 在【插入对象】窗口中选择**卫星**，插入方式选择 **「从TLE文件」**；
-2. 在弹出的对话框中选择本地TLE数据源文件；
-3. 可通过**SSC 名称、SSC 编号、国家、任务**等字段对卫星进行筛选搜索；
-4. 搜索完成后在列表中选择目标卫星：
-   - 单击选择单个对象
-   - 按住 <kbd>Ctrl</kbd> 进行多选
-   - 按住 <kbd>Shift</kbd> 进行连续选择
-5. 设置卫星显示颜色：需先取消勾选**自动选择颜色**，再自定义颜色；
-6. 确认参数后完成卫星对象导入。
+**From TLE File** is an insertion method exclusively for Satellite objects, supporting rapid import of satellite orbital data via external TLE (two-line element) ephemeris files, suitable for batch loading of real satellite orbital parameters.
 
-![从TLE文件](../../../../../zh/03-基础使用指南/03-对象管理/01-对象插入/02-插入方式/media/04-从TLE文件/image-20260326161111149.png)
+1. In the **【Insert Object】** window, select **Satellite** and choose **「From TLE File」** as the insertion method;
+2. In the pop-up dialog, select the local TLE data source file;
+3. Filter and search satellites using fields such as **SSC Name, SSC Number, Country, Mission**, etc.;
+4. After the search is complete, select the target satellites from the list:
+   - Click to select a single object
+   - Hold <kbd>Ctrl</kbd> for multiple selection
+   - Hold <kbd>Shift</kbd> for consecutive selection
+5. Set the satellite display color: first uncheck **Auto Select Color**, then customize the color;
+6. Confirm the parameters to complete the satellite object import.
+
+![From TLE File](../../../../../zh/03-基础使用指南/03-对象管理/01-对象插入/02-插入方式/media/04-从TLE文件/image-20260326161111149.png)

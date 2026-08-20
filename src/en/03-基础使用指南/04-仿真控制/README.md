@@ -1,5 +1,5 @@
 ---
-title: 仿真控制
+title: Simulation Control
 index: false
 ---
 

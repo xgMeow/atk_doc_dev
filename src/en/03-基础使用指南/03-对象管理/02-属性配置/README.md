@@ -1,5 +1,5 @@
 ---
-title: 属性配置
+title: Property Configuration
 index: false
 ---
 

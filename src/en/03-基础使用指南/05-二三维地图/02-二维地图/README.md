@@ -1,5 +1,5 @@
 ---
-title: 二维地图
+title: 2D Map
 index: false
 ---
 <Catalog />

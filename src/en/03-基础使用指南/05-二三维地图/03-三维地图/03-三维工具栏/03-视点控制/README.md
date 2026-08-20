@@ -1,5 +1,5 @@
 ---
-title: 视点控制
+title: View Control
 index: false
 ---
 <Catalog />

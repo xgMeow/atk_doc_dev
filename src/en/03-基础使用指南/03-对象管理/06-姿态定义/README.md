@@ -1,5 +1,5 @@
 ---
-title: 姿态定义
+title: Attitude Definition
 index: false
 ---
 <Catalog />
