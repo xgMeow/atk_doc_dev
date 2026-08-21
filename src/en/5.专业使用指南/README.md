@@ -1,5 +1,5 @@
 ---
-title: 专业使用指南
+title: Professional User Guide
 index: false
 ---
 <Catalog />

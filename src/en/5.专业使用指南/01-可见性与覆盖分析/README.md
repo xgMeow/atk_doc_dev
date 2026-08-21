@@ -1,5 +1,5 @@
 ---
-title: 可见性与覆盖分析
+title: Visibility and Coverage Analysis
 index: false
 ---
 

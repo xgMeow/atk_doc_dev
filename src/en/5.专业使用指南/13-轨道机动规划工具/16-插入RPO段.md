@@ -1,3 +1,3 @@
-# 插入RPO段
+# Insert RPO Segment
 
-详见[RPO功能模块](../13-RPO功能模块.md)。
+See [RPO Functional Module](../13-RPO功能模块.md) for details.

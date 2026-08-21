@@ -1,48 +1,46 @@
-# RPO功能模块
+# RPO Functional Module
 
-## 功能介绍
+## Functional Description
 
-ATK 软件针对典型的轨道规划算法进行了封装，按照自然相对运动轨道、受控相对运动轨道以及交会、接近和撤离轨道进行分类管理。预置的 RPO 序列见表。
+ATK software encapsulates typical orbital planning algorithms, categorized according to natural relative motion orbits, controlled relative motion orbits, and rendezvous, proximity, and departure operations. The preset RPO sequences are listed in the table below.
 
+| Relative Motion | Preset RPO Segment |
+| --------------- | ------------------ |
+| Circumnavigation | Forced Motion Circumnavigation |
+| Circumnavigation | Perch (Station Keeping) |
+| Circumnavigation | Tear Drop Circumnavigation |
+| Circumnavigation | Sun‑Synchronous Circumnavigation |
+| Circumnavigation | Natural Motion Circumnavigation |
+| Departure | GEO Exit |
+| Proximity | Straight‑Line Approach |
+| Proximity | Single Hop |
+| Rendezvous | GEO Rendezvous |
+| Rendezvous | GEO Drift and Rendezvous |
 
+### Function Location
 
-| 相对运动           | 预置 RPO 段    |
-| ------------------ | -------------- |
-| 伴飞              | 圆形受控绕飞段    |
-| 伴飞              | 定点保持段         | 
-| 伴飞              | 水滴绕飞段         | 
-| 伴飞              | 太阳同步绕飞段     | 
-| 伴飞              | 自然绕飞段         | 
-| 撤离              | GEO 轨道撤离段     | 
-| 接近              | 直线逼近段         |
-| 接近              | 单次跳跃段         |
-| 交会              | GEO 轨道交会段     | 
-| 交会              | GEO 轨道漂移交会段  | 
+This section uses the **Tear Drop Circumnavigation** segment as an example to explain the RPO module. The function entry is located in **Satellite → Properties → Propagator** dropdown under **Maneuver Planning**, as shown below.
 
-### 功能位置
+![Maneuver Planning Function](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0105-1.png)
 
-本小节使用“水滴绕飞段”来讲解RPO功能模块，功能入口在“卫星-属性-轨道预报器”下拉菜单“机动规划”中，如图所示。
+### How to Use
 
-![机动规划功能](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0105-1.png)
+After creating a scenario, insert a default satellite and name it "Target". Duplicate the first satellite and paste it as a second satellite named "Chaser". In the "Chaser" satellite's propagator, select **Maneuver Planning**. Use the default **InitialState** segment, and set the initial conditions as shown below. Also, click the **Reference Satellite** button and set "Target" as the reference satellite.
 
-### 使用方法
+![Initial State Settings](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0105-3.png)
 
-创建场景后，插入一颗默认的卫星，命名为 “Target” 。复制第一颗卫星，粘贴插入第二颗卫星命名为 “Chaser” 。在 “Chaser” 的轨道预报器中，选择“机动规划”。使用默认的 “InitialState”（即初始段），初始条件设置如图所示。同时，点击按钮【参考卫星】，将 “Target” 设置为参考卫星。
+Click **Add <img src="../../zh/5.专业使用指南/media/5.13RPO功能模块/image-3.png" alt="" no-view />** → **Insert RPO Segment** sequentially, and select **Circumnavigation → Tear Drop Circumnavigation**. In the Tear Drop segment properties, select "Target" as the Reference Spacecraft. The flight sequence is shown below.
 
-![初始状态设置](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0105-3.png)
+![Tear Drop Circumnavigation Segment Settings](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0105-4.png)
 
-依次点击【新增<img src="../../zh/5.专业使用指南/media/5.13RPO功能模块/image-3.png" alt="" no-view />】-【插入 RPO 段】，选择“伴飞-水滴绕飞段”。在水滴绕飞段属性设置中，“参考航天器”选择“Target”，飞行序列如图所示。
+In **Chaser → Properties → 3D View → Orbit System**, click **Add VVLH System**, select the "Target" spacecraft, and enable **Show** and **Custom Color** for the added VVLH orbital system (choose a color distinct from the trajectories of the two spacecraft). The detailed settings are shown below.
 
-![水滴绕飞段 设置](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0105-4.png)
+![Adding Relative Motion Trajectory Settings](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0218-1.png)
 
-在“Chaser-属性-三维视图-轨道系统”中，点击【添加VVLH系】，选择“Target”航天器，对添加的VVLH轨道系勾选【显示】以及【自定义颜色】（颜色尽量选择与两航天器运行轨迹不同的颜色），具体设置如图所示。
+Click **Run**. After execution, in the **3D View** window, click **Local View** and select the "Target" satellite to fix the view on "Target" for easier observation. The specific operation is shown below.
 
-![添加相对运动轨迹 设置](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0218-1.png)
+![Fixing Viewpoint Settings](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0218-2.png)
 
-点击【运行】，运行结束后，在“三维视图”窗口，点击【局部视点】，选择“Target”卫星，将视角固定在“Target”卫星上以便观察，具体操作如图所示。
+After configuration, the Tear Drop circumnavigation trajectory is shown below.
 
-![固定视角 设置](../../zh/5.专业使用指南/media/5.13RPO功能模块/image0218-2.png)
-
-设置完成后水滴绕飞轨迹，如图所示。
-
-![绕飞轨道](../../zh/5.专业使用指南/media/5.13RPO功能模块/image-5.png)
+![Circumnavigation Orbit](../../zh/5.专业使用指南/media/5.13RPO功能模块/image-5.png)
