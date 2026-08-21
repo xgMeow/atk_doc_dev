@@ -32,6 +32,6 @@ plot(x, y2)
 show();
 ```
 
-![正弦波](media/subplot/image.png)
+![正弦波](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/subplot/image.png)
 
 :::

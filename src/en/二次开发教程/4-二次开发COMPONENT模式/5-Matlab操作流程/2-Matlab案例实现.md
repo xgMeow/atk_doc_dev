@@ -2,7 +2,7 @@
 
 ## Matlab案例流程图
 
-![Matlab案例流程图](media/2-Matlab案例实现/Matlab案例流程图.png)
+![Matlab案例流程图](../../../../zh/二次开发教程/4-二次开发COMPONENT模式/5-Matlab操作流程/media/2-Matlab案例实现/Matlab案例流程图.png)
 
 ## Matlab案例源码
 
@@ -166,4 +166,4 @@ strReportFilePath
 	3. 点击运行Matlab案例脚本，如图所示。
 
 
-![操作流程](media/2-Matlab案例实现/Matlab操作流程_zy.png)
+![操作流程](../../../../zh/二次开发教程/4-二次开发COMPONENT模式/5-Matlab操作流程/media/2-Matlab案例实现/Matlab操作流程_zy.png)

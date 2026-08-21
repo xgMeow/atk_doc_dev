@@ -23,6 +23,6 @@ figure()
     show()
 ```
 
-![alt text](media/figure/image.png)
+![alt text](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/figure/image.png)
 
 :::

@@ -33,6 +33,6 @@ CreateDialog(
 )
 ```
 
-![效果图](media/Reactive/image.png)
+![效果图](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/Reactive/image.png)
 
 :::

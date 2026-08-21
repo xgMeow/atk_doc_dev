@@ -11,15 +11,15 @@ thumbnail: /综合案例/media/基于ATK.Connect模式的轨道快速转移的C+
 
 本案例使用 ATK 软件，通过集成客户端程序，使用接口函数进行数据解析与传递，完成案例实现。集成客户端界面如下图所示：
 
-![客户端界面](./media/基于ATK.Connect模式的轨道快速转移的C++实现/image01-客户端界面.png)
+![客户端界面](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image01-客户端界面.png)
 
 接口函数通过命令输入，对想定属性进行设置与修改，完成案例构建，如下图所示：
 
-![Command Script 对话框](./media/基于ATK.Connect模式的轨道快速转移的C++实现/image03-CommandScript对话框.png)
+![Command Script 对话框](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image03-CommandScript对话框.png)
 
 运行客户端命令，想定轨迹如下图所示：
 
-![快速转移轨道](./media/基于ATK.Connect模式的轨道快速转移的C++实现/image04-快速转移轨道.png)
+![快速转移轨道](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image04-快速转移轨道.png)
 
 ## 案例实现
 
@@ -164,17 +164,17 @@ atkClose(conID);
 
 在【Command Script】对话框中输入多条命令，如下图：
 
-![Command Script 对话框输入多条命令](./media/基于ATK.Connect模式的轨道快速转移的C++实现/image03-CommandScript对话框.png)
+![Command Script 对话框输入多条命令](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image03-CommandScript对话框.png)
 
 在【Command Window】对话框中输入单条或多条命令，如下图：
 
-![Command Window 对话框输入命令](./media/基于ATK.Connect模式的轨道快速转移的C++实现/image06-CommandWindow对话框.png)
+![Command Window 对话框输入命令](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image06-CommandWindow对话框.png)
 
 **输出展示**
 
 点击运行后，ATK 软件显示想定界面，三维展示卫星快速转移轨迹如下图：
 
-![卫星快速转移轨迹三维展示](./media/基于ATK.Connect模式的轨道快速转移的C++实现/image07-卫星快速转移轨迹三维展示.png)
+![卫星快速转移轨迹三维展示](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image07-卫星快速转移轨迹三维展示.png)
 
 ::: tip 说明
 若发现快速转移轨迹显示不全，请在 ATK 图形界面中，右键点击 "FastTransfer" 卫星对象，选择 <kbd>属性</kbd>，进入卫星对象属性设置界面，然后选择【二维视图 -> 轨迹】设置，将轨迹类型由【时间】更改为【所有】。

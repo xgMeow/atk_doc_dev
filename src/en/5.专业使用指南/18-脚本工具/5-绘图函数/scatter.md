@@ -27,7 +27,7 @@ scatter(x,y,sz,c)
     scatter(x, y)
 ```
 
-![](./media/scatter/image.png)
+![](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/scatter/image.png)
 
 :::
 
@@ -41,6 +41,6 @@ scatter(x,y,sz,c)
     scatter(x, y, s, c)
 ```
 
-![](./media/scatter/image-2.png)
+![](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/scatter/image-2.png)
 
 :::

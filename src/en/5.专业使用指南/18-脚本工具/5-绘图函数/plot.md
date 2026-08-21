@@ -29,7 +29,7 @@ plot3(X1,Y1,fmt1,...,Xn,Yn,fmtn)
     title("sin(x)")
 ```
 
-![线图](media/plot/image-1.png)
+![线图](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/plot/image-1.png)
 
 :::
 
@@ -44,7 +44,7 @@ plot3(X1,Y1,fmt1,...,Xn,Yn,fmtn)
     plot(x , y1, "-b" , x , y2 , "-r")
 ```
 
-![绘制多个线图](media/plot/image-2.png)
+![绘制多个线图](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/plot/image-2.png)
 
 :::
 
@@ -60,6 +60,6 @@ y3 = sin(x-0.5);
 plot(x , y1, "-b" , x , y2 , "--r", x, y3, "g:")
 ```
 
-![指定线型](media/plot/image-3.png)
+![指定线型](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/plot/image-3.png)
 
 :::

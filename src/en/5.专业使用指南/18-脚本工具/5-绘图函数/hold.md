@@ -35,7 +35,7 @@ hold(false)
     hold("off")
 ```
 
-![添加第二个线图](media/hold/image.png)
+![添加第二个线图](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/hold/image.png)
 
 :::
 
@@ -48,6 +48,6 @@ hold(false)
     plot(x, y3)
 ```
 
-![新绘图](media/hold/image-1.png)
+![新绘图](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/hold/image-1.png)
 
 :::

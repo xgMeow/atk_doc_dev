@@ -2,7 +2,7 @@
 
 ## Java案例流程图
 
-![Java案例流程图](media/3-Java案例实现/Java案例流程图.png)
+![Java案例流程图](../../../../zh/二次开发教程/4-二次开发COMPONENT模式/3-Java操作流程/media/3-Java案例实现/Java案例流程图.png)
 
 ## Java案例源码
 

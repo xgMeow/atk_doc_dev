@@ -13,4 +13,4 @@
 
  
 
-![依赖文件](media/1-Matlab案例介绍/依赖文件_zy.png)
+![依赖文件](../../../../zh/二次开发教程/4-二次开发COMPONENT模式/5-Matlab操作流程/media/1-Matlab案例介绍/依赖文件_zy.png)

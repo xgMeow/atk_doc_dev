@@ -34,6 +34,6 @@ end
 Manipulate(func, [1, 10])
 ```
 
-![效果图](media/Manipulate/image.png)
+![效果图](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/Manipulate/image.png)
 
 :::

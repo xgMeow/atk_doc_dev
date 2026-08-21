@@ -30,6 +30,6 @@ CreateDialog(
 
 在输入框输入内容后，点击回车，即会更改 `value`、`valueRef` 还有文本框的内容
 
-![效果图](media/InputField/image.png)
+![效果图](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/InputField/image.png)
 
 :::
