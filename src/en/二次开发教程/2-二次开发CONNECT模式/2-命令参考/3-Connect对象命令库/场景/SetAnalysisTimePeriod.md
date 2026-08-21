@@ -12,7 +12,7 @@ SetAnalysisTimePeriod <ScenarioPath> {TimeInterval}
 
 ## 补充说明
 
-1. `TimeInterval` 设置格式请查看**[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/2-命令参考/2-参数值格式/日期时间格式.md)**
+1. `TimeInterval` 设置格式请查看**[常用日期/时间格式](../../2-参数值格式/日期时间格式.md)**
 2. 若使用此命令，需调用 `Animate Reset` 命令将修改后的时间应用到场景。
 
 ## 示例

@@ -17,17 +17,17 @@ SetState <VehObjectPath> Spherical {Propagator} {NoProp | {TimeInterval}} <StepS
 | `Parameter` | 说明 |
 | --- | --- |
 | `{Propagator}` | 卫星可得属性值为 `TwoBody`, `J2Perturbation`, `J4Perturbation`, `HPOP` 和 `LOP` |
-| `{NoProp \| {TimeInterval}}` | 输入 NoProp 可以设置卫星状态但是不进行预报。输入 TimeInterval 定义卫星预报的开始结束时间段，设置格式请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/2-命令参考/2-参数值格式/日期时间格式.md) |
+| `{NoProp \| {TimeInterval}}` | 输入 NoProp 可以设置卫星状态但是不进行预报。输入 TimeInterval 定义卫星预报的开始结束时间段，设置格式请查看[常用日期/时间格式](../../../2-参数值格式/日期时间格式.md) |
 | `<StepSize>` | 输入必须大于等于 0.001 秒。若选择 LOP 预报器，输入必须大于等于一天（86164.09 秒） |
 | `{CoordSystem}` | 坐标系可设置为 `ICRF`,`J2000`,`Fixed`, `TrueOfDate`,`MeanOfDate`,`TEMEOfDate` |
-| `"<OrbitEpoch>"` | 请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/2-命令参考/2-参数值格式/日期时间格式.md) |
+| `"<OrbitEpoch>"` | 请查看[常用日期/时间格式](../../../2-参数值格式/日期时间格式.md) |
 | `<RightAscension>` | 输入赤经参数，默认单位是度 |
 | `<Declination>` | 输入赤纬参数，默认单位是度 |
 | `<Radius>` | 输入半径参数，默认单位是米 |
 | `<HorizontalFlightPathAngle>` | 输入水平航迹角参数，默认单位是度 |
 | `<FlightPathAzimuth>` | 输入方位角参数，默认单位是度 |
 | `<Velocity>` | 输入速度参数，默认单位是 m/sec |
-| `["<CoordEpoch>"]` | 请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/2-命令参考/2-参数值格式/日期时间格式.md) |
+| `["<CoordEpoch>"]` | 请查看[常用日期/时间格式](../../../2-参数值格式/日期时间格式.md) |
 
 :::
 

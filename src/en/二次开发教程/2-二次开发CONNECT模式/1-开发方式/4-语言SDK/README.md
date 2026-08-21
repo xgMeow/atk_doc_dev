@@ -17,7 +17,7 @@ ATK 为以下三种语言提供了 SDK，用户可在自己的开发环境中引
 
 - **通信方式**：通过 TCP 网络连接与 ATK 交互，默认端口 `6655`
 - **核心 API**：均提供 `atkOpen` / `atkConnect` / `atkClose` 三组核心接口
-- **命令格式**：均使用统一的 [CONNECT 命令语法](/二次开发教程/2-二次开发CONNECT模式/2-命令参考/1-命令语法约定.md)
+- **命令格式**：均使用统一的 [CONNECT 命令语法](../../2-命令参考/1-命令语法约定.md)
 - **库文件位置**：均在 ATK 安装包目录 `IntegratingWithATK\connect\` 下对应语言文件夹中
 
 <Catalog />

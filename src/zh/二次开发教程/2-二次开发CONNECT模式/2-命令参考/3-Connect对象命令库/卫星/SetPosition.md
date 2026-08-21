@@ -16,7 +16,7 @@ SetPosition <ObjectPath> {PositionType} {TimeValue} <PositionData>
 
 ## 参数说明
 
-`{TimeValue}` 请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/2-命令参考/2-参数值格式/日期时间格式.md)
+`{TimeValue}` 请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md)
 
 | `{PositionType}` | `<PositionData>` | 说明 |
 | --- | --- | --- |

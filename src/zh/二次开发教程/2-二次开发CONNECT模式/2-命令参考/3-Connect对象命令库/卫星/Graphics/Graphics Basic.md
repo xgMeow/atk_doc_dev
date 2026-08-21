@@ -16,8 +16,8 @@ Graphics <ObjectPath> Basic { AttributeOption } {Action}
 - `Label`: `{On | Off}`
 - `groundtrack`: `{On | Off}`
 - `orbit`: `{On | Off}`
-- `color`: 请查看[常用颜色格式](/二次开发教程/2-二次开发CONNECT模式/2-命令参考/2-参数值格式/颜色格式.md)
-- `linestyle`: 请查看[常用线型格式](/二次开发教程/2-二次开发CONNECT模式/2-命令参考/2-参数值格式/线型格式.md)
+- `color`: 请查看[常用颜色格式](../../../2-参数值格式/颜色格式.md)
+- `linestyle`: 请查看[常用线型格式](../../../2-参数值格式/线型格式.md)
 - `linewidth`: 轨迹宽度值介于 1 到 10
 - `markerstyle`: 目前标识类型均为默认
 

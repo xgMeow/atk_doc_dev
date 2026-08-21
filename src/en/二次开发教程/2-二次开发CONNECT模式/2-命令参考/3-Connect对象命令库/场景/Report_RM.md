@@ -15,7 +15,7 @@ Report_RM <ObjectPath> ({Option} <Value>)...
 | 参数 | 说明 |
 |------|------|
 | `Style "<ReportStyleName>"` | 要获取的报告样式的名称，名称必须与已存在的报告名称保持一致 |
-| `TimePeriod {TimeInterval}` | 输入开始时间和结束时间，设置格式请查看[常用日期/时间格式](/二次开发教程/2-二次开发CONNECT模式/2-命令参考/2-参数值格式/日期时间格式.md) |
+| `TimePeriod {TimeInterval}` | 输入开始时间和结束时间，设置格式请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md) |
 | `TimeStep {<Value>}` | 输入步长用于创建报告 |
 | `AccessObject <AccessObjectPath>` | 指定要计算的对象（覆盖定义对象不包括此属性） |
 | `AdditionalData "<Data>"` | 一些报告需要额外的数据（覆盖定义对象不包括此属性） |
