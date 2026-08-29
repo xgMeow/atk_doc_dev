@@ -1,11 +1,10 @@
 ---
-shortTitle: 坐标系定义与转换
-description: ATK 中各类坐标参考系的系统介绍，涵盖中心天体、轨道局部、表面局部、历元及黄道坐标系及其转换关系。
+description: A systematic introduction to the various coordinate reference systems used in ATK, covering central body, orbital local, surface local, epoch, and ecliptic coordinate systems, along with their transformation relationships.
 index: false
 ---
 
-# 坐标系定义与转换
+# Coordinate System Definitions and Transformations
 
-本章系统介绍 ATK 中使用的各类坐标参考系及其定义，涵盖中心天体参考坐标系、轨道局部坐标系、表面局部坐标系、历元坐标系以及黄道坐标系，并阐述各类坐标系之间的转换关系。
+This chapter systematically introduces the various coordinate reference systems used in ATK and their definitions, covering central body reference coordinate systems, orbital local coordinate systems, surface local coordinate systems, epoch coordinate systems, and ecliptic coordinate systems, and describes the transformation relationships among them.
 
 <Catalog />
