@@ -8,7 +8,7 @@ import {
   toRoutePath,
 } from './shared.mjs';
 
-export const scriptFunctionRoot = '5.专业使用指南/18-脚本工具';
+export const scriptFunctionRoot = '/zh/5.专业使用指南/18-脚本工具';
 
 // ── Group Builder ─────────────────────────────────
 

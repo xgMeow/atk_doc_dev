@@ -8,7 +8,7 @@ import {
   toRoutePath,
 } from './shared.mjs';
 
-export const connectCommandRoot = '二次开发教程/2-二次开发CONNECT模式/2-命令参考/3-Connect对象命令库';
+export const connectCommandRoot = '/zh/二次开发教程/2-二次开发CONNECT模式/2-命令参考/3-Connect对象命令库';
 
 // ── Group Builder ─────────────────────────────────
 

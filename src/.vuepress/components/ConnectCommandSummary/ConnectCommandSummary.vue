@@ -31,17 +31,36 @@ const props = withDefaults(defineProps<{
 
 const route = useRoute();
 
-const connectModules = import.meta.glob('../../../二次开发教程/2-二次开发CONNECT模式/**/*.md', {
+// 文档已按语言拆分到 src/zh 与 src/en，需同时 glob 两个目录
+// 注意：standalone 的 vuepress-loader 只识别 import.meta.glob 的单个字符串模式 + 字面量选项，
+// 不支持数组模式，故每个语言目录单独 glob 再合并。
+const connectModulesZh = import.meta.glob('../../../zh/二次开发教程/2-二次开发CONNECT模式/**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
 }) as Record<string, string>;
 
-const scriptModules = import.meta.glob('../../../5.专业使用指南/18-脚本工具/**/*.md', {
+const connectModulesEn = import.meta.glob('../../../en/二次开发教程/2-二次开发CONNECT模式/**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
 }) as Record<string, string>;
+
+const connectModules = { ...connectModulesZh, ...connectModulesEn };
+
+const scriptModulesZh = import.meta.glob('../../../zh/5.专业使用指南/18-脚本工具/**/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+const scriptModulesEn = import.meta.glob('../../../en/5.专业使用指南/18-脚本工具/**/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+const scriptModules = { ...scriptModulesZh, ...scriptModulesEn };
 
 // ── Mode-aware labels ──────────────────────────
 
