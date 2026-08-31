@@ -1,39 +1,39 @@
 ---
-title: AI助手
+title: AI Assistant
 index: false
-description: ATK AI 助手使用指南，包含场景生成智能体和知识问答助手两大模块的完整文档。
+description: Usage guide for the ATK AI Assistant, covering complete documentation for the Scenario Generation Agent and Q&A Assistant modules.
 ---
 
-ATK AI 助手集成大语言模型（LLM）能力，为航天仿真任务提供智能化支持，让您用自然语言驱动软件、快速获取专业知识。
+The ATK AI Assistant integrates large language model (LLM) capabilities to provide intelligent support for aerospace simulation tasks, letting you drive the software with natural language and quickly access professional knowledge.
 
-## 模块概览
+## Module Overview
 
-| 模块 | 能力定位 | 适合场景 |
+| Module | Capability | Suitable Scenarios |
 |------|----------|----------|
-| [场景生成智能体](./场景生成智能体/README.md) | 自然语言 → 仿真指令 | 创建卫星/地面站/星座，设置轨道与载荷，运行仿真分析 |
-| [知识问答助手](./知识问答助手/README.md) | 文档知识 → 智能问答 | 查询 ATK 操作方法、检索上传的文档、了解学术论文内容 |
+| [Scenario Generation Agent](./场景生成智能体/README.md) | Natural language → simulation commands | Create satellites/ground stations/constellations, set orbits and payloads, run simulation analysis |
+| [Q&A Assistant](./知识问答助手/README.md) | Document knowledge → intelligent Q&A | Look up ATK operations, retrieve uploaded documents, understand academic paper content |
 
-## 场景生成智能体
+## Scenario Generation Agent
 
-用自然语言操控 ATK 航天仿真软件，**无需编写代码或记忆命令格式**。智能体将您的中文指令实时解析为底层 Connect 命令并自动执行，覆盖从对象创建、参数赋值到仿真推演与数据后处理的全流程。
+Control the ATK aerospace simulation software with natural language, **without writing code or memorizing command formats**. The agent parses your instructions into underlying Connect commands in real time and executes them automatically, covering the entire workflow from object creation and parameter assignment to simulation and data post-processing.
 
-- **对象管理**：创建卫星、地面站、飞机、导弹、天体、星座等
-- **轨道设置**：支持轨道向导、经典轨道根数、位置速度、星历导入、机动变轨五种方式
-- **载荷链路**：传感器指向、地面站参数、通信链路精细化配置
-- **仿真分析**：覆盖分析、可见性分析等专业计算
+- **Object Management**: create satellites, ground stations, aircraft, missiles, celestial bodies, constellations, and more
+- **Orbit Settings**: supports five methods — orbit wizard, classical orbital elements, position and velocity, ephemeris import, and maneuver planning
+- **Payload & Link**: fine-grained configuration of sensor pointing, ground station parameters, and communication links
+- **Simulation Analysis**: professional computations such as coverage analysis and access analysis
 
-> 详细使用说明请参阅 [使用说明](./场景生成智能体/01-使用说明.md)，典型场景示例请参阅 [输入示例](./场景生成智能体/02-输入示例.md)。
+> For detailed usage, see [Usage Guide](./场景生成智能体/01-使用说明.md); for typical scenario examples, see [Input Examples](./场景生成智能体/02-输入示例.md).
 
-## 知识问答助手
+## Q&A Assistant
 
-基于检索增强生成（RAG）技术的智能问答系统，整合三大知识库自动匹配回答：
+An intelligent Q&A system built on Retrieval-Augmented Generation (RAG) technology that integrates three knowledge bases to automatically match answers:
 
-| 知识库 | 数据来源 | 举例 |
+| Knowledge Base | Data Source | Example |
 |--------|----------|------|
-| ATK 知识库 | 官方手册 | "如何注册 ATK？" |
-| 用户文档库 | 您上传的 PDF/DOCX/MD/TXT | "我的文档里关于轨道计算讲了什么？" |
-| 论文知识库 | Article/ 目录中的学术论文 | "交会对接有哪些常用算法？" |
+| ATK Knowledge Base | Official manual | "How do I register ATK?" |
+| User Document Library | Your uploaded PDF/DOCX/MD/TXT | "What does my document say about orbit calculation?" |
+| Paper Knowledge Base | Academic papers in the Article/ directory | "What are the common algorithms for rendezvous and docking?" |
 
-支持本地 Ollama 部署和云端 API 调用两种模型方案，数据不出本地的同时兼顾灵活扩展。
+Both local Ollama deployment and cloud API calls are supported, keeping data on-premises while remaining flexibly scalable.
 
-> 新用户请从 [快速入门](./知识问答助手/01-快速入门.md) 开始，模型配置请参阅 [模型配置](./知识问答助手/02-模型配置/README.md)。
+> New users should start with [Quick Start](./知识问答助手/01-快速入门.md); for model configuration, see [Model Configuration](./知识问答助手/02-模型配置/README.md).
