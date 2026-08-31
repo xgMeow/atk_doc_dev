@@ -421,8 +421,8 @@ onMounted(() => {
   --accent-subtle: rgba(37, 99, 235, 0.08);
   --divider: #eeeef0;           /* 表格横线，极淡 */
 
-  /* 吸顶偏移：navbar + breadcrumb（54px）+ 2px 呼吸 */
-  --cmd-stick-top: calc(var(--navbar-height) + 52px);
+  /* 吸顶偏移：navbar + breadcrumb（48px） */
+  --cmd-stick-top: calc(var(--navbar-height) + 48px);
   /* 工具栏高度（搜索 + 索引），用于 section 偏移 */
   --cmd-toolbar-h: 92px;
 
