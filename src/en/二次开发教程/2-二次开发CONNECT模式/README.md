@@ -1,41 +1,41 @@
 ---
-description: ATK CONNECT 模式概述。CONNECT 模式通过 TCP 网络通信操控 ATK，支持 Python 客户端工具，以及 Python、Matlab、C++ 三种语言 SDK，另有 ATK 脚本工具作为补充。
+description: Overview of ATK Connect mode. Connect mode controls ATK over TCP network communication, supporting the Python Client tool and the Python, Matlab, and C++ language SDKs, with the ATK Script tool as a supplement.
 index: true
 ---
 
-# CONNECT模式
+# Connect Mode
 
-CONNECT 模式使用 TCP 网络方式与 ATK 软件进行连接，用户通过编写脚本发送命令的方式对 ATK 软件进行操控。
+Connect Mode connects to the ATK software over TCP networks, allowing users to control ATK by writing scripts and sending commands.
 
-核心 API 由三组接口组成：`atkOpen`（建立连接）、`atkConnect`（发送命令）、`atkClose`（断开连接）。所有开发方式均基于此三组接口，命令格式统一使用 [CONNECT 命令语法](2-命令参考/1-命令语法约定.md)。
+The core API consists of three groups of interfaces: `atkOpen` (establish a connection), `atkConnect` (send commands), and `atkClose` (close the connection). All development methods are based on these three groups of interfaces, and commands uniformly use the [Connect command syntax](2-命令参考/1-命令语法约定.md).
 
-开始开发前，请先了解 [ATK 启动与端口配置](0-ATK启动与端口配置/)（默认端口、指定端口、查看端口）。
+Before you start development, first learn about [ATK Startup and Port Configuration](0-ATK启动与端口配置/) (default port, specifying a port, and checking the port).
 
-## 开发方式对比
+## Development Method Comparison
 
-ATK 的开发方式按通信机制分为两类：
+ATK development methods are classified into two categories based on their communication mechanism:
 
-### 网络通信（TCP）
+### Network Communication (TCP)
 
-Python 客户端工具、Python SDK、Matlab SDK、C++ SDK 均通过 **TCP 网络** 与 ATK 通信。客户端/SDK 运行在独立的进程中，与 ATK 软件通过网络收发数据。
+The Python Client tool, Python SDK, Matlab SDK, and C++ SDK all communicate with ATK over the **TCP network**. The client/SDK runs in an independent process, exchanging data with the ATK software over the network.
 
-这意味着客户端/SDK 和 ATK **不必在同一台机器上**——只要网络互通，你可以在局域网内的任意一台电脑上远程操控 ATK。
+This means the client/SDK and ATK **do not need to be on the same machine** — as long as the network is reachable, you can remotely control ATK from any computer on the LAN.
 
-### 进程内调用
+### In-Process Invocation
 
-[ATK 脚本工具](1-开发方式/1-ATK脚本工具.md) 比较特殊：ATK 脚本（`.atks`）直接在 ATK 程序进程内运行，直接调用 ATK 内部函数，不需要经过 TCP 网络通信。
+The [ATK Script tool](1-开发方式/1-ATK脚本工具.md) is special: ATK scripts (`.atks`) run directly inside the ATK program process, directly invoking ATK internal functions without going through TCP network communication.
 
-| 开发方式 | 入口 | 通信 | 语言 | 适用场景 |
+| Development Method | Entry Point | Communication | Language | Suitable Scenarios |
 |----------|------|------|------|----------|
-| [Python 客户端工具](1-开发方式/2-Python客户端工具/1-简介与配置.md) | ATK菜单 → 集成 → 客户端 | TCP（可远程） | Python | 不想配置环境，直接在ATK中编写Python脚本 |
-| [Python SDK](1-开发方式/4-语言SDK/1-Python/1-简介与配置.md) | 自建 Python 环境 | TCP（可远程） | Python | 在自己的Python项目中使用ATK |
-| [Matlab SDK](1-开发方式/4-语言SDK/2-Matlab/1-简介与配置.md) | 自建 Matlab 环境 | TCP（可远程） | Matlab | 在自己的Matlab项目中使用ATK |
-| [C++ SDK](1-开发方式/4-语言SDK/3-C++/1-简介与配置.md) | 自建 C++ 环境 | TCP（可远程） | C++ | 在自己的C++项目中使用ATK |
-| [ATK 脚本工具](1-开发方式/1-ATK脚本工具.md) | ATK菜单 → 集成 → ATK脚本 | 进程内调用 | ATK脚本(.atks) | 与ATK在同一进程运行，无需网络通信的场景 |
+| [Python Client tool](1-开发方式/2-Python客户端工具/1-简介与配置.md) | ATK Menu → Integration → Client | TCP (remote-capable) | Python | Don't want to configure an environment; write Python scripts directly in ATK |
+| [Python SDK](1-开发方式/4-语言SDK/1-Python/1-简介与配置.md) | Self-built Python environment | TCP (remote-capable) | Python | Use ATK in your own Python project |
+| [Matlab SDK](1-开发方式/4-语言SDK/2-Matlab/1-简介与配置.md) | Self-built Matlab environment | TCP (remote-capable) | Matlab | Use ATK in your own Matlab project |
+| [C++ SDK](1-开发方式/4-语言SDK/3-C++/1-简介与配置.md) | Self-built C++ environment | TCP (remote-capable) | C++ | Use ATK in your own C++ project |
+| [ATK Script tool](1-开发方式/1-ATK脚本工具.md) | ATK Menu → Integration → ATK Script | In-process invocation | ATK Script (.atks) | Scenarios that run in the same process as ATK without requiring network communication |
 
-::: tip 如何选择
-- **不想配置环境** → [Python 客户端工具](1-开发方式/2-Python客户端工具/1-简介与配置.md)，ATK 内置，打开即用
-- **需要在自己项目中使用 ATK** → [语言 SDK](1-开发方式/4-语言SDK/README.md)，选择你熟悉的语言
-- **需要在其他电脑上远程操控 ATK** → 任意 TCP 方式均可，客户端/SDK 与 ATK 只要网络互通即可
-- **不想配置外部环境，也不需要网络通信** → [ATK 脚本工具](1-开发方式/1-ATK脚本工具.md)，进程内直接调用，ATK 内置脚本语言
+::: tip How to Choose
+- **Don't want to configure an environment** → [Python Client tool](1-开发方式/2-Python客户端工具/1-简介与配置.md), built into ATK and ready to use
+- **Need to use ATK in your own project** → [Language SDK](1-开发方式/4-语言SDK/README.md), choose the language you are familiar with
+- **Need to remotely control ATK from another computer** → any TCP method works, as long as the client/SDK and ATK have network access to each other
+- **Don't want to configure an external environment and don't need network communication** → [ATK Script tool](1-开发方式/1-ATK脚本工具.md), direct in-process invocation with ATK's built-in scripting language
 :::

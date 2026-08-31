@@ -1,38 +1,38 @@
 ---
-description: Windows 下 ATK 的端口配置：如何指定端口启动、如何查看当前占用的端口。默认端口为 6655。
+description: Windows port configuration for ATK, covering how to start ATK on a specified port and how to check the currently occupied port. The default port is 6655.
 ---
 
 # Windows
 
-## 指定端口启动
+## Starting on a Specified Port
 
-ATK 通过 TCP 端口与外部程序通信，启动时必须监听一个端口。**默认端口为 6655**，直接双击 `ATK.exe` 即在此端口启动，`atkOpen` 不传参时也默认连接此端口。
+ATK communicates with external programs through TCP ports, and must listen on a port when it starts. The **default port is 6655**; simply double-clicking `ATK.exe` starts it on this port, and `atkOpen` also connects to this port by default when no argument is passed.
 
-实际使用中可能会遇到需要同时运行多个 ATK 实例的情况，此时需要指定不同端口。
+In practice, you may need to run multiple ATK instances at the same time, in which case you need to specify different ports.
 
-### 打开命令行
+### Opening the Command Prompt
 
-打开 ATK 安装目录（右键桌面 ATK 快捷方式 → **打开文件所在位置**），在地址栏输入 `cmd` 回车，打开命令提示符：
+Open the ATK installation directory (right-click the ATK shortcut on the desktop → **Open file location**), type `cmd` in the address bar and press Enter to open the command prompt:
 
-![在安装目录地址栏输入 cmd 打开命令提示符](../../../../zh/二次开发教程/2-二次开发CONNECT模式/0-ATK启动与端口配置/media/image-20260630160612877.png)
+![Type cmd in the address bar of the installation directory to open the command prompt](../../../../zh/二次开发教程/2-二次开发CONNECT模式/0-ATK启动与端口配置/media/image-20260630160612877.png)
 
-### 启动命令
+### Startup Command
 
-通过 `-p` 参数可以在启动 ATK 时指定任意端口号（`<端口号>` 替换为实际端口）：
+The `-p` parameter lets you specify any port number when starting ATK (replace `<port>` with the actual port):
 
 ```bash
-ATK -p <端口号>
+ATK -p <port>
 ```
 
-![在 cmd 中执行 ATK -p 命令指定端口](../../../../zh/二次开发教程/2-二次开发CONNECT模式/0-ATK启动与端口配置/media/image-20260630155252654.png)
+![Execute the ATK -p command in cmd to specify the port](../../../../zh/二次开发教程/2-二次开发CONNECT模式/0-ATK启动与端口配置/media/image-20260630155252654.png)
 
-::: details open **示例：在 6666 端口启动**
+::: details open **Example: Starting on port 6666**
 
 ```bash
 ATK -p 6666
 ```
 
-连接时在 `atkOpen` 中传入对应端口：
+When connecting, pass the corresponding port to `atkOpen`:
 
 ::: code-tabs
 @tab Python
@@ -51,9 +51,9 @@ conID = atkOpen('127.0.0.1', 6666);
 ```
 :::
 
-## 查看当前端口
+## Checking the Current Port
 
-如果不确定当前 ATK 在哪个端口（比如连不上或连错了），打开 PowerShell（<kbd>Win</kbd> + <kbd>R</kbd>，输入 `powershell`，回车），执行：
+If you are not sure which port ATK is currently using (for example, if you cannot connect or connected to the wrong one), open PowerShell (<kbd>Win</kbd> + <kbd>R</kbd>, type `powershell`, and press Enter), then run:
 
 ```powershell
 Get-Process ATK | ForEach-Object { netstat -ano | findstr $_.Id }
@@ -61,9 +61,9 @@ Get-Process ATK | ForEach-Object { netstat -ano | findstr $_.Id }
 
 ![image-20260701180851498](../../../../zh/二次开发教程/2-二次开发CONNECT模式/0-ATK启动与端口配置/media/1-Windows/image-20260701180851498.png)
 
-输出中每行对应一个 ATK 进程占用的端口，最后一列为 PID，第二列为本地地址和端口：
+In the output, each line corresponds to the port occupied by an ATK process. The last column is the PID, and the second column is the local address and port:
 
-- PID **22668** → 占用 **6655** 端口（默认端口）
-- PID **17428** → 占用 **6666** 端口
+- PID **22668** → occupies port **6655** (default port)
+- PID **17428** → occupies port **6666**
 
-对照查询结果即可确认 ATK 当前占用的端口，判断连接时是否填对了端口号。
+Compare the query results to confirm the port ATK is currently using and check whether you filled in the correct port number when connecting.

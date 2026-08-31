@@ -1,34 +1,34 @@
 ---
-description: Linux（麒麟）下 ATK 的端口配置：如何指定端口启动、如何查看当前占用的端口。默认端口为 6655。
+description: Linux (Kylin) port configuration for ATK, covering how to start ATK on a specified port and how to check the currently occupied port. The default port is 6655.
 ---
 
-# Linux（麒麟）
+# Linux (Kylin)
 
-## 指定端口启动
+## Starting on a Specified Port
 
-ATK 通过 TCP 端口与外部程序通信，启动时必须监听一个端口。**默认端口为 6655**，直接双击 `ATK.sh` 即在此端口启动，`atkOpen` 不传参时也默认连接此端口。
+ATK communicates with external programs through TCP ports, and must listen on a port when it starts. The **default port is 6655**; simply double-clicking `ATK.sh` starts it on this port, and `atkOpen` also connects to this port by default when no argument is passed.
 
-实际使用中可能会遇到需要同时运行多个 ATK 实例的情况，此时需要指定不同端口。
+In practice, you may need to run multiple ATK instances at the same time, in which case you need to specify different ports.
 
-### 打开终端
+### Opening the Terminal
 
-进入 ATK 安装目录，在文件夹空白处右键 → **在终端中打开**（或按 <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> 打开终端后 `cd` 到安装目录）。
+Enter the ATK installation directory, right-click on empty space in the folder → **Open in Terminal** (or press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> to open a terminal and then `cd` to the installation directory).
 
-### 启动命令
+### Startup Command
 
-通过 `-p` 参数可以在启动 ATK 时指定任意端口号（`<端口号>` 替换为实际端口）：
+The `-p` parameter lets you specify any port number when starting ATK (replace `<port>` with the actual port):
 
 ```bash
-./ATK.sh -p <端口号>
+./ATK.sh -p <port>
 ```
 
-::: details open **示例：在 6666 端口启动**
+::: details open **Example: Starting on port 6666**
 
 ```bash
 ./ATK.sh -p 6666
 ```
 
-连接时在 `atkOpen` 中传入对应端口：
+When connecting, pass the corresponding port to `atkOpen`:
 
 ::: code-tabs
 @tab Python
@@ -47,19 +47,19 @@ conID = atkOpen('127.0.0.1', 6666);
 ```
 :::
 
-## 查看当前端口
+## Checking the Current Port
 
-如果不确定当前 ATK 在哪个端口（比如连不上或连错了），在终端中执行：
+If you are not sure which port ATK is currently using (for example, if you cannot connect or connected to the wrong one), run the following in the terminal:
 
 ```bash
 sudo lsof -i -P -n | grep ATK
 ```
 
-输出示例：
+Example output:
 
 ```
 ATK    428800 user    34u  IPv6 6520031  0t0  TCP *:6655 (LISTEN)
 ATK    439192 user    32u  IPv6 6742913  0t0  TCP *:6666 (LISTEN)
 ```
 
-每行代表一个 ATK 进程，最后一列（`*:6655`、`*:6666`）即为占用的端口号。
+Each line represents an ATK process, and the last column (`*:6655`, `*:6666`) is the occupied port number.
