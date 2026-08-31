@@ -1,10 +1,10 @@
 # fix
 
-## 作用
+## Description
 
-向0舍入
+Round toward zero
 
-## 语法
+## Syntax
 
 ```atks
 Y = fix(X)

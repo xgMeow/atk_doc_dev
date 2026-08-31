@@ -1,26 +1,26 @@
 # legend
 
-## 作用
+## Description
 
-在坐标区上添加图例
+Add a legend to the axes
 
-## 语法
+## Syntax
 
 ```atks
 legend()
 legend(labels)
 ```
 
-## 补充说明
+## Additional Notes
 
-- `legend()` ：为每个绘制的数据序列创建一个带有描述性标签的图例，对于标签，图例默认使用 `"dataN"` 形式的标签。
-- `legend(labels)` ：使用字符串设置标签，例如 `legend("cos(x)", "cos(2x)")`
+- `legend()`: Creates a legend with descriptive labels for each plotted data series. By default, the legend uses labels of the form `"dataN"`.
+- `legend(labels)`: Sets the labels using strings, for example `legend("cos(x)", "cos(2x)")`.
 
-## 示例
+## Example
 
-::: details open **在当前坐标区上添加图例**
+::: details open **Add a legend to the current axes**
 
-绘制两个线条并在当前坐标区上添加一个图例，将图例标签指定为 `legend` 函数的输入参数。
+Plot two lines and add a legend to the current axes, specifying the legend labels as input arguments of the `legend` function.
 
 ```atks
     x = linspace(0, pi, 100);
@@ -34,6 +34,6 @@ legend(labels)
     show()
 ```
 
-![添加图例](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/legend/image-2.png)
+![Add a legend](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/legend/image-2.png)
 
 :::

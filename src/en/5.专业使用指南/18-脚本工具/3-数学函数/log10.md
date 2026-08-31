@@ -1,10 +1,10 @@
 # log10
 
-## 作用
+## Description
 
-常用对数，即以10为底
+Common logarithm, base 10
 
-## 语法
+## Syntax
 
 ```atks
 Y = log10(X)

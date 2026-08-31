@@ -1,12 +1,12 @@
 # linspace
 
-## 作用
+## Description
 
-生成均匀间隔的向量
+Generate evenly spaced vector
 
-## 语法
+## Syntax
 
 ```atks
-y = linspace(x1,x2)example
+y = linspace(x1,x2)
 y = linspace(x1,x2,n)
 ```

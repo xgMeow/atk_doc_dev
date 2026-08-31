@@ -1,10 +1,10 @@
 # abs
 
-## 作用
+## Description
 
-绝对值
+Absolute value
 
-## 语法
+## Syntax
 
 ```atks
 Y = abs(X)

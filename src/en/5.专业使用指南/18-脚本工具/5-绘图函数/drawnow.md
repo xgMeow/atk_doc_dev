@@ -1,10 +1,10 @@
 # drawnow
 
-## 作用
+## Description
 
-更新图窗并处理回调
+Update figures and process callbacks
 
-## 语法
+## Syntax
 
 ```atks
 drawnow()

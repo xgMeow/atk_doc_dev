@@ -1,10 +1,10 @@
 # zeros
 
-## 作用
+## Description
 
-创建全部为 0 的数组
+Create an array of all zeros
 
-## 语法
+## Syntax
 
 ```atks
 X = zeros(m, n)

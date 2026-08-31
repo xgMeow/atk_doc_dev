@@ -1,10 +1,10 @@
 # cot
 
-## 作用
+## Description
 
-余切，以弧度为单位
+Cotangent, in radians
 
-## 语法
+## Syntax
 
 ```atks
 Y = cot(X)

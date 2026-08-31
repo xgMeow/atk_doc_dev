@@ -1,10 +1,10 @@
 # hold
 
-## 作用
+## Description
 
-添加新绘图时保留当前绘图
+Retain the current plot when adding new plots
 
-## 语法
+## Syntax
 
 ```atks
 hold("on")
@@ -13,16 +13,16 @@ hold(true)
 hold(false)
 ```
 
-## 补充说明
+## Additional Notes
 
-- `hold("on")` / `(true)` ：保留当前坐标区中的绘图，使新添加到坐标区中的绘图不会删除现有绘图。
-- `hold("off")` / `(false)` ：使新添加到坐标区中的绘图清除现有绘图并重置所有的坐标区属性。
+- `hold("on")` / `(true)`: Retains plots in the current axes, so that new plots added to the axes do not delete existing plots.
+- `hold("off")` / `(false)`: Causes new plots added to the axes to clear existing plots and reset all axes properties.
 
-## 示例
+## Example
 
-::: details open **在现有坐标区上添加线图**
+::: details open **Add a line plot to existing axes**
 
-创建一个线图。使用 `hold("on")` 添加第二个线图，而不删除已有的线图。然后将 hold 状态重置为 `"off"`。
+Create a line plot. Use `hold("on")` to add a second line plot without deleting the existing one. Then reset the hold state to `"off"`.
 
 ```atks
     x = linspace(-pi, pi, 100);
@@ -35,19 +35,19 @@ hold(false)
     hold("off")
 ```
 
-![添加第二个线图](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/hold/image.png)
+![Add a second line plot](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/hold/image.png)
 
 :::
 
-::: details open **新绘图删除现有绘图**
+::: details open **New plot deletes the existing plot**
 
-当 hold 状态为 `"off"` 时，新绘图将删除现有绘图。新绘图从色序和线型序列的开头开始。
+When the hold state is `"off"`, a new plot deletes the existing plot. The new plot starts at the beginning of the color order and line style order.
 
 ```atks
     y3 = sin(2 * x);
     plot(x, y3)
 ```
 
-![新绘图](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/hold/image-1.png)
+![New plot](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/hold/image-1.png)
 
 :::

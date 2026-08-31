@@ -1,10 +1,10 @@
 # mod
 
-## 作用
+## Description
 
-除后的余数（取模运算）
+Remainder after division (modulo operation)
 
-## 语法
+## Syntax
 
 ```atks
 b = mod(a,m)

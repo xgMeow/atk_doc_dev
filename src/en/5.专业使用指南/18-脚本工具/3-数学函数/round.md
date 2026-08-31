@@ -1,10 +1,10 @@
 # round
 
-## 作用
+## Description
 
-四舍五入为最近的小数或整数
+Round to the nearest decimal or integer
 
-## 语法
+## Syntax
 
 ```atks
 Y = round(X)

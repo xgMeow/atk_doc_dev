@@ -1,10 +1,10 @@
 # Button
 
-## 作用
+## Description
 
-创建一个按钮
+Creates a button.
 
-## 语法
+## Syntax
 
 ```atks
 Button("click me", print("hi"))

@@ -1,10 +1,10 @@
 # floor
 
-## 作用
+## Description
 
-向负无穷舍入
+Round toward negative infinity
 
-## 语法
+## Syntax
 
 ```atks
 Y = floor(X)

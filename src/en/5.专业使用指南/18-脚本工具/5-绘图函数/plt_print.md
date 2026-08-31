@@ -1,19 +1,19 @@
 # plt_print
 
-## 作用
+## Description
 
-打印图窗或保存为特定文件格式
+Print a figure or save it to a specific file format
 
-## 语法
+## Syntax
 
 ```atks
 plt_print()
 plt_print(filename)
 ```
 
-## 示例
+## Example
 
-::: details open **打印图窗**
+::: details open **Print a figure**
 
 ```atks
     x = linspace(0, 2*pi, 100);

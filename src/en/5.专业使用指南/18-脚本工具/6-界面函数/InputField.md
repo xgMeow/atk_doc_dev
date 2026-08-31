@@ -1,22 +1,22 @@
 # InputField
 
-## 作用
+## Description
 
-创建一个输入框
+Creates an input field.
 
-## 语法
+## Syntax
 
 ```atks
 InputField()
 ```
 
-## 补充说明
+## Additional Notes
 
-- 输入框可以与[响应式变量](./reactive关键词.md)或[响应式表达式](./Reactive.md)绑定
+- An input field can be bound to a [reactive variable](./reactive关键词.md) or a [reactive expression](./Reactive.md)
 
-## 示例
+## Example
 
-::: details open **将输入框内容与响应式变量进行绑定**
+::: details open **Binding the input field content to a reactive variable**
 
 ```atks
 value = "hello"
@@ -28,8 +28,8 @@ CreateDialog(
 )
 ```
 
-在输入框输入内容后，点击回车，即会更改 `value`、`valueRef` 还有文本框的内容
+After entering content in the input field, press Enter to update `value`, `valueRef`, and the text field content.
 
-![效果图](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/InputField/image.png)
+![Screenshot](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/InputField/image.png)
 
 :::

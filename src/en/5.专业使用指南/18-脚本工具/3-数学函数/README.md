@@ -1,5 +1,5 @@
 ---
-title: 数学函数
+title: Math Functions
 index: false
 ---
 

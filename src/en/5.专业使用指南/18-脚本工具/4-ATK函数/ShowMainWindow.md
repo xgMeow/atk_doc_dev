@@ -1,10 +1,10 @@
 # ShowMainWindow
 
-## 作用
+## Description
 
-打开ATK主界面
+Opens the ATK main interface.
 
-## 语法
+## Syntax
 
 ```atks
 ShowMainWindow()

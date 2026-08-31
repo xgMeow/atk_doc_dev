@@ -1,15 +1,15 @@
 # Row
 
-## 作用
+## Description
 
-新建行容器
+Creates a row container.
 
-## 语法
+## Syntax
 
 ```atks
 Row("text 1", Button())
 ```
 
-## 补充说明
+## Additional Notes
 
-- 传入该函数的表达式或者控件将会按行排序
+- Expressions or controls passed to this function are arranged in a row

@@ -1,15 +1,15 @@
 # fclose
 
-## 作用
+## Description
 
-输入文件句柄，关闭文件
+Closes a file given a file handle
 
-## 语法
+## Syntax
 
 ```atks
 fclose(fid)
 ```
 
-## 另请参阅
+## See Also
 
 [fopen](fopen.md) | [fflush](fflush.md) | [fprint](fprint.md) | [fclose](fclose.md)

@@ -1,22 +1,22 @@
 # NewObject
 
-## 作用
+## Description
 
-新建 ATK 算法模型/对象
+Creates an ATK algorithm model/object.
 
-## 语法
+## Syntax
 
 ```atks
 NewObject(typeName)
 ```
 
-## 补充说明
+## Additional Notes
 
-输入对象类型 `typeName`，返回一个新建的ATK对象
+Input the object type `typeName`, and a new ATK object is returned.
 
-## 示例
+## Example
 
-::: details open **新建ATK对象**
+::: details open **Create an ATK object**
 
 ```atks
 sat = NewObject("Satellite")

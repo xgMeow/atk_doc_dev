@@ -1,20 +1,20 @@
 # fopen
 
-## 作用
+## Description
 
-输入文件路径，打开文件
+Opens a file given its path
 
-## 语法
+## Syntax
 
 ```atks
 fid1 = fopen("./data2.txt", "r")
 fid2 = fopen("./data1.txt", "w")
 ```
 
-## 返回值
+## Return Value
 
-如果文件打开失败，则返回 -1
+Returns -1 if the file fails to open
 
-## 另请参阅
+## See Also
 
 [fflush](fflush.md) | [fprint](fprint.md) | [fclose](fclose.md)

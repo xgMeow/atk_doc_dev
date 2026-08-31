@@ -1,10 +1,10 @@
 # csch
 
-## 作用
+## Description
 
-双曲余割
+Hyperbolic cosecant
 
-## 语法
+## Syntax
 
 ```atks
 Y = csch(X)

@@ -1,25 +1,25 @@
 # subplot
 
-## 作用
+## Description
 
-在平铺位置创建坐标区
+Create axes in tiled positions
 
-## 语法
+## Syntax
 
 ```atks
 subplot(m,n,p)
 ```
 
-## 补充说明
+## Additional Notes
 
-- `subplot(m,n,p)` ：将当前图窗划分为 m×n 网格，并在 p 指定的位置创建坐标区。
-- Syslab ：按行号对子图位置进行编号，第一个子图是第一行的第一列，第二个子图是第一行的第二列，依此类推。
+- `subplot(m,n,p)`: Divides the current figure into an m×n grid and creates axes at the position specified by p.
+- Syslab: Numbers the subplot positions by row; the first subplot is in the first column of the first row, the second subplot is in the second column of the first row, and so on.
 
-## 示例
+## Example
 
-::: details open **创建带有两个堆叠子图的图窗**
+::: details open **Create a figure with two stacked subplots**
 
-在每个子图上绘制一条正弦波。
+Plot a sine wave in each subplot.
 
 ```atks
 subplot(2, 1, 1);
@@ -32,6 +32,6 @@ plot(x, y2)
 show();
 ```
 
-![正弦波](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/subplot/image.png)
+![Sine waves](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/subplot/image.png)
 
 :::

@@ -1,10 +1,10 @@
 # exit
 
-## 作用
+## Description
 
-退出软件
+Exits the software
 
-## 语法
+## Syntax
 
 ```atks
 exit()

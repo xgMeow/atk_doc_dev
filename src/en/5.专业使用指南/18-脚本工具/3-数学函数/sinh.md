@@ -1,10 +1,10 @@
 # sinh
 
-## 作用
+## Description
 
-双曲正弦
+Hyperbolic sine
 
-## 语法
+## Syntax
 
 ```atks
 Y = sinh(X)

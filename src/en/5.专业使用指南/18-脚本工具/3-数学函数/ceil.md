@@ -1,10 +1,10 @@
 # ceil
 
-## 作用
+## Description
 
-向正无穷舍入
+Round toward positive infinity
 
-## 语法
+## Syntax
 
 ```atks
 Y = ceil(X)

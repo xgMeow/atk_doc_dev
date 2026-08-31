@@ -1,10 +1,10 @@
 # plot
 
-## 作用
+## Description
 
-二维线图
+2-D line plot
 
-## 语法
+## Syntax
 
 ```atks
 plot(X,Y)
@@ -12,15 +12,15 @@ plot(X,Y,fmt)
 plot3(X1,Y1,fmt1,...,Xn,Yn,fmtn)
 ```
 
-## 补充说明
+## Additional Notes
 
-- `plot(X,Y)` ：创建 Y 中数据对 X 中对应值的二维线图。
-- `plot(X,Y,fmt)` ：创建二维线图的同时设置线型、标记符号和颜色。
-- `plot(X1,Y1,fmt1,...,Xn,Yn,fmtn)` ：创建多个二维线图同时设置每个线条的线型、标记符号和颜色。
+- `plot(X,Y)`: Creates a 2-D line plot of the data in Y versus the corresponding values in X.
+- `plot(X,Y,fmt)`: Creates a 2-D line plot while setting the line style, marker symbol, and color.
+- `plot(X1,Y1,fmt1,...,Xn,Yn,fmtn)`: Creates multiple 2-D line plots while setting the line style, marker symbol, and color for each line.
 
-## 示例
+## Example
 
-::: details open **创建线图**
+::: details open **Create a line plot**
 
 ```atks
     x = linspace(0, 2*pi, 100);
@@ -29,13 +29,13 @@ plot3(X1,Y1,fmt1,...,Xn,Yn,fmtn)
     title("sin(x)")
 ```
 
-![线图](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/plot/image-1.png)
+![Line plot](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/plot/image-1.png)
 
 :::
 
-::: details open **绘制多个线图**
+::: details open **Plot multiple lines**
 
-将 x 定义为 100 个介于 −2π 和 2π 之间的线性间隔值，将 y1 和 y2 定义为 x 的正弦和余弦值，分别使用蓝色和红色。创建两个数据集的线图。
+Define x as 100 linearly spaced values between −2π and 2π, and define y1 and y2 as the sine and cosine values of x in blue and red, respectively. Create line plots of the two data sets.
 
 ```atks
     x = linspace(-2 * pi, 2 * pi, 100);
@@ -44,13 +44,13 @@ plot3(X1,Y1,fmt1,...,Xn,Yn,fmtn)
     plot(x , y1, "-b" , x , y2 , "-r")
 ```
 
-![绘制多个线图](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/plot/image-2.png)
+![Plot multiple lines](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/plot/image-2.png)
 
 :::
 
-::: details open **指定线型**
+::: details open **Specify line styles**
 
-绘制三条正弦曲线，每条曲线之间存在较小的相移。第一条曲线为蓝色实线，第二条曲线为红色虚线，第三条曲线为绿色点线。
+Plot three sine curves with a small phase shift between each curve. The first curve is a blue solid line, the second a red dashed line, and the third a green dotted line.
 
 ```atks
 x = linspace(0, 2*pi, 200);
@@ -60,6 +60,6 @@ y3 = sin(x-0.5);
 plot(x , y1, "-b" , x , y2 , "--r", x, y3, "g:")
 ```
 
-![指定线型](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/plot/image-3.png)
+![Specify line styles](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/plot/image-3.png)
 
 :::

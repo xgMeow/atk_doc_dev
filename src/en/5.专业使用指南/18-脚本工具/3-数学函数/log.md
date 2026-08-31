@@ -1,10 +1,10 @@
 # log
 
-## 作用
+## Description
 
-自然对数
+Natural logarithm
 
-## 语法
+## Syntax
 
 ```atks
 Y = log(X)

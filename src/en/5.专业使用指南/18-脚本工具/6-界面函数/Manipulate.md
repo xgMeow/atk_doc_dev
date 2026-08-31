@@ -1,24 +1,24 @@
 # Manipulate
 
-## 作用
+## Description
 
-创建一个操作器
+Creates a manipulator.
 
-## 语法
+## Syntax
 
 ```atks
 Manipulate(func, [a, b])
 ```
 
-## 补充说明
+## Additional Notes
 
-- 输入一个回调函数与一个范围
-- `func` ：回调函数
-- `[a, b]` ：范围
+- Accepts a callback function and a range
+- `func`: the callback function
+- `[a, b]`: the range
 
-## 示例
+## Example
 
-::: details open **动态控制曲线图中的参数**
+::: details open **Dynamically controlling the parameters of a curve plot**
 
 ```atks
 function func(n)
@@ -34,6 +34,6 @@ end
 Manipulate(func, [1, 10])
 ```
 
-![效果图](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/Manipulate/image.png)
+![Screenshot](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/Manipulate/image.png)
 
 :::

@@ -1,10 +1,10 @@
 # asin
 
-## 作用
+## Description
 
-反正弦，以弧度为单位
+Inverse sine, in radians
 
-## 语法
+## Syntax
 
 ```atks
 Y = asin(X)

@@ -1,10 +1,10 @@
 # print
 
-## 作用
+## Description
 
-打印变量的值
+Prints the values of variables
 
-## 语法
+## Syntax
 
 ```atks
 print(a, b)

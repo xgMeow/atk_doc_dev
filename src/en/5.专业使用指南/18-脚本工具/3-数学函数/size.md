@@ -1,10 +1,10 @@
 # size
 
-## 作用
+## Description
 
-数组大小
+Array size
 
-## 语法
+## Syntax
 
 ```atks
 sz = size(A)

@@ -1,10 +1,10 @@
 # Column
 
-## 作用
+## Description
 
-新建列容器
+Creates a column container.
 
-## 语法
+## Syntax
 
 ```atks
 Column(
@@ -13,6 +13,6 @@ Column(
 )
 ```
 
-## 补充说明
+## Additional Notes
 
-- 传入该函数的表达式或者控件将会按列排序
+- Expressions or controls passed to this function are arranged in a column

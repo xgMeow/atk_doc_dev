@@ -1,5 +1,5 @@
 ---
-title: 绘图函数
+title: Plotting Functions
 index: false
 ---
 

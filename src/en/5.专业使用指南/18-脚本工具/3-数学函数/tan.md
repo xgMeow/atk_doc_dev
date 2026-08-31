@@ -1,10 +1,10 @@
 # tan
 
-## 作用
+## Description
 
-正切，以弧度为单位
+Tangent, in radians
 
-## 语法
+## Syntax
 
 ```atks
 Y = tan(X)

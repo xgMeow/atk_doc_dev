@@ -7,5 +7,5 @@
 ## 语法
 
 ```atks
-D = deg2rad(R)
+D = rad2deg(R)
 ```

@@ -1,10 +1,10 @@
 # sec
 
-## 作用
+## Description
 
-正割，以弧度为单位
+Secant, in radians
 
-## 语法
+## Syntax
 
 ```atks
 Y = sec(X)

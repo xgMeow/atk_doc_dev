@@ -1,10 +1,10 @@
 # num2str
 
-## 作用
+## Description
 
-将数组转换为字符串
+Converts an array to a string
 
-## 语法
+## Syntax
 
 ```atks
 s = num2str(1.2345)

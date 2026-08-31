@@ -1,10 +1,10 @@
 # EditObject
 
-## 作用
+## Description
 
-打开相关的Ui界面对ATK算法模型/对象进行编辑
+Opens the relevant UI interface to edit an ATK algorithm model/object.
 
-## 语法
+## Syntax
 
 ```atks
 sat = NewObject("Satellite")

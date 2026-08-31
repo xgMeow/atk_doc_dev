@@ -1,10 +1,10 @@
 # Grid
 
-## 作用
+## Description
 
-新建二维网格容器
+Creates a two-dimensional grid container.
 
-## 语法
+## Syntax
 
 ```atks
 Grid(
@@ -13,13 +13,13 @@ Grid(
 )
 ```
 
-## 补充说明
+## Additional Notes
 
-- 传入该函数的表达式或者控件将会按网格排列
+- Expressions or controls passed to this function are arranged in a grid
 
-## 示例
+## Example
 
-::: details open **创建 2x2 排列的按钮**
+::: details open **Creating buttons arranged in a 2x2 grid**
 
 ```atks
 Grid(
@@ -30,7 +30,7 @@ Grid(
 
 :::
 
-::: details open **创建 2x2 排列的文字和按钮**
+::: details open **Creating text and buttons arranged in a 2x2 grid**
 
 ```atks
 Grid(

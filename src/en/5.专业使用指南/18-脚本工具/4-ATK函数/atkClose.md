@@ -1,19 +1,19 @@
 # atkClose
 
-## 作用
+## Description
 
-关闭与远程ATK建立的网络连接
+Closes the network connection established with a remote ATK.
 
-## 语法
+## Syntax
 
 ```atks
 atkClose(conID)
 ```
 
-## 输入参数
+## Input Parameters
 
-`conID`  - [atkOpen](atkOpen.md) 函数返回的句柄
+`conID`  - The handle returned by the [atkOpen](atkOpen.md) function
 
-## 另请参阅
+## See Also
 
 [atkOpen](atkOpen.md) | [atkConnect](atkConnect.md)

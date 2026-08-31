@@ -1,10 +1,10 @@
 # scatter
 
-## 作用
+## Description
 
-散点图
+Scatter plot
 
-## 语法
+## Syntax
 
 ```atks
 scatter(x,y)
@@ -12,14 +12,14 @@ scatter(x,y,sz)
 scatter(x,y,sz,c)
 ```
 
-## 补充说明
+## Additional Notes
 
-- `scatter(x,y)` ：在向量 x 和 y 指定的位置创建一个包含圆形的散点图。该类型的图形也称为气泡图。
-- `scatter(x,y,sz)` ：创建散点图的同时指定圆的大小。要绘制大小相等的圆圈，请将 sz 指定为标量。要绘制大小不等的圆，请将 sz 指定为长度等于 x 和 y 的长度的向量。
+- `scatter(x,y)`: Creates a scatter plot with circular markers at the locations specified by vectors x and y. This type of plot is also called a bubble chart.
+- `scatter(x,y,sz)`: Creates a scatter plot while specifying the circle sizes. To plot circles of equal size, specify sz as a scalar. To plot circles of varying sizes, specify sz as a vector whose length equals the length of x and y.
 
-## 示例
+## Example
 
-::: details open **创建散点图**
+::: details open **Create a scatter plot**
 
 ```atks
     x = linspace(0, 3*pi, 200);
@@ -31,7 +31,7 @@ scatter(x,y,sz,c)
 
 :::
 
-::: details open **改变圆圈大小和颜色**
+::: details open **Change circle sizes and colors**
 
 ```atks
     x = linspace(0, 3 * pi, 200);

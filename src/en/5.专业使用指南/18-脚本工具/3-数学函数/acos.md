@@ -1,10 +1,10 @@
 # acos
 
-## 作用
+## Description
 
-反余弦，以弧度为单位
+Inverse cosine, in radians
 
-## 语法
+## Syntax
 
 ```atks
 Y = acos(X)

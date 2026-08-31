@@ -1,10 +1,10 @@
 # sum
 
-## 作用
+## Description
 
-数组求和
+Sum of array elements
 
-## 语法
+## Syntax
 
 ```atks
 S = sum(A)

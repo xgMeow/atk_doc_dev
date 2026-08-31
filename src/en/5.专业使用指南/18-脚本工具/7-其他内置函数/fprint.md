@@ -1,15 +1,15 @@
 # fprint
 
-## 作用
+## Description
 
-打印内容到文件
+Prints content to a file
 
-## 语法
+## Syntax
 
 ```atks
 fprint(fid, "data=", 1)
 ```
 
-## 另请参阅
+## See Also
 
 [fopen](fopen.md) | [fflush](fflush.md) | [fclose](fclose.md)

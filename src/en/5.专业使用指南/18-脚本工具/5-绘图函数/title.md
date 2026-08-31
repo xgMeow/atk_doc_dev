@@ -1,22 +1,22 @@
 # title
 
-## 作用
+## Description
 
-添加标题
+Add a title
 
-## 语法
+## Syntax
 
 ```atks
 title(txt)
 ```
 
-## 补充说明
+## Additional Notes
 
-- 将指定的标题添加到返回的坐标区域图中
+- Adds the specified title to the returned axes.
 
-## 示例
+## Example
 
-::: details open **在当前坐标区上添加标题**
+::: details open **Add a title to the current axes**
 
 ```atks
     x=[1,2,3,4,5,6,7,8,9,10];

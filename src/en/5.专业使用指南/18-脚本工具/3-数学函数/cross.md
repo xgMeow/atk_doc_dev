@@ -1,10 +1,10 @@
 # cross
 
-## 作用
+## Description
 
-计算两个 3 向量的叉积
+Compute the cross product of two 3-element vectors
 
-## 语法
+## Syntax
 
 ```atks
 C = cross(A,B)

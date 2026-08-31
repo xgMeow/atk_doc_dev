@@ -1,10 +1,10 @@
 # acot
 
-## 作用
+## Description
 
-反余切，以弧度为单位
+Inverse cotangent, in radians
 
-## 语法
+## Syntax
 
 ```atks
 Y = acot(X)

@@ -1,10 +1,10 @@
 # VerticalSlider
 
-## 作用
+## Description
 
-创建一个垂直滑动器
+Creates a vertical slider.
 
-## 语法
+## Syntax
 
 ```atks
 VerticalSlider()

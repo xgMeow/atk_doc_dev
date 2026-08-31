@@ -1,22 +1,22 @@
 # figure
 
-## 作用
+## Description
 
-创建图窗窗口
+Create a figure window
 
-## 语法
+## Syntax
 
 ```atks
 figure()
 ```
 
-## 补充说明
+## Additional Notes
 
-- `figure()` ：使用默认属性值创建一个新的图窗窗口，生成的图窗为当前图窗。
+- `figure()`: Creates a new figure window using default property values, and the resulting figure becomes the current figure.
 
-## 示例
+## Example
 
-::: details open **创建一个图窗**
+::: details open **Create a figure**
 
 ```atks
     figure()

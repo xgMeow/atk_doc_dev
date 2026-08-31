@@ -1,10 +1,10 @@
 # asec
 
-## 作用
+## Description
 
-反正割，以弧度为单位
+Inverse secant, in radians
 
-## 语法
+## Syntax
 
 ```atks
 Y = asec(X)

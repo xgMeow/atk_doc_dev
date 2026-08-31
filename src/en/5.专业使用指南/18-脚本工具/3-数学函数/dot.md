@@ -1,10 +1,10 @@
 # dot
 
-## 作用
+## Description
 
-计算两个向量之间的点积
+Compute the dot product of two vectors
 
-## 语法
+## Syntax
 
 ```atks
 C = dot(A,B)

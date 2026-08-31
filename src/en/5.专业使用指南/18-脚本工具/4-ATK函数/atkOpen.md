@@ -1,20 +1,20 @@
 # atkOpen
 
-## 作用
+## Description
 
-与远程ATK建立网络连接（TCP协议）
+Establishes a network connection (TCP) with a remote ATK.
 
-## 语法
+## Syntax
 
 ```atks
 conID = atkOpen()
 conID = atkOpen("127.0.0.1", 6655)
 ```
 
-## 返回参数
+## Return Parameters
 
-`conID`: 连接句柄，如果返回`-1`，则说明连接失败
+`conID`: Connection handle. A return value of `-1` indicates a failed connection.
 
-## 另请参阅
+## See Also
 
 [atkConnect](atkConnect.md) | [atkClose](atkClose.md)

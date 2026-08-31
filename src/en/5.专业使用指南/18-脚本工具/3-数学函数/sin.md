@@ -1,10 +1,10 @@
 # sin
 
-## 作用
+## Description
 
-正弦，以弧度为单位
+Sine, in radians
 
-## 语法
+## Syntax
 
 ```atks
 Y = sin(X)

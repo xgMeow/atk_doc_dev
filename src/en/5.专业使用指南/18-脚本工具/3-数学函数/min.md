@@ -1,10 +1,10 @@
 # min
 
-## 作用
+## Description
 
-最小值
+Minimum value
 
-## 语法
+## Syntax
 
 ```atks
 M = min(A)

@@ -1,10 +1,10 @@
 # sqrt
 
-## 作用
+## Description
 
-平方根
+Square root
 
-## 语法
+## Syntax
 
 ```atks
 Y = sqrt(X)

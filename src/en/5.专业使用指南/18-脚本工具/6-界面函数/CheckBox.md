@@ -1,22 +1,22 @@
 # CheckBox
 
-## 作用
+## Description
 
-创建一个勾选框
+Creates a checkbox.
 
-## 语法
+## Syntax
 
 ```atks
 CheckBox()
 ```
 
-## 补充说明
+## Additional Notes
 
-- 勾选框可以与[响应式变量](./reactive关键词.md)或[响应式表达式](./Reactive.md)绑定
+- A checkbox can be bound to a [reactive variable](./reactive关键词.md) or a [reactive expression](./Reactive.md)
 
-## 示例
+## Example
 
-::: details open **将勾选框状态与响应式变量进行绑定**
+::: details open **Binding the checkbox state to a reactive variable**
 
 ```atks
 reactive valueRef = true

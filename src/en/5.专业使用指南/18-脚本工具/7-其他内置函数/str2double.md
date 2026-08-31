@@ -1,10 +1,10 @@
 # str2double
 
-## 作用
+## Description
 
-将字符串转换为浮点数
+Converts a string to a floating-point number
 
-## 语法
+## Syntax
 
 ```atks
 v = str2double("3.285")

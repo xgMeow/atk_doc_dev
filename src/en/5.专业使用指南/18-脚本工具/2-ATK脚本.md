@@ -1,112 +1,112 @@
 ---
-description: 介绍 ATK 脚本语言的语法规范，包括数据类型、运算符、流程控制、算法组件属性绑定和声明式响应式界面创建。
+description: Introduces the syntax specification of the ATK Script language, including data types, operators, flow control, algorithm component property binding, and declarative responsive interface creation.
 ---
 
-# ATK脚本
+# ATK Script
 
-ATK脚本定位为一种**领域专用语言**，目前支持基本运算符、流程控制语句等，并原生支持**绑定ATK对象与算法组件的属性**。
+ATK Script is positioned as a **domain-specific language**. It currently supports basic operators and flow control statements, and natively supports **binding the properties of ATK objects and algorithm components**.
 
-ATK脚本扩展了一些专有功能，例如支持直接访问ATK算法组件的属性，并新增了绑定赋值运算符`=&`与延迟赋值运算符`:=`来支持脚本变量与ATK算法组件属性的绑定。
+ATK Script also provides some proprietary features, such as direct access to the properties of ATK algorithm components, and introduces the binding assignment operator `=&` and the lazy assignment operator `:=` to support binding script variables to the properties of ATK algorithm components.
 
-支持通过[reactive 关键词](6-界面函数/reactive关键词.md)创建响应式变量，并通过声明式语法调用界面函数构建自定义界面。
+Responsive variables can be created via the [reactive keyword](6-界面函数/reactive关键词.md), and custom interfaces can be built by calling UI functions with declarative syntax.
 
-ATK脚本的语法主要参考了Julia语言，并实现了基础矩阵运算、基础数学函数、基础绘图函数、界面函数以及ATK引擎相关函数等来支撑对ATK计算能力与界面能力的扩展。
+The syntax of ATK Script is mainly modeled on the Julia language, and it implements basic matrix operations, basic mathematical functions, basic plotting functions, UI functions, and ATK-engine-related functions to support extending ATK's computational and interface capabilities.
 
-::: note 注意
-ATK脚本解释器并未进行JIT优化，其**解释执行效率不高**，不建议应用于计算密集型任务，推荐用于以下场景：
+::: note Note
+The ATK Script interpreter is not JIT-optimized; its **interpreted execution efficiency is low**. It is not recommended for computation-intensive tasks and is best suited for the following scenarios:
 
-- 打通仿真计算时的场景对象之间的数据流。
+- Bridging data flows between scene objects during simulation computation.
 
-- 执行自动化场景构建。
+- Performing automated scenario construction.
 
-- 执行重复性的数据报告输出。
+- Outputting repetitive data reports.
 
-- 在不升级软件的情况下扩展ATK尚不具备的计算能力。
+- Extending computational capabilities that ATK does not yet have without upgrading the software.
 :::
 
-## 功能位置
+## Function Entry
 
-- 运行`ATKConsole` 程序，在 Windows 下为 `ATKConsole.exe`，在Linux下请运行`ATKConsole.sh`。
+- Run the `ATKConsole` program — `ATKConsole.exe` on Windows, and `ATKConsole.sh` on Linux.
 
-- 打开集成选项卡中的客户端，采用ATK脚本作为解释器引擎。
+- Open the client in the Integration tab, which uses ATK Script as its interpreter engine.
 
-- 打开集成选项卡中的控制台，可选择ATK脚本解释器进行运行。
+- Open the console in the Integration tab, where you can select the ATK Script interpreter to run.
 
-## 数据类型
+## Data Types
 
-支持的基础数据类型有：浮点数(`Double`)、整型(`Interger`)、布尔值(`Boolean`)。
+The supported basic data types are: floating point (`Double`), integer (`Interger`), and boolean (`Boolean`).
 
-## 基本运算符
+## Basic Operators
 
-1. **赋值运算符**
+1. **Assignment Operators**
 
-|运算符  |描述                                                                                  | 备注                       |
-|:---:  |:---                                                                               |:---                        |
-|`=`    |直接赋值运算符，将右侧表达式的计算结果赋给左侧操作数                                   |`c = a + b`                |
-|`:=`   |延迟赋值运算符，将右侧表达式赋给左侧操作数<br>在每次访问左侧操作数时会重新进行一次求值   |`a = 1`，`b := a + 1`，此时获取`b`的值为`2` <br> 更改`a`的值`a = 3`，此时获取`b`的值为`4` <br> 如果对`b`重新赋值`b = 2`，变量`b`将不再具备延迟计算特性|
-|`=&`   |绑定赋值运算符，将左侧操作数与右侧表达式绑定<br>变量的取值与直接赋值将与右侧表达式绑定| `a=1`，`b =& a`，此时获取`b`的值为`1`<br> 更改`a`的值`a = 3`，此时获取`b`的值为`3` <br> 更改`b`的值`b = 5`，此时获取`a`的值为`5`<br>绑定赋值运算符可以用于绑定ATK算法组件的属性 |
-|`+=` | 加且赋值运算符 | `a += 2` |
-|`-=` | 减且赋值运算符 | `a -= 2`|
-|`*=` | 乘且赋值运算符 | `a *= 2`|
-|`/=` | 除且赋值运算符 | `a /= 2`|
+| Operator | Description | Remarks |
+|:---:  |:--- |:--- |
+|`=`    |Direct assignment operator; assigns the computed value of the right-hand expression to the left-hand operand |`c = a + b` |
+|`:=`   |Lazy assignment operator; assigns the right-hand expression to the left-hand operand<br>Re-evaluates the right-hand expression each time the left-hand operand is accessed |`a = 1`，`b := a + 1`; `b` now evaluates to `2`<br> Change `a` to `a = 3`; `b` now evaluates to `4` <br> If `b` is reassigned as `b = 2`, the variable `b` no longer has the lazy-evaluation characteristic |
+|`=&`   |Binding assignment operator; binds the left-hand operand to the right-hand expression<br>The variable's value and direct assignments stay bound to the right-hand expression| `a=1`，`b =& a`; `b` now evaluates to `1`<br> Change `a` to `a = 3`; `b` now evaluates to `3` <br> Change `b` to `b = 5`; `a` now evaluates to `5`<br>The binding assignment operator can be used to bind the properties of ATK algorithm components |
+|`+=` | Add-and-assign operator | `a += 2` |
+|`-=` | Subtract-and-assign operator | `a -= 2`|
+|`*=` | Multiply-and-assign operator | `a *= 2`|
+|`/=` | Divide-and-assign operator | `a /= 2`|
 
-2. **算术运算符**
+2. **Arithmetic Operators**
 
-|表达式  |描述                        | 备注                       |
-|:---:  |:---                        |:---                        |
-| `+x` | 取正运算符                   |                             |
-| `-x` | 取负运算符                   |                             |
-| `++x` | 先自增运算符                |                             |
-| `x++` | 后自增运算符                |                             |
-| `--x` | 先自减运算符                |                             |
-| `x--` | 后自减运算符                |                             |
-| `x + y` | 加法运算符                |                             |
-| `x - y` | 减法运算符                |                             |
-| `x * y` | 乘法运算符                |                             |
-| `x / y` | 除法运算符                |                             |
+| Expression | Description | Remarks |
+|:---:  |:--- |:--- |
+| `+x` | Unary plus | |
+| `-x` | Unary minus | |
+| `++x` | Pre-increment | |
+| `x++` | Post-increment | |
+| `--x` | Pre-decrement | |
+| `x--` | Post-decrement | |
+| `x + y` | Addition | |
+| `x - y` | Subtraction | |
+| `x * y` | Multiplication | |
+| `x / y` | Division | |
 
-3. **逻辑运算符**
+3. **Logical Operators**
 
-|表达式     |描述                        | 备注                        |
-|:---:     |:---                        |:---                         |
-| `!x`     | 取非运算符                  | 否定                            |
-| `x && y` | 短路与运算符                | 在`x && y`中，子表达式`y`仅当`x`为`true`时才会被执行 |
-| `x \|\| y` | 短语或运算符              | 在`x \|\| y`中，子表达式`y`仅当`x`为`false`时才会被执行 |
+| Expression | Description | Remarks |
+|:---:  |:--- |:--- |
+| `!x` | Logical NOT | Negation |
+| `x && y` | Short-circuit AND | In `x && y`, the subexpression `y` is evaluated only when `x` is `true` |
+| `x \|\| y` | Short-circuit OR | In `x \|\| y`, the subexpression `y` is evaluated only when `x` is `false` |
 
-4. **比较运算符**
+4. **Comparison Operators**
 
-|运算符     |描述              |
-|:---:     |:---               |
-| `==`     | 相等              |
-| `!=`     | 不等              |
-| `<`      | 小于              |
-| `<=`      | 小于等于         |
-| `>`      | 大于              |
-| `>=`      | 大于等于          |
+| Operator | Description |
+|:---:  |:--- |
+| `==` | Equal to |
+| `!=` | Not equal to |
+| `<` | Less than |
+| `<=` | Less than or equal to |
+| `>` | Greater than |
+| `>=` | Greater than or equal to |
 
-比较运算符支持链式比较，例如`1 < 2 == 2 <= 6`相当于`(1 < 2) && (2 == 2) && (2 <= 6)`。
+Comparison operators support chained comparisons. For example, `1 < 2 == 2 <= 6` is equivalent to `(1 < 2) && (2 == 2) && (2 <= 6)`.
 
-链式比较也具有短路特性。
+Chained comparisons also have short-circuit behavior.
 
-## 基础数学函数
+## Basic Mathematical Functions
 
-ATK脚本支持的基础数学函数请参考[数学函数](3-数学函数/README.md)。
+For the basic mathematical functions supported by ATK Script, see [Math Functions](3-数学函数/README.md).
 
-## 绘图相关函数
+## Plotting Functions
 
-ATK脚本支持的绘图相关函数请参考[绘图函数](5-绘图函数/README.md)。
+For the plotting functions supported by ATK Script, see [Plotting Functions](5-绘图函数/README.md).
 
-## ATK相关函数
+## ATK-Related Functions
 
-ATK脚本支持的ATK相关函数请参考[ATK函数](4-ATK函数/README.md)。
+For the ATK-related functions supported by ATK Script, see [ATK Functions](4-ATK函数/README.md).
 
-## 界面控件函数
+## UI Control Functions
 
-ATK脚本支持的界面控件函数请参考[界面函数](6-界面函数/README.md)。
+For the UI control functions supported by ATK Script, see [UI Functions](6-界面函数/README.md).
 
-## 流程控制
+## Control Flow
 
-1. **条件语句**
+1. **Conditional Statements**
 
 ```atks
 if x < y
@@ -118,9 +118,9 @@ else
 end
 ```
 
-2. **循环语句(for)**
+2. **Loop Statements (for)**
 
-从`1`遍历到`9`(包含`1`和`9`)
+Iterates from `1` to `9` (inclusive)
 
 ```atks
 for i=1:9
@@ -128,7 +128,7 @@ for i=1:9
 end
 ```
 
-从`1`遍历到`9`，间隔步长为`2`
+Iterates from `1` to `9` with a step size of `2`
 
 ```atks
 for i=1:2:9
@@ -136,7 +136,7 @@ for i=1:2:9
 end
 ```
 
-3. **循环语句(while)**
+3. **Loop Statements (while)**
 
 ```atks
 while i <= 5
@@ -144,57 +144,57 @@ while i <= 5
 end
 ```
 
-`while`、`for`循环语句均支持`break`和`continue`
+Both `while` and `for` loops support `break` and `continue`.
 
-## 绑定ATK算法组件属性
+## Binding ATK Algorithm Component Properties
 
-如下图，在机动规划中插入序列段，序列段中插入初始段。
+As shown below, insert a sequence segment in maneuver planning, and then insert an initial segment within the sequence segment.
 
-![任务序列](../../../zh/5.专业使用指南/18-脚本工具/media/5.18脚本工具/image-3.png)
+![Task sequence](../../../zh/5.专业使用指南/18-脚本工具/media/5.18脚本工具/image-3.png)
 
-按照[使用方法](#编写与执行脚本)进入脚本编辑器，编写ATK脚本。
+Follow the [usage](#writing-and-executing-scripts) to enter the script editor and write ATK scripts.
 
 ```atks
-初始段.InitialState.Cartesian.Z = 100
+InitialSegment.InitialState.Cartesian.Z = 100
 
-VX =& 初始段.InitialState.Cartesian.VX
+VX =& InitialSegment.InitialState.Cartesian.VX
 VX = 10
 ```
 
-- 第1行：在ATK脚本中直接访问算法组件的属性。
+- Line 1: Directly accesses the property of the algorithm component in the ATK script.
 
-- 第3行：使用`=&`绑定赋值运算符将脚本变量与算法组件的属性相绑定。
+- Line 3: Uses the `=&` binding assignment operator to bind the script variable to the property of the algorithm component.
 
-- 第4行：修改变量的值，与其绑定的ATK算法组件的属性也会被更改。
+- Line 4: Modifies the value of the variable; the bound ATK algorithm component property is also changed.
 
-点击 <kbd>执行脚本</kbd>，然后返回初始段的配置界面，可以看到算法组件的相关属性已被ATK脚本更改。
+Click <kbd>Run Script</kbd>, then return to the configuration interface of the initial segment; you can see that the relevant properties of the algorithm component have been changed by the ATK script.
 
-![初始段配置界面](../../../zh/5.专业使用指南/18-脚本工具/media/5.18脚本工具/image-4.png)
+![Initial segment configuration interface](../../../zh/5.专业使用指南/18-脚本工具/media/5.18脚本工具/image-4.png)
 
-::: note 注意
-在ATK脚本中，算法组件属性的更改将会同步更改与其相关的其他属性。
+::: note Note
+In ATK scripts, changing a property of an algorithm component synchronously changes other properties related to it.
 
-例如更改位置速度属性，将会同步更改轨道根数属性。
+For example, changing the position/velocity property synchronously changes the orbital element property.
 
-那么，如果两个脚本变量所绑定的算法组件属性具有联系，则更改其中一个变量的值将会同步影响另一个变量的值。
+Therefore, if the algorithm component properties bound by two script variables are related, changing one variable's value will synchronously affect the other variable's value.
 
 ```atks
-VX =& 初始段.InitialState.Cartesian.VX
-Ecc =& 初始段.InitialState.Keplerian.Ecc
+VX =& InitialSegment.InitialState.Cartesian.VX
+Ecc =& InitialSegment.InitialState.Keplerian.Ecc
 
 VX = 10
 ```
 
-例如，在上面的ATK脚本中，在更改`VX`变量的值后，将同步影响`Ecc`变量的值。
+For example, in the ATK script above, after changing the value of the `VX` variable, the value of the `Ecc` variable is synchronously affected.
 :::
 
-## 声明式语法创建响应式界面
+## Declarative Syntax for Creating Responsive Interfaces
 
 ```atks
-# 新建初始段模型
+# Create an initial segment model
 initState = NewObject("SegmentInitialState")
 
-# 通过reactive关键词创建响应式变量，且与初始段算法模型属性进行双向绑定
+# Create responsive variables via the reactive keyword, bidirectionally bound to the properties of the initial segment algorithm model
 
 reactive x_ref      =&  initState.InitialState.Cartesian.X
 reactive y_ref      =&  initState.InitialState.Cartesian.Y
@@ -210,7 +210,7 @@ reactive raan_ref   =&  initState.InitialState.Keplerian.RAAN
 reactive argper_ref =&  initState.InitialState.Keplerian.ArgPeri
 reactive truea_ref  =&  initState.InitialState.Keplerian.TrueA
 
-# 创建界面
+# Create the interface
 CreateDialog(
     Grid(
         ("X",              InputField(x_ref )    ),
@@ -220,21 +220,21 @@ CreateDialog(
         ("VY",             InputField(vy_ref)    ),
         ("VZ",             InputField(vz_ref)    ),
    
-        ("半长轴",         InputField(a_ref)      ),
-        ("偏心率",         InputField(e_ref)      ),
-        ("轨道倾角",       InputField(i_ref)      ),
-        ("升交点赤经",     InputField(raan_ref)   ),
-        ("近地点纬度幅角", InputField(argper_ref) ),
-        ("真近点角",       InputField(truea_ref)  )
+        ("Semi-major Axis",      InputField(a_ref)      ),
+        ("Eccentricity",         InputField(e_ref)      ),
+        ("Inclination",          InputField(i_ref)      ),
+        ("RAAN",                 InputField(raan_ref)   ),
+        ("Argument of Perigee",  InputField(argper_ref) ),
+        ("True Anomaly",         InputField(truea_ref)  )
     )
 )
 
 
-# 进入事件循环
+# Enter the event loop
 
 while(true)
     pause(100)
 end
 ```
 
-![效果图](../../../zh/5.专业使用指南/18-脚本工具/media/2-ATK脚本/image.png)
+![Effect](../../../zh/5.专业使用指南/18-脚本工具/media/2-ATK脚本/image.png)

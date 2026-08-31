@@ -1,10 +1,10 @@
 # cosh
 
-## 作用
+## Description
 
-双曲余弦
+Hyperbolic cosine
 
-## 语法
+## Syntax
 
 ```atks
 Y = cosh(X)

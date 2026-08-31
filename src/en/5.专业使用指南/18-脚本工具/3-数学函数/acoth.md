@@ -1,10 +1,10 @@
 # acoth
 
-## 作用
+## Description
 
-反双曲余切
+Inverse hyperbolic cotangent
 
-## 语法
+## Syntax
 
 ```atks
 Y = acoth(X)

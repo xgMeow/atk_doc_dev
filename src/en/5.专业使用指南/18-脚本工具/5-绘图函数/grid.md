@@ -1,10 +1,10 @@
 # grid
 
-## 作用
+## Description
 
-显示或隐藏坐标区网格线
+Show or hide grid lines on the axes
 
-## 语法
+## Syntax
 
 ```atks
 grid("on")
@@ -13,14 +13,14 @@ grid(true)
 grid(false)
 ```
 
-## 补充说明
+## Additional Notes
 
-- `grid("on")` / `(true)` ：显示 gca 命令返回的当前坐标区或图的主网格线，主网格线从每个刻度线延伸。
-- `grid("off")` / `(false)` ：删除当前坐标区或图上的所有网格线。
+- `grid("on")` / `(true)`: Displays the major grid lines of the current axes or figure returned by the `gca` command. Major grid lines extend from each tick mark.
+- `grid("off")` / `(false)`: Removes all grid lines from the current axes or figure.
 
-## 示例
+## Example
 
-::: details open **显示网格线**
+::: details open **Display grid lines**
 
 ```atks
     x = linspace(0, 10, 100);
@@ -30,6 +30,6 @@ grid(false)
     show()
 ```
 
-![显示网格线](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/grid/image.png)
+![Display grid lines](../../../../zh/5.专业使用指南/18-脚本工具/5-绘图函数/media/grid/image.png)
 
 :::

@@ -1,10 +1,10 @@
 # coth
 
-## 作用
+## Description
 
-双曲余切
+Hyperbolic cotangent
 
-## 语法
+## Syntax
 
 ```atks
 Y = coth(X)

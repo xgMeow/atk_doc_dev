@@ -1,10 +1,10 @@
 # log1p
 
-## 作用
+## Description
 
-针对较小的 x 值正确计算 log(1+x)
+Compute log(1+x) accurately for small values of x
 
-## 语法
+## Syntax
 
 ```atks
 y = log1p(x)

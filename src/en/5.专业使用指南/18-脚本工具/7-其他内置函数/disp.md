@@ -1,10 +1,10 @@
 # disp
 
-## 作用
+## Description
 
-打印变量
+Prints a variable
 
-## 语法
+## Syntax
 
 ```atks
 disp(v)

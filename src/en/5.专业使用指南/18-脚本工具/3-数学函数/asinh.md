@@ -1,10 +1,10 @@
 # asinh
 
-## 作用
+## Description
 
-反双曲正弦
+Inverse hyperbolic sine
 
-## 语法
+## Syntax
 
 ```atks
 Y = asinh(X)

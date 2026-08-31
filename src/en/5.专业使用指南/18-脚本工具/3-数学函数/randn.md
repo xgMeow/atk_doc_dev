@@ -1,10 +1,10 @@
 # randn
 
-## 作用
+## Description
 
-标准正态分布的随机数
+Random numbers from the standard normal distribution
 
-## 语法
+## Syntax
 
 ```atks
 X = randn()

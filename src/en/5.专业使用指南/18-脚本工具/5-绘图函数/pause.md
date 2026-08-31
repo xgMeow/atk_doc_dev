@@ -1,15 +1,15 @@
 # pause
 
-## 作用
+## Description
 
-暂时停止执行脚本
+Temporarily stop the execution of the script
 
-## 语法
+## Syntax
 
 ```atks
 pause(n)
 ```
 
-## 补充说明
+## Additional Notes
 
-- `pause(n)` ：暂停执行脚本 `n` 秒，然后继续执行，暂停时会更新图窗并处理回调
+- `pause(n)`: Pauses the execution of the script for `n` seconds and then continues. While paused, figures are updated and callbacks are processed.

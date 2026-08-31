@@ -1,10 +1,10 @@
 # ismatrix
 
-## 作用
+## Description
 
-确定输入是否为矩阵
+Determine whether the input is a matrix
 
-## 语法
+## Syntax
 
 ```atks
 TF = ismatrix(A)

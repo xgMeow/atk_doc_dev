@@ -1,10 +1,10 @@
 # ones
 
-## 作用
+## Description
 
-创建全部为 1 的数组
+Create an array of all ones
 
-## 语法
+## Syntax
 
 ```atks
 X = ones(m, n)

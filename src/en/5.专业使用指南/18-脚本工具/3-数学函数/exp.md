@@ -1,10 +1,10 @@
 # exp
 
-## 作用
+## Description
 
-指数
+Exponential
 
-## 语法
+## Syntax
 
 ```atks
 Y = exp(X)

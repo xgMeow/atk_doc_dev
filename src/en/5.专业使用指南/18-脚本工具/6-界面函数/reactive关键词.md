@@ -1,24 +1,24 @@
-# reactive关键词
+# reactive
 
-## 作用
+## Description
 
-声明一个响应式变量
+Declares a reactive variable.
 
-## 语法
+## Syntax
 
 ```atks
 reactive valueRef = 0
 ```
 
-## 补充说明
+## Additional Notes
 
-- 响应式变量可以与界面控件进行绑定，例如 [`InputField`](InputField.md)、[`Slider`](Slider.md)、[`Test`](Text.md) 等
-- 当响应式变量的值改变时，这些界面控件的显示内容将同步改变
-- 如果这些界面控件支持输入，当其输入值改变时，响应式变量的值也会同步改变
+- A reactive variable can be bound to UI controls, such as [`InputField`](InputField.md), [`Slider`](Slider.md), [`Test`](Text.md), etc.
+- When the value of a reactive variable changes, the displayed content of these UI controls is updated accordingly
+- If these UI controls support input, the value of the reactive variable is also updated when their input value changes
 
-## 示例
+## Example
 
-::: details open **实现加法计算**
+::: details open **Implementing an addition calculation**
 
 ```atks
 reactive a_ref = 0
@@ -28,11 +28,11 @@ reactive b_ref = 0
 CreateDialog(
     InputField(a_ref),
     InputField(b_ref),
-    Text("加法的结果是"),
+    Text("The addition result is"),
     Text(str2double(a_ref) + str2double(b_ref))
 )
 ```
 
-![效果图](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/Reactive/image.png)
+![Screenshot](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/Reactive/image.png)
 
 :::

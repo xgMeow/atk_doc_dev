@@ -1,10 +1,10 @@
 # deg2rad
 
-## 作用
+## Description
 
-将角从以度为单位转换为以弧度为单位
+Convert angles from degrees to radians
 
-## 语法
+## Syntax
 
 ```atks
 R = deg2rad(D)

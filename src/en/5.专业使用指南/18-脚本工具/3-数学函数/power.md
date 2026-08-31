@@ -1,10 +1,10 @@
 # power
 
-## 作用
+## Description
 
-求幂
+Exponentiation
 
-## 语法
+## Syntax
 
 ```atks
 C = power(A,B)

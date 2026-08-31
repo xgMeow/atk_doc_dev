@@ -1,15 +1,15 @@
 # Text
 
-## 作用
+## Description
 
-创建一个文本
+Creates a text element.
 
-## 语法
+## Syntax
 
 ```atks
 Text()
 ```
 
-## 补充说明
+## Additional Notes
 
-- 文本内容可以与[响应式变量](./reactive关键词.md)或[响应式表达式](./Reactive.md)绑定
+- The text content can be bound to a [reactive variable](./reactive关键词.md) or a [reactive expression](./Reactive.md)

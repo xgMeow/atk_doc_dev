@@ -1,10 +1,10 @@
 # show
 
-## 作用
+## Description
 
-暂时停止执行脚本，直到绘图窗口关闭
+Temporarily stop the execution of the script until the plot window is closed
 
-## 语法
+## Syntax
 
 ```atks
 show()

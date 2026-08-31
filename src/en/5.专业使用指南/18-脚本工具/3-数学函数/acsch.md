@@ -1,10 +1,10 @@
 # acsch
 
-## 作用
+## Description
 
-反双曲余割
+Inverse hyperbolic cosecant
 
-## 语法
+## Syntax
 
 ```atks
 Y = acsch(X)

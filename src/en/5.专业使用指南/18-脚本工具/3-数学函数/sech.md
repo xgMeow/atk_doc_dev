@@ -1,10 +1,10 @@
 # sech
 
-## 作用
+## Description
 
-双曲正割
+Hyperbolic secant
 
-## 语法
+## Syntax
 
 ```atks
 Y = sech(X)

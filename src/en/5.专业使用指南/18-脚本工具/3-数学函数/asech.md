@@ -1,10 +1,10 @@
 # asech
 
-## 作用
+## Description
 
-反双曲正割
+Inverse hyperbolic secant
 
-## 语法
+## Syntax
 
 ```atks
 Y = asech(X)

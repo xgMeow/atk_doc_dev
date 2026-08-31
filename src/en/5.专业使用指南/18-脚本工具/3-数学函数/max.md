@@ -1,10 +1,10 @@
 # max
 
-## 作用
+## Description
 
-最大值
+Maximum value
 
-## 语法
+## Syntax
 
 ```atks
 M = max(A)

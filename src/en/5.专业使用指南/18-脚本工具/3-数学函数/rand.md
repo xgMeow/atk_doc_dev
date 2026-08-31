@@ -1,10 +1,10 @@
 # rand
 
-## 作用
+## Description
 
-均匀分布的随机数
+Uniformly distributed random numbers
 
-## 语法
+## Syntax
 
 ```atks
 X = rand()

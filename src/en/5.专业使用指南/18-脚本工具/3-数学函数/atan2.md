@@ -1,10 +1,10 @@
 # atan2
 
-## 作用
+## Description
 
-反正切，以弧度为单位
+Inverse tangent, in radians
 
-## 语法
+## Syntax
 
 ```atks
 P = atan(Y, X)

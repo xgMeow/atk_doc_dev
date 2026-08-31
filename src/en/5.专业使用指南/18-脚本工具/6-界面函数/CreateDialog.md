@@ -1,18 +1,18 @@
 # CreateDialog
 
-## 作用
+## Description
 
-创建一个对话框，并显示它
+Creates a dialog box and displays it.
 
-## 语法
+## Syntax
 
 ```atks
 CreateDialog()
 ```
 
-## 示例
+## Example
 
-::: details open **创建一个具有多个控件的对话框**
+::: details open **Creating a dialog box with multiple controls**
 
 ```atks
 value = 0.55
@@ -26,6 +26,6 @@ CreateDialog(
 )
 ```
 
-![效果图](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/CreateDialog/image.png)
+![Screenshot](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/CreateDialog/image.png)
 
 :::

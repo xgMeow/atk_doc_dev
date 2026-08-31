@@ -1,10 +1,10 @@
 # NewEditWidget
 
-## 作用
+## Description
 
-新建算法模型编辑控件
+Creates an algorithm model editing widget.
 
-## 语法
+## Syntax
 
 ```atks
 sat = NewObject("Satellite")

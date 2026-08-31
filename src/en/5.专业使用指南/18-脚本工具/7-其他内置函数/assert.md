@@ -1,10 +1,10 @@
 # assert
 
-## 作用
+## Description
 
-断言
+Performs an assertion
 
-## 语法
+## Syntax
 
 ```atks
 a = false

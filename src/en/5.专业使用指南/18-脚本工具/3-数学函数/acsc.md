@@ -1,10 +1,10 @@
 # acsc
 
-## 作用
+## Description
 
-反余割，以弧度为单位
+Inverse cosecant, in radians
 
-## 语法
+## Syntax
 
 ```atks
 Y = acsc(X)

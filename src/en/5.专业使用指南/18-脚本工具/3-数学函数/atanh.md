@@ -1,10 +1,10 @@
 # atanh
 
-## 作用
+## Description
 
-反双曲正切
+Inverse hyperbolic tangent
 
-## 语法
+## Syntax
 
 ```atks
 Y = atanh(X)

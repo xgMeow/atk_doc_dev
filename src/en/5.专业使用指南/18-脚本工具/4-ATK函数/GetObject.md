@@ -1,22 +1,22 @@
 # GetObject
 
-## 作用
+## Description
 
-通过对象路径获取ATK对象
+Gets an ATK object by its object path.
 
-## 语法
+## Syntax
 
 ```atks
 GetObject(objectPath)
 ```
 
-## 补充说明
+## Additional Notes
 
-输入对象路径 `objectPath`，返回一个路径对应的ATK对象
+Input the object path `objectPath`, and an ATK object corresponding to the path is returned.
 
-## 示例
+## Example
 
-::: details open **获取ATK对象**
+::: details open **Get an ATK object**
 
 ```atks
 sat = GetObject("Satellite/satellite1")

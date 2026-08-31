@@ -1,10 +1,10 @@
 # clear
 
-## 作用
+## Description
 
-清除解释器里所有变量
+Clears all variables in the interpreter
 
-## 语法
+## Syntax
 
 ```atks
 clear()

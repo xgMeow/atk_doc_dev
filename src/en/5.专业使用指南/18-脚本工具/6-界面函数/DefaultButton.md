@@ -1,18 +1,18 @@
 # DefaultButton
 
-## 作用
+## Description
 
-创建一个主按钮，点击后会关闭其所在对话框
+Creates a primary button. Clicking it closes the dialog box that contains it.
 
-## 语法
+## Syntax
 
 ```atks
 DefaultButton()
 ```
 
-## 示例
+## Example
 
-::: details open **将主按钮放在对话框，点击后会关闭其所在对话框**
+::: details open **Placing a primary button in a dialog box; clicking it closes the dialog box**
 
 ```atks
 CreateDialog(
@@ -21,6 +21,6 @@ CreateDialog(
 )
 ```
 
-![效果图](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/DefaultButton/image.png)
+![Screenshot](../../../../zh/5.专业使用指南/18-脚本工具/6-界面函数/media/DefaultButton/image.png)
 
 :::
