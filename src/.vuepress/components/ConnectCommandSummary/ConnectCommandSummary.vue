@@ -5,6 +5,8 @@ import { RouteLink } from 'vuepress/client';
 import { buildCommandGroups } from './extractCommandInfo.mjs';
 import { buildFunctionGroups } from './extractFunctionInfo.mjs';
 import { highlightUsage } from './highlightCommand.mjs';
+import { zhCommandSummaryStrings } from './zh';
+import { enCommandSummaryStrings } from './en';
 
 interface CommandEntry {
   command: string;
@@ -62,28 +64,55 @@ const scriptModulesEn = import.meta.glob('../../../en/5.专业使用指南/18-�
 
 const scriptModules = { ...scriptModulesZh, ...scriptModulesEn };
 
-// ── Mode-aware labels ──────────────────────────
+// ── i18n & Mode-aware labels ────────────────────
 
 const isScript = computed(() => props.mode === 'script');
+
+// 根据当前路由语言选择中/英文案
+const isEn = computed(() => route.path.startsWith('/en/'));
+const t = computed(() =>
+  isEn.value ? enCommandSummaryStrings : zhCommandSummaryStrings,
+);
+
+// syntax-guide 传入的路径不含语言前缀，RouteLink 又不会自动补，
+// 这里按当前路由补上 /zh/ 或 /en/，否则链接永远 404
+const resolvedSyntaxGuide = computed(() => {
+  if (!props.syntaxGuide) return '';
+  const path = props.syntaxGuide.startsWith('/')
+    ? props.syntaxGuide
+    : `/${props.syntaxGuide}`;
+  if (path.startsWith('/zh/') || path.startsWith('/en/')) return path;
+  return `${isEn.value ? '/en' : '/zh'}${path}`;
+});
 
 const activeModules = computed(() =>
   isScript.value ? scriptModules : connectModules,
 );
 
+// 解析当前目录基路径；route.path 异常（未带语言前缀）时兜底为对应中文根路径，
+// 与 buildFunctionGroups/buildCommandGroups 的语言强隔离配合，保证 zh/en 不混用
+const currentPath = computed(() => {
+  const p = props.base || route.path;
+  if (p.startsWith('/zh/') || p.startsWith('/en/')) return p;
+  return isScript.value
+    ? '/zh/5.专业使用指南/18-脚本工具/'
+    : '/zh/二次开发教程/2-二次开发CONNECT模式/2-命令参考/3-Connect对象命令库/';
+});
+
 const uiTitle = computed(() =>
-  isScript.value ? '函数速查表' : '命令速查表',
+  t.value.title[isScript.value ? 'script' : 'connect'],
 );
 
 const uiCommandLabel = computed(() =>
-  isScript.value ? '函数' : '命令',
+  t.value.itemLabel[isScript.value ? 'script' : 'connect'],
 );
 
 const uiSearchPlaceholder = computed(() =>
-  isScript.value ? '搜索函数、作用、语法...' : '搜索命令、作用、语法...',
+  t.value.searchPlaceholder[isScript.value ? 'script' : 'connect'],
 );
 
 const uiEmptyMessage = computed(() =>
-  isScript.value ? '未找到匹配的脚本函数。' : '未找到匹配的 CONNECT 命令。',
+  t.value.empty[isScript.value ? 'script' : 'connect'],
 );
 
 // ── State ──────────────────────────────────────
@@ -96,12 +125,6 @@ const copiedCommand = ref('');
 async function copyUsage(entry: CommandEntry) {
   try {
     await navigator.clipboard.writeText(entry.usage);
-    copiedCommand.value = `${entry.path}-${entry.command}`;
-    setTimeout(() => {
-      if (copiedCommand.value === `${entry.path}-${entry.command}`) {
-        copiedCommand.value = '';
-      }
-    }, 2000);
   } catch {
     // Fallback for older browsers
     const textarea = document.createElement('textarea');
@@ -112,31 +135,40 @@ async function copyUsage(entry: CommandEntry) {
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
-    copiedCommand.value = `${entry.path}-${entry.command}`;
-    setTimeout(() => {
-      if (copiedCommand.value === `${entry.path}-${entry.command}`) {
-        copiedCommand.value = '';
-      }
-    }, 2000);
   }
+  flashCopied(entry);
+}
+
+function flashCopied(entry: CommandEntry) {
+  const key = `${entry.path}-${entry.command}`;
+  copiedCommand.value = key;
+  setTimeout(() => {
+    if (copiedCommand.value === key) {
+      copiedCommand.value = '';
+    }
+  }, 2000);
 }
 
 const displayMode = ref<'grouped' | 'flat'>('grouped');
 
 function renderInlineMarkdown(text: string): string {
   return text
+    // 先转义 HTML 特殊字符，避免正文中的 < > & 被 v-html 当标签/实体解析
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\n+/g, '<br>');
 }
 
 function sectionId(text: string): string {
   return 'cmd-sec-' + text.trim().toLowerCase()
     .replace(/[\s]+/g, '-')
-    .replace(/[`~!@#$%^&*()_=+[\]{}|;:'",.<>/?·！￥……（）——【】‘；：”“。，、？\s]/g, '-')
+    .replace(/[`~!@#$%^&*()_=+[\]{}|;:'",.<>/?·！￥……（）——【】‘；：”“。，、？]/g, '-')
     .replace(/--+/g, '-')
-    .replace(/^-|-$/g, '')
-    .replace(/\./g, '-');
+    .replace(/^-|-$/g, '');
 }
 
 // ── Build groups ───────────────────────────────
@@ -145,7 +177,7 @@ const commandGroups = computed<CommandGroup[]>(() => {
   const modules = activeModules.value;
   if (isScript.value) {
     // Normalize script function entries (name → command) to fit CommandEntry
-    const fnGroups = buildFunctionGroups(modules, props.base || route.path);
+    const fnGroups = buildFunctionGroups(modules, currentPath.value);
     return fnGroups.map(g => ({
       category: g.category,
       entries: g.entries.map(e => ({
@@ -157,7 +189,7 @@ const commandGroups = computed<CommandGroup[]>(() => {
       })),
     }));
   }
-  return buildCommandGroups(modules, props.base || route.path);
+  return buildCommandGroups(modules, currentPath.value);
 });
 
 // ── Filtering ──────────────────────────────────
@@ -265,12 +297,12 @@ onMounted(() => {
   <section class="cmd-summary">
     <div class="cmd-header">
       <h2 class="cmd-title">{{ uiTitle }}</h2>
-      <span class="cmd-total">{{ commandCount }} 条</span>
+      <span class="cmd-total">{{ commandCount }} {{ t.countSuffix }}</span>
     </div>
 
     <div v-if="props.syntaxGuide && !isScript" class="cmd-syntax-notice">
       <svg class="cmd-syntax-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-      <span class="cmd-syntax-text">命令语法中的 <code>&lt; &gt;</code> <code>[ ]</code> <code>{ }</code> <code>|</code> <code>" "</code> <code>...</code> <code>*</code> <code>/</code> 等符号均有特定含义，请先阅读 <RouteLink class="cmd-syntax-link" :to="props.syntaxGuide">命令语法约定</RouteLink>。</span>
+      <span class="cmd-syntax-text">{{ t.syntaxGuideIntro }} <code>&lt; &gt;</code> <code>[ ]</code> <code>{ }</code> <code>|</code> <code>" "</code> <code>...</code> <code>*</code> <code>/</code> {{ t.syntaxGuideLead }} <RouteLink class="cmd-syntax-link" :to="resolvedSyntaxGuide">{{ t.syntaxGuideLink }}</RouteLink>{{ t.syntaxGuideEnd }}</span>
     </div>
 
     <div class="cmd-toolbar">
@@ -278,38 +310,38 @@ onMounted(() => {
         <div class="cmd-search-input-wrap">
           <svg class="cmd-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           <input ref="searchInputRef" v-model="keyword" type="search" :placeholder="uiSearchPlaceholder" class="cmd-search-input" />
-          <button v-if="keyword" class="cmd-search-clear" @click="keyword = ''; searchInputRef?.focus()" aria-label="清除搜索" title="清除搜索">
+          <button v-if="keyword" class="cmd-search-clear" @click="keyword = ''; searchInputRef?.focus()" :aria-label="t.clearSearch" :title="t.clearSearch">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
           </button>
           <span v-if="keyword.trim()" class="cmd-search-count">{{ shownCount }}/{{ commandCount }}</span>
         </div>
         <div class="cmd-mode-toggle">
-          <button class="cmd-mode-btn" :class="{ active: displayMode === 'grouped' }" @click="displayMode = 'grouped'" title="按目录分组">
+          <button class="cmd-mode-btn" :class="{ active: displayMode === 'grouped' }" @click="displayMode = 'grouped'" :title="t.modeGrouped">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
           </button>
-          <button class="cmd-mode-btn" :class="{ active: displayMode === 'flat' }" @click="displayMode = 'flat'" title="按字母排列">
+          <button class="cmd-mode-btn" :class="{ active: displayMode === 'flat' }" @click="displayMode = 'flat'" :title="t.modeFlat">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h6"/><path d="M15 6h6"/><path d="m3 13 3.553-7.724a.5.5 0 0 1 .894 0L11 13"/><path d="M3 18h18"/><path d="M4 11h6"/></svg>
           </button>
         </div>
       </div>
 
       <!-- ── 索引栏（两种模式标签不同） ────────── -->
-      <nav v-if="hasResults && displayMode === 'grouped'" class="cmd-index-bar" aria-label="分类索引">
-        <span class="cmd-index-label">分类</span>
+      <nav v-if="hasResults && displayMode === 'grouped'" class="cmd-index-bar" :aria-label="t.categoryIndexLabel">
+        <span class="cmd-index-label">{{ t.categoryIndexLabel }}</span>
         <button
           v-for="ci in categoryIndex" :key="ci"
           class="cmd-index-btn cmd-index-btn--cat"
           @click="scrollToSection(sectionId(ci))"
         >{{ ci }}</button>
       </nav>
-      <nav v-if="hasResults && displayMode === 'flat'" class="cmd-index-bar" aria-label="字母索引">
-        <span class="cmd-index-label">索引</span>
+      <nav v-if="hasResults && displayMode === 'flat'" class="cmd-index-bar" :aria-label="t.letterIndexLabel">
+        <span class="cmd-index-label">{{ t.letterIndexLabel }}</span>
         <button
           v-for="ch in abcdLetters" :key="ch.letter"
           class="cmd-index-btn"
           :class="{ active: ch.active }"
           :disabled="!ch.active"
-          :aria-label="`跳转到 ${ch.letter}`"
+          :aria-label="t.jumpTo(ch.letter)"
           @click="ch.active && scrollToSection('cmd-letter-' + ch.letter)"
         >{{ ch.letter }}</button>
       </nav>
@@ -329,8 +361,8 @@ onMounted(() => {
           <thead>
             <tr>
               <th>{{ uiCommandLabel }}</th>
-              <th>作用</th>
-              <th>语法</th>
+              <th>{{ t.effectHeader }}</th>
+              <th>{{ t.syntaxHeader }}</th>
             </tr>
           </thead>
           <tbody>
@@ -338,16 +370,17 @@ onMounted(() => {
               <td class="cmd-cell-cmd">
                 <RouteLink :to="entry.path">{{ entry.command }}</RouteLink>
               </td>
-              <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect)"></td>
+              <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect || '--')"></td>
               <td class="cmd-cell-usage">
                 <div class="cmd-usage-row">
-                  <code v-if="isScript" class="cmd-code">{{ entry.usage }}</code>
-                  <code v-else class="cmd-code" v-html="highlightUsage(entry.usage)"></code>
+                  <code v-if="isScript" class="cmd-code">{{ entry.usage || '--' }}</code>
+                  <code v-else class="cmd-code" v-html="entry.usage ? highlightUsage(entry.usage) : '--'"></code>
                   <button
+                    v-if="entry.usage"
                     class="cmd-copy-btn"
                     :class="{ 'is-copied': copiedCommand === `${entry.path}-${entry.command}` }"
-                    :aria-label="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
-                    :title="copiedCommand === `${entry.path}-${entry.command}` ? '已复制' : '复制命令'"
+                    :aria-label="copiedCommand === `${entry.path}-${entry.command}` ? t.copied : t.copy"
+                    :title="copiedCommand === `${entry.path}-${entry.command}` ? t.copied : t.copy"
                     @click.stop="copyUsage(entry)"
                   >
                     <svg v-if="copiedCommand !== `${entry.path}-${entry.command}`" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>

@@ -1,6 +1,7 @@
 import {
   buildCategoryNameMap,
   getCategory,
+  getLocalePrefix,
   getSectionCodeBlock,
   getSectionParagraph,
   isSameOrChildPath,
@@ -15,6 +16,7 @@ export const connectCommandRoot = '/zh/二次开发教程/2-二次开发CONNECT�
 export const buildCommandGroups = (modules, currentPath = `/${connectCommandRoot}/`) => {
   const groups = new Map();
   const baseDirectory = toDirectoryPath(currentPath);
+  const localePrefix = getLocalePrefix(currentPath);
   const categoryNameMap = buildCategoryNameMap(modules, baseDirectory);
 
   for (const [filePath, content] of Object.entries(modules)) {
@@ -22,6 +24,7 @@ export const buildCommandGroups = (modules, currentPath = `/${connectCommandRoot
 
     const routePath = toRoutePath(filePath);
     if (!isSameOrChildPath(routePath, baseDirectory)) continue;
+    if (!routePath.startsWith(localePrefix)) continue; // 语言强隔离，避免 zh/en 混用
 
     const rawCategory = getCategory(filePath, baseDirectory, '通用命令');
     const category = categoryNameMap[rawCategory] || rawCategory;
@@ -59,11 +62,11 @@ export const extractCommandEntries = (content, path) => {
 
   const command = h1.title;
 
-  const effect = getSectionParagraph(lines, headings, '作用');
-  const usage = getSectionCodeBlock(lines, headings, '语法');
+  // 兼容中英文文档标题：中文「作用/语法」，英文「Description/Syntax」
+  const effect = getSectionParagraph(lines, headings, ['作用', 'Description']);
+  const usage = getSectionCodeBlock(lines, headings, ['语法', 'Syntax']);
 
-  if (!effect || !usage) return [];
-
+  // 只要有命令名就展示，缺失的字段留空（组件侧渲染占位符），避免整条被静默丢弃
   return [{
     command,
     effect,

@@ -83,7 +83,5 @@ function findNextTokenStart(text, from) {
     const idx = text.indexOf(m, from);
     if (idx !== -1 && idx < min) min = idx;
   }
-  // 对于 .. 开头的情况需要特殊处理（... 是三连点）
-  if (text[from] === '.' && min === text.length) min = from;
   return min > from ? min : from + 1;
 }
