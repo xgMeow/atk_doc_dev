@@ -82,7 +82,10 @@ const offlinifySearchPro = fileName => {
       let script = fs.readFileSync(workerjs, {encoding:"utf8"})
       let scriptContent = JSON.stringify(script)
       let replaceScript = `new Worker(URL.createObjectURL(new Blob([${scriptContent}], {type:'application/javascript'})),{})`
-      data = data.replace(/new Worker\(.*?\{\}\)/, replaceScript)
+      // 只匹配「首个参数以字符串字面量开头、且带 options 对象 `,{}`」的 Worker 调用（即 search-pro 的 worker）。
+      // 旧正则 /new Worker\(.*?\{\}\)/ 会误命中 Prism 等库中 `new Worker(_.filename)` 这类无 options 的调用，
+      // 惰性匹配一直越过整段代码找到远处的 `{}`，把 7MB+ 的真实代码替换成 worker 源码，导致打包产物语法错误。
+      data = data.replace(/new Worker\(\s*["'`][\s\S]*?,\s*\{\}\)/, replaceScript)
       fs.rmSync(workerjs)
     }
     return data
