@@ -8,6 +8,7 @@ import NotFound from './components/NotFound.vue'
 import Catalog from './components/Catalog/Catalog.vue'
 import CatalogCard from './components/CatalogCard/CatalogCard.vue'
 import ConnectCommandSummary from './components/ConnectCommandSummary/ConnectCommandSummary.vue'
+import MixCode from './components/MixCode/MixCode.vue'
 import ColorSwatch from './components/ColorSwatch.vue'
 import './styles/atk-command-tokens.scss'
 
@@ -31,6 +32,7 @@ export default defineClientConfig({
     app.component('Catalog', Catalog);
     app.component('CatalogCard', CatalogCard);
     app.component('ConnectCommandSummary', ConnectCommandSummary);
+    app.component('MixCode', MixCode);
     app.component('ColorSwatch', ColorSwatch);
     // console.log("__VUEPRESS_SSR__=", __VUEPRESS_SSR__)
     if (!__VUEPRESS_SSR__) {

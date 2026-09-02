@@ -141,3 +141,12 @@ html[data-theme=light] .token.comment, html[data-theme=light] .token.italic {
 .vp-copy-code-button{
   top: 0.3em;
 }
+
+/* MixCode 在导航栏自带复制按钮，而 theme-hope 的 copyCode 插件（默认开启）会用
+   .theme-hope-content div[class*="language-"] pre 命中 MixCode 内层 <pre>，
+   在运行时往代码区注入一个 .vp-copy-code-button，叠在首行代码上。
+   该节点由 insertBefore 动态插入、不带组件 scoped 的 data-v 属性，
+   scoped 样式选不中，只能放到全局样式里显式隐藏。 */
+.mix-code .vp-copy-code-button {
+  display: none !important;
+}

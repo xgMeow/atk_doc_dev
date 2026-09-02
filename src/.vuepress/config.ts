@@ -6,6 +6,7 @@ import path from "path"
 import viteBundler from "@vuepress/bundler-vite";
 import webpackBundler from "@vuepress/bundler-webpack";
 import { include } from "@mdit/plugin-include";
+import mixCodeBlock from "./markdown/mix-code-block.js";
 
 export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
@@ -47,12 +48,11 @@ export const useConfig = ({type, plat=""}) => {
       code:{
         lineNumbers: 5
       },
-      // 新增：集成 include 插件
-      extendsMarkdown: (md) => {
-        md.use(include, {
-          currentPath: (env) => env.filePath,
-        });
-      },
+    },
+    // 顶层 extendsMarkdown：VuePress 通过插件级 hook 注册（注意不能嵌套在 markdown 下，否则不会执行）
+    extendsMarkdown: (md) => {
+      // 整体捕获 <mix-code> 块，保留代码换行（详见 mix-code-block.js）
+      md.use(mixCodeBlock);
     },
     extendsPage: (page) => {
       let order = page.frontmatter.order;
