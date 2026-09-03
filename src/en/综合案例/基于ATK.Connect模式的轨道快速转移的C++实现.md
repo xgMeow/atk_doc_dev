@@ -1,33 +1,33 @@
 ---
-description: 基于 ATK Connect 集成客户端模式，使用命令脚本实现近地停泊轨道（LEO）到地球同步轨道（GEO）的快速轨道机动规划设计与分析。
-thumbnail: /综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image01-客户端界面.png
+description: Based on the ATK Connect integrated client mode, this case uses command scripts to implement the design and analysis of a fast orbital maneuver plan transferring a spacecraft from a low Earth parking orbit (LEO) to a geosynchronous orbit (GEO).
+thumbnail: /zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image01-客户端界面.png
 ---
 
-# 基于ATK.Connect模式的轨道快速转移的C++实现
+# Fast Orbit Transfer Implementation in C++ Based on the ATK.Connect Mode
 
-## 内容简介
+## Introduction
 
-本案例实现半径为 6700 km 的近地停泊轨道（LEO 轨道）快速转移到半径为 42164.197 km 的地球同步轨道（GEO 轨道）的轨道机动规划设计。案例使用基于 Connect 模式的集成客户端实现。
+This case implements the orbital maneuver planning design for a fast transfer from a near-Earth parking orbit (LEO orbit) with a radius of 6700 km to a geosynchronous orbit (GEO orbit) with a radius of 42164.197 km. The case is implemented using the integrated client based on the Connect mode.
 
-本案例使用 ATK 软件，通过集成客户端程序，使用接口函数进行数据解析与传递，完成案例实现。集成客户端界面如下图所示：
+This case uses the ATK software and, through the integrated client program, uses the interface functions to parse and transfer data so as to complete the case implementation. The integrated client interface is shown in the figure below:
 
-![客户端界面](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image01-客户端界面.png)
+![Client interface](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image01-客户端界面.png)
 
-接口函数通过命令输入，对想定属性进行设置与修改，完成案例构建，如下图所示：
+The interface functions set and modify the scenario properties through command input, completing the case construction, as shown in the figure below:
 
-![Command Script 对话框](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image03-CommandScript对话框.png)
+![Command Script dialog box](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image03-CommandScript对话框.png)
 
-运行客户端命令，想定轨迹如下图所示：
+Running the client commands, the scenario track is shown in the figure below:
 
-![快速转移轨道](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image04-快速转移轨道.png)
+![Fast transfer track](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image04-快速转移轨道.png)
 
-## 案例实现
+## Case Implementation
 
-本案例使用 ATK 软件提供的集成客户端实现，可以通过输入多条命令一起运行的方式进行参数设置，案例实现流程如下：
+This case is implemented with the integrated client provided by the ATK software. Parameter settings can be performed by inputting multiple commands and running them together. The case implementation flow is as follows:
 
-1. 启动 ATK 软件，在 <kbd>集成</kbd> 菜单栏中，单击 <kbd>客户端</kbd> 按钮，弹出客户端对话框；
+1. Start the ATK software, and in the <kbd>Integration</kbd> menu bar click the <kbd>Client</kbd> button to open the client dialog box;
 
-2. 在 <kbd>HOME</kbd> 菜单栏中，点击 <kbd>New</kbd> 按钮，在【Command Script】对话框输入参数设置命令（代码可以直接拷贝到对话框）：
+2. In the <kbd>HOME</kbd> menu bar, click the <kbd>New</kbd> button, and input the parameter-setting commands in the【Command Script】dialog (the code can be copied directly into the dialog):
 
 ```lua
 # (1) ATK与客户端连接
@@ -142,40 +142,40 @@ atkConnect(conID, 'Save', '/ *');
 atkClose(conID);
 ```
 
-3. 点击 <kbd>Save</kbd> 按钮，保存 "FastTransfer.atk" 文件；
+3. Click the <kbd>Save</kbd> button to save the "FastTransfer.atk" file;
 
-4. 点击 <kbd>Run</kbd> 按钮，执行命令，案例构建完成，ATK 软件显示想定界面，可查看案例轨迹。
+4. Click the <kbd>Run</kbd> button to execute the commands. The case construction is then complete, the ATK software displays the scenario view, and the case track can be viewed.
 
-另外，客户端也可以通过输入单条命令单次运行的方式进行参数设置，案例实现流程如下：
+In addition, the client can also perform parameter settings by inputting a single command and running it once. The case implementation flow is as follows:
 
-1. 启动 ATK 软件，在 <kbd>集成</kbd> 菜单栏中，单击 <kbd>客户端</kbd> 按钮，弹出客户端对话框；
+1. Start the ATK software, and in the <kbd>Integration</kbd> menu bar click the <kbd>Client</kbd> button to open the client dialog box;
 
-2. 在【Command Window】对话框中输入参数设置命令，可单条命令输入，也可多条命令输入（代码可以单条或多条直接拷贝到对话框），点击键盘 <kbd>回车</kbd> 按钮。执行代码同上；
+2. In the【Command Window】dialog, input the parameter-setting commands. They can be input as a single command or as multiple commands (the code can be copied into the dialog either as a single command or as multiple commands), and press the <kbd>Enter</kbd> key. The code to be executed is the same as above;
 
-3. 参数设置后，案例构建完成，ATK 软件显示想定界面，可查看案例轨迹。
+3. After the parameter settings, the case construction is complete, the ATK software displays the scenario view, and the case track can be viewed.
 
-::: tip 说明
-若在脚本运行完毕后没有在三维视图窗口看到轨迹，可以点击 ATK 软件界面上方 <kbd>开始</kbd> 工具栏中的 <kbd>重置</kbd> 按钮，重置动画状态，然后即可在三维视图中看到轨迹。
+::: tip Note
+If the track is not visible in the 3D view window after the script has finished running, click the <kbd>Reset</kbd> button in the <kbd>Start</kbd> toolbar at the top of the ATK interface to reset the animation state; the track will then be visible in the 3D view.
 :::
 
-## 案例展示
+## Case Display
 
-**输入展示**
+**Input display**
 
-在【Command Script】对话框中输入多条命令，如下图：
+Multiple commands are input in the【Command Script】dialog, as shown in the figure:
 
-![Command Script 对话框输入多条命令](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image03-CommandScript对话框.png)
+![Inputting multiple commands in the Command Script dialog](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image03-CommandScript对话框.png)
 
-在【Command Window】对话框中输入单条或多条命令，如下图：
+A single command or multiple commands are input in the【Command Window】dialog, as shown in the figure:
 
-![Command Window 对话框输入命令](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image06-CommandWindow对话框.png)
+![Inputting commands in the Command Window dialog](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image06-CommandWindow对话框.png)
 
-**输出展示**
+**Output display**
 
-点击运行后，ATK 软件显示想定界面，三维展示卫星快速转移轨迹如下图：
+After clicking Run, the ATK software displays the scenario view, and the fast transfer track of the satellite is shown in 3D as follows:
 
-![卫星快速转移轨迹三维展示](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image07-卫星快速转移轨迹三维展示.png)
+![3D display of the satellite fast transfer track](../../zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image07-卫星快速转移轨迹三维展示.png)
 
-::: tip 说明
-若发现快速转移轨迹显示不全，请在 ATK 图形界面中，右键点击 "FastTransfer" 卫星对象，选择 <kbd>属性</kbd>，进入卫星对象属性设置界面，然后选择【二维视图 -> 轨迹】设置，将轨迹类型由【时间】更改为【所有】。
+::: tip Note
+If the fast transfer track is found to be incompletely displayed, in the ATK graphical interface right-click the "FastTransfer" satellite object, select <kbd>Properties</kbd>, enter the satellite object property settings interface, then select the【2D Graphics -> Track】settings and change the track type from【Time】to【All】.
 :::
