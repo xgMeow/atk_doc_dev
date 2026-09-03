@@ -1,26 +1,26 @@
-# RPO 定点保持段
+# RPO Perch (Station Keeping) Segment
 
-## 作用
+## Description
 
-设置 `RPOPerchEqualSpacing` 段属性
+Set the attributes of the `RPOPerchEqualSpacing` segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
-| `Perch_Duration` | 数据类型：sec，范围：`[0.001,8640000]` |
-| `Perch_MaxDegrees` | 数据类型：rad，范围：`[0.001,360]` |
-| `SolveMethod` | 范围：`[-1,4]` |
+| `Perch_Duration` | Data type: sec, range: `[0.001,8640000]` |
+| `Perch_MaxDegrees` | Data type: rad, range: `[0.001,360]` |
+| `SolveMethod` | Range: `[-1,4]` |
 
-## 示例
+## Examples
 
-::: details open **设置定点保持段属性**
+::: details open **Set the attributes of the Perch (Station Keeping) segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOPerchEqualSpacing.Perch_Duration 7200
 ```

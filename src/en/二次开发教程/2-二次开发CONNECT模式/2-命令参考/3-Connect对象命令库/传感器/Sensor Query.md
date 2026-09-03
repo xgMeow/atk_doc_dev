@@ -1,26 +1,26 @@
 ---
-description: 查询传感器属性，支持指向模式、方向图名称和定义类型的获取。
+description: Queries sensor properties, supporting the retrieval of the pointing mode, pattern name, and definition type.
 ---
 
 # Sensor Query
 
-## 作用
+## Description
 
-获得传感器属性。
+Gets the sensor properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 SensorQuery <SensorObjectPath> [{QueryType}]
 ```
 
-## 补充说明
+## Additional Notes
 
-目前 `{QueryType}` 输入值包括 `Pointing`、`PatternName`、`Definition`。
+Currently, `{QueryType}` accepts the values `Pointing`, `PatternName`, and `Definition`.
 
-## 示例
+## Examples
 
-::: details open **查询传感器属性**
+::: details open **Query Sensor Properties**
 ```
 SensorQuery */Satellite/Satellite1/Sensor/Sensor1 Pointing
 ```

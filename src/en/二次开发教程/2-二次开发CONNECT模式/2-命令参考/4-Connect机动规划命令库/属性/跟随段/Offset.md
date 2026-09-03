@@ -1,24 +1,24 @@
 # Offset
 
-## 作用
+## Description
 
-设置偏移量
+Sets the offset.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.{Offset Attribute} <Value>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Offset Attribute` | `Xoffset`、`Yoffset`、`Zoffset` |
+| `Offset Attribute` | `Xoffset`, `Yoffset`, and `Zoffset` |
 
-## 示例
+## Examples
 
-::: details open **设置 X 方向偏移量**
+::: details open **Set the offset in the X direction**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Xoffset 100 m

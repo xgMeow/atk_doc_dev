@@ -1,22 +1,22 @@
 # Graphics SetColor
 
-## 作用
+## Description
 
-设置车辆轨迹标签颜色。
+Set the ground vehicle trajectory label color.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> SetColor {Color} [{Item}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Color` 可用属性请查看[常用图形格式](../../2-参数值格式/颜色格式.md)。
+- For the supported `Color` formats, see [Color Format](../../2-参数值格式/颜色格式.md).
 
-## 示例
+## Examples
 
-::: details open **设置轨迹颜色**
+::: details open **Set the trajectory color**
 ```
 Graphics */GroundVehicle/GroundVehicle1 SetColor 4
 ```

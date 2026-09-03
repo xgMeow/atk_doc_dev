@@ -1,29 +1,29 @@
 ---
-description: 设置传感器的目标跟踪指向属性，支持跟踪和固定两种模式，可指定目标对象和跟踪方式。
+description: Sets the targeted pointing property of the sensor, supporting both tracking and fixed modes, and allows specifying the target object and the tracking method.
 ---
 
 # Point Targeted
 
-## 作用
+## Description
 
-设置目标指向属性。
+Sets the targeted pointing property.
 
-## 语法
+## Syntax
 
 ```atk-command
 Point <SensorObjectPath> Targeted {OrientMethod} <MethodData>
 ```
 
-## 参数说明
+## Parameters
 
-| OrientMethod | MethodData                                                     | 说明                                                           |
-| ------------ | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| Tracking     | `<TruncObjectPath> [{AboutBoresight} [{TrackMode}]]`           | N/A                                                            |
-| Fixed        | `<TruncObjectPath> {OrientMethod} <MethodData>`                | `<MethodData>` 请参考 [Point Fixed](#point-fixed) 命令          |
+| OrientMethod | MethodData                                                     | Description                                                        |
+| ------------ | -------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Tracking     | `<TruncObjectPath> [{AboutBoresight} [{TrackMode}]]`           | N/A                                                                 |
+| Fixed        | `<TruncObjectPath> {OrientMethod} <MethodData>`                | For `<MethodData>`, refer to the [Point Fixed](#point-fixed) command. |
 
-## 示例
+## Examples
 
-::: details open **设置目标跟踪指向**
+::: details open **Set Target Tracking Pointing**
 ```
 Point */Satellite/Sat1/Sensor/Sensor1 Targeted Tracking Facility/testFac1 Receive
 ```

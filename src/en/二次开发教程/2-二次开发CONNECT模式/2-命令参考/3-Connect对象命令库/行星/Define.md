@@ -1,22 +1,22 @@
 # Define
 
-## 作用
+## Description
 
-设置行星中心天体
+Sets the central body of a planet.
 
-## 语法
+## Syntax
 
 ```atk-command
 Define <PlanetObjectPath> CentralBody {CBName} 
 ```
 
-## 补充说明
+## Additional Notes
 
-- `{CBName}` 包括天体名称 `Mercury`, `Venus`, `Earth`, `Mars`, `Jupiter`, `Saturn`, `Uranus`, `Neptune`, `Pluto`, `Moon`, `Sun`
+- `{CBName}` includes the central body names `Mercury`, `Venus`, `Earth`, `Mars`, `Jupiter`, `Saturn`, `Uranus`, `Neptune`, `Pluto`, `Moon`, `Sun`.
 
-## 示例
+## Examples
 
-::: details open **定义行星中心天体为木星**
+::: details open **Define the planet's central body as Jupiter**
 ```
 Define */Planet/Planet1 CentralBody Jupiter
 ```

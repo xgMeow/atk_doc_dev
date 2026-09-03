@@ -1,7 +1,7 @@
 ---
-description: Python 客户端工具的核心 API 参考，涵盖 atkOpen、atkConnect、atkClose 的语法、参数及使用示例。
+description: Core API reference for the Python Client tool, covering the syntax, parameters and usage examples of atkOpen, atkConnect and atkClose.
 ---
 
-# 核心API
+# Core API
 
 <!--@include:../../.include/atkCommand-python.md-->

@@ -1,24 +1,24 @@
 # Action
 
-## 作用
+## Description
 
-设置瞄准段的**动作**。
+Set the **action** of the target sequence segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Target_Sequence.Action {Value}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Value` | 可选值：`Run active profiles`、`Run nominal sequence`、`Run active profiles ONCE` |
+| `Value` | Optional values: `Run active profiles`, `Run nominal sequence`, `Run active profiles ONCE` |
 
-## 示例
+## Examples
 
-::: details open **设置瞄准段动作为运行活动配置**
+::: details open **Set the action of the target sequence segment to Run active profiles**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Action Run active profiles
 ```

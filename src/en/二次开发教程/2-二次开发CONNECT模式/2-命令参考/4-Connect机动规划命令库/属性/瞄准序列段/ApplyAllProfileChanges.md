@@ -1,18 +1,18 @@
 # ApplyAllProfileChanges
 
-## 作用
+## Description
 
-设置所有瞄准段配置**应用修改**。
+Apply changes to all profiles of the target sequence segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> ApplyAllProfileChanges
 ```
 
-## 示例
+## Examples
 
-::: details open **应用所有瞄准段配置修改**
+::: details open **Apply all target sequence segment profile changes**
 ```
 Astrogator */Satellite/Satellite1 ApplyAllProfileChanges
 ```

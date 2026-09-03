@@ -1,31 +1,31 @@
 # RetState
 
-## 作用
+## Description
 
-设置该返回段是否返回控制变量到它的父级段
+Sets whether this return segment returns the control variables to its parent segment
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.RetState {Value}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Value` | 包括属性 `Enable` 和 `Disable` |
+| `Value` | Includes the attributes `Enable` and `Disable` |
 
-### `Value` 取值
+### `Value` Values
 
-| 取值 | 说明 |
+| Value | Description |
 |------|------|
-| `Enable` | 启用返回控制变量 |
-| `Disable` | 禁用返回控制变量 |
+| `Enable` | Enable returning the control variables |
+| `Disable` | Disable returning the control variables |
 
-## 示例
+## Examples
 
-::: details open **设置 RetState 属性值为 Enable**
+::: details open **Set the RetState attribute value to Enable**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Return.RetState Enable
 ```

@@ -1,26 +1,26 @@
-# RPOGEO 轨道撤离段
+# RPOGEO Departure Segment
 
-## 作用
+## Description
 
-设置 `RPOExitGEO` 段属性
+Set the attributes of the `RPOExitGEO` segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
-| `Desired_DriftRate` | 数据类型：deg/day，范围：`[-360,360]` |
-| `Propagator_Time` | 范围：`[0.001,86400]` |
-| `SolveMethod` | 范围：`[-1,4]` |
+| `Desired_DriftRate` | Data type: deg/day, range: `[-360,360]` |
+| `Propagator_Time` | Range: `[0.001,86400]` |
+| `SolveMethod` | Range: `[-1,4]` |
 
-## 示例
+## Examples
 
-::: details open **设置轨道撤离段属性**
+::: details open **Set the attributes of the Departure segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOExitGEO.Desired_DriftRate 45
 ```

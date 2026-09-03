@@ -1,18 +1,18 @@
 # Reference
 
-## 作用
+## Description
 
-设置卫星参考航天器
+Sets the reference spacecraft of a satellite.
 
-## 语法
+## Syntax
 
 ```atk-command
 Reference <SatObjectPath> SetRefSatellite <SatObjectPath>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置卫星参考航天器**
+::: details open **Set the satellite reference spacecraft**
 
 ```
 Reference */Satellite/Satellite1 SetRefSatellite */Satellite/Satellite2

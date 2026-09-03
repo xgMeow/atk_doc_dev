@@ -1,26 +1,26 @@
 ---
-description: 设置传感器轨迹线宽，控制二维图形窗口中传感器轨迹线的显示宽度。
+description: Sets the sensor trace line width, controlling the display width of the sensor trace line in the 2D Graphics window.
 ---
 
 # Graphics LineWidth
 
-## 作用
+## Description
 
-设置轨迹线宽。
+Sets the trace line width.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> LineWidth <LineWidth>
 ```
 
-## 补充说明
+## Additional Notes
 
-`LineWidth` 输入值应介于 `1.0` 至 `10.0`。
+The `LineWidth` input value should be between `1.0` and `10.0`.
 
-## 示例
+## Examples
 
-::: details open **设置轨迹线宽**
+::: details open **Set Trace Line Width**
 ```
 Graphics */Satellite/Satellite1/Sensor/Sensor1 LineWidth 5
 ```

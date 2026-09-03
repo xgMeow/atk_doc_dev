@@ -1,25 +1,25 @@
 # AddWaypoint
 
-## 作用
+## Description
 
-设置车辆航线属性。
+Set the ground vehicle route properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 AddWaypoint <VehObjectPath> {AddMethod} <Parameters> [<TurnRadius>]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| `AddMethod` | `DetTimeAccFromVel`：`[{MapGridSpec}] {PointDef} <Velocity>` / `DetVelFromTime`：`[{MapGridSpec}] {PointDef} <DateTime>` |
-| `MapGridSpec` | `LatLon`：`<Latitude> <Longitude> <Altitude>` |
+| `AddMethod` | `DetTimeAccFromVel`: `[{MapGridSpec}] {PointDef} <Velocity>` / `DetVelFromTime`: `[{MapGridSpec}] {PointDef} <DateTime>` |
+| `MapGridSpec` | `LatLon`: `<Latitude> <Longitude> <Altitude>` |
 
-## 示例
+## Examples
 
-::: details open **使用 DetTimeAccFromVel 方式添加航点**
+::: details open **Add a waypoint using the DetTimeAccFromVel method**
 ```
 AddWaypoint */GroundVehicle/GroundVehicle1 DetTimeAccFromVel LatLon 42.5 15 0.0 1.0
 ```

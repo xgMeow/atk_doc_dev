@@ -1,37 +1,37 @@
 # Finite
 
-## 作用
+## Description
 
-设置有限推力类型属性值
+Sets the finite thrust type attribute values.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.<Attributes ><Value>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --------------------------------------- | ------------------------------|
-| 机动段-`ThrustAxes`（获得属性值暂不支持）   |  具体属性值设置请查看机动段设置    |
-| 机动段-`CoordType`                        |  具体属性值设置请查看机动段设置    |
-| 机动段-`Coordinate Values`                |  具体属性值设置请查看机动段设置    |
-| 预报段-`Propagator`（获得属性值暂不支持）   |  具体属性值设置请查看预报段设置    |
-| 预报段-`MaxPropTime`                      |  具体属性值设置请查看预报段设置    |
-| 预报段-`Stopping Conditions`              |  具体属性值设置请查看预报段设置    |
-| 预报段-`Active`                           |  具体属性值设置请查看预报段设置    |
-| 预报段-`TripValue`                        |  具体属性值设置请查看预报段设置    |
-| 预报段-`Tolerance`                        |  具体属性值设置请查看预报段设置    |
-| 预报段-`Repeat Count`                     |  具体属性值设置请查看预报段设置    |
-| 预报段-`Condition`                        |  具体属性值设置请查看预报段设置    |
-| 预报段-`CentralBody`                      |  具体属性值设置请查看预报段设置    |
-| 预报段-`CoordSystem`                      |  具体属性值设置请查看预报段设置    |
-| 预报段-`CalcObject`                       |  具体属性值设置请查看预报段设置    |
+| Maneuver segment-`ThrustAxes` (getting the attribute value is not supported yet) | For specific attribute value settings, see the maneuver segment settings |
+| Maneuver segment-`CoordType` | For specific attribute value settings, see the maneuver segment settings |
+| Maneuver segment-`Coordinate Values` | For specific attribute value settings, see the maneuver segment settings |
+| Propagate segment-`Propagator` (getting the attribute value is not supported yet) | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`MaxPropTime` | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`Stopping Conditions` | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`Active` | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`TripValue` | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`Tolerance` | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`Repeat Count` | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`Condition` | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`CentralBody` | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`CoordSystem` | For specific attribute value settings, see the propagate segment settings |
+| Propagate segment-`CalcObject` | For specific attribute value settings, see the propagate segment settings |
 
-## 示例
+## Examples
 
-::: details open **禁用有限推力机动段的 Duration Active 停止条件**
+::: details open **Disable the Duration Active Stopping Condition of the Finite Thrust Maneuver Segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.FiniteMnvr.StoppingConditions.Duration.Active false
 ```

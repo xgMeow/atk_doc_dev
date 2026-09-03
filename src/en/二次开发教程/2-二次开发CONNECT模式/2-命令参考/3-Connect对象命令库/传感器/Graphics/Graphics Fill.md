@@ -1,22 +1,22 @@
 ---
-description: 设置传感器图形是否填充，控制二维图形窗口中传感器覆盖区域的填充显示。
+description: Sets whether the sensor graphic is filled, controlling the fill display of the sensor coverage area in the 2D Graphics window.
 ---
 
 # Graphics Fill
 
-## 作用
+## Description
 
-设置是否填充。
+Sets whether to fill.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <SensorObjectPath> Fill {On | Off}
 ```
 
-## 示例
+## Examples
 
-::: details open **设置传感器填充**
+::: details open **Set Sensor Fill**
 ```
 Graphics */Satellite/Satellite1/Sensor/Sensor1 Fill Off
 ```

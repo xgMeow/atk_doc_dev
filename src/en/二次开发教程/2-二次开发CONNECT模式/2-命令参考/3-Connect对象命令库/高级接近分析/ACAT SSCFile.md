@@ -1,18 +1,18 @@
 # ACAT SSCFile
 
-## 作用
+## Description
 
-使用文件设置**SSC**目标半径。
+Uses a file to set the **SSC** target radius.
 
-## 语法
+## Syntax
 
 ```atk-command
 ACAT <AdvCatObjPath> SSCFile {On | Off | "<FilePath>"}
 ```
 
-## 示例
+## Examples
 
-::: details open **使用SSC文件设置目标半径**
+::: details open **Use an SSC file to set the target radius**
 ```
 ACAT */AdvCAT/MyAdvCAT SSCFile "C:\Users\tempest\Documents\STK\SSC.rad"
 ```

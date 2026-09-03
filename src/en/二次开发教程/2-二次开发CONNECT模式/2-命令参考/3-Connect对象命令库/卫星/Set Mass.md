@@ -1,25 +1,25 @@
 # Set Mass
 
-## 作用
+## Description
 
-设置卫星质量与转动惯量矩阵。
+Sets the satellite mass and the moment of inertia matrix.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetMass <SatObjectPath> {DefineOption} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| `DefineOption` | `Parameters` | 说明 |
+| `DefineOption` | `Parameters` | Description |
 | --- | --- | --- |
-| `Value` | `<Mass>` | 设置质量 |
-| `Matrix` | `<lxx> <lxy> <lyy> <lxz> <lyz> <lzz>` | 设置转动惯量 |
+| `Value` | `<Mass>` | Sets the mass |
+| `Matrix` | `<lxx> <lxy> <lyy> <lxz> <lyz> <lzz>` | Sets the moment of inertia |
 
-## 示例
+## Examples
 
-::: details open **设置卫星质量与转动惯量矩阵**
+::: details open **Set the Satellite Mass and Moment of Inertia Matrix**
 ```
 SetMass */Satellite/Satellite1 Matrix 1290.0 1291.0 1292.0 1293.0 1294.0 1295.0
 ```

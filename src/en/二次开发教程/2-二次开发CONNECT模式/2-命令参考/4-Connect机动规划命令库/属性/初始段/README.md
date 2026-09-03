@@ -1,5 +1,5 @@
 ---
-title: 初始段
+title: Initial Segment
 index: false
 ---
 

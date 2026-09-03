@@ -1,22 +1,22 @@
 # New
 
-## 作用
+## Description
 
-新建场景或新建对象
+Creates a new scenario or a new object.
 
-## 语法
+## Syntax
 
 ```atk-command
 New <ApplicationPath> <ClassPath> <NewObjectName> {NewOptions}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `{NewOptions}` 包括属性 `NoDefault`、`Ignore` 和 `CentralBody <CBName>`
+- `{NewOptions}` includes the attributes `NoDefault`, `Ignore`, and `CentralBody <CBName>`.
 
-## 示例
+## Examples
 
-::: details open **新建场景**
+::: details open **Create a new scenario**
 
 ```
 New / Scenario See_DC
@@ -24,7 +24,7 @@ New / Scenario See_DC
 
 :::
 
-::: details open **新建卫星对象**
+::: details open **Create a new satellite object**
 
 ```
 New / */Satellite Satellite1 CentralBody Earth
@@ -32,7 +32,7 @@ New / */Satellite Satellite1 CentralBody Earth
 
 :::
 
-::: details open **新建传感器对象**
+::: details open **Create a new sensor object**
 
 ```
 New / */Satellite/Satellite1/Sensor Sensor1

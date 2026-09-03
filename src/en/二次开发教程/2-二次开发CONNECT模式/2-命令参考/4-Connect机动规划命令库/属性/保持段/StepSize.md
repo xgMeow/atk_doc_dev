@@ -1,18 +1,18 @@
 # StepSize
 
-## 作用
+## Description
 
-设置**保持段**步长。
+Sets the **coast segment** step size.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StepSize <Value> [{Unit}]
 ```
 
-## 示例
+## Examples
 
-::: details open **设置保持段步长为 10 秒**
+::: details open **Set the Step Size of the Coast Segment to 10 Seconds**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Hold.StepSize 10 sec
 ```

@@ -1,33 +1,33 @@
 # Define
 
-## 作用
+## Description
 
-设置恒星类型及其参数
+Sets the star type and its parameters.
 
-## 语法
+## Syntax
 
 ```atk-command
 Define <StarObjectPath> {StarOption} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `{StarOption}` | 恒星选项类型，取值见下方 |
+| `{StarOption}` | Star option type; see the values below |
 
-### {StarOption} 取值
+### {StarOption} Values
 
-| 取值 | 说明 |
+| Value | Description |
 |------|------|
 | `Position` | `<RightAscen> <Declination>` |
 | `Motion` | `<RightAscen> <Declination>` |
 | `Magnitude` | `<Magnitude>` |
 | `Parallax` | `<Parallax>` |
 
-## 示例
+## Examples
 
-::: details open **定义恒星位置**
+::: details open **Define the star position**
 ```
 Define */Star/Star1 Position 20.0 48.0
 ```

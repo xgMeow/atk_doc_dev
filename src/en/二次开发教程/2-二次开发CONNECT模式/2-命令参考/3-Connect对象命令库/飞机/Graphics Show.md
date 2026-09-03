@@ -1,18 +1,18 @@
 # Graphics Show
 
-## 作用
+## Description
 
-设置飞机是否在**窗口显示**。
+Set whether the **aircraft is shown in the window**.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Show {On | Off}
 ```
 
-## 示例
+## Examples
 
-::: details open **隐藏飞机显示**
+::: details open **Hide the aircraft display**
 ```
 Graphics */Aircraft/Aircraft1 Show Off
 ```

@@ -1,18 +1,18 @@
 # NewtonMax
 
-## 作用
+## Description
 
-设置牛顿迭代次数
+Set the number of Newton iterations.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.NewtonMax <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置牛顿迭代次数为 10**
+::: details open **Set the number of Newton iterations to 10**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.NewtonMax 10
 ```

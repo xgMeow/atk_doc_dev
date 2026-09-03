@@ -1,16 +1,16 @@
 # VO SetVectorGeometry
 
-## 作用
+## Description
 
-设置地面站向量。
+Set the facility vector.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
 | `{Option}` | `<Parameters>` |
 | ----------------- | ---------- |
@@ -18,9 +18,9 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `Modify` | `"<ReferenceCrdn>" [{DisplayOption} <DisplayValue>...]` |
 | `Delete` | `"<ReferenceCrdn>"` |
 
-**注意**：`ReferenceCrdn` 必须使用双引号。
+**Note**: `ReferenceCrdn` must be enclosed in double quotes.
 
-- 若 `{Option}` 输入为 `Add` 或 `Modify`，以下参数适用所有类型
+- If `{Option}` is set to `Add` or `Modify`, the following parameters apply to all types
 
 | `{DisplayOption}` | `<DisplayValue>` |
 | ------------- | ------------------------------- |
@@ -28,7 +28,7 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `ShowLabel` | `{On \| Off}` |
 | `Color` | `{Color}` |
 
-- 若 `{Option}` 输入为 `Add` 或 `Modify`，以下参数仅适用 `Axes` 和 `Vector`
+- If `{Option}` is set to `Add` or `Modify`, the following parameters apply only to `Axes` and `Vector`
 
 | `{DisplayOption}` | `<DisplayValue>` |
 | ------------- | ------------------------------- |
@@ -38,21 +38,21 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `OriginPointDef` | `"{ReferenceCrdn}"` |
 | `usetruescale` | `{On \| Off}` |
 
-- 若 `{Option}` 输入为 `Add` 或 `Modify`，以下参数仅适用 `Vector`
+- If `{Option}` is set to `Add` or `Modify`, the following parameters apply only to `Vector`
 
 | `{DisplayOption}` | `<DisplayValue>` |
 | ------------- | ------------------------------- |
 | `usetruescale` | `{On \| Off}` |
 
-## 示例
+## Examples
 
-::: details open **添加向量**
+::: details open **Add a vector**
 ```
 VO */Facility/Facility1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
 ```
 :::
 
-::: details open **修改向量**
+::: details open **Modify a vector**
 ```
 VO */Facility/Facility1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
 ```

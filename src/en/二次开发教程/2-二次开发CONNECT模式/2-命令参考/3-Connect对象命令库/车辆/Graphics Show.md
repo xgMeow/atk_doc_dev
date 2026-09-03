@@ -1,18 +1,18 @@
 # Graphics Show
 
-## 作用
+## Description
 
-设置车辆是否在窗口显示。
+Set whether the ground vehicle is shown in the window.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Show {On | Off}
 ```
 
-## 示例
+## Examples
 
-::: details open **隐藏车辆显示**
+::: details open **Hide the ground vehicle display**
 ```
 Graphics */GroundVehicle/GroundVehicle1 Show Off
 ```

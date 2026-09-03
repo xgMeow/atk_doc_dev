@@ -1,24 +1,24 @@
 # RootFindingAlgorithm
 
-## 作用
+## Description
 
-设置瞄准段微分修正属性页**求根算法**。
+Set the **root-finding algorithm** of the target sequence segment's Differential Corrector.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> 
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Attribute` | 可选值：`Newton-Raphson Method`、`Secant Method`、`Sequential Quadratic Prgramming` |
+| `Attribute` | Optional values: `Newton-Raphson Method`, `Secant Method`, `Sequential Quadratic Prgramming` |
 
-## 示例
+## Examples
 
-::: details open **设置瞄准段求根算法为牛顿-拉夫森方法**
+::: details open **Set the root-finding algorithm of the target sequence segment to Newton-Raphson Method**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector.RootFindingAlgorithm "Newton-Raphson Method"
 ```

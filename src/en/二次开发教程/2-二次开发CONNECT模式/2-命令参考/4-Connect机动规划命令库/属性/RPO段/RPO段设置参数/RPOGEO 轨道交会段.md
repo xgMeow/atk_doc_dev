@@ -1,35 +1,35 @@
-# RPOGEO 轨道交会段
+# RPOGEO Rendezvous Segment
 
-## 作用
+## Description
 
-设置 `RPOGEORendezvousNolead` 段属性
+Set the attributes of the `RPOGEORendezvousNolead` segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
-| `Desired_DriftRate` | 数据类型：deg/day，范围：`[-360,360]` |
-| `Desired_Radial` | 数据类型：m，范围：`[-100000,100000]` |
-| `Desired_InTrack` | 数据类型：m，范围：`[-100000,100000]` |
-| `Desired_CrossTrack` | 数据类型：m，范围：`[-100000,100000]` |
-| `Desired_RadialRate` | 数据类型：m/sec，范围：`[-1000,1000]` |
-| `Desired_InTrackRate` | 数据类型：m/sec，范围：`[-1000,1000]` |
-| `Desired_CrossTrackRate` | 数据类型：m/sec，范围：`[-1000,1000]` |
-| `Propagator_Time` | 范围：`[0.001,86400]` |
-| `Wait_Time` | 数据类型：sec，范围：`[0.001,86400]` |
-| `Rendezvous_Time` | 数据类型：UTCG |
-| `MaxIter` | 范围：`[-1,1000]` |
-| `SolveMethod` | 范围：`[-1,4]` |
+| `Desired_DriftRate` | Data type: deg/day, range: `[-360,360]` |
+| `Desired_Radial` | Data type: m, range: `[-100000,100000]` |
+| `Desired_InTrack` | Data type: m, range: `[-100000,100000]` |
+| `Desired_CrossTrack` | Data type: m, range: `[-100000,100000]` |
+| `Desired_RadialRate` | Data type: m/sec, range: `[-1000,1000]` |
+| `Desired_InTrackRate` | Data type: m/sec, range: `[-1000,1000]` |
+| `Desired_CrossTrackRate` | Data type: m/sec, range: `[-1000,1000]` |
+| `Propagator_Time` | Range: `[0.001,86400]` |
+| `Wait_Time` | Data type: sec, range: `[0.001,86400]` |
+| `Rendezvous_Time` | Data type: UTCG |
+| `MaxIter` | Range: `[-1,1000]` |
+| `SolveMethod` | Range: `[-1,4]` |
 
-## 示例
+## Examples
 
-::: details open **设置轨道交会段属性**
+::: details open **Set the attributes of the Rendezvous segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOGEORendezvousNolead.Desired_DriftRate 45
 ```

@@ -1,18 +1,18 @@
 # Elliptical
 
-## 作用
+## Description
 
-设置是否限制为椭圆轨道
+Set whether to restrict to an elliptical orbit.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Elliptical <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置不限制为椭圆轨道**
+::: details open **Set not to restrict to an elliptical orbit**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.Elliptical false
 ```

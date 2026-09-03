@@ -1,18 +1,18 @@
 # VO ScaleLog
 
-## 作用
+## Description
 
-设置飞机 **3D 模型** log 比例。
+Set the aircraft **3D model** log scale.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ScaleLog <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置模型 log 比例为 3**
+::: details open **Set the model log scale to 3**
 ```
 VO */Aircraft/Aircraft1 ScaleLog 3
 ```

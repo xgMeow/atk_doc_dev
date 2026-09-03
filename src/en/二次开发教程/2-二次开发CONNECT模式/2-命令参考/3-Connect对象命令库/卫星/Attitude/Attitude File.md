@@ -1,18 +1,18 @@
 # Attitude File
 
-## 作用
+## Description
 
-根据姿态文件添加姿态数据。
+Adds attitude data from an attitude file.
 
-## 语法
+## Syntax
 
 ```atk-command
 AddAttitude <VehObjectPath> File "<FilePath.a>"
 ```
 
-## 示例
+## Examples
 
-::: details open **根据姿态文件添加姿态数据**
+::: details open **Add Attitude Data from an Attitude File**
 ```
 AddAttitude */Satellite/Satellite1 File "C:\atk\User\Data\SpinNadir.a"
 ```

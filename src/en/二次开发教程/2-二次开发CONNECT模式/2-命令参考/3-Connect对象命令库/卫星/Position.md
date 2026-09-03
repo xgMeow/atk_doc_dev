@@ -1,22 +1,22 @@
 # Position
 
-## 作用
+## Description
 
-获得卫星当前位置数据。
+Gets the current position data of the satellite.
 
-## 语法
+## Syntax
 
 ```atk-command
 Position <ObjectPath> [{TimeValue}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- 返回数据为当前位置 X,Y,Z，当前速度 X,Y,Z
+- The returned data is the current position X, Y, Z and the current velocity X, Y, Z
 
-## 示例
+## Examples
 
-::: details open **获得卫星当前位置数据**
+::: details open **Get the Current Position Data of the Satellite**
 ```
 Position */Satellite/Satellite1 "29 Jul 2023 00:00:00.00"
 ```

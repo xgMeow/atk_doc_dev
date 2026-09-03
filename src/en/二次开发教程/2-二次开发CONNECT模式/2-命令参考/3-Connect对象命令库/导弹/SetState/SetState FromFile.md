@@ -1,18 +1,18 @@
 # SetState FromFile
 
-## 作用
+## Description
 
-使用星历文件设置导弹弹道
+Set the missile trajectory using an ephemeris file.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetState <ObjectPath> FromFile "<FilePath>"
 ```
 
-## 示例
+## Examples
 
-::: details open **使用星历文件设置导弹弹道**
+::: details open **Set the missile trajectory using an ephemeris file**
 ```
 SetState */Missile/Missile1 FromFile "C:\atk\User\Data\EphemFile.e"
 ```

@@ -1,22 +1,22 @@
 # Graphics SetColor
 
-## 作用
+## Description
 
-设置地面站轨迹标签颜色。
+Set the facility trajectory label color.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> SetColor {Color} [{Item}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Color` 可用属性请查看[常用图形格式](../../../2-参数值格式/颜色格式.md)
+- For the supported `Color` formats, see [Color Format](../../../2-参数值格式/颜色格式.md)
 
-## 示例
+## Examples
 
-::: details open **设置颜色**
+::: details open **Set the color**
 ```
 Graphics */Facility/Facility1 SetColor 4
 ```

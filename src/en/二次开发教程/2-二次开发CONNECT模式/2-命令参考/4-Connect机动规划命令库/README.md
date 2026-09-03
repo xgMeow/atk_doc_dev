@@ -1,5 +1,5 @@
 ---
-title: Connect机动规划命令库
+title: Connect Maneuver Planning Command Library
 index: false
 dir:
     link: false

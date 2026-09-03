@@ -1,5 +1,5 @@
 ---
-title: 星座创建
+title: Constellation Creation
 index: false
 ---
 

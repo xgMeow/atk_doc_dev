@@ -1,22 +1,22 @@
 # GetAttitude
 
-## 作用
+## Description
 
-获得姿态类型
+Obtain the attitude type.
 
-## 语法
+## Syntax
 
 ```atk-command
 GetAttitude <ObjectPath> {AttOption}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `AttOption` 包括属性为 `Profile ConnectName`、`Profile LongName`
+- `AttOption` includes the attributes `Profile ConnectName` and `Profile LongName`.
 
-## 示例
+## Examples
 
-::: details open **获得姿态类型**
+::: details open **Obtain the attitude type**
 ```
 GetAttitude *//Missile/Missile1 Profile LongName
 ```

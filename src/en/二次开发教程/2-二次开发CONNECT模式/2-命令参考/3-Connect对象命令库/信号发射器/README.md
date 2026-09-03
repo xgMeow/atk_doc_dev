@@ -1,5 +1,5 @@
 ---
-title: 信号发射器
+title: Transmitter
 index: false
 ---
 

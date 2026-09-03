@@ -1,25 +1,25 @@
 # Set Constraint
 
-## 作用
+## Description
 
-设置行星约束
+Sets planet constraints.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetConstraint <ObjectPath> {ConstraintName} {State}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
 | `LineOfSight` | `{On \| Off}` |
 | `TerrainMask` | `{On \| Off}` |
 
-## 示例
+## Examples
 
-::: details open **设置行星视距约束**
+::: details open **Set the planet line-of-sight constraint**
 ```
 SetConstraint */Planet/Jupiter LineOfSight On
 ```

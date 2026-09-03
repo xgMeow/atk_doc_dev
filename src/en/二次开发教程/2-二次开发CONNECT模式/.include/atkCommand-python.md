@@ -1,39 +1,39 @@
-ATK CONNECT 模式通过以下三组核心 API 与 ATK 交互：`atkOpen` 建立连接、`atkConnect` 发送命令、`atkClose` 断开连接。所有命令均遵循 [CONNECT 命令语法约定](../2-命令参考/1-命令语法约定.md)。
+ATK Connect mode interacts with ATK through the following three groups of core APIs: `atkOpen` establishes a connection, `atkConnect` sends commands, and `atkClose` closes the connection. All commands follow the [Connect command syntax](../2-命令参考/1-命令语法约定.md).
 
 ## atkOpen
 
-### 作用
+### Description
 
-建立与 ATK 服务的网络连接，返回可用于后续操作调用的连接句柄。
+Establishes a network connection to the ATK service and returns a connection handle that can be used in subsequent operations.
 
-### 语法
+### Syntax
 
 ```python
 atkOpen([ipAddress, port])
 ```
 
-### 参数说明
+### Parameters
 
-| 参数名 | 类型 | 必选 | 默认值 | 说明 |
+| Parameter | Type | Required | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| ipAddress | string | 否 | "127.0.0.1" | 目标 ATK 服务的 IPv4 地址。 |
-| port | integer | 否 | 6655 | 目标服务监听端口号。 |
+| ipAddress | string | No | "127.0.0.1" | The IPv4 address of the target ATK service. |
+| port | integer | No | 6655 | The listening port number of the target service. |
 
-### 返回值
+### Return Value
 
-| 返回值 | 类型 | 说明 |
+| Return | Type | Description |
 |--------|------|------|
-| conID | integer | 连接句柄 conID，用于后续操作 |
+| conID | integer | Connection handle conID, used for subsequent operations |
 
-### 示例
+### Example
 
-::: details open **连接本机默认端口（127.0.0.1:6655）**
+::: details open **Connect to the local default port (127.0.0.1:6655)**
 ```python
 conID = atkOpen()
 ```
 :::
 
-::: details open **连接指定远程设备**
+::: details open **Connect to a specified remote device**
 ```python
 conID = atkOpen('192.168.1.100', 6655)
 ```
@@ -41,47 +41,47 @@ conID = atkOpen('192.168.1.100', 6655)
 
 ## atkConnect
 
-### 作用
+### Description
 
-向已连接的 ATK 服务发送命令，执行特定操作，并可获取命令返回的输出字符串。
+Sends a command to the connected ATK service to perform a specific operation, and can obtain the output string returned by the command.
 
-::: info 说明
+::: info Notes
 
-- Connect模式中 **空格** 为特殊解析字符，输入命令字符串时请注意空格字符的位置。
+- In Connect mode, **space** is a special parsing character. Pay attention to the position of space characters when entering command strings.
 
-- 用命令设置之后，如果界面对象属性页是打开状态，需要先关闭页面，再打开，用命令设置的属性值才会刷新。
+- After setting a property with a command, if the object's property page is open, you need to close and reopen it for the command-set property values to refresh.
 
 :::
 
-### 语法
+### Syntax
 
 ```python
 atkConnect(conID, command, cmdString)
 ```
 
-若命令有返回值，可通过赋值方式获取输出：
+If the command returns a value, you can obtain the output by assigning it:
 
 ```python
 strOutPut = atkConnect(conID, command, cmdString)
 ```
 
-### 参数说明
+### Parameters
 
-| 参数名 | 类型 | 必选 | 默认值 | 说明 |
+| Parameter | Type | Required | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| conID | integer | 是 | 无 | atkOpen 返回的连接句柄，标识当前会话 |
-| command | string | 是 | 无 | ATK 命令名称，详见 Connect 命令文档 |
-| cmdString | string | 是 | 无 | 由 **对象路径** 和 **命令参数字符串** 以单个空格拼接，格式：`'objPath cmdParamString'`。<br/> objPath 中可用 `*` 表示 **场景** 占位符，cmdParamString 由具体命令定义 |
+| conID | integer | Yes | None | The connection handle returned by atkOpen, identifying the current session |
+| command | string | Yes | None | The name of the ATK command; see the Connect command documentation for details |
+| cmdString | string | Yes | None | Concatenated from the **object path** and the **command parameter string** with a single space, format: `'objPath cmdParamString'`.<br/> In objPath, `*` can be used as the **scenario** placeholder; cmdParamString is defined by the specific command |
 
-### 返回值
+### Return Value
 
-| 返回值 | 类型 | 说明 |
+| Return | Type | Description |
 |--------|------|------|
-| strOutPut | string | 有返回值时返回输出字符串；无返回值时返回空或无返回 |
+| strOutPut | string | Returns the output string when the command has a return value; otherwise returns an empty string or nothing |
 
-### 示例
+### Example
 
-::: details open **调用 Graphics 命令设置卫星颜色（无返回值）**
+::: details open **Use the Graphics command to set the satellite color (no return value)**
 ```python
 atkConnect(conID, 'Graphics', '*/Satellite/Satellite1 SetColor 12')
 ```
@@ -89,44 +89,44 @@ atkConnect(conID, 'Graphics', '*/Satellite/Satellite1 SetColor 12')
 
 ## atkClose
 
-### 作用
+### Description
 
-关闭与 ATK 服务的网络连接，释放句柄及资源。关闭后句柄失效，不可再用于 `atkConnect`。
+Closes the network connection to the ATK service and releases the handle and its resources. After closing, the handle becomes invalid and can no longer be used with `atkConnect`.
 
-### 语法
+### Syntax
 
 ```python
 atkClose(conID)
 ```
 
-### 参数说明
+### Parameters
 
-| 参数名 | 类型 | 必选 | 默认值 | 说明 |
+| Parameter | Type | Required | Default | Description |
 |--------|------|------|--------|------|
-| conID | integer | 是 | 无 | atkOpen 返回的连接句柄，用于标识要关闭的会话 |
+| conID | integer | Yes | None | The connection handle returned by atkOpen, identifying the session to be closed |
 
-### 返回值
+### Return Value
 
-| 返回值 | 类型 | 说明 |
+| Return | Type | Description |
 |--------|------|------|
-| 无 | void | 该命令不返回任何值。 |
+| None | void | This command does not return any value. |
 
-### 示例
+### Example
 
-::: details open **关闭默认连接**
+::: details open **Close the default connection**
 ```python {4}
 conID = atkOpen()
-# 建立连接
-# ... 执行若干 atkConnect 操作 ...
+# Establish the connection
+# ... Execute some atkConnect operations ...
 atkClose(conID)
-# 关闭连接
+# Close the connection
 ```
 :::
 
-::: details open **关闭指定远程连接**
+::: details open **Close a specified remote connection**
 ```python {3}
 conID = atkOpen('192.168.1.100', 6655)
-# ... 执行操作 ...
+# ... Execute some operations ...
 atkClose(conID)
 ```
 :::

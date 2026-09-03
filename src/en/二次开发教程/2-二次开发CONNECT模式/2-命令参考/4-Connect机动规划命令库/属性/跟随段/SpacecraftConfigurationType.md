@@ -1,24 +1,24 @@
 # SpacecraftConfigurationType
 
-## 作用
+## Description
 
-设置航天器参数设置方式
+Sets how the spacecraft parameters are configured.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.SpacecraftConfigurationType <Value>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Value` | `Inherit Spacecraft Configuration From Previous Segment`、`Specify Configuration` |
+| `Value` | `Inherit Spacecraft Configuration From Previous Segment` and `Specify Configuration` |
 
-## 示例
+## Examples
 
-::: details open **设置航天器参数为 Specify Configuration**
+::: details open **Set the spacecraft parameters to Specify Configuration**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.SpacecraftConfigurationType "Specify Configuration"

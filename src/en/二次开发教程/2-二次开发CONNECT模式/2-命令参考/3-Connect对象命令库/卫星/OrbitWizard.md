@@ -1,20 +1,20 @@
 # OrbitWizard
 
-## 作用
+## Description
 
-使用轨道向导选项定义卫星。
+Defines a satellite using the orbit wizard options.
 
-## 语法
+## Syntax
 
 ```atk-command
 OrbitWizard <VehObjectPath> {Type} [{Options}]
 ```
 
-## 参数说明
+## Parameters
 
-`{Type}` 包括: `Circular`, `CriticallyInclined`, `CriticallyInclinedSunSync`, `Geosynchronous`, `Molniya`, `RepeatingGroundTrace`, `RepeatingSunSync`, `SunSynchronous`, `OrbitDesigner`, `SatelliteSubPoint`, `RepeatingSatelliteSubPoint`
+`{Type}` includes: `Circular`, `CriticallyInclined`, `CriticallyInclinedSunSync`, `Geosynchronous`, `Molniya`, `RepeatingGroundTrace`, `RepeatingSunSync`, `SunSynchronous`, `OrbitDesigner`, `SatelliteSubPoint`, `RepeatingSatelliteSubPoint`
 
-::: details Options 选项设置（点击展开）
+::: details Option Settings (click to expand)
 
 | `{Type}` | `[{Options}]` |
 | :--- | :--- |
@@ -32,9 +32,9 @@ OrbitWizard <VehObjectPath> {Type} [{Options}]
 
 :::
 
-## 示例
+## Examples
 
-::: details open **使用轨道向导选项定义卫星**
+::: details open **Define a Satellite Using Orbit Wizard Options**
 ```
 OrbitWizard */Satellite/Satellite1 Circular Color Yellow TimePeriod "27 Dec 2024 00:00:00.000" "28 Dec 2024 00:00:00.000" Inclination 50 Altitude 1200000 RAAN 1
 ```

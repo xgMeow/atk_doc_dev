@@ -1,18 +1,18 @@
 # Cov Grid
 
-## 作用
+## Description
 
-设置覆盖定义网格。
+Sets the coverage definition grid.
 
-## 语法
+## Syntax
 
 ```atk-command
 Cov <CovDefnObjectPath> Grid {GridOption} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
 | `AreaOfInterest` | `Global` |
 | `AreaOfInterest` | `LatLonRegion <MinLat> <MinLon> <MaxLat> <MaxLon>` |
@@ -24,18 +24,18 @@ Cov <CovDefnObjectPath> Grid {GridOption} <Parameters>
 | `PointGranularity` | `LatLon <Degree>` |
 | `PointAltitude` | `{AltitudeType} <AltitudeValue>` |
 
-### AltitudeType 取值
+### AltitudeType Values
 
-| 取值 |
+| Value |
 | ---- |
 | `Radius` |
 | `Altitude` |
 | `AltAboveTerrain` |
 | `AltAboveMSL` |
 
-## 示例
+## Examples
 
-::: details open **设置覆盖定义网格**
+::: details open **Set the coverage definition grid**
 ```
 Cov */CoverageDefinition/CoverageDefinition1 Grid AreaOfInterest LatBounds 30 45
 ```

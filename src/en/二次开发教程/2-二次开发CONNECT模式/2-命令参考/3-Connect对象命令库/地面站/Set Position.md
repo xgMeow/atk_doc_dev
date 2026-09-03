@@ -1,25 +1,25 @@
 # Set Position
 
-## 作用
+## Description
 
-设置地面站位置属性。
+Set the facility position properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetPosition <ObjectPath> [{Type}] {CoordType} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --------- | --------------------------- |
-| `Cartesian` | `<X> <Y> <Z>`，输入默认单位为 m |
-| `Geodetic` | `<Lat> <Lon> {<Altitude> \| Terrain} [MSL]`，目前仅支持输入纬度、经度、高度 |
+| `Cartesian` | `<X> <Y> <Z>`, inputs default to m |
+| `Geodetic` | `<Lat> <Lon> {<Altitude> \| Terrain} [MSL]`, currently only latitude, longitude, and altitude are supported |
 
-## 示例
+## Examples
 
-::: details open **设置地理坐标位置**
+::: details open **Set a geodetic position**
 ```
 SetPosition */Facility/Facility1 Geodetic 37.9 -75.5 0.0
 ```

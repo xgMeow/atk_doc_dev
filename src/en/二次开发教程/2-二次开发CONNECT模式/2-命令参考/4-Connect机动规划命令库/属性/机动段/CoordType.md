@@ -1,22 +1,22 @@
 # CoordType
 
-## 作用
+## Description
 
-设置坐标方式
+Sets the coordinate type.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.CoordType <Value>
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Value` 包括属性 `Cartesian` 和 `Spherical`
+- `Value` includes the attributes `Cartesian` and `Spherical`.
 
-## 示例
+## Examples
 
-::: details open **设置坐标方式为 Cartesian**
+::: details open **Set the Coordinate Type to Cartesian**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.CoordType Cartesian
 ```

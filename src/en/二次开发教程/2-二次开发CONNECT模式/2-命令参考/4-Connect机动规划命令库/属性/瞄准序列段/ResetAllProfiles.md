@@ -1,18 +1,18 @@
 # ResetAllProfiles
 
-## 作用
+## Description
 
-设置所有瞄准段配置**重置**。
+Reset all profiles of the target sequence segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> ResetAllProfiles
 ```
 
-## 示例
+## Examples
 
-::: details open **重置所有瞄准段配置**
+::: details open **Reset all target sequence segment profiles**
 ```
 Astrogator */Satellite/Satellite1 ResetAllProfiles
 ```

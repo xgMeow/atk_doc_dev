@@ -1,18 +1,18 @@
 # NewMulti
 
-## 作用
+## Description
 
-新建多个对象
+Creates multiple objects.
 
-## 语法
+## Syntax
 
 ```atk-command
 NewMulti <ApplicationPath> <ClassPathOfObjectToCreate> <NumToCreate> <NewName1> [<NewName2>...] [NoDefault] [Ignore]
 ```
 
-## 示例
+## Examples
 
-::: details open **新建多个对象**
+::: details open **Create multiple objects**
 
 ```
 NewMulti / */Facility 3 Fac1 Fac2 Fac3 NoDefault

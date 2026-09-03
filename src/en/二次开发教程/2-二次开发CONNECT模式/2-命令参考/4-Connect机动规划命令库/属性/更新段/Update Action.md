@@ -1,25 +1,25 @@
 # Update Action
 
-## 作用
+## Description
 
-设置更新段的功能。
+Sets the action of the update segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Update.{Action Attribute} {Value}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Action Attribute` | 包括 `DryMassAction`、`FuelMassAction`、`SRPAreaAction`、`DragAreaAction`、`CrAction`、`CdAction` |
-| `Value` | 包括 `Add value`、`Subtract value`、`Set to new value`、`No change in value` |
+| `Action Attribute` | Includes `DryMassAction`, `FuelMassAction`, `SRPAreaAction`, `DragAreaAction`, `CrAction`, `CdAction` |
+| `Value` | Includes `Add value`, `Subtract value`, `Set to new value`, `No change in value` |
 
-## 示例
+## Examples
 
-::: details open **设置拖拽面积动作为不改变**
+::: details open **Set the drag area action to no change**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Update.DragAreaAction No change in value
 ```

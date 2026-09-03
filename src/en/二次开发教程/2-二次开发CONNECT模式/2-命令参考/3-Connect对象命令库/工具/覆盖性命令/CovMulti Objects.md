@@ -1,18 +1,18 @@
 # CovMulti Objects
 
-## 作用
+## Description
 
-覆盖性选择多个访问对象
+Select multiple access objects for coverage computation.
 
-## 语法
+## Syntax
 
 ```atk-command
 CovMulti / Objects <CovObjectPath> <CovObjectPath> …
 ```
 
-## 示例
+## Examples
 
-::: details open **选择多个目标对象进行覆盖性计算**
+::: details open **Select multiple target objects for coverage computation**
 
 ```
 CovMulti / objects */Facility/Target1 */Facility/Target2 */Facility/Target3

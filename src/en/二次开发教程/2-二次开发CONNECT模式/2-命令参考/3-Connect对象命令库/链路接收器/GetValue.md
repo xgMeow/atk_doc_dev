@@ -1,68 +1,68 @@
 # GetValue
 
-## 作用
+## Description
 
-**获得**接收器属性值。
+**Gets** the receiver attribute values.
 
-## 语法
+## Syntax
 
 ```atk-command
 Receiver_RM <RcObjectPath> GetValue [<AttributePath>]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| `{AttributePath}` (为空) | 获得所有属性及属性值 |
-| `usercomment` | 获得对象说明 |
-| `model` | 获得模型已有属性及属性值 |
-| `model.usercomment` | 获得模型说明 |
-| `model.demodulator` | 获得数字载波调制类型 |
-| `model.demodulator.usercomment` | 获得数字载波调制类型说明 |
-| `model.demodulator.modulationname` | 获得数字载波调制类型名字 |
-| `model.linkmargintype` | 获得链路裕量类型 |
-| `model.linkmarginthreshold` | 获得阈值 |
-| `model.govert` | 获得品质因素 |
-| `model.polarization` | 获得极化类型 |
-| `model.polarization.referenceaxis` | 获得极化参考轴 |
-| `model.polarization.tiltangle` | 获得极化角度 |
-| `model.frequency` | 获得接收频率 |
+| `{AttributePath}` (empty) | Gets all attributes and their values. |
+| `usercomment` | Gets the object description. |
+| `model` | Gets the model's existing attributes and their values. |
+| `model.usercomment` | Gets the model description. |
+| `model.demodulator` | Gets the digital carrier modulation type. |
+| `model.demodulator.usercomment` | Gets the description of the digital carrier modulation type. |
+| `model.demodulator.modulationname` | Gets the name of the digital carrier modulation type. |
+| `model.linkmargintype` | Gets the link margin type. |
+| `model.linkmarginthreshold` | Gets the threshold. |
+| `model.govert` | Gets the figure of merit (G/T). |
+| `model.polarization` | Gets the polarization type. |
+| `model.polarization.referenceaxis` | Gets the polarization reference axis. |
+| `model.polarization.tiltangle` | Gets the polarization tilt angle. |
+| `model.frequency` | Gets the receive frequency. |
 
-属性参数：
+Attribute parameters:
 
-| 属性参数 | 说明 |
+| Attribute Parameters | Description |
 | --- | --- |
-| `Properties` | 获得当前属性定义的所有参数，包括最大值、最小值、单位等 |
-| `Choices` | 获得当前属性所有可以选择的选项 |
-| `Size` | 获得当前属性返回列表中有值的行数 |
+| `Properties` | Gets all the parameters defined for the current attribute, including its maximum, minimum, units, etc. |
+| `Choices` | Gets all selectable options for the current attribute. |
+| `Size` | Gets the number of rows that have values in the list returned for the current attribute. |
 
-属性包括参数对照：
+Mapping of attributes to supported attribute parameters:
 
-| 属性路径 | 支持的属性参数 |
+| Attribute Path | Supported Attribute Parameters |
 | --- | --- |
-| `UserComment` | 包括 `Properties` |
-| `Model` | 包括 `Properties`、`Choices`、`Size` |
-| `Model.UserComment` | 包括 `Properties` |
-| `Model.Demodulator` | 包括 `Properties`、`Choices`、`Size` |
-| `Model.Demodulator.UserComment` | 包括 `Properties` |
-| `Model.Demodulator.ModulationName` | 包括 `Properties` |
-| `Model.LinkmarginType` | 包括 `Properties`、`Choices` |
-| `Model.GoverT` | 包括 `Properties` |
-| `Model.Polarization` | 包括 `Properties`、`Choices`、`Size` |
-| `Model.Polarization.ReferenceAxis` | 包括 `Properties`、`Choices` |
-| `Model.Polarization.TiltAngle` | 包括 `Properties` |
-| `Model.frequency` | 包括 `Properties` |
+| `UserComment` | Includes `Properties`. |
+| `Model` | Includes `Properties`, `Choices`, and `Size`. |
+| `Model.UserComment` | Includes `Properties`. |
+| `Model.Demodulator` | Includes `Properties`, `Choices`, and `Size`. |
+| `Model.Demodulator.UserComment` | Includes `Properties`. |
+| `Model.Demodulator.ModulationName` | Includes `Properties`. |
+| `Model.LinkmarginType` | Includes `Properties`, `Choices`. |
+| `Model.GoverT` | Includes `Properties`. |
+| `Model.Polarization` | Includes `Properties`, `Choices`, and `Size`. |
+| `Model.Polarization.ReferenceAxis` | Includes `Properties`, `Choices`. |
+| `Model.Polarization.TiltAngle` | Includes `Properties`. |
+| `Model.frequency` | Includes `Properties`. |
 
-## 示例
+## Examples
 
-::: details open **获得所有属性值**
+::: details open **Get All Attribute Values**
 ```
 Receiver_RM */Satellite/Satellite1/Receiver/Receiver1 GetValue
 ```
 :::
 
-::: details open **获得模型极化属性大小**
+::: details open **Get the Size of the Model Polarization Attribute**
 ```
 Receiver_RM */Satellite/Sate1/Receiver/Receiver1 GetValue model.polarization:size
 ```

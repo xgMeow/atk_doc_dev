@@ -1,22 +1,22 @@
 # QuickReport_RM
 
-## 作用
+## Description
 
-获得快捷报告数据
+Obtains quick report data.
 
-## 语法
+## Syntax
 
 ```atk-command
 QuickReport_RM <ScenarioPath> {GetList | GetReport "<QuickReportName>"}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `GetList` 获得快捷报告列表，`GetReport` 获得快捷报告数据。
+- `GetList` gets the quick report list; `GetReport` gets the quick report data.
 
-## 示例
+## Examples
 
-::: details open **获取快捷报告数据**
+::: details open **Get quick report data**
 
 ```
 QuickReport_RM * GetReport "J2000 Position Velocity"

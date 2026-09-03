@@ -1,30 +1,30 @@
 # VOModelOffset
 
-## 作用
+## Description
 
-设置对象 3D 模型属性
+Set the object 3D model properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ModelOffset {OffsetOption} {On | Off} [<X> <Y> <Z>]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `OffsetOption` | 目前包括 `Label` 和 `Translational` |
+| `OffsetOption` | Currently includes `Label` and `Translational`. |
 
-## 示例
+## Examples
 
-::: details open **设置 3D 模型标签偏移**
+::: details open **Set the 3D model label offset**
 ```
 VO */LaunchVehicle/LaunchVehicle1 ModelOffset Label On 10 20 30
 ```
 :::
 
-::: details open **关闭 3D 模型平移偏移**
+::: details open **Turn off the 3D model translational offset**
 ```
 VO */LaunchVehicle/LaunchVehicle1 ModelOffset Translational off
 ```

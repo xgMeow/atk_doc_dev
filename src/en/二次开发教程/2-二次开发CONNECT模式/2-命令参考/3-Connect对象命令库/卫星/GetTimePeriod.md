@@ -1,22 +1,22 @@
 # GetTimePeriod
 
-## 作用
+## Description
 
-获得当前场景时间或当前对象开始结束时间。
+Gets the current scenario time or the start and end time of the current object.
 
-## 语法
+## Syntax
 
 ```atk-command
 GetTimePeriod <ObjectPath>
 ```
 
-## 补充说明
+## Additional Notes
 
-- 包括开始时间和结束时间
+- Includes the start time and the end time
 
-## 示例
+## Examples
 
-::: details open **获得当前场景时间**
+::: details open **Get the Current Scenario Time**
 ```
 GetTimePeriod */Satellite/Satellite1
 ```

@@ -1,32 +1,32 @@
 # Epoch
 
-## 作用
+## Description
 
-为初始段设置轨道历元
+Sets the orbit epoch for the initial state
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Epoch <Value> <Unit>
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Unit` 支持 `UTCG`, `EpSec`, `Sec`, `EpMin`, `Min`
+- `Unit` supports `UTCG`, `EpSec`, `Sec`, `EpMin`, `Min`
 
-::: warning 注意
-获得此属性值暂未实现
+::: warning Note
+Getting this attribute value is not implemented yet
 :::
 
-## 示例
+## Examples
 
-::: details open **使用 EpSec 单位设置轨道历元**
+::: details open **Set the orbit epoch using the EpSec unit**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Epoch 86400 EpSec
 ```
 :::
 
-::: details open **使用 UTCG 格式设置轨道历元**
+::: details open **Set the orbit epoch using the UTCG format**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Epoch "2 Feb 2023 14:14:14.144" UTCG
 ```

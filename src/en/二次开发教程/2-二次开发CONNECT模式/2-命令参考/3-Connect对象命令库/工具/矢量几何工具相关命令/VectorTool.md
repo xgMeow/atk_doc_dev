@@ -1,24 +1,24 @@
 # VectorTool
 
-## 作用
+## Description
 
-自定义**坐标系**以及用于构建坐标系的元素。
+Customize **coordinate systems** and the elements used to construct them.
 
-## 语法
+## Syntax
 
 ```atk-command
 VectorTool <ScenarioPath> {Options} 
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ------------------------------------- | ------------------  |
-| `{Create \| Modify \| Delete}` | 有关使用 `VectorTool` 命令创建、修改和删除向量几何组件及模板的详细信息，请参阅以下链接。[VectorTool Angle](./VectorTool%20Angle.md)、[VectorTool Axes](./VectorTool%20Axes.md)、[VectorTool Plane](./VectorTool%20Plane.md)、[VectorTool Point](./VectorTool%20Point.md)、[VectorTool System](./VectorTool%20System.md)、[VectorTool Vector](./VectorTool%20Vector.md) |
+| `{Create \| Modify \| Delete}` | For details on creating, modifying, and deleting vector geometry components and templates with the `VectorTool` command, see the following links. [VectorTool Angle](./VectorTool%20Angle.md), [VectorTool Axes](./VectorTool%20Axes.md), [VectorTool Plane](./VectorTool%20Plane.md), [VectorTool Point](./VectorTool%20Point.md), [VectorTool System](./VectorTool%20System.md), [VectorTool Vector](./VectorTool%20Vector.md) |
 
-## 示例
+## Examples
 
-::: details open **创建平面组件**
+::: details open **Create a Plane component**
 ```
 VectorTool * Satellite/Satellite1 Create Plane SatPlane2 "Quadrant"
 ```

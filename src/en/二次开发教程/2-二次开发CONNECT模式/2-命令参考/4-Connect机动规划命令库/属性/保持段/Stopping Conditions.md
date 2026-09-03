@@ -1,10 +1,10 @@
 # Stopping Conditions
 
-## 作用
+## Description
 
-设置**停止条件**列表。
+Sets the list of **stopping conditions**.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions <List of Stopping Conditions>
@@ -14,13 +14,13 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions 
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition} <Value> [{Unit}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- `List of Stopping Condition` 目前包括属性 `Altitude`、`Apoapsis`、`Argument_of_Latitude`（设置属性使用 `ArgLat`）、`AscendingNode`、`DescendingNode`、`Duration`、`Epoch`、`Longitude`、`Latitude`、`Mean_Anomaly`、`Periapsis`、`R_Magnitude`、`True_Anomaly`、`X-Y_Plane_Cross`（设置属性使用 `XYPlaneCross`）、`Y-Z_Plane_Cross`（设置属性使用 `YZPlaneCross`）、`Z-X_Plane_Cross`（设置属性使用 `ZXPlaneCross`）、`AscToDesc`、`DescToAsc`、`StateCalc`
+- `List of Stopping Condition` currently includes `Altitude`, `Apoapsis`, `Argument_of_Latitude` (use `ArgLat` to set the property), `AscendingNode`, `DescendingNode`, `Duration`, `Epoch`, `Longitude`, `Latitude`, `Mean_Anomaly`, `Periapsis`, `R_Magnitude`, `True_Anomaly`, `X-Y_Plane_Cross` (use `XYPlaneCross` to set the property), `Y-Z_Plane_Cross` (use `YZPlaneCross` to set the property), `Z-X_Plane_Cross` (use `ZXPlaneCross` to set the property), `AscToDesc`, `DescToAsc`, and `StateCalc`.
 
-## 示例
+## Examples
 
-::: details open **设置停止条件列表包含 Duration、Apoapsis 等多个条件**
+::: details open **Set the Stopping Condition List to Include Conditions Such as Duration and Apoapsis**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Hold.StoppingConditions Duration Apoapsis R_Magnitude Duration Altitude
 ```

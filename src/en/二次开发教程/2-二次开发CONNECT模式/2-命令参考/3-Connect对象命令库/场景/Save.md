@@ -1,25 +1,25 @@
 # Save
 
-## 作用
+## Description
 
-保存场景或对象
+Saves a scenario or an object.
 
-## 语法
+## Syntax
 
 ```atk-command
 Save <ApplicationPath> <ObjectPath> ["<SaveInDirectory>"]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `<ObjectPath>` | 目前为默认值 `*`，为当前场景路径 |
-| `<SaveInDirectory>` | 设置保存路径，当前场景会保存到此路径下，需要输入保存文件名 |
+| `<ObjectPath>` | Currently defaults to `*`, which is the current scenario path |
+| `<SaveInDirectory>` | Sets the save directory; the current scenario is saved to this directory, and a save file name must be entered |
 
-## 示例
+## Examples
 
-::: details open **保存当前场景**
+::: details open **Save the current scenario**
 
 ```
 Save / *

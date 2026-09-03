@@ -1,25 +1,25 @@
 # Window2D
 
-## 作用
+## Description
 
-创建、移除二维窗口
+Creates or removes a 2D window.
 
-## 语法
+## Syntax
 
 ```atk-command
 Window2D <ScenarioPath> {2DGfxWinOption} <Value> [WindowID <WinNumber>]
 ```
 
-## 参数说明
+## Parameters
 
-| `{2DGfxWinOption}` | 说明 |
+| `{2DGfxWinOption}` | Description |
 |------|------|
-| `Create` | 使用默认设置打开一个二维窗口 |
-| `Remove` | 移除一个二维窗口 |
+| `Create` | Opens a 2D window with default settings |
+| `Remove` | Removes a 2D window |
 
-## 示例
+## Examples
 
-::: details open **创建二维窗口**
+::: details open **Create a 2D window**
 
 ```
 Window2D / Create

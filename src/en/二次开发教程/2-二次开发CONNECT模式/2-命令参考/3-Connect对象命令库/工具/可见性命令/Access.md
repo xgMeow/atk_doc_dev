@@ -1,32 +1,32 @@
 # Access
 
-## 作用
+## Description
 
-计算两个对象之间的可见性，仅输出可见性报告。
+Compute the visibility between two objects and output a visibility report only.
 
-## 语法
+## Syntax
 
 ```atk-command
 Access <ObjectPath> <AccessObjectPath> {TimePeriod <StartTime> <StopTime>}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `<ObjectPath>` | 要计算可见性的对象路径 |
-| `<AccessObjectPath>` | 要访问的目标对象路径 |
-| `{TimePeriod <StartTime> <StopTime>}` | 可见性计算的时间范围，<br/> `<StartTime>` 为开始时间；`<StopTime>` 为结束时间 |
+| `<ObjectPath>` | Path of the object for which to compute visibility |
+| `<AccessObjectPath>` | Path of the target object to access |
+| `{TimePeriod <StartTime> <StopTime>}` | Time range of the visibility computation; <br/> `<StartTime>` is the start time; `<StopTime>` is the end time |
 
-## 补充说明
+## Additional Notes
 
-- 适用于**一对一**场景：直接指定两个对象，快速判断它们之间是否可见。
-- 输出固定为可见性报告。如果需要 AER、参数变化率、不可见报告等其他格式，可以改用 `Access_RM` 命令。
-- 如果需要同时处理多个对象对，可以改用 `AccessMulti` 系列命令（先配置来源/目标/时间，再批量计算）。
+- Suitable for **one-to-one** scenarios: directly specify two objects to quickly determine whether they are visible to each other.
+- The output is always a visibility report. If you need other formats such as AER, parameter rate, or non-visibility reports, use the `Access_RM` command instead.
+- To process multiple object pairs at the same time, use the `AccessMulti` family of commands instead (configure the source/target/time first, then compute in batch).
 
-## 示例
+## Examples
 
-::: details open **计算 Satellite1 与 Satellite2 在指定时间段内的可见性。**
+::: details open **Compute the visibility between Satellite1 and Satellite2 within the specified time interval.**
 
 ```
 Access */Satellite/Satellite1 */Satellite/Satellite2 TimePeriod "14 Mar 2024 00:00:00.000" "15 Mar 2024 00:00:00.000"

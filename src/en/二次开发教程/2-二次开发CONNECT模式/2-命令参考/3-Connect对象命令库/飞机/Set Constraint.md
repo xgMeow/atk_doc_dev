@@ -1,20 +1,20 @@
 # Set Constraint
 
-## 作用
+## Description
 
-设置**约束**。
+Set the **constraint**.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-### 基本约束
+### Basic Constraints
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
 | `AzimuthAngle` | `{Off \| Min <Value1> Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 | `ElevationAngle` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
@@ -28,9 +28,9 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | `LineOfSight` | `{On \| Off}` |
 | `TerrainMask` | `{On \| Off}` |
 
-### 太阳约束
+### Solar/Lunar Constraints
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
 | `SunElevationAngle` | `{Off \| Min <Value1> [\|] Max <Value2>}` |
 | `SunGroundElevAngle` | `{Off \| Min <Value1> [\|] Max <Value2>}` |
@@ -38,25 +38,25 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | `LOSSunExclusion` | `{Off \| <Value1>}` |
 | `LOSLunarExclusion` | `{Off \| <Value1>}` |
 
-## 补充说明
+## Additional Notes
 
-- 当输入 `AzimuthAngle` 值时，最大值和最小值必须同时输入。
+- When entering an `AzimuthAngle` value, the maximum and minimum values must be entered at the same time.
 
-## 示例
+## Examples
 
-::: details open **设置方位角约束**
+::: details open **Set an azimuth angle constraint**
 ```
 SetConstraint */Aircraft/Aircraft1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
 ```
 :::
 
-::: details open **设置仰角约束**
+::: details open **Set an elevation angle constraint**
 ```
 SetConstraint */Aircraft/Aircraft1 ElevationAngle Min 10.0
 ```
 :::
 
-::: details open **设置太阳仰角约束**
+::: details open **Set a sun elevation angle constraint**
 ```
 SetConstraint */Aircraft/Aircraft1 SunElevationAngle Min 10
 ```

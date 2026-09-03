@@ -1,111 +1,111 @@
 # VectorTool Axes
 
-## 作用
+## Description
 
-定义和修改 `Axes` 组件。
+Define and modify `Axes` components.
 
-## 语法
+## Syntax
 
 ```atk-command
 VectorTool <ScenarioPath> <ParentObject> {Action} Axes <AxesName> [{AxesType} <AxesTypeParams>]
 ```
 
-## 参数说明
+## Parameters
 
-| `{Action}` | Parameters | 说明 |
+| `{Action}` | Parameters | Description |
 | ------------------------------------- | ------------------  | ------------------  |
-| Create | `{AxesType} [<AxesTypeParams>]` | `<AxesTypeParams>` 是可选的，详细参数请看下表。若未指定 `<AxesTypeParams>`，则使用默认值。 |
-| Modify | `{AxesType} [<AxesTypeParams>]` | `<AxesName> {AxesType}` 必须定义一个现有的坐标系组件。`{AxesType}` 不可修改。`<AxesTypeParams>` 为必填项。 |
-| Delete | | 删除 `<AxesName>` 定义的坐标系组件。 |
+| Create | `{AxesType} [<AxesTypeParams>]` | `<AxesTypeParams>` is optional; see the table below for detailed parameters. If `<AxesTypeParams>` is not specified, default values are used. |
+| Modify | `{AxesType} [<AxesTypeParams>]` | `<AxesName> {AxesType}` must define an existing coordinate system component. `{AxesType}` cannot be modified. `<AxesTypeParams>` is required. |
+| Delete | | Delete the coordinate system component defined by `<AxesName>`. |
 
 | `{AxesType}` | `<AxesTypeParams>` |
 | ------------------------------------- | ------------------  |
 | "Aligned and Constrained" | `{X \| Y \| Z} "<AlignVector>" {X \| Y \| Z} "<ConstrainVector>"` |
-| "Angular Offset" | <br> 可以指定以下任意或全部关键字-值对：</br> <br>• SpinVector "\<Vector\>"</br>  <br>• RotationAngle "\<Angle\>"</br> <br>• Offset \<Value\></br> <br>• ReferenceAxes "\<Axes\>"</br> <br>Offset \<Value\> 以度为单位输入，取值范围必须在 -360.0 到 360.0 度之间。默认值为 0 度。</br> |
+| "Angular Offset" | <br> You can specify any or all of the following keyword-value pairs:</br> <br>• SpinVector "\<Vector\>"</br>  <br>• RotationAngle "\<Angle\>"</br> <br>• Offset \<Value\></br> <br>• ReferenceAxes "\<Axes\>"</br> <br>Offset \<Value\> is entered in degrees and must be between -360.0 and 360.0 degrees. The default value is 0 degrees.</br> |
 | "Fixed at Epoch" | `"<EpochDate>" "<SourceAxes>" ["<ReferenceAxes>"]` |
-| "Fixed in Axes" | `{OrientMethod} <OrientParameters> "<ReferenceAxes>"` <br>{OrientMethod} \<OrientParameters\> 的有效取值见下表之后所述。</br> |
-| "Libration" | `<CentralBodyName> {L1 \| L2 \| L3 \| L4 \| L5} <SecondaryBody> [<SecondaryBody>...]` <br>可根据需要在命令行中输入任意数量的 \<SecondaryBody\>。</br> |
-| "Spinning" | <br> 可以指定以下任意或全部关键字-值对：</br> <br>• Epoch "\<Epoch\>"</br> <br>• SpinVector "\<Vector\>"</br> <br>• Offset \<Value\></br> <br>• RotationRate \<Value\></br> <br>• ReferenceAxes "\<Axes\>"</br> <br>"\<Epoch\>" 以 Connect 日期单位输入。默认值为对象的开始时间。</br> <br>Offset \<Value\> 以度为单位输入，取值范围必须在 -360.0 到 360.0 度之间。默认值为 0 度。</br> <br>RotationRate \<Value\> 以Connect 时间单位输入。默认值为 1.0 度/秒。</br> |
+| "Fixed in Axes" | `{OrientMethod} <OrientParameters> "<ReferenceAxes>"` <br>Valid values for {OrientMethod} \<OrientParameters\> are described after the table below.</br> |
+| "Libration" | `<CentralBodyName> {L1 \| L2 \| L3 \| L4 \| L5} <SecondaryBody> [<SecondaryBody>...]` <br>You can enter any number of \<SecondaryBody\> items on the command line as needed.</br> |
+| "Spinning" | <br> You can specify any or all of the following keyword-value pairs:</br> <br>• Epoch "\<Epoch\>"</br> <br>• SpinVector "\<Vector\>"</br> <br>• Offset \<Value\></br> <br>• RotationRate \<Value\></br> <br>• ReferenceAxes "\<Axes\>"</br> <br>"\<Epoch\>" is entered in Connect date units. The default value is the start time of the object.</br> <br>Offset \<Value\> is entered in degrees and must be between -360.0 and 360.0 degrees. The default value is 0 degrees.</br> <br>RotationRate \<Value\> is entered in Connect time units. The default value is 1.0 degrees/second.</br> |
 | "Trajectory" | `"<TrajectoryPoint>" "<ReferenceSystem>" {ICR \| VNC \| RIC \| LVLH \| VVLH \| BBR}` |
 | "Launch" | `<CentralBodyName> "<ReferancePoint>" <AngleValue>` |
 | "Launch Inertial" | `<CentralBodyName> "<ReferancePoint>" <AngleValue> <LaunchTime>` |
 | "Topocentric" | `"<ReferancePoint>" <CentralBodyName>` |
 
-## 示例
+## Examples
 
-::: details open **创建 Axes 组件**
+::: details open **Create an Axes component**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxes1 "Aligned and Constrained"
 ```
 :::
 
-::: details open **修改 Axes 组件**
+::: details open **Modify an Axes component**
 ```
 VectorTool * Satellite/Satellite1 Modify Axes SatAxes1 "Aligned and Constrained" X "CentralBody/Earth ICRF.Axes.x" Y "Satellite/Satellite2 VVLH.Axes.Y"
 ```
 :::
 
-::: details open **删除 Axes 组件**
+::: details open **Delete an Axes component**
 ```
 VectorTool * Satellite/Satellite1 Delete Axes SatAxes1 
 ```
 :::
 
-::: details open **创建 Aligned and Constrained（对齐约束）Axes**
+::: details open **Create an Aligned and Constrained Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesAlignCnstn "Aligned and Constrained" Y "CentralBody/Earth ICRF.Axes.X" -Y "Satellite/Satellite2 VVLH.Axes.Y"
 ```
 :::
 
-::: details open **创建 Angular Offset（角度偏移）Axes**
+::: details open **Create an Angular Offset Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesAngoffset "Angular Offset" SpinVector "CentralBody/Earth ICRF.Axes.X" RotationAngle "CentralBody/Earth AngleRotation" Offset 121 ReferenceAxes "CentralBody/Earth Fixed.Axes"
 ```
 :::
 
-::: details open **创建 Fixed in Axes（固定于坐标系）Axes**
+::: details open **Create a Fixed in Axes Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesFixed "Fixed in Axes" Euler 11 22 33 131 "CentralBody/Earth Fixed.Axes"
 ```
 :::
 
-::: details open **创建 Fixed at Epoch（历元固定）Axes**
+::: details open **Create a Fixed at Epoch Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesFixedEpoch "Fixed at Epoch" "13 Mar 2026 00:00:00.000" "CentralBody/Earth Fixed.Axes" "Satellite/Satellite2 VVLH.Axes"
 ```
 :::
 
-::: details open **创建 Launch（发射）Axes**
+::: details open **Create a Launch Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesLaunch "Launch" Moon "CentralBody/Earth ICRF.Origin" 12
 ```
 :::
 
-::: details open **创建 Launch Inertial（发射惯性）Axes**
+::: details open **Create a Launch Inertial Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesLaunchInertial "Launch Inertial" Moon "CentralBody/Earth ICRF.Origin" 12 "13 Mar 2026 00:00:00.000"
 ```
 :::
 
-::: details open **创建 Libration（平动）Axes**
+::: details open **Create a Libration Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesLibration "Libration" Moon L3 Sun Earth
 ```
 :::
 
-::: details open **创建 Spinning（自旋）Axes**
+::: details open **Create a Spinning Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesSpinning "Spinning" Epoch "13 Mar 2026 01:00:00.000" SpinVector "CentralBody/Earth ICRF.Axes.X" Offset 11 RotationRate 12 ReferenceAxes "CentralBody/Earth Fixed.Axes"
 ```
 :::
 
-::: details open **创建 Topocentric（站心）Axes**
+::: details open **Create a Topocentric Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesTopocentric "Topocentric" "CentralBody/Earth ICRF.Origin" Moon
 ```
 :::
 
-::: details open **创建 Trajectory（轨迹）Axes**
+::: details open **Create a Trajectory Axes**
 ```
 VectorTool * Satellite/Satellite1 Create Axes SatAxesTraj "Trajectory" "CentralBody/Earth ICRF.Origin" "CentralBody/Earth ICRF" ICR
 ```

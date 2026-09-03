@@ -1,22 +1,22 @@
 # MaxPropTime
 
-## 作用
+## Description
 
-设置最大外推时间
+Set the maximum propagation time.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.{Attribute} <Value> [{Unit}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- 设置最大外推时间，在该最大外推时间之后，无论是否满足停止条件，段都结束
+- Set the maximum propagation time. After the maximum propagation time, the segment ends regardless of whether the stopping condition is satisfied.
 
-## 示例
+## Examples
 
-::: details open **设置最大外推时间为 10 天**
+::: details open **Set the maximum propagation time to 10 days**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.MaxPropTime 10 day
 ```

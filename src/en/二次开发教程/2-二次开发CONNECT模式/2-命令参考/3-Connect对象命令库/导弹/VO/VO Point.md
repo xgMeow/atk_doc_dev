@@ -1,31 +1,31 @@
 # VO Point
 
-## 作用
+## Description
 
-设置导弹 3D 模型点属性
+Set the missile 3D model point properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> Point {Options} <value>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---------------- | -------------- |
-| `Show {on \| off}`  | 显示或隐藏3D模型点 |
-| `size {value}`      | 设置点属性大小     |
+| `Show {on \| off}`  | Show or hide the 3D model points. |
+| `size {value}`      | Sets the point size. |
 
-## 示例
+## Examples
 
-::: details open **显示3D模型点**
+::: details open **Show the 3D model points**
 ```
 VO */Missile/Missile1 Point show on
 ```
 :::
 
-::: details open **设置点大小**
+::: details open **Set the point size**
 ```
 VO */Missile/Missile1 Point size 3
 ```

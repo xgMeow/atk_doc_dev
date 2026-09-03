@@ -1,22 +1,22 @@
 # CalcObject
 
-## 作用
+## Description
 
-设置计算对象参数
+Sets the calculation object parameter.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.CalcObject.CalcObject {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- 适用于 `Stopping Condition` 属性 `StateCalc`
+- Applies to the `StateCalc` stopping condition
 
-## 示例
+## Examples
 
-::: details open **设置 StateCalc 停止条件的计算对象**
+::: details open **Set the calc object of the StateCalc stopping condition**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.StateCalc.CalcObject X
@@ -24,7 +24,7 @@ Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Stopp
 
 :::
 
-::: details open **设置 StateCalc 加入条件的计算对象**
+::: details open **Set the calc object of the StateCalc joining condition**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.StateCalc.CalcObject X

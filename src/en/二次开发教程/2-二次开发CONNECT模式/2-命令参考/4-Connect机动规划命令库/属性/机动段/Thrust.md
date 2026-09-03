@@ -1,18 +1,18 @@
 # Thrust
 
-## 作用
+## Description
 
-设置推力大小
+Sets the thrust magnitude.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Thrust {Value}
 ```
 
-## 示例
+## Examples
 
-::: details open **设置推力大小为 100**
+::: details open **Set the Thrust Magnitude to 100**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.Thrust 100
 ```

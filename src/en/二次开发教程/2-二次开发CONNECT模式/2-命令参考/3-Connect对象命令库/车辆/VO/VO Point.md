@@ -1,25 +1,25 @@
 # VO Point
 
-## 作用
+## Description
 
-设置车辆 3D 模型点属性。
+Set the ground vehicle 3D model point properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> Point {PointOptions}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| `Show` | `{On \| Off}`，是否显示模型点 |
-| `Size` | `<Value>`，模型点大小设置 |
+| `Show` | `{On \| Off}`, whether to show the model point |
+| `Size` | `<Value>`, model point size setting |
 
-## 示例
+## Examples
 
-::: details open **设置模型点属性**
+::: details open **Set the model point properties**
 ```
 VO */GroundVehicle/GroVeh1 Point Show On Size 7
 ```

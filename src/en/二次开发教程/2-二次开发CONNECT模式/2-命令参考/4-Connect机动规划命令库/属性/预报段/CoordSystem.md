@@ -1,22 +1,22 @@
 # CoordSystem
 
-## 作用
+## Description
 
-设置 `CoordSystem` 坐标系
+Sets the coordinate system `CoordSystem`
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.CalcObjectAttributes.CoordSystem {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Stopping Condition` 目前包括属性 `Argument_of_Latitude`，`Ascending- Node`，`DescendingNode`，`X-Y_Plane_Cross`（设置属性使用 `XYPlaneCross`），`Y-Z_Plane_Cross`（设置属性使用 `YZPlaneCross`），`Z-X_Plane_Cross`（设置属性使用 `ZXPlaneCross`）。`Value` 属性 `CentralBod` 包括 `Earth`，`Mars`，`Moon`，坐标轴包括 `J2000`，`Fixed`
+- `Stopping Condition` currently includes the attributes `Argument_of_Latitude`, `Ascending- Node`, `DescendingNode`, `X-Y_Plane_Cross` (use `XYPlaneCross` to set the attribute), `Y-Z_Plane_Cross` (use `YZPlaneCross` to set the attribute), `Z-X_Plane_Cross` (use `ZXPlaneCross` to set the attribute). The `Value` attribute `CentralBod` includes `Earth`, `Mars`, `Moon`, and the axes include `J2000`, `Fixed`
 
-## 示例
+## Examples
 
-::: details open **设置 Ascending_Node 停止条件的坐标系**
+::: details open **Set the coordinate system of the Ascending_Node stopping condition**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Propagate.StoppingConditions.Ascending_Node.CalcObjectAttributes.CoordSystem "CentralBody/Mars Fixed"
 ```

@@ -1,25 +1,25 @@
 # VO Model
 
-## 作用
+## Description
 
-设置地面站 3D 模型属性。
+Set the facility 3D model properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> Model {Option1} <Value1> [{Option2} <Value2>]...
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---------------- | ------------------ |
-| `Show` | `{On \| Off}`，是否显示模型 |
-| `File` | `<ModelFile>`，模型文件路径 |
+| `Show` | `{On \| Off}`, whether to show the model |
+| `File` | `<ModelFile>`, model file path |
 
-## 示例
+## Examples
 
-::: details open **隐藏模型**
+::: details open **Hide the model**
 ```
 VO */Facility/Facility1 Model Show Off
 ```

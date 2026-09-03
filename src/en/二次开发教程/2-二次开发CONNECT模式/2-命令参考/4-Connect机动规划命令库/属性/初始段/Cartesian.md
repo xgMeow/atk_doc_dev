@@ -1,29 +1,29 @@
 # Cartesian
 
-## 作用
+## Description
 
-为初始段坐标类型位置速度设置属性值
+Sets the position and velocity attribute values for the Cartesian coordinate type of the initial state
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Cartesian.<Element> <Value> <Unit>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| `X` | 默认单位时 m，包括单位 m ，km |
-| `Y` | 默认单位时 m，包括单位 m ，km |
-| `Z` | 默认单位时 m，包括单位 m ，km |
-| `Vx` | 默认单位时 m/sec，包括单位 m/sec ，km/sec |
-| `Vy` | 默认单位时 m/sec，包括单位 m/sec ，km/sec |
-| `Vz` | 默认单位时 m/sec，包括单位 m/sec ，km/sec |
+| `X` | The default unit is m; supported units are m, km |
+| `Y` | The default unit is m; supported units are m, km |
+| `Z` | The default unit is m; supported units are m, km |
+| `Vx` | The default unit is m/sec; supported units are m/sec, km/sec |
+| `Vy` | The default unit is m/sec; supported units are m/sec, km/sec |
+| `Vz` | The default unit is m/sec; supported units are m/sec, km/sec |
 
-## 示例
+## Examples
 
-::: details open **为初始段设置 Cartesian X 分量值**
+::: details open **Set the Cartesian X component value for the initial state**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Cartesian.X 6700000 m
 ```

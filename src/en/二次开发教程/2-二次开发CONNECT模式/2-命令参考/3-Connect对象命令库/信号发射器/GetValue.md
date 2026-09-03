@@ -1,67 +1,67 @@
 # GetValue
 
-## 作用
+## Description
 
-获得发射器属性值
+Gets the transmitter attribute values.
 
-## 语法
+## Syntax
 
 ```atk-command
 Transmitter_RM <ObjectPath> GetValue [<AttributePath>]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| | 获得所有属性及属性值 |
-| `UserComment` | 获得对象说明 |
-| `Model` | 获得模型已有属性及属性值 |
-| `Model.UserComment` | 获得模型说明 |
-| `Model.Frequency` | 获得频率 |
-| `Model.Modulator` | 获得数字载波调制类型 |
-| `Model.Modulator.Us-  erComment` | 获得数字载波调制类型说明 |
-| `Model.Modulator.Band- width` | 获得数字载波调制类型名字 |
-| `Model.DataRate` | 获得数据速率 |
-| `Model.EIRP` | 获得 EIRP |
-| `Model.Polarization` | 获得极化类型 |
-| `Model.Polarization.Refer- enceAxis` | 获得极化参考轴 |
-| `Model.Polarization.TiltAn- gle` | 获得极化角度 |
+| | Gets all attributes and their values. |
+| `UserComment` | Gets the object description. |
+| `Model` | Gets the model's existing attributes and their values. |
+| `Model.UserComment` | Gets the model description. |
+| `Model.Frequency` | Gets the frequency. |
+| `Model.Modulator` | Gets the digital carrier modulation type. |
+| `Model.Modulator.Us-  erComment` | Gets the description of the digital carrier modulation type. |
+| `Model.Modulator.Band- width` | Gets the name of the digital carrier modulation type. |
+| `Model.DataRate` | Gets the data rate. |
+| `Model.EIRP` | Gets the EIRP. |
+| `Model.Polarization` | Gets the polarization type. |
+| `Model.Polarization.Refer- enceAxis` | Gets the polarization reference axis. |
+| `Model.Polarization.TiltAn- gle` | Gets the polarization tilt angle. |
 
-### 属性参数
+### Attribute Parameters
 
-| Property | 说明 |
+| Attribute Parameters | Description |
 |----------|------|
-| `Properties` | 获得当前属性定义的所有参数，包括他的最大值，最小值， 单位等 |
-| `Choices` | 获得当前属性所有可以选择的选项 |
-| `Size` | 获得当前属性返回列表中有值的行数 |
+| `Properties` | Gets all the parameters defined for the current attribute, including its maximum, minimum, units, etc. |
+| `Choices` | Gets all selectable options for the current attribute. |
+| `Size` | Gets the number of rows that have values in the list returned for the current attribute. |
 
-### 属性包括参数
+### Supported Attribute Parameters
 
-| `{AttributePath}` | Property |
+| `{AttributePath}` | Supported Attribute Parameters |
 |-------------------|----------|
-| `UserComment` | 包括 `Properties` |
-| `Model` | 包括 `Properties`、`Choices`、`Size` |
-| `Model.UserComment` | 包括 `Properties` |
-| `Model.Frequency` | 包括 `Properties` |
-| `Model.Modulator` | 包括 `Properties`、`Choices`、`Size` |
-| `Model.Modulator.UserComment` | 包括 `Properties` |
-| `Model.Modulator.Bandwidth` | 包括 `Properties` |
-| `Model.DataRate` | 包括 `Properties` |
-| `Model.EIRP` | 包括 `Properties` |
-| `Model.Polarization` | 包括 `Properties`、`Choices`、`Size` |
-| `Model.Polarization.ReferenceAxis` | 包括 `Properties`、`Choices` |
-| `Model.Polarization.TiltAngle` | 包括 `Properties` |
+| `UserComment` | Includes `Properties`. |
+| `Model` | Includes `Properties`, `Choices`, and `Size`. |
+| `Model.UserComment` | Includes `Properties`. |
+| `Model.Frequency` | Includes `Properties`. |
+| `Model.Modulator` | Includes `Properties`, `Choices`, and `Size`. |
+| `Model.Modulator.UserComment` | Includes `Properties`. |
+| `Model.Modulator.Bandwidth` | Includes `Properties`. |
+| `Model.DataRate` | Includes `Properties`. |
+| `Model.EIRP` | Includes `Properties`. |
+| `Model.Polarization` | Includes `Properties`, `Choices`, and `Size`. |
+| `Model.Polarization.ReferenceAxis` | Includes `Properties`, `Choices`. |
+| `Model.Polarization.TiltAngle` | Includes `Properties`. |
 
-## 示例
+## Examples
 
-::: details open **获得所有属性及属性值**
+::: details open **Get All Attributes and Their Values**
 ```
 Transmitter_RM */Satellite/Sate1/Transmitter/Trans1 GetValue
 ```
 :::
 
-::: details open **获得模型极化类型的 Size**
+::: details open **Get the Size of the Model Polarization Type**
 ```
 Transmitter_RM */Satellite/Satellite1/Transmitter/Transmitter1 GetValue model.polarization:size
 ```

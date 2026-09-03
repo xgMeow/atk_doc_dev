@@ -1,18 +1,18 @@
 # CovMulti Access
 
-## 作用
+## Description
 
-清空并计算对象覆盖性计算
+Clear previous results and recompute the coverage of objects.
 
-## 语法
+## Syntax
 
 ```atk-command
 CovMulti / Access Compute [{TimeInterval} | UseObjectTimes]
 ```
 
-## 示例
+## Examples
 
-::: details open **计算指定时间段的覆盖性**
+::: details open **Compute coverage for the specified time interval**
 ```
 CovMulti / Access Compute "26 Sep 2035 12:00:00.00" "28 Sep 2035 12:00:00.00"
 ```

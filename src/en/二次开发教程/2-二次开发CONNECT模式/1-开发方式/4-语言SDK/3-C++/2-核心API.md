@@ -1,7 +1,7 @@
 ---
-description: C++ SDK 的核心 API 参考，涵盖 atkOpen、atkConnect、atkClose 函数的语法、参数及使用示例。
+description: Core API reference for the C++ SDK, covering the syntax, parameters and usage examples of the atkOpen, atkConnect and atkClose functions.
 ---
 
-# 核心API
+# Core API
 
 <!--@include:../../../.include/atkCommand-cpp.md-->

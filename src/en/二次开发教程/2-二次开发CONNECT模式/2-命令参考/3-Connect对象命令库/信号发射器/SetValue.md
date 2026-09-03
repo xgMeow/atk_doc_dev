@@ -1,31 +1,31 @@
 # SetValue
 
-## 作用
+## Description
 
-设置发射器属性值
+Sets the transmitter attribute values.
 
-## 语法
+## Syntax
 
 ```atk-command
 Transmitter <XmObjectPath> SetValue <AttributePath> [<Value>] [<Unit>]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Model.Frequency` | 设置频率，默认单位为 `Hz` |
-| `Model.DataRate` | 设置符号速率，默认单位为 `Mb/sec` |
-| `Model.EIRP` | 设置 `EIRP`，默认单位为 `dBW` |
-| `Model.Polarization` | 设置极化类型，包括 `None`、`Linear`、`Circular`、`Vertical`、`Horizontal`、`Elliptical` |
-| `Model.Polarization.ReferenceAxis` | 设置参考轴，包括 `X Axis`、`Y Axis`、`Z Axis` |
-| `Model.Polarization.TiltAngle` | 设置极化角度，默认单位为 `rad` |
-| `Model.Modulator` | 设置数字载波调制类型，包括 `BPSK`、`QPSK` |
-| `Model.Modulator.Band width` | 设置带宽，默认单位为 `Hz` |
+| `Model.Frequency` | Sets the frequency. The default unit is `Hz`. |
+| `Model.DataRate` | Sets the symbol rate. The default unit is `Mb/sec`. |
+| `Model.EIRP` | Sets the `EIRP`. The default unit is `dBW`. |
+| `Model.Polarization` | Sets the polarization type, including `None`, `Linear`, `Circular`, `Vertical`, `Horizontal`, and `Elliptical`. |
+| `Model.Polarization.ReferenceAxis` | Sets the reference axis, including `X Axis`, `Y Axis`, and `Z Axis`. |
+| `Model.Polarization.TiltAngle` | Sets the polarization tilt angle. The default unit is `rad`. |
+| `Model.Modulator` | Sets the digital carrier modulation type, including `BPSK` and `QPSK`. |
+| `Model.Modulator.Band width` | Sets the bandwidth. The default unit is `Hz`. |
 
-## 示例
+## Examples
 
-::: details open **设置极化类型为 Linear**
+::: details open **Set the Polarization Type to Linear**
 ```
 Transmitter */Satellite/Satellite1/Transmitter/Transmitter1 SetValue Model.Polarization Linear
 ```

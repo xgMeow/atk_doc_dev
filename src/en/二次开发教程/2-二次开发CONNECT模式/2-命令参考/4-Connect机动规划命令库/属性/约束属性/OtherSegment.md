@@ -1,22 +1,22 @@
 # OtherSegment
 
-## 作用
+## Description
 
-设置段约束的**段对象**属性值。
+Set the **other segment** property value of the segment constraint.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.OtherSegment {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- 设置段约束属性值之前，必须已添加段约束
+- Before setting a segment constraint property value, the segment constraint must already have been added.
 
-## 示例
+## Examples
 
-::: details open **设置时长约束的参考段对象**
+::: details open **Set the reference segment object of the duration constraint**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.Duration.OtherSegment Target_Sequence.Maneuver
 ```

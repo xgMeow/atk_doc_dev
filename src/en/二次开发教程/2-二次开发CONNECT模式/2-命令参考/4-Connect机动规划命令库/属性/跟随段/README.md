@@ -1,5 +1,5 @@
 ---
-title: 跟随段
+title: Follow Segment
 index: false
 ---
 

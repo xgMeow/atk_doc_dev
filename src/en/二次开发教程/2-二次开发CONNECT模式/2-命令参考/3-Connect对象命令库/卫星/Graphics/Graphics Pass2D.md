@@ -1,23 +1,23 @@
 # Graphics Pass2D
 
-## 作用
+## Description
 
-设置卫星轨迹属性。
+Sets the satellite track attributes.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Pass2D ({LeadTrailOption} <Parameters>)
 ```
 
-## 参数说明
+## Parameters
 
 - `LeadTrailOption`: `GrndTrail`
-- `Parameters`: `Time <Time>`、`PointNumber <PointNumber>`、`All`、`None`
+- `Parameters`: `Time <Time>`, `PointNumber <PointNumber>`, `All`, `None`
 
-## 示例
+## Examples
 
-::: details open **设置卫星轨迹属性**
+::: details open **Set Satellite Track Attributes**
 ```
 Graphics */Satellite/Satellite1 Pass2D GrndTrail PointNumber 5000
 ```

@@ -1,22 +1,22 @@
 # Active
 
-## 作用
+## Description
 
-设置停止条件 `Active` 是否选中
+Sets whether the stopping condition `Active` is selected
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.Active {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Stopping Condition` 目前包括属性 `Altitude`，`Apoapsis`，`Argument_of_Latitude`（设置属性使用 `ArgLat`），`AscendingNode`，`DescendingNode`，`Duration`，`Epoch`，`Longitude`，`Latitude`，`Mean_Anomaly`，`Periapsis`，`R_Magnitude`，`True_Anomaly`，`X-Y_Plane_Cross`（设置属性使用 `XYPlaneCross`），`Y-Z_Plane_Cross`（设置属性使用 `YZPlaneCross`），`Z-X_Plane_Cross`（设置属性使用 `ZXPlaneCross`），`AscToDesc`，`DescToAsc`，`StateCalc`
+- `Stopping Condition` currently includes the attributes `Altitude`, `Apoapsis`, `Argument_of_Latitude` (use `ArgLat` to set the attribute), `AscendingNode`, `DescendingNode`, `Duration`, `Epoch`, `Longitude`, `Latitude`, `Mean_Anomaly`, `Periapsis`, `R_Magnitude`, `True_Anomaly`, `X-Y_Plane_Cross` (use `XYPlaneCross` to set the attribute), `Y-Z_Plane_Cross` (use `YZPlaneCross` to set the attribute), `Z-X_Plane_Cross` (use `ZXPlaneCross` to set the attribute), `AscToDesc`, `DescToAsc`, `StateCalc`
 
-## 示例
+## Examples
 
-::: details open **设置 Duration 停止条件的 Active 为 false**
+::: details open **Set the Active of the Duration stopping condition to false**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Propagate.StoppingConditions.Duration.Active false
 ```

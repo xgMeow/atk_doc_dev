@@ -1,18 +1,18 @@
 # LineSearchMaxNumCalls
 
-## 作用
+## Description
 
-设置瞄准段微分修正属性页**一维搜索最大迭代次数**。
+Set the **maximum number of line search iterations** of the target sequence segment's Differential Corrector.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> 
 ```
 
-## 示例
+## Examples
 
-::: details open **设置一维搜索最大迭代次数为 15**
+::: details open **Set the maximum number of line search iterations to 15**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector.LineSearchMaxNumCalls 15
 ```

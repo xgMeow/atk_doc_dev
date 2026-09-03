@@ -1,28 +1,28 @@
 # VOModelOffset
 
-## 作用
+## Description
 
-设置飞机 **3D 模型**属性。
+Set the aircraft **3D model** properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ModelOffset {OffsetOption} {On | Off} [<X> <Y> <Z>]
 ```
 
-## 补充说明
+## Additional Notes
 
-- 目前 `{OffsetOption}` 包括属性 `Label` 和 `Translational`。
+- Currently `{OffsetOption}` includes the attributes `Label` and `Translational`.
 
-## 示例
+## Examples
 
-::: details open **设置模型标签偏移**
+::: details open **Set the model label offset**
 ```
 VO */Aircraft/Aircraft1 ModelOffset Label On 10 20 30
 ```
 :::
 
-::: details open **关闭模型平移偏移**
+::: details open **Turn off the model translational offset**
 ```
 VO */Aircraft/Aircraft1 ModelOffset Translational off
 ```

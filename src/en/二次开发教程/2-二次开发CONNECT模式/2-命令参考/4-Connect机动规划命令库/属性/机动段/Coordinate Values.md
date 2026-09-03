@@ -1,27 +1,27 @@
 # Coordinate Values
 
-## 作用
+## Description
 
-设置坐标属性值
+Sets the coordinate attribute values.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.<Coordinate Type>.<Attribute> <Value> <Unit>
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Coordinate Type` 包括属性 `Cartesian` 和 `Spherical`。当 `Coordinate Type` 输入值为 `Cartesian` 时，`Attribute` 包括属性 `X`，`Y`，`Z`，当 `Coordinate Type` 输入值为 `Spherical` 时，`Attribute` 包括属性 `Azimuth`，`Elevation`，`Magnitude`
+- `Coordinate Type` includes the attributes `Cartesian` and `Spherical`. When the `Coordinate Type` input value is `Cartesian`, `Attribute` includes the attributes `X`, `Y`, and `Z`; when the `Coordinate Type` input value is `Spherical`, `Attribute` includes the attributes `Azimuth`, `Elevation`, and `Magnitude`.
 
-::: info 注意
-1. `Cartesian` 默认单位是 m/sec，`Spherical` 中 `Azimuth`，`Elevation` 默认单位为 Rad，`Magnitude` 默认单位为 m/sec
-2. 当 `MnvrType` 类型为 `Finite` 时，`Cartesian` 没有单位，`Spherical` 只包括属性 `Azimuth`，`Elevation`
+::: info Note
+1. The default unit of `Cartesian` is m/sec. For `Spherical`, the default unit of `Azimuth` and `Elevation` is Rad, and the default unit of `Magnitude` is m/sec.
+2. When the `MnvrType` is `Finite`, `Cartesian` has no unit, and `Spherical` only includes the attributes `Azimuth` and `Elevation`.
 :::
 
-## 示例
+## Examples
 
-::: details open **设置球坐标方位角为 30 度**
+::: details open **Set the Spherical Azimuth to 30 Degrees**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.Spherical.Azimuth 30 deg
 ```

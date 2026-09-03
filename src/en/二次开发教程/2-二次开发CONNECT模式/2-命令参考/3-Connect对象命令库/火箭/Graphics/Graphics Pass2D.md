@@ -1,25 +1,25 @@
 # Graphics Pass2D
 
-## 作用
+## Description
 
-设置对象轨迹属性
+Set the object trail properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Pass2D ({LeadTrailOption} <Parameters>)
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
 | `LeadTrailOption` | `GrndTrail` |
-| `Parameters` | `Time <Time>`、`PointNumber <PointNumber>`、`All`、`None` |
+| `Parameters` | `Time <Time>`, `PointNumber <PointNumber>`, `All`, `None` |
 
-## 示例
+## Examples
 
-::: details open **设置对象轨迹属性**
+::: details open **Set the object trail properties**
 ```
 Graphics */LaunchVehicle/LaunchVehicle1 Pass2D GrndTrail PointNumber 5000
 ```

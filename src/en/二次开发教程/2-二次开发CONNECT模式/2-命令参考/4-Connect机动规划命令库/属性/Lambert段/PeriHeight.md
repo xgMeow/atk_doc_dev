@@ -1,18 +1,18 @@
 # PeriHeight
 
-## 作用
+## Description
 
-设置近拱点高度
+Set the periapsis altitude.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.PeriHeight <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置近拱点高度为 0.1**
+::: details open **Set the periapsis altitude to 0.1**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.PeriHeight 0.1
 ```

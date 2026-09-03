@@ -1,25 +1,25 @@
 # AddWaypoint
 
-## 作用
+## Description
 
-设置**飞机航线**属性。
+Set the **aircraft route** properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 AddWaypoint <VehObjectPath> {AddMethod} <Parameters> [<TurnRadius>]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `AddMethod` | `DetVelFromTime`：`[{MapGridSpec}] {PointDef} <DateTime>` |
-| `MapGridSpec` | `LatLon`：`<Latitude> <Longitude> <Altitude>` |
+| `AddMethod` | `DetVelFromTime`: `[{MapGridSpec}] {PointDef} <DateTime>` |
+| `MapGridSpec` | `LatLon`: `<Latitude> <Longitude> <Altitude>` |
 
-## 示例
+## Examples
 
-::: details open **使用 DetVelFromTime 方法添加航点**
+::: details open **Add a waypoint using the DetVelFromTime method**
 ```
 AddWaypoint */Aircraft/Aircraft1 DetVelFromTime LatLon 42.5 15 0.0 "1 Jan 2026 00:00:00.000"
 ```

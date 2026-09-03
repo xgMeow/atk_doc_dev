@@ -1,26 +1,26 @@
 # CoordinateType
 
-## 作用
+## Description
 
-为初始段选择坐标类型
+Selects the coordinate type for the initial state
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.CoordinateType <Value>
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Value` 包括坐标原点 `Cartesian` 和 `Keplerian` (或者 `Modified Keplerian`)
+- `Value` includes the coordinate types `Cartesian` and `Keplerian` (or `Modified Keplerian`)
 
-::: warning 注意
-使用坐标类型名字时，若超过两个单词，请将空格替换为下划线或者使用引号将名字引起来，例如 `Modified_Keplerian` 或者`"Modified Keplerian"`
+::: warning Note
+When using a coordinate type name of more than two words, replace the spaces with underscores or enclose the name in quotes, for example `Modified_Keplerian` or `"Modified Keplerian"`
 :::
 
-## 示例
+## Examples
 
-::: details open **设置初始段坐标类型为 Modified Keplerian**
+::: details open **Set the coordinate type of the initial state to Modified Keplerian**
 ```
 Astrogator */Satellite/Satellite1 SetValue "MainSequence.SegmentList.Initial_State.CoordinateType "Modified Keplerian"
 ```

@@ -1,33 +1,33 @@
 # AddWaypoint
 
-## 作用
+## Description
 
-设置**船航线**属性。
+Set the **ship route** properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 AddWaypoint <VehObjectPath> {AddMethod} <Parameters> [<TurnRadius>]
 ```
 
-## 参数说明
+## Parameters
 
-### AddMethod 取值
+### AddMethod Values
 
 | AddMethod | Parameters |
 | -- | -- |
 | `DetTimeAccFromVel` | `[{MapGridSpec}] {PointDef} <Velocity>` |
 | `DetVelFromTime` | `[{MapGridSpec}] {PointDef} <DateTime>` |
 
-### MapGridSpec 取值
+### MapGridSpec Values
 
 | MapGridSpec | PointDef |
 | -- | -- |
 | `LatLon` | `<Latitude> <Longitude> <Altitude>` |
 
-## 示例
+## Examples
 
-::: details open **设置船航线**
+::: details open **Set the ship route**
 ```
 AddWaypoint */Ship/Ship1 DetTimeAccFromVel LatLon 42.5 15 0.0 1.0
 ```

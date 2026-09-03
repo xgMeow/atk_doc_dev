@@ -1,24 +1,24 @@
 # GetPropName
 
-## 作用
+## Description
 
-获得卫星的轨道预报器类型。
+Gets the orbit propagator type of the satellite.
 
-## 语法
+## Syntax
 
 ```atk-command
 GetPropName <ObjectPath> {DataOption}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `DataOption` | 包括属性为 `Active` |
+| `DataOption` | Includes the attribute `Active` |
 
-## 示例
+## Examples
 
-::: details open **获得卫星的轨道预报器类型**
+::: details open **Get the Orbit Propagator Type of the Satellite**
 ```
 GetPropName */Satellite/Satellite1 Active
 ```

@@ -1,18 +1,18 @@
 # UseLineSearch
 
-## 作用
+## Description
 
-设置瞄准段微分修正属性页**是否使用一维搜索**。
+Set whether to **use line search** on the target sequence segment's Differential Corrector.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> 
 ```
 
-## 示例
+## Examples
 
-::: details open **设置瞄准段使用一维搜索**
+::: details open **Set the target sequence segment to use line search**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector.UseLineSearch true
 ```

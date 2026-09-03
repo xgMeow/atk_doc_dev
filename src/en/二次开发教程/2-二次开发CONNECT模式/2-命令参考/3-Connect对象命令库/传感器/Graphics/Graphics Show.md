@@ -1,22 +1,22 @@
 ---
-description: 设置传感器是否在二维图形窗口中显示。
+description: Sets whether the sensor is displayed in the 2D Graphics window.
 ---
 
 # Graphics Show
 
-## 作用
+## Description
 
-设置传感器是否在窗口显示。
+Sets whether the sensor is displayed in the window.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Show {On | Off}
 ```
 
-## 示例
+## Examples
 
-::: details open **设置传感器显示**
+::: details open **Set Sensor Display**
 ```
 Graphics */Satellite/Satellite1/Sensor/Sensor1 Show Off
 ```

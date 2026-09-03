@@ -1,18 +1,18 @@
 # Cov Interval
 
-## 作用
+## Description
 
-设置**对象覆盖性计算**时间
+Set the time interval for the **object coverage computation**.
 
-## 语法
+## Syntax
 
 ```atk-command
 Cov <CovDefnObjectPath> Interval {TimeInterval}
 ```
 
-## 示例
+## Examples
 
-::: details open **设置卫星覆盖性计算的时间区间**
+::: details open **Set the time interval for the satellite coverage computation**
 ```
 Cov */Satellite/Satellite1 Interval "20 Jun 2024 04:00:00.00" "21 Jun 2024 04:00:00.00"
 ```

@@ -1,18 +1,18 @@
 # UsePeriJudge
 
-## 作用
+## Description
 
-设置是否最小近拱点高度
+Set whether the minimum periapsis altitude is used.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.UsePeriJudge <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置不启用最小近拱点高度判断**
+::: details open **Set to disable the minimum periapsis altitude check**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.UsePeriJudge false
 ```

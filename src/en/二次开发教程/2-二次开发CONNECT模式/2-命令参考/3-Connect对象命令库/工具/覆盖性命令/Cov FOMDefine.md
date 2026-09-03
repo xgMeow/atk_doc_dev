@@ -1,52 +1,52 @@
 # Cov FOMDefine
 
-## 作用
+## Description
 
-覆盖性对象覆盖因子定义
+Define the coverage figure of merit (FOM) of a coverage object.
 
-## 语法
+## Syntax
 
 ```atk-command
 Cov <FOMObjectPath> FOMDefine {Satisfaction | Definition} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-### Satisfaction 取值
+### Satisfaction Values
 
-| \<Parameters\> | 说明 |
+| \<Parameters\> | Description |
 |------|------|
-| `On` | 启动有效条件 |
-| `Off` | 不启动有效条件 |
-| `GreaterThan <Threshold>` | 条件大于某值 |
-| `AtLeast <Threshold>` | 条件大于等于某值 |
-| `Equal <Threshold>` | 条件等于某值 |
-| `AtMost <Threshold>` | 条件小于等于某值 |
-| `LessThan <Threshold>` | 条件小于某值 |
+| `On` | Enables the valid condition |
+| `Off` | Does not enable the valid condition |
+| `GreaterThan <Threshold>` | The condition is greater than a value |
+| `AtLeast <Threshold>` | The condition is greater than or equal to a value |
+| `Equal <Threshold>` | The condition is equal to a value |
+| `AtMost <Threshold>` | The condition is less than or equal to a value |
+| `LessThan <Threshold>` | The condition is less than a value |
 
-### Definition {FOMType} 取值
+### Definition {FOMType} Values
 
-若选择属性Definition，Definition可输入`{FOMType} <Parameters>` 说明：
+If the `Definition` attribute is selected, `Definition` accepts `{FOMType} <Parameters>` as described below:
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Simple On` | 简单覆盖 |
-| `CoverageTime Compute{ MaxPerDay \| MaxPercentPerDay \| MinPer \| MinPercentPerDay \| PerDay \| PerDayStdDev \| Percent \| PercentPerDay \| PercentPerDayStdDe \| PercentTimeAbove \| Total \| TotalTimeAbove }` | 覆盖时间 |
-| `AccessDuration Compute{ Sum \| Maximum \| Minimum \| Average \| StdDeviation \| PercentAbove }` | 访问时长 |
-| `AccessSeparation { AvgPerDay \| InSpan \| InSpanPerDay \| MaxPerDay \| MinPerDay \| Total }` | 访问间隔 |
-| `RevisitTime Compute{ Average \| Maximum \| Minimum \| PercentBelow \| PercentBelowGapsOnly \| PercentBelow \| StdDeviation }` | 重访时间 |
-| `TimeAverageGap` | 时间平均间隔 |
-| `ResponseTime Compute{ Average \| Maximum \| Minimum \| PercentBelow \| PercentBelowGapsOnly }` | 响应时间 |
-| `NAsset Comput{ Maximum \| Minimum \| Average \| PercentAbove }` | 多重覆盖 |
-| `NumberOfAccesses Compute{ AvgPerDay \| InSpan \| InSpanPerDay \| MaxPerDay \| MinPerDay \| Total }` | 访问次数 |
-| `NumberOfGaps Compute{ AvgPerDay \| InSpan \| InSpanPerDay \| MaxPerDay \| MinPerDay \| Total }` | 覆盖间隔次数 |
-| `DilutionOfPrecision Compute{ Average \| Maximum \| Minimum \| PercentBelow }` | 几何精度衰减因子 |
-| `AccessConstraint Compute{ Sum \| Maximum \| Minimum \| Average \| PercentAbove \| PercentBelow}` | 可见性约束 |
-| `AccessConstraint Constraint{ Altitude \| AngularRate \| AzimuthAngle \| ElevationAngle \| Range \| AzimuthRate \| ElevationRate \| RangeRate \| LOSLunarExclusion \| LunarElevationAngle \| SunElevationAngle \| PropagationDelay }` | 可见性约束 |
+| `Simple On` | Simple coverage |
+| `CoverageTime Compute{ MaxPerDay \| MaxPercentPerDay \| MinPer \| MinPercentPerDay \| PerDay \| PerDayStdDev \| Percent \| PercentPerDay \| PercentPerDayStdDe \| PercentTimeAbove \| Total \| TotalTimeAbove }` | Coverage time |
+| `AccessDuration Compute{ Sum \| Maximum \| Minimum \| Average \| StdDeviation \| PercentAbove }` | Access duration |
+| `AccessSeparation { AvgPerDay \| InSpan \| InSpanPerDay \| MaxPerDay \| MinPerDay \| Total }` | Access separation |
+| `RevisitTime Compute{ Average \| Maximum \| Minimum \| PercentBelow \| PercentBelowGapsOnly \| PercentBelow \| StdDeviation }` | Revisit time |
+| `TimeAverageGap` | Time average gap |
+| `ResponseTime Compute{ Average \| Maximum \| Minimum \| PercentBelow \| PercentBelowGapsOnly }` | Response time |
+| `NAsset Comput{ Maximum \| Minimum \| Average \| PercentAbove }` | N-asset coverage |
+| `NumberOfAccesses Compute{ AvgPerDay \| InSpan \| InSpanPerDay \| MaxPerDay \| MinPerDay \| Total }` | Number of accesses |
+| `NumberOfGaps Compute{ AvgPerDay \| InSpan \| InSpanPerDay \| MaxPerDay \| MinPerDay \| Total }` | Number of coverage gaps |
+| `DilutionOfPrecision Compute{ Average \| Maximum \| Minimum \| PercentBelow }` | Dilution of precision |
+| `AccessConstraint Compute{ Sum \| Maximum \| Minimum \| Average \| PercentAbove \| PercentBelow}` | Access constraint |
+| `AccessConstraint Constraint{ Altitude \| AngularRate \| AzimuthAngle \| ElevationAngle \| Range \| AzimuthRate \| ElevationRate \| RangeRate \| LOSLunarExclusion \| LunarElevationAngle \| SunElevationAngle \| PropagationDelay }` | Access constraint |
 
-## 示例
+## Examples
 
-::: details open **计算卫星可见性约束总和**
+::: details open **Compute the total satellite access constraint**
 ```
 Cov */Satellite/Satellite1 FOMDefine Definition AccessConstraint Compute Total
 ```

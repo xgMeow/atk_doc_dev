@@ -1,79 +1,79 @@
 # Keplerian
 
-## 作用
+## Description
 
-为初始段坐标类型轨道根数设置属性值
+Sets the orbital element attribute values for the Keplerian coordinate type of the initial state
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Keplerian.{Attribute} <Value> [{Unit}]
 ```
 
-## 参数说明
+## Parameters
 
 ### Size Attributes
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| Element type for Size | 设置属性使用 SizeType |
-| `Semi-major Axis` | 半长轴默认单位是 m，包括单位 km ，m，设置属性 使用 sma |
-| `Apoapsis Radius` | 远拱点半径默认单位是 m，包括单位 km ，m，设置 属性使用 ApoapsisRadSize |
-| `Apoapsis Altitude` | 远拱点高度默认单位是 m，包括单位 km ，m，设置 属性使用 ApoapsisAltSize |
-| `Period` | 周期默认单位是 sec，包括单位 sec ，min ，hr，设置属性使用 Period |
-| `Mean Motion` | 每天圈数默认单位是 rad/sec，包括单位 rad/sec， rad/min，设置属性使用 MeanMotion |
+| Element type for Size | Use SizeType to set the attribute |
+| `Semi-major Axis` | The default unit is m; supported units are km, m; use sma to set the attribute |
+| `Apoapsis Radius` | The default unit is m; supported units are km, m; use ApoapsisRadSize to set the attribute |
+| `Apoapsis Altitude` | The default unit is m; supported units are km, m; use ApoapsisAltSize to set the attribute |
+| `Period` | The default unit is sec; supported units are sec, min, hr; use Period to set the attribute |
+| `Mean Motion` | The default unit is rad/sec; supported units are rad/sec, rad/min; use MeanMotion to set the attribute |
 
 ### Shape Attributes
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| Element type for Shape | 设置属性使用 ShapeType |
-| `Eccentricity` | 偏心率，设置属性使用 ecc |
-| `Periapsis Altitude` | 近拱点高度默认单位是 m，设置属性使用 PeriapsisAltShape |
-| `Periapsis Radius` | 近拱点半径默认单位是 m，设置属性使用 PeriapsisRadShape |
+| Element type for Shape | Use ShapeType to set the attribute |
+| `Eccentricity` | The eccentricity; use ecc to set the attribute |
+| `Periapsis Altitude` | The default unit is m; use PeriapsisAltShape to set the attribute |
+| `Periapsis Radius` | The default unit is m; use PeriapsisRadShape to set the attribute |
 
 ### Node Elements
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| `Right Asc. of Asc. Node` | 升交点赤经默认单位是 rad，设置属性使用 RAAN |
+| `Right Asc. of Asc. Node` | The default unit is rad; use RAAN to set the attribute |
 
 ### Anomaly Attributes
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| Element type for Anomaly | 类型，设置属性使用 AnomType |
-| `True Anomaly` | 真近点角默认单位是 rad，设置属性使用 TA |
-| `Argument of Latitude` | 纬度辐角默认单位是 rad，设置属性使用 ArgLat |
-| `Eccentric Anomaly` | 偏近点角默认单位是 rad，设置属性使用 EccAnomaly |
-| `Mean Anomaly` | 平近点角默认单位是 rad，设置属性使用 MeanAnomaly |
-| `Time Past Asc. Node` | 过升交点时刻默认单位是 sec，设置属性使用 TimePastAN |
-| `Time Past Periapsis` | 过近拱点时刻默认单位是 sec，设置属性使用  TimePastPeriapsis |
+| Element type for Anomaly | The type; use AnomType to set the attribute |
+| `True Anomaly` | The default unit is rad; use TA to set the attribute |
+| `Argument of Latitude` | The default unit is rad; use ArgLat to set the attribute |
+| `Eccentric Anomaly` | The default unit is rad; use EccAnomaly to set the attribute |
+| `Mean Anomaly` | The default unit is rad; use MeanAnomaly to set the attribute |
+| `Time Past Asc. Node` | The default unit is sec; use TimePastAN to set the attribute |
+| `Time Past Periapsis` | The default unit is sec; use TimePastPeriapsis to set the attribute |
 
 ### Other Attributes
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| `Inclination` | 轨道倾角默认单位是 rad，设置属性使用 inc |
-| `Argument of Periapsis` | 近拱点角距默认单位是 rad，设置属性使用 w |
+| `Inclination` | The default unit is rad; use inc to set the attribute |
+| `Argument of Periapsis` | The default unit is rad; use w to set the attribute |
 
-::: warning 注意
+::: warning Note
 
-1. 你可以使用 `SizeType`, `ShapeType` and `AnomType` 设置参数类型，如果你只是对参数进行了设置属性值，则会自动选择类型。例如你选择了 `Mean Motion` 类型，并对 `Semi-Major Axis` 设置值，那么类型将会变成 `Semi-Major Axis`
+1. You can use `SizeType`, `ShapeType` and `AnomType` to set the parameter type. If you only set the attribute value of a parameter, the type is selected automatically. For example, if you choose the `Mean Motion` type and set a value for `Semi-Major Axis`, the type will become `Semi-Major Axis`.
 
-2. 请保持数据正确性，若输入错误数据，数据类型将不可以转换。例如 输入 `sma` 为 `6 m`，须将数据修改正确后，例如修改为` 6800000 m`，才能转化为 `ApoapsisRadSize` 类型。
+2. Keep the data correct. If you enter incorrect data, the data type cannot be converted. For example, if you enter `sma` as `6 m`, you must correct the data first — for example, change it to ` 6800000 m` — before it can be converted to the `ApoapsisRadSize` type.
 
 :::
 
-## 示例
+## Examples
 
-::: details open **设置 Keplerian SizeType 为 Apoapsis Radius**
+::: details open **Set the Keplerian SizeType to Apoapsis Radius**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.SizeType "Apoapsis Radius"
 ```
 :::
 
-::: details open **设置 Keplerian 半长轴值**
+::: details open **Set the Keplerian semi-major axis value**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.sma 8000 km
 ```

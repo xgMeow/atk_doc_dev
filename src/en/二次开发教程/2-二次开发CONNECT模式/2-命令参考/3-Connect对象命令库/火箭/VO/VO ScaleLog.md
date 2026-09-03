@@ -1,18 +1,18 @@
 # VO ScaleLog
 
-## 作用
+## Description
 
-设置火箭 3D 模型log比例
+Set the launch vehicle 3D model log scale.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ScaleLog <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置火箭 3D 模型 log 比例**
+::: details open **Set the launch vehicle 3D model log scale**
 ```
 VO */LaunchVehicle/LaunchVehicle1 ScaleLog 3
 ```

@@ -1,25 +1,25 @@
 # CentralBody
 
-## 作用
+## Description
 
-设置中心天体
+Sets the central body.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.CalcObjectAttributes.CentralBody {Value}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Stopping Condition` | `Altitude`、`Apoapsis`、`Latitude`、`Longitude`、`Mean_Anomaly`、`Periapsis`、`True_Anomaly` |
-| `Value` | `Earth`、`Mars`、`Moon` |
+| `Stopping Condition` | `Altitude`, `Apoapsis`, `Latitude`, `Longitude`, `Mean_Anomaly`, `Periapsis`, and `True_Anomaly` |
+| `Value` | `Earth`, `Mars`, and `Moon` |
 
-## 示例
+## Examples
 
-::: details open **设置 Apoapsis 停止条件的中心天体为 Moon**
+::: details open **Set the central body of the Apoapsis stopping condition to Moon**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.Apoapsis.CalcObjectAttributes.CentralBody Moon
@@ -27,7 +27,7 @@ Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Stopp
 
 :::
 
-::: details open **设置 Apoapsis 加入条件的中心天体为 Moon**
+::: details open **Set the central body of the Apoapsis joining condition to Moon**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.Apoapsis.CalcObjectAttributes.CentralBody Moon

@@ -1,20 +1,20 @@
 ---
-description: 设置传感器的向量几何属性，支持添加、修改和删除参考坐标系向量，可配置显示、颜色、线宽等选项。
+description: Sets the vector geometry properties of the sensor, supporting adding, modifying, and deleting reference-coordinate-system vectors, with configurable display, color, and line-width options.
 ---
 
 # VO SetVectorGeometry
 
-## 作用
+## Description
 
-设置传感器向量。
+Sets sensor vectors.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
 | {Option} | `<Parameters>`                                              |
 | -------- | ----------------------------------------------------------- |
@@ -22,11 +22,11 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | Modify   | `"<ReferenceCrdn>" [{DisplayOption} <DisplayValue>...]`     |
 | Delete   | `"<ReferenceCrdn>"`                                         |
 
-::: warning 注意
-ReferenceCrdn 必须使用双引号。
+::: warning Note
+ReferenceCrdn must be enclosed in double quotes.
 :::
 
-- 若 `{Option}` 输入为 Add 或 Modify，以下参数适用所有类型：
+- If `{Option}` is set to Add or Modify, the following parameters apply to all types:
 
 | {DisplayOption} | `<DisplayValue>`       |
 | --------------- | ---------------------- |
@@ -34,7 +34,7 @@ ReferenceCrdn 必须使用双引号。
 | ShowLabel       | `{On \| Off}`          |
 | Color           | `{Color}`              |
 
-- 若 `{Option}` 输入为 Add 或 Modify，以下参数仅适用 Axes 和 Vector：
+- If `{Option}` is set to Add or Modify, the following parameters apply only to Axes and Vector:
 
 | {DisplayOption}  | `<DisplayValue>`          |
 | ---------------- | ------------------------- |
@@ -44,21 +44,21 @@ ReferenceCrdn 必须使用双引号。
 | OriginPointDef   | `"<ReferenceCrdn>"`       |
 | usetruescale     | `{On \| Off}`             |
 
-- 若 `{Option}` 输入为 Add 或 Modify，以下参数仅适用 Vector：
+- If `{Option}` is set to Add or Modify, the following parameters apply only to Vector:
 
 | {DisplayOption}  | `<DisplayValue>`          |
 | ---------------- | ------------------------- |
 | usetruescale     | `{On \| Off}`             |
 
-## 示例
+## Examples
 
-::: details open **添加传感器向量**
+::: details open **Add Sensor Vector**
 ```
 VO */Satellite/Satellite1/Sensor/Sen1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
 ```
 :::
 
-::: details open **修改传感器向量**
+::: details open **Modify Sensor Vector**
 ```
 VO */Satellite/Satellite1/Sensor/Sen1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
 ```

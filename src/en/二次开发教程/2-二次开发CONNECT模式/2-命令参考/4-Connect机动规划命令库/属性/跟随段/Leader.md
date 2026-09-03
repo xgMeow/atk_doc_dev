@@ -1,18 +1,18 @@
 # Leader
 
-## 作用
+## Description
 
-设置参考航天器
+Sets the reference spacecraft.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.Leader <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置跟随段的参考航天器**
+::: details open **Set the reference spacecraft of the follow segment**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Leader Vehicle2

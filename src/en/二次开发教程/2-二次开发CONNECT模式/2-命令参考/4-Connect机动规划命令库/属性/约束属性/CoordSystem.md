@@ -1,26 +1,26 @@
 # CoordSystem
 
-## 作用
+## Description
 
-设置段约束的**坐标系**属性值。
+Set the **coordinate system** property value of the segment constraint.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.CoordSystem {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Coordinate System` 包括 `CentralBody` 和 `Satellite`
-- `CentralBody/CentralBodyName.PointName AxesName` 中 `CentralBodyName` 包括 `Mercury`、`Venus`、`Earth`、`Mars`、`Jupiter`、`Saturn`、`Uranus`、`Neptune`、`Pluto`、`Moon`
-- `CentralBody/CentralBodyName.PointName AxesName` 中 `PointName` 包括 `L1`、`L2`、`L3`、`L4`、`L5`，可不输入 `Point`，默认为 `Center`
-- `CentralBody/CentralBodyName.PointName AxesName` 中 `AxesName` 包括已定义 Axes `Fixed`、`FixedAtJ2000`、`ICRF`、`Inertial`、`J2000`、`L1`、`L2`、`L3`、`L4`、`L5`、`MOD`、`MODEc`、`MOJ2000`、`MOJ2000Ec`、`TEME`、`TOD`、`TODeC`、`TOJ2000`、`TOJ2000Ec`；预定义 Axes 请根据输入名称命名
-- `Satellite/SatelliteName AxesName` 中 `AxesName` 包括已定义 Axes `ICR`、`ICRCBF`、`ICRF`、`J2000`、`LVLH`、`LVLHCBF`、`VNC`、`VNCCBF`、`VNCEarth`、`VNCMars`、`VNCMoon`、`LVLH`、`LVLHCBF`、`LVLHEarth`、`LVLHMars`、`LVLHMoon`；预定义 Axes 请根据输入名称命名
+- `Coordinate System` includes `CentralBody` and `Satellite`
+- In `CentralBody/CentralBodyName.PointName AxesName`, `CentralBodyName` includes `Mercury`, `Venus`, `Earth`, `Mars`, `Jupiter`, `Saturn`, `Uranus`, `Neptune`, `Pluto`, `Moon`
+- In `CentralBody/CentralBodyName.PointName AxesName`, `PointName` includes `L1`, `L2`, `L3`, `L4`, `L5`; if `Point` is not entered, it defaults to `Center`
+- In `CentralBody/CentralBodyName.PointName AxesName`, `AxesName` includes the defined axes `Fixed`, `FixedAtJ2000`, `ICRF`, `Inertial`, `J2000`, `L1`, `L2`, `L3`, `L4`, `L5`, `MOD`, `MODEc`, `MOJ2000`, `MOJ2000Ec`, `TEME`, `TOD`, `TODeC`, `TOJ2000`, `TOJ2000Ec`; for user-defined axes, name them according to the entered name
+- In `Satellite/SatelliteName AxesName`, `AxesName` includes the defined axes `ICR`, `ICRCBF`, `ICRF`, `J2000`, `LVLH`, `LVLHCBF`, `VNC`, `VNCCBF`, `VNCEarth`, `VNCMars`, `VNCMoon`, `LVLH`, `LVLHCBF`, `LVLHEarth`, `LVLHMars`, `LVLHMoon`; for user-defined axes, name them according to the entered name
 
-## 示例
+## Examples
 
-::: details open **设置 X 方向约束的坐标系**
+::: details open **Set the coordinate system of the X-direction constraint**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.X.CoordSystem "CentralBody/Moon.L1 Fixed"
 ```

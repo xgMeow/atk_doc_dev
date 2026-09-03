@@ -1,44 +1,44 @@
 # SetState Classical
 
-## 作用
+## Description
 
-设置卫星对象 Classical 状态。
+Sets the Classical state of the satellite object.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetState <VehObjectPath> Classical {Propagator} {NoProp | {TimeInterval}} <StepSize> {CoordSystem} "<OrbitEpoch>" <SemiMajorAxis> <Eccentricity> <Inclination> <ArgOfPerigee> <RAAN> <MeanAnom> ["<CoordEpoch>"]
 ```
 
-## 参数说明
+## Parameters
 
-::: details 详细说明（点击展开）
+::: details Detailed Description (click to expand)
 
-| `Parameters` | 说明 |
+| `Parameters` | Description |
 | --- | --- |
-| `{Propagator}` | 卫星可得属性值为 `TwoBody`, `J2Perturbation`, `J4Perturbation`, `HPOP` 和 `LOP` |
-| `{NoProp \| {TimeInterval}}` | 输入 NoProp 可以设置卫星状态但是不进行预报，输入 TimeInterval 定义卫星预报的开始结束时间段，设置格式请查看[常用日期/时间格式](../../../2-参数值格式/日期时间格式.md) |
-| `<StepSize>` | 输入必须大于等于 0.001 秒。若选择 LOP 预报器，输入必须大于等于一天（86164.09 秒） |
-| `{CoordSystem}` | 坐标系可设置为 `ICRF`,`J2000`, `TrueOfDate`,`MeanOfDate`,`TEMEOfDate` |
-| `"<OrbitEpoch>"` | 请查看[常用日期/时间格式](../../../2-参数值格式/日期时间格式.md) |
-| `<SemiMajorAxis>` | 输入半长轴参数 |
-| `<Eccentricity>` | 输入离心率参数，参数值应大于等于 0.0 且小于等于 1.0 |
-| `<Inclination>` | 输入轨道倾角参数，默认单位是度 |
-| `<ArgOfPerigee>` | 输入近地点角参数，默认单位是度 |
-| `<RAAN>` | 输入升交点赤经参数，默认单位是度 |
-| `<MeanAnom>` | 输入平近点角参数，默认单位是度 |
-| `["<CoordEpoch>"]` | 请查看[常用日期/时间格式](../../../2-参数值格式/日期时间格式.md) |
+| `{Propagator}` | Available values for the satellite: `TwoBody`, `J2Perturbation`, `J4Perturbation`, `HPOP`, and `LOP` |
+| `{NoProp \| {TimeInterval}}` | Entering NoProp sets the satellite state without propagation. Entering TimeInterval defines the start and end time period of the satellite propagation; for format settings, see [Common Date/Time Formats](../../../2-参数值格式/日期时间格式.md) |
+| `<StepSize>` | Must be greater than or equal to 0.001 seconds. If the LOP propagator is selected, it must be greater than or equal to one day (86164.09 seconds) |
+| `{CoordSystem}` | The coordinate system can be set to `ICRF`, `J2000`, `TrueOfDate`, `MeanOfDate`, `TEMEOfDate` |
+| `"<OrbitEpoch>"` | See [Common Date/Time Formats](../../../2-参数值格式/日期时间格式.md) |
+| `<SemiMajorAxis>` | Enter the semi-major axis parameter |
+| `<Eccentricity>` | Enter the eccentricity parameter. The value must be greater than or equal to 0.0 and less than or equal to 1.0 |
+| `<Inclination>` | Enter the orbital inclination parameter. The default unit is degrees |
+| `<ArgOfPerigee>` | Enter the argument of perigee parameter. The default unit is degrees |
+| `<RAAN>` | Enter the right ascension of the ascending node parameter. The default unit is degrees |
+| `<MeanAnom>` | Enter the mean anomaly parameter. The default unit is degrees |
+| `["<CoordEpoch>"]` | See [Common Date/Time Formats](../../../2-参数值格式/日期时间格式.md) |
 
 :::
 
-::: tip 注意
-- 此命令不接受小于 `-180` 度的轨道参数值
-- 时间设置暂无作用，时间以场景时间为准
+::: tip Note
+- This command does not accept orbital parameter values smaller than `-180` degrees
+- The time setting currently has no effect; the scenario time prevails
 :::
 
-## 示例
+## Examples
 
-::: details open **设置卫星 Classical 状态**
+::: details open **Set the Satellite Classical State**
 ```
 SetState */Satellite/Satellite1 Classical HPOP "1 Nov 2000 00:00:00.00" "1 Nov 2000 04:00:00.00" 60 J2000 "1 Nov 2000 00:00:00.00" 7163000.137079 0.5 98.5 0.0 139.7299 120.0
 ```

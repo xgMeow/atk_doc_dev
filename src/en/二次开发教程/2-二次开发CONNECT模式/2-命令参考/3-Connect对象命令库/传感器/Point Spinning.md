@@ -1,20 +1,20 @@
 ---
-description: 设置传感器的旋转指向属性，支持连续、单向和双向扫描模式。
+description: Sets the spinning pointing property of the sensor, supporting continuous, unidirectional, and bidirectional scan modes.
 ---
 
 # Point Spinning
 
-## 作用
+## Description
 
-设置旋转指向属性。
+Sets the spinning pointing property.
 
-## 语法
+## Syntax
 
 ```atk-command
 Point <SensorObjectPath> Spinning <Azimuth> <Elevation> <ConeAngle> {ScanMethod} [<ScanMethodParams>] <Rate> <Offset>
 ```
 
-## 参数说明
+## Parameters
 
 | ScanMethod     | Parameters                   |
 | -------------- | ---------------------------- |
@@ -22,9 +22,9 @@ Point <SensorObjectPath> Spinning <Azimuth> <Elevation> <ConeAngle> {ScanMethod}
 | Unidirectional | `<StartAngle> <StopAngle>`   |
 | Bidirectional  | `<StartAngle> <StopAngle>`   |
 
-## 示例
+## Examples
 
-::: details open **设置旋转指向**
+::: details open **Set Spinning Pointing**
 ```
 Point */Satellite/Satellite1/Sensor/Sensor1 Spinning 0 -90 90 Continuous 6 360
 ```

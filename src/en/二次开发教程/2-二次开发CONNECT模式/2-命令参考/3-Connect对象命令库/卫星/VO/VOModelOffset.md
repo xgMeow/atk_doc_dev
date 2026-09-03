@@ -1,28 +1,28 @@
 # VOModelOffset
 
-## 作用
+## Description
 
-设置卫星 3D 模型偏移属性。
+Sets the 3D model offset attributes of the satellite.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ModelOffset {OffsetOption} {On | Off} [<X> <Y> <Z>]
 ```
 
-## 参数说明
+## Parameters
 
-- 目前 `{OffsetOption}` 包括属性 `Label` 和 `Translational`
+- Currently, `{OffsetOption}` includes the attributes `Label` and `Translational`
 
-## 示例
+## Examples
 
-::: details open **设置卫星 3D 模型 Label 偏移**
+::: details open **Set the Label Offset of the Satellite 3D Model**
 ```
 VO */Satellite/Satellite1 ModelOffset Label On 10 20 30
 ```
 :::
 
-::: details open **设置卫星 3D 模型 Translational 偏移**
+::: details open **Set the Translational Offset of the Satellite 3D Model**
 ```
 VO */Satellite/Satellite1 ModelOffset Translational off
 ```

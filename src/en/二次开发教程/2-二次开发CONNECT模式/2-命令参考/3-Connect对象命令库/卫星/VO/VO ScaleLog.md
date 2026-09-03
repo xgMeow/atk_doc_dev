@@ -1,18 +1,18 @@
 # VO ScaleLog
 
-## 作用
+## Description
 
-设置卫星 3D 模型 log 比例。
+Sets the log scale of the satellite 3D model.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ScaleLog <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置卫星 3D 模型 log 比例**
+::: details open **Set the Log Scale of the Satellite 3D Model**
 ```
 VO */Satellite/Shuttle ScaleLog 3
 ```

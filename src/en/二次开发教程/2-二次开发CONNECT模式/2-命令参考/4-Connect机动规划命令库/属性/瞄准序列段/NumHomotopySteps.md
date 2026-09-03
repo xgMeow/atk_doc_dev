@@ -1,18 +1,18 @@
 # NumHomotopySteps
 
-## 作用
+## Description
 
-设置瞄准段属性页**同伦步数**。
+Set the **number of homotopy steps** of the target sequence segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> 
 ```
 
-## 示例
+## Examples
 
-::: details open **设置瞄准段同伦步数为 2**
+::: details open **Set the number of homotopy steps of the target sequence segment to 2**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector.NumHomotopySteps 2
 ```

@@ -1,25 +1,25 @@
 # VO Point
 
-## 作用
+## Description
 
-设置火箭 3D 模型点属性
+Set the launch vehicle 3D model point properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> Point {PointOptions}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 取值 | 说明 |
+| Parameter | Value | Description |
 |------|------|------|
-| `Show` | `{On \| Off}` | 是否显示模型点 |
-| `Size` | `<Value>` | 模型点大小设置 |
+| `Show` | `{On \| Off}` | Specifies whether the model points are displayed. |
+| `Size` | `<Value>` | Sets the model point size. |
 
-## 示例
+## Examples
 
-::: details open **设置火箭 3D 模型点属性**
+::: details open **Set the launch vehicle 3D model point properties**
 ```
 VO */SLaunchVehicle/LaunchVehicle1 Point Show On Size 7
 ```

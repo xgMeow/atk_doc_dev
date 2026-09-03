@@ -1,24 +1,24 @@
 # Graphics Label
 
-## 作用
+## Description
 
-设置**飞机标签**属性。
+Set the **aircraft label** properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Label {Options}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Show` | `{on \| off}`：显示或隐藏标签 |
+| `Show` | `{on \| off}`: Show or hide the label |
 
-## 示例
+## Examples
 
-::: details open **显示飞机标签**
+::: details open **Show the aircraft label**
 ```
 Graphics */Aircraft/Aircraft1 Label Show on
 ```

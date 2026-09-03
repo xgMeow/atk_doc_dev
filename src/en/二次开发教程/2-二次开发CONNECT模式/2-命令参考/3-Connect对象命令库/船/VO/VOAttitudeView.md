@@ -1,67 +1,67 @@
 # VOAttitudeView
 
-## 作用
+## Description
 
-设置**车辆姿态球**属性。
+Set the **vehicle attitude sphere** properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> AttitudeView {AttitudeViewOption} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-### AttitudeViewOption 取值
+### AttitudeViewOption Values
 
 | AttitudeViewOption | Parameters |
 | -- | -- |
 | `Sphere` | `{SphereOption1} <Value1> [{SphereOption2} <Value2> ...]` |
 | `Projection` | `{ProjectionOption1} <Value1> [{ProjectionOption2} <Value2> ...]` |
 
-### SphereOption 取值
+### SphereOption Values
 
-| SphereOption | Value | 说明 |
+| SphereOption | Value | Description |
 | -- | -- | -- |
-| `Show` | `{On \| Off}` | 姿态球是否显示 |
-| `SphereColor` | `{Color}` | 颜色设置请参考[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `ZeroDegColor` | `{Color}` | 设置零度颜色，颜色设置请参考[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `ZeroDegLineWidth` | `<Value>` | 设置零度线宽，范围 `1-10` |
-| `GridLineWidth` | `<Value>` | 设置线宽，范围 `1-10` |
-| `Frame` | `"Type Axes {CrdnDefOptions}"` | `CrdnDefOptions` 可输入内容请查看下方表格 |
-| `Scale` | `<Value>` | 设置比例，范围 `0-30` |
+| `Show` | `{On \| Off}` | Whether the attitude sphere is shown |
+| `SphereColor` | `{Color}` | For color settings, see [Color Format](../../../2-参数值格式/颜色格式.md) |
+| `ZeroDegColor` | `{Color}` | Set the zero-degree color. For color settings, see [Color Format](../../../2-参数值格式/颜色格式.md) |
+| `ZeroDegLineWidth` | `<Value>` | Set the zero-degree line width. Range `1-10` |
+| `GridLineWidth` | `<Value>` | Set the line width. Range `1-10` |
+| `Frame` | `"Type Axes {CrdnDefOptions}"` | For the values that `CrdnDefOptions` accepts, see the table below |
+| `Scale` | `<Value>` | Set the scale. Range `0-30` |
 
-### Frame 的 CrdnDefOptions 取值
+### CrdnDefOptions Values for Frame
 
-| CrdnDefOptions | `<CrdnDefValue>` | 说明 |
+| CrdnDefOptions | `<CrdnDefValue>` | Description |
 | -- | -- | -- |
-| `Name` | `<NameOfAxes>` | Axes的名称 |
-| `CBName` | `<NameOfCentralBody>` | 中心天体名称 |
-| `ObjectPath` | `<ObjectPath>` | 对象路径，例 `Satellite/Satellite2` |
+| `Name` | `<NameOfAxes>` | Name of the Axes |
+| `CBName` | `<NameOfCentralBody>` | Central body name |
+| `ObjectPath` | `<ObjectPath>` | Object path, e.g. `Satellite/Satellite2` |
 
-### ProjectionOption 取值
+### ProjectionOption Values
 
-| ProjectionOption | Value | 说明 |
+| ProjectionOption | Value | Description |
 | -- | -- | -- |
-| `Name` | `<CBName>` | 目前仅包括 Sun 和 Moon |
-| `Show` | `{On \| Off}` | 需要输入投影名称，才会设置是否显示 |
-| `ShowLabel` | `{On \| Off}` | 需要输入投影名称，才会设置标签是否显示 |
-| `Color` | `{Color}` | 颜色设置请查看[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `PointSize` | `<Value>` | 设置点大小 |
+| `Name` | `<CBName>` | Currently includes only Sun and Moon |
+| `Show` | `{On \| Off}` | A projection name must be entered to set whether it is shown |
+| `ShowLabel` | `{On \| Off}` | A projection name must be entered to set whether the label is shown |
+| `Color` | `{Color}` | For color settings, see [Color Format](../../../2-参数值格式/颜色格式.md) |
+| `PointSize` | `<Value>` | Set the point size |
 
-## 补充说明
+## Additional Notes
 
-- 不输入 `CBName` 和 `ObjectPath`，`Name` 默认为当前对象 Axes。
+- If `CBName` and `ObjectPath` are not entered, `Name` defaults to the current object's Axes.
 
-## 示例
+## Examples
 
-::: details open **设置姿态球投影属性**
+::: details open **Set attitude sphere projection properties**
 ```
 VO */Ship/Ship1  AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6 Frame "Type Axes ObjectPath Satellite/Satellite2 Name Fixed"
 ```
 :::
 
-::: details open **设置姿态球 Sphere 属性**
+::: details open **Set the Sphere properties of the attitude sphere**
 ```
 VO */Ship/Ship1  AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
 ```

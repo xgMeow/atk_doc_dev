@@ -1,18 +1,18 @@
 # Perturb
 
-## 作用
+## Description
 
-设置是否摄动迭代
+Set whether to use perturbation iteration.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Perturb <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置为不摄动迭代**
+::: details open **Set to disable perturbation iteration**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.Perturb false
 ```

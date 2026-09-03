@@ -1,22 +1,22 @@
 # Reload
 
-## 作用
+## Description
 
-恢复卫星数据。
+Restores satellite data.
 
-## 语法
+## Syntax
 
 ```atk-command
 Reload <ApplicationPath> <ClassPath> "<FilePath>"
 ```
 
-## 补充说明
+## Additional Notes
 
-- 只有与当前场景中名字不相同的对象才能添加到场景中
+- Only objects whose names differ from those already in the current scenario can be added to the scenario
 
-## 示例
+## Examples
 
-::: details open **恢复卫星数据**
+::: details open **Restore Satellite Data**
 ```
 ReLoad / */Satellite "E:/repo/ATK/ATK/Bin/Scenario2.xml"
 ```

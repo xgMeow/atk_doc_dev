@@ -1,31 +1,31 @@
 # SetValue
 
-## 作用
+## Description
 
-**设置**接收器属性值。
+**Sets** the receiver attribute values.
 
-## 语法
+## Syntax
 
 ```atk-command
 Receiver <RcObjectPath> SetValue <AttributePath> [<Value>] [<Unit>]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| `Model.Frequency` | 设置频率，默认单位为 `Hz` |
-| `Model.Govert` | 设置品质因素，默认单位为 `dB/K` |
-| `Model.Polarization` | 设置极化类型，包括 `None`、`Linear`、`Circular`、`Vertical`、`Horizontal`、`Elliptical` |
-| `Model.Polarization.ReferenceAxis` | 设置参考轴，包括 `X Axis`、`Y Axis`、`Z Axis` |
-| `Model.Polarization.TiltAngle` | 设置极化角度，默认单位为 `rad` |
-| `Model.LinkMarginType` | 设置链路裕量类型，包括 `None`、`Flux Density`、`RIP`、`Rcvd Carrier Power`、`C/N`、`C/No`、`Eb/No`、`BER` |
-| `Model.LinkMarginThreshold` | 设置阈值，默认单位为 `dB` |
-| `Model.Demodulator` | 设置数字载波调制类型，包括 `BPAK`、`QPSK` |
+| `Model.Frequency` | Sets the frequency. The default unit is `Hz`. |
+| `Model.Govert` | Sets the figure of merit (G/T). The default unit is `dB/K`. |
+| `Model.Polarization` | Sets the polarization type, including `None`, `Linear`, `Circular`, `Vertical`, `Horizontal`, and `Elliptical`. |
+| `Model.Polarization.ReferenceAxis` | Sets the reference axis, including `X Axis`, `Y Axis`, and `Z Axis`. |
+| `Model.Polarization.TiltAngle` | Sets the polarization tilt angle. The default unit is `rad`. |
+| `Model.LinkMarginType` | Sets the link margin type, including `None`, `Flux Density`, `RIP`, `Rcvd Carrier Power`, `C/N`, `C/No`, `Eb/No`, and `BER`. |
+| `Model.LinkMarginThreshold` | Sets the threshold. The default unit is `dB`. |
+| `Model.Demodulator` | Sets the digital carrier modulation type, including `BPAK` and `QPSK`. |
 
-## 示例
+## Examples
 
-::: details open **设置链路裕量类型**
+::: details open **Set Link Margin Type**
 ```
 Receiver */Satellite/Satellite1/Receiver/Receiver1 SetValue Model.linkmargintype Rcvd Carrier Power
 ```

@@ -1,25 +1,25 @@
 # VO Model
 
-## 作用
+## Description
 
-设置卫星 3D 模型属性。
+Sets the 3D model attributes of the satellite.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> Model {Option1} <Value1> [{Option2} <Value2>]...
 ```
 
-## 参数说明
+## Parameters
 
-| `Option` | `Value` | 说明 |
+| `Option` | `Value` | Description |
 | --- | --- | --- |
-| `Show` | `{On \| Off}` | 是否显示模型 |
-| `File` | `<ModelFile>` | 模型文件路径 |
+| `Show` | `{On \| Off}` | Whether the model is shown |
+| `File` | `<ModelFile>` | The model file path |
 
-## 示例
+## Examples
 
-::: details open **设置卫星 3D 模型属性**
+::: details open **Set the 3D Model Attributes of the Satellite**
 ```
 VO */Satellite/Satellite1 Model Show Off
 ```

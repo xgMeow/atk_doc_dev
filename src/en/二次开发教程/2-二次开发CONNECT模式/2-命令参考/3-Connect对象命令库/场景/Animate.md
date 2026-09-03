@@ -1,55 +1,55 @@
 # Animate
 
-## 作用
+## Description
 
-设置场景仿真操作
+Sets the scenario simulation.
 
-## 语法
+## Syntax
 
 ```atk-command
 Animate <ScenarioPath> {AnimateOption} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| {AnimateOption} | 说明 |
+| {AnimateOption} | Description |
 | --- | --- |
-| `Start` | 设置仿真开始状态，默认 `Forward`（正向仿真）。`<Parameters>` 取值见下表 |
-| `Pause` | 仿真暂停 |
-| `Reset` | 仿真重置 |
-| `Faster` | 仿真步长增加 |
-| `Slower` | 仿真步长减少 |
-| `Speed` | 设置仿真步长 |
-| `Step` | 仿真步长正向 +1 / 反向 -1。`<Parameters>` 取值见下表 |
-| `XRealTimeContinueFromPausedTime` | 暂停期间内部实时时钟行为控制。`<Parameters>` 取值见下表 |
+| `Start` | Sets the simulation start state; defaults to `Forward` (forward simulation). See the table below for `<Parameters>` values |
+| `Pause` | Pauses the simulation |
+| `Reset` | Resets the simulation |
+| `Faster` | Increases the simulation time step |
+| `Slower` | Decreases the simulation time step |
+| `Speed` | Sets the simulation time step |
+| `Step` | Steps the simulation forward +1 / backward -1. See the table below for `<Parameters>` values |
+| `XRealTimeContinueFromPausedTime` | Controls the behavior of the internal real-time clock during a pause. See the table below for `<Parameters>` values |
 
-### Start 的 `<Parameters>` 取值
+### Start `<Parameters>` Values
 
-| 取值 | 说明 |
+| Value | Description |
 | --- | --- |
-| `Forward` | 正向仿真 |
-| `Reverse` | 反向仿真 |
-| `RealTime` | 实时模式 |
-| `XRealTime` | 倍率模式 |
-| `Normal` | 步长模式 |
+| `Forward` | Forward simulation |
+| `Reverse` | Reverse simulation |
+| `RealTime` | Real-time mode |
+| `XRealTime` | Multiplier mode |
+| `Normal` | Time-step mode |
 
-### Step 的 `<Parameters>` 取值
+### Step `<Parameters>` Values
 
-| 取值 | 说明 |
+| Value | Description |
 | --- | --- |
-| `Forward` | 步长正向 +1 |
-| `Reverse` | 步长反向 -1 |
+| `Forward` | Steps forward +1 |
+| `Reverse` | Steps backward -1 |
 
-### XRealTimeContinueFromPausedTime 的 `<Parameters>` 取值
+### XRealTimeContinueFromPausedTime `<Parameters>` Values
 
-| 取值 | 说明 |
+| Value | Description |
 | --- | --- |
-| `On` | 可在仿真暂停时停止内部实时时钟运行，并在仿真恢复时从当前仿真时间继续播放。 |
-| `Off` | 默认值。倍率模式在仿真暂停时会继续运行内部实时时钟，当仿真恢复时，仿真时间会跳转到暂停期间经过的时间点。 |
+| `On` | Stops the internal real-time clock when the simulation is paused, and resumes playback from the current simulation time when the simulation is resumed. |
+| `Off` | Default value. In multiplier mode, the internal real-time clock continues to run while the simulation is paused. When the simulation resumes, the simulation time jumps to the point that elapsed during the pause. |
 
-## 示例
+## Examples
 
-::: details open **启动场景仿真**
+::: details open **Start the scenario simulation**
 ```
 Animate * Start
 ```

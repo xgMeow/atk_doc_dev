@@ -1,23 +1,23 @@
 # Units_SetConnect
 
-## 作用
+## Description
 
-设置 Connect 模式单位属性
+Sets the unit attributes of Connect mode.
 
-## 语法
+## Syntax
 
 ```atk-command
 Units_SetConnect <AppOrScenPath> {Default | Internal | {Dimension} {Unit}... }
 ```
 
-## 补充说明
+## Additional Notes
 
-- `{Dimension} {Unit}` 请查看[常用单位格式](../../2-参数值格式/单位格式.md)
-- Connect 模式仅支持 `{Dimension}` 设置 `Date`、`Distance`、`Time`、`Angle`
+- See [Common Unit Formats](../../2-参数值格式/单位格式.md) for `{Dimension} {Unit}`.
+- Connect mode only supports setting `{Dimension}` to `Date`, `Distance`, `Time`, and `Angle`.
 
-## 示例
+## Examples
 
-::: details open **设置日期单位为儒略日**
+::: details open **Set the date unit to Julian date**
 
 ```
 Units_SetConnect / Date "JDate"

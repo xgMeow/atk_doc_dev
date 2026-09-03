@@ -1,15 +1,15 @@
 ---
-description: ATK 脚本工具是 ATK 内置的脚本工具，使用 ATK 自身脚本语言（.atks），通过共享内存与 ATK 直接交互，不属于 CONNECT 模式的 TCP 通信体系。
+description: The ATK Script tool is a scripting tool built into ATK. It uses ATK's own scripting language (.atks) and interacts with ATK directly through shared memory; it is not part of the TCP communication system of Connect mode.
 ---
 
-# ATK 脚本工具
+# ATK Script Tool
 
-ATK 脚本工具是 ATK 内置的脚本工具，使用 ATK 自身的脚本语言（`.atks`），通过**共享内存**与 ATK 直接交互。
+The ATK Script tool is a scripting tool built into ATK. It uses ATK's own scripting language (`.atks`) and interacts with ATK directly through **shared memory**.
 
-入口：ATK 菜单栏 → **集成** → **ATK脚本**。
+Entry point: ATK menu bar → **Integration** → **ATK Script**.
 
-::: warning 与 CONNECT 模式的区别
-ATK 脚本工具使用**共享内存**通信，与 ATK 在同一个进程内，不属于 CONNECT 模式的 TCP 网络通信体系。其脚本语法、内置函数均不同于 CONNECT 命令。
+::: warning Differences from Connect Mode
+The ATK Script tool communicates via **shared memory** and runs in the same process as ATK; it does not belong to the TCP network communication system of Connect mode. Its scripting syntax and built-in functions differ from Connect commands.
 :::
 
-详细的脚本语法、内置函数和操作说明请参考 [ATK 脚本工具文档](../../../5.专业使用指南/18-脚本工具/)。
+For detailed scripting syntax, built-in functions and operating instructions, refer to the [ATK Script Tool documentation](../../../5.专业使用指南/18-脚本工具/).

@@ -1,5 +1,5 @@
 ---
-title: 开发方式
+title: Development Methods
 index: false
 ---
 

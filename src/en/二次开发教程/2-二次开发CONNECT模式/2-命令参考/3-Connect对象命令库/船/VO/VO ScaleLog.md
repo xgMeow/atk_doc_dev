@@ -1,18 +1,18 @@
 # VO ScaleLog
 
-## 作用
+## Description
 
-设置**船 3D 模型 log 比例**。
+Set the **ship 3D model log scale**.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ScaleLog <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置模型 log 比例**
+::: details open **Set the model log scale**
 ```
 VO */Ship/Ship1 ScaleLog 3
 ```

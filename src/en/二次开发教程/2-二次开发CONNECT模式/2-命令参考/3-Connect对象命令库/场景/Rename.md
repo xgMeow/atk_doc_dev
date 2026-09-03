@@ -1,18 +1,18 @@
 # Rename
 
-## 作用
+## Description
 
-对象重命名
+Renames an object.
 
-## 语法
+## Syntax
 
 ```atk-command
 Rename <ObjectPath> <NewName>
 ```
 
-## 示例
+## Examples
 
-::: details open **对象重命名**
+::: details open **Rename an object**
 
 ```
 Rename */Satellite/Satellite1 Sat1

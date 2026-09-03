@@ -1,18 +1,18 @@
 # SaveAs
 
-## 作用
+## Description
 
-另存为场景或对象
+Saves a scenario or an object to a new file.
 
-## 语法
+## Syntax
 
 ```atk-command
 SaveAs <ApplicationPath> <ObjectPath> "<FilePath>"
 ```
 
-## 示例
+## Examples
 
-::: details open **另存场景到指定路径**
+::: details open **Save the scenario to the specified path**
 
 ```
 SaveAs / * "C:/Users/Desktop/TestScen.xml"

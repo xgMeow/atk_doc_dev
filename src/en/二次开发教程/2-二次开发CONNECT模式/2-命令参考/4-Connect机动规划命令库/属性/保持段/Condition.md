@@ -1,23 +1,23 @@
 # Condition
 
-## 作用
+## Description
 
-设置**停止条件**的**触发条件**。
+Sets the **trigger condition** of the **stopping condition**.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.Condition {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `List of Stopping Condition` 目前包括属性 `Altitude`、`Apoapsis`、`Argument_of_Latitude`（设置属性使用 `ArgLat`）、`AscendingNode`、`DescendingNode`、`Duration`、`Epoch`、`Longitude`、`Latitude`、`Mean_Anomaly`、`Periapsis`、`R_Magnitude`、`True_Anomaly`、`X-Y_Plane_Cross`（设置属性使用 `XYPlaneCross`）、`Y-Z_Plane_Cross`（设置属性使用 `YZPlaneCross`）、`Z-X_Plane_Cross`（设置属性使用 `ZXPlaneCross`）、`AscToDesc`、`DescToAsc`、`StateCalc`
-- `Value` 包括属性 `Cross Increasing`、`Cross Decreasing`、`Cross Either (Inc.or Dec.)`
+- `List of Stopping Condition` currently includes `Altitude`, `Apoapsis`, `Argument_of_Latitude` (use `ArgLat` to set the property), `AscendingNode`, `DescendingNode`, `Duration`, `Epoch`, `Longitude`, `Latitude`, `Mean_Anomaly`, `Periapsis`, `R_Magnitude`, `True_Anomaly`, `X-Y_Plane_Cross` (use `XYPlaneCross` to set the property), `Y-Z_Plane_Cross` (use `YZPlaneCross` to set the property), `Z-X_Plane_Cross` (use `ZXPlaneCross` to set the property), `AscToDesc`, `DescToAsc`, and `StateCalc`.
+- `Value` includes `Cross Increasing`, `Cross Decreasing`, and `Cross Either (Inc.or Dec.)`.
 
-## 示例
+## Examples
 
-::: details open **设置 R_Magnitude 停止条件的触发条件为 Cross Either**
+::: details open **Set the Trigger Condition of the R_Magnitude Stopping Condition to Cross Either**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Hold.StoppingConditions.R_Magnitude.Condition "Cross Either (Inc.or Dec.)"
 ```

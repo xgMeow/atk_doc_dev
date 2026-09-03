@@ -1,26 +1,26 @@
 # GetAnimationData
 
-## 作用
+## Description
 
-获得场景基本属性
+Obtains the basic attributes of a scenario.
 
-## 语法
+## Syntax
 
 ```atk-command
 GetAnimationData <ScenarioPath> {Option}
 ```
 
-## 参数说明
+## Parameters
 
-| `{Option}` | 说明 |
+| `{Option}` | Description |
 |------|------|
-| `TimePeriod` | 获得场景开始时间和停止时间 |
-| `CurrentTime` | 获得当前仿真时间 |
-| `TimeStep` | 获得仿真步长时间，默认单位为秒 |
+| `TimePeriod` | Gets the scenario start time and stop time |
+| `CurrentTime` | Gets the current simulation time |
+| `TimeStep` | Gets the simulation time step; the default unit is seconds |
 
-## 示例
+## Examples
 
-::: details open **获取场景时间段**
+::: details open **Get the scenario time period**
 
 ```
 GetAnimationData * TimePeriod

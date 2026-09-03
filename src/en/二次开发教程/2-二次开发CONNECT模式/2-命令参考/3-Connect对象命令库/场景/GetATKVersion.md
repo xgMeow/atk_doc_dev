@@ -1,18 +1,18 @@
 # GetATKVersion
 
-## 作用
+## Description
 
-获得 ATK 版本信息
+Obtains the ATK version information.
 
-## 语法
+## Syntax
 
 ```atk-command
 GetATKVersion <ApplicationPath> [Details | Platform]
 ```
 
-## 示例
+## Examples
 
-::: details open **获取 ATK 平台版本**
+::: details open **Get the ATK platform version**
 
 ```
 GetATKVersion / Platform

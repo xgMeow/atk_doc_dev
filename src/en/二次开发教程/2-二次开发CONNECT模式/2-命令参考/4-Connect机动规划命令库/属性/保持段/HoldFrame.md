@@ -1,18 +1,18 @@
 # HoldFrame
 
-## 作用
+## Description
 
-设置**保持段**的 `HoldFrame` 参考坐标系。
+Sets the `HoldFrame` reference coordinate system of the **coast segment**.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.HoldFrame {Value}
 ```
 
-## 示例
+## Examples
 
-::: details open **设置保持段 HoldFrame 为 CentralBody/Moon Fixed**
+::: details open **Set the HoldFrame of the Coast Segment to CentralBody/Moon Fixed**
 ```
 Astrogator */Satellite/mysat SetValue MainSequence.SegmentList.Hold.HoldFrame "CentralBody/Moon Fixed"
 ```

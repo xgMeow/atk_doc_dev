@@ -1,18 +1,18 @@
 # HomtopMax
 
-## 作用
+## Description
 
-设置同伦迭代次数
+Set the number of homotopy iterations.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.HomtopMax <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置同伦迭代次数为 2**
+::: details open **Set the number of homotopy iterations to 2**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.HomtopMax 2
 ```

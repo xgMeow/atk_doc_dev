@@ -1,28 +1,28 @@
 ---
-description: 设置传感器的投影属性，支持固定高度投影模式。
+description: Sets the projection property of the sensor, supporting a fixed-altitude projection mode.
 ---
 
 # Graphics Projection
 
-## 作用
+## Description
 
-设置投影属性。
+Sets the projection property.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <SensorObjectPath> Projection {Option}
 ```
 
-## 参数说明
+## Parameters
 
-| Option             | 说明                     |
-| ------------------ | ------------------------ |
-| `Altitudes <Alt>`  | 输入固定半径默认单位是 m |
+| Option             | Description                      |
+| ------------------ | -------------------------------- |
+| `Altitudes <Alt>`  | The default unit for the input fixed radius is m. |
 
-## 示例
+## Examples
 
-::: details open **设置投影属性**
+::: details open **Set Projection Property**
 ```
 Graphics */Satellite/Satellite1/Sensor/Sensor1 Projection Altitudes 500000
 ```

@@ -1,18 +1,18 @@
-# RPO段重命名
+# Rename the RPO Segment
 
-## 作用
+## Description
 
-设置 `RPO` 段重命名
+Rename the `RPO` segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.ComponentName Rename
 ```
 
-## 示例
+## Examples
 
-::: details open **重命名RPO段**
+::: details open **Rename the RPO segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOExitGEO.ComponentName 111
 ```

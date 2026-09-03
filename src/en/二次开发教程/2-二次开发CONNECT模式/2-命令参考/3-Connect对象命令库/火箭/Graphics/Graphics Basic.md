@@ -1,31 +1,31 @@
 # Graphics Basic
 
-## 作用
+## Description
 
-设置火箭可视化显示属性
+Set the launch vehicle visual display properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Basic { AttributeOption } {Action}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
 | `Show` | `{On \| Off}` |
 | `Label` | `{On \| Off}` |
 | `groundtrack` | `{On \| Off}` |
 | `orbit` | `{On \| Off}` |
-| `color` | 请查看[常用颜色格式](../../../2-参数值格式/颜色格式.md) |
-| `linestyle` | 请查看[常用线型格式](../../../2-参数值格式/线型格式.md) |
-| `linewidth` | 轨迹宽度值介于 1 到 10 |
-| `markerstyle` | 目前标识类型均为默认 |
+| `color` | See [Common Color Formats](../../../2-参数值格式/颜色格式.md). |
+| `linestyle` | See [Common Line Style Formats](../../../2-参数值格式/线型格式.md). |
+| `linewidth` | The trajectory line width value ranges from 1 to 10. |
+| `markerstyle` | Currently, all marker types are set to the default. |
 
-## 示例
+## Examples
 
-::: details open **设置火箭可视化显示属性**
+::: details open **Set the launch vehicle visual display properties**
 ```
 Graphics */LaunchVehicle/LaunchVehicle1 Basic Show on Label on LineStyle 2 LineWidth 5.0 MarkerStyle Star Orbit on color 15
 ```

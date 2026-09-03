@@ -1,30 +1,30 @@
 # Graphics
 
-## 作用
+## Description
 
-设置覆盖定义显示属性。
+Sets the coverage definition display attributes.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <CovDefnObjectPath> {GfxType} {DisplayOption}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
 | `Show` | `{On \| Off}` |
 | `Static` | `Regions {On \| Off} [{Color}]` |
 | `Static` | `Points {On \| Off} [{Color}]` |
 
-## 补充说明
+## Additional Notes
 
-- `Color` 可用属性请查看[常用图形格式](../../2-参数值格式/颜色格式.md)。
+- See [Common Graphics Formats](../../2-参数值格式/颜色格式.md) for the available `Color` attributes.
 
-## 示例
+## Examples
 
-::: details open **设置覆盖定义显示属性**
+::: details open **Set the coverage definition display attributes**
 ```
 Graphics */CoverageDefinition/CoverageDefinition1 Static Regions On Red
 ```

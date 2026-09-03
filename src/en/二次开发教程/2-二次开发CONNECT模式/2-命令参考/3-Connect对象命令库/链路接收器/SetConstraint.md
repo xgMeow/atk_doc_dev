@@ -1,20 +1,20 @@
 # SetConstraint
 
-## 作用
+## Description
 
-**设置**约束。
+**Sets** constraints.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-基本约束：
+Basic constraints:
 
-| 约束名 | 参数 |
+| ConstraintName | Parameters |
 | --- | --- |
 | `AzimuthAngle` | `{Off \| Min <Value1> Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 | `ElevationAngle` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
@@ -28,9 +28,9 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | `LineOfSight` | `{On \| Off}` |
 | `FieldOfView` | `{On \| Off}` |
 
-通信约束：
+Communication constraints:
 
-| 约束名 | 参数 |
+| ConstraintName | Parameters |
 | --- | --- |
 | `Frequency` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 | `RcvdIsotropicPower` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
@@ -47,25 +47,25 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | `G/T` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 | `SystemNoiseTemperature` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 
-## 补充说明
+## Additional Notes
 
-- 当输入 `AzimuthAngle` 值时，最大值和最小值必须同时输入。
+- When an `AzimuthAngle` value is entered, the maximum and minimum values must be entered together.
 
-## 示例
+## Examples
 
-::: details open **设置方位角约束（排除区间）**
+::: details open **Set Azimuth Angle Constraint (Exclude Intervals)**
 ```
 SetConstraint */Satellite/Satellite1/Receiver/Receiver1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
 ```
 :::
 
-::: details open **设置最小仰角约束**
+::: details open **Set Minimum Elevation Angle Constraint**
 ```
 SetConstraint */Satellite/Sate1/Receiver/Rece1 ElevationAngle Min 10.0
 ```
 :::
 
-::: details open **设置最小频率约束**
+::: details open **Set Minimum Frequency Constraint**
 ```
 SetConstraint */Satellite/Sate1/Receiver/Receiver1 Frequency Min 10
 ```

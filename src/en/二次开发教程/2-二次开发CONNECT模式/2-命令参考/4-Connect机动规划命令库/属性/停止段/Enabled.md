@@ -1,18 +1,18 @@
 # Enabled
 
-## 作用
+## Description
 
-设置该停止段是否任务控制序列停止
+Sets whether this stop segment stops the mission control sequence
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Stop.Enabled {Value}
 ```
 
-## 示例
+## Examples
 
-::: details open **禁用停止段**
+::: details open **Disable the stop segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Stop.Enabled false
 ```

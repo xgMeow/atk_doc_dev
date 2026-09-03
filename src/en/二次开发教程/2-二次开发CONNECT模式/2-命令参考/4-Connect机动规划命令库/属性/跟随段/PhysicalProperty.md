@@ -1,24 +1,24 @@
 # PhysicalProperty
 
-## 作用
+## Description
 
-设置航天器参数
+Sets the spacecraft parameters.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.InitialState.{Attribute}.[{Attribute}.] <Value> <Unit>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Attribute` | `Cd`、`DragArea`、`Cr`、`SRPArea`、`DryMass`、`FuelMass` |
+| `Attribute` | `Cd`, `DragArea`, `Cr`, `SRPArea`, `DryMass`, and `FuelMass` |
 
-## 示例
+## Examples
 
-::: details open **设置航天器燃料质量**
+::: details open **Set the spacecraft fuel mass**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.InitialState.FuelMass 200 kg

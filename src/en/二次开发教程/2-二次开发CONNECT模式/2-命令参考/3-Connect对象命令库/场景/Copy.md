@@ -1,33 +1,33 @@
 # Copy
 
-## 作用
+## Description
 
-拷贝并粘贴对象。
+Copies and pastes an object.
 
-## 语法
+## Syntax
 
 ```atk-command
 Copy <ApplicationPath> <CopyFromObjectPath> [{CopyOption}]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `<ApplicationPath>` | 目标应用路径 |
-| `<CopyFromObjectPath>` | 源对象路径 |
-| `{CopyOption}` | 可选参数，指定拷贝后的命名方式 |
+| `<ApplicationPath>` | Target application path |
+| `<CopyFromObjectPath>` | Source object path |
+| `{CopyOption}` | Optional parameter that specifies how the copied object is named |
 
-### {CopyOption} 取值
+### {CopyOption} Values
 
-| `{CopyOption}` | 说明 |
+| `{CopyOption}` | Description |
 |----|------|
-| `Name <NewName>` | 拷贝后使用新名称 |
-| `Path <NewObjectPath>` | 拷贝后使用新路径 |
+| `Name <NewName>` | Uses a new name after copying |
+| `Path <NewObjectPath>` | Uses a new path after copying |
 
-## 示例
+## Examples
 
-::: details open **将 `/Satellite/Satellite1` 对象拷贝到 `/` 应用下，并重命名为 `Sat2`**
+::: details open **Copy the `/Satellite/Satellite1` object under the `/` application and rename it to `Sat2`**
 
 ```
 Copy / Satellite/Satellite1 Name Sat2

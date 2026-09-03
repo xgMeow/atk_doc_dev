@@ -1,24 +1,24 @@
 # Graphics Label
 
-## 作用
+## Description
 
-设置**船标签**属性。
+Set the **ship label** properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Label {Options}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | -- | -- |
-| `Show {on \| off}` | 显示或隐藏标签 |
+| `Show {on \| off}` | Show or hide the label |
 
-## 示例
+## Examples
 
-::: details open **显示船标签**
+::: details open **Show the ship label**
 ```
 Graphics */Ship/Ship1 Label Show on
 ```

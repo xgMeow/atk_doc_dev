@@ -1,18 +1,18 @@
 # VO ScaleLog
 
-## 作用
+## Description
 
-设置地面站 3D 模型 log 比例。
+Set the facility 3D model log scale.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ScaleLog <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置缩放比例**
+::: details open **Set the scale**
 ```
 VO */Facility/Facility1 ScaleLog 3
 ```

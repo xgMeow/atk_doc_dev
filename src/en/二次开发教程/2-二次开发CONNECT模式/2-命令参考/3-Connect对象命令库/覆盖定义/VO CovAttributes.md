@@ -1,22 +1,22 @@
 # VO CovAttributes
 
-## 作用
+## Description
 
-设置覆盖定义显示点大小。
+Sets the size of the coverage definition display points.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <CovDefnObjectPath> CovAttributes {DisplayOption} <Value> [{DisplayOption} <Value>...]
 ```
 
-## 补充说明
+## Additional Notes
 
-- 目前 `{DisplayOption}` 包括 `StaticSize`。
+- Currently, `{DisplayOption}` includes `StaticSize`.
 
-## 示例
+## Examples
 
-::: details open **设置覆盖定义显示点大小**
+::: details open **Set the size of the coverage definition display points**
 ```
 VO */CoverageDefinition/CoverageDefinition1 CovAttributes StaticSize 2
 ```

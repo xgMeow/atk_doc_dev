@@ -1,23 +1,23 @@
 # Attitude Quat
 
-## 作用
+## Description
 
-根据四元数设置姿态数据
+Set attitude data from quaternions.
 
-## 语法
+## Syntax
 
 ```atk-command
 AddAttitude <ObjectPath> Quat {StartTime} <Q1> <Q2> <Q3> <Q4>
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Q1`、`Q2`、`Q3` 设置 qx，qy，qz，`Q4` 设置 qs
-- 设置值与原数值差值超过 1e-6，才会被设置
+- `Q1`, `Q2`, `Q3` set qx, qy, qz, and `Q4` sets qs.
+- A value is set only when the difference between the value being set and the original value exceeds 1e-6.
 
-## 示例
+## Examples
 
-::: details open **根据四元数设置姿态数据**
+::: details open **Set attitude data from quaternions**
 ```
 AddAttitude */Missile/Missile1 Quat "1 Jul 2021 09:00:00.000" 0.0 0.0 0.0 1.0
 ```

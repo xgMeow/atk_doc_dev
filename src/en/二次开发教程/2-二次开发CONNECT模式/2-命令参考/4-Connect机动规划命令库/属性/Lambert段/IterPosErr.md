@@ -1,18 +1,18 @@
 # IterPosErr
 
-## 作用
+## Description
 
-设置瞄准位置误差
+Set the targeting position error.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.IterPosErr <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置瞄准位置误差为 0.1**
+::: details open **Set the targeting position error to 0.1**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.IterPosErr 0.1
 ```

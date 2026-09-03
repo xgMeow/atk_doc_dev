@@ -1,22 +1,22 @@
 # VO ScaleLog
 
-## 作用
+## Description
 
-设置导弹 3D 模型比例大小
+Set the missile 3D model scale.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ScaleLog <value>
 ```
 
-## 补充说明
+## Additional Notes
 
-- `<value>` 用于调整模型大小
+- `<value>` is used to adjust the model size.
 
-## 示例
+## Examples
 
-::: details open **设置模型比例**
+::: details open **Set the model scale**
 ```
 VO */Missile/Missile1 ScaleLog 3
 ```

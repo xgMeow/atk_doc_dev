@@ -1,28 +1,28 @@
 # PassBreak
 
-## 作用
+## Description
 
-设置轨道圈数。
+Sets the number of orbital revolutions.
 
-## 语法
+## Syntax
 
 ```atk-command
 PassBreak <SatObjectPath> {PassOption} [<Parameters>]
 ```
 
-## 参数说明
+## Parameters
 
-| `PassOption` | 说明 |
+| `PassOption` | Description |
 | --- | --- |
-| `Ascending` | 设置方向为升轨 |
-| `Descending` | 设置方向为降轨 |
-| `Latitude <Value> [{Ascending \| Descending}]` | 设置纬度值和方向 |
-| `Longitude <Value>` | 设置经度值 |
-| `CoordSys {Inertial \| Fixed}` | 设置坐标系统 |
+| `Ascending` | Sets the direction to ascending |
+| `Descending` | Sets the direction to descending |
+| `Latitude <Value> [{Ascending \| Descending}]` | Sets the latitude value and the direction |
+| `Longitude <Value>` | Sets the longitude value |
+| `CoordSys {Inertial \| Fixed}` | Sets the coordinate system |
 
-## 示例
+## Examples
 
-::: details open **设置轨道圈数**
+::: details open **Set the Number of Orbital Revolutions**
 ```
 PassBreak */Satellite/Satellite1 Latitude 90.0
 ```

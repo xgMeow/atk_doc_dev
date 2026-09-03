@@ -1,25 +1,25 @@
 # Cov Asset
 
-## 作用
+## Description
 
-配置覆盖对象。
+Configure coverage assets.
 
-## 语法
+## Syntax
 
 ```atk-command
 Cov <CovDefnObjectPath> Asset <AssetObjectPath> {Action}
 ```
 
-## 参数说明
+## Parameters
 
-| {Action} | 说明 |
+| {Action} | Description |
 |-----|------|
-| `Assign` | 标记对象可进行覆盖计算 |
-| `Deassign` | 取消标记对象，对象不进行覆盖计算 |
+| `Assign` | Marks the object as available for coverage computation |
+| `Deassign` | Unmarks the object; the object is not included in the coverage computation |
 
-## 示例
+## Examples
 
-::: details open **将 Satellite1 的覆盖定义赋给 Satellite2，使 Satellite2 参与覆盖计算。**
+::: details open **Assign the coverage definition of Satellite1 to Satellite2 so that Satellite2 participates in the coverage computation.**
 
 ```
 Cov */Satellite/Satellite1 Asset */Satellite/Satellite2 Assign

@@ -1,5 +1,5 @@
 ---
-title: 行星
+title: Planet
 index: false
 ---
 

@@ -1,22 +1,22 @@
 # Graphics SetColor
 
-## 作用
+## Description
 
-设置卫星轨迹标签颜色。
+Sets the satellite track label color.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> SetColor {Color} [{Item}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Color` 可用属性请查看[常用图形格式](../../../2-参数值格式/颜色格式.md)
+- For the available attributes of `Color`, see [Common Graphics Formats](../../../2-参数值格式/颜色格式.md)
 
-## 示例
+## Examples
 
-::: details open **设置卫星轨迹标签颜色**
+::: details open **Set the Satellite Track Label Color**
 ```
 Graphics */Satellite/Satellite1 SetColor 4
 ```

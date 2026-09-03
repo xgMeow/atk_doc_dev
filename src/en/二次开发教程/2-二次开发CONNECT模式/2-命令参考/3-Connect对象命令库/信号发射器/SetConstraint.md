@@ -1,18 +1,18 @@
 # SetConstraint
 
-## 作用
+## Description
 
-设置约束
+Sets constraints.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-### 基本约束
+### Basic Constraints
 
 | ConstraintName | Parameters |
 |----------------|-----------|
@@ -28,7 +28,7 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | `LineOfSight` | `{On \| Off}` |
 | `FieldOfView` | `{On \| Off}` |
 
-### 通信约束
+### Communication Constraints
 
 | ConstraintName | Parameters |
 |----------------|-----------|
@@ -47,25 +47,25 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | `G/T` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 | `SystemNoiseTemperature` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 
-## 注意
+## Note
 
-- 当输入 `AzimuthAngle` 值时，最大值和最小值必须同时输入
+- When an `AzimuthAngle` value is entered, the maximum and minimum values must be entered together.
 
-## 示例
+## Examples
 
-::: details open **设置方位角约束（排除区间）**
+::: details open **Set Azimuth Angle Constraint (Exclude Intervals)**
 ```
 SetConstraint */Satellite/Satellite1/Transmitter/Trans1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
 ```
 :::
 
-::: details open **设置仰角约束（最小值）**
+::: details open **Set Elevation Angle Constraint (Minimum)**
 ```
 SetConstraint */Satellite/Satellite1/Transmitter/Transmitter1 ElevationAngle Min 10.0
 ```
 :::
 
-::: details open **设置频率约束**
+::: details open **Set Frequency Constraint**
 ```
 SetConstraint */Satellite/Satellite1/Transmitter/Transmitter1 Frequency Min 10
 ```

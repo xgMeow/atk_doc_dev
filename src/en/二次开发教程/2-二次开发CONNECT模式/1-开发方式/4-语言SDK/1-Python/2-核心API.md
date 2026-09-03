@@ -1,7 +1,7 @@
 ---
-description: Python SDK 的核心 API 参考，涵盖 atkOpen、atkConnect、atkClose 函数的语法、参数与示例。
+description: Core API reference for the Python SDK, covering the syntax, parameters and examples of the atkOpen, atkConnect and atkClose functions.
 ---
 
-# 核心API
+# Core API
 
 <!--@include:../../../.include/atkCommand-python.md-->

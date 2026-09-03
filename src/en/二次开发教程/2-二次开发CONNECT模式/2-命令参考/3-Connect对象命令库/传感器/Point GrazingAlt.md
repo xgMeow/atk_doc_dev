@@ -1,22 +1,22 @@
 ---
-description: 设置传感器的入射高度指向属性，定义方位角和掠射高度参数。
+description: Sets the grazing-altitude pointing property of the sensor, defining the azimuth and grazing-altitude parameters.
 ---
 
 # Point GrazingAlt
 
-## 作用
+## Description
 
-设置入射高度指向属性。
+Sets the grazing-altitude pointing property.
 
-## 语法
+## Syntax
 
 ```atk-command
 Point <SensorObjectPath> GrazingAlt <Azimuth> <GrazingAltitude>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置入射高度指向**
+::: details open **Set Grazing-Altitude Pointing**
 ```
 Point */Satellite/Sat1/Sensor/Sensor1 GrazingAlt 90.0 10000.0
 ```

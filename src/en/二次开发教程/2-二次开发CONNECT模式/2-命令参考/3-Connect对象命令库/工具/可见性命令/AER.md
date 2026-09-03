@@ -1,18 +1,18 @@
 # AER
 
-## 作用
+## Description
 
-计算并获得可见性视线参数分析的报告
+Compute and obtain the visibility line-of-sight parameter analysis report.
 
-## 语法
+## Syntax
 
 ```atk-command
 AER <ObjectPath> <AccessObjectPath> {TimePeriod <StartTime> <StopTime>}
 ```
 
-## 示例
+## Examples
 
-::: details open **计算两颗卫星之间的可见性**
+::: details open **Compute the visibility between two satellites**
 
 ```
 AER */Satellite/Satellite1 */Satellite/Satellite2 TimePeriod "14 Mar 2024 00:00:00.000" "15 Mar 2024 00:00:00.000"

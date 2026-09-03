@@ -1,25 +1,25 @@
 # Window3D_R
 
-## 作用
+## Description
 
-返回三维窗口信息
+Returns 3D window information.
 
-## 语法
+## Syntax
 
 ```atk-command
 Window3D_R <ScenarioPath> {WindowOption} [WindowID <WinNumber>]
 ```
 
-## 参数说明
+## Parameters
 
-| `{WindowOption}` | 说明 |
+| `{WindowOption}` | Description |
 |------|------|
-| `Size` | 返回三维窗口的大小(包括边框) |
-| `InnerSize` | 返回三维窗口的大小(不包括边框) |
+| `Size` | Returns the size of the 3D window (including the border) |
+| `InnerSize` | Returns the size of the 3D window (excluding the border) |
 
-## 示例
+## Examples
 
-::: details open **获取三维窗口内部大小**
+::: details open **Get the inner size of the 3D window**
 
 ```
 Window3d_R * InnerSize

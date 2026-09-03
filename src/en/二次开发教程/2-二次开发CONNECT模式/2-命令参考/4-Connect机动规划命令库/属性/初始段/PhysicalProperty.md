@@ -1,29 +1,29 @@
 # PhysicalProperty
 
-## 作用
+## Description
 
-为初始段设置航天器参数
+Sets the spacecraft parameters for the initial state
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.{PhysicalProperty} <Value> <Unit>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | --- | --- |
-| Dry Mass | 航天器净质量默认单位为 kg, 包括单位 kg， g ，mg，设置属性使用 `DryMass` |
-| Drag Coefficient (Cd) | 航天器大气阻力系数，设置属性使用 `Cd` |
-| Drag Area | 航天器大气阻力面积默认单位为 $m^2$，包括单位 $m^2$, $cm^2$，设置属性使用 `DragArea` |
-| Solar Radiation Pressure (Spherical) Coefficient (Cr) | 航天器太阳光压系数，设置属性使用 `Cr` |
-| Solar Radiation Pressure (Spherical) Area | 航天器太阳光压面积默认单位为 $m^2$，包括单位 $m^2$, $cm^2$，设置属性使用 `SRPArea` |
-| Fuel Mass | 航天器推进剂质量默认单位为 kg，包括单位 kg ，g ，mg，设置属性使用 `FuelMass` |
+| Dry Mass | The default unit of spacecraft dry mass is kg; supported units include kg, g, mg; use `DryMass` to set the attribute |
+| Drag Coefficient (Cd) | The spacecraft atmospheric drag coefficient; use `Cd` to set the attribute |
+| Drag Area | The default unit of spacecraft atmospheric drag area is $m^2$; supported units include $m^2$, $cm^2$; use `DragArea` to set the attribute |
+| Solar Radiation Pressure (Spherical) Coefficient (Cr) | The spacecraft solar radiation pressure coefficient; use `Cr` to set the attribute |
+| Solar Radiation Pressure (Spherical) Area | The default unit of spacecraft solar radiation pressure area is $m^2$; supported units include $m^2$, $cm^2$; use `SRPArea` to set the attribute |
+| Fuel Mass | The default unit of spacecraft fuel mass is kg; supported units include kg, g, mg; use `FuelMass` to set the attribute |
 
-## 示例
+## Examples
 
-::: details open **设置初始段推进剂质量**
+::: details open **Set the fuel mass of the initial state**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.FuelMass 200 kg
 ```

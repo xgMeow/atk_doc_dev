@@ -1,20 +1,20 @@
 # Set Constraint
 
-## 作用
+## Description
 
-设置约束。
+Sets constraints.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-::: details 约束参数设置说明（点击展开）
+::: details Constraint Parameter Settings (click to expand)
 
-- 基本约束：
+- Basic Constraints:
 
     | `ConstraintName` | `Parameters` |
     | --- | --- |
@@ -30,7 +30,7 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
     | `LineOfSight` | `{On \| Off}` |
     | `TerrainMask` | `{On \| Off}` |
 
-- 太阳约束：
+- Sun Constraints:
 
     | `ConstraintName` | `Parameters` |
     | --- | --- |
@@ -42,19 +42,19 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 
 :::
 
-::: tip 注意
-当输入 AzimuthAngle 值时，最大值和最小值必须同时输入
+::: tip Note
+When entering an AzimuthAngle value, the maximum and minimum values must be entered at the same time
 :::
 
-## 示例
+## Examples
 
-::: details open **设置方位角约束**
+::: details open **Set the Azimuth Angle Constraint**
 ```
 SetConstraint */Satellite/Satellite1 AzimuthAngle Min 10 Max 100
 ```
 :::
 
-::: details open **设置太阳排除角约束**
+::: details open **Set the Sun Exclusion Angle Constraint**
 ```
 SetConstraint */Satellite/Satellite1 LOSSunExclusion 30
 ```

@@ -1,30 +1,30 @@
 # GetDirectory
 
-## 作用
+## Description
 
-返回所选目录的路径
+Returns the path of the selected directory.
 
-## 语法
+## Syntax
 
 ```atk-command
 GetDirectory <ApplicationPath> {DirOption}
 ```
 
-## 参数说明
+## Parameters
 
-| `{DirOption}` | 说明 |
+| `{DirOption}` | Description |
 |------|------|
-| `DefaultUser` | 返回程序运行目录 |
-| `UserData` | 返回当前用户数据目录 |
-| `ATKHome` | 返回 ATK 运行文件夹 |
-| `Config` | 返回用户的配置目录 |
-| `Scenario` | 返回场景文件目录 |
-| `AllUsers` | 返回包含所有用户的 ATK 应用程序数据的目录 |
-| `Database {Satellite \| City \| Facility}` | 返回指定的数据目录 |
+| `DefaultUser` | Returns the program run directory |
+| `UserData` | Returns the current user data directory |
+| `ATKHome` | Returns the ATK run folder |
+| `Config` | Returns the user configuration directory |
+| `Scenario` | Returns the scenario file directory |
+| `AllUsers` | Returns the directory that contains ATK application data for all users |
+| `Database {Satellite \| City \| Facility}` | Returns the specified data directory |
 
-## 示例
+## Examples
 
-::: details open **返回卫星数据库目录**
+::: details open **Return the satellite database directory**
 
 ```
 GetDirectory / Database Satellite

@@ -1,65 +1,65 @@
 # VOAttitudeView
 
-## 作用
+## Description
 
-设置地面站姿态球属性。
+Set the facility attitude sphere properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> AttitudeView {AttitudeViewOption} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| `AttitudeViewOption` | 说明 |
+| `AttitudeViewOption` | Description |
 | ------------------ | ------------------------------------------------------------ |
 | `Sphere` | `{SphereOption1} <Value1> [{SphereOption2} <Value2> ...]` |
 | `Projection` | `{ProjectionOption1} <Value1> [{ProjectionOption2} <Value2> ...]` |
 
-- 如果 `AttitudeViewOption` 输入的是 `Sphere`，那么 `SphereOption` 可得属性有
+- If `AttitudeViewOption` is set to `Sphere`, the following `SphereOption` properties are available:
 
-| `SphereOption` | 说明 |
+| `SphereOption` | Description |
 | ------------------- | ---------------------------------------- |
-| `Show` | `{On \| Off}`，姿态球是否显示 |
-| `SphereColor` | `{Color}`，颜色设置请参考[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `ZeroDegColor` | `{Color}`，设置零度颜色，颜色设置请参考[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `ZeroDegLineWidth` | `<Value>`，设置零度线宽，范围 `1-10` |
-| `GridLineWidth` | `<Value>`，设置线宽，范围 `1-10` |
-| `Frame` | `"Type Axes {CrdnDefOptions}"`，`CrdnDefOptions` 可输入内容请查看下方表格 |
-| `Scale` | `<Value>`，设置比例，范围 `0-30` |
+| `Show` | `{On \| Off}`, whether the attitude sphere is shown |
+| `SphereColor` | `{Color}`, for color settings, see [Color Format](../../../2-参数值格式/颜色格式.md) |
+| `ZeroDegColor` | `{Color}`, set the zero-degree color. For color settings, see [Color Format](../../../2-参数值格式/颜色格式.md) |
+| `ZeroDegLineWidth` | `<Value>`, set the zero-degree line width, range `1-10` |
+| `GridLineWidth` | `<Value>`, set the line width, range `1-10` |
+| `Frame` | `"Type Axes {CrdnDefOptions}"`, for the values that `CrdnDefOptions` accepts, see the table below |
+| `Scale` | `<Value>`, set the scale, range `0-30` |
 
-- 如果 `SphereOption` 输入的是 `Frame`，那么 `{CrdnDefOptions}` 可设置属性有
+- If `SphereOption` is set to `Frame`, the following `{CrdnDefOptions}` properties can be set:
 
-| `CrdnDefOptions` | 说明 |
+| `CrdnDefOptions` | Description |
 | ------------------ | ---------------------------------------- |
-| `Name` | `<NameOfAxes>`，Axes 的名称 |
-| `CBName` | `<NameOfCentralBody>`，中心天体名称 |
-| `ObjectPath` | `<ObjectPath>`，对象路径，例 `Satellite/Satellite2` |
+| `Name` | `<NameOfAxes>`, name of the Axes |
+| `CBName` | `<NameOfCentralBody>`, central body name |
+| `ObjectPath` | `<ObjectPath>`, object path, e.g. `Satellite/Satellite2` |
 
 ::: warning
-- 不输入 `CBName` 和 `ObjectPath`，`Name` 默认为当前对象 Axes。
+- If `CBName` and `ObjectPath` are not entered, `Name` defaults to the current object's Axes.
 :::
 
-- 如果 `AttitudeViewOption` 输入的是 `Projection`，那么 `ProjectionOption` 可得属性有
+- If `AttitudeViewOption` is set to `Projection`, the following `ProjectionOption` properties are available:
 
-| `ProjectionOption` | 说明 |
+| `ProjectionOption` | Description |
 | ---------------- | ---------------------------------------- |
-| `Name` | `<CBName>`，目前仅包括 Sun 和 Moon |
-| `Show` | `{On \| Off}`，需要输入投影名称，才会设置是否显示 |
-| `ShowLabel` | `{On \| Off}`，需要输入投影名称，才会设置标签是否显示 |
-| `Color` | `{Color}`，颜色设置请查看[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `PointSize` | `<Value>`，设置点大小 |
+| `Name` | `<CBName>`, currently includes only Sun and Moon |
+| `Show` | `{On \| Off}`, a projection name must be entered before you can set whether it is shown |
+| `ShowLabel` | `{On \| Off}`, a projection name must be entered before you can set whether the label is shown |
+| `Color` | `{Color}`, for color settings, see [Color Format](../../../2-参数值格式/颜色格式.md) |
+| `PointSize` | `<Value>`, set the point size |
 
-## 示例
+## Examples
 
-::: details open **设置姿态球投影属性**
+::: details open **Set attitude sphere projection properties**
 ```
 VO */Facility/Facility1 AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6 Frame "Type Axes ObjectPath Satellite/Satellite2 Name Fixed"
 ```
 :::
 
-::: details open **设置姿态球球体属性**
+::: details open **Set the sphere properties of the attitude sphere**
 ```
 VO */Facility/Facility1 AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
 ```

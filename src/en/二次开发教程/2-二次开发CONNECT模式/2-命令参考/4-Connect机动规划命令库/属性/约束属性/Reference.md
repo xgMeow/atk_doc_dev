@@ -1,22 +1,22 @@
 # Reference
 
-## 作用
+## Description
 
-设置段约束的**参考航天器**属性值。
+Set the **reference spacecraft** property value of the segment constraint.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.Reference {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- 设置段约束属性值之前，必须已添加段约束
+- Before setting a segment constraint property value, the segment constraint must already have been added.
 
-## 示例
+## Examples
 
-::: details open **设置角度约束的参考航天器**
+::: details open **Set the reference spacecraft of the angle constraint**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.Angle.Reference Satellite/Satellite2
 ```

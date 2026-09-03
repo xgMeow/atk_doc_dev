@@ -1,22 +1,22 @@
 # MnvrType
 
-## 作用
+## Description
 
-设置机动类型
+Sets the maneuver type.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.MnvrType <Maneuver Type>
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Maneuver Type` 包括属性 `Impulsive` 和 `Finite`
+- `Maneuver Type` includes the attributes `Impulsive` and `Finite`.
 
-## 示例
+## Examples
 
-::: details open **设置机动类型为 Impulsive**
+::: details open **Set the Maneuver Type to Impulsive**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.MnvrType Impulsive
 ```

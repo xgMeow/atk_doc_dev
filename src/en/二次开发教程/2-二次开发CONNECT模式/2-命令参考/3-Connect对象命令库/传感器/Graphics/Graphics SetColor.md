@@ -1,26 +1,26 @@
 ---
-description: 设置传感器轨迹和标签的颜色属性。
+description: Sets the color properties of the sensor trace and label.
 ---
 
 # Graphics SetColor
 
-## 作用
+## Description
 
-设置传感器轨迹标签颜色。
+Sets the color of the sensor trace label.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> SetColor {Color} [{Item}]
 ```
 
-## 补充说明
+## Additional Notes
 
-`Color` 可用属性请查看[常用图形格式](../../../2-参数值格式/颜色格式.md)。
+For the available `Color` attributes, see [Common Graphic Formats](../../../2-参数值格式/颜色格式.md).
 
-## 示例
+## Examples
 
-::: details open **设置传感器颜色**
+::: details open **Set Sensor Color**
 ```
 Graphics */Satellite/Satellite1/Sensor/Sensor1 SetColor 4
 ```

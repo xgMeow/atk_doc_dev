@@ -1,24 +1,24 @@
 # SetAttitude RealTime
 
-## 作用
+## Description
 
-设置接收客户端输入实时数据并设置星历数据。
+Sets receiving real-time data input from the client and sets the ephemeris data.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetAttitude <ObjectPath> RealTime {LookAheadMethod} [<LookAheadDuration> <LookBehindDuration>]
 ```
 
-## 参数说明
+## Parameters
 
-- `{LookAheadMethod}` 包括属性 `Extrapolate`、`Hold`
-- `<LookAheadDuration>` 用来计算姿态数据点的长度
-- `<LookBehindDuration>` 用来计算姿态数据点的保留长度
+- `{LookAheadMethod}` includes the attributes `Extrapolate` and `Hold`
+- `<LookAheadDuration>` is used to calculate the length of attitude data points
+- `<LookBehindDuration>` is used to calculate the retention length of attitude data points
 
-## 示例
+## Examples
 
-::: details open **设置实时姿态数据**
+::: details open **Set Real-Time Attitude Data**
 ```
 SetAttitude */Satellite/xxxx RealTime Extrapolate 300 120
 ```

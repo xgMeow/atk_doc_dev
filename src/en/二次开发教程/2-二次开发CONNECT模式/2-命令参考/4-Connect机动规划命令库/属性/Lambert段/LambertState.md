@@ -1,44 +1,44 @@
 # LambertState
 
-## 作用
+## Description
 
-为兰勃特段坐标类型位置速度设置属性值
+Set the position/velocity attribute values for the Lambert segment coordinate type.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.LambertTarget.<CoordinateType>.<Element> <Value> <Unit>
 ```
 
-::: details 属性设置详细说明（点击展开）
+::: details Detailed Description of Attribute Settings (click to expand)
 
-- `<CoordinateType>` 为 `"Cartesian"` 时
+- When `<CoordinateType>` is `"Cartesian"`
 
-| Element | 说明 |
+| Element | Description |
 | ------- | ---- |
-| X       | 默认单位时 m，包括单位 m、km |
-| Y       | 默认单位时 m，包括单位 m、km |
-| Z       | 默认单位时 m，包括单位 m、km |
-| Vx      | 默认单位时 m/sec，包括单位 m/sec、km/sec |
-| Vy      | 默认单位时 m/sec，包括单位 m/sec、km/sec |
-| Vz      | 默认单位时 m/sec，包括单位 m/sec、km/sec |
+| X       | Default unit is m; supported units: m, km |
+| Y       | Default unit is m; supported units: m, km |
+| Z       | Default unit is m; supported units: m, km |
+| Vx      | Default unit is m/sec; supported units: m/sec, km/sec |
+| Vy      | Default unit is m/sec; supported units: m/sec, km/sec |
+| Vz      | Default unit is m/sec; supported units: m/sec, km/sec |
 
-- `<CoordinateType>` 为 `"Keplerian"` 时
+- When `<CoordinateType>` is `"Keplerian"`
 
-| Element | 说明 |
+| Element | Description |
 | ------- | ---- |
-| Sma     | 半长轴默认单位是 m，包括单位 km、m，设置属性使用 sma |
-| Ecc     | 偏心率 |
-| Inc     | 轨道倾角，默认单位 rad |
-| RAAN    | 升交点赤经，默认单位 rad |
-| W       | 近拱点角距，默认单位 rad |
-| TA      | 真近点角，默认单位 rad |
+| Sma     | Semi-major axis. Default unit is m; supported units include km and m; use sma when setting the attribute |
+| Ecc     | Eccentricity |
+| Inc     | Inclination, default unit rad |
+| RAAN    | Right ascension of the ascending node, default unit rad |
+| W       | Argument of periapsis, default unit rad |
+| TA      | True anomaly, default unit rad |
 
 :::
 
-## 示例
+## Examples
 
-::: details open **设置 Lambert 状态的 Cartesian X 坐标**
+::: details open **Set the Cartesian X coordinate of the Lambert state**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.LambertState.Cartesian.X 6700000 m
 ```

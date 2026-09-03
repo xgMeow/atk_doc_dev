@@ -1,25 +1,25 @@
 # VO Point
 
-## 作用
+## Description
 
-设置卫星 3D 模型点属性。
+Sets the 3D model point attributes of the satellite.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> Point {PointOptions}
 ```
 
-## 参数说明
+## Parameters
 
-| `Option` | `Value` | 说明 |
+| `Option` | `Value` | Description |
 | --- | --- | --- |
-| `Show` | `{On \| Off}` | 是否显示模型点 |
-| `Size` | `<Value>` | 模型点大小设置 |
+| `Show` | `{On \| Off}` | Whether the model points are shown |
+| `Size` | `<Value>` | Sets the size of the model points |
 
-## 示例
+## Examples
 
-::: details open **设置卫星 3D 模型点属性**
+::: details open **Set the 3D Model Point Attributes of the Satellite**
 ```
 VO */Satellite/Satellite1 Point Show On Size 7
 ```

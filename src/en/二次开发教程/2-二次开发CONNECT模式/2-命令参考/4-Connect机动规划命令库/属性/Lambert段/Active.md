@@ -1,22 +1,22 @@
 # Active
 
-## 作用
+## Description
 
-设置停止条件是否选中
+Set whether the stopping condition is selected.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.Active {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Stopping Condition` 目前包括属性 `Duration`、`Epoch`
+- `Stopping Condition` currently includes the properties `Duration` and `Epoch`.
 
-## 示例
+## Examples
 
-::: details open **设置 Duration 停止条件为未选中**
+::: details open **Set the Duration stopping condition to unselected**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.StoppingConditions.Duration.Active false
 ```

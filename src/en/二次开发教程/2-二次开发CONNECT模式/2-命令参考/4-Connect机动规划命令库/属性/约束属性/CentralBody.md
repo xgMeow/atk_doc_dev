@@ -1,22 +1,22 @@
 # CentralBody
 
-## 作用
+## Description
 
-设置段约束的**中心天体**属性值。
+Set the **central body** property value of the segment constraint.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.CentralBody {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- 设置段约束属性值之前，必须已添加段约束
+- Before setting a segment constraint property value, the segment constraint must already have been added.
 
-## 示例
+## Examples
 
-::: details open **设置远地点高度约束的中心天体为月球**
+::: details open **Set the central body of the apogee altitude constraint to Moon**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.AltitudeOfPeriapsis.CentralBody Moon
 ```

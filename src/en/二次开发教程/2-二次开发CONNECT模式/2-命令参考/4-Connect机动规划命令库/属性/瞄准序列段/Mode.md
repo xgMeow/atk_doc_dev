@@ -1,24 +1,24 @@
 # Mode
 
-## 作用
+## Description
 
-设置瞄准段的配置页**模式**。
+Set the **mode** of the target sequence segment's profile.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> [{Unit}]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Value` | 可选值：`Iterate`、`Not Active`、`Run Once` |
+| `Value` | Optional values: `Iterate`, `Not Active`, `Run Once` |
 
-## 示例
+## Examples
 
-::: details open **设置瞄准段配置页模式为迭代**
+::: details open **Set the profile mode of the target sequence segment to Iterate**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.TargetSequence.Profiles.ShooterProfile.Mode Iterate
 ```

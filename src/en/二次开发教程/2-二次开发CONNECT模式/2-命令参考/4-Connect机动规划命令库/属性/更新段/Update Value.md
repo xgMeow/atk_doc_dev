@@ -1,26 +1,26 @@
 # Update Value
 
-## 作用
+## Description
 
-设置更新段的值。
+Sets the value of the update segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Update.{Val Attribute} <Value> [{Unit}]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Val Attribute` | 包括 `DryMassVal`、`FuelMassVal`、`SRPAreaVal`、`DragAreaVal`、`CrVal`、`CdVal` |
-| `Value` | 更新值 |
-| `Unit` | 可选，单位 |
+| `Val Attribute` | Includes `DryMassVal`, `FuelMassVal`, `SRPAreaVal`, `DragAreaVal`, `CrVal`, `CdVal` |
+| `Value` | The update value |
+| `Unit` | Optional, the unit |
 
-### `Val Attribute` 取值
+### `Val Attribute` Values
 
-| 取值 | 默认单位 |
+| Value | Default Unit |
 |------|---------|
 | `DryMassVal` | $kg$ |
 | `FuelMassVal` | $kg$ |
@@ -29,9 +29,9 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Update.{Val Attribu
 | `CrVal` | — |
 | `CdVal` | — |
 
-## 示例
+## Examples
 
-::: details open **设置拖拽面积值为 10 m²**
+::: details open **Set the drag area value to 10 m²**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Update.DragAreaVal 10 m^2
 ```

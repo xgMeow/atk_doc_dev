@@ -1,48 +1,48 @@
 # VOOrbitSystem
 
-## 作用
+## Description
 
-设置卫星相对轨迹。
+Sets the relative trajectory of the satellite.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <VehObjectPath> OrbitSystem {Action} {Options}
 ```
 
-## 参数说明
+## Parameters
 
-- `{Action}` 包括属性 `Add`, `Remove`, `Modify`
+- `{Action}` includes the attributes `Add`, `Remove`, and `Modify`
 
-| `Options` | 说明 |
+| `Options` | Description |
 | --- | --- |
-| `System {SystemDefn}` | `{SystemDefn}` 说明如下 |
-| `Color {{Color} \| Default}` | Default 默认不使用自定义颜色 |
-| `Show {On \| Off}` | 是否显示相对轨迹 |
+| `System {SystemDefn}` | `{SystemDefn}` is described below |
+| `Color {{Color} \| Default}` | `Default` indicates that no custom color is used |
+| `Show {On \| Off}` | Whether the relative trajectory is shown |
 
-| `SystemDefn` | 说明 |
+| `SystemDefn` | Description |
 | --- | --- |
-| `FixedByWindow` | 窗口中心天体固联系 |
-| `InertialByWindow` | 窗口中心天体惯性系 |
-| `<SystemDef>` | 添加 vgt 系 |
-| `BBR <PrimaryCBName> <SecondaryCBname>` | 添加 BBR 系 |
-| `VVLH <ObjTruncPath>` | 添加 VVLH 系 |
+| `FixedByWindow` | Fixed frame of the central body of the window |
+| `InertialByWindow` | Inertial frame of the central body of the window |
+| `<SystemDef>` | Adds a VGT frame |
+| `BBR <PrimaryCBName> <SecondaryCBname>` | Adds a BBR frame |
+| `VVLH <ObjTruncPath>` | Adds a VVLH frame |
 
-## 示例
+## Examples
 
-::: details open **添加卫星相对轨迹**
+::: details open **Add the Relative Trajectory of a Satellite**
 ```
 VO */Satellite/Satellite1 OrbitSystem Add System "InertialByWindow" Show Off
 ```
 :::
 
-::: details open **修改卫星相对轨迹**
+::: details open **Modify the Relative Trajectory of a Satellite**
 ```
 VO */Satellite/Satellite1 OrbitSystem Modify System VVLH "Satellite/Satellite3" Color red
 ```
 :::
 
-::: details open **移除卫星相对轨迹**
+::: details open **Remove the Relative Trajectory of a Satellite**
 ```
 VO */Satellite/Satellite1 OrbitSystem Remove System "CentralBody/Mars Inertial"
 ```

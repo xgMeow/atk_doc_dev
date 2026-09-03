@@ -1,23 +1,23 @@
 # Graphics Pass2D
 
-## 作用
+## Description
 
-设置轨迹类型
+Set the trail type.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Pass2D ({LeadTrailOption} <Parameters>)
 ```
 
-## 补充说明
+## Additional Notes
 
 - `LeadTrailOption`: `GrndTrail`
-- `Parameters`: `Time <Time>`、`PointNumber <PointNumber>`、`All`、`None`
+- `Parameters`: `Time <Time>`, `PointNumber <PointNumber>`, `All`, `None`
 
-## 示例
+## Examples
 
-::: details open **设置轨迹类型**
+::: details open **Set the trail type**
 ```
 Graphics */Missile/Missile1 Pass2D GrndTrail PointNumber 5000
 ```

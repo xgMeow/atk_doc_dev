@@ -1,18 +1,18 @@
 # Onedv
 
-## 作用
+## Description
 
-设置是否单脉冲
+Set whether to use a single impulse.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Onedv <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置为非单脉冲模式**
+::: details open **Set to non-single-impulse mode**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.Onedv false
 ```

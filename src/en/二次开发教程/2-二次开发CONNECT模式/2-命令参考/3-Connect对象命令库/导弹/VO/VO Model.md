@@ -1,25 +1,25 @@
 # VO Model
 
-## 作用
+## Description
 
-设置导弹 3D 模型参数
+Set the missile 3D model parameters.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> Model {Options} 
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---------------- | -------------- |
-| `Show {on \| off}`            | 显示或隐藏3D模型 |
-| `file {"<FilePath>"}`         | 导入模型文件     |
+| `Show {on \| off}`            | Show or hide the 3D model. |
+| `file {"<FilePath>"}`         | Import a model file. |
 
-## 示例
+## Examples
 
-::: details open **显示3D模型**
+::: details open **Show the 3D model**
 ```
 VO */Missile/Missile1 Model Show on
 ```

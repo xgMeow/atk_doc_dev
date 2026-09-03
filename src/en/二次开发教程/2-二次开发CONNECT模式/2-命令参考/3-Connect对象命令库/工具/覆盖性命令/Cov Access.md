@@ -1,26 +1,26 @@
 # Cov Access
 
-## 作用
+## Description
 
-计算并清空单个对象覆盖性计算
+Compute and clear the coverage computation for a single object.
 
-## 语法
+## Syntax
 
 ```atk-command
 Cov <ObjectPath> Access {ComputeOption} [<Parameters>]
 ```
 
-## 参数说明
+## Parameters
 
-| `{ComputeOption} [<Parameters>]` | 说明 |
+| `{ComputeOption} [<Parameters>]` | Description |
 |------|------|
-| `Compute [{TimeInterval} \| UseObjectTimes]` | 计算对象覆盖性 |
-| `Clear` | 清除对象覆盖定义计算 |
-| `ClearAccesses` | 清楚对象所有计算和设置 |
+| `Compute [{TimeInterval} \| UseObjectTimes]` | Computes the object coverage |
+| `Clear` | Clears the object coverage definition computation |
+| `ClearAccesses` | Clears all computations and settings of the object |
 
-## 示例
+## Examples
 
-::: details open **使用时间区间计算对象覆盖性**
+::: details open **Compute the object coverage using a time interval**
 ```
 Cov */Satellite/Satellite1 Access Compute "20 Jun 2024 04:00:00.00" "21 Jun 2024 04:00:00.00"
 ```

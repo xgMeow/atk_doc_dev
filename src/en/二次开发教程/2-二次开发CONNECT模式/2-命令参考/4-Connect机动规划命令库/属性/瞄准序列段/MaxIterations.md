@@ -1,18 +1,18 @@
 # MaxIterations
 
-## 作用
+## Description
 
-设置瞄准段的配置页**最大迭代次数**。
+Set the **maximum number of iterations** of the target sequence segment's profile.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> [{Unit}]
 ```
 
-## 示例
+## Examples
 
-::: details open **设置瞄准段最大迭代次数为 300**
+::: details open **Set the maximum number of iterations of the target sequence segment to 300**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.TargetSequence.Profiles.ShooterProfile.MaxIterations 300
 ```

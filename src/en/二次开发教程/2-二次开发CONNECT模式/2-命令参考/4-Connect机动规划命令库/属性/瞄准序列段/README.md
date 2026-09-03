@@ -1,5 +1,5 @@
 ---
-title: 瞄准序列段
+title: Target Sequence Segment
 index: false
 ---
 

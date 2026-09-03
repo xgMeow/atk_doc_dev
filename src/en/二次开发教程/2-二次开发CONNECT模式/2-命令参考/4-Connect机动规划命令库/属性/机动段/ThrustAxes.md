@@ -1,22 +1,22 @@
 # ThrustAxes
 
-## 作用
+## Description
 
-设置推力坐标轴
+Sets the thrust axes.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.ThrustAxes <Value>
 ```
 
-::: info 注意
-获得此属性值暂不支持
+::: info Note
+Getting this attribute value is not supported yet.
 :::
 
-## 示例
+## Examples
 
-::: details open **设置推力坐标轴为 VNC(Earth)**
+::: details open **Set the Thrust Axes to VNC(Earth)**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.ThrustAxes "Satellite/Satellite1 VNC(Earth)"
 ```

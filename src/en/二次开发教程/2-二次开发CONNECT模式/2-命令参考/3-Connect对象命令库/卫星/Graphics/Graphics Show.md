@@ -1,18 +1,18 @@
 # Graphics Show
 
-## 作用
+## Description
 
-设置卫星是否在窗口显示。
+Sets whether the satellite is displayed in the window.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Show {On | Off}
 ```
 
-## 示例
+## Examples
 
-::: details open **设置卫星是否在窗口显示**
+::: details open **Set Whether the Satellite Is Displayed in the Window**
 ```
 Graphics */Satellite/Satellite1 Show Off
 ```

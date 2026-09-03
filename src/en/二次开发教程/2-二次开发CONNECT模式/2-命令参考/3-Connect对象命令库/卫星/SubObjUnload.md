@@ -1,18 +1,18 @@
 # SubObjUnload
 
-## 作用
+## Description
 
-删除子对象。
+Deletes a child object.
 
-## 语法
+## Syntax
 
 ```atk-command
 SubObjUnload <ObjectPath>
 ```
 
-## 示例
+## Examples
 
-::: details open **删除子对象**
+::: details open **Delete a Child Object**
 ```
 SubObjUnload */Satellite/Satellite1
 ```

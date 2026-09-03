@@ -1,30 +1,30 @@
 # AccessMulti Objects
 
-## 作用
+## Description
 
-指定批量可见性计算的**目标对象**（被观测者），可同时指定多个。
+Specify the **target objects** (observed objects) for batch visibility computation. Multiple objects can be specified at the same time.
 
-## 语法
+## Syntax
 
 ```atk-command
 AccessMulti / Objects <CovObjectPath> <CovObjectPath> …
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `<CovObjectPath>` | 可见性对象的路径，可指定多个 |
+| `<CovObjectPath>` | Path of the visibility object; multiple objects can be specified |
 
-## 补充说明
+## Additional Notes
 
-- 本命令是 AccessMulti 框架的**配置步骤**，用于指定"观测什么"。
-- 目标对象（Objects）通常是地面设施、飞行器等被观测的实体。
-- 配合使用：`AccessMulti / Assets` 指定来源，`AccessMulti / Access Compute` 执行计算。
+- This command is the **configuration step** of the AccessMulti framework, used to specify "what to observe".
+- Target objects (Objects) are usually the observed entities, such as ground facilities and aircraft.
+- Used together: `AccessMulti / Assets` specifies the sources, and `AccessMulti / Access Compute` executes the computation.
 
-## 示例
+## Examples
 
-::: details open **同时选择多个目标对象进行可见性分析。**
+::: details open **Select multiple target objects for visibility analysis at the same time.**
 
 ```
 AccessMulti / objects */Facility/Target1 */Facility/Target2 */Facility/Target3

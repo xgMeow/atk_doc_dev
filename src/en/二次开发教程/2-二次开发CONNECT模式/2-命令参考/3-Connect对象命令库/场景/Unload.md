@@ -1,22 +1,22 @@
 # Unload
 
-## 作用
+## Description
 
-移除一个场景或者一个对象
+Removes a scenario or an object.
 
-## 语法
+## Syntax
 
 ```atk-command
 Unload <ApplicationPath> <ObjectPath> [RemAssignedObjs]
 ```
 
-## 补充说明
+## Additional Notes
 
-- 命令会从场景移除此对象及他的子对象。对象文件不会从系统删除。
+- The command removes the object and its sub-objects from the scenario. The object file is not deleted from the system.
 
-## 示例
+## Examples
 
-::: details open **移除当前场景**
+::: details open **Remove the current scenario**
 
 ```
 Unload / *

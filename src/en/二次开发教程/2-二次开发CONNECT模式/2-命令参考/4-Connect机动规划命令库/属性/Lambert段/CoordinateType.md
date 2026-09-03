@@ -1,22 +1,22 @@
 # CoordinateType
 
-## 作用
+## Description
 
-设置坐标类型
+Set the coordinate type.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.CoordinateType {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `{Value}` 包括 `"Cartesian"`、`"ModifiedKeplerian"` 和 `"Keplerian"`
+- `{Value}` includes `"Cartesian"`, `"ModifiedKeplerian"`, and `"Keplerian"`.
 
-## 示例
+## Examples
 
-::: details open **设置坐标类型为 Cartesian**
+::: details open **Set the coordinate type to Cartesian**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.CoordinateType "Cartesian"
 ```

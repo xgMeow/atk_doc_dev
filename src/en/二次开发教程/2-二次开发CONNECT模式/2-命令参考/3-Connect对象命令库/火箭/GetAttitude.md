@@ -1,24 +1,24 @@
 # GetAttitude
 
-## 作用
+## Description
 
-获得火箭的姿态类型
+Obtain the launch vehicle attitude type.
 
-## 语法
+## Syntax
 
 ```atk-command
 GetAttitude <ObjectPath> {AttOption}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `AttOption` | 可选 `Profile ConnectName` 或 `Profile LongName` |
+| `AttOption` | Can be `Profile ConnectName` or `Profile LongName`. |
 
-## 示例
+## Examples
 
-::: details open **获取火箭姿态类型**
+::: details open **Obtain the launch vehicle attitude type**
 ```
 GetAttitude */LaunchVehicle/LaunchVehicle1 Profile LongName
 ```

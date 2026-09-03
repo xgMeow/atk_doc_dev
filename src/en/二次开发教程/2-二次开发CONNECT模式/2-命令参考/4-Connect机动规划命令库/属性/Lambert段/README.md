@@ -1,5 +1,5 @@
 ---
-title: Lambert段
+title: Lambert Segment
 index: false
 ---
 

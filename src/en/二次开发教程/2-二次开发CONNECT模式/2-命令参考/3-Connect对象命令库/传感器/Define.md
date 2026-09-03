@@ -1,20 +1,20 @@
 ---
-description: 定义传感器类型及其参数，支持矩形、简单锥形、半功率等多种传感器模式配置。
+description: Defines the sensor type and its parameters, supporting multiple sensor mode configurations such as Rectangular, Simple Cone, and Half Power.
 ---
 
 # Define
 
-## 作用
+## Description
 
-设置传感器类型及其参数。
+Sets the sensor type and its parameters.
 
-## 语法
+## Syntax
 
 ```atk-command
 Define <SensorObjectPath> {Type} <TypeData>
 ```
 
-## 参数说明
+## Parameters
 
 | Type        | TypeData                                                                                                                                    |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -24,13 +24,13 @@ Define <SensorObjectPath> {Type} <TypeData>
 | Conical     | `<InnerConeHalfAngle> <OuterConeHalfAngle> <MinClockAngle> <MaxClockAngle>`                                                                 |
 | SAR         | `<MinElevationAngle> <MaxElevationAngle> <ForwardExclusionAngle> <AftExclusionAngle> {<ParentAltitude> \| TrackParentAltitude {On \| Off}}` |
 
-::: warning 注意
-输入角度值默认单位为度。
+::: warning Note
+The default unit for input angle values is degrees.
 :::
 
-## 示例
+## Examples
 
-::: details open **定义传感器**
+::: details open **Define a Sensor**
 ```
 Define */Satellite/Satellite1/Sensor/Sensor1 Rectangular 25.1 36.8
 ```

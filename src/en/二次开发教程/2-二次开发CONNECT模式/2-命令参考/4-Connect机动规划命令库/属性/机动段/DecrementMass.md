@@ -1,22 +1,22 @@
 # DecrementMass
 
-## 作用
+## Description
 
-设置是否根据推进剂消耗更新质量
+Sets whether to update the mass based on propellant consumption.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.DecrementMass {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Value` 包括属性 `true` 和 `false`
+- `Value` includes `true` and `false`.
 
-## 示例
+## Examples
 
-::: details open **启用推进剂消耗质量更新**
+::: details open **Enable Mass Update Based on Propellant Consumption**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.DecrementMass true
 ```

@@ -1,16 +1,16 @@
 # WalkerDelta
 
-## 作用
+## Description
 
-创建 WalkerDelta 星座。
+Creates a WalkerDelta constellation.
 
-## 语法
+## Syntax
 
 ```atk-command
 WalkerDelta / {WalkerDeltaOptions} [{AdditionalOptions}]
 ```
 
-## 参数说明
+## Parameters
 
 | `WalkerDeltaOptions` | `Options` |
 | --- | --- |
@@ -20,15 +20,15 @@ WalkerDelta / {WalkerDeltaOptions} [{AdditionalOptions}]
 | `RAANSpread` | `<Value>` |
 | `ColorByPlane` | `{Yes \| No}` |
 
-## 示例
+## Examples
 
-::: details open **创建 WalkerDelta 星座（使用已有卫星）**
+::: details open **Create a WalkerDelta Constellation (Using an Existing Satellite)**
 ```
 WalkerDelta */Satellite/Satellite1 NumPlanes 2 NumSatsPerPlane 11 InterPlanePhaseIncrement 1 RAANSpread 360 ColorByPlane Yes
 ```
 :::
 
-::: details open **创建 WalkerDelta 星座（直接创建新卫星）**
+::: details open **Create a WalkerDelta Constellation (Create New Satellites Directly)**
 ```
 WalkerDelta / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TureAnomaly 180 NumPlanes 2 NumSatsPerPlane 8 InterPlanePhaseIncrement 1 RAANSpread 360 ColorByPlane Yes
 ```

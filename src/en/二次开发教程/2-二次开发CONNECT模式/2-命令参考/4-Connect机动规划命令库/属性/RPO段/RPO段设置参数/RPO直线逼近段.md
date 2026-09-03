@@ -1,29 +1,29 @@
-# RPO直线逼近段
+# RPO Straight-Line Approach Segment
 
-## 作用
+## Description
 
-设置 `RPOFMW` 段属性
+Set the attributes of the `RPOFMW` segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
-| `Waypoint_Radial` | 数据类型：m，范围：`[-100000,100000]` |
-| `Waypoint_InTrack` | 数据类型：m，范围：`[-100000,100000]` |
-| `Waypoint_CrossTrack` | 数据类型：m，范围：`[0.06,100000]` |
-| `Waypoint_Duration` | 数据类型：sec，范围：`[-100000,100000]` |
-| `Waypoint_MaxDegrees` | 数据类型：rad，范围：`[0.001,360]` |
-| `SolveMethod` | 范围：`[-1,4]` |
+| `Waypoint_Radial` | Data type: m, range: `[-100000,100000]` |
+| `Waypoint_InTrack` | Data type: m, range: `[-100000,100000]` |
+| `Waypoint_CrossTrack` | Data type: m, range: `[0.06,100000]` |
+| `Waypoint_Duration` | Data type: sec, range: `[-100000,100000]` |
+| `Waypoint_MaxDegrees` | Data type: rad, range: `[0.001,360]` |
+| `SolveMethod` | Range: `[-1,4]` |
 
-## 示例
+## Examples
 
-::: details open **设置直线逼近段属性**
+::: details open **Set the attributes of the Straight-Line Approach segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOFMW.Waypoint_Radial 50000
 ```

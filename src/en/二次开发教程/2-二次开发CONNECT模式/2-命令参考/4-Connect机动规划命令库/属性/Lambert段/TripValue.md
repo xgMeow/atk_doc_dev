@@ -1,22 +1,22 @@
 # TripValue
 
-## 作用
+## Description
 
-设置触发值
+Set the trip value.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.TripValue <Value> [{Unit}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Stopping Condition` 目前包括属性 `Duration`、`Epoch`
+- `Stopping Condition` currently includes the properties `Duration` and `Epoch`.
 
-## 示例
+## Examples
 
-::: details open **设置 Duration 停止条件的触发值为 86400 秒**
+::: details open **Set the trip value of the Duration stopping condition to 86400 seconds**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.StoppingConditions.Duration.TripValue 86400 sec
 ```

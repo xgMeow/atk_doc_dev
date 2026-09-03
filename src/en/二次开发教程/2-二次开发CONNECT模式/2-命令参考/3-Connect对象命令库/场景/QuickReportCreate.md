@@ -1,18 +1,18 @@
 # QuickReportCreate
 
-## 作用
+## Description
 
-快捷报告创建
+Creates a quick report.
 
-## 语法
+## Syntax
 
 ```atk-command
 QuickReportCreate <ScenarioPath> "<QuickReportName>"
 ```
 
-## 示例
+## Examples
 
-::: details open **创建快捷报告**
+::: details open **Create a quick report**
 
 ```
 QuickReportCreate * "J2000 Position Velocity"

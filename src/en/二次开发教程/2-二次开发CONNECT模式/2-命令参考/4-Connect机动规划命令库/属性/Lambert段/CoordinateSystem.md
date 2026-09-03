@@ -1,18 +1,18 @@
 # CoordinateSystem
 
-## 作用
+## Description
 
-设置坐标系
+Set the coordinate system.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.CoordinateSystem {Value}
 ```
 
-## 示例
+## Examples
 
-::: details open **设置坐标系为 Moon J2000**
+::: details open **Set the coordinate system to Moon J2000**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.CoordinateSystem "CentralBody/Moon J2000"
 ```

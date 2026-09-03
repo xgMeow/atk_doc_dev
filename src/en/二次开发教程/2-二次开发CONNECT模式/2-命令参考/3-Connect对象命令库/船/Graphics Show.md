@@ -1,18 +1,18 @@
 # Graphics Show
 
-## 作用
+## Description
 
-设置**船是否在窗口显示**。
+Set whether the **ship is shown in the window**.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Show {On | Off}
 ```
 
-## 示例
+## Examples
 
-::: details open **隐藏船模型**
+::: details open **Hide the ship model**
 ```
 Graphics */Ship/Ship1 Show Off
 ```

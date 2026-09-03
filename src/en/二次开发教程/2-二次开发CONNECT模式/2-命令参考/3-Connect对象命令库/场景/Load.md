@@ -1,22 +1,22 @@
 # Load
 
-## 作用
+## Description
 
-打开一个已经存在的场景
+Opens an existing scenario.
 
-## 语法
+## Syntax
 
 ```atk-command
 Load <ApplicationPath> {<ClassPath> | VDF} "<FilePath>"
 ```
 
-## 补充说明
+## Additional Notes
 
-- 已打开其他场景，则不能加载此场景
+- If another scenario is already open, this scenario cannot be loaded.
 
-## 示例
+## Examples
 
-::: details open **加载场景文件**
+::: details open **Load a scenario file**
 
 ```
 Load / Scenario "E:/repo/ATK/Bin/x64/Debug/Scenario1.xml"

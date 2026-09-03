@@ -1,21 +1,21 @@
 ---
-title: 参数值格式
+title: Parameter Value Formats
 index: false
 dir:
     link: false
 ---
 
-# 参数值格式
+# Parameter Value Formats
 
-ATK CONNECT 命令中各占位符参数的具体取值格式参考。在阅读命令文档时，若遇到 `{Color}`、`{TimeInterval}`、`{Dimension}` 等参数标记，可在此查阅对应的填写格式。
+Reference for the concrete value formats of the placeholder parameters used in ATK Connect commands. When reading a command document, if you come across parameter markers such as `{Color}`, `{TimeInterval}` or `{Dimension}`, look up the corresponding input format here.
 
-## 格式参考
+## Format Reference
 
-- **[颜色格式](./颜色格式.md)**：颜色（`{Color}`）的四种输入格式
-- **[线型格式](./线型格式.md)**：线型（`{LineStyle}`）的名称和数字输入格式
-- **[日期时间格式](./日期时间格式.md)**：时间间隔（`{TimeInterval}`）、日期时间（`DateTime`）和相对时间的输入格式
-- **[单位格式](./单位格式.md)**：量纲（`{Dimension}`）与单位（`{Unit}`）的对应关系
+- **[Color Format](./颜色格式.md)**: the four input formats of colors (`{Color}`)
+- **[Line Style Format](./线型格式.md)**: the name and numeric input formats of line styles (`{LineStyle}`)
+- **[Date/Time Format](./日期时间格式.md)**: the input formats of time intervals (`{TimeInterval}`), date/time (`DateTime`) and relative time
+- **[Unit Format](./单位格式.md)**: the correspondence between dimensions (`{Dimension}`) and units (`{Unit}`)
 
-::: tip 相关参考
-命令语法的符号约定（`< >`、`[ ]`、`{ }` 等含义）请参见 [命令语法约定](../1-命令语法约定.html)。
+::: tip Related References
+For the symbol conventions of the command syntax (the meanings of `< >`, `[ ]`, `{ }` and so on), see [Command Syntax Conventions](../1-命令语法约定.html).
 :::

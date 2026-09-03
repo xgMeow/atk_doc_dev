@@ -1,18 +1,18 @@
 # Waypoints
 
-## 作用
+## Description
 
-清空**飞机航线**。
+Clear the **aircraft route**.
 
-## 语法
+## Syntax
 
 ```atk-command
 Waypoints <VehObjectPath> Clear
 ```
 
-## 示例
+## Examples
 
-::: details open **清空飞机航线**
+::: details open **Clear the aircraft route**
 ```
 Waypoints */Aircraft/Aircraft1 Clear
 ```

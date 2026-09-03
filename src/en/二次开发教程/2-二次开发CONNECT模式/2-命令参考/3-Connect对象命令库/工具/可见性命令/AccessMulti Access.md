@@ -1,34 +1,34 @@
 # AccessMulti Access
 
-## 作用
+## Description
 
-清空之前的可见性计算结果，基于当前配置重新批量计算对象可见性。
+Clear previous visibility computation results and recompute object visibility in batch based on the current configuration.
 
-## 语法
+## Syntax
 
 ```atk-command
 AccessMulti / Access Compute [{TimeInterval} | UseObjectTimes]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `{TimeInterval}` | 计算可见性的时间区间 |
-| `UseObjectTimes` | 使用对象自身的时间设置 |
+| `{TimeInterval}` | Time interval of the visibility computation |
+| `UseObjectTimes` | Use the object's own time settings |
 
-## 补充说明
+## Additional Notes
 
-- 本命令是 AccessMulti 框架的**执行步骤**，调用前需先通过以下子命令完成配置：
-  - `AccessMulti / Assets` — 指定来源对象（观测者，如卫星传感器）
-  - `AccessMulti / Objects` — 指定目标对象（被观测者，如地面设施）
+- This command is the **execution step** of the AccessMulti framework. Before calling it, you must first complete the configuration with the following sub-commands:
+  - `AccessMulti / Assets` — specifies the source objects (observers, such as satellite sensors)
+  - `AccessMulti / Objects` — specifies the target objects (observed objects, such as ground facilities)
 
-- 每次执行会**清空**之前的可见性结果，再基于当前配置的 Assets、Objects、Interval 重新计算。
-- 工作流程为**先配置，后计算**，适合需要批量处理大量对象对的场景。
+- Each execution **clears** the previous visibility results and then recomputes them based on the currently configured Assets, Objects, and Interval.
+- The workflow is **configure first, compute later**, which is suitable for scenarios that require batch-processing a large number of object pairs.
 
-## 示例
+## Examples
 
-::: details open **配置完成后，计算指定时间区间内的对象可见性。**
+::: details open **After the configuration is complete, compute the object visibility within the specified time interval.**
 
 ```
 AccessMulti / Access Compute "26 Sep 2035 12:00:00.00" "28 Sep 2035 12:00:00.00"

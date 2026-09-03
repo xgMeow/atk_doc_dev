@@ -1,69 +1,69 @@
 # VOAttitudeView
 
-## 作用
+## Description
 
-设置卫星姿态球属性。
+Sets the attitude sphere attributes of the satellite.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> AttitudeView {AttitudeViewOption} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-::: details 详细说明（点击展开）
+::: details Detailed Description (click to expand)
 
 | `AttitudeViewOption` | `Parameters` |
 | --- | --- |
 | `Sphere` | `{SphereOption1} <Value1> [{SphereOption2} <Value2> ...]` |
 | `Projection` | `{ProjectionOption1} <Value1> [{ProjectionOption2} <Value2> ...]` |
 
-- 如果 `AttitudeViewOption` 输入的是 `Sphere`，那么 `SphereOption` 可得属性有：
+- If `AttitudeViewOption` is `Sphere`, the available `SphereOption` attributes are:
 
-| `SphereOption` | `Value` | 说明 |
+| `SphereOption` | `Value` | Description |
 | --- | --- | --- |
-| `Show` | `{On \| Off}` | 姿态球是否显示 |
-| `SphereColor` | `{Color}` | 颜色设置请参考[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `ZeroDegColor` | `{Color}` | 设置零度颜色，颜色设置请参考[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `ZeroDegLineWidth` | `<Value>` | 设置零度线宽，范围 `1-10` |
-| `GridLineWidth` | `<Value>` | 设置线宽，范围 `1-10` |
-| `Frame` | `"Type Axes {CrdnDefOptions}"` | `CrdnDefOptions` 可输入内容请查看下方表格 |
-| `Scale` | `<Value>` | 设置比例，范围 `0-30` |
+| `Show` | `{On \| Off}` | Whether the attitude sphere is shown |
+| `SphereColor` | `{Color}` | For color settings, see [Common Graphics Formats](../../../2-参数值格式/颜色格式.md) |
+| `ZeroDegColor` | `{Color}` | Sets the zero-degree color. For color settings, see [Common Graphics Formats](../../../2-参数值格式/颜色格式.md) |
+| `ZeroDegLineWidth` | `<Value>` | Sets the zero-degree line width. Range `1-10` |
+| `GridLineWidth` | `<Value>` | Sets the line width. Range `1-10` |
+| `Frame` | `"Type Axes {CrdnDefOptions}"` | For the available values of `CrdnDefOptions`, see the table below |
+| `Scale` | `<Value>` | Sets the scale. Range `0-30` |
 
-- 如果 `SphereOption` 输入的是 `Frame`，那么 `{CrdnDefOptions}` 可设置属性有：
+- If `SphereOption` is `Frame`, the following `{CrdnDefOptions}` attributes can be set:
 
-| `CrdnDefOptions` | `<CrdnDefValue>` | 说明 |
+| `CrdnDefOptions` | `<CrdnDefValue>` | Description |
 | --- | --- | --- |
-| `Name` | `<NameOfAxes>` | Axes 的名称 |
-| `CBName` | `<NameOfCentralBody>` | 中心天体名称 |
-| `ObjectPath` | `<ObjectPath>` | 对象路径，例 `Satellite/Satellite2` |
+| `Name` | `<NameOfAxes>` | The name of the Axes |
+| `CBName` | `<NameOfCentralBody>` | The name of the central body |
+| `ObjectPath` | `<ObjectPath>` | The object path, e.g. `Satellite/Satellite2` |
 
-::: tip 注意
-- 不输入 CBName 和 ObjectPath，Name 默认为当前对象 Axes。
+::: tip Note
+- If `CBName` and `ObjectPath` are not entered, `Name` defaults to the Axes of the current object.
 :::
 
-- 如果 `AttitudeViewOption` 输入的是 `Projection`，那么 `ProjectionOption` 可得属性有：
+- If `AttitudeViewOption` is `Projection`, the available `ProjectionOption` attributes are:
 
-| `ProjectionOption` | `Value` | 说明 |
+| `ProjectionOption` | `Value` | Description |
 | --- | --- | --- |
-| `Name` | `<CBName>` | 目前仅包括 Sun 和 Moon |
-| `Show` | `{On \| Off}` | 需要输入投影名称，才会设置是否显示 |
-| `ShowLabel` | `{On \| Off}` | 需要输入投影名称，才会设置标签是否显示 |
-| `Color` | `{Color}` | 颜色设置请查看[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `PointSize` | `<Value>` | 设置点大小 |
+| `Name` | `<CBName>` | Currently only includes Sun and Moon |
+| `Show` | `{On \| Off}` | The projection name must be entered before the visibility can be set |
+| `ShowLabel` | `{On \| Off}` | The projection name must be entered before whether the label is shown can be set |
+| `Color` | `{Color}` | For color settings, see [Common Graphics Formats](../../../2-参数值格式/颜色格式.md) |
+| `PointSize` | `<Value>` | Sets the point size |
 
 :::
 
-## 示例
+## Examples
 
-::: details open **设置卫星姿态球投影属性**
+::: details open **Set the Projection Attributes of the Satellite Attitude Sphere**
 ```
 VO */Satellite/Satellite1 AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6 Frame "Type Axes ObjectPath Satellite/Satellite2 Name Fixed"
 ```
 :::
 
-::: details open **设置卫星姿态球 Sphere 属性**
+::: details open **Set the Sphere Attributes of the Satellite Attitude Sphere**
 ```
 VO */Satellite/Satellite1 AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
 ```

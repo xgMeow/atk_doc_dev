@@ -1,22 +1,22 @@
 # Tolerance
 
-## 作用
+## Description
 
-设置误差
+Set the tolerance.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{StoppingCondition}.Tolerance <Value> [{Unit}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Stopping Condition` 目前包括属性 `Duration`、`Epoch`
+- `Stopping Condition` currently includes the properties `Duration` and `Epoch`.
 
-## 示例
+## Examples
 
-::: details open **设置 Duration 停止条件的误差为 0.0000001 秒**
+::: details open **Set the tolerance of the Duration stopping condition to 0.0000001 seconds**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.StoppingConditions.Duration.Tolerance 0.0000001 sec
 ```

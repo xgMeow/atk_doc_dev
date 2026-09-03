@@ -1,18 +1,18 @@
 # VO ScaleLog
 
-## 作用
+## Description
 
-设置车辆 3D 模型 log 比例。
+Set the ground vehicle 3D model log scale.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ScaleLog <Value>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置模型 Log 比例**
+::: details open **Set the model log scale**
 ```
 VO */GroundVehicle/GroVeh1 ScaleLog 3
 ```

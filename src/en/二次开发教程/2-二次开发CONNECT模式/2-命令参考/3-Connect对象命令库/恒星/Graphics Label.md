@@ -1,24 +1,24 @@
 # Graphics Label
 
-## 作用
+## Description
 
-设置恒星标签属性
+Sets the star label attributes.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Label {Options}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Show {on \| off}` | 显示或隐藏标签 |
+| `Show {on \| off}` | Shows or hides the label |
 
-## 示例
+## Examples
 
-::: details open **显示恒星标签**
+::: details open **Show the star label**
 ```
 Graphics */Star/Star1 Label Show on
 ```

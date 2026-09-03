@@ -1,24 +1,24 @@
 # TripValue
 
-## 作用
+## Description
 
-设置触发值
+Sets the trip value.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.TripValue <Value> [{Unit}]
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Stopping Condition` | `Altitude`、`Argument_of_Latitude`（设置属性使用 `ArgLat`）、`Duration`、`Epoch`、`Longitude`、`Latitude`、`Mean_Anomaly`、`Periapsis`、`R_Magnitude`、`True_Anomaly`、`StateCalc` |
+| `Stopping Condition` | `Altitude`, `Argument_of_Latitude` (use `ArgLat` to set the property), `Duration`, `Epoch`, `Longitude`, `Latitude`, `Mean_Anomaly`, `Periapsis`, `R_Magnitude`, `True_Anomaly`, and `StateCalc` |
 
-## 示例
+## Examples
 
-::: details open **设置 Duration 停止条件的触发值**
+::: details open **Set the trip value of the Duration stopping condition**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.Duration.TripValue 86400 sec
@@ -26,7 +26,7 @@ Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Stopp
 
 :::
 
-::: details open **设置 Duration 加入条件的触发值**
+::: details open **Set the trip value of the Duration joining condition**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.Duration.TripValue 86400 sec

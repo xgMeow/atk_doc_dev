@@ -1,5 +1,5 @@
 ---
-title: Connect对象命令库
+title: Connect Object Command Library
 index: false
 dir:
     link: false

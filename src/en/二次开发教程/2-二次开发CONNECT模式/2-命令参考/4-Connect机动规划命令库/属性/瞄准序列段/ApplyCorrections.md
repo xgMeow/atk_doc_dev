@@ -1,18 +1,18 @@
 # ApplyCorrections
 
-## 作用
+## Description
 
-设置指定瞄准段配置**应用修改**。
+Apply changes to the specified profile of the target sequence segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> ApplyCorrections <Attribute Path>
 ```
 
-## 示例
+## Examples
 
-::: details open **应用指定瞄准段配置修改**
+::: details open **Apply the specified target sequence segment profile changes**
 ```
 Astrogator */Satellite/Satellite1 ApplyCorrections MainSequence.SegmentList.Target_Sequence
 ```

@@ -1,16 +1,16 @@
 # Rosette
 
-## 作用
+## Description
 
-创建 Rosette 星座。
+Creates a Rosette constellation.
 
-## 语法
+## Syntax
 
 ```atk-command
 Rosette / {RosetteOptions} [{AdditionalOptions}]
 ```
 
-## 参数说明
+## Parameters
 
 | `WalkerCustomOptions` | `Options` |
 | --- | --- |
@@ -19,15 +19,15 @@ Rosette / {RosetteOptions} [{AdditionalOptions}]
 | `Molecule` | `<Value>` |
 | `ColorByPlane` | `{Yes \| No}` |
 
-## 示例
+## Examples
 
-::: details open **创建 Rosette 星座（使用已有卫星）**
+::: details open **Create a Rosette Constellation (Using an Existing Satellite)**
 ```
 Rosette */Satellite/Satellite1 NumPlanes 20 TotalNumSats 20 Molecule 1 ColorByPlane Yes
 ```
 :::
 
-::: details open **创建 Rosette 星座（直接创建新卫星）**
+::: details open **Create a Rosette Constellation (Create New Satellites Directly)**
 ```
 Rosette / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TureAnomaly 180  
 NumPlanes 20 TotalNumSats 20 Molecule 1 ColorByPlane Yes

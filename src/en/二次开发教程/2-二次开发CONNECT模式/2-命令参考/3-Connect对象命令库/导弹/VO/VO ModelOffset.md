@@ -1,28 +1,28 @@
 # VO ModelOffset
 
-## 作用
+## Description
 
-设置导弹 3D 模型标签偏移量
+Set the missile 3D model label offset.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> ModelOffset {OffsetOption} {On | Off} [<X> <Y> <Z>]
 ```
 
-## 补充说明
+## Additional Notes
 
-- 目前 `{OffsetOption}` 包括属性 `Label` 和 `Translational`
+- Currently `{OffsetOption}` includes the attributes `Label` and `Translational`.
 
-## 示例
+## Examples
 
-::: details open **设置标签偏移**
+::: details open **Set the label offset**
 ```
 VO */Missile/Missile1 ModelOffset Label On 10 20 30
 ```
 :::
 
-::: details open **关闭平移偏移**
+::: details open **Turn off the translational offset**
 ```
 VO */Missile/Missile1 ModelOffset Translational off
 ```

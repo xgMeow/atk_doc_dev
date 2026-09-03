@@ -1,28 +1,28 @@
-# RPO 单次跳跃段
+# RPO Single Hop Segment
 
-## 作用
+## Description
 
-设置 `RPOHop` 段属性
+Set the attributes of the `RPOHop` segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
-| `Desired_Radial` | 数据类型：m，范围：`[-100000,100000]` |
-| `Desired_InTrack` | 数据类型：m，范围：`[-100000,100000]` |
-| `Desired_CrossTrack` | 数据类型：m，范围：`[-100000,100000]` |
-| `Hop_Duration` | 数据类型：sec，范围：`[0.001,86400]` |
-| `SolveMethod` | 范围：`[-1,4]` |
+| `Desired_Radial` | Data type: m, range: `[-100000,100000]` |
+| `Desired_InTrack` | Data type: m, range: `[-100000,100000]` |
+| `Desired_CrossTrack` | Data type: m, range: `[-100000,100000]` |
+| `Hop_Duration` | Data type: sec, range: `[0.001,86400]` |
+| `SolveMethod` | Range: `[-1,4]` |
 
-## 示例
+## Examples
 
-::: details open **设置单次跳跃段属性**
+::: details open **Set the attributes of the Single Hop segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOHop.Desired_Radial 50000
 ```

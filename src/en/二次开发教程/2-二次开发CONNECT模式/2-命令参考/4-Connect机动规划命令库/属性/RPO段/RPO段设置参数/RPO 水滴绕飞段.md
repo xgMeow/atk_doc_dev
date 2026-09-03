@@ -1,29 +1,29 @@
-# RPO 水滴绕飞段
+# RPO Tear Drop Circumnavigation Segment
 
-## 作用
+## Description
 
-设置 `RPOTearDrop` 段属性
+Set the attributes of the `RPOTearDrop` segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
-| `NumCircles` | 范围：`[0,1000]` |
-| `TearDrop_TurnAround` | 数据类型：m，范围：`[-100000,100000]` |
-| `TearDrop_Maneuver` | 数据类型：m，范围：`[-100000,100000]` |
-| `Transfer_Duration` | 数据类型：sec，范围：`[0.001,86400]` |
-| `Way_MaxDegrees` | 数据类型：rad，范围：`[0.001,360]` |
-| `SolveMethod` | 范围：`[-1,4]` |
+| `NumCircles` | Range: `[0,1000]` |
+| `TearDrop_TurnAround` | Data type: m, range: `[-100000,100000]` |
+| `TearDrop_Maneuver` | Data type: m, range: `[-100000,100000]` |
+| `Transfer_Duration` | Data type: sec, range: `[0.001,86400]` |
+| `Way_MaxDegrees` | Data type: rad, range: `[0.001,360]` |
+| `SolveMethod` | Range: `[-1,4]` |
 
-## 示例
+## Examples
 
-::: details open **设置水滴绕飞段属性**
+::: details open **Set the attributes of the Tear Drop Circumnavigation segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOTearDrop.NumCircles 500
 ```

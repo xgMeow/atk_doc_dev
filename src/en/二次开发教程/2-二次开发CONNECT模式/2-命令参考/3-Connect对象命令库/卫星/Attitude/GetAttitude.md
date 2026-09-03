@@ -1,24 +1,24 @@
 # GetAttitude
 
-## 作用
+## Description
 
-获得卫星的姿态类型。
+Gets the attitude type of the satellite.
 
-## 语法
+## Syntax
 
 ```atk-command
 GetAttitude <ObjectPath> {AttOption}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `AttOption` | 包括属性为 `Profile ConnectName`、`Profile LongName` |
+| `AttOption` | Includes the attributes `Profile ConnectName`, `Profile LongName` |
 
-## 示例
+## Examples
 
-::: details open **获得卫星的姿态类型**
+::: details open **Get the Attitude Type of the Satellite**
 ```
 GetAttitude */Satellite/Satellite1 Profile LongName
 ```

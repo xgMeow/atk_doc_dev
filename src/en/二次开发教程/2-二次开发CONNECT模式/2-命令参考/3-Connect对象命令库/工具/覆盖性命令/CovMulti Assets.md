@@ -1,18 +1,18 @@
 # CovMulti Assets
 
-## 作用
+## Description
 
-覆盖性选择多个目标对象
+Select multiple target objects for coverage computation.
 
-## 语法
+## Syntax
 
 ```atk-command
 CovMulti / Assets < AssetObjectPath > < AssetObjectPath > …
 ```
 
-## 示例
+## Examples
 
-::: details open **选择多个目标对象进行覆盖性计算**
+::: details open **Select multiple target objects for coverage computation**
 ```
 CovMulti / Assets */Satellite/Satellite1/Sensor/Sensor1 */Satellite/Satellite2/Sensor/Sensor1 */Satellite/Satellite3/Sensor/Sensor1
 ```

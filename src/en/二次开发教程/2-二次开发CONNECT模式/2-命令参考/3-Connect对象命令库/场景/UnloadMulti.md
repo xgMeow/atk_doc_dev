@@ -1,22 +1,22 @@
 # UnloadMulti
 
-## 作用
+## Description
 
-从当前场景移除一个或多个对象及他的子对象
+Removes one or more objects and their sub-objects from the current scenario.
 
-## 语法
+## Syntax
 
 ```atk-command
 UnloadMulti <ApplicationPath> <ObjectPath>
 ```
 
-## 补充说明
+## Additional Notes
 
-- 此命令可以使用 `*` 设置 `ObjectPath` 代替完整的名字，所有匹配的对象均会被删除。除此之外和 `Unload` 命令使用方法相同
+- This command can use `*` in `ObjectPath` instead of the full name; all matching objects are removed. Otherwise, it is used in the same way as the `Unload` command.
 
-## 示例
+## Examples
 
-::: details open **移除指定对象**
+::: details open **Remove the specified object**
 
 ```
 UnloadMulti / */Facility/Fac1
@@ -24,7 +24,7 @@ UnloadMulti / */Facility/Fac1
 
 :::
 
-::: details open **使用通配符移除多个对象**
+::: details open **Remove multiple objects using a wildcard**
 
 ```
 UnloadMulti / */Facility/Fac*

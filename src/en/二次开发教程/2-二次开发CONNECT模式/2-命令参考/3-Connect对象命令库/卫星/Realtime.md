@@ -1,42 +1,42 @@
 # Realtime
 
-## 作用
+## Description
 
-设置 Realtime 预报器相关属性。
+Sets attributes related to the Realtime propagator.
 
-## 语法
+## Syntax
 
 ```atk-command
 RealTime <VehObjectPath> {RealTimeOption} [<Parameters>]
 ```
 
-## 参数说明
+## Parameters
 
-| `{RealTimeOption}` | `[<Parameters>]` | 说明 |
+| `{RealTimeOption}` | `[<Parameters>]` | Description |
 | --- | --- | --- |
-| `SetProp` | | 是指预报器为 Realtime 预报器 |
-| `SetLookAhead` | `{PropType} <Duration> <TimeStep> <TimeOutGap>` | 设置持续状态 |
-| `SetHistory` | `<Duration> <InterpOrder>` | 设置历史状态 |
+| `SetProp` | | Indicates that the propagator is a Realtime propagator |
+| `SetLookAhead` | `{PropType} <Duration> <TimeStep> <TimeOutGap>` | Sets the look-ahead state |
+| `SetHistory` | `<Duration> <InterpOrder>` | Sets the history state |
 
-### `SetLookAhead` 参数
+### `SetLookAhead` Parameters
 
-| `<Parameter>` | 说明 |
+| `<Parameter>` | Description |
 | --- | --- |
-| `{PropType}` | 预报类型 |
-| `<Duration>` | 持续时间 |
-| `<TimeStep>` | 步长 |
-| `<TimeOutGap>` | 指定预览值 |
+| `{PropType}` | Propagation type |
+| `<Duration>` | Duration |
+| `<TimeStep>` | Time step |
+| `<TimeOutGap>` | Specifies the preview value |
 
-### `SetHistory` 参数
+### `SetHistory` Parameters
 
-| `<Parameter>` | 说明 |
+| `<Parameter>` | Description |
 | --- | --- |
-| `<Duration>` | 历史持续时间 |
-| `<InterpOrder>` | 插值 |
+| `<Duration>` | History duration |
+| `<InterpOrder>` | Interpolation order |
 
-## 示例
+## Examples
 
-::: details open **设置 Realtime 预报器属性**
+::: details open **Set Realtime Propagator Attributes**
 ```
 Realtime */Satellite/Satellite1 SetLookAhead J2Perturbation 1800 60 240
 ```

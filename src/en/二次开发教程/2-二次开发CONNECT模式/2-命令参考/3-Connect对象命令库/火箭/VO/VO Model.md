@@ -1,25 +1,25 @@
 # VO Model
 
-## 作用
+## Description
 
-设置火箭 3D 模型属性
+Set the launch vehicle 3D model properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> Model {Option1} <Value1> [{Option2} <Value2>]...
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 取值 | 说明 |
+| Parameter | Value | Description |
 |------|------|------|
-| `Show` | `{On \| Off}` | 是否显示模型 |
-| `File` | `<ModelFile>` | 模型文件路径 |
+| `Show` | `{On \| Off}` | Specifies whether the model is displayed. |
+| `File` | `<ModelFile>` | The model file path. |
 
-## 示例
+## Examples
 
-::: details open **设置火箭 3D 模型属性**
+::: details open **Set the launch vehicle 3D model properties**
 ```
 VO */LaunchVehicle/LaunchVehicle1 Model Show Off
 ```

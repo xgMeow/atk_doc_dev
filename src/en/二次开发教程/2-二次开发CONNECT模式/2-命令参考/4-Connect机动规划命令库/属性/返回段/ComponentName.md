@@ -1,22 +1,22 @@
 # ComponentName
 
-## 作用
+## Description
 
-段重命名
+Renames the segment
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.ComponentName <Value>
 ```
 
-::: info 注意
-此属性值暂不支持获取
+::: info Note
+Getting this attribute value is not supported yet
 :::
 
-## 示例
+## Examples
 
-::: details open **设置 ComponentName 属性值**
+::: details open **Set the ComponentName attribute value**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Return.ComponentName abc
 ```

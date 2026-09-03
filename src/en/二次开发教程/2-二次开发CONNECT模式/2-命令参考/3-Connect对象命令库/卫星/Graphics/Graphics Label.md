@@ -1,22 +1,22 @@
 # Graphics Label
 
-## 作用
+## Description
 
-设置卫星标签属性。
+Sets the satellite label attributes.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics <ObjectPath> Label {Options}
 ```
 
-## 参数说明
+## Parameters
 
-- `Show {on | off}`: 显示或隐藏标签
+- `Show {on | off}`: Shows or hides the label
 
-## 示例
+## Examples
 
-::: details open **设置卫星标签属性**
+::: details open **Set Satellite Label Attributes**
 ```
 Graphics */Satellite/Satellite1 Label Show on
 ```

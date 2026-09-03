@@ -1,28 +1,28 @@
 # SetAnimation
 
-## 作用
+## Description
 
-操控仿真状态
+Controls the simulation state.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetAnimation <ScenarioPath> {AnimateOption} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| `{AnimateOption}` | `<Parameters>` | 说明 |
+| `{AnimateOption}` | `<Parameters>` | Description |
 | --- | --- | --- |
-| `CurrentTime` | `{TimeInstant}` | 设置当前仿真时间 |
-| `AnimationMode` | `{Normal \| RealTime \| XRealTime}` | 设置仿真模式 |
-| `TimeStep` | `{Increase \| Decrease \| <StepValue>}` | 设置步长模式预报步长增加或减少，可直接输入值 |
-| `RealTimeOffset` | `{Increase \| Decrease \| <OffsetValue>}` | 设置实时模式预报步长增加或减少，可直接输入值 |
-| `XRealTimeMultiplier` | `{Increase \| Decrease \| <MultValue>}` | 设置倍率模式预报步长增加或减少，可直接输入值 |
+| `CurrentTime` | `{TimeInstant}` | Sets the current simulation time |
+| `AnimationMode` | `{Normal \| RealTime \| XRealTime}` | Sets the simulation mode |
+| `TimeStep` | `{Increase \| Decrease \| <StepValue>}` | Sets the time-step mode forecast step to increase or decrease; you can enter a value directly |
+| `RealTimeOffset` | `{Increase \| Decrease \| <OffsetValue>}` | Sets the real-time mode forecast step to increase or decrease; you can enter a value directly |
+| `XRealTimeMultiplier` | `{Increase \| Decrease \| <MultValue>}` | Sets the multiplier mode forecast step to increase or decrease; you can enter a value directly |
 
-## 示例
+## Examples
 
-::: details open **设置仿真模式为倍率模式**
+::: details open **Set the simulation mode to multiplier mode**
 
 ```
 SetAnimation * AnimationMode XRealTime

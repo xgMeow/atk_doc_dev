@@ -1,25 +1,25 @@
 # VO Model
 
-## 作用
+## Description
 
-设置飞机 **3D 模型**属性。
+Set the aircraft **3D model** properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> Model {Option1} <Value1> [{Option2} <Value2>]...
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Show` | `{On \| Off}`：是否显示模型 |
-| `File` | `<ModelFile>`：模型文件路径 |
+| `Show` | `{On \| Off}`: whether to show the model |
+| `File` | `<ModelFile>`: model file path |
 
-## 示例
+## Examples
 
-::: details open **隐藏飞机 3D 模型**
+::: details open **Hide the aircraft 3D model**
 ```
 VO */Aircraft/Aircraft1 Model Show Off
 ```

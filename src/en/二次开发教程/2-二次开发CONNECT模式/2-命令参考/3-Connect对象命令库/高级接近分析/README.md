@@ -1,5 +1,5 @@
 ---
-title: 高级接近分析
+title: Advanced Conjunction Analysis
 index: false
 ---
 

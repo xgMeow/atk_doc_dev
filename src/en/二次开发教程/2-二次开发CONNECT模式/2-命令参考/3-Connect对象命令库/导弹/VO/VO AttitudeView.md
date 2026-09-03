@@ -1,52 +1,52 @@
 # VO AttitudeView
 
-## 作用
+## Description
 
-设置导弹姿态球属性
+Set the missile attitude sphere properties.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> AttitudeView {AttitudeViewOption} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ------------------ | ------------------------------------------------------------ |
 | `Sphere`             | `{SphereOption1} <Value1> [{SphereOption2} <Value2> ...]`      |
 | `Projection`         | `{ProjectionOption1} <Value1> [{ProjectionOption2} <Value2> ...]` |
 
-### Sphere 取值
+### Sphere Values
 
-| 参数 | Value | 说明 |
+| Parameter | Value | Description |
 | ------------------- | ----------- | ---------------------------------------- |
-| `Show`                | `{On \| Off}` | 姿态球是否显示                           |
-| `SphereColor`         | `{Color}`     | 颜色设置请参考[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `ZeroDegLineWidth`    | `<Value>`     | 设置零度线宽，范围 `1 - 10`                |
-| `GridLineWidth`       | `<Value>`     | 设置线宽，范围 `1 - 10`                     |
-| `Frame`               | `"Type Axes {CrdnDefOptions}"` | `CrdnDefOptions` 目前仅包括 `Name Body` 和 `Name J2000` |
-| `Scale`               | `<Value>`                        | 设置比例，范围 `0-30`                                |
+| `Show`                | `{On \| Off}` | Specifies whether the attitude sphere is displayed. |
+| `SphereColor`         | `{Color}`     | For color settings, see [Common Graphic Formats](../../../2-参数值格式/颜色格式.md). |
+| `ZeroDegLineWidth`    | `<Value>`     | Sets the zero-degree line width; range `1 - 10`. |
+| `GridLineWidth`       | `<Value>`     | Sets the line width; range `1 - 10`. |
+| `Frame`               | `"Type Axes {CrdnDefOptions}"` | `CrdnDefOptions` currently only includes `Name Body` and `Name J2000`. |
+| `Scale`               | `<Value>`                        | Sets the scale; range `0-30`. |
 
-### Projection 取值
+### Projection Values
 
-| 参数 | Value | 说明 |
+| Parameter | Value | Description |
 | ---------------- | ----------- | ---------------------------------------- |
-| `Name`             | `<CBName>`    | 目前仅包括 Sun 和 Moon                   |
-| `Show`             | `{On \| Off}` | 需要输入投影名称，才会设置是否显示       |
-| `ShowLabel`        | `{On \| Off}` | 需要输入投影名称，才会设置标签是否显示  |
-| `Color`            | `{Color}`     | 颜色设置请查看[常用图形格式](../../../2-参数值格式/颜色格式.md) |
-| `PointSize`        | `<Value>`     | 设置点大小                               |
+| `Name`             | `<CBName>`    | Currently only includes Sun and Moon. |
+| `Show`             | `{On \| Off}` | The projection name must be entered before the display state can be set. |
+| `ShowLabel`        | `{On \| Off}` | The projection name must be entered before the label display state can be set. |
+| `Color`            | `{Color}`     | For color settings, see [Common Graphic Formats](../../../2-参数值格式/颜色格式.md). |
+| `PointSize`        | `<Value>`     | Sets the point size. |
 
-## 示例
+## Examples
 
-::: details open **设置投影属性**
+::: details open **Set projection properties**
 ```
 VO */Missile/Missile1 AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6
 ```
 :::
 
-::: details open **设置姿态球属性**
+::: details open **Set attitude sphere properties**
 ```
 VO */Missile/Missile1 AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
 ```

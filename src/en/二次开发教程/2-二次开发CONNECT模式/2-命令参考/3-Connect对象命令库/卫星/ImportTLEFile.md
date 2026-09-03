@@ -1,18 +1,18 @@
 # ImportTLEFile
 
-## 作用
+## Description
 
-使用 TLE 文件添加对象。
+Adds objects using a TLE file.
 
-## 语法
+## Syntax
 
 ```atk-command
 ImportTLEFile <ScenarioPath> "<FilePath>"
 ```
 
-## 示例
+## Examples
 
-::: details open **使用 TLE 文件添加对象**
+::: details open **Add Objects Using a TLE File**
 ```
 ImportTLEFile * "C:/Users/A411-2/Desktop/ATK_B/AstroData/Database/Satellite/atkFile8.0/atkAll.tce"
 ```

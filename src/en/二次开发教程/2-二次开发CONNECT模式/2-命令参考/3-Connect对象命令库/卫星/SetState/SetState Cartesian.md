@@ -1,38 +1,38 @@
 # SetState Cartesian
 
-## 作用
+## Description
 
-设置卫星对象 Cartesian 状态。
+Sets the Cartesian state of the satellite object.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetState <VehObjectPath> Cartesian {Propagator} {NoProp | {TimeInterval}} <StepSize> {CoordSystem} "<OrbitEpoch>" <X> <Y> <Z> <vX> <vY> <vZ> ["<CoordEpoch>"]
 ```
 
-## 参数说明
+## Parameters
 
-::: details 详细说明（点击展开）
+::: details Detailed Description (click to expand)
 
-| `Parameters` | 说明 |
+| `Parameters` | Description |
 | --- | --- |
-| `{Propagator}` | 卫星可得属性值为 `TwoBody`, `J2Perturbation`, `J4Perturbation`, `HPOP` 和 `LOP` |
-| `{NoProp \| {TimeInterval}}` | 输入 NoProp 可以设置卫星状态但是不进行预报。输入 TimeInterval 定义卫星预报的开始结束时间段，设置格式请查看[常用日期/时间格式](../../../2-参数值格式/日期时间格式.md) |
-| `<StepSize>` | 输入必须大于等于 0.001 秒 |
-| `{CoordSystem}` | 坐标系可设置为 `ICRF`,`J2000`,`Fixed`, `TrueOfDate`,`MeanOfDate`,`TEMEOfDate` |
-| `"<OrbitEpoch>"` | 请查看[常用日期/时间格式](../../../2-参数值格式/日期时间格式.md) |
-| `<X>`, `<Y>`, `<Z>`, `<vX>`, `<vY>`, `<vZ>` | 输入位置速度参数 |
-| `["<CoordEpoch>"]` | 请查看[常用日期/时间格式](../../../2-参数值格式/日期时间格式.md) |
+| `{Propagator}` | Available values for the satellite: `TwoBody`, `J2Perturbation`, `J4Perturbation`, `HPOP`, and `LOP` |
+| `{NoProp \| {TimeInterval}}` | Entering NoProp sets the satellite state without propagation. Entering TimeInterval defines the start and end time period of the satellite propagation; for format settings, see [Common Date/Time Formats](../../../2-参数值格式/日期时间格式.md) |
+| `<StepSize>` | Must be greater than or equal to 0.001 seconds |
+| `{CoordSystem}` | The coordinate system can be set to `ICRF`, `J2000`, `Fixed`, `TrueOfDate`, `MeanOfDate`, `TEMEOfDate` |
+| `"<OrbitEpoch>"` | See [Common Date/Time Formats](../../../2-参数值格式/日期时间格式.md) |
+| `<X>`, `<Y>`, `<Z>`, `<vX>`, `<vY>`, `<vZ>` | Enter the position and velocity parameters |
+| `["<CoordEpoch>"]` | See [Common Date/Time Formats](../../../2-参数值格式/日期时间格式.md) |
 
 :::
 
-## 补充说明
+## Additional Notes
 
-- 时间设置暂无作用，时间以场景时间为准
+- The time setting currently has no effect; the scenario time prevails
 
-## 示例
+## Examples
 
-::: details open **设置卫星 Cartesian 状态**
+::: details open **Set the Satellite Cartesian State**
 ```
 SetState */Satellite/Satellite1 Cartesian J4Perturbation "1 Nov 2000 00:00:00.00" "1 Nov 2000 08:00:00.00" 60 J2000 "1 Nov 2000 00:00:00.00" -986500 -42152457.0 364.8 3073.7 -0071.9 -0014.9
 ```

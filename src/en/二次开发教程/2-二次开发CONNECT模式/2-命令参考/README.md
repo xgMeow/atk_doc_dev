@@ -1,5 +1,5 @@
 ---
-title: 命令参考
+title: Command Reference
 index: false
 ---
 

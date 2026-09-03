@@ -1,5 +1,5 @@
 ---
-title: 可见性命令
+title: Visibility Commands
 index: false
 ---
 

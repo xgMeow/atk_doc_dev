@@ -1,22 +1,22 @@
 # MaxPropTime
 
-## 作用
+## Description
 
-设置**最大外推时间**，在该时间之后无论是否满足停止条件，段都结束。
+Sets the **maximum propagation time**. After this time, the segment ends regardless of whether a stopping condition is satisfied.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.{Attribute} <Value> [{Unit}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- 设置最大外推时间后，在该最大外推时间之后，无论是否满足停止条件，段都结束。
+- After a maximum propagation time is set, the segment ends once that maximum propagation time is reached, regardless of whether a stopping condition is satisfied.
 
-## 示例
+## Examples
 
-::: details open **设置保持段最大外推时间为 10 天**
+::: details open **Set the Maximum Propagation Time of the Coast Segment to 10 Days**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Hold.MaxPropTime 10 day
 ```

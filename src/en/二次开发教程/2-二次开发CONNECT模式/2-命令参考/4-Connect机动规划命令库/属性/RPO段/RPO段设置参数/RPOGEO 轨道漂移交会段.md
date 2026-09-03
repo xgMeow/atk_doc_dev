@@ -1,33 +1,33 @@
-# RPOGEO 轨道漂移交会段
+# RPOGEO Drifting Rendezvous Segment
 
-## 作用
+## Description
 
-设置 `RPOGEORendezvousDrifting` 段属性
+Set the attributes of the `RPOGEORendezvousDrifting` segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---- | ---- |
-| `Desired_Radial` | 数据类型：m，范围：`[-100000, 100000]` |
-| `Desired_InTrack` | 数据类型：m，范围：`[-100000,100000]` |
-| `Desired_CrossTrack` | 数据类型：m，范围：`[-100000,100000]` |
-| `Desired_RadialRate` | 数据类型：m/sec，范围：`[-1000,1000]` |
-| `Desired_InTrackRate` | 数据类型：m/sec，范围：`[-1000,1000]` |
-| `Desired_CrossTrackRate` | 数据类型：m/sec，范围：`[-1000,1000]` |
-| `Wait_Time` | 数据类型：sec，范围：`[0.001,86400]` |
-| `Rendezvous_Time` | 数据类型：UTCG |
-| `MaxIter` | 范围：`[-1,1000]` |
-| `SolveMethod` | 范围：`[-1,4]` |
+| `Desired_Radial` | Data type: m, range: `[-100000, 100000]` |
+| `Desired_InTrack` | Data type: m, range: `[-100000,100000]` |
+| `Desired_CrossTrack` | Data type: m, range: `[-100000,100000]` |
+| `Desired_RadialRate` | Data type: m/sec, range: `[-1000,1000]` |
+| `Desired_InTrackRate` | Data type: m/sec, range: `[-1000,1000]` |
+| `Desired_CrossTrackRate` | Data type: m/sec, range: `[-1000,1000]` |
+| `Wait_Time` | Data type: sec, range: `[0.001,86400]` |
+| `Rendezvous_Time` | Data type: UTCG |
+| `MaxIter` | Range: `[-1,1000]` |
+| `SolveMethod` | Range: `[-1,4]` |
 
-## 示例
+## Examples
 
-::: details open **设置轨道漂移交会段属性**
+::: details open **Set the attributes of the Drifting Rendezvous segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOGEORendezvousDrifting.Desired_Radial 50000
 ```

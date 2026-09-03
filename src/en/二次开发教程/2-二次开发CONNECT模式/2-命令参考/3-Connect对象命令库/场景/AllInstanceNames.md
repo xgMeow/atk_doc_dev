@@ -1,18 +1,18 @@
 # AllInstanceNames
 
-## 作用
+## Description
 
-在当前场景识别所有对象路径。
+Identify all object paths in the current scenario.
 
-## 语法
+## Syntax
 
 ```atk-command
 AllInstanceNames <ApplicationPath> [IncludeAccess] [<Delimiter>]
 ```
 
-## 示例
+## Examples
 
-::: details open **识别根路径下所有对象**
+::: details open **Identify all objects under the root path**
 ```
 AllInstanceNames /
 ```

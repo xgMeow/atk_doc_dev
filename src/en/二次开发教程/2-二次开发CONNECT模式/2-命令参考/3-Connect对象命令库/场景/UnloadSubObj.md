@@ -1,18 +1,18 @@
 # UnloadSubObj
 
-## 作用
+## Description
 
-删除当前场景所有子对象
+Deletes all sub-objects of the current scenario.
 
-## 语法
+## Syntax
 
 ```atk-command
 UnloadSubObj <ApplicationPath> <ScenarioPath>
 ```
 
-## 示例
+## Examples
 
-::: details open **删除当前场景所有子对象**
+::: details open **Delete all sub-objects of the current scenario**
 
 ```
 UnloadSubObj / *

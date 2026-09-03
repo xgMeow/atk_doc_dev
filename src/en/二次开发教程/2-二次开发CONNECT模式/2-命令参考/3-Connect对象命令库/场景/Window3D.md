@@ -1,25 +1,25 @@
 # Window3D
 
-## 作用
+## Description
 
-创建、移除三维窗口
+Creates or removes a 3D window.
 
-## 语法
+## Syntax
 
 ```atk-command
 Window3D <ScenarioPath> {Window3dOptions}
 ```
 
-## 参数说明
+## Parameters
 
-| `{Window3dOptions}` | 说明 |
+| `{Window3dOptions}` | Description |
 |------|------|
-| `CreateWindow {Normal \| Attitude} [Path <TruncObjectPath>] [Title "<WindowTitle>"]` | 使用默认设置打开一个三维窗口 |
-| `Remove` | 移除一个三维窗口 |
+| `CreateWindow {Normal \| Attitude} [Path <TruncObjectPath>] [Title "<WindowTitle>"]` | Opens a 3D window with default settings |
+| `Remove` | Removes a 3D window |
 
-## 示例
+## Examples
 
-::: details open **创建三维窗口**
+::: details open **Create a 3D window**
 
 ```
 Window3D / CreateWindow Normal

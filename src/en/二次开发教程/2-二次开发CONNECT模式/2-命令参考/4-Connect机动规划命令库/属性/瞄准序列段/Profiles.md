@@ -1,28 +1,28 @@
 # Profiles
 
-## 作用
+## Description
 
-设置瞄准段的**配置页**。
+Set the **profile** of the target sequence segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles <List of Profiles>
 ```
 
-## 补充说明
+## Additional Notes
 
-- 设置瞄准段配置属性前，必须添加属性页。
+- A profile must be added before setting target sequence segment profile properties.
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `List of Profiles` | 可选值：`Differential_Corrector`、`SQP_Optimizer`、`Evolution_Optimizer` |
+| `List of Profiles` | Optional values: `Differential_Corrector`, `SQP_Optimizer`, `Evolution_Optimizer` |
 
-## 示例
+## Examples
 
-::: details open **设置瞄准段配置页为微分修正**
+::: details open **Set the profile of the target sequence segment to Differential Corrector**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.profiles Differential_Corrector
 ```

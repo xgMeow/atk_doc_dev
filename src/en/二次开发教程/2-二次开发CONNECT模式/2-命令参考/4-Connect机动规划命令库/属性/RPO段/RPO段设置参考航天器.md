@@ -1,18 +1,18 @@
-# RPO段设置参考航天器
+# Set the RPO Segment Reference Spacecraft
 
-## 作用
+## Description
 
-设置 `RPO` 段参考航天器
+Set the reference spacecraft of the `RPO` segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Reference <ObjectPath>
 ```
 
-## 示例
+## Examples
 
-::: details open **设置RPO段参考航天器**
+::: details open **Set the reference spacecraft of the RPO segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOExitGEO.Reference "Satellite/Satellite3"
 ```

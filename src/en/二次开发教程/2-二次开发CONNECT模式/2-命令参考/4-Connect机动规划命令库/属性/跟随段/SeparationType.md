@@ -1,24 +1,24 @@
 # SeparationType
 
-## 作用
+## Description
 
-设置分离类型
+Sets the separation type.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.SeparationType {Type}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Type` | `Separate at End of Leader's Ephemeris`、`Specify Separation Conditions` |
+| `Type` | `Separate at End of Leader's Ephemeris` and `Specify Separation Conditions` |
 
-## 示例
+## Examples
 
-::: details open **设置分离类型为 Separate at End of Leader's Ephemeris**
+::: details open **Set the separation type to Separate at End of Leader's Ephemeris**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.SeparationType "Separate at End of Leader's Ephemeris"

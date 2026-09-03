@@ -1,23 +1,23 @@
 ---
-description: 三种语言 SDK 的共性说明。
+description: Common notes shared by the three language SDKs.
 index: false
 ---
 
-# 语言 SDK
+# Language SDK
 
-ATK 为以下三种语言提供了 SDK，用户可在自己的开发环境中引用 ATK 通信库，通过 TCP 网络连接与 ATK 交互：
+ATK provides SDKs for the following three languages. You can reference the ATK communication library in your own development environment and interact with ATK over a TCP network connection:
 
-- **[Python](1-Python/1-简介与配置.md)** — Python 通信库，适合自动化脚本和快速开发
-- **[Matlab](2-Matlab/1-简介与配置.md)** — Matlab 通信库，适配 Matlab R2015b
-- **[C++](3-C++/1-简介与配置.md)** — C++ 库文件，支持 Windows（VS2015~2022）和 Linux
+- **[Python](1-Python/1-简介与配置.md)** — Python communication library, suitable for automation scripts and rapid development
+- **[Matlab](2-Matlab/1-简介与配置.md)** — Matlab communication library, compatible with Matlab R2015b
+- **[C++](3-C++/1-简介与配置.md)** — C++ library files, supporting Windows (VS2015~2022) and Linux
 
-## 共性说明
+## Common Notes
 
-所有语言 SDK 具有以下共同特点：
+All language SDKs share the following common features:
 
-- **通信方式**：通过 TCP 网络连接与 ATK 交互，默认端口 `6655`
-- **核心 API**：均提供 `atkOpen` / `atkConnect` / `atkClose` 三组核心接口
-- **命令格式**：均使用统一的 [CONNECT 命令语法](../../2-命令参考/1-命令语法约定.md)
-- **库文件位置**：均在 ATK 安装包目录 `IntegratingWithATK\connect\` 下对应语言文件夹中
+- **Communication method**: interact with ATK over a TCP network connection, default port `6655`
+- **Core API**: all provide the three core interfaces `atkOpen` / `atkConnect` / `atkClose`
+- **Command format**: all use the unified [Connect command syntax](../../2-命令参考/1-命令语法约定.md)
+- **Library file location**: all are in the corresponding language folder under the `IntegratingWithATK\connect\` directory of the ATK installation package
 
 <Catalog />

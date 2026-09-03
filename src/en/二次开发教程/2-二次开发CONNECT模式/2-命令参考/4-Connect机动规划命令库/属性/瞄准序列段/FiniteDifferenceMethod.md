@@ -1,24 +1,24 @@
 # FiniteDifferenceMethod
 
-## 作用
+## Description
 
-设置瞄准段微分修正属性页**差分方法**。
+Set the **finite difference method** of the target sequence segment's Differential Corrector.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> 
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Attribute` | 可选值：`Forward Difference`、`Central Difference`、`Signed Difference` |
+| `Attribute` | Optional values: `Forward Difference`, `Central Difference`, `Signed Difference` |
 
-## 示例
+## Examples
 
-::: details open **设置瞄准段差分方法为有符号差分**
+::: details open **Set the finite difference method of the target sequence segment to Signed Difference**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector.FiniteDifferenceMethod Signed Difference
 ```

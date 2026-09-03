@@ -1,18 +1,18 @@
 # VO SetVectorGeometry
 
-## 作用
+## Description
 
-设置**船向量**。
+Set the **ship vector**.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-### {Option} 取值
+### {Option} Values
 
 | {Option} | `<Parameters>` |
 | -- | -- |
@@ -20,7 +20,7 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `Modify` | `"<ReferenceCrdn>" [{DisplayOption} <DisplayValue>...]` |
 | `Delete` | `"<ReferenceCrdn>"` |
 
-### DisplayOption 通用取值（Add / Modify 适用所有类型）
+### DisplayOption Common Values (Applies to all types for Add / Modify)
 
 | {DisplayOption} | `<DisplayValue>` |
 | -- | -- |
@@ -28,7 +28,7 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `ShowLabel` | `{On \| Off}` |
 | `Color` | `{Color}` |
 
-### DisplayOption 取值（Add / Modify，仅适用 Axes 和 Vector）
+### DisplayOption Values (Add / Modify, applies only to Axes and Vector)
 
 | {DisplayOption} | `<DisplayValue>` |
 | -- | -- |
@@ -38,25 +38,25 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `OriginPointDef` | `"{ReferenceCrdn}"` |
 | `usetruescale` | `{On \| Off}` |
 
-### DisplayOption 取值（Add / Modify，仅适用 Vector）
+### DisplayOption Values (Add / Modify, applies only to Vector)
 
 | {DisplayOption} | `<DisplayValue>` |
 | -- | -- |
 | `usetruescale` | `{On \| Off}` |
 
-## 补充说明
+## Additional Notes
 
-- `ReferenceCrdn` 必须使用双引号。
+- `ReferenceCrdn` must be enclosed in double quotes.
 
-## 示例
+## Examples
 
-::: details open **添加向量**
+::: details open **Add a vector**
 ```
 VO */Ship/Ship1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
 ```
 :::
 
-::: details open **修改向量**
+::: details open **Modify a vector**
 ```
 VO */Ship/Ship1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
 ```

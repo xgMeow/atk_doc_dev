@@ -1,18 +1,18 @@
 # Graphics_R GetLabel
 
-## 作用
+## Description
 
-获得对象的标签。
+Gets the label of the object.
 
-## 语法
+## Syntax
 
 ```atk-command
 Graphics_R <ObjectPath> GetLabel
 ```
 
-## 示例
+## Examples
 
-::: details open **获得对象的标签**
+::: details open **Get the Label of the Object**
 ```
 Graphics_R */Satellite/Satellite1 GetLabel
 ```

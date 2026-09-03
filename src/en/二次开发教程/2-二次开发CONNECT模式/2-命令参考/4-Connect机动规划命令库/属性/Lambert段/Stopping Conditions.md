@@ -1,10 +1,10 @@
 # Stopping Conditions
 
-## 作用
+## Description
 
-设置停止条件
+Set the stopping conditions.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions <List of Stopping Conditions>
@@ -14,13 +14,13 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions 
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition} <Value> [{Unit}]
 ```
 
-## 补充说明
+## Additional Notes
 
-- `List of Stopping Condition` 目前包括属性 `Duration`、`Epoch`
+- `List of Stopping Condition` currently includes the properties `Duration` and `Epoch`.
 
-## 示例
+## Examples
 
-::: details open **设置停止条件为 Duration**
+::: details open **Set the stopping condition to Duration**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.StoppingConditions Duration
 ```

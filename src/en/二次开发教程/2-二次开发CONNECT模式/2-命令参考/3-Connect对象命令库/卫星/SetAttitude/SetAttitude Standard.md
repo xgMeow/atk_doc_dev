@@ -1,18 +1,18 @@
 # SetAttitude Standard
 
-## 作用
+## Description
 
-设置姿态模式。
+Sets the attitude mode.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetAttitude <ObjectPath> Standard
 ```
 
-## 示例
+## Examples
 
-::: details open **设置姿态模式**
+::: details open **Set the Attitude Mode**
 ```
 SetAttitude */Satellite/Satellite1 Standard
 ```

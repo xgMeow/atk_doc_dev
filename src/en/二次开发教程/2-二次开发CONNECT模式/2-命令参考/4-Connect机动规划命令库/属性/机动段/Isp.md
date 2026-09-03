@@ -1,18 +1,18 @@
 # Isp
 
-## 作用
+## Description
 
-设置比冲
+Sets the specific impulse.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.Isp {Value}
 ```
 
-## 示例
+## Examples
 
-::: details open **设置比冲为 3000**
+::: details open **Set the Specific Impulse to 3000**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.Isp 3000
 ```

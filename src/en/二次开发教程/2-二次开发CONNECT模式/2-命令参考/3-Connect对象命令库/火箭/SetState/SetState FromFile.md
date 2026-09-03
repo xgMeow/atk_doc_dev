@@ -1,18 +1,18 @@
 # SetState FromFile
 
-## 作用
+## Description
 
-使用星历文件设置火箭弹道
+Set the launch vehicle trajectory using an ephemeris file.
 
-## 语法
+## Syntax
 
 ```atk-command
 SetState <VehObjectPath> FromFile "<FilePath>" 
 ```
 
-## 示例
+## Examples
 
-::: details open **使用星历文件设置火箭弹道**
+::: details open **Set the launch vehicle trajectory using an ephemeris file**
 ```
 SetState */LaunchVehicle/LaunchVehicle1 FromFile "C:\atk\User\Data\EphemFile.e"
 ```

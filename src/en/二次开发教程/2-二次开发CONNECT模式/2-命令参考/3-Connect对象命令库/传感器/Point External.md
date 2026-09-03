@@ -1,22 +1,22 @@
 ---
-description: 设置传感器的外部指向属性，通过外部文件定义传感器的指向变化。
+description: Sets the external pointing property of the sensor, defining the pointing changes of the sensor through an external file.
 ---
 
 # Point External
 
-## 作用
+## Description
 
-设置外部指向属性。
+Sets the external pointing property.
 
-## 语法
+## Syntax
 
 ```atk-command
 Point <SensorObjectPath> External "<FilePath.sp>"
 ```
 
-## 示例
+## Examples
 
-::: details open **设置外部指向**
+::: details open **Set External Pointing**
 ```
 Point */Satellite/Shuttle/Sensor/Horizon External "c:\MyScTemp\MyScenPositionData.sp"
 ```

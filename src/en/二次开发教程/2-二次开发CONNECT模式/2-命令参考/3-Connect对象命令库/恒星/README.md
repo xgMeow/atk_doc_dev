@@ -1,5 +1,5 @@
 ---
-title: 恒星
+title: Star
 index: false
 ---
 

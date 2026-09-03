@@ -1,18 +1,18 @@
 # DoesObjExist
 
-## 作用
+## Description
 
-确定对象是否存在
+Determines whether an object exists.
 
-## 语法
+## Syntax
 
 ```atk-command
 DoesObjExist <ApplicationPath> <ObjectPath>
 ```
 
-## 示例
+## Examples
 
-::: details open **检查对象是否存在**
+::: details open **Check whether an object exists**
 
 ```
 DoesObjExist / */Satellite/Satellite1

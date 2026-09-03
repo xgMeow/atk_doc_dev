@@ -1,24 +1,24 @@
 # QuickReportAdd
 
-## 作用
+## Description
 
-添加快捷报告
+Adds a quick report.
 
-## 语法
+## Syntax
 
 ```atk-command
 QuickReportAdd <ScenarioPath> Name "<QuickReportName>" Type {RptType} Style "<StyleName>" Object <TruncObjPath> [FromObject <TruncObjPath>]
 ```
 
-## 补充说明
+## Additional Notes
 
-- `<QuickReportName>` 暂不支持
-- `{RptType}` 包括 `Report`、`Graph`、`DynamicDisplay` 和 `StripChart` 类型，暂不支持设置
-- `FromObject <TruncObjPath>` 在访问快捷报告时输入
+- `<QuickReportName>` is not supported yet.
+- `{RptType}` includes the `Report`, `Graph`, `DynamicDisplay`, and `StripChart` types, but setting them is not supported yet.
+- `FromObject <TruncObjPath>` is entered when accessing the quick report.
 
-## 示例
+## Examples
 
-::: details open **添加快捷报告**
+::: details open **Add a quick report**
 
 ```
 QuickReportAdd * Name "Sat Pos-Vel" Type Graph Style "J2000 Position Velocity" Object Satellite/Satellite1

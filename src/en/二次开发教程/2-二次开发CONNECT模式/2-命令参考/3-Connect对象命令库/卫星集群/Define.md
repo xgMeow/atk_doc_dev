@@ -1,39 +1,39 @@
 # Define
 
-## 作用
+## Description
 
-添加及设置**卫星集群**参数。
+Add and set **satellite cluster** parameters.
 
-## 语法
+## Syntax
 
 ```atk-command
 Define <ObjectPath> Walker {Optional} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 | ---------------------------- | ------------------------- |
-| `Propagator <Propagator Name>` | 轨道预报器，支持二体 `TwoBody` 和 J2 `J2Perturbation` |
-| `AddShell <Shell Name>` | 添加 Shell |
-| `Type {Delta, Star, Custom}` | 构型设计类型 |
-| `NumPlanes <num>` | 平面数 |
-| `NumSatsPerPlane <num>` | 单轨道卫星数 |
-| `InterPlaneOffset <Offset>` | 相位因子 |
-| `Epoch <epoch>` | 轨道历元 |
-| `Semimajoraxis <a>` | 半长轴 |
-| `Eccentricity <e>` | 偏心率 |
-| `Inclination <i>` | 轨道倾角 |
-| `RAAN <ra>` | 升交点赤经 |
-| `ArgumentOfPerigee <aop>` | 近地点角距 |
-| `MeanAnomaly <ma>` | 平近点角 |
-| `ModifyShell <Shell Name>` | 修改 Shell 参数 |
-| `ClearShells <Shell Name>` | 清除所有 Shell |
-| `RemoveShell <Shell Name>` | 移除指定 Shell |
+| `Propagator <Propagator Name>` | Orbit propagator, supporting the two-body `TwoBody` and J2 `J2Perturbation` |
+| `AddShell <Shell Name>` | Add Shell |
+| `Type {Delta, Star, Custom}` | Constellation configuration type |
+| `NumPlanes <num>` | Number of planes |
+| `NumSatsPerPlane <num>` | Number of satellites per orbital plane |
+| `InterPlaneOffset <Offset>` | Phase factor |
+| `Epoch <epoch>` | Orbit epoch |
+| `Semimajoraxis <a>` | Semi-major axis |
+| `Eccentricity <e>` | Eccentricity |
+| `Inclination <i>` | Orbit inclination |
+| `RAAN <ra>` | Right ascension of the ascending node |
+| `ArgumentOfPerigee <aop>` | Argument of perigee |
+| `MeanAnomaly <ma>` | Mean anomaly |
+| `ModifyShell <Shell Name>` | Modify Shell parameters |
+| `ClearShells <Shell Name>` | Clear all Shells |
+| `RemoveShell <Shell Name>` | Remove the specified Shell |
 
-## 示例
+## Examples
 
-::: details open **定义 Walker 卫星集群**
+::: details open **Define a Walker satellite cluster**
 ```
 Define */SatelliteCollection/SatelliteCollection1 Walker Propagator TwoBody AddShell Shell1 numplanes 11 NumSatsPerPlane 2
 ```

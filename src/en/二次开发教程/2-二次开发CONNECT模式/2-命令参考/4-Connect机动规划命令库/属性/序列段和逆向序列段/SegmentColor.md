@@ -1,28 +1,28 @@
 ---
-description: 设置序列段和逆向序列段颜色，包含颜色值的 RGB 计算方式及使用示例。
+description: Sets the color of sequence segments and reverse sequence segments, including the RGB calculation method of the color value and usage examples.
 ---
 
 # SegmentColor
 
-## 作用
+## Description
 
-设置序列段和逆向序列段颜色
+Sets the sequence segment and reverse sequence segment color.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.SegmentColor <Value>
 ```
 
-## 补充说明
+## Additional Notes
 
-- 颜色设置从`-1` 到 `-16777216` 是透明度为 255 时颜色 255255255 到 000000000，按照 RGB 格式进行满 255 进 1，例如红色 255000000，透明度为 255，则有 `255000000 ： -256^3+255*256^0= -16776961` ，`000255000：-256^3+255*256^1= -16711936`
+- When the color is set from `-1` to `-16777216`, the transparency is 255 and the color ranges from 255255255 to 000000000. The value is encoded in RGB format with each 255 carrying to the next higher digit. For example, for red 255000000 with transparency 255, `255000000 ： -256^3+255*256^0= -16776961` and `000255000：-256^3+255*256^1= -16711936`.
 
-- 从 0 到 4294967295 是透明度为 000 时颜色 000000000 到透明度 255  时颜色 255255255。例如红色 255000000，透明度为 255，则有 `255000000255: 255*256^3 + 255*256^0 = 4278190335`
+- From 0 to 4294967295, the color ranges from 000000000 (when the transparency is 000) to 255255255 (when the transparency is 255). For example, for red 255000000 with transparency 255, `255000000255: 255*256^3 + 255*256^0 = 4278190335`.
 
-## 示例
+## Examples
 
-::: details open **设置序列段颜色**
+::: details open **Set the sequence segment color**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Sequence.SegmentColor -65536
 ```

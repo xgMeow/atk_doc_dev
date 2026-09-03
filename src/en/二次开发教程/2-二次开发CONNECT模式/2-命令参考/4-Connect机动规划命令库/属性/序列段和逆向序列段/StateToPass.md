@@ -1,22 +1,22 @@
 # StateToPass
 
-## 作用
+## Description
 
-设置序列段传递给下一段的状态
+Sets the state passed from the sequence segment to the next segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Attribute Path>.StateToPass {Value}
 ```
 
-## 补充说明
+## Additional Notes
 
-- `Value` 包括属性值 `Final` 和 `Initial`
+- `Value` includes the attribute values `Final` and `Initial`
 
-## 示例
+## Examples
 
-::: details open **设置序列段传递状态**
+::: details open **Set the state passed by the sequence segment**
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Backward_Sequence.StateToPass Initial
 ```

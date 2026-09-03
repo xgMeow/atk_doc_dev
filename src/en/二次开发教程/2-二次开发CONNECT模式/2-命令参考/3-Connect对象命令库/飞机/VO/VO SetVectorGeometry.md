@@ -1,36 +1,36 @@
 # VO SetVectorGeometry
 
-## 作用
+## Description
 
-设置**飞机向量**。
+Set the **aircraft vector**.
 
-## 语法
+## Syntax
 
 ```atk-command
 VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
 | `Add` | `"<ReferenceCrdn>" [{DisplayOption} <DisplayValue>...]` |
 | `Modify` | `"<ReferenceCrdn>" [{DisplayOption} <DisplayValue>...]` |
 | `Delete` | `"<ReferenceCrdn>"` |
 
-**注意**：`ReferenceCrdn` 必须使用双引号。
+**Note**: `ReferenceCrdn` must be enclosed in double quotes.
 
-- 若 `{Option}` 输入为 `Add` 或 `Modify`，以下参数适用所有类型：
+- If `{Option}` is set to `Add` or `Modify`, the following parameters apply to all types:
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
 | `Show` | `{On \| Off}` |
 | `ShowLabel` | `{On \| Off}` |
 | `Color` | `{Color}` |
 
-- 若 `{Option}` 输入为 `Add` 或 `Modify`，以下参数仅适用 Axes 和 Vector：
+- If `{Option}` is set to `Add` or `Modify`, the following parameters apply only to Axes and Vector:
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
 | `Thickness` | `<Value>` |
 | `RefCrdn` | `"<ReferenceCrdn>"` |
@@ -38,21 +38,21 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `OriginPointDef` | `"{ReferenceCrdn}"` |
 | `usetruescale` | `{On \| Off}` |
 
-- 若 `{Option}` 输入为 `Add` 或 `Modify`，以下参数仅适用 Vector：
+- If `{Option}` is set to `Add` or `Modify`, the following parameters apply only to Vector:
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
 | `usetruescale` | `{On \| Off}` |
 
-## 示例
+## Examples
 
-::: details open **添加飞机向量**
+::: details open **Add an aircraft vector**
 ```
 VO */Aircraft/Aircraft1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
 ```
 :::
 
-::: details open **修改飞机向量**
+::: details open **Modify an aircraft vector**
 ```
 VO */Aircraft/Aircraft1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
 ```

@@ -1,18 +1,18 @@
 # ClearCorrections
 
-## 作用
+## Description
 
-设置指定瞄准段配置**重置**。
+Reset the specified profile of the target sequence segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> ClearCorrections <Attribute Path>
 ```
 
-## 示例
+## Examples
 
-::: details open **重置指定瞄准段配置**
+::: details open **Reset the specified target sequence segment profile**
 ```
 Astrogator */Satellite/Satellite1 ClearCorrections MainSequence.SegmentList.Target_Sequence
 ```

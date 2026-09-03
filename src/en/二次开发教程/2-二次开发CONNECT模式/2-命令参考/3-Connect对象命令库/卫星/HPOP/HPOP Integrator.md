@@ -1,27 +1,27 @@
 # HPOP Integrator
 
-## 作用
+## Description
 
-设置积分算法。
+Sets the integration algorithm.
 
-## 语法
+## Syntax
 
 ```atk-command
 HPOP <ObjectPath> Integrator <Parameters>
 ```
 
-## 参数说明
+## Parameters
 
 - `ReportOnFixedStep { On | Off }`
 - `OrbitEps <Value>`
 
-::: tip 注意
-使用此命令，必须保证轨道预报器类型为 HPOP
+::: tip Note
+When using this command, make sure the orbit propagator type is HPOP
 :::
 
-## 示例
+## Examples
 
-::: details open **设置积分算法**
+::: details open **Set the Integration Algorithm**
 ```
 HPOP */Satellite/Satellite1 Integrator ReportOnFixedStep On
 ```

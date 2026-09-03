@@ -1,24 +1,24 @@
 # JoiningType
 
-## 作用
+## Description
 
-设置跟随类型
+Sets the joining type of the follow segment.
 
-## 语法
+## Syntax
 
 ```atk-command
 Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.JoiningType {Type}
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 说明 |
+| Parameter | Description |
 |------|------|
-| `Type` | `Join at Beginning of Leader's Ephemeris`、`Join at End of Leader's Ephemeris`、`Join at Final Epoch of Previous Segment`、`Specify Joining Conditions` |
+| `Type` | `Join at Beginning of Leader's Ephemeris`, `Join at End of Leader's Ephemeris`, `Join at Final Epoch of Previous Segment`, and `Specify Joining Conditions` |
 
-## 示例
+## Examples
 
-::: details open **设置跟随类型为 Join at End of Leader's Ephemeris**
+::: details open **Set the joining type to Join at End of Leader's Ephemeris**
 
 ```
 Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningType "Join at End of Leader's Ephemeris"

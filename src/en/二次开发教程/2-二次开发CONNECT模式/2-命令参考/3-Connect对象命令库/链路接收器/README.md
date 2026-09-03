@@ -1,5 +1,5 @@
 ---
-title: 链路接收器
+title: Receiver
 index: false
 ---
 
