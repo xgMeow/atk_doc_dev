@@ -30,7 +30,7 @@ export const enOverViewData: OverViewModule[] = [
         { name: 'Region Coverage', link: '/en/5.专业使用指南/01-可见性与覆盖分析/03-区域覆盖分析.html' },
       ],
       [
-        { name: 'Coverage Analysis', link: '/en/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具/02-覆盖性工具.html' },
+        { name: 'Coverage Analysis', link: '/en/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具.html' },
         { name: 'Communication Links', link: null },
       ],
     ],

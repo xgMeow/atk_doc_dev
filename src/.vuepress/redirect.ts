@@ -5,7 +5,7 @@ export default {
         "/":                                                     "/zh/",
         // 高级工具（路径尽可能短一点，将ProfessionalTools改为Tool，下面这些不动了，也别添加新的了）
         "/topics/ProfessionalTools/Access":                       "/zh/5.专业使用指南/01-可见性与覆盖分析/01-可见性工具.html",     //在工具-可见性弹出的右下角增加“help”按钮 
-        "/topics/ProfessionalTools/Coverage":                     "/zh/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具/02-覆盖性工具.html",       //在工具-覆盖性弹出的右下角增加“help”按钮 
+        "/topics/ProfessionalTools/Coverage":                     "/zh/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具.html",       //在工具-覆盖性弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/BatchedCoordTransformation":   "/zh/5.专业使用指南/04-批量坐标转换工具.html",   //在工具-批量坐标转换弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/CAT":                          "/zh/5.专业使用指南/07-接近分析.html",       //在工具-接近分析弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/CamSafetyAnalysis":            "/zh/5.专业使用指南/08-碰撞规避.html",           //在工具-碰撞规避弹出的右下角增加“help”按钮 
@@ -20,7 +20,7 @@ export default {
         
         // 工具
         "/topics/Tool/Access":                       "/zh/5.专业使用指南/01-可见性与覆盖分析/01-可见性工具.html",             //在工具-可见性弹出的右下角增加“help”按钮 
-        "/topics/Tool/Coverage":                     "/zh/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具/02-覆盖性工具.html",               //在工具-覆盖性弹出的右下角增加“help”按钮 
+        "/topics/Tool/Coverage":                     "/zh/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具.html",               //在工具-覆盖性弹出的右下角增加“help”按钮 
         "/topics/Tool/BatchedCoordTransformation":   "/zh/5.专业使用指南/04-批量坐标转换工具.html",       //在工具-批量坐标转换弹出的右下角增加“help”按钮 
         "/topics/Tool/CAT":                          "/zh/5.专业使用指南/07-接近分析.html",           //在工具-接近分析弹出的右下角增加“help”按钮 
         "/topics/Tool/CamSafetyAnalysis":            "/zh/5.专业使用指南/08-碰撞规避.html",           //在工具-碰撞规避弹出的右下角增加“help”按钮 
