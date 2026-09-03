@@ -1,6 +1,6 @@
 ---
 description: 使用 C++ 基于 ATK.Component 组件模式实现 LEO 到 GEO 快速轨道机动规划设计。
-thumbnail: /综合案例/media/轨道快速转移的C++实现/image06-快速转移轨道.png
+thumbnail: /zh/综合案例/media/轨道快速转移的C++实现/image06-快速转移轨道.png
 ---
 
 # 基于ATK.Component模式的轨道快速转移的C++实现

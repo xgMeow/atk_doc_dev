@@ -1,6 +1,6 @@
 ---
 description: 基于 ATK Connect 集成客户端模式，使用命令脚本实现近地停泊轨道（LEO）到地球同步轨道（GEO）的快速轨道机动规划设计与分析。
-thumbnail: /综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image01-客户端界面.png
+thumbnail: /zh/综合案例/media/基于ATK.Connect模式的轨道快速转移的C++实现/image01-客户端界面.png
 ---
 
 # 基于ATK.Connect模式的轨道快速转移的C++实现

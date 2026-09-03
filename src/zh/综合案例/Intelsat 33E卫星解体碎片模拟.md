@@ -1,6 +1,6 @@
 ---
 description: 基于 ATK 二次开发 Connect 模块，使用 NASA 标准解体模型对 Intelsat 33E 卫星解体碎片进行轨道演化仿真分析。
-thumbnail: /综合案例/media/Intelsat33E卫星解体碎片模拟/image05-插入碎片后的ATK界面.png
+thumbnail: /zh/综合案例/media/Intelsat33E卫星解体碎片模拟/image05-插入碎片后的ATK界面.png
 ---
 
 # Intelsat 33E卫星解体碎片模拟
