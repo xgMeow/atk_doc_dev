@@ -27,7 +27,7 @@ export const zhOverViewData: OverViewModule[] = [
     rows: [
       [
         { name: '可见性分析', link: '/zh/5.专业使用指南/01-可见性与覆盖分析/01-可见性工具.html' },
-        { name: '区域覆盖', link: '/zh/5.专业使用指南/01-可见性与覆盖分析/03-区域覆盖分析.html' },
+        { name: '区域覆盖', link: '/zh/5.专业使用指南/01-可见性与覆盖分析/03-区域覆盖工具.html' },
       ],
       [
         { name: '覆盖分析', link: '/zh/5.专业使用指南/01-可见性与覆盖分析/02-覆盖性工具.html' },

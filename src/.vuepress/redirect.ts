@@ -10,7 +10,7 @@ export default {
         "/topics/ProfessionalTools/CAT":                          "/zh/5.专业使用指南/07-接近分析.html",       //在工具-接近分析弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/CamSafetyAnalysis":            "/zh/5.专业使用指南/08-碰撞规避.html",           //在工具-碰撞规避弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/ConstellationAnalysis":        "/zh/5.专业使用指南/05-星座设计工具.html",           //在工具-星座设计弹出的右下角增加“help”按钮 
-        "/topics/ProfessionalTools/RegionCoverage":               "/zh/5.专业使用指南/01-可见性与覆盖分析/03-区域覆盖分析.html",      //在工具-区域覆盖弹出的右下角增加“help”按钮 
+        "/topics/ProfessionalTools/RegionCoverage":               "/zh/5.专业使用指南/01-可见性与覆盖分析/03-区域覆盖工具.html",      //在工具-区域覆盖弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/CUiConstellationDesign":       "/zh/5.专业使用指南/06-高级星座设计.html",   //在工具-高级星座设计弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/Maneuer":                      "/zh/5.专业使用指南/13-轨道机动规划工具/1-机动规划功能介绍.html",   //在工具-机动分析弹出的右下角增加“help”按钮 
         "/topics/ProfessionalTools/ReentryRecovery":              "/zh/5.专业使用指南/09-再入回收分析.html",   //在工具-再入回收弹出的右下角增加“help”按钮 
@@ -25,7 +25,7 @@ export default {
         "/topics/Tool/CAT":                          "/zh/5.专业使用指南/07-接近分析.html",           //在工具-接近分析弹出的右下角增加“help”按钮 
         "/topics/Tool/CamSafetyAnalysis":            "/zh/5.专业使用指南/08-碰撞规避.html",           //在工具-碰撞规避弹出的右下角增加“help”按钮 
         "/topics/Tool/ConstellationAnalysis":        "/zh/5.专业使用指南/05-星座设计工具.html",           //在工具-星座设计弹出的右下角增加“help”按钮 
-        "/topics/Tool/RegionCoverage":               "/zh/5.专业使用指南/01-可见性与覆盖分析/03-区域覆盖分析.html",           //在工具-区域覆盖弹出的右下角增加“help”按钮 
+        "/topics/Tool/RegionCoverage":               "/zh/5.专业使用指南/01-可见性与覆盖分析/03-区域覆盖工具.html",           //在工具-区域覆盖弹出的右下角增加“help”按钮 
         "/topics/Tool/CUiConstellationDesign":       "/zh/5.专业使用指南/06-高级星座设计.html",   //在工具-高级星座设计弹出的右下角增加“help”按钮 
         "/topics/Tool/Maneuer":                      "/zh/5.专业使用指南/13-轨道机动规划工具/1-机动规划功能介绍.html",       //在工具-机动分析弹出的右下角增加“help”按钮 
         "/topics/Tool/ReentryRecovery":              "/zh/5.专业使用指南/09-再入回收分析.html",           //在工具-再入回收弹出的右下角增加“help”按钮 
