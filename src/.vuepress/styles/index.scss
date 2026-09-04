@@ -67,8 +67,33 @@ strong {
   transform: translateY(0px);
 }
 
+// 行内公式保持默认，允许溢出可见（不参与滚动）
 mjx-container {
-  overflow-x:visible;
+  overflow-x: visible;
+}
+
+// 块级公式（display="true"，居中显示）超宽时与表格一致：在自身容器内横向滚动，
+// 页面整体不再横向溢出。svg 改 block + 两侧 auto 边距：公式不超宽时仍居中，
+// 超宽时向左对齐露出起点、可横向滚动查看。
+.theme-hope-content mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  // 覆盖 MathJax 注入的行内 min-width，让容器能收窄到正文列宽并触发内部滚动
+  min-width: 0 !important;
+  // 隐藏横向滚动条（仍可滚动，仅不显示滚动条）
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // 旧版 Edge/IE
+}
+
+.theme-hope-content mjx-container[display="true"]::-webkit-scrollbar {
+  display: none; // Chrome / Safari / Edge
+}
+
+.theme-hope-content mjx-container[display="true"] > svg {
+  display: block;
+  margin-inline: auto;
 }
 
 #app{
@@ -243,6 +268,11 @@ h4 {
     letter-spacing: 2px;
   }
 }
+    @media (max-width: 959px) {
+      .vp-page-title {
+        padding-left: 1.5rem;
+      }
+    }
 .vp-page-meta{
   max-width: var(--content-width, 740px);
   margin: 0 auto;

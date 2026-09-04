@@ -17,6 +17,17 @@ div[class*=language-]{
   background: #f6f8fa;
 }
 
+// 窄屏（≤419px）下，主题默认把正文里的代码块“出血”到屏幕左右边缘：
+// .theme-hope-content > div[class*=language-] 使用 margin: .85rem -1.5rem，
+// 而正文其它元素此时仍有 1rem 1.5rem 内边距，导致代码块左右撑满、与文字不对齐。
+// 这里取消负 margin，让代码块与正文享有相同的左右留白，并保留圆角卡片外观。
+@media (max-width: 419px) {
+  .theme-hope-content > div[class*=language-] {
+    margin: 0.85rem 0;
+    border-radius: 10px;
+  }
+}
+
 div[class*=language-] .highlight-line{
   background: #e6eaee;
 }

@@ -93,8 +93,11 @@
 
 .vp-breadcrumb li{
   position: relative;
-  padding-left: 1em; /* 为箭头留空间 */
   flex-shrink: 0;
+}
+
+.vp-breadcrumb li:not(:first-child) {
+    padding-left: 1em; /* 为箭头留空间 */
 }
 
 // 面包屑li之间的箭头
@@ -128,6 +131,37 @@
   padding-top: 0;
   h1{
     padding-top: 32px !important;
+  }
+}
+
+// 面包屑为固定条且可见时，标题上方需同时让出「导航栏 + 面包屑」两个固定条。
+//
+// 主题默认只在 .vp-page-title h1 上做导航栏锚点补偿：
+// padding-top: var(--navbar-height) / margin-top: -var(--navbar-height)，
+// 两者相互抵消，本身并不产生视觉留白，也没有计入下方固定面包屑的 35px。
+// 而 .vp-page-title 自带的 margin-top: 3rem + padding-top: 2rem，
+// 会在面包屑下方再叠出约 45px 空白，导致标题离面包屑太远、与页面不协调。
+//
+// 这里把标题顶端对齐为“导航栏(var(--navbar-height)) + 面包屑(35px) + 间距”，
+// 间距大屏取 2rem（约 32px），小屏(≤640px)再收窄到 1rem（约 16px），见下方 @media。
+.vp-breadcrumb:not(.disable) + .vp-page-title {
+  margin-top: 0;
+  padding-top: 0;
+
+  h1 {
+    // 各分量含义：
+    // var(--navbar-height)：让出固定导航栏高度
+    // 35px                ：面包屑固定条高度（与上方 .vp-breadcrumb 的 height 保持一致）
+    // 2rem                ：标题与面包屑的间距（大屏默认；≤640px 时由下方 @media 收窄为 1rem）
+    padding-top: calc(var(--navbar-height) + 35px + 2rem) !important;
+  }
+}
+
+// 小屏（≤640px）：页面紧凑，标题上方只留 1rem（≈16px）间距即可；
+// 其余宽度沿用上面的 2rem（≈32px）。数值可按需微调。
+@media (max-width: 640px) {
+  .vp-breadcrumb:not(.disable) + .vp-page-title h1 {
+    padding-top: calc(var(--navbar-height) + 35px + 1rem) !important;
   }
 }
 
