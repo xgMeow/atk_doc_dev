@@ -63,7 +63,7 @@ export default {
         "/topics/Objects/Receiver":                           "/zh/03-基础使用指南/03-对象管理/02-属性配置/接收器.html",      //接收器-属性；右下角的“help”按钮 
         "/topics/Objects/Transmitter":                        "/zh/03-基础使用指南/03-对象管理/02-属性配置/发射器.html",      //发射器-属性；右下角的“help”按钮 
         "/topics/Objects/SatelliteCollection":                "/zh/03-基础使用指南/03-对象管理/02-属性配置/卫星集群.html",             //卫星集群-属性：右下角的“help”按钮 
-        "/topics/Objects/CoverageDefinition":                 "/zh/03-基础使用指南/03-对象管理/02-属性配置/覆盖定义/覆盖定义.html",     //覆盖定义-属性：右下角的"help"按钮
+        "/topics/Objects/CoverageDefinition":                 "/zh/03-基础使用指南/03-对象管理/02-属性配置/覆盖定义/01-覆盖定义.html",     //覆盖定义-属性：右下角的"help"按钮
         "/topics/Scenario/CoverageDefinition":                "/zh/03-基础使用指南/02-场景管理/03-场景属性配置/",     //场景-属性：右下角的“help”按钮
         "/topics/Intergrating/Client":                        "/zh/二次开发教程/2-二次开发CONNECT模式/1-开发方式/2-Python客户端工具/",
         "/topics/Intergrating/Introduction":                  "/zh/二次开发教程/",
