@@ -7,6 +7,7 @@ import viteBundler from "@vuepress/bundler-vite";
 import webpackBundler from "@vuepress/bundler-webpack";
 import { include } from "@mdit/plugin-include";
 import mixCodeBlock from "./markdown/mix-code-block.js";
+import tableScrollWrap from "./markdown/table-scroll-wrap.js";
 
 export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
@@ -53,6 +54,8 @@ export const useConfig = ({type, plat=""}) => {
     extendsMarkdown: (md) => {
       // 整体捕获 <mix-code> 块，保留代码换行（详见 mix-code-block.js）
       md.use(mixCodeBlock);
+      // 给 markdown 表格外包一层可横向滚动的容器（详见 table-scroll-wrap.js）
+      md.use(tableScrollWrap);
     },
     extendsPage: (page) => {
       let order = page.frontmatter.order;

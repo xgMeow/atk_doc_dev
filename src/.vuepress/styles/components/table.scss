@@ -1,3 +1,36 @@
+/* 超宽表格的外包容器：由 markdown/table-scroll-wrap.js 在每个 <table> 外层注入。
+   容器只负责横向滚动，表格本身仍是原生 <table> 布局，边框/列宽不受影响；
+   表头随表格一起移动，页面整体不会横向溢出。 */
+.theme-hope-content .table-scroll-wrap{
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 12px 0;
+}
+
+.theme-hope-content .table-scroll-wrap > table{
+  margin: 0;
+}
+
+.theme-hope-content .table-scroll-wrap::-webkit-scrollbar{
+  height: 6px;
+}
+.theme-hope-content .table-scroll-wrap::-webkit-scrollbar-track{
+  background: transparent;
+}
+.theme-hope-content .table-scroll-wrap::-webkit-scrollbar-thumb{
+  background: #c2c8d2;
+  border-radius: 3px;
+}
+.theme-hope-content .table-scroll-wrap::-webkit-scrollbar-thumb:hover{
+  background: #97a0af;
+}
+
+/* 提示框等容器内表格原本按 “直接子元素 > table” 设置 20px 缩进；
+   包层后 table 不再是直接子元素，用容器复刻同样的缩进，保持外观不变 */
+.theme-hope-content .hint-container > .table-scroll-wrap{
+  margin: 20px;
+}
+
 .theme-hope-content table{
   display: table;
   margin: 12px 0;
@@ -25,9 +58,16 @@
   border: 1px solid #dfe2e5;
   background: var(--bg-color);
   text-align: left !important; // 如果居中的话，有些内容长的表格显示会很奇怪，不便于阅读
-  word-break: keep-all;
-  overflow-wrap: break-word;
   line-height: 2;
+}
+
+// 手机窄屏：改回 keep-all，中文不按字符拆分（短标签列不被压成竖排）；
+// 放不下时让表格撑宽、交给外层 .table-scroll-wrap 横向滚动。
+@media (max-width: 640px) {
+  .theme-hope-content th,
+  .theme-hope-content td {
+    word-break: keep-all;
+  }
 }
 
 .theme-hope-content th {
@@ -36,6 +76,12 @@
   font-weight: 600;
   color: #67676c;
   background-color: #f6f6f7;
+}
+
+// 表头与第一列（通常是短标签/名称）在所有宽度都 keep-all，避免被拆成竖排。
+.theme-hope-content th,
+.theme-hope-content td:first-child {
+  word-break: keep-all;
 }
 
 li {
