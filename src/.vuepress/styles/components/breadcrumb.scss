@@ -163,7 +163,7 @@
   .vp-breadcrumb:not(.disable) + .vp-page-title h1 {
     padding-top: calc(var(--navbar-height) + 35px + 1.5rem) !important;
   }
-
+}
 
 .vp-breadcrumb li.is-active a{
   font-weight: bold;
