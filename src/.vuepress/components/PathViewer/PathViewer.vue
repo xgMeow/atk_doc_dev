@@ -1,23 +1,19 @@
 <template>
   <div class="path-viewer" id="PathViewer">
     <div class="title-box">
-      <div class="title">
-        <div class="title-row">
-          <span
-            class="collapse-arrow"
-            @click="toggleCollapse"
-            :aria-label="isListCollapsed ? t.expand : t.collapse"
-          >
-            {{ isListCollapsed ? '▶' : '▼' }}
-          </span>
-          <span class="title-text">{{ t.fileList }}</span>
-        </div>
-        <div class="config-hint">
-          {{ t.configHint }}
-        </div>
-      </div>
-      <div>
+      <div class="title-row">
+        <span
+          class="collapse-arrow"
+          @click="toggleCollapse"
+          :aria-label="isListCollapsed ? t.expand : t.collapse"
+        >
+          {{ isListCollapsed ? '▶' : '▼' }}
+        </span>
+        <span class="title-text">{{ t.fileList }}</span>
         <button class="config-btn" @click="openConfigDialog">{{ t.configBtn }}</button>
+      </div>
+      <div class="config-hint">
+        {{ t.configHint }}
       </div>
     </div>
 
@@ -43,21 +39,24 @@
           {{ t.emptyList }}
         </div>
         <div v-else v-for="(item, index) in displayPaths" :key="index" class="list-item">
-          <span class="path-icon" v-html="getIconHtml(item)"></span>
-          <div class="path-info">
-            <div class="display-name">
-              {{ item.displayName }}
+          <div class="title-line">
+            <div class="title-main">
+              <span class="path-icon" v-html="getIconHtml(item)"></span>
+              <div class="display-name">{{ item.displayName }}</div>
+              <div v-if="item.description" class="path-description">{{ item.description }}</div>
             </div>
-            <div v-if="item.description" class="path-description">
-              {{ item.description }}
-            </div>
-            <div class="path-row" v-if="item.displayName !== item.fullPath">
-              <code class="full-path">{{ item.fullPath }}</code>
-              <button class="copy-btn" @click="copyPath(item.fullPath, index)" :title="t.copyTitle(item.fullPath)">
-                <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                {{ t.copy }}
-              </button>
-            </div>
+            <button
+              v-if="item.displayName !== item.fullPath"
+              class="copy-btn"
+              @click="copyPath(item.fullPath, index)"
+              :title="t.copyTitle(item.fullPath)"
+            >
+              <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              {{ t.copy }}
+            </button>
+          </div>
+          <div class="path-row" v-if="item.displayName !== item.fullPath">
+            <code class="full-path">{{ item.fullPath }}</code>
           </div>
         </div>
       </div>
@@ -569,19 +568,10 @@ onMounted(() => {
 
 /* 头部区域 */
 .title-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
   margin-bottom: 4px;
 }
 
-.title {
-  flex: 1;
-  min-width: 0;
-}
-
+/* 文件列表标题行：折叠箭头 + 标题居左，配置按钮靠右 */
 .title-row {
   display: flex;
   align-items: center;
@@ -633,7 +623,7 @@ onMounted(() => {
   font-weight: 500;
   transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
   flex-shrink: 0;
-  align-self: center;
+  margin-left: auto; /* 与左侧箭头/标题分离，靠到本行最右 */
 }
 
 .config-btn:hover {
@@ -728,8 +718,8 @@ onMounted(() => {
 /* 列表项 */
 .list-item {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  flex-direction: column;
+  gap: 8px;
   padding: 12px 14px;
   background: white;
   border-bottom: 1px solid var(--gray-100);
@@ -739,15 +729,38 @@ onMounted(() => {
   border-bottom: none;
 }
 
+/* 标题行：左侧（图标+名称+描述）与右侧复制按钮两端对齐、垂直居中 */
+.title-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* 图标 + 名称 + 描述同处一条水平带，内容过长时允许换行 */
+.title-main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  min-width: 0;
+  flex: 1;
+}
+
 .path-icon {
   font-size: 18px;
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  margin-top: 1px;
+  width: 20px;
+  height: 20px;
+}
+
+/* v-html 注入的自定义 svg 图标自带 width/height=256 属性，需在容器内收敛尺寸 */
+.path-icon :deep(svg) {
+  width: 18px;
+  height: 18px;
 }
 
 .icon-img {
@@ -756,42 +769,42 @@ onMounted(() => {
   object-fit: contain;
 }
 
-.path-info {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
 .display-name {
   font-size: 14px;
   font-weight: 600;
   color: var(--gray-800);
   line-height: 1.4;
   word-break: break-word;
+  min-width: 0;
 }
 
+/* 描述紧随名称之后，用 · 分隔；超长时随 title-main 换行 */
 .path-description {
   font-size: 12px;
   color: var(--gray-600);
   line-height: 1.45;
+  min-width: 0;
 }
 
-/* 路径行：全路径 + 复制按钮 */
+.path-description::before {
+  content: '·';
+  margin-right: 0.4em;
+  color: var(--gray-400);
+}
+
+/* 路径行：全路径独占标题行下方一整行 */
 .path-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 2px;
+  display: block;
 }
 
-.path-row:has(.copy-btn:hover) .full-path {
+/* 悬停复制按钮时高亮对应的全路径 */
+.list-item:has(.copy-btn:hover) .full-path {
   background: #e6f0fd;
   color: var(--gray-700);
 }
 
 .full-path {
+  display: block;
   font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
   font-size: 11px;
   color: var(--gray-600);
@@ -801,8 +814,6 @@ onMounted(() => {
   background: var(--gray-50);
   padding: 4px 8px;
   border-radius: var(--border-radius-sm);
-  flex: 1;
-  min-width: 0;
   transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
@@ -1062,30 +1073,10 @@ onMounted(() => {
 @media (max-width: 640px) {
   .path-viewer {
     padding: 16px;
-    margin: 12px;
-  }
-
-  .title-box {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .config-btn {
-    align-self: stretch;
-    text-align: center;
   }
 
   .config-hint {
     padding-left: 0;
-  }
-
-  .list-item {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .path-row {
-    flex-wrap: wrap;
   }
 
   .modal-container {
