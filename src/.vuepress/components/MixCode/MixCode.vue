@@ -171,18 +171,21 @@ async function copy() {
 <template>
   <div class="mix-code">
     <div class="mix-code-nav" role="tablist">
-      <template v-for="t in tabs" :key="t.key">
-        <span v-if="t.plain" class="mix-code-tab mix-code-tab-plain" role="tab" aria-selected="true">{{ t.name }}</span>
-        <button
-          v-else
-          type="button"
-          class="mix-code-tab"
-          :class="{ active: t.key === activeKey }"
-          role="tab"
-          :aria-selected="t.key === activeKey"
-          @click="activeKey = t.key"
-        >{{ t.name }}</button>
-      </template>
+      <!-- tab 数量多时可横向滚动，复制按钮独立固定在右侧 -->
+      <div class="mix-code-tabs-scroll" role="presentation">
+        <template v-for="t in tabs" :key="t.key">
+          <span v-if="t.plain" class="mix-code-tab mix-code-tab-plain" role="tab" aria-selected="true">{{ t.name }}</span>
+          <button
+            v-else
+            type="button"
+            class="mix-code-tab"
+            :class="{ active: t.key === activeKey }"
+            role="tab"
+            :aria-selected="t.key === activeKey"
+            @click="activeKey = t.key"
+          >{{ t.name }}</button>
+        </template>
+      </div>
       <button
         class="mix-code-copy"
         :class="{ copied }"
@@ -224,9 +227,32 @@ async function copy() {
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 8px 12px;
+  padding: 8px 8px 8px 12px;
   border-bottom: 1px solid var(--border-color, #e4e4e7);
   background: #fff;
+}
+
+/* tab 列表：空间不足时在自身内横向滚动（隐藏滚动条），不压缩、不拆行 */
+.mix-code-tabs-scroll {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none; // Firefox
+}
+.mix-code-tabs-scroll::-webkit-scrollbar {
+  display: none; // Chrome / Safari / Edge
+}
+
+/* tab 与复制按钮：单行显示、不因压缩而换行错乱 */
+.mix-code-tab,
+.mix-code-tab-plain,
+.mix-code-copy {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .mix-code-tab {
@@ -253,7 +279,7 @@ async function copy() {
 }
 
 .mix-code-copy {
-  margin-left: auto;
+  // 由 .mix-code-tabs-scroll 的 flex: 1 把它推到右侧，不再用 margin-left: auto
   padding: 4px 12px;
   font-size: 13px;
   color: #52525b;
@@ -262,6 +288,7 @@ async function copy() {
   border-radius: 6px;
   cursor: pointer;
   transition: color 0.15s, background 0.15s;
+  box-shadow: -4px 0px 20px 12px #fff;
 
   &:hover {
     color: #2563eb;
