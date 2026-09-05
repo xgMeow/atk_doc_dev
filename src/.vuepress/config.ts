@@ -8,6 +8,7 @@ import webpackBundler from "@vuepress/bundler-webpack";
 import { include } from "@mdit/plugin-include";
 import mixCodeBlock from "./markdown/mix-code-block.js";
 import tableScrollWrap from "./markdown/table-scroll-wrap.js";
+import entryCard from "./markdown/entry-card.js";
 
 export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
@@ -56,6 +57,8 @@ export const useConfig = ({type, plat=""}) => {
       md.use(mixCodeBlock);
       // 给 markdown 表格外包一层可横向滚动的容器（详见 table-scroll-wrap.js）
       md.use(tableScrollWrap);
+      // 属性卡片容器 `::: entry name=… unit=… objects=…`（详见 entry-card.js）
+      md.use(entryCard);
     },
     extendsPage: (page) => {
       let order = page.frontmatter.order;
