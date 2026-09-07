@@ -20,7 +20,8 @@ description: 依据 references/ATK约束/ATK<对象>约束.md 的原始 UI 记�
   - `README.md` 本册说明
 - 对象属性页：`…/02-属性配置/<对象>.md`，`## 约束` 直接放一张“属性 | 说明”链接表（**不加导语句**）。
 - 组件与色表：
-  - `src/.vuepress/components/Entry/Entry.vue`：`<Entry name unit note level objects>`；`level="4"` 用于嵌在 `###` 小节下的卡片；`OBJECT_COLORS` 的对象键以 `02-属性配置` 下的对象页为准（含 品质因子、覆盖定义；船舶键为 `舰船`）。
+  - `src/.vuepress/components/Entry/Entry.vue`：`<Entry name meta level objects>`；`level="4"` 用于嵌在 `###` 小节下的卡片；`OBJECT_COLORS` 的对象键以 `02-属性配置` 下的对象页为准（含 品质因子、覆盖定义；船舶键为 `舰船`）。
+    - `meta`：元信息条，多组 "key：value" 用 `|` 或 `,`（`，`/`、`/`;` 也兼容）分隔，key/value 用首个 `：` 或 `:` 拆开；如 `meta="量纲：角度|单位：deg、rad、arcSec"`。**值里含逗号时用 `|` 分隔多组**，无 `|` 时才按逗号拆组。无单位的条目（如 时段、误码率、视场约束）省略 `meta`。
   - 若 `objects=` 用到色表里还没有的对象，先补色。
 
 ## 各参考 Tab → 通用页落点
