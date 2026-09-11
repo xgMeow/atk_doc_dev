@@ -95,12 +95,12 @@ export const useHopeTheme = ({ type, plat="" }) =>
       //   category: "Announcements",
       //   categoryId: "DIC_kwDOG_Pt2M4COD69",
       // },
-      git: {
-        // Git 信息配置：隐藏写作日期和贡献者，保留更新时间
-        createdTime: false,   // 隐藏标题下的写作日期
-        contributors: false,   // 隐藏文章底部的贡献者
-        updatedTime: true,     // 保留最后更新时间
-      },
+      // 关闭 git 信息插件。
+      // 该插件会为每个页面单独 spawn 一次 `git log` 来取"最后更新时间"，而 VuePress 的
+      // resolveAppPages 是 Promise.all 并发创建全部页面，1700+ 个 git 子进程同时启动会耗尽
+      // Windows 进程资源，导致构建偶发失败（execa 报 exit code 0xFFFFFFFF），初始化阶段也要
+      // 多花约 6 分钟。置为 false 后插件完全不注册，页面底部只是少一行"最后更新"。
+      git: false,
       seo: !standalone,
       sitemap: !standalone,
       readingTime: false,
