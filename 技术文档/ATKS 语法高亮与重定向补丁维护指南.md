@@ -25,7 +25,9 @@ node_modules/@vuepress/plugin-redirect/lib/node/generate/generateRedirectFiles.j
 ```
 
 **修改目的**
-将绝对路径的重定向目标转换为相对路径，确保多层级目录结构下重定向正常工作。
+1. 修正重定向文件的落盘路径，让 `redirect.ts` 里的配置项真正生成 `.html` 文件；
+2. **仅离线版**把绝对路径的重定向目标转换为相对路径（离线包用 `file://` 打开，绝对路径会指到磁盘根目录）；online 版保持绝对路径；
+3. 绝对路径目标指向目录时补上 `index.html`，不依赖服务器的目录索引配置。
 
 **完整代码**
 
@@ -48,14 +50,19 @@ export const generateRedirectFiles = async ({ dir, options }, config, hostname =
   const resolvedHostname = hostname
     ? removeEndingSlash(isLinkHttp(hostname) ? hostname : `https://${hostname}`)
     : '';
+  // 仅离线版（standalone 走 webpack bundler，用 file:// 打开）需要相对路径；
+  // online 必须是绝对路径，否则服务器 404 回退到 /index.html 时相对跳转会被反复叠加成死循环
+  const useRelative = options.bundler.name === '@vuepress/bundler-webpack';
   const { succeed } = logger.load('Generating redirect files');
-  
+
   await Promise.all(entries(config).map(async ([from, to]) => {
     const filePath = dir.dest(removeLeadingSlash(from.replace(/(?:\.(?:md|html))?$/, '.html')));
     if (!fs.existsSync(filePath)) {
-      to = url_relative(path.dirname(from), to);  // 新增：转换为相对路径
+      if (useRelative)
+        to = url_relative(path.dirname(from), to);
       const redirectUrl = isLinkAbsolute(to)
-        ? `${resolvedHostname}${options.base}${removeLeadingSlash(to)}`
+        // 目标是目录时补上 index.html：即使服务器没开目录索引、404 又回退到首页，也只会稳稳跳一次
+        ? `${resolvedHostname}${options.base}${removeLeadingSlash(to)}`.replace(/\/$/, 'index.html')
         : to;
       await fs.ensureDir(path.dirname(filePath));
       await fs.writeFile(filePath, getRedirectHTML(redirectUrl));
@@ -66,8 +73,13 @@ export const generateRedirectFiles = async ({ dir, options }, config, hostname =
 ```
 
 **关键改动**
-- 新增 `url_relative` 函数
-- 在生成重定向文件前调用该函数转换路径
+- 修正 `filePath`：原版 `dir.dest(removeLeadingSlash(from))` 会写出没有扩展名的文件，且 `from = "/"` 时指向 dest 目录本身而直接跳过，首页重定向根本不会生成
+- 新增 `url_relative` 函数，**只在 `useRelative` 为真时**调用
+- `useRelative` 用 `options.bundler.name` 判断（`options` 即 `app.options`）：standalone 的 `src/.vuepress/bundler-standalone` 对外暴露的名字就是 `@vuepress/bundler-webpack`，online 是 `@vuepress/bundler-vite`
+- 绝对路径目标以 `/` 结尾时替换为 `index.html`，重定向直接命中真实文件
+
+**关于 online 必须用绝对路径**
+相对路径一旦落到「请求 404 → 服务器回退返回根 `/index.html`」的环境里，浏览器会以当前 URL 目录为基准反复拼接，滚成 `/zh/zh/zh/...` 死循环。绝对路径最多跳一次。
 
 ### 2. prismjs 修改 - 新增 ATKS 语言支持
 
