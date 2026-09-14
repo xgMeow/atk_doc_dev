@@ -27,13 +27,13 @@ At the top of the **Algorithm Parameters** page, the **Method** drop-down list i
 ![Solving methods of the Lambert Target segment](../../../zh/5.专业使用指南/13-轨道机动规划工具/media/11-Lambert段/image-20260914171207218.png)
 
 - **Specified Revolution**: uses adaptive homotopy iterations internally and supports specifying the revolution, the major/minor arc, and the long/short arc.
-- **Specified Homotopy Iterations**: the Newton iteration count and the homotopy iteration count can be specified freely. The traversal starts from the fuel-optimal two-body solution and proceeds in fuel-optimal order; it exits as soon as one solution succeeds.
+- **Homotopy Optimization**: the Newton iteration count and the homotopy iteration count can be specified freely. The traversal starts from the fuel-optimal two-body solution and proceeds in fuel-optimal order; it exits as soon as one solution succeeds.
 - **Adaptive Homotopy Optimization**: uses adaptive homotopy iterations internally. It first traverses in the direction of the fuel-optimal two-body solution, and after one successful solution, corrects the fuel-optimal order according to the perturbation offset and traverses again to obtain one more successful solution.
 
 ### Method Selection Recommendations
 
 - Prefer **Adaptive Homotopy Optimization**; in most cases it finds the fuel-optimal solution.
-- If solving fails, switch to **Specified Homotopy Iterations** and set a higher iteration count to solve robustly.
+- If solving fails, switch to **Homotopy Optimization** and set a higher iteration count to solve robustly.
 - When the fuel-optimal solution is not required, select **Specified Revolution**, which allows freely specifying the two-body initial values corresponding to the revolution, the major/minor arc, and the long/short arc, and adaptively iterates out the perturbed solution.
   - When using this method, it is recommended to first clear the **Perturbed Solution** check box to solve the two-body solution and confirm that the aiming error is not NaN (an aiming error of NaN means that the two-body solution impacts the Earth), then select **Perturbed Solution** again, so that the perturbed solution using this two-body solution as its initial value can basically be solved.
 
