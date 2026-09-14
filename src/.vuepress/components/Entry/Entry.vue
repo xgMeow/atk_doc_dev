@@ -26,8 +26,7 @@
           v-for="(chip, i) in chipList"
           :key="i"
           class="atk-entry__chip"
-          :style="chip.style"
-        >{{ chip.text }}</span>
+        >{{ chip }}</span>
       </div>
       <p v-if="desc" class="atk-entry__desc">{{ desc }}</p>
       <div v-if="metaParts.length" class="atk-entry__meta">
@@ -72,35 +71,6 @@
 */
 import { Comment, Text, computed, onMounted, ref, useSlots } from 'vue'
 
-// 对象色表与「02-属性配置」下的对象页一一对应（含覆盖定义、品质因子等），并保留 太阳/月球/中心天体
-const OBJECT_COLORS = {
-  车辆: '#7c3aed',
-  飞机: '#4f46e5',
-  舰船: '#0891b2',
-  潜艇: '#0f766e',
-  地面站: '#059669',
-  卫星: '#0e7490',
-  卫星集群: '#0369a1',
-  卫星系统: '#1d4ed8',
-  火箭: '#ea580c',
-  导弹: '#dc2626',
-  集群: '#65a30d',
-  传感器: '#c026d3',
-  接收器: '#2563eb',
-  发射器: '#db2777',
-  天线: '#0284c7',
-  链路: '#06b6d4',
-  区域目标: '#ca8a04',
-  恒星: '#eab308',
-  行星: '#b45309',
-  覆盖定义: '#7e22ce',
-  品质因子: '#16a34a',
-  太阳: '#d97706',
-  月球: '#64748b',
-  中心天体: '#334155',
-}
-const FALLBACK_COLORS = ['#2563eb', '#7c3aed', '#059669', '#d97706', '#0e7490', '#dc2626', '#4f46e5']
-
 const props = defineProps({
   name: { type: String, required: true },
   desc: { type: String, default: '' }, // 一句话作用说明（常显摘要，模型无关，不带 markdown 强调）
@@ -114,20 +84,6 @@ const headingTag = computed(() => {
   const n = Math.max(2, Math.min(6, Number(props.level) || 3))
   return `h${n}`
 })
-
-const pickColor = (token) => {
-  if (OBJECT_COLORS[token]) return OBJECT_COLORS[token]
-  let hash = 0
-  for (const ch of token) hash = (hash * 31 + ch.codePointAt(0)) >>> 0
-  return FALLBACK_COLORS[hash % FALLBACK_COLORS.length]
-}
-
-const toRgba = (hex, alpha) => {
-  const match = /^#?([0-9a-f]{6})$/i.exec(hex)
-  if (!match) return hex
-  const n = parseInt(match[1], 16)
-  return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`
-}
 
 // objects 通常是逗号/顿号分隔的字符串，如 `接收器,车辆`；也兼容数组传入
 const objectList = computed(() => {
@@ -144,16 +100,7 @@ const objectList = computed(() => {
     .filter(Boolean)
 })
 
-const chipList = computed(() =>
-  objectList.value.map((text) => {
-    const color = pickColor(text)
-    return {
-      text,
-      // 软底色 + 彩色文字，无描边，观感参考参考文件的标签
-      style: { color, background: toRgba(color, 0.08) },
-    }
-  })
-)
+const chipList = computed(() => objectList.value)
 
 // 解析元信息条：把 meta="格式：****,量纲：温度,**:**" / "量纲：角度|单位：deg,rad,arcSec" 这类
 // 多组“key：value”拆成 {label, value} 数组。多组之间用 | 或 ,（、；也兼容）分隔，
@@ -288,22 +235,22 @@ onMounted(() => {
   flex-wrap: wrap;
   gap: 6px;
 }
+/* 适用对象标签：统一中性浅灰，不做对象分色 */
 .atk-entry__chip {
   display: inline-flex;
   align-items: center;
-   font-size: 14px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1;
   padding: 2px 9px;
   border-radius: 4px;
   white-space: nowrap;
+  color: #4e5969;
+  background: #f2f3f5;
 }
 /* 量纲/单位/格式：浅灰通栏信息条 */
 .atk-entry__meta {
   width: 100%;
-  background: #f2f3f5;
-  padding: 6px 10px;
-  border-radius: 4px;
   font-size: 14px;
   line-height: 1.6;
   color: #4e5969;
