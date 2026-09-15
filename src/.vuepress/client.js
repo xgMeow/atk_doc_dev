@@ -10,6 +10,7 @@ import CatalogCard from './components/CatalogCard/CatalogCard.vue'
 import ConnectCommandSummary from './components/ConnectCommandSummary/ConnectCommandSummary.vue'
 import MixCode from './components/MixCode/MixCode.vue'
 import ColorSwatch from './components/ColorSwatch.vue'
+import Entry from './components/Entry/Entry.vue'
 import './styles/atk-command-tokens.scss'
 
 // 定义目录信息获取器，传入文档元数据，返回目录信息对象
@@ -34,6 +35,7 @@ export default defineClientConfig({
     app.component('ConnectCommandSummary', ConnectCommandSummary);
     app.component('MixCode', MixCode);
     app.component('ColorSwatch', ColorSwatch);
+    app.component('Entry', Entry);
     // console.log("__VUEPRESS_SSR__=", __VUEPRESS_SSR__)
     if (!__VUEPRESS_SSR__) {
         if(location.href.startsWith("file://")){
