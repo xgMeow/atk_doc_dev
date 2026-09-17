@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>卫星方位角与仰角示意图</title>
+  <script>
+    /*
+     * 同一个页面服务两种读法，靠顶层窗口判断，样式生效前就把结果写进 <html>：
+     *   内嵌（文档正文里的 iframe，本页绝大多数时候）—— 读者只看动画，
+     *        右侧的读数与控制面板整体收起，仅保留角上一条极简读数；
+     *   独立（点卡片右下角「在新标签页打开」后）- 才是完整的读数 + 调节面板。
+     * 跨域取 window.top 会抛异常，一并按内嵌处理，避免误把面板铺到别人页面里。
+     * 追加的 ?embed=0 / ?embed=1 用于单独调试某一种形态。
+     */
+    (function () {
+      var embedded = true;
+      try {
+        embedded = window.self !== window.top;
+      } catch (e) {
+        embedded = true;
+      }
+      var forced = /[?&]embed=(0|1)(?:&|$)/.exec(window.location.search);
+      if (forced) embedded = forced[1] === '1';
+      document.documentElement.classList.add(embedded ? 'is-embed' : 'is-standalone');
+    })();
+  </script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      max-height: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+    .app-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      background: radial-gradient(circle at 45% 50%, #ffffff 0%, #f7f9fc 70%, #eef2f7 100%);
+      overflow: hidden;
+      position: relative;
+    }
+    /* 左侧主 SVG 视口区域 */
+    .viewport-area {
+      flex: 1;
+      height: 100%;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #space-svg {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    }
+    /* 右侧仪表与控制面板（仅独立打开时出现，宽度按最小可读尺度取） */
+    .control-panel {
+      width: 272px;
+      height: 100%;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-left: 1px solid rgba(8, 145, 178, 0.2);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+      z-index: 20;
+      box-shadow: -8px 0 25px rgba(15, 23, 42, 0.08);
+    }
+    .control-panel::-webkit-scrollbar {
+      width: 4px;
+    }
+    .control-panel::-webkit-scrollbar-thumb {
+      background: rgba(8, 145, 178, 0.3);
+      border-radius: 4px;
+    }
+    /* 标题区域 */
+    .header-box {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      padding-bottom: 10px;
+    }
+    .header-box h1 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.5px;
+    }
+    .header-box h1::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: #0891b2;
+      border-radius: 2px;
+    }
+    .header-box p {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 3px;
+      line-height: 1.3;
+    }
+    /* 读数仪表网格 */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .metric-card {
+      background: rgba(248, 250, 252, 0.9);
+      border-radius: 6px;
+      padding: 8px 10px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+    .metric-card.azimuth {
+      border-left: 3px solid #0891b2;
+    }
+    .metric-card.elevation {
+      border-left: 3px solid #d97706;
+    }
+    .metric-label {
+      font-size: 10.5px;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .metric-value {
+      font-size: 20px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      margin-top: 2px;
+      line-height: 1.1;
+    }
+    .metric-card.azimuth .metric-value { color: #0891b2; }
+    .metric-card.elevation .metric-value { color: #d97706; }
+    .metric-sub {
+      font-size: 9.5px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    /* 滑块与交互控制 */
+    .control-group {
+      background: rgba(248, 250, 252, 0.8);
+      border-radius: 6px;
+      padding: 10px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .group-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .slider-row {
+      margin-bottom: 8px;
+    }
+    .slider-row:last-child {
+      margin-bottom: 0;
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      margin-bottom: 3px;
+      color: #475569;
+    }
+    .slider-header span.val {
+      font-weight: 700;
+    }
+    input[type=range] {
+      width: 100%;
+      height: 4px;
+      -webkit-appearance: none;
+      background: rgba(15, 23, 42, 0.12);
+      border-radius: 2px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 6px rgba(15, 23, 42, 0.25);
+      transition: transform 0.1s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.25);
+    }
+    #azimuthSlider::-webkit-slider-thumb {
+      background: #0891b2;
+      border: 2px solid #ffffff;
+    }
+    #elevationSlider::-webkit-slider-thumb {
+      background: #d97706;
+      border: 2px solid #ffffff;
+    }
+    /* 按钮样式 */
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .btn {
+      background: rgba(241, 245, 249, 0.95);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      color: #334155;
+      padding: 6px 8px;
+      border-radius: 5px;
+      font-size: 10.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn:hover {
+      background: rgba(226, 232, 240, 1);
+      border-color: rgba(8, 145, 178, 0.5);
+      color: #0f172a;
+    }
+    .btn.active {
+      background: rgba(8, 145, 178, 0.12);
+      border-color: #0891b2;
+      color: #0e7490;
+    }
+    /* 说明卡片 */
+    .info-card {
+      background: rgba(248, 250, 252, 0.85);
+      border-radius: 6px;
+      padding: 9px 10px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      font-size: 10.5px;
+      line-height: 1.5;
+      color: #475569;
+    }
+    .info-card strong {
+      color: #0f172a;
+    }
+    .tag-az { color: #0891b2; font-weight: 700; }
+    .tag-el { color: #d97706; font-weight: 700; }
+    .tag-los { color: #047857; font-weight: 700; }
+    .tag-proj { color: #7c3aed; font-weight: 700; }
+
+    /* 注意：独立打开时正文宽度可能不大，768px 是常见断点，
+       沿用该断点会过早把右侧面板挤到下方，故下调到 560px。 */
+    @media (max-width: 560px) {
+      .app-container {
+        flex-direction: column;
+      }
+      .control-panel {
+        width: 100%;
+        height: 240px;
+        border-left: none;
+        border-top: 1px solid rgba(8, 145, 178, 0.2);
+      }
+    }
+
+    /* ---------- 形态一：内嵌在文档正文里 ---------- */
+
+    /* 面板与说明整体让位，画面吃满整个宽度；角度值本就是画在几何图上的，
+       左下角这条读数只是把它们汇总成一行，读者不必去图上找。 */
+    .is-embed .control-panel {
+      display: none;
+    }
+    .embed-hud {
+      display: none;
+    }
+    .is-embed .embed-hud {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+      font-size: 11px;
+      color: #64748b;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .embed-hud b {
+      margin-left: 4px;
+      font-size: 13px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: #0f172a;
+    }
+    .embed-hud i {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 5px;
+      border-radius: 50%;
+      vertical-align: 1px;
+    }
+    .embed-hud .dot-azimuth { background: #0891b2; }
+    .embed-hud .dot-elevation { background: #d97706; }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <!-- 左侧 3D 几何与微波通信动画 SVG (标准 16:9 横屏 viewBox) -->
+  <div class="viewport-area">
+    <svg id="space-svg" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <!-- 视线 LOS 激光渐变 -->
+        <linearGradient id="losGrad" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stop-color="#059669" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="#34d399" stop-opacity="1" />
+        </linearGradient>
+
+        <!-- 垂直投影三角面渐变 -->
+        <linearGradient id="dropTriGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.22" />
+          <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.06" />
+        </linearGradient>
+
+        <!-- 方位角地平扇形渐变 -->
+        <radialGradient id="azSectorGrad" cx="450" cy="380" r="160" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#0891b2" stop-opacity="0.28" />
+          <stop offset="100%" stop-color="#0891b2" stop-opacity="0.06" />
+        </radialGradient>
+
+        <!-- 仰角扇形渐变 -->
+        <radialGradient id="elSectorGrad" cx="450" cy="380" r="110" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#d97706" stop-opacity="0.38" />
+          <stop offset="100%" stop-color="#b45309" stop-opacity="0.08" />
+        </radialGradient>
+
+        <!-- 箭头标头定义 -->
+        <marker id="arrow-n" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0891b2" />
+        </marker>
+        <marker id="arrow-los" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
+        </marker>
+      </defs>
+
+      <!-- 天球天顶垂直参考基准线 (Zenith) -->
+      <g id="bg-celestial" opacity="0.45">
+        <line x1="450" y1="380" x2="450" y2="40" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" />
+        <text x="450" y="30" fill="#64748b" font-size="11" font-weight="600" text-anchor="middle">天顶 Zenith (+90°)</text>
+        <circle cx="450" cy="40" r="3" fill="#94a3b8" />
+      </g>
+
+      <!-- 地平面水平罗盘网格 (Ground Plane) -->
+      <g id="ground-plane">
+        <path id="ground-ellipse-outer" fill="rgba(241, 245, 249, 0.9)" stroke="rgba(8, 145, 178, 0.35)" stroke-width="1.5" />
+        <path id="ground-ellipse-inner" fill="none" stroke="rgba(8, 145, 178, 0.22)" stroke-width="1" stroke-dasharray="3 3" />
+        
+        <!-- 罗盘轴线 -->
+        <line id="axis-ns" stroke="rgba(100, 116, 139, 0.35)" stroke-width="1" stroke-dasharray="2 2" />
+        <line id="axis-ew" stroke="rgba(100, 116, 139, 0.35)" stroke-width="1" stroke-dasharray="2 2" />
+
+        <!-- 正北基线 0° -->
+        <line id="line-north" stroke="#0891b2" stroke-width="2.2" marker-end="url(#arrow-n)" />
+        <circle id="point-north" r="3" fill="#0891b2" />
+        <text id="label-north" fill="#0891b2" font-size="12" font-weight="bold">正北 N (0°)</text>
+
+        <!-- 其它方位标记 -->
+        <text id="label-east" fill="#475569" font-size="10.5" font-weight="600">东 E (90°)</text>
+        <text id="label-south" fill="#94a3b8" font-size="10.5" font-weight="600">南 S (180°)</text>
+        <text id="label-west" fill="#94a3b8" font-size="10.5" font-weight="600">西 W (270°)</text>
+      </g>
+
+      <!-- 方位角 Azimuth 几何扇区 -->
+      <g id="layer-azimuth">
+        <path id="az-sector" fill="url(#azSectorGrad)" stroke="none" />
+        <path id="az-arc" fill="none" stroke="#0891b2" stroke-width="2" stroke-dasharray="4 2" />
+        <g id="az-tag-group">
+          <rect id="az-tag-bg" rx="4" ry="4" fill="rgba(255, 255, 255, 0.92)" stroke="#0891b2" stroke-width="1" />
+          <text id="az-tag-text" fill="#0891b2" font-size="10.5" font-weight="bold" text-anchor="middle" dominant-baseline="central">方位角</text>
+        </g>
+      </g>
+
+      <!-- 垂直三角形侧影面与仰角几何 -->
+      <g id="layer-elevation">
+        <!-- 垂直三角形底色 -->
+        <path id="drop-triangle" fill="url(#dropTriGrad)" stroke="none" />
+        
+        <!-- 投影线段 OP' -->
+        <line id="line-proj" stroke="#0891b2" stroke-width="1.8" stroke-dasharray="5 3" />
+        
+        <!-- 垂直坠线 PP' -->
+        <line id="line-vert-drop" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="4 3" />
+        
+        <!-- 直角标记 ∠PP'O -->
+        <path id="right-angle-mark" fill="none" stroke="#7c3aed" stroke-width="1.2" opacity="0.85" />
+
+        <!-- 仰角 Elevation 垂直扇区面与边界弧线 -->
+        <path id="el-sector" fill="url(#elSectorGrad)" stroke="#d97706" stroke-width="1.8" />
+        
+        <!-- 地面投影点 P' -->
+        <circle id="point-proj" r="4" fill="#7c3aed" stroke="#ffffff" stroke-width="1.2" />
+        <text id="label-proj" fill="#7c3aed" font-size="10.5" font-weight="600">P' (地表投影)</text>
+
+        <!-- 仰角标签 -->
+        <g id="el-tag-group">
+          <rect id="el-tag-bg" rx="4" ry="4" fill="rgba(255, 255, 255, 0.92)" stroke="#d97706" stroke-width="1" />
+          <text id="el-tag-text" fill="#d97706" font-size="10.5" font-weight="bold" text-anchor="middle" dominant-baseline="central">仰角</text>
+        </g>
+      </g>
+
+      <!-- 视线 (Line of Sight, LOS) 射线与能量光脉冲 -->
+      <g id="layer-los">
+        <line id="line-los" stroke="url(#losGrad)" stroke-width="2.8" marker-end="url(#arrow-los)" />
+        <circle id="los-pulse" r="3.5" fill="#10b981" />
+        <text id="label-los" fill="#059669" font-size="11" font-weight="bold">视线</text>
+      </g>
+
+      <!-- 地面测控观测站 (位于原点 O) -->
+      <g id="ground-station" transform="translate(450, 380)">
+        <ellipse cx="0" cy="4" rx="18" ry="9" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5" />
+        <ellipse cx="0" cy="0" rx="12" ry="5" fill="#cbd5e1" stroke="#64748b" stroke-width="1" />
+        <!-- 支柱转台 -->
+        <rect x="-3.5" y="-16" width="7" height="16" fill="#94a3b8" rx="1" />
+        <circle cx="0" cy="-16" r="4.5" fill="#cbd5e1" stroke="#64748b" stroke-width="1" />
+        
+        <!-- 随动雷达锅天线 (自适应指向卫星方位与仰角) -->
+        <g id="radar-dish-group" transform="translate(0, -16)">
+          <path d="M -16 -6 Q 0 4 16 -6 Q 0 -14 -16 -6 Z" fill="#cbd5e1" stroke="#0891b2" stroke-width="1.2" />
+          <line x1="0" y1="-1" x2="0" y2="-10" stroke="#475569" stroke-width="1.2" />
+          <circle cx="0" cy="-10" r="2" fill="#0891b2" />
+        </g>
+        <!-- 原点 O 标号 -->
+        <circle cx="0" cy="0" r="2.8" fill="#1e293b" />
+        <text x="-24" y="20" fill="#334155" font-size="11" font-weight="bold">测控站 O</text>
+      </g>
+
+      <!-- 空间卫星模型 (位于空间目标点 P) -->
+      <g id="satellite-group">
+        <!-- 卫星测控无线电波辐射圈 -->
+        <circle id="sat-pulse-ring" r="14" fill="none" stroke="#0284c7" stroke-width="1.4" opacity="0.8" />
+        
+        <!-- 卫星本体 -->
+        <g id="sat-body-rot">
+          <!-- 左右太阳帆板 -->
+          <rect x="-42" y="-6" width="24" height="12" rx="2" fill="#bfdbfe" stroke="#2563eb" stroke-width="1" />
+          <line x1="-30" y1="-6" x2="-30" y2="6" stroke="#2563eb" stroke-width="0.8" />
+          <line x1="-42" y1="0" x2="-18" y2="0" stroke="#2563eb" stroke-width="0.8" />
+          
+          <rect x="18" y="-6" width="24" height="12" rx="2" fill="#bfdbfe" stroke="#2563eb" stroke-width="1" />
+          <line x1="30" y1="-6" x2="30" y2="6" stroke="#2563eb" stroke-width="0.8" />
+          <line x1="18" y1="0" x2="42" y2="0" stroke="#2563eb" stroke-width="0.8" />
+          
+          <!-- 连接桁架 -->
+          <line x1="-18" y1="0" x2="18" y2="0" stroke="#64748b" stroke-width="1.8" />
+          
+          <!-- 金色隔热层星体 -->
+          <rect x="-10" y="-10" width="20" height="20" rx="3" fill="#d97706" stroke="#b45309" stroke-width="1.2" />
+          <rect x="-6" y="-6" width="12" height="12" fill="#fbbf24" />
+
+          <!-- 下行天线喇叭 -->
+          <path d="M 0 10 L -4 18 L 4 18 Z" fill="#e2e8f0" stroke="#64748b" stroke-width="0.8" />
+          <circle cx="0" cy="19" r="1.8" fill="#0284c7" />
+        </g>
+
+        <!-- 卫星目标 P 标牌 -->
+        <rect x="-38" y="-32" width="76" height="18" rx="3" fill="rgba(255, 255, 255, 0.92)" stroke="#0284c7" stroke-width="0.8" />
+        <text x="0" y="-20" fill="#0f172a" font-size="10.5" font-weight="bold" text-anchor="middle">卫星目标 (P)</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- 内嵌形态下的极简读数条：只有数，没有任何可点的东西（见 .is-embed） -->
+  <div class="embed-hud">
+    <span><i class="dot-azimuth"></i>方位角<b id="hud-azimuth">065.0°</b></span>
+    <span><i class="dot-elevation"></i>仰角<b id="hud-elevation">36.0°</b></span>
+  </div>
+
+  <!-- 右侧控制与测量读数面板（仅在独立打开时出现） -->
+  <div class="control-panel">
+    <!-- 头部说明 -->
+    <div class="header-box">
+      <h1>卫星测控空间指向示意图</h1>
+      <p>方位角与仰角空间几何联动演示</p>
+    </div>
+
+    <!-- 实时读数仪表卡片 -->
+    <div class="metric-grid">
+      <div class="metric-card azimuth">
+        <div class="metric-label">方位角</div>
+        <div class="metric-value" id="val-azimuth">065.0°</div>
+        <div class="metric-sub">地平面正北顺时针量起 (0°~360°)</div>
+      </div>
+
+      <div class="metric-card elevation">
+        <div class="metric-label">仰角</div>
+        <div class="metric-value" id="val-elevation">36.0°</div>
+        <div class="metric-sub">地平面向上抬升角度 (0°~90°)</div>
+      </div>
+    </div>
+
+    <!-- 交互调节滑块 -->
+    <div class="control-group">
+      <div class="group-title">
+        <span>姿态手动调节</span>
+        <span style="font-size:9.5px; color:#94a3b8;">支持无级拖拽联动</span>
+      </div>
+
+      <!-- 方位角滑块 -->
+      <div class="slider-row">
+        <div class="slider-header">
+          <span>方位角：</span>
+          <span class="val" id="sliderAzVal" style="color:#0891b2;">65°</span>
+        </div>
+        <input type="range" id="azimuthSlider" min="0" max="360" step="0.5" value="65">
+      </div>
+
+      <!-- 仰角滑块 -->
+      <div class="slider-row">
+        <div class="slider-header">
+          <span>仰角：</span>
+          <span class="val" id="sliderElVal" style="color:#d97706;">36°</span>
+        </div>
+        <input type="range" id="elevationSlider" min="5" max="85" step="0.5" value="36">
+      </div>
+    </div>
+
+    <!-- 轨道演示与预设场景 -->
+    <div class="control-group">
+      <div class="group-title">
+        <span>演示控制与典型过轨</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn active" id="btn-toggle-orbit">
+          <span id="orbit-icon">⏸</span> <span id="orbit-text">暂停自动轨道</span>
+        </button>
+        <button class="btn" id="btn-reset">
+          ↺ 复位基准
+        </button>
+      </div>
+
+      <div class="btn-row" style="margin-top: 6px;">
+        <button class="btn" id="btn-preset-high">天顶过境 (高仰角)</button>
+        <button class="btn" id="btn-preset-low">低仰角过境</button>
+      </div>
+    </div>
+
+    <!-- 原理说明卡片 -->
+    <div class="info-card">
+      <strong>空间几何定义：</strong><br>
+      1. <span class="tag-az">方位角</span>：在以观测站为中心的地平面上，自<strong>正北 (0°)</strong>沿顺时针测量到地表投影线 <strong>OP'</strong> 的夹角。<br>
+      2. <span class="tag-el">仰角</span>：在垂直面内，自地平面投影线 <strong>OP'</strong> 向上抬升测量到视线的夹角。<br>
+      3. <span class="tag-los">视线</span>：连接观测站 <strong>O</strong> 与空间卫星 <strong>P</strong> 的矢量；<span class="tag-proj">P'</span> 为卫星垂直投影点。
+    </div>
+  </div>
+</div>
+
+<script>
+  /*
+   * 空间三维仿射投影数学模型
+   * 原点 O (Ground Station) 坐标设定在屏幕 (450, 380)
+   */
+  const ORIGIN_X = 450;
+  const ORIGIN_Y = 380;
+
+  // 地平面基向量：
+  // 正北基准 North (Az = 0°): 深度向右上倾斜
+  // 正东基准 East  (Az = 90°): 偏右前延展
+  const V_NORTH = { x: 85, y: -65 };
+  const V_EAST  = { x: 210, y: 20 };
+  const H_MAX = 270; // 90° 天顶屏幕最高垂直抬升
+
+  // 内部状态
+  const state = {
+    azimuth: 65,
+    elevation: 36,
+    isOrbiting: true,
+    orbitSpeed: 0.26,
+    pulseOffset: 0,
+    satPulseRing: 0
+  };
+
+  // 安全获取 DOM 元素工具函数
+  function getEl(id) {
+    return document.getElementById(id);
+  }
+
+  // DOM 缓存引用
+  const elAzSlider = getEl('azimuthSlider');
+  const elElSlider = getEl('elevationSlider');
+  const valAzText = getEl('val-azimuth');
+  const valElText = getEl('val-elevation');
+  const sliderAzVal = getEl('sliderAzVal');
+  const sliderElVal = getEl('sliderElVal');
+  const hudAzText = getEl('hud-azimuth');
+  const hudElText = getEl('hud-elevation');
+  const btnToggleOrbit = getEl('btn-toggle-orbit');
+  const orbitIcon = getEl('orbit-icon');
+  const orbitText = getEl('orbit-text');
+  const btnReset = getEl('btn-reset');
+  const btnPresetHigh = getEl('btn-preset-high');
+  const btnPresetLow = getEl('btn-preset-low');
+
+  // SVG 元素引用
+  const svgLineNorth = getEl('line-north');
+  const svgPointNorth = getEl('point-north');
+  const svgLabelNorth = getEl('label-north');
+  const svgLabelEast = getEl('label-east');
+  const svgLabelSouth = getEl('label-south');
+  const svgLabelWest = getEl('label-west');
+  const svgAxisNS = getEl('axis-ns');
+  const svgAxisEW = getEl('axis-ew');
+  const svgGroundOuter = getEl('ground-ellipse-outer');
+  const svgGroundInner = getEl('ground-ellipse-inner');
+
+  const svgAzSector = getEl('az-sector');
+  const svgAzArc = getEl('az-arc');
+  const svgAzTagBg = getEl('az-tag-bg');
+  const svgAzTagText = getEl('az-tag-text');
+
+  const svgDropTriangle = getEl('drop-triangle');
+  const svgLineProj = getEl('line-proj');
+  const svgLineVertDrop = getEl('line-vert-drop');
+  const svgRightAngle = getEl('right-angle-mark');
+  const svgElSector = getEl('el-sector');
+  const svgPointProj = getEl('point-proj');
+  const svgLabelProj = getEl('label-proj');
+  const svgElTagBg = getEl('el-tag-bg');
+  const svgElTagText = getEl('el-tag-text');
+
+  const svgLineLos = getEl('line-los');
+  const svgLosPulse = getEl('los-pulse');
+  const svgLabelLos = getEl('label-los');
+
+  const svgSatGroup = getEl('satellite-group');
+  const svgSatBodyRot = getEl('sat-body-rot');
+  const svgSatPulseRing = getEl('sat-pulse-ring');
+  const svgRadarDish = getEl('radar-dish-group');
+
+  // 计算地平面上任意方位角的屏幕矢量
+  function getGroundVector(deg) {
+    const rad = (deg * Math.PI) / 180;
+    const c = Math.cos(rad);
+    const s = Math.sin(rad);
+    return {
+      x: c * V_NORTH.x + s * V_EAST.x,
+      y: c * V_NORTH.y + s * V_EAST.y
+    };
+  }
+
+  // 初始化地平面罗盘与基准点
+  function initCompassPlane() {
+    let outerPts = [];
+    let innerPts = [];
+    for (let a = 0; a <= 360; a += 6) {
+      const v = getGroundVector(a);
+      outerPts.push(`${ORIGIN_X + v.x * 1.18},${ORIGIN_Y + v.y * 1.18}`);
+      innerPts.push(`${ORIGIN_X + v.x * 0.68},${ORIGIN_Y + v.y * 0.68}`);
+    }
+    if (svgGroundOuter) svgGroundOuter.setAttribute('d', 'M ' + outerPts.join(' L ') + ' Z');
+    if (svgGroundInner) svgGroundInner.setAttribute('d', 'M ' + innerPts.join(' L ') + ' Z');
+
+    // 正北 0°
+    const vN = getGroundVector(0);
+    const pN = { x: ORIGIN_X + vN.x * 1.25, y: ORIGIN_Y + vN.y * 1.25 };
+    if (svgLineNorth) {
+      svgLineNorth.setAttribute('x1', ORIGIN_X);
+      svgLineNorth.setAttribute('y1', ORIGIN_Y);
+      svgLineNorth.setAttribute('x2', pN.x);
+      svgLineNorth.setAttribute('y2', pN.y);
+    }
+    if (svgPointNorth) {
+      svgPointNorth.setAttribute('cx', pN.x);
+      svgPointNorth.setAttribute('cy', pN.y);
+    }
+    if (svgLabelNorth) {
+      svgLabelNorth.setAttribute('x', pN.x + 8);
+      svgLabelNorth.setAttribute('y', pN.y - 6);
+    }
+
+    // 其它主方位点
+    const vE = getGroundVector(90);
+    const vS = getGroundVector(180);
+    const vW = getGroundVector(270);
+
+    if (svgAxisNS) {
+      svgAxisNS.setAttribute('x1', ORIGIN_X + vN.x * 1.18);
+      svgAxisNS.setAttribute('y1', ORIGIN_Y + vN.y * 1.18);
+      svgAxisNS.setAttribute('x2', ORIGIN_X + vS.x * 1.18);
+      svgAxisNS.setAttribute('y2', ORIGIN_Y + vS.y * 1.18);
+    }
+    if (svgAxisEW) {
+      svgAxisEW.setAttribute('x1', ORIGIN_X + vW.x * 1.18);
+      svgAxisEW.setAttribute('y1', ORIGIN_Y + vW.y * 1.18);
+      svgAxisEW.setAttribute('x2', ORIGIN_X + vE.x * 1.18);
+      svgAxisEW.setAttribute('y2', ORIGIN_Y + vE.y * 1.18);
+    }
+
+    if (svgLabelEast) {
+      svgLabelEast.setAttribute('x', ORIGIN_X + vE.x * 1.22 + 4);
+      svgLabelEast.setAttribute('y', ORIGIN_Y + vE.y * 1.22 + 4);
+    }
+    if (svgLabelSouth) {
+      svgLabelSouth.setAttribute('x', ORIGIN_X + vS.x * 1.22 - 12);
+      svgLabelSouth.setAttribute('y', ORIGIN_Y + vS.y * 1.22 + 14);
+    }
+    if (svgLabelWest) {
+      svgLabelWest.setAttribute('x', ORIGIN_X + vW.x * 1.22 - 36);
+      svgLabelWest.setAttribute('y', ORIGIN_Y + vW.y * 1.22 + 4);
+    }
+  }
+
+  // 刷新全场景几何计算
+  function updateScene() {
+    const az = state.azimuth;
+    const el = state.elevation;
+
+    // 1. 视线与地表投影几何计算
+    const R_LOS = 1.30;
+    const elRad = (el * Math.PI) / 180;
+    const rHoriz = R_LOS * Math.cos(elRad);
+    const hAltitude = R_LOS * Math.sin(elRad) * H_MAX;
+
+    const gVec = getGroundVector(az);
+    const pProj = {
+      x: ORIGIN_X + gVec.x * rHoriz,
+      y: ORIGIN_Y + gVec.y * rHoriz
+    };
+
+    const pSat = {
+      x: pProj.x,
+      y: pProj.y - hAltitude
+    };
+
+    // 2. 方位角 (Azimuth) 扇面与弧线绘制
+    const arcRadius = 0.52;
+    let azArcPts = [`${ORIGIN_X},${ORIGIN_Y}`];
+    let arcOnlyPts = [];
+    const count = Math.max(3, Math.floor(Math.abs(az) / 3));
+    for (let i = 0; i <= count; i++) {
+      let a = (i / count) * az;
+      let v = getGroundVector(a);
+      let px = ORIGIN_X + v.x * arcRadius;
+      let py = ORIGIN_Y + v.y * arcRadius;
+      azArcPts.push(`${px},${py}`);
+      arcOnlyPts.push(`${px},${py}`);
+    }
+    azArcPts.push(`${ORIGIN_X},${ORIGIN_Y}`);
+
+    if (svgAzSector) svgAzSector.setAttribute('d', 'M ' + azArcPts.join(' L ') + ' Z');
+    if (svgAzArc) svgAzArc.setAttribute('d', 'M ' + arcOnlyPts.join(' L '));
+
+    // 方位角标签定位
+    // 垂直坠线 PP' 是一条竖直线（x = pProj.x），标签框半宽 44，
+    // 横向让开 52px 即无论纵向如何都不会与坠线重合；让开方向就近取一侧，避免标签横跳。
+    const midAzVec = getGroundVector(az * 0.5);
+    let tagAzX = ORIGIN_X + midAzVec.x * (arcRadius + 0.18);
+    const tagAzY = ORIGIN_Y + midAzVec.y * (arcRadius + 0.18);
+    const tagHalfW = 44;
+    const tagClear = tagHalfW + 8;
+    const dxAzTag = tagAzX - pProj.x;
+    if (Math.abs(dxAzTag) < tagClear) tagAzX = pProj.x + (dxAzTag >= 0 ? tagClear : -tagClear);
+    if (svgAzTagText) {
+      svgAzTagText.textContent = `方位角：${az.toFixed(1)}°`;
+      svgAzTagText.setAttribute('x', tagAzX);
+      svgAzTagText.setAttribute('y', tagAzY);
+    }
+    if (svgAzTagBg) {
+      svgAzTagBg.setAttribute('x', tagAzX - 44);
+      svgAzTagBg.setAttribute('y', tagAzY - 10);
+      svgAzTagBg.setAttribute('width', 88);
+      svgAzTagBg.setAttribute('height', 20);
+    }
+
+    // 3. 垂直投影侧影三角形面 △OPP'
+    if (svgDropTriangle) {
+      svgDropTriangle.setAttribute('d', `M ${ORIGIN_X} ${ORIGIN_Y} L ${pSat.x} ${pSat.y} L ${pProj.x} ${pProj.y} Z`);
+    }
+
+    // 投影线 OP'
+    if (svgLineProj) {
+      svgLineProj.setAttribute('x1', ORIGIN_X);
+      svgLineProj.setAttribute('y1', ORIGIN_Y);
+      svgLineProj.setAttribute('x2', pProj.x);
+      svgLineProj.setAttribute('y2', pProj.y);
+    }
+
+    // 垂直线 PP'
+    if (svgLineVertDrop) {
+      svgLineVertDrop.setAttribute('x1', pSat.x);
+      svgLineVertDrop.setAttribute('y1', pSat.y);
+      svgLineVertDrop.setAttribute('x2', pProj.x);
+      svgLineVertDrop.setAttribute('y2', pProj.y);
+    }
+
+    // 地表投影点 P'
+    if (svgPointProj) {
+      svgPointProj.setAttribute('cx', pProj.x);
+      svgPointProj.setAttribute('cy', pProj.y);
+    }
+    if (svgLabelProj) {
+      svgLabelProj.setAttribute('x', pProj.x + 8);
+      svgLabelProj.setAttribute('y', pProj.y + 12);
+    }
+
+    // 垂直直角标记 ∠PP'O
+    if (svgRightAngle) {
+      const raSize = 13;
+      const dxP = (ORIGIN_X - pProj.x);
+      const dyP = (ORIGIN_Y - pProj.y);
+      const lenP = Math.hypot(dxP, dyP) || 1;
+      const raUx = (dxP / lenP) * raSize;
+      const raUy = (dyP / lenP) * raSize;
+      const p1x = pProj.x + raUx;
+      const p1y = pProj.y + raUy;
+      const p2x = pProj.x + raUx;
+      const p2y = pProj.y + raUy - raSize;
+      const p3x = pProj.x;
+      const p3y = pProj.y - raSize;
+      svgRightAngle.setAttribute('d', `M ${p1x} ${p1y} L ${p2x} ${p2y} L ${p3x} ${p3y}`);
+    }
+
+    // 4. 仰角 Elevation 扇面
+    //    顶点 O，起始边 OP'（仰角 0 的基准方向），终止边 OP（视线本体）。
+    //    两边都取真实几何长度：OP' 止于地表投影点 P'，OP 止于卫星，
+    //    否则扇面边缘会随方位角忽长忽短，与投影线、视线错开。
+    const elArcSteps = 14;
+    const ax = pProj.x - ORIGIN_X;                                  // OP'：仰角 0 的基准方向
+    const ay = pProj.y - ORIGIN_Y;
+
+    // 斜投影基底：OP' 与 OV 张成竖直平面，弧上任意点 P(t) = OP'·cos t + OV·sin t，
+    // 于是 P(0) = OP'（地表投影点）、P(el) = OP（视线终点），两端分别贴合投影线与视线。
+    //   OV = OP'·tan(el/2) + (0, -R_LOS·H_MAX)
+    const vx = ax * Math.tan(elRad / 2);
+    const vy = ay * Math.tan(elRad / 2) - R_LOS * H_MAX;
+
+    const elArcPoint = (t) => [
+      ORIGIN_X + ax * Math.cos(t) + vx * Math.sin(t),
+      ORIGIN_Y + ay * Math.cos(t) + vy * Math.sin(t)
+    ];
+
+    let elPts = [`${ORIGIN_X},${ORIGIN_Y}`];
+    for (let j = 0; j <= elArcSteps; j++) {
+      const pt = elArcPoint((j / elArcSteps) * elRad);
+      elPts.push(`${pt[0]},${pt[1]}`);
+    }
+    elPts.push(`${ORIGIN_X},${ORIGIN_Y}`);
+    if (svgElSector) svgElSector.setAttribute('d', 'M ' + elPts.join(' L ') + ' Z');
+
+    // 仰角标签（落在扇面中线上，并沿半径方向略微外移）
+    // 扇面中线紧贴两端点连线 PP'，若再往里收必然压到坠线，故只做「向外让开」：
+    // 弧线中点始终在坠线的远 O 一侧，因此让开方向固定，标签不会来回横跳。
+    const elTagMid = elArcPoint(elRad * 0.5);
+    const elTagMidLen = Math.hypot(elTagMid[0] - ORIGIN_X, elTagMid[1] - ORIGIN_Y) || 1;
+    let tagElX = elTagMid[0] + ((elTagMid[0] - ORIGIN_X) / elTagMidLen) * 46;
+    const tagElY = elTagMid[1] + ((elTagMid[1] - ORIGIN_Y) / elTagMidLen) * 46;
+    const dxElTag = tagElX - pProj.x;
+    if (Math.abs(dxElTag) < tagClear) tagElX = pProj.x + (dxElTag >= 0 ? tagClear : -tagClear);
+
+    if (svgElTagText) {
+      svgElTagText.textContent = `仰角：${el.toFixed(1)}°`;
+      svgElTagText.setAttribute('x', tagElX);
+      svgElTagText.setAttribute('y', tagElY);
+    }
+    if (svgElTagBg) {
+      svgElTagBg.setAttribute('x', tagElX - 44);
+      svgElTagBg.setAttribute('y', tagElY - 10);
+      svgElTagBg.setAttribute('width', 88);
+      svgElTagBg.setAttribute('height', 20);
+    }
+
+    // 5. 视线 LOS
+    if (svgLineLos) {
+      svgLineLos.setAttribute('x1', ORIGIN_X);
+      svgLineLos.setAttribute('y1', ORIGIN_Y);
+      svgLineLos.setAttribute('x2', pSat.x);
+      svgLineLos.setAttribute('y2', pSat.y);
+    }
+
+    if (svgLabelLos) {
+      // 视线标签贴视线中点：横向偏到坠线 PP' 的反侧（卫星在 O 左侧时坠线落在中点右边）
+      const losMidX = (ORIGIN_X + pSat.x) / 2;
+      svgLabelLos.setAttribute('x', losMidX + (pSat.x < ORIGIN_X ? 2 : -24));
+      svgLabelLos.setAttribute('y', (ORIGIN_Y + pSat.y) / 2 - 10);
+    }
+
+    // 视线激光脉冲小点
+    if (svgLosPulse) {
+      svgLosPulse.setAttribute('cx', ORIGIN_X + (pSat.x - ORIGIN_X) * state.pulseOffset);
+      svgLosPulse.setAttribute('cy', ORIGIN_Y + (pSat.y - ORIGIN_Y) * state.pulseOffset);
+    }
+
+    // 6. 卫星模型位置与姿态
+    if (svgSatGroup) {
+      svgSatGroup.setAttribute('transform', `translate(${pSat.x}, ${pSat.y})`);
+    }
+    if (svgSatBodyRot) {
+      const satAngle = (Math.atan2(pProj.y - pSat.y, pProj.x - pSat.x) * 180) / Math.PI;
+      svgSatBodyRot.setAttribute('transform', `rotate(${satAngle - 90})`);
+    }
+    if (svgSatPulseRing) {
+      state.satPulseRing = (state.satPulseRing + 0.35) % 32;
+      svgSatPulseRing.setAttribute('r', 12 + state.satPulseRing);
+      svgSatPulseRing.setAttribute('opacity', Math.max(0, 1 - state.satPulseRing / 32));
+    }
+
+    // 7. 地面雷达天线朝向随动对准
+    if (svgRadarDish) {
+      const radarAngle = (Math.atan2(pSat.y - (ORIGIN_Y - 16), pSat.x - ORIGIN_X) * 180) / Math.PI;
+      svgRadarDish.setAttribute('transform', `translate(0, -16) rotate(${radarAngle + 90})`);
+    }
+
+    // 8. 同步更新面板 UI 数据
+    if (valAzText) valAzText.textContent = `${az.toFixed(1).padStart(5, '0')}°`;
+    if (valElText) valElText.textContent = `${el.toFixed(1).padStart(4, '0')}°`;
+    
+    if (sliderAzVal) sliderAzVal.textContent = `${Math.round(az)}°`;
+    if (sliderElVal) sliderElVal.textContent = `${Math.round(el)}°`;
+    if (hudAzText) hudAzText.textContent = `${az.toFixed(1)}°`;
+    if (hudElText) hudElText.textContent = `${el.toFixed(1)}°`;
+  }
+
+  // 单一 RAF 循环
+  let animationFrameId = null;
+  let isRunning = false;
+
+  function loop() {
+    if (!isRunning) return;
+
+    if (state.isOrbiting) {
+      state.azimuth = (state.azimuth + state.orbitSpeed) % 360;
+      const orbitRad = (state.azimuth * Math.PI) / 180;
+      // 模拟自然过轨仰角起伏
+      state.elevation = 38 + 26 * Math.sin(orbitRad * 1.1);
+      if (state.elevation < 8) state.elevation = 8;
+      if (state.elevation > 82) state.elevation = 82;
+
+      if (elAzSlider) elAzSlider.value = state.azimuth;
+      if (elElSlider) elElSlider.value = state.elevation;
+    }
+
+    state.pulseOffset = (state.pulseOffset + 0.018) % 1;
+    updateScene();
+    animationFrameId = requestAnimationFrame(loop);
+  }
+
+  // 界面状态切换
+  function updateOrbitButtonUI() {
+    if (!btnToggleOrbit) return;
+    if (state.isOrbiting) {
+      btnToggleOrbit.classList.add('active');
+      if (orbitIcon) orbitIcon.textContent = '⏸';
+      if (orbitText) orbitText.textContent = '暂停自动轨道';
+    } else {
+      btnToggleOrbit.classList.remove('active');
+      if (orbitIcon) orbitIcon.textContent = '▶';
+      if (orbitText) orbitText.textContent = '恢复自动轨道';
+    }
+  }
+
+  // 用户交互事件安全监听
+  if (elAzSlider) {
+    elAzSlider.addEventListener('input', (e) => {
+      state.azimuth = parseFloat(e.target.value);
+      state.isOrbiting = false;
+      updateOrbitButtonUI();
+      updateScene();
+    });
+  }
+
+  if (elElSlider) {
+    elElSlider.addEventListener('input', (e) => {
+      state.elevation = parseFloat(e.target.value);
+      state.isOrbiting = false;
+      updateOrbitButtonUI();
+      updateScene();
+    });
+  }
+
+  if (btnToggleOrbit) {
+    btnToggleOrbit.addEventListener('click', () => {
+      state.isOrbiting = !state.isOrbiting;
+      updateOrbitButtonUI();
+    });
+  }
+
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      window.resetAnimation();
+    });
+  }
+
+  if (btnPresetHigh) {
+    btnPresetHigh.addEventListener('click', () => {
+      state.isOrbiting = false;
+      state.azimuth = 45;
+      state.elevation = 65;
+      if (elAzSlider) elAzSlider.value = 45;
+      if (elElSlider) elElSlider.value = 65;
+      updateOrbitButtonUI();
+      updateScene();
+    });
+  }
+
+  if (btnPresetLow) {
+    btnPresetLow.addEventListener('click', () => {
+      state.isOrbiting = false;
+      state.azimuth = 135;
+      state.elevation = 16;
+      if (elAzSlider) elAzSlider.value = 135;
+      if (elElSlider) elElSlider.value = 16;
+      updateOrbitButtonUI();
+      updateScene();
+    });
+  }
+
+  // 标准动画控制契约接口
+  window.startAnimation = function() {
+    if (!isRunning) {
+      isRunning = true;
+      animationFrameId = requestAnimationFrame(loop);
+    }
+  };
+
+  window.stopAnimation = function() {
+    isRunning = false;
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+  };
+
+  window.resetAnimation = function() {
+    state.azimuth = 65;
+    state.elevation = 36;
+    state.isOrbiting = true;
+    state.pulseOffset = 0;
+    if (elAzSlider) elAzSlider.value = 65;
+    if (elElSlider) elElSlider.value = 36;
+    updateOrbitButtonUI();
+    updateScene();
+    if (!isRunning) {
+      window.startAnimation();
+    }
+  };
+
+  // 初始化与自启动
+  initCompassPlane();
+  updateScene();
+  window.startAnimation();
+</script>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 <template>
-  <figure ref="rootEl" class="atk-html-demo">
+  <figure class="atk-html-demo">
     <div ref="frameBox" class="atk-html-demo__frame" :style="frameStyle">
-      <!-- allow="fullscreen"：留给自己带全屏按钮的演示页内部使用 -->
+      <!-- allow="fullscreen"：留给演示页内部自己要用全屏的场景（如内嵌视频） -->
       <iframe
         v-if="html && (active || !lazy)"
         class="atk-html-demo__iframe"
@@ -15,8 +15,13 @@
     </div>
     <figcaption v-if="html && (active || !lazy)" class="atk-html-demo__bar">
       <span class="atk-html-demo__caption">{{ title }}</span>
-      <button class="atk-html-demo__btn" type="button" @click="toggleFullscreen">
-        {{ isFullscreen ? '退出全屏' : '全屏' }}
+      <button
+        class="atk-html-demo__btn"
+        :class="{ 'atk-html-demo__btn--blocked': blocked }"
+        type="button"
+        @click="openStandalone"
+      >
+        {{ blocked ? '新标签页被拦截' : '在新标签页打开' }}
       </button>
     </figcaption>
   </figure>
@@ -25,7 +30,11 @@
 <script setup>
 /*
 交互式 HTML 演示组件：把文档仓库里的某个 .html 页面原样嵌进正文，用于代替「录屏转 GIF」。
-动画与交互全部保留，读者可拖动滑块、点按钮，也可以全屏放大。
+
+正文里只放动画本身，不放操作面板：演示页在 <head> 里用 window.self !== window.top 判断
+自己是被内嵌还是被独立打开，内嵌时收起读数/控制面板，只留画面；卡片右下角的
+「在新标签页打开」把同一份页面独立打开，那里才给出完整的仪表与调节控件。
+新增演示页请沿用这一约定（判断要写在 <head> 里、早于样式生效，否则面板会先闪一下）。
 
 用法（markdown，组件已在 client.js 全局注册，无需 import）：
 
@@ -38,6 +47,7 @@
           · 以 / 开头：相对文档源码根目录 src/，如 /zh/03-基础使用指南/media/a.html
 - title   图注，同时作为 iframe 的无障碍标题
 - height  高度，默认按 16:9 跟随正文宽度自适应（如 "620px" 可固定高度）
+          演示页自己收起了面板，一般不必再给 height，让画面正好铺满 16:9 即可
 - lazy    默认 true：滚动到附近才把 iframe 建出来，避免长文档里多个演示同时空转动画
 
 实现说明：
@@ -131,7 +141,6 @@ const active = ref(false)
 let observer = null
 
 onMounted(() => {
-  document.addEventListener('fullscreenchange', syncFullscreen)
   if (!props.lazy || typeof IntersectionObserver === 'undefined') {
     active.value = true
     return
@@ -149,8 +158,8 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  document.removeEventListener('fullscreenchange', syncFullscreen)
   releaseObserver()
+  if (blockedTimer) clearTimeout(blockedTimer)
 })
 
 function releaseObserver() {
@@ -160,27 +169,63 @@ function releaseObserver() {
   }
 }
 
-/* ---------- 尺寸与全屏 ---------- */
-const rootEl = ref(null)
-const isFullscreen = ref(false)
-
+/* ---------- 尺寸 ---------- */
 // 不给 height 时按 16:9 自适应正文宽度；给了则固定高度。
-// 全屏时高度交给 flex 决定，否则行内高度会把画面顶出屏幕。
-const frameStyle = computed(() =>
-  props.height && !isFullscreen.value ? { height: props.height } : {},
-)
+const frameStyle = computed(() => (props.height ? { height: props.height } : {}))
 
-function syncFullscreen() {
-  isFullscreen.value = document.fullscreenElement === rootEl.value
-}
+/* ---------- 在新标签页里打开完整界面 ---------- */
+/*
+ * 构建产物里并没有演示页 .html 本体（它被 ?raw 打进了主包，不进 dist），
+ * 所以这里不链接文件，而是拿内存里的同一份源码现场造一个页面：
+ *   · http(s)（本地调试 / 在线版）：Blob URL，是个可在新标签页里刷新的真实地址；
+ *   · file://（离线版）：部分浏览器禁止顶层导航到 blob:，改用 about:blank + document.write
+ *     （这条在 http 下也可用，只是地址栏会停在 about:blank）。
+ * 两种都失败基本就是新标签页被拦截，在按钮上原地提示一下。
+ *
+ * 不管走哪条路，页面都是顶层窗口，演示页据此判断「不是内嵌」，从而展开完整面板。
+ */
+const blocked = ref(false)
+let blockedTimer = null
 
-// 全屏整张卡片而不是 iframe 本身：否则 iframe 铺满屏幕会把底部图注与
-// 「退出全屏」按钮一起盖住，读者只能靠 Esc 退出。
-function toggleFullscreen() {
-  if (document.fullscreenElement) {
-    document.exitFullscreen()
-  } else if (rootEl.value?.requestFullscreen) {
-    rootEl.value.requestFullscreen()
+function openStandalone() {
+  const content = html.value
+  if (!content) return
+
+  // 先开窗口再写内容：window.open 必须在点击的回调里同步调用，晚一拍就会被拦截
+  const openBlankAndWrite = () => {
+    const win = window.open('', '_blank')
+    if (!win) return null
+    win.document.open()
+    win.document.write(content)
+    win.document.close()
+    return win
+  }
+  const openBlob = () => {
+    // 这个 URL 不主动 revoke：撤销之后新标签页一旦刷新就变成空白页，
+    // 而一个演示页只有几十 KB，随文档卸载一起回收即可。
+    const url = URL.createObjectURL(new Blob([content], { type: 'text/html;charset=utf-8' }))
+    return window.open(url, '_blank')
+  }
+
+  const attempts =
+    window.location.protocol === 'file:' ? [openBlankAndWrite, openBlob] : [openBlob, openBlankAndWrite]
+
+  let win = null
+  for (const attempt of attempts) {
+    try {
+      win = attempt()
+    } catch (e) {
+      win = null
+    }
+    if (win) break
+  }
+
+  if (!win) {
+    blocked.value = true
+    if (blockedTimer) clearTimeout(blockedTimer)
+    blockedTimer = setTimeout(() => {
+      blocked.value = false
+    }, 4000)
   }
 }
 </script>
@@ -190,8 +235,8 @@ function toggleFullscreen() {
   margin: 0 0 16px;
   border-radius: 8px;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  width: 100%;
 }
 .atk-html-demo__frame {
   position: relative;
@@ -249,20 +294,9 @@ function toggleFullscreen() {
   border-color: #0891b2;
   color: #0e7490;
 }
-
-/* 全屏：画面吃满剩余高度，底部图注与按钮留在屏幕上 */
-.atk-html-demo:fullscreen {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  border-radius: 0;
-}
-.atk-html-demo:fullscreen .atk-html-demo__frame {
-  flex: 1;
-  min-height: 0;
-  aspect-ratio: auto;
-}
-.atk-html-demo:fullscreen .atk-html-demo__bar {
-  background: #fff;
+.atk-html-demo__btn--blocked,
+.atk-html-demo__btn--blocked:hover {
+  border-color: #f7c8c4;
+  color: #d93026;
 }
 </style>
