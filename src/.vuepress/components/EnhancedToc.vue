@@ -7,6 +7,7 @@
 <script setup>
 import { onMounted, watch, nextTick, onUnmounted, computed } from 'vue'
 import { useRoute, usePageFrontmatter } from 'vuepress/client'
+import { slugifyAnchor, uniqueAnchorId } from '../shared/anchor.js'
 
 const route = useRoute()
 const frontmatter = usePageFrontmatter()
@@ -44,6 +45,18 @@ const getMaxLevel = () => {
   return 6
 }
 
+// 组件渲染的标题（如 ConnectCommandSummary 的 h2、未带 id 的卡片标题）没有 id，
+// 直接取会得到 null，目录链接就成了 `#null`，点击无法跳转。
+// 这里按标题文本补一个不冲突的锚点 id，保证每个目录项都有可跳转的目标。
+const ensureAnchorId = (header, text) => {
+  const base = slugifyAnchor(text)
+  if (!base) return ''
+  const taken = new Set(Array.from(document.querySelectorAll('[id]')).map((node) => node.id))
+  const id = uniqueAnchorId(base, (value) => taken.has(value))
+  header.setAttribute('id', id)
+  return id
+}
+
 // 生成 TOC 项目
 const generateTocItems = () => {
   const contentContainer = document.querySelector('.theme-hope-content')
@@ -58,9 +71,10 @@ const generateTocItems = () => {
     if (level < 2) return
     if (level > maxLevel) return // 超过最大层级的不渲染
 
-    const id = header.getAttribute('id')
     const text = header.textContent?.trim() || ''
-    
+    const id = header.getAttribute('id') || ensureAnchorId(header, text)
+    if (!id) return // 标题文本无法生成锚点，跳过，避免出现空链接
+
     items.push({
       level,
       id,

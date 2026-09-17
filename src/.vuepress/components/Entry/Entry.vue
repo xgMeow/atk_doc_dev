@@ -16,7 +16,7 @@
     >
       <div class="atk-entry__title-row">
         <span v-if="hasCollapsible" class="atk-entry__arrow">▼</span>
-        <component :is="headingTag" class="atk-entry__name">{{ name }}</component>
+        <component :is="headingTag" ref="headingRef" :id="headingId" class="atk-entry__name">{{ name }}</component>
       </div>
     </div>
     <!-- 静态区：适用对象标签 + 量纲/单位条 + 常显摘要，均始终可见 -->
@@ -70,6 +70,7 @@
 卡片以阴影替代实线边框，更轻量。
 */
 import { Comment, Text, computed, onMounted, ref, useSlots } from 'vue'
+import { slugifyAnchor, uniqueAnchorId } from '../../shared/anchor.js'
 
 const props = defineProps({
   name: { type: String, required: true },
@@ -120,6 +121,13 @@ const metaParts = computed(() => {
   return parts
 })
 
+// 标题锚点：卡片名是组件渲染的标题，不像 markdown 标题那样自带 id，
+// 右侧目录（EnhancedToc）会读到 null 而生成 `#null` 链接，点击无法跳转。
+// 这里按与 markdown 标题相同的 slug 规则给它一个 id，使目录项与深链都能定位到卡片。
+// 初值在服务端与客户端一致；同名卡片（或与页面小标题重名）在挂载后再去重。
+const headingId = ref(slugifyAnchor(props.name))
+const headingRef = ref(null)
+
 // 判断插槽正文是否真有内容（空段/仅空白/注释/空元素不算），用于决定是否显示折叠箭头与可折叠区
 const slots = useSlots()
 const VOID_TAGS = new Set(['img', 'br', 'hr', 'input', 'meta', 'link'])
@@ -164,6 +172,17 @@ const toggle = () => {
 }
 
 onMounted(() => {
+  // 锚点去重：页面里已有的 id（markdown 标题、先挂载的同名卡片）不重复占用
+  const title = headingRef.value
+  if (title && headingId.value) {
+    const taken = new Set(
+      Array.from(document.querySelectorAll('[id]'))
+        .filter((node) => node !== title)
+        .map((node) => node.id)
+    )
+    headingId.value = uniqueAnchorId(headingId.value, (id) => taken.has(id))
+  }
+
   // 默认展开：放开高度上限，正文自然完整展示（可含图片、表格、公式）；折叠态才把高度收为 0
   const el = bodyRef.value
   if (!el) return
