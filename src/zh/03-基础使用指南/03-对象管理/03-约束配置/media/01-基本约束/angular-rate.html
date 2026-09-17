@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>角变化率示意图</title>
+  <script>
+    /*
+     * 同一个页面服务两种读法，靠顶层窗口判断，样式生效前就把结果写进 <html>：
+     *   内嵌（文档正文里的 iframe，本页绝大多数时候）—— 读者只看动画，
+     *        右侧的读数与控制面板整体收起，画面里只剩动画本身；
+     *   独立（点卡片右下角「在新标签页打开」后）—— 才是完整的读数 + 调节面板。
+     * 跨域取 window.top 会抛异常，一并按内嵌处理，避免误把面板铺到别人页面里。
+     * 追加的 ?embed=0 / ?embed=1 用于单独调试某一种形态。
+     */
+    (function () {
+      var embedded = true;
+      try {
+        embedded = window.self !== window.top;
+      } catch (e) {
+        embedded = true;
+      }
+      var forced = /[?&]embed=(0|1)(?:&|$)/.exec(window.location.search);
+      if (forced) embedded = forced[1] === '1';
+      document.documentElement.classList.add(embedded ? 'is-embed' : 'is-standalone');
+    })();
+  </script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      max-height: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+    .app-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      background: radial-gradient(circle at 45% 48%, #ffffff 0%, #f7f9fc 70%, #eef2f7 100%);
+      overflow: hidden;
+      position: relative;
+    }
+    /* 左侧主 SVG 视口区域 */
+    .viewport-area {
+      flex: 1;
+      height: 100%;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #space-svg {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    }
+    /* 右侧仪表与控制面板（仅独立打开时出现） */
+    .control-panel {
+      width: 272px;
+      height: 100%;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-left: 1px solid rgba(217, 119, 6, 0.22);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+      z-index: 20;
+      box-shadow: -8px 0 25px rgba(15, 23, 42, 0.08);
+    }
+    .control-panel::-webkit-scrollbar {
+      width: 4px;
+    }
+    .control-panel::-webkit-scrollbar-thumb {
+      background: rgba(217, 119, 6, 0.3);
+      border-radius: 4px;
+    }
+    .header-box {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      padding-bottom: 10px;
+    }
+    .header-box h1 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.5px;
+    }
+    .header-box h1::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: #d97706;
+      border-radius: 2px;
+    }
+    .header-box p {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 3px;
+      line-height: 1.3;
+    }
+    /* 读数仪表网格 */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .metric-card {
+      background: rgba(248, 250, 252, 0.9);
+      border-radius: 6px;
+      padding: 8px 10px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+    .metric-card.rate { border-left: 3px solid #d97706; }
+    .metric-card.range { border-left: 3px solid #059669; }
+    .metric-card.perp { border-left: 3px solid #7c3aed; }
+    .metric-card.para { border-left: 3px solid #94a3b8; }
+    .metric-label {
+      font-size: 10.5px;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .metric-value {
+      font-size: 18px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      margin-top: 2px;
+      line-height: 1.1;
+    }
+    .metric-card.rate .metric-value { color: #d97706; }
+    .metric-card.range .metric-value { color: #059669; }
+    .metric-card.perp .metric-value { color: #7c3aed; }
+    .metric-card.para .metric-value { color: #64748b; }
+    .metric-sub {
+      font-size: 9.5px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    /* 滑块与交互控制 */
+    .control-group {
+      background: rgba(248, 250, 252, 0.8);
+      border-radius: 6px;
+      padding: 10px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .group-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .slider-row {
+      margin-bottom: 8px;
+    }
+    .slider-row:last-child {
+      margin-bottom: 0;
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      margin-bottom: 3px;
+      color: #475569;
+    }
+    .slider-header span.val {
+      font-weight: 700;
+      color: #0891b2;
+    }
+    input[type=range] {
+      width: 100%;
+      height: 4px;
+      -webkit-appearance: none;
+      background: rgba(15, 23, 42, 0.12);
+      border-radius: 2px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: #0891b2;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 6px rgba(15, 23, 42, 0.25);
+      transition: transform 0.1s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.25);
+    }
+    /* 按钮样式 */
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .btn {
+      background: rgba(241, 245, 249, 0.95);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      color: #334155;
+      padding: 6px 8px;
+      border-radius: 5px;
+      font-size: 10.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn:hover {
+      background: rgba(226, 232, 240, 1);
+      border-color: rgba(217, 119, 6, 0.5);
+      color: #0f172a;
+    }
+    .btn.active {
+      background: rgba(217, 119, 6, 0.12);
+      border-color: #d97706;
+      color: #b45309;
+    }
+    /* 说明卡片 */
+    .info-card {
+      background: rgba(248, 250, 252, 0.85);
+      border-radius: 6px;
+      padding: 9px 10px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      font-size: 10.5px;
+      line-height: 1.5;
+      color: #475569;
+    }
+    .info-card strong { color: #0f172a; }
+    .info-card .tag-rate { color: #d97706; font-weight: 700; }
+    .info-card .tag-r { color: #059669; font-weight: 700; }
+    .info-card .tag-perp { color: #7c3aed; font-weight: 700; }
+    .info-card .tag-para { color: #64748b; font-weight: 700; }
+
+    /* 独立打开时正文宽度可能不大，768px 是常见断点，
+       沿用该断点会过早把右侧面板挤到下方，故下调到 560px。 */
+    @media (max-width: 560px) {
+      .app-container { flex-direction: column; }
+      .control-panel {
+        width: 100%;
+        height: 240px;
+        border-left: none;
+        border-top: 1px solid rgba(217, 119, 6, 0.22);
+      }
+    }
+
+    /* ---------- 形态一：内嵌在文档正文里 ---------- */
+    .is-embed .control-panel { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <!-- 主几何示意 SVG（标准 16:9 横屏 viewBox） -->
+  <div class="viewport-area">
+    <svg id="space-svg" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <!-- 扫过楔形：以分析对象 O 为中心的径向渐变 -->
+        <radialGradient id="sweepGrad" gradientUnits="userSpaceOnUse" cx="460" cy="357" r="150">
+          <stop offset="0%" stop-color="#d97706" stop-opacity="0.30" />
+          <stop offset="100%" stop-color="#d97706" stop-opacity="0.08" />
+        </radialGradient>
+
+        <!-- 角变化率曲线下方填充 -->
+        <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d97706" stop-opacity="0.22" />
+          <stop offset="100%" stop-color="#d97706" stop-opacity="0.03" />
+        </linearGradient>
+
+        <!-- 箭头标头 -->
+        <marker id="mk-r" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#059669" />
+        </marker>
+        <marker id="mk-v" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#0891b2" />
+        </marker>
+        <marker id="mk-vpar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.6" markerHeight="4.6" orient="auto">
+          <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#94a3b8" />
+        </marker>
+        <marker id="mk-vperp" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#7c3aed" />
+        </marker>
+      </defs>
+
+      <!-- 参考方向基准射线 -->
+      <g id="layer-ref">
+        <line x1="460" y1="357" x2="716" y2="357" stroke="#cbd5e1" stroke-width="1.6" stroke-dasharray="7 5" />
+        <text x="722" y="353" fill="#94a3b8" font-size="10.5" font-weight="500">参考方向</text>
+      </g>
+
+      <!-- 关联对象的相对轨迹 -->
+      <g id="layer-track">
+        <line x1="48" y1="112" x2="872" y2="112" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+      </g>
+
+      <!-- ============ 随目标位置变化的部分 ============ -->
+      <g id="dyn-layer">
+
+        <!-- 视线在 Δt 内扫过的楔形 -->
+        <path id="sweep-sector" fill="url(#sweepGrad)" />
+        <line id="sweep-ray" stroke="#d97706" stroke-width="1.2" stroke-dasharray="5 3" opacity="0.7" />
+
+        <!-- 视角 θ 的弧线 -->
+        <path id="theta-arc" fill="none" stroke="#d97706" stroke-width="1.6" stroke-dasharray="5 3" />
+
+        <!-- 相对位置矢量 r（视线） -->
+        <line id="line-r" stroke="#059669" stroke-width="2.6" marker-end="url(#mk-r)" />
+
+        <!-- 速度分解的辅助虚线（平行四边形补齐） -->
+        <line id="dash-par" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="5 4" />
+        <line id="dash-perp" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="5 4" />
+
+        <!-- 相对速度的径向 / 垂直分量 -->
+        <line id="vec-vpar" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#mk-vpar)" />
+        <line id="vec-vperp" stroke="#7c3aed" stroke-width="2.6" marker-end="url(#mk-vperp)" />
+
+        <!-- 相对速度矢量（外描一层淡色，避免与 v⊥ 完全重合时被盖住） -->
+        <line id="vec-v-halo" stroke="#0891b2" stroke-width="7" stroke-opacity="0.18" stroke-linecap="round" />
+        <line id="vec-v" stroke="#0891b2" stroke-width="2.4" marker-end="url(#mk-v)" />
+
+        <!-- 关联对象 P -->
+        <circle id="p-halo" cx="0" cy="0" r="12" fill="none" stroke="#7c3aed" stroke-width="1.4" />
+        <circle id="p-dot" cx="0" cy="0" r="6" fill="#0f172a" stroke="#ffffff" stroke-width="2" />
+
+        <!-- 动态文字标签 -->
+        <text id="label-r" fill="#047857" font-size="10.5" font-weight="700" stroke="#ffffff" stroke-width="3" paint-order="stroke">R</text>
+        <text id="label-v" fill="#0891b2" font-size="10.5" font-weight="700" stroke="#ffffff" stroke-width="3" paint-order="stroke">v</text>
+        <text id="label-vpar" fill="#64748b" font-size="10.5" font-weight="700" stroke="#ffffff" stroke-width="3" paint-order="stroke">v∥</text>
+        <text id="label-vperp" fill="#7c3aed" font-size="10.5" font-weight="700" stroke="#ffffff" stroke-width="3" paint-order="stroke">v⊥</text>
+        <text id="label-p" fill="#0f172a" font-size="11" font-weight="700" text-anchor="end" stroke="#ffffff" stroke-width="3" paint-order="stroke">关联对象 P</text>
+
+        <!-- θ 与 Δθ 的带底标签 -->
+        <rect id="theta-pill" rx="4" ry="4" fill="rgba(255, 255, 255, 0.94)" stroke="#d97706" stroke-width="1" />
+        <text id="theta-label" fill="#b45309" font-size="10" font-weight="700" text-anchor="middle">θ</text>
+        <rect id="sweep-pill" rx="4" ry="4" fill="rgba(255, 255, 255, 0.94)" stroke="#d97706" stroke-width="1" />
+        <text id="sweep-label" fill="#b45309" font-size="10" font-weight="700" text-anchor="middle">Δθ</text>
+
+        <!-- 曲线游标 -->
+        <line id="cursor-line" stroke="#d97706" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.65" />
+        <circle id="cursor-dot" r="4.5" fill="#d97706" stroke="#ffffff" stroke-width="1.6" />
+      </g>
+
+      <!-- 分析对象 O -->
+      <g id="observer" transform="translate(460, 357)">
+        <circle r="17" fill="none" stroke="#cbd5e1" stroke-width="1" />
+        <circle r="11" fill="none" stroke="#94a3b8" stroke-width="1" />
+        <circle r="5.5" fill="#0f172a" stroke="#ffffff" stroke-width="2" />
+        <text x="20" y="20" fill="#334155" font-size="11" font-weight="700">分析对象 O</text>
+      </g>
+
+      <!-- 角变化率随时间的变化曲线 -->
+      <g id="curve-panel">
+        <rect x="16" y="396" width="928" height="132" rx="8" fill="rgba(255, 255, 255, 0.92)" stroke="rgba(15, 23, 42, 0.08)" stroke-width="1" />
+        <text x="32" y="416" fill="#334155" font-size="11.5" font-weight="700">角变化率 ω 随目标位置的变化<tspan fill="#94a3b8" font-weight="500" font-size="10">（单位：°/s）</tspan></text>
+        <!-- 公式与当前值放在曲线区表头右侧：这里是画面里唯一不会被几何元素压到的角落 -->
+        <text x="800" y="416" fill="#475569" font-size="11" text-anchor="end">角变化率 = ‖r × v‖ / R² = v⊥ / R =</text>
+        <text id="card-value" x="810" y="416" fill="#d97706" font-size="14" font-weight="800">0.802 °/s</text>
+        <line x1="28" y1="500" x2="932" y2="500" stroke="#e2e8f0" stroke-width="1.2" />
+        <path id="curve-area" fill="url(#curveFill)" />
+        <path id="curve-line" fill="none" stroke="#d97706" stroke-width="2.2" stroke-linejoin="round" />
+        <circle id="peak-dot" r="3.6" fill="#ffffff" stroke="#d97706" stroke-width="1.8" />
+        <line id="peak-tick" x1="0" y1="500" x2="0" y2="506" stroke="#cbd5e1" stroke-width="1.2" />
+        <text id="peak-label" x="0" y="518" fill="#94a3b8" font-size="9.5" text-anchor="middle">最近接近点（v⊥ 最大、R 最小）</text>
+        <text x="932" y="520" fill="#94a3b8" font-size="9.5" text-anchor="end">目标沿轨迹的位置 →</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- 右侧控制与读数面板（仅在独立打开时出现） -->
+  <div class="control-panel">
+    <div class="header-box">
+      <h1>角变化率示意</h1>
+      <p>关联对象视线方向的角速度联动演示</p>
+    </div>
+
+    <div class="metric-grid">
+      <div class="metric-card rate">
+        <div class="metric-label">角变化率</div>
+        <div class="metric-value" id="val-rate">0.802 °/s</div>
+        <div class="metric-sub">‖r×v‖ ⁄ R²</div>
+      </div>
+      <div class="metric-card range">
+        <div class="metric-label">斜距 R</div>
+        <div class="metric-value" id="val-range">963 km</div>
+        <div class="metric-sub">分析对象到关联对象</div>
+      </div>
+      <div class="metric-card perp">
+        <div class="metric-label">垂直分量 v⊥</div>
+        <div class="metric-value" id="val-perp">3.34</div>
+        <div class="metric-sub">km/s，唯一贡献项</div>
+      </div>
+      <div class="metric-card para">
+        <div class="metric-label">径向分量 v∥</div>
+        <div class="metric-value" id="val-para">-5.96</div>
+        <div class="metric-sub">km/s，只改变距离</div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="group-title">
+        <span>相对速度手动调节</span>
+        <span style="font-size:9.5px; color:#94a3b8;">ω 与 v 成正比</span>
+      </div>
+      <div class="slider-row">
+        <div class="slider-header">
+          <span>相对速度 v：</span>
+          <span class="val" id="sliderVVal">7.0 km/s</span>
+        </div>
+        <input type="range" id="vSlider" min="3" max="9" step="0.5" value="7">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="group-title">
+        <span>演示控制</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn active" id="btn-toggle">
+          <span id="play-icon">⏸</span> <span id="play-text">暂停演示</span>
+        </button>
+        <button class="btn" id="btn-reset">↺ 复位</button>
+      </div>
+      <div class="btn-row" style="margin-top: 6px;">
+        <button class="btn" id="btn-near">最近接近点</button>
+        <button class="btn" id="btn-far">远距接近</button>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <strong>原理说明：</strong><br>
+      1. 视线方向随时间转动，其角速度大小即 <span class="tag-rate">角变化率</span>：<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;val = ‖<strong>r</strong> × <strong>v</strong>‖ ⁄ R²。<br>
+      2. 把相对速度 <strong>v</strong> 分解为沿视线的 <span class="tag-para">径向分量 v∥</span> 与 <span class="tag-perp">垂直分量 v⊥</span>，则 ‖<strong>r</strong> × <strong>v</strong>‖ = R · v⊥，故 val = <span class="tag-perp">v⊥</span> ⁄ <span class="tag-r">R</span>。<br>
+      3. <span class="tag-para">v∥</span> 只改变 <span class="tag-r">R</span>，不引起视线转动；角变化率完全由 <span class="tag-perp">v⊥</span> 与 <span class="tag-r">R</span> 之比决定。<br>
+      4. 最近接近点附近 v⊥ 最大、R 最小，角变化率随之达到峰值，随后迅速衰减 —— 这也是过轨跟踪最吃力的时刻。
+    </div>
+  </div>
+</div>
+
+<script>
+  /*
+   * 二维平面内的「视线角速度」模型：
+   *   分析对象 O 固定在屏幕 (460, 357)，关联对象 P 沿水平轨迹匀速通过，最近接近距离 b。
+   *   相对位置 r = (x, b)，相对速度 v = (v, 0)（世界坐标 y 向上）。
+   *   角变化率 val = ‖r×v‖ / R² = v·b / R²，其峰值 val_max = v / b 出现在 x = 0 处。
+   *   速度按固定屏幕长度绘制（不按真实比例），故 v∥、v⊥ 的长度只表示相对大小。
+   */
+  (function () {
+    'use strict';
+
+    /* ---------- 场景常量 ---------- */
+    const O_X = 460;                 // 分析对象屏幕坐标
+    const O_Y = 357;
+    const B_KM = 500;                // 最近接近距离 (km)
+    const S = 245 / B_KM;            // px / km
+    const TRACK_Y = O_Y - B_KM * S;  // 轨迹在屏幕上的高度 = 112
+    const X_MAX_KM = 820;            // 轨迹半长 (km)
+    const V_PX = 84;                 // 相对速度矢量的固定屏幕长度 (px)
+    const T_SCALE = 16;              // 演示时间加速倍率
+    const DT_SWEEP = 20;             // 扫过角的统计时长 (s)
+    const ARC_R = 170;               // θ 弧线半径
+    const SWEEP_R = 146;             // 扫过楔形半径
+    const SWEEP_LABEL_R = 96;        // 扫过角标签半径
+    const FADE_KM = 120;             // 轨迹两端的淡入淡出区间 (km)
+    const CURVE_BASE = 500;          // 曲线区基线 y
+    const CURVE_TOP = 420;           // 曲线区顶部 y
+    const W_MAX = 1.15;              // 曲线纵轴上限 (°/s)
+
+    // 起始点放在淡入结束处，保证一打开就能看见目标，而不是空场
+    const X_START_KM = -(X_MAX_KM - FADE_KM);
+
+    const state = {
+      xKm: X_START_KM,
+      vKmS: 7.0,
+      playing: true
+    };
+
+    /* ---------- 坐标与几何工具 ---------- */
+    const px = (xk) => O_X + xk * S;
+    const omegaToY = (w) => CURVE_BASE - (w / W_MAX) * (CURVE_BASE - CURVE_TOP);
+    // 角度以「视觉上的逆时针」为正，弧度制；半径沿该方向取点
+    const polar = (ang, rad) => [O_X + rad * Math.cos(ang), O_Y - rad * Math.sin(ang)];
+    const tangent = (ang) => [-Math.sin(ang), -Math.cos(ang)];
+
+    const $ = (id) => document.getElementById(id);
+
+    function setLine(el, x1, y1, x2, y2) {
+      if (!el) return;
+      el.setAttribute('x1', x1); el.setAttribute('y1', y1);
+      el.setAttribute('x2', x2); el.setAttribute('y2', y2);
+    }
+
+    // 把文字包成带底色的标签：底色尺寸按文字实际包围盒计算
+    function fitPill(textEl, pillEl, padX, height, fontSize) {
+      if (!textEl || !pillEl) return;
+      const str = textEl.textContent || '';
+      let w = 0;
+      try { w = textEl.getBBox().width; } catch (e) { w = 0; }
+      if (!w) w = str.length * fontSize * 0.62;
+      const x = parseFloat(textEl.getAttribute('x')) || 0;
+      const y = parseFloat(textEl.getAttribute('y')) || 0;
+      const cy = y - fontSize * 0.35;
+      pillEl.setAttribute('x', x - w / 2 - padX);
+      pillEl.setAttribute('y', cy - height / 2);
+      pillEl.setAttribute('width', w + padX * 2);
+      pillEl.setAttribute('height', height);
+    }
+
+    /* ---------- DOM 引用 ---------- */
+    const dynLayer = $('dyn-layer');
+    const sweepSector = $('sweep-sector');
+    const sweepRay = $('sweep-ray');
+    const thetaArc = $('theta-arc');
+    const lineR = $('line-r');
+    const dashPar = $('dash-par');
+    const dashPerp = $('dash-perp');
+    const vecVhalo = $('vec-v-halo');
+    const vecV = $('vec-v');
+    const vecVpar = $('vec-vpar');
+    const vecVperp = $('vec-vperp');
+    const pDot = $('p-dot');
+    const pHalo = $('p-halo');
+    const labelR = $('label-r');
+    const labelV = $('label-v');
+    const labelVpar = $('label-vpar');
+    const labelVperp = $('label-vperp');
+    const labelP = $('label-p');
+    const thetaLabel = $('theta-label');
+    const thetaPill = $('theta-pill');
+    const sweepLabel = $('sweep-label');
+    const sweepPill = $('sweep-pill');
+    const cursorLine = $('cursor-line');
+    const cursorDot = $('cursor-dot');
+
+    const cardValue = $('card-value');
+    const valRate = $('val-rate');
+    const valRange = $('val-range');
+    const valPerp = $('val-perp');
+    const valPara = $('val-para');
+    const vSlider = $('vSlider');
+    const sliderVVal = $('sliderVVal');
+    const btnToggle = $('btn-toggle');
+    const playIcon = $('play-icon');
+    const playText = $('play-text');
+    const btnReset = $('btn-reset');
+    const btnNear = $('btn-near');
+    const btnFar = $('btn-far');
+
+    /* ---------- 曲线：角变化率随目标位置的变化 ---------- */
+    function buildCurve() {
+      const N = 180;
+      const pts = [];
+      for (let i = 0; i <= N; i++) {
+        const xk = -X_MAX_KM + (2 * X_MAX_KM) * i / N;
+        const R = Math.hypot(xk, B_KM);
+        const wDeg = (state.vKmS * B_KM / (R * R)) * 180 / Math.PI;
+        pts.push([px(xk), omegaToY(wDeg)]);
+      }
+      const d = 'M ' + pts.map((p) => p[0].toFixed(2) + ' ' + p[1].toFixed(2)).join(' L ');
+      const curveLine = $('curve-line');
+      const curveArea = $('curve-area');
+      if (curveLine) curveLine.setAttribute('d', d);
+      if (curveArea) {
+        curveArea.setAttribute('d', d + ' L ' + pts[pts.length - 1][0].toFixed(2) + ' ' + CURVE_BASE +
+          ' L ' + pts[0][0].toFixed(2) + ' ' + CURVE_BASE + ' Z');
+      }
+      // 峰值点固定在 x = 0（最近接近点），val_max = v / b
+      const peakDeg = (state.vKmS / B_KM) * 180 / Math.PI;
+      const peakDot = $('peak-dot');
+      if (peakDot) {
+        peakDot.setAttribute('cx', px(0));
+        peakDot.setAttribute('cy', omegaToY(peakDeg));
+      }
+      const peakTick = $('peak-tick');
+      if (peakTick) {
+        peakTick.setAttribute('x1', px(0));
+        peakTick.setAttribute('x2', px(0));
+      }
+      const peakLabel = $('peak-label');
+      if (peakLabel) peakLabel.setAttribute('x', px(0));
+    }
+
+    /* ---------- 场景刷新 ---------- */
+    function updateScene() {
+      const xk = state.xKm;
+      const v = state.vKmS;
+      const R = Math.hypot(xk, B_KM);
+      const ux = xk / R;               // 视线单位矢量（世界坐标，y 向上）
+      const uy = B_KM / R;
+      const vPar = v * ux;             // 径向分量，沿视线向外为正
+      const vPerp = v * uy;            // 垂直分量，恒为正
+      const wDeg = (v * B_KM / (R * R)) * 180 / Math.PI;
+
+      const Px = px(xk);
+      const Py = TRACK_Y;
+      const k = V_PX / v;              // px / (km/s)
+
+      // 世界→屏幕：y 取反
+      const vS = { x: v * k, y: 0 };
+      const vpS = { x: vPar * ux * k, y: -vPar * uy * k };
+      const vqS = { x: (v - vPar * ux) * k, y: vPar * uy * k };
+
+      const tipV = { x: Px + vS.x, y: Py + vS.y };
+      const tipP = { x: Px + vpS.x, y: Py + vpS.y };
+      const tipQ = { x: Px + vqS.x, y: Py + vqS.y };
+
+      /* --- 视线 r --- */
+      setLine(lineR, Px, Py, O_X, O_Y);
+
+      // R 标签落在视线中点、向垂线一侧让开；锚点朝远离视线的一侧
+      const midX = (Px + O_X) / 2, midY = (Py + O_Y) / 2;
+      const perpX = uy, perpY = ux;    // 与屏幕视线方向垂直的单位矢量
+      if (labelR) {
+        if (perpX >= 0) {
+          labelR.setAttribute('text-anchor', 'start');
+          labelR.setAttribute('x', midX + 10);
+        } else {
+          labelR.setAttribute('text-anchor', 'end');
+          labelR.setAttribute('x', midX - 10);
+        }
+        labelR.setAttribute('y', midY + perpY * 14 - 2);
+        labelR.textContent = 'R = ' + R.toFixed(1) + ' km';
+      }
+
+      /* --- 速度分解 --- */
+      setLine(dashPar, tipP.x, tipP.y, tipV.x, tipV.y);
+      setLine(dashPerp, tipQ.x, tipQ.y, tipV.x, tipV.y);
+      setLine(vecVhalo, Px, Py, tipV.x, tipV.y);
+      setLine(vecV, Px, Py, tipV.x, tipV.y);
+      setLine(vecVpar, Px, Py, tipP.x, tipP.y);
+      setLine(vecVperp, Px, Py, tipQ.x, tipQ.y);
+
+      /*
+       * 三个速度标签一律「顺着各自的箭头再往外推一段」摆放：
+       * 三条箭头方向不同时天然散开；x = 0（最近接近点）处 v 与 v⊥ 重合，
+       * 靠不同的推出距离把二者错开，不至于叠在一起。
+       */
+      function placeTipLabel(el, tip, vec, gap, perpGap, text) {
+        if (!el) return;
+        const len = Math.hypot(vec.x, vec.y) || 1;
+        const dx = vec.x / len, dy = vec.y / len;
+        const x = tip.x + dx * gap + (-dy) * perpGap;
+        const y = tip.y + dy * gap + dx * perpGap;
+        const anchorEnd = x > 820;
+        el.setAttribute('text-anchor', anchorEnd ? 'end' : 'start');
+        el.setAttribute('x', x + (anchorEnd ? -4 : 4));
+        el.setAttribute('y', y + 4);
+        el.textContent = text;
+      }
+
+      /*
+       * v 的标签贴着箭头末端向左回折。v⊥ 的标签沿箭头外侧游走，
+       * 在左半侧有一段会横向扫过 v 箭头末端的正上方，把 v 的标签收回箭头内
+       * 才能让两者始终不叠。
+       */
+      if (labelV) {
+        labelV.setAttribute('text-anchor', 'end');
+        labelV.setAttribute('x', tipV.x + 8);
+        labelV.setAttribute('y', tipV.y - 9);
+        labelV.textContent = 'v = ' + v.toFixed(1) + ' km/s';
+      }
+      placeTipLabel(labelVperp, tipQ, vqS, 40, 14, 'v⊥ = ' + vPerp.toFixed(2) + ' km/s');
+      // 径向分量极短时标签会与另外两条打架，索性收起
+      if (labelVpar) {
+        if (Math.hypot(vpS.x, vpS.y) < 18) {
+          labelVpar.setAttribute('opacity', '0');
+        } else {
+          labelVpar.setAttribute('opacity', '1');
+          placeTipLabel(labelVpar, tipP, vpS, 20, 0, 'v∥ = ' + Math.abs(vPar).toFixed(2) + ' km/s');
+        }
+      }
+
+      /* --- 关联对象 P --- */
+      if (pDot) { pDot.setAttribute('cx', Px); pDot.setAttribute('cy', Py); }
+      if (pHalo) {
+        const ph = (state.pulse += 0.9) % 30;
+        pHalo.setAttribute('cx', Px);
+        pHalo.setAttribute('cy', Py);
+        pHalo.setAttribute('r', 12 + ph * 0.5);
+        pHalo.setAttribute('opacity', Math.max(0, 0.55 - ph * 0.018));
+      }
+      // P 名牌挂在内侧（远离右侧速度箭头与左侧 v∥ 箭头）的左上方；
+      // 目标逛到轨迹最左端时名牌会顶出画布，兜底把它按住（此刻它本就淡出了大半）
+      if (labelP) {
+        labelP.setAttribute('x', Math.max(Px - 14, 78));
+        labelP.setAttribute('y', Py - 24);
+      }
+
+      /* --- 视角 θ 与 Δt 内扫过的角 --- */
+      const theta = Math.atan2(B_KM, xk);                       // 随 x 增大而减小
+      const xPrev = xk - v * DT_SWEEP;
+      const thetaPrev = Math.atan2(B_KM, xPrev);
+      const sweptDeg = (thetaPrev - theta) * 180 / Math.PI;
+
+      const a0 = polar(0, ARC_R);
+      const a1 = polar(theta, ARC_R);
+      if (thetaArc) {
+        thetaArc.setAttribute('d', 'M ' + a0[0] + ' ' + a0[1] +
+          ' A ' + ARC_R + ' ' + ARC_R + ' 0 0 0 ' + a1[0] + ' ' + a1[1]);
+      }
+
+      // 扫过楔形：从当前视线回溯到 Δt 之前的视线
+      const s1 = polar(theta, SWEEP_R);
+      const s2 = polar(thetaPrev, SWEEP_R);
+      if (sweepSector) {
+        sweepSector.setAttribute('d', 'M ' + O_X + ' ' + O_Y +
+          ' L ' + s1[0] + ' ' + s1[1] +
+          ' A ' + SWEEP_R + ' ' + SWEEP_R + ' 0 0 0 ' + s2[0] + ' ' + s2[1] + ' Z');
+      }
+      setLine(sweepRay, O_X, O_Y, s2[0], s2[1]);
+
+      if (thetaLabel) {
+        const t = polar(theta / 2, ARC_R + 26);
+        thetaLabel.setAttribute('x', t[0]);
+        thetaLabel.setAttribute('y', t[1]);
+        thetaLabel.textContent = 'θ = ' + (theta * 180 / Math.PI).toFixed(1) + '°';
+      }
+      fitPill(thetaLabel, thetaPill, 6, 17, 10);
+
+      if (sweepLabel) {
+        const mid = (theta + thetaPrev) / 2;
+        const base = polar(mid, SWEEP_LABEL_R);
+        const tg = tangent(mid);
+        sweepLabel.setAttribute('x', base[0] + tg[0] * 28);
+        sweepLabel.setAttribute('y', base[1] + tg[1] * 28);
+        sweepLabel.textContent = DT_SWEEP + ' s 内扫过 ' + sweptDeg.toFixed(1) + '°';
+      }
+      fitPill(sweepLabel, sweepPill, 6, 17, 10);
+
+      /* --- 曲线游标 --- */
+      setLine(cursorLine, px(xk), CURVE_BASE, px(xk), omegaToY(wDeg));
+      if (cursorDot) {
+        cursorDot.setAttribute('cx', px(xk));
+        cursorDot.setAttribute('cy', omegaToY(wDeg));
+      }
+
+      /* --- 轨迹两端的淡入淡出，掩掉循环复位 --- */
+      const fade = Math.min(1, Math.max(0, (X_MAX_KM - Math.abs(xk)) / FADE_KM));
+      if (dynLayer) dynLayer.setAttribute('opacity', fade.toFixed(3));
+
+      /* --- 读数 --- */
+      const rateStr = wDeg.toFixed(3) + ' °/s';
+      if (cardValue) cardValue.textContent = rateStr;
+      if (valRate) valRate.textContent = rateStr;
+      if (valRange) valRange.textContent = R.toFixed(0) + ' km';
+      if (valPerp) valPerp.textContent = vPerp.toFixed(2);
+      if (valPara) valPara.textContent = vPar.toFixed(2);
+    }
+
+    /* ---------- 动画循环 ---------- */
+    let animationFrameId = null;
+    let isRunning = false;
+    let lastTs = 0;
+
+    function loop(ts) {
+      if (!isRunning) return;
+      const dt = lastTs ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016;
+      lastTs = ts;
+
+      if (state.playing) {
+        state.xKm += state.vKmS * T_SCALE * dt;
+        if (state.xKm > X_MAX_KM) state.xKm = -X_MAX_KM;
+      }
+      updateScene();
+      animationFrameId = requestAnimationFrame(loop);
+    }
+
+    /* ---------- 交互 ---------- */
+    function updatePlayUI() {
+      if (!btnToggle) return;
+      btnToggle.classList.toggle('active', state.playing);
+      if (playIcon) playIcon.textContent = state.playing ? '⏸' : '▶';
+      if (playText) playText.textContent = state.playing ? '暂停演示' : '继续演示';
+    }
+
+    if (vSlider) {
+      vSlider.addEventListener('input', (e) => {
+        state.vKmS = parseFloat(e.target.value);
+        if (sliderVVal) sliderVVal.textContent = state.vKmS.toFixed(1) + ' km/s';
+        buildCurve();
+        updateScene();
+      });
+    }
+
+    if (btnToggle) {
+      btnToggle.addEventListener('click', () => {
+        state.playing = !state.playing;
+        updatePlayUI();
+      });
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener('click', () => window.resetAnimation());
+    }
+
+    if (btnNear) {
+      btnNear.addEventListener('click', () => {
+        state.playing = false;
+        state.xKm = 0;
+        updatePlayUI();
+        updateScene();
+      });
+    }
+
+    if (btnFar) {
+      btnFar.addEventListener('click', () => {
+        state.playing = false;
+        state.xKm = -X_MAX_KM + FADE_KM + 20;
+        updatePlayUI();
+        updateScene();
+      });
+    }
+
+    /* ---------- 标准动画控制契约接口 ---------- */
+    window.startAnimation = function () {
+      if (!isRunning) {
+        isRunning = true;
+        lastTs = 0;
+        animationFrameId = requestAnimationFrame(loop);
+      }
+    };
+
+    window.stopAnimation = function () {
+      isRunning = false;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    };
+
+    window.resetAnimation = function () {
+      state.xKm = X_START_KM;
+      state.vKmS = 7.0;
+      state.playing = true;
+      state.pulse = 0;
+      if (vSlider) vSlider.value = '7';
+      if (sliderVVal) sliderVVal.textContent = '7.0 km/s';
+      updatePlayUI();
+      buildCurve();
+      updateScene();
+      window.startAnimation();
+    };
+
+    /* ---------- 初始化与自启动 ---------- */
+    state.pulse = 0;
+    buildCurve();
+    updateScene();
+    window.startAnimation();
+  })();
+</script>
+
+</body>
+</html>
