@@ -11,6 +11,7 @@ import ConnectCommandSummary from './components/ConnectCommandSummary/ConnectCom
 import MixCode from './components/MixCode/MixCode.vue'
 import ColorSwatch from './components/ColorSwatch.vue'
 import Entry from './components/Entry/Entry.vue'
+import HtmlDemo from './components/HtmlDemo/HtmlDemo.vue'
 import './styles/atk-command-tokens.scss'
 
 // 定义目录信息获取器，传入文档元数据，返回目录信息对象
@@ -36,6 +37,7 @@ export default defineClientConfig({
     app.component('MixCode', MixCode);
     app.component('ColorSwatch', ColorSwatch);
     app.component('Entry', Entry);
+    app.component('HtmlDemo', HtmlDemo);
     // console.log("__VUEPRESS_SSR__=", __VUEPRESS_SSR__)
     if (!__VUEPRESS_SSR__) {
         if(location.href.startsWith("file://")){
