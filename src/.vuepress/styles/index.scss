@@ -498,24 +498,70 @@ a {
 }
 
 // ========================================================
-//  布局优化：固定侧边栏宽度 + 正文自适应
+//  PC 大屏布局：把「正文列 + 间距 + TOC 列」当成一整组居中
 // ========================================================
-
-// 1. PC 端固定侧边栏宽度：覆盖主题的 clamp 动态计算，保持 320px
+//
+//  主题原方案只给正文列留位置（padding-inline-end = 100vw - 正文宽 - 侧边栏 - 6rem），
+//  TOC 是挂在正文右边缘的绝对定位浮层，于是剩余空间全部堆到 TOC 右侧，屏越宽越空；
+//  且 #toc 没有显式宽度，宽度走 shrink-to-fit，由最长的一条目录文字决定，
+//  目录项标题偏短时就会缩成窄窄一条（max-width 永远命中不了）。
+//
+//  这里改为：把正文列和 TOC 列视为一个整体，在侧边栏右侧的区域里居中。
+//  设 A = 正文列左留白（主题的 2rem）、B = 右留白、正文块宽 Cb（= --content-width + 5rem 内边距）：
+//    组左边距 = A + (区域宽 - Cb) / 2
+//    组右边距 = 100vw - 组左边距 - Cb - 间距 - TOC宽
+//    两边相等 => B = A + 间距 + TOC宽
+//  该等式与「正文块是否撑满区域」无关（正文块自身 margin-inline: auto），恒成立，
+//  所以只要按下面这样写 padding-inline-end，正文+TOC 就始终整体居中、不溢出。
+//
+//  宽度分配（1440px 起，正文优先：笔记本上正文基本保持原有宽度）：
+//    1440px：正文 784 + TOC 176
+//    1500px：正文 816 + TOC 204
+//    1584px：正文 816 + TOC 288（TOC 触顶）
+//    ≥1760px：正文 960（上限）+ TOC 288，两侧留白对称
 @media (min-width: 1440px) {
+  // 1. 固定侧边栏宽度：覆盖主题的 clamp 动态计算，保持 320px
   #app {
     --sidebar-space: var(--sidebar-width);
   }
-}
 
-// 2. 正文区域充分利用屏幕空间，增大内容最大宽度
-//    "min(calc(...), 960px)" 保证超大屏也不超过 960px（保持可读性）
-@media (min-width: 1440px) {
   :root {
-    --content-width: min(
-      calc(100vw - var(--sidebar-width) - 18rem),
-      960px
+    // TOC 列宽：11rem 下限保证目录是一列而不是一条，18rem 上限避免目录喧宾夺主
+    // 中间项随视口线性增长，即「正文先用满 816px（51rem），多出来的给 TOC」
+    --toc-width: clamp(
+      11rem,
+      calc(100vw - var(--sidebar-width) - 61rem),
+      18rem
     );
+    // 正文与 TOC 的间距（同时也是 #toc 相对正文右边缘的偏移，需与 toc.scss 保持一致）
+    --toc-gap: 1rem;
+    // 正文文字宽：48rem(768px) 下限，60rem(960px) 上限保证长行可读性
+    --content-width: clamp(
+      48rem,
+      calc(100vw - var(--sidebar-width) - 10rem - var(--toc-width)),
+      60rem
+    );
+  }
+
+  // 2. 右侧让出「间距 + TOC 宽」，使正文+TOC 整体在侧边栏右侧居中
+  .theme-container:not(.no-sidebar):not(.sidebar-collapsed) .vp-page {
+    padding-inline-end: calc(2rem + var(--toc-gap) + var(--toc-width));
+  }
+
+  // 侧边栏折叠时正文列左留白为 0，居中条件退化成 padding-inline-end = 间距 + TOC 宽
+  // （no-sidebar 的目录页沿用 toc.scss 里原有的 16rem 规则，那边没有目录列）
+  .theme-container.sidebar-collapsed .vp-page {
+    padding-inline-end: calc(var(--toc-gap) + var(--toc-width));
+  }
+
+  // 3. 页面实际没有目录（没有 h2 及以下标题，或 frontmatter 关掉了 toc）时，
+  //    主题仍会挂 .has-toc，但 .vp-toc-placeholder 根本不会渲染 —— 此时不必给右侧留白，
+  //    正文居中即可。:has() 不支持的老浏览器会整条规则失效，退回上面的行为，不影响可用性。
+  .theme-container:not(.no-sidebar):not(.sidebar-collapsed):not(
+      :has(.vp-toc-placeholder)
+    )
+    .vp-page {
+    padding-inline-end: 2rem;
   }
 }
 

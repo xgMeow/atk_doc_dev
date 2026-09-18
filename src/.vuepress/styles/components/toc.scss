@@ -29,9 +29,13 @@
 @media (min-width: 1440px) {
   #toc {
     position: absolute;
-    inset-inline-start: calc(100% + 1rem);
-    min-width: 10rem;
-    max-width: 22rem;
+    inset-inline-start: calc(100% + var(--toc-gap, 1rem));
+    // 显式给宽度：绝对定位 + 不设 width 时宽度走 shrink-to-fit，
+    // 会由最长的一条目录文字决定，目录项偏短时 TOC 就缩成窄窄一条
+    width: var(--toc-width, 18rem);
+    // 覆盖主题的 max-width: 15rem（它会把 TOC 压回 240px）与旧的 min-width: 10rem
+    min-width: 0;
+    max-width: none;
     margin-bottom: 0;
     border-radius: 0;
     background: transparent;
