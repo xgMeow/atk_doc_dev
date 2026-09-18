@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>太阳仰角的最小值与最大值（三维）</title>
+  <script>
+    /*
+     * 同一页服务两种读法，靠顶层窗口判断，样式生效前就把结果写进 <html>：
+     *   内嵌（正文 iframe，本页绝大多数时候）—— 收起右侧面板，画面里只剩三维场景与读数；
+     *   独立（点卡片右下角「在新标签页打开」后）—— 才是完整的勾选框 + 滑杆 + 播放控制 + 说明。
+     * 跨域取 window.top 会抛异常，一并按内嵌处理。
+     * 追加的 ?embed=0 / ?embed=1 用于单独调试某一种形态。
+     */
+    (function () {
+      var embedded = true;
+      try {
+        embedded = window.self !== window.top;
+      } catch (e) {
+        embedded = true;
+      }
+      var forced = /[?&]embed=(0|1)(?:&|$)/.exec(window.location.search);
+      if (forced) embedded = forced[1] === '1';
+      document.documentElement.classList.add(embedded ? 'is-embed' : 'is-standalone');
+    })();
+  </script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      max-height: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+    .app-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      background: radial-gradient(circle at 42% 36%, #ffffff 0%, #f7f9fc 70%, #eef2f7 100%);
+      overflow: hidden;
+      position: relative;
+    }
+    .viewport-area {
+      flex: 1;
+      height: 100%;
+      min-width: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #scene {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+      touch-action: none;
+    }
+    #scene.dragging { cursor: grabbing; }
+    /* ---------- 右侧面板（仅独立打开时出现） ---------- */
+    .control-panel {
+      width: 264px;
+      height: 100%;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-left: 1px solid rgba(217, 119, 6, 0.22);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+      z-index: 20;
+      box-shadow: -8px 0 25px rgba(15, 23, 42, 0.08);
+    }
+    .control-panel::-webkit-scrollbar { width: 4px; }
+    .control-panel::-webkit-scrollbar-thumb {
+      background: rgba(217, 119, 6, 0.3);
+      border-radius: 4px;
+    }
+    .header-box {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      padding-bottom: 10px;
+    }
+    .header-box h1 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.5px;
+    }
+    .header-box h1::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: #d97706;
+      border-radius: 2px;
+    }
+    .header-box p {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 3px;
+      line-height: 1.3;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .metric-card {
+      background: rgba(248, 250, 252, 0.9);
+      border-radius: 6px;
+      padding: 8px 10px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-left: 3px solid #d97706;
+    }
+    .metric-card.verdict { border-left-color: #0891b2; }
+    .metric-label {
+      font-size: 10.5px;
+      color: #64748b;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .metric-label em {
+      font-style: normal;
+      color: #94a3b8;
+      font-size: 9.5px;
+    }
+    .metric-value {
+      font-size: 19px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      margin-top: 2px;
+      line-height: 1.1;
+      color: #059669;
+    }
+    .metric-sub {
+      font-size: 9.5px;
+      color: #94a3b8;
+      margin-top: 3px;
+      font-variant-numeric: tabular-nums;
+    }
+    /* ---------- 勾选框与滑杆 ---------- */
+    .control-group {
+      background: rgba(248, 250, 252, 0.8);
+      border-radius: 6px;
+      padding: 10px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .group-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .group-title span.sub {
+      font-size: 9.5px;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+    .slider-row { margin-bottom: 12px; }
+    .slider-row:last-child { margin-bottom: 0; }
+    .slider-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10.5px;
+      margin-bottom: 5px;
+      color: #475569;
+    }
+    .slider-header input[type=checkbox] {
+      width: 13px;
+      height: 13px;
+      accent-color: #0891b2;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .slider-header label { cursor: pointer; }
+    .slider-header .val {
+      margin-left: auto;
+      font-weight: 700;
+      color: #1d4ed8;
+      font-variant-numeric: tabular-nums;
+    }
+    .slider-row.max .slider-header .val { color: #6d28d9; }
+    .slider-row.off .slider-header label,
+    .slider-row.off .slider-header .val { color: #cbd5e1; }
+    input[type=range] {
+      width: 100%;
+      height: 4px;
+      -webkit-appearance: none;
+      background: rgba(15, 23, 42, 0.12);
+      border-radius: 2px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: #0891b2;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 6px rgba(15, 23, 42, 0.25);
+      transition: transform 0.1s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.25); }
+    input[type=range]:disabled { opacity: 0.35; }
+    input[type=range]:disabled::-webkit-slider-thumb { cursor: default; }
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .btn {
+      background: rgba(241, 245, 249, 0.95);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      color: #334155;
+      padding: 6px 8px;
+      border-radius: 5px;
+      font-size: 10.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn:hover {
+      background: rgba(226, 232, 240, 1);
+      border-color: rgba(217, 119, 6, 0.5);
+      color: #0f172a;
+    }
+    .btn.active {
+      background: rgba(217, 119, 6, 0.12);
+      border-color: #d97706;
+      color: #b45309;
+    }
+    /* ---------- 说明卡片 ---------- */
+    .info-card {
+      background: rgba(248, 250, 252, 0.85);
+      border-radius: 6px;
+      padding: 9px 10px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      font-size: 10.5px;
+      line-height: 1.55;
+      color: #475569;
+    }
+    .info-card strong { color: #0f172a; }
+    .info-card .tag-e { color: #b45309; font-weight: 700; }
+    .info-card .tag-min { color: #1d4ed8; font-weight: 700; }
+    .info-card .tag-max { color: #6d28d9; font-weight: 700; }
+    .info-card p + p { margin-top: 6px; }
+    @media (max-width: 560px) {
+      .app-container { flex-direction: column; }
+      .control-panel {
+        width: 100%;
+        height: 250px;
+        border-left: none;
+        border-top: 1px solid rgba(217, 119, 6, 0.22);
+      }
+    }
+    /* ---------- 形态一：内嵌在文档正文里 ---------- */
+    .is-embed .control-panel { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <div class="viewport-area">
+    <canvas id="scene"></canvas>
+  </div>
+
+  <!-- 右侧面板（仅在独立打开时出现） -->
+  <div class="control-panel">
+    <div class="header-box">
+      <h1>太阳仰角</h1>
+      <p>用最小值与最大值圈出允许的仰角区间</p>
+    </div>
+
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label"><span>太阳仰角 E</span><em>量到本体系基准面</em></div>
+        <div class="metric-value" id="card-e">0.0°</div>
+        <div class="metric-sub">区间 <span id="card-range">10° ≤ E ≤ 60°</span></div>
+      </div>
+      <div class="metric-card verdict">
+        <div class="metric-label"><span>本时刻判定</span><em id="card-mode">两项同时启用</em></div>
+        <div class="metric-value" id="card-v">满足</div>
+        <div class="metric-sub" id="card-why">E 落在允许区间内</div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="group-title">
+        <span>约束阈值</span>
+        <span class="sub">勾选后生效</span>
+      </div>
+      <div class="slider-row min">
+        <div class="slider-header">
+          <input type="checkbox" id="minOn" checked>
+          <label for="minOn">最小值</label>
+          <span class="val" id="minVal">10°</span>
+        </div>
+        <input type="range" id="minSlider" min="-60" max="50" step="1" value="10">
+      </div>
+      <div class="slider-row max">
+        <div class="slider-header">
+          <input type="checkbox" id="maxOn" checked>
+          <label for="maxOn">最大值</label>
+          <span class="val" id="maxVal">60°</span>
+        </div>
+        <input type="range" id="maxSlider" min="-50" max="66" step="1" value="60">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="group-title"><span>演示控制</span></div>
+      <div class="btn-row">
+        <button class="btn active" id="btn-toggle">
+          <span id="play-icon">⏸</span> <span id="play-text">暂停演示</span>
+        </button>
+        <button class="btn" id="btn-cam">↺ 正视视角</button>
+      </div>
+      <div class="btn-row" style="margin-top:6px">
+        <button class="btn" id="btn-reset">↺ 全部复位</button>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <p><strong>仰角是「高度」，不是「方位」。</strong></p>
+      <p>太阳方向在三维里确实一直在转圈——它绕着一根轴匀速转，转一圈就是一个轨道周期。但这根轴<b>躺在本体系基准面里</b>，所以这个圈是<b>立着</b>的：太阳转到圈的上半，仰角为正；转到下半，太阳就落到基准面以下去了。</p>
+      <p>于是「高度」这个数只能升上去、再降下来，来回摆——这就是<span class="tag-e">仰角 E</span>。</p>
+      <p><span class="tag-min">最小值</span>与<span class="tag-max">最大值</span>在三维里是两个圆锥面，在球面上就是那两条彩圈；太阳方向落在两圈之间才算满足。拖动画面可以旋转视角。</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  /*
+   * 三维场景（自己投影，不引外部库，离线版才跑得起来）：
+   *
+   *   世界坐标：z 轴朝上 = 本体系基准面法向（天顶），xy 平面 = 本体系基准面。
+   *
+   *   太阳方向在随动坐标系里绕一根轴匀速转圈，转一圈一个轨道周期：
+   *     ŝ(φ) = sinβ·ŷ + cosβ·(cosφ·x̂ + sinφ·ẑ)
+   *   轴 ŷ 躺在基准面里（卫星即轨道面法线，β 为 beta 角），所以这个圈是立着的，
+   *   一半在基准面以上、一半在以下。仰角 E = arcsin(ŝ·ẑ) = arcsin(cosβ·sinφ)，
+   *   幅度 ±(90°−β)。方位角同样只在两个极值之间来回，不会转满一圈。
+   *
+   *   仰角等于常数的那批方向构成一个以天顶为轴的圆锥；最小值和最大值就是两个圆锥，
+   *   在球面上截出两条彩圈，圈与圈之间是允许区间。
+   *
+   *   渲染：所有图元按视深排序后依次画（画家算法），半透明的面才会互相透视。
+   */
+  (function () {
+    'use strict';
+
+    /* ---------- 场景常量 ---------- */
+    const BETA = 22 * Math.PI / 180;   // 太阳方向与轨迹轴的夹角（卫星即 beta 角）
+    const R_SPH = 1.0;                 // 方向球半径：太阳方向、允许区间带都落在这里
+    const R_PLANE = 1.28;              // 本体系基准面的半径
+    const R_ARC = 0.46;                // 仰角弧半径
+    const R_FOOT = 1.0;                // 太阳垂足到 A 的距离上限
+    const R_ZENITH = 1.05;             // 天顶轴画到的高度（够到阈值圈上方即可）
+    const R_TRAJ_AXIS = 1.25;          // 轨迹轴画到的长度
+    const PERIOD = 20;                 // 太阳绕轨迹转一圈的秒数
+    const DEF = { eMin: 10, eMax: 60 };
+    const DEF_CAM = { az: 55, el: 24 };
+
+    const state = {
+      phi: 0,
+      eMin: DEF.eMin, eMax: DEF.eMax,
+      minOn: true, maxOn: true,
+      playing: true,
+      camAz: DEF_CAM.az, camEl: DEF_CAM.el,
+    };
+
+    /* ---------- 向量工具 ---------- */
+    const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+    const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+    const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+    const scale = (a, k) => [a[0] * k, a[1] * k, a[2] * k];
+    const add = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+    function norm(a) {
+      const m = Math.hypot(a[0], a[1], a[2]) || 1;
+      return [a[0] / m, a[1] / m, a[2] / m];
+    }
+
+    // 仰角、方位角 → 单位方向（方位角自 +x 轴起，绕 +z 逆时针）
+    function dir(elev, azim) {
+      const c = Math.cos(elev);
+      return [c * Math.cos(azim), c * Math.sin(azim), Math.sin(elev)];
+    }
+
+    /* ---------- 相机与投影 ---------- */
+    let CAM = { r: [1, 0, 0], u: [0, 1, 0], c: [0, 0, 1] };
+    function updateCamera() {
+      const az = state.camAz * Math.PI / 180, el = state.camEl * Math.PI / 180;
+      const c = [Math.cos(el) * Math.cos(az), Math.cos(el) * Math.sin(az), Math.sin(el)];
+      const r = norm(cross([0, 0, 1], c));
+      const u = cross(c, r);
+      CAM = { r: r, u: u, c: c };
+    }
+    updateCamera();
+
+    let S = 200, CX = 480, CY = 300;   // 缩放与原点在屏幕上的位置
+    let W = 960, H = 540;              // CSS 像素尺寸
+
+    // 世界点 → 屏幕；d 为视深，越大越靠前
+    function screen(p) {
+      return { x: CX + S * dot(p, CAM.r), y: CY - S * dot(p, CAM.u), d: dot(p, CAM.c) };
+    }
+
+    // 把整个场景刚好摆进画布。
+    // 单位球面投影出来就是以 A 为心、半径 1 的圆盘，横向落 dot(p,r)∈[-1,1]、纵向落 -dot(p,u)∈[-1,1]，
+    // 端点取得到，不必采样；基准面是半径 R_PLANE 的圆盘，只在两个轴的水平分量上撑开。
+    function fitView() {
+      const hr = Math.hypot(CAM.r[0], CAM.r[1]);   // 参考面在屏幕横向的半宽系数
+      const hu = Math.hypot(CAM.u[0], CAM.u[1]);   // 参考面在屏幕纵向的半高系数
+      let x0 = Math.min(-1, -R_PLANE * hr), x1 = Math.max(1, R_PLANE * hr);
+      let y0 = Math.min(-1, -R_PLANE * hu), y1 = Math.max(1, R_PLANE * hu);
+      // 两根轴都伸出球面之外，也要算进来（屏幕右向量 r 没有 z 分量，天顶轴只影响纵向）
+      const yz = R_ZENITH * CAM.u[2];
+      if (-yz < y0) y0 = -yz;
+      if (yz > y1) y1 = yz;
+      const ax = R_TRAJ_AXIS * CAM.r[1], ay = R_TRAJ_AXIS * CAM.u[1];
+      if (-ax < x0) x0 = -ax;
+      if (ax > x1) x1 = ax;
+      if (-ay < y0) y0 = -ay;
+      if (ay > y1) y1 = ay;
+
+      // 左上角整块让给读数卡片，底部让给图例，画面因此偏向中下
+      const padL = 56, padR = 30, padT = 78, padB = 30;
+      const availW = Math.max(40, W - padL - padR), availH = Math.max(40, H - padT - padB);
+      S = Math.min(availW / Math.max(1e-6, x1 - x0), availH / Math.max(1e-6, y1 - y0));
+      CX = padL + (availW - (x1 - x0) * S) / 2 - x0 * S;
+      CY = padT + (availH - (y1 - y0) * S) / 2 - y0 * S;
+    }
+
+    /* ---------- 画布与图元 ---------- */
+    const cvs = document.getElementById('scene');
+    const ctx = cvs.getContext('2d');
+    let items = [];   // { d, draw }，按视深排序后依次画
+
+    function addPoly(pts3, fill) {
+      const ps = pts3.map(screen);
+      let d = 0;
+      for (const p of ps) d += p.d;
+      d /= ps.length;
+      items.push({
+        d: d,
+        draw() {
+          ctx.beginPath();
+          ctx.moveTo(ps[0].x, ps[0].y);
+          for (let i = 1; i < ps.length; i++) ctx.lineTo(ps[i].x, ps[i].y);
+          ctx.closePath();
+          ctx.fillStyle = fill;
+          ctx.fill();
+        },
+      });
+    }
+
+    // 一条 3D 折线：逐段入列，深度取段中点，才能和别的图元正确互遮
+    function addPath(pts3, opt) {
+      const ps = pts3.map(screen);
+      for (let i = 0; i + 1 < ps.length; i++) {
+        const a = ps[i], b = ps[i + 1];
+        const d = (a.d + b.d) / 2;
+        items.push({
+          d: d,
+          draw() {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = typeof opt.stroke === 'function' ? opt.stroke(d) : opt.stroke;
+            ctx.lineWidth = opt.width || 1.6;
+            ctx.lineCap = 'round';
+            ctx.setLineDash(opt.dash || []);
+            ctx.stroke();
+            ctx.setLineDash([]);
+          },
+        });
+      }
+    }
+
+    // 直线先细分成若干小段再入列，否则整条线共用一个深度，遮挡关系会算错
+    const lerp3 = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+    function addSegment(a3, b3, opt) {
+      const n = opt.sub || 10;
+      const pts = [];
+      for (let i = 0; i <= n; i++) pts.push(lerp3(a3, b3, i / n));
+      addPath(pts, opt);
+    }
+
+    /* ---------- 场景参数 ---------- */
+    const CO = { ok: '#059669', bad: '#dc2626', sun: '#d97706', min: '#2563eb', max: '#7c3aed' };
+
+    // 太阳方向：绕水平轴 ŷ 匀速转圈，一圈一个周期
+    function sunDir(phi) {
+      const cB = Math.cos(BETA), sB = Math.sin(BETA);
+      return [cB * Math.cos(phi), sB, cB * Math.sin(phi)];
+    }
+    const elevOf = (s) => Math.asin(Math.max(-1, Math.min(1, s[2])));
+
+    // 允许区间：未勾选的那一侧不设限，朝该侧一直开到 ±90°
+    function band() {
+      const lo = state.minOn ? state.eMin : -90;
+      const hi = state.maxOn ? state.eMax : 90;
+      return { lo: lo, hi: hi, empty: hi - lo < 0.4, full: lo <= -89.9 && hi >= 89.9 };
+    }
+    function rangeText() {
+      if (!state.minOn && !state.maxOn) return '不限';
+      if (state.minOn && state.maxOn) {
+        return state.eMin <= state.eMax
+          ? state.eMin.toFixed(0) + '° ≤ E ≤ ' + state.eMax.toFixed(0) + '°'
+          : '空（最小值大于最大值）';
+      }
+      return state.minOn ? 'E ≥ ' + state.eMin.toFixed(0) + '°' : 'E ≤ ' + state.eMax.toFixed(0) + '°';
+    }
+
+    /* ---------- 建场景 ---------- */
+    function buildScene() {
+      items = [];
+      const sun = sunDir(state.phi);
+      // asin 出来是弧度，判限与读数一律用度；弧线参数化再换回弧度
+      const E = elevOf(sun) * 180 / Math.PI;
+      const Er = E * Math.PI / 180;
+      const b = band();
+      const ok = !b.empty && E >= b.lo && E <= b.hi;
+      const sunCol = ok ? CO.ok : CO.bad;
+
+      // ---- 本体系基准面：一圈三角扇 + 同心圆 + 天顶轴 ----
+      const planeFill = 'rgba(148,163,184,0.13)';
+      const N_PLANE = 72;
+      for (let i = 0; i < N_PLANE; i++) {
+        const a0 = i * 2 * Math.PI / N_PLANE, a1 = (i + 1) * 2 * Math.PI / N_PLANE;
+        addPoly([[0, 0, 0], [R_PLANE * Math.cos(a0), R_PLANE * Math.sin(a0), 0],
+                 [R_PLANE * Math.cos(a1), R_PLANE * Math.sin(a1), 0]], planeFill);
+      }
+      for (const rr of [R_PLANE, R_PLANE * 0.66, R_PLANE * 0.33]) {
+        const pts = [];
+        for (let i = 0; i <= 64; i++) { const a = i * 2 * Math.PI / 64; pts.push([rr * Math.cos(a), rr * Math.sin(a), 0]); }
+        addPath(pts, { stroke: 'rgba(148,163,184,0.45)', width: 1.1 });
+      }
+      for (let i = 0; i < 12; i++) {
+        const a = i * Math.PI / 6;
+        addSegment([0, 0, 0], [R_PLANE * Math.cos(a), R_PLANE * Math.sin(a), 0],
+          { stroke: 'rgba(148,163,184,0.32)', width: 1 });
+      }
+
+      // ---- 太阳轨迹轴：躺在基准面里的那根轴 ----
+      addSegment([0, -R_TRAJ_AXIS, 0], [0, R_TRAJ_AXIS, 0],
+        { stroke: 'rgba(120,113,108,0.65)', width: 1.5, dash: [7, 6] });
+
+      // ---- 允许区间带：两个圆锥之间的球面环带 ----
+      if (!b.empty && !b.full) {
+        const lo = Math.max(-89.5, b.lo), hi = Math.min(89.5, b.hi);
+        const NB = 72;
+        for (let i = 0; i < NB; i++) {
+          const a0 = i * 2 * Math.PI / NB, a1 = (i + 1) * 2 * Math.PI / NB;
+          const p = (el, az) => scale(dir(el * Math.PI / 180, az), R_SPH);
+          addPoly([p(lo, a0), p(lo, a1), p(hi, a1), p(hi, a0)], 'rgba(5,150,105,0.15)');
+        }
+        // 两条边界彩圈
+        const rim = (elDeg, col) => {
+          const pts = [];
+          for (let i = 0; i <= 96; i++) pts.push(scale(dir(elDeg * Math.PI / 180, i * 2 * Math.PI / 96), R_SPH));
+          addPath(pts, { stroke: col, width: 2.4 });
+        };
+        // 只有真正设了限的一侧才画彩圈；未勾选的一侧开口朝 ±90°，那里没有边界
+        if (state.maxOn && b.hi < 89.5) rim(hi, CO.max);
+        if (state.minOn && b.lo > -89.5) rim(lo, CO.min);
+      }
+
+      // ---- 太阳的轨迹圆（球面上的小圆，绕上面那根轴） ----
+      const traj = [];
+      const cB = Math.cos(BETA), sB = Math.sin(BETA);
+      for (let i = 0; i <= 96; i++) {
+        const t = i * 2 * Math.PI / 96;
+        traj.push([cB * Math.cos(t), sB, cB * Math.sin(t)]);
+      }
+      addPath(traj, { stroke: 'rgba(217,119,6,0.5)', width: 1.8, dash: [6, 5] });
+
+      // ---- 本体系第三根轴：OZ_b 指向中心天体，-Z_b 即基准面法向（天顶） ----
+      addSegment([0, 0, 0], [0, 0, -0.62],
+        { stroke: 'rgba(8,145,178,0.85)', width: 2 });
+      addSegment([0, 0, 0], [0, 0, R_ZENITH],
+        { stroke: 'rgba(148,163,184,0.85)', width: 1.5, dash: [6, 5] });
+
+      // ---- 太阳垂足：先画落到基准面上的那条线 ----
+      const hLen = Math.hypot(sun[0], sun[1]);
+      const azim = Math.atan2(sun[1], sun[0]);
+      const foot = [sun[0] * R_FOOT, sun[1] * R_FOOT, 0];
+      addSegment(scale(sun, R_SPH), foot, { stroke: 'rgba(148,163,184,0.9)', width: 1.4, dash: [5, 5] });
+      if (hLen > 1e-3) {
+        addSegment([0, 0, 0], [R_FOOT * Math.cos(azim), R_FOOT * Math.sin(azim), 0],
+          { stroke: 'rgba(100,116,139,0.55)', width: 1.3, dash: [4, 4] });
+      }
+      // 垂足落在本体系基准面上的点：太阳在基准面上的"投影位置"，一个周期里它只在这条直线上来回
+      const fs = screen(foot);
+      items.push({
+        d: fs.d + 0.3,
+        draw() {
+          ctx.beginPath();
+          ctx.arc(fs.x, fs.y, 3.4, 0, Math.PI * 2);
+          ctx.fillStyle = '#94a3b8';
+          ctx.fill();
+        },
+      });
+
+      // ---- 仰角弧：在含太阳的竖直面内，自水平量到太阳 ----
+      const azU = hLen > 1e-3 ? [Math.cos(azim), Math.sin(azim), 0] : [1, 0, 0];
+      const arcPts = [];
+      const NA = 48;
+      for (let i = 0; i <= NA; i++) {
+        const e = Er * i / NA;
+        arcPts.push(scale(add(scale(azU, Math.cos(e)), [0, 0, Math.sin(e)]), R_ARC));
+      }
+      addPath(arcPts, { stroke: sunCol, width: 2.6 });
+
+      // ---- 太阳方向 ----
+      addSegment([0, 0, 0], scale(sun, R_SPH), { stroke: CO.sun, width: 2.6 });
+
+      // ---- A 点 ----
+      items.push({
+        d: 1.2,   // 顶点永远压在最上面，不会被基准面的三角扇盖住
+        draw() {
+          const o = screen([0, 0, 0]);
+          ctx.beginPath();
+          ctx.arc(o.x, o.y, 6, 0, Math.PI * 2);
+          ctx.fillStyle = '#0891b2';
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2;
+          ctx.fill();
+          ctx.stroke();
+        },
+      });
+
+      // ---- 太阳本体 ----
+      const sp = screen(scale(sun, R_SPH));
+      items.push({
+        d: sp.d + 0.4,
+        draw() {
+          ctx.save();
+          ctx.strokeStyle = '#f59e0b';
+          ctx.lineWidth = 2.6;
+          ctx.lineCap = 'round';
+          for (let i = 0; i < 8; i++) {
+            const a = i * Math.PI / 4;
+            ctx.beginPath();
+            ctx.moveTo(sp.x + Math.cos(a) * 22, sp.y + Math.sin(a) * 22);
+            ctx.lineTo(sp.x + Math.cos(a) * 30, sp.y + Math.sin(a) * 30);
+            ctx.stroke();
+          }
+          const g = ctx.createRadialGradient(sp.x - 5, sp.y - 5, 2, sp.x, sp.y, 18);
+          g.addColorStop(0, '#fef3c7');
+          g.addColorStop(0.55, '#fbbf24');
+          g.addColorStop(1, '#f59e0b');
+          ctx.beginPath();
+          ctx.arc(sp.x, sp.y, 18, 0, Math.PI * 2);
+          ctx.fillStyle = g;
+          ctx.fill();
+          ctx.restore();
+        },
+      });
+
+      return {
+        E: E, ok: ok, band: b, sun: sun,
+        sunScreen: sp, footScreen: screen(foot),
+        azU: azU,
+        arcMid: screen(scale(add(scale(azU, Math.cos(Er / 2)), [0, 0, Math.sin(Er / 2)]), R_ARC * 1.34)),
+      };
+    }
+
+    /* ---------- 文字（带白描边，压在几何上也看得清） ---------- */
+    const FONT = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif';
+    function label(x, y, text, color, size, weight, align) {
+      ctx.font = (weight || 700) + ' ' + size + 'px ' + FONT;
+      ctx.textAlign = align || 'center';
+      ctx.textBaseline = 'middle';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = 'rgba(255,255,255,0.92)';
+      ctx.strokeText(text, x, y);
+      ctx.fillStyle = color;
+      ctx.fillText(text, x, y);
+    }
+    function box(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+    function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+
+    /* ---------- 叠加的文字层 ---------- */
+    function drawOverlay(info) {
+      const rng = rangeText();
+      const ok = info.ok;
+
+      // 读数（不透明卡片：左上角这块留白是取景时专门让出来的）
+      const bx = 18, by = 16, bw = 248, bh = 50;
+      ctx.save();
+      ctx.shadowColor = 'rgba(15,23,42,0.10)';
+      ctx.shadowBlur = 8;
+      ctx.shadowOffsetY = 2;
+      ctx.fillStyle = '#ffffff';
+      box(bx, by, bw, bh, 7); ctx.fill();
+      ctx.restore();
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      box(bx, by, bw, bh, 7); ctx.stroke();
+      label(bx + 12, by + 18, '太阳仰角 E', '#475569', 11.5, 500, 'left');
+      label(bx + 100, by + 18, info.E.toFixed(1) + '°', ok ? CO.ok : CO.bad, 15, 800, 'left');
+      label(bx + bw - 12, by + 18, ok ? '满足' : '不满足', ok ? '#047857' : '#b91c1c', 11, 700, 'right');
+      ctx.beginPath(); ctx.moveTo(bx + 8, by + 30); ctx.lineTo(bx + bw - 8, by + 30);
+      ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.stroke();
+      label(bx + 12, by + 39, '允许区间', '#475569', 11.5, 500, 'left');
+      label(bx + bw - 12, by + 39, rng, '#334155', 11, 700, 'right');
+
+      // 图例
+      const lx = 24, ly = H - 92;
+      const rows = [
+        ['dot', CO.sun, '太阳方向 —— 仰角 E 自本体系基准面量起'],
+        ['band', null, '允许区间 —— 两个阈值圈之间，落在其中即满足'],
+        ['ring', null, '太阳轨迹 —— 一个周期绕轴转一圈，故高度来回摆'],
+      ];
+      ctx.textAlign = 'left';
+      for (let i = 0; i < rows.length; i++) {
+        const yy = ly + i * 20;
+        if (rows[i][0] === 'dot') {
+          ctx.beginPath(); ctx.arc(lx + 6, yy, 5.5, 0, Math.PI * 2); ctx.fillStyle = rows[i][1]; ctx.fill();
+        } else if (rows[i][0] === 'band') {
+          ctx.fillStyle = 'rgba(5,150,105,0.22)'; ctx.strokeStyle = 'rgba(5,150,105,0.75)'; ctx.lineWidth = 1;
+          box(lx, yy - 5, 13, 10, 2); ctx.fill(); ctx.stroke();
+        } else {
+          ctx.strokeStyle = 'rgba(217,119,6,0.75)'; ctx.lineWidth = 2;
+          ctx.setLineDash([5, 4]);
+          ctx.beginPath(); ctx.moveTo(lx, yy); ctx.lineTo(lx + 13, yy); ctx.stroke();
+          ctx.setLineDash([]);
+        }
+        label(lx + 20, yy, rows[i][2], '#475569', 11, 500, 'left');
+      }
+
+      // 右下角提示
+      label(W - 16, H - 20, '拖动画面可旋转视角', '#94a3b8', 10.5, 500, 'right');
+
+      // 阈值圈的名字挂在圈最靠右的点外面
+      const rimLabel = (elDeg, on, text, col) => {
+        if (!on) return;
+        let best = null;
+        for (let i = 0; i <= 96; i++) {
+          const p = screen(scale(dir(elDeg * Math.PI / 180, i * 2 * Math.PI / 96), R_SPH));
+          if (!best || p.x > best.x) best = p;
+        }
+        const x = clamp(best.x + 12, 40, W - 40);
+        const y = clamp(best.y, 46, H - 46);
+        label(x, y, text, col, 11, 700, 'left');
+      };
+      rimLabel(info.band.hi, state.maxOn, '最大值 ' + state.eMax.toFixed(0) + '°', '#6d28d9');
+      rimLabel(info.band.lo, state.minOn, '最小值 ' + state.eMin.toFixed(0) + '°', '#1d4ed8');
+
+      // 其余标注
+      const zTop = screen([0, 0, R_ZENITH]);
+      label(zTop.x + 10, zTop.y + 13, '天顶（-Z_b）', '#94a3b8', 10.5, 500, 'left');
+      const zBot = screen([0, 0, -0.62]);
+      label(clamp(zBot.x + 10, 40, W - 40), clamp(zBot.y + 13, 40, H - 40), 'OZ_b', '#0891b2', 10.5, 700, 'left');
+
+      const planeEdge = screen([R_PLANE * Math.cos(state.camAz * Math.PI / 180 + Math.PI),
+                                R_PLANE * Math.sin(state.camAz * Math.PI / 180 + Math.PI), 0]);
+      label(clamp(planeEdge.x, 60, W - 60), clamp(planeEdge.y + 14, 40, H - 40), '本体系基准面（E = 0）', '#64748b', 11, 500, 'center');
+
+      const axEnd = screen([0, R_TRAJ_AXIS, 0]);
+      label(clamp(axEnd.x + 10, 40, W - 40), clamp(axEnd.y + 12, 40, H - 40), '太阳轨迹轴', '#78716c', 10.5, 500, 'left');
+
+      // 仰角弧的读数
+      label(info.arcMid.x, info.arcMid.y, 'E ' + info.E.toFixed(1) + '°',
+        ok ? '#047857' : '#b91c1c', 12.5, 800, 'center');
+
+      // A 点。标签放在顶点正下方：仰角弧的读数绕 A 扫过一整圈半径约 100px 的环带，
+      // 只有正下方这 70px 宽的口子它扫不到，放别处会在某些仰角上撞上。
+      const o = screen([0, 0, 0]);
+      label(o.x, o.y + 24, '分析对象 A', '#0e7490', 11.5, 700, 'center');
+    }
+
+    /* ---------- 一帧 ---------- */
+    function render() {
+      const dpr = window.devicePixelRatio || 1;
+      const wantW = Math.round(W * dpr), wantH = Math.round(H * dpr);
+      if (cvs.width !== wantW || cvs.height !== wantH) {
+        cvs.width = wantW; cvs.height = wantH;
+      }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      const info = buildScene();
+      items.sort((a, b) => a.d - b.d);
+      for (const it of items) it.draw();
+      drawOverlay(info);
+      syncPanel(info);
+    }
+
+    /* ---------- 面板联动 ---------- */
+    const elCardE = document.getElementById('card-e');
+    const elCardRange = document.getElementById('card-range');
+    const elCardV = document.getElementById('card-v');
+    const elCardWhy = document.getElementById('card-why');
+    const elCardMode = document.getElementById('card-mode');
+
+    function syncPanel(info) {
+      if (!elCardE) return;
+      const rng = rangeText();
+      elCardE.textContent = info.E.toFixed(1) + '°';
+      elCardE.style.color = info.ok ? CO.ok : CO.bad;
+      elCardRange.textContent = rng;
+      elCardV.textContent = info.ok ? '满足' : '不满足';
+      elCardV.style.color = info.ok ? CO.ok : CO.bad;
+      elCardMode.textContent = (!state.minOn && !state.maxOn) ? '两项都未启用'
+        : (state.minOn && state.maxOn) ? '两项同时启用'
+          : (state.minOn ? '仅最小值' : '仅最大值');
+      elCardWhy.textContent = info.band.empty
+        ? '允许区间为空，任何仰角都不满足'
+        : (!state.minOn && !state.maxOn) ? '未设限，任何仰角都满足'
+          : info.ok ? 'E 落在允许区间内'
+            : info.E < info.band.lo ? 'E 低于最小值' : 'E 高于最大值';
+    }
+
+    const minOn = document.getElementById('minOn'), maxOn = document.getElementById('maxOn');
+    const minSlider = document.getElementById('minSlider'), maxSlider = document.getElementById('maxSlider');
+    const minVal = document.getElementById('minVal'), maxVal = document.getElementById('maxVal');
+    const rowMin = minSlider ? minSlider.closest('.slider-row') : null;
+    const rowMax = maxSlider ? maxSlider.closest('.slider-row') : null;
+
+    function updatePanel() {
+      if (minVal) minVal.textContent = state.eMin.toFixed(0) + '°';
+      if (maxVal) maxVal.textContent = state.eMax.toFixed(0) + '°';
+      if (minOn) minOn.checked = state.minOn;
+      if (maxOn) maxOn.checked = state.maxOn;
+      if (minSlider) minSlider.disabled = !state.minOn;
+      if (maxSlider) maxSlider.disabled = !state.maxOn;
+      if (rowMin) rowMin.classList.toggle('off', !state.minOn);
+      if (rowMax) rowMax.classList.toggle('off', !state.maxOn);
+    }
+
+    /* ---------- 动画 ---------- */
+    let raf = null, running = false, lastTs = 0;
+
+    function loop(ts) {
+      if (!running) return;
+      const dt = lastTs ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016;
+      lastTs = ts;
+      if (state.playing) {
+        state.phi += 2 * Math.PI * dt / PERIOD;
+        if (state.phi > Math.PI * 2) state.phi -= Math.PI * 2;
+      }
+      render();
+      raf = requestAnimationFrame(loop);
+    }
+
+    /* ---------- 交互 ---------- */
+    if (minOn) minOn.addEventListener('change', (e) => { state.minOn = e.target.checked; updatePanel(); });
+    if (maxOn) maxOn.addEventListener('change', (e) => { state.maxOn = e.target.checked; updatePanel(); });
+    if (minSlider) minSlider.addEventListener('input', (e) => { state.eMin = parseFloat(e.target.value); updatePanel(); });
+    if (maxSlider) maxSlider.addEventListener('input', (e) => { state.eMax = parseFloat(e.target.value); updatePanel(); });
+
+    const btnToggle = document.getElementById('btn-toggle');
+    const btnReset = document.getElementById('btn-reset');
+    const btnCam = document.getElementById('btn-cam');
+    const playIcon = document.getElementById('play-icon');
+    const playText = document.getElementById('play-text');
+
+    function updatePlayUI() {
+      if (!btnToggle) return;
+      btnToggle.classList.toggle('active', state.playing);
+      if (playIcon) playIcon.textContent = state.playing ? '⏸' : '▶';
+      if (playText) playText.textContent = state.playing ? '暂停演示' : '继续演示';
+    }
+
+    if (btnToggle) btnToggle.addEventListener('click', () => { state.playing = !state.playing; updatePlayUI(); });
+    if (btnCam) {
+      btnCam.addEventListener('click', () => {
+        state.camAz = DEF_CAM.az; state.camEl = DEF_CAM.el;
+        updateCamera(); fitView();
+      });
+    }
+    if (btnReset) btnReset.addEventListener('click', () => window.resetAnimation());
+
+    // 拖动旋转视角
+    let dragging = false, dragX = 0, dragY = 0;
+    cvs.addEventListener('pointerdown', (e) => {
+      dragging = true; dragX = e.clientX; dragY = e.clientY;
+      cvs.classList.add('dragging');
+      if (cvs.setPointerCapture) cvs.setPointerCapture(e.pointerId);
+    });
+    cvs.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      state.camAz = (state.camAz - (e.clientX - dragX) * 0.45) % 360;
+      state.camEl = clamp(state.camEl + (e.clientY - dragY) * 0.35, 6, 78);
+      dragX = e.clientX; dragY = e.clientY;
+      updateCamera(); fitView();
+    });
+    const endDrag = (e) => {
+      dragging = false;
+      cvs.classList.remove('dragging');
+      if (cvs.releasePointerCapture && e && e.pointerId !== undefined) {
+        try { cvs.releasePointerCapture(e.pointerId); } catch (err) { /* 已释放 */ }
+      }
+    };
+    cvs.addEventListener('pointerup', endDrag);
+    cvs.addEventListener('pointercancel', endDrag);
+
+    /* ---------- 尺寸 ---------- */
+    function resize() {
+      const box2 = cvs.parentElement.getBoundingClientRect();
+      W = Math.max(120, Math.round(box2.width));
+      H = Math.max(120, Math.round(box2.height));
+      cvs.style.width = W + 'px';
+      cvs.style.height = H + 'px';
+      fitView();
+    }
+    if (typeof ResizeObserver !== 'undefined') new ResizeObserver(resize).observe(cvs.parentElement);
+    window.addEventListener('resize', resize);
+
+    /* ---------- 标准动画控制契约接口 ---------- */
+    window.startAnimation = function () {
+      if (!running) {
+        running = true;
+        lastTs = 0;
+        raf = requestAnimationFrame(loop);
+      }
+    };
+    window.stopAnimation = function () {
+      running = false;
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+    };
+    window.resetAnimation = function () {
+      state.phi = 0;
+      state.playing = true;
+      state.eMin = DEF.eMin;
+      state.eMax = DEF.eMax;
+      state.minOn = true;
+      state.maxOn = true;
+      state.camAz = DEF_CAM.az;
+      state.camEl = DEF_CAM.el;
+      if (minSlider) minSlider.value = String(DEF.eMin);
+      if (maxSlider) maxSlider.value = String(DEF.eMax);
+      updateCamera(); fitView(); updatePanel(); updatePlayUI();
+      render();
+      window.startAnimation();
+    };
+
+    /* ---------- 初始化 ---------- */
+    resize();
+    updateCamera();
+    fitView();
+    updatePanel();
+    updatePlayUI();
+    render();
+    window.startAnimation();
+  })();
+</script>
+
+</body>
+</html>

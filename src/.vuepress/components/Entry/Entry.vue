@@ -200,7 +200,7 @@ onMounted(() => {
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  margin-bottom: 16px;
+  margin: 16px 0;
   color: #1d2129;
 }
 .atk-entry:last-child {
@@ -301,7 +301,6 @@ onMounted(() => {
 }
 .atk-entry__body {
   padding: 20px 20px;
-  font-size: 14px;
   line-height: 1.7;
   color: #4e5969;
 }
