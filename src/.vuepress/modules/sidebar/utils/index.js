@@ -1,3 +1,4 @@
+export * from "./highlightText.js";
 export * from "./isActiveSidebarItem.js";
 export * from "./isMatchedSidebarItem.js";
 export * from "./resolveSidebarItems.js";

@@ -1,9 +1,9 @@
 import { isString } from "@vuepress/helper/client";
-import { defineComponent, h, computed, ref, onMounted, onUnmounted } from "vue";
+import { defineComponent, h, computed } from "vue";
 import { useRoute } from "vuepress/client";
 import AutoLink from "@theme-hope/components/AutoLink";
 import HopeIcon from "@theme-hope/components/HopeIcon";
-import { isActiveSidebarItem } from "@theme-hope/modules/sidebar/utils/index";
+import { highlightText, isActiveSidebarItem } from "@theme-hope/modules/sidebar/utils/index";
 import "../styles/sidebar-child.scss";
 
 export default defineComponent({
@@ -18,30 +18,18 @@ export default defineComponent({
             type: Object,
             required: true,
         },
+        // 由上层 SidebarLinks 逐层传下来（同 SidebarGroup）
+        searchQuery: {
+            type: String,
+            default: "",
+        },
     },
     setup(props) {
         const route = useRoute();
-        const searchQuery = ref("");
-
-        const handleSearch = (event) => {
-            searchQuery.value = event.detail.query || "";
-        };
-
-        onMounted(() => {
-            if (typeof window !== "undefined") {
-                window.addEventListener("sidebar-search", handleSearch);
-            }
-        });
-
-        onUnmounted(() => {
-            if (typeof window !== "undefined") {
-                window.removeEventListener("sidebar-search", handleSearch);
-            }
-        });
 
         const isMatched = computed(() => {
-            if (!searchQuery.value || !props.config.text) return false;
-            return props.config.text.toLowerCase().includes(searchQuery.value.toLowerCase());
+            if (!props.searchQuery || !props.config.text) return false;
+            return props.config.text.toLowerCase().includes(props.searchQuery.toLowerCase());
         });
 
         return () =>
@@ -51,13 +39,20 @@ export default defineComponent({
                       class: [
                           "vp-sidebar-link",
                           "vp-sidebar-page",
-                          { 
+                          {
                               active: isActiveSidebarItem(route, props.config, true),
                               "search-matched": isMatched.value
                           },
                       ],
                       exact: true,
                       config: props.config,
+                  }, {
+                      // 命中时才接管内容渲染，把命中的片段包成 <mark>；
+                      // 没命中交给 AutoLink 默认渲染，不产生多余节点。
+                      // AutoLink 有 slot 就整段替换，所以 icon 要自己补回来
+                      default: isMatched.value
+                          ? () => [h(HopeIcon, { icon: props.config.icon }), highlightText(props.config.text, props.searchQuery)]
+                          : undefined,
                   })
                 : // If the item only has text, render it as `<p>`
                   h("p", {
@@ -66,7 +61,7 @@ export default defineComponent({
                       ]
                   }, [
                       h(HopeIcon, { icon: props.config.icon }),
-                      props.config.text,
+                      highlightText(props.config.text, props.searchQuery),
                   ]);
     },
 });
