@@ -1,4 +1,4 @@
-import { computed, defineComponent, h, onMounted, shallowRef, watch, ref } from "vue";
+import { computed, defineComponent, h, nextTick, onMounted, onUnmounted, shallowRef, watch, ref } from "vue";
 import { usePageData, useRoute } from "vuepress/client";
 import SidebarLinks from "@theme-hope/modules/sidebar/components/SidebarLinks";
 import { useSidebarItems } from "@theme-hope/modules/sidebar/composables/index";
@@ -22,19 +22,29 @@ export default defineComponent({
         const isEn = computed(() => page.value.path.startsWith("/en/"));
         const t = computed(() => (isEn.value ? enSidebarText : zhSidebarText));
 
+        // 导航后把当前页面条目滚进侧边栏可视区
+        let stopScrollWatch = null;
+
         onMounted(() => {
-            if (typeof window !== "undefined") {
-                watch(() => route.hash, (hash) => {
-                    const activeSidebarItem = document.querySelector(`.vp-sidebar a.vp-sidebar-link[href="${route.path}${hash}"]`);
-                    if (!activeSidebarItem) return;
-                    const { top: sidebarTop, height: sidebarHeight } = sidebar.value.getBoundingClientRect();
-                    const { top: activeSidebarItemTop, height: activeSidebarItemHeight } = activeSidebarItem.getBoundingClientRect();
-                    if (activeSidebarItemTop < sidebarTop)
-                        activeSidebarItem.scrollIntoView(true);
-                    else if (activeSidebarItemTop + activeSidebarItemHeight > sidebarTop + sidebarHeight)
-                        activeSidebarItem.scrollIntoView(false);
-                }, { immediate: true });
-            }
+            if (typeof window === "undefined") return;
+            // 同时监听 path：SPA 跳转到别的页面时 hash 通常没变，只监听 hash 不会触发
+            stopScrollWatch = watch(() => [route.path, route.hash], async () => {
+                // 等分组展开状态和 DOM 更新完，否则目标还藏在 display:none 里，rect 全是 0
+                await nextTick();
+                // 侧边栏链接不带 #锚点，不能用 href + hash 去选，直接取当前激活项
+                const activeSidebarItem = document.querySelector(".vp-sidebar a.vp-sidebar-page.active");
+                if (!activeSidebarItem || !sidebar.value) return;
+                const { top: sidebarTop, height: sidebarHeight } = sidebar.value.getBoundingClientRect();
+                const { top: activeSidebarItemTop, height: activeSidebarItemHeight } = activeSidebarItem.getBoundingClientRect();
+                if (activeSidebarItemTop < sidebarTop)
+                    activeSidebarItem.scrollIntoView({ block: "start" });
+                else if (activeSidebarItemTop + activeSidebarItemHeight > sidebarTop + sidebarHeight)
+                    activeSidebarItem.scrollIntoView({ block: "end" });
+            }, { immediate: true, flush: "post" });
+        });
+
+        onUnmounted(() => {
+            stopScrollWatch?.();
         });
 
         // 全部折叠
