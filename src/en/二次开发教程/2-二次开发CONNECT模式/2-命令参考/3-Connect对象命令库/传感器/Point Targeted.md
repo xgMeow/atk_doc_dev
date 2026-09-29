@@ -16,10 +16,10 @@ Point <SensorObjectPath> Targeted {OrientMethod} <MethodData>
 
 ## Parameters
 
-| OrientMethod | MethodData                                                     | Description                                                        |
-| ------------ | -------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Tracking     | `<TruncObjectPath> [{AboutBoresight} [{TrackMode}]]`           | N/A                                                                 |
-| Fixed        | `<TruncObjectPath> {OrientMethod} <MethodData>`                | For `<MethodData>`, refer to the [Point Fixed](#point-fixed) command. |
+| OrientMethod | MethodData                                                     | Description                                                                |
+| ------------ | -------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Tracking     | `<TruncObjectPath> [{AboutBoresight} [{TrackMode}]]`           | `{TrackMode}` values: Transpond, Transmit, and Receive.                     |
+| Fixed        | `<TruncObjectPath> {OrientMethod} <MethodData>`                | For `<MethodData>`, refer to the [Point Fixed](./Point%20Fixed.md) command. |
 
 ## Examples
 

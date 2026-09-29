@@ -23,3 +23,21 @@ VectorTool <ScenarioPath> {Options}
 VectorTool * Satellite/Satellite1 Create Plane SatPlane2 "Quadrant"
 ```
 :::
+
+## Notes
+
+> Note: In the examples in this manual, VGT components must be created in advance and then referenced in the script; running the script without creating them first will cause an error. Component paths are case-sensitive.
+
+```
+atkConnect(conID, 'VectorTool',
+'* Satellite/Satellite1 Create Angle SatAngleBtnPlane "Between Planes"
+"CentralBody/Earth PlaneNormal"
+"Satellite/Satellite2 PlaneQuadrant"')
+```
+
+## Modification Examples
+
+```
+atkConnect(conID,'VectorTool','* Satellite/Satellite1 Modify Axes SatAxes1 "Aligned and Constrained" X "CentralBody/Earth ICRF.Axes.X" Y "Satellite/Satellite2 VVLH.Axes.Y"');
+VectorTool * Satellite/Satellite1 Modify Angle SatAngle1 "Between Vectors" "CentralBody/Earth ICRF.Axes.X" "Satellite/Satellite2 VVLH.Axes.Y"
+```

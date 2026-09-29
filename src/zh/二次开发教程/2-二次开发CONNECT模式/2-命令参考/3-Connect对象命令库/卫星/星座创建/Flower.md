@@ -32,6 +32,6 @@ Flower */Satellite/Satellite1 TotalNumSats 16 InterPlanePhaseIncrement 1 ReturnC
 
 ::: details open **创建 Flower 星座（直接创建新卫星）**
 ```
-Flower / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TureAnomaly 180 TotalNumSats 16 InterPlanePhaseIncrement 1 ReturnCircle 16 ReturnDay 1 PhaseDensity 16 RAANSpread 360 ColorByPlane Yes
+Flower / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TrueAnomaly 180 TotalNumSats 16 InterPlanePhaseIncrement 1 ReturnCircle 16 ReturnDay 1 PhaseDensity 16 RAANSpread 360 ColorByPlane Yes
 ```
 :::

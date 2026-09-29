@@ -22,7 +22,7 @@ Window3D <ScenarioPath> {Window3dOptions}
 ::: details open **创建三维窗口**
 
 ```
-Window3D / CreateWindow Normal
+Window3D * CreateWindow Normal
 ```
 
 :::

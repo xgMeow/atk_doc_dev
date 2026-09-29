@@ -14,7 +14,7 @@ Copy <ApplicationPath> <CopyFromObjectPath> [{CopyOption}]
 
 | 参数 | 说明 |
 |------|------|
-| `<ApplicationPath>` | 目标应用路径 |
+| `<ApplicationPath>` | 当前程序，填 `/` |
 | `<CopyFromObjectPath>` | 源对象路径 |
 | `{CopyOption}` | 可选参数，指定拷贝后的命名方式 |
 

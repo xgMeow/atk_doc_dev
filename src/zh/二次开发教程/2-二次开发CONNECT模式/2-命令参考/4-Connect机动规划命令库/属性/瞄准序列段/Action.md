@@ -16,10 +16,14 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Target_Sequence.Act
 |------|------|
 | `Value` | 可选值：`Run active profiles`、`Run nominal sequence`、`Run active profiles ONCE` |
 
+注意事项：
+
+- `{Value}` 取值内部若含空格，必须整体用双引号括起来，如 `"Run active profiles"`。
+
 ## 示例
 
 ::: details open **设置瞄准段动作为运行活动配置**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Action Run active profiles
+Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Action "Run active profiles"
 ```
 :::

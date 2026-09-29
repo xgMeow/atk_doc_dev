@@ -54,3 +54,7 @@ Animate <ScenarioPath> {AnimateOption} <Parameters>
 Animate * Start
 ```
 :::
+
+::: tip 提示
+文档常见问题：新建对象默认不生成星历，需调用 `Animate * Reset` 命令计算星历，二三维视图才可看到对象轨迹。
+:::

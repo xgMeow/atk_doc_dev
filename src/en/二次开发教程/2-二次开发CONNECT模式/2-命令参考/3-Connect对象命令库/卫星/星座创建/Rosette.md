@@ -29,7 +29,7 @@ Rosette */Satellite/Satellite1 NumPlanes 20 TotalNumSats 20 Molecule 1 ColorByPl
 
 ::: details open **Create a Rosette Constellation (Create New Satellites Directly)**
 ```
-Rosette / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TureAnomaly 180  
+Rosette / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TrueAnomaly 180  
 NumPlanes 20 TotalNumSats 20 Molecule 1 ColorByPlane Yes
 ```
 :::

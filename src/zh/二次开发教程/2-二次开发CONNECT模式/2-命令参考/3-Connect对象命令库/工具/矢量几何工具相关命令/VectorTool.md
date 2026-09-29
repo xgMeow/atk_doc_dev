@@ -23,3 +23,21 @@ VectorTool <ScenarioPath> {Options}
 VectorTool * Satellite/Satellite1 Create Plane SatPlane2 "Quadrant"
 ```
 :::
+
+## 注意事项
+
+> 注意：本手册案例部分 VGT 组件需要预先创建，再在脚本中引用；未创建直接运行脚本会报错。组件路径大小写敏感。
+
+```
+atkConnect(conID, 'VectorTool',
+'* Satellite/Satellite1 Create Angle SatAngleBtnPlane "Between Planes"
+"CentralBody/Earth PlaneNormal"
+"Satellite/Satellite2 PlaneQuadrant"')
+```
+
+## 修改示例
+
+```
+atkConnect(conID,'VectorTool','* Satellite/Satellite1 Modify Axes SatAxes1 "Aligned and Constrained" X "CentralBody/Earth ICRF.Axes.X" Y "Satellite/Satellite2 VVLH.Axes.Y"');
+VectorTool * Satellite/Satellite1 Modify Angle SatAngle1 "Between Vectors" "CentralBody/Earth ICRF.Axes.X" "Satellite/Satellite2 VVLH.Axes.Y"
+```
