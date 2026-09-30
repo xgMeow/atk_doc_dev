@@ -291,6 +291,14 @@ html[dir=rtl] .theme-container.sidebar-collapsed .vp-sidebar {
   box-shadow: inset 0 1px 2px rgba(64, 158, 255, 0.05);
 }
 
+// 命中的文字片段（highlightText 生成的 <mark>）
+.vp-sidebar-hl {
+  background: #ffe58f;
+  color: #614700;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
 // ==================== 菜单项样式优化 ====================
 
 // 统一所有节点的尺寸变量

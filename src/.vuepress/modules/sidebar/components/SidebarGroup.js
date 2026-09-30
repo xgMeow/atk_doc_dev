@@ -1,9 +1,9 @@
-import { computed, defineComponent, h, onMounted, onUnmounted, ref } from "vue";
+import { computed, defineComponent, h } from "vue";
 import { useRoute, useRouter } from "vuepress/client";
 import AutoLink from "@theme-hope/components/AutoLink";
 import HopeIcon from "@theme-hope/components/HopeIcon";
 import SidebarLinks from "@theme-hope/modules/sidebar/components/SidebarLinks";
-import { isActiveSidebarItem } from "@theme-hope/modules/sidebar/utils/index";
+import { highlightText, isActiveSidebarItem } from "@theme-hope/modules/sidebar/utils/index";
 import "../styles/sidebar-group.scss";
 
 export default defineComponent({
@@ -16,6 +16,12 @@ export default defineComponent({
         open: {
             type: Boolean,
             required: true,
+        },
+        // 由上层 SidebarLinks 逐层传下来；不再各自监听 sidebar-search 事件，
+        // 否则过滤（靠 prop）和高亮（靠事件）两套状态会各走各的
+        searchQuery: {
+            type: String,
+            default: "",
         },
     },
     emits: ["toggle"],
@@ -36,27 +42,9 @@ export default defineComponent({
             return false;
         });
 
-        const searchQuery = ref("");
-
-        const handleSearch = (event) => {
-            searchQuery.value = event.detail.query || "";
-        };
-
-        onMounted(() => {
-            if (typeof window !== "undefined") {
-                window.addEventListener("sidebar-search", handleSearch);
-            }
-        });
-
-        onUnmounted(() => {
-            if (typeof window !== "undefined") {
-                window.removeEventListener("sidebar-search", handleSearch);
-            }
-        });
-
         const isMatched = computed(() => {
-            if (!searchQuery.value || !props.config.text) return false;
-            return props.config.text.toLowerCase().includes(searchQuery.value.toLowerCase());
+            if (!props.searchQuery || !props.config.text) return false;
+            return props.config.text.toLowerCase().includes(props.searchQuery.toLowerCase());
         });
 
         /**
@@ -132,20 +120,25 @@ export default defineComponent({
                     // 非 collapsible（<p> 标签）时保留 AutoLink 处理导航
                     h("span", { class: "vp-sidebar-title-wrap" }, [
                         collapsible
-                            ? h("span", { class: "vp-sidebar-title" }, text)
+                            ? h("span", { class: "vp-sidebar-title" }, highlightText(text, props.searchQuery))
                             : link
                                 ? h(AutoLink, {
                                     class: "vp-sidebar-title",
                                     config: { text, link },
                                     noExternalLinkIcon: true,
+                                }, {
+                                    // AutoLink 给了 slot 就完全接管内容渲染，所以这里自己出标题
+                                    // （config 里没有 icon，原来的 HopeIcon 本来就是空节点）
+                                    default: () => highlightText(text, props.searchQuery),
                                 })
-                                : h("span", { class: "vp-sidebar-title" }, text),
+                                : h("span", { class: "vp-sidebar-title" }, highlightText(text, props.searchQuery)),
                     ]),
                     arrowElement,
                 ]),
                 h(SidebarLinks, {
                     key: prefix,
                     config: children,
+                    searchQuery: props.searchQuery,
                     style: { display: (props.open || !collapsible) ? "block" : "none" }
                 })
             ]);

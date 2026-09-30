@@ -54,3 +54,7 @@ Animate <ScenarioPath> {AnimateOption} <Parameters>
 Animate * Start
 ```
 :::
+
+::: tip Note
+Common pitfall: a newly created object does not generate ephemeris by default. You must run the `Animate * Reset` command to compute the ephemeris before the object's trajectory is visible in the 2D/3D views.
+:::

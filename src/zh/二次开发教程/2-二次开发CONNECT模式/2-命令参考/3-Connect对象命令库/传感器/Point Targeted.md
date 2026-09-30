@@ -18,7 +18,7 @@ Point <SensorObjectPath> Targeted {OrientMethod} <MethodData>
 
 | OrientMethod | MethodData                                                     | 说明                                                           |
 | ------------ | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| Tracking     | `<TruncObjectPath> [{AboutBoresight} [{TrackMode}]]`           | N/A                                                            |
+| Tracking     | `<TruncObjectPath> [{AboutBoresight} [{TrackMode}]]`           | `{TrackMode}` 取值：Transpond、Transmit 和 Receive             |
 | Fixed        | `<TruncObjectPath> {OrientMethod} <MethodData>`                | `<MethodData>` 请参考 [Point Fixed](./Point%20Fixed.md) 命令   |
 
 ## 示例

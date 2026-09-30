@@ -12,7 +12,7 @@ AllInstanceNames <ApplicationPath> [IncludeAccess] [<Delimiter>]
 
 ## 示例
 
-::: details open **识别根路径下所有对象**
+::: details open **识别当前程序下的所有对象**
 ```
 AllInstanceNames /
 ```

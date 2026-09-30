@@ -30,6 +30,6 @@ WalkerDelta */Satellite/Satellite1 NumPlanes 2 NumSatsPerPlane 11 InterPlanePhas
 
 ::: details open **Create a WalkerDelta Constellation (Create New Satellites Directly)**
 ```
-WalkerDelta / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TureAnomaly 180 NumPlanes 2 NumSatsPerPlane 8 InterPlanePhaseIncrement 1 RAANSpread 360 ColorByPlane Yes
+WalkerDelta / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TrueAnomaly 180 NumPlanes 2 NumSatsPerPlane 8 InterPlanePhaseIncrement 1 RAANSpread 360 ColorByPlane Yes
 ```
 :::

@@ -22,7 +22,7 @@ Window2D <ScenarioPath> {2DGfxWinOption} <Value> [WindowID <WinNumber>]
 ::: details open **创建二维窗口**
 
 ```
-Window2D / Create
+Window2D * Create
 ```
 
 :::

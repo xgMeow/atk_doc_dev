@@ -30,6 +30,6 @@ WalkerCustom */Satellite/Satellite1 NumPlanes 2 TotalNumSats 20 InterPlaneTrueAn
 
 ::: details open **创建 WalkerCustom 星座（直接创建新卫星）**
 ```
-WalkerCustom / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TureAnomaly 180 NumPlanes 2 TotalNumSats 20 InterPlaneTrueAnomalyIncrement 20 RAANIncrement 20 ColorByPlane Yes
+WalkerCustom / Semimajoraxis 6678137 Eccentricity 0 Inclination 28.5 RAAN 0 ArgumentOfPerigee 180 TrueAnomaly 180 NumPlanes 2 TotalNumSats 20 InterPlaneTrueAnomalyIncrement 20 RAANIncrement 20 ColorByPlane Yes
 ```
 :::

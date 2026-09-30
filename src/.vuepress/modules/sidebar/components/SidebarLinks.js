@@ -114,9 +114,14 @@ export default defineComponent({
                 ? h(SidebarGroup, {
                     config: item,
                     open: !!openGroupIndex.value[index],
+                    // 必须往下传，否则只有顶层会过滤，子层照样把所有兄弟页铺出来
+                    searchQuery: props.searchQuery,
                     onToggle: () => toggleGroup(index),
                 })
-                : h(SidebarChild, { config: item }));
+                : h(SidebarChild, {
+                    config: item,
+                    searchQuery: props.searchQuery,
+                }));
         }));
     },
 });
