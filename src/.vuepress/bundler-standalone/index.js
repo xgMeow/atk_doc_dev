@@ -836,63 +836,11 @@ var build = async (options, app) => {
   if (!app.env.isDebug) {
     await fs5.remove(app.dir.temp(".server"));
   }
-  await withSpinner("Compiling client offline with webpack")(async () => {
-    const make_empty_vue = (dirpath)=>{
-      const files = fs.readdirSync(dirpath);
-      files.forEach(file => {
-        const filePath = `${dirpath}/${file}`;
-        const stats = fs.statSync(filePath);
-        if (stats.isDirectory()) {
-          make_empty_vue(filePath); // 递归遍历子目录
-        } else if(file.endsWith(".vue")){
-          fs.writeFileSync(filePath, `
-          <template>
-            <div>
-            </div>
-          </template>
-          `)
-        }
-      });
-    }
-    let pages_dir = app.dir.temp("pages");
-    //make_empty_vue(pages_dir); // 去掉离线版本的所有的js文件
-    fs.removeSync(app.dir.dest("assets/js"))
-    let cssfiles = fs.readdirSync(app.dir.dest("assets/css"))
-    // fs.removeSync(app.dir.dest("assets/css"))
-    const clientConfig = resolveWebpackConfig({
-      config: await createClientConfig(app, options),
-      options,
-      isServer: false,
-      isBuild: true
-    });
-    await new Promise((resolve, reject) => {
-      webpack2([clientConfig], (err, stats) => {
-        if (err) {
-          reject(err);
-        } else if (stats?.hasErrors()) {
-          stats.toJson().errors?.forEach((err2) => {
-            console.error(err2);
-          });
-          reject(new Error("Failed to compile with errors"));
-        } else {
-          if (stats?.hasWarnings()) {
-            stats.toJson().warnings?.forEach((warning) => {
-              console.warn(warning);
-            });
-          }
-          resolve();
-        }
-      });
-    });
-    let css_files_all = fs.readdirSync(app.dir.dest("assets/css"));
-    css_files_all.forEach((file)=>{
-      if(cssfiles.indexOf(file)>=0){
-        
-      }else{
-        fs.removeSync(path.resolve(app.dir.dest("assets/css"), file));
-      }
-    })
-  });
+  // 这里原本会把 dest/assets/js 删掉、再用同样的配置重编译一遍 client（"Compiling client offline
+  // with webpack"）。但上面那次 webpack([clientConfig, serverConfig]) 已经用完全相同的配置产出过 client
+  // 产物，而 JS 文件名不带 hash，HTML 里的引用又来自那次编译的 client-manifest，所以第二次编译是纯重复劳动
+  // （实测约 100s）。原代码是配合被注释掉的 make_empty_vue()（"去掉离线版本所有的 js"）用的，该实验没启用，
+  // 故一并移除；将来若要恢复"离线版剥离页面 JS"的方案，需要连同 assets/js 与 CSS 的清理逻辑一起加回来（见 git 历史）。
 };
 
 // src/dev/dev.ts

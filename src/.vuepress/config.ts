@@ -3,12 +3,41 @@ import { defineUserConfig } from "vuepress";
 import {useHopeTheme} from "./theme.js";
 import { standaloneBundler } from './bundler-standalone/index.js'
 import path from "path"
+import fs from "fs"
+import crypto from "crypto"
 import viteBundler from "@vuepress/bundler-vite";
 import webpackBundler from "@vuepress/bundler-webpack";
 import { include } from "@mdit/plugin-include";
 import mixCodeBlock from "./markdown/mix-code-block.js";
 import tableScrollWrap from "./markdown/table-scroll-wrap.js";
 import entryCard from "./markdown/entry-card.js";
+
+// babel-loader 磁盘缓存的键 =「源码 + babel 解析后的 options（含 targets 推出的插件表）+ cacheIdentifier」。
+// 实测：改 babel.config.js 里的 targets 本来就不会命中旧缓存（解析后的 options 变了），这类改动不用担心。
+// 会静默复用旧产物的只有两种情况：① babel.config.js require 的本地插件被改动；② babel 相关包升级但
+// options 形状没变（例如仅预设内部实现变了）。这里把配置文件内容 + 关键依赖版本一并算进 cacheIdentifier，
+// 覆盖 ② 的一部分（尤其是 @babel/preset-env 升级——离线包要保 FF52 兼容，这个预设最要紧）。
+// 情形 ① 仍无法自动发现：改动本地 babel 插件后，请删掉 node_modules/.cache/babel-loader（约 17MB）再构建。
+const babelCacheIdentifier = (() => {
+  const root = path.resolve(__dirname, "../..");
+  const readText = (file: string) => {
+    try { return fs.readFileSync(file, "utf8"); } catch { return ""; }
+  };
+  const version = (name: string) =>
+    (readText(path.resolve(root, "node_modules", name, "package.json")).match(/"version":\s*"([^"]+)"/) || [])[1] || "";
+  return crypto
+    .createHash("sha256")
+    .update([
+      readText(path.resolve(root, "babel.config.js")),
+      version("babel-loader"),
+      version("@babel/core"),
+      version("@babel/preset-env"),
+      process.env.NODE_ENV || "",
+      process.env.BABEL_ENV || "",
+    ].join("\n"))
+    .digest("hex")
+    .slice(0, 16);
+})();
 
 export const useConfig = ({type, plat=""}) => {
   let standalone = type == "standalone";
@@ -109,6 +138,11 @@ export const useConfig = ({type, plat=""}) => {
             .test(/\.js$/)
             .use("babel-loader")
             .loader("babel-loader")
+            .options({
+              // 转译结果落盘缓存到 node_modules/.cache/babel-loader，二次构建直接复用
+              cacheDirectory: true,
+              cacheIdentifier: babelCacheIdentifier,
+            })
             .end()
           }
 

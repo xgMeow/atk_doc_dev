@@ -2,11 +2,12 @@ const path = require('path')
 const fs = require('fs')
 const process = require('process')
 const os = require("os")
-const cheerio = require("cheerio");
 const walk = require("walk");
-const isAbsoluteUrl = require("is-absolute-url");
+const { Worker } = require("worker_threads");
 const isUrl = require("is-url");
 const css = require('css');
+// HTML 重写逻辑与并行 worker 共用同一份实现
+const { offlineHtmlFile } = require("./standalone-html.cjs");
 
 
 const docsPath = process.argv[2]
@@ -23,21 +24,29 @@ const assetsPath = path.resolve(distPath, 'assets')
 const stylesPath = path.resolve(assetsPath, 'css')
 const scriptsPath = path.resolve(assetsPath, 'js')
 
+// 返回内容是否真的发生了变化；没变就不回写，省掉一次全量写盘（大文件上是实打实的开销）
 const processData = (filePath, process) => {
   const data = fs.readFileSync(filePath, 'utf8')
   const processesdData = process(data)
 
+  if (processesdData === data) {
+    return false
+  }
+
   fs.writeFileSync(filePath, processesdData, { encoding: 'utf8' })
+  return true
 }
 
 
 const offlinifyStyle = fileName => {
-  processData(path.resolve(stylesPath, fileName), data => {
+  const changed = processData(path.resolve(stylesPath, fileName), data => {
     // Links to assets
     return data.replace(/url\((\/assets\/[^)]*)\)/g, 'url(../..$1)')
   })
 
-  console.log(`样式文件已离线化：${fileName}`)
+  if (changed) {
+    console.log(`样式文件已离线化：${fileName}`)
+  }
 }
 
 const offlinifyAppScript = fileName => {
@@ -71,7 +80,7 @@ const offlinifyBarsScript = fileName => {
 }
 
 const offlinifySearchPro = fileName => {
-  processData(path.resolve(scriptsPath, fileName), data => {
+  const changed = processData(path.resolve(scriptsPath, fileName), data => {
     // console.log("fileName", fileName)
     // console.log("data", data)
     let match = data.match(/"([^":]*?worker\.js)"/)
@@ -90,7 +99,9 @@ const offlinifySearchPro = fileName => {
     }
     return data
   })
-  console.log(`搜索插件已离线化：${fileName}`)
+  if (changed) {
+    console.log(`搜索插件已离线化：${fileName}`)
+  }
 }
 
 const styles = fs.readdirSync(stylesPath)
@@ -141,137 +152,77 @@ function offlineCssFile(fileName) {
 
 }
 
-function url_relative(from, absurl)
-{
-  let relurl = path.relative(from, absurl)
-  if(absurl.endsWith("\\") || absurl.endsWith("/")){
-    relurl = path.join(relurl, "index.html");
+// 并发处理 HTML：每个文件都是「读 -> cheerio 解析/改写 -> 写」的纯本地操作，互不依赖，
+// 按文件切分给多个 worker 线程即可，产物与串行处理逐字节一致（各文件只被一个 worker 处理）。
+// 串行时 1849 个页面约 130s，是这条脚本里最耗时的一段。
+const processHtmlFiles = async files => {
+  const result = { html: 0, rewritten: 0, failed: [] };
+
+  if (files.length === 0) {
+    return result;
   }
-  relurl = relurl.replace(/\\/g, "/");
-  // console.log(from, absurl, relurl)
-  return relurl;
-}
 
+  const handleOne = file => {
+    try {
+      result.rewritten += offlineHtmlFile(file, distPath);
+      result.html++;
+    } catch (error) {
+      // 单个文件异常不再中断整批处理
+      result.failed.push(file);
+      console.error(`离线化失败：${file}\n  ${error && error.stack ? error.stack : error}`);
+    }
+  };
 
-// 只有「根绝对路径」才需要改写成相对路径：以 / 开头、且不是协议相对地址(//host/x)。
-// 其余一律跳过，包括：
-//   - 没有 href 的 <a id="x"></a>、没有 src 的 <img>（取值是 undefined）
-//   - #锚点、http(s)://、mailto:、data: 等外链
-//   - 已经是相对路径的值（保证脚本重复执行时结果不变）
-function isRootAbsolutePath(value) {
-  if (typeof value !== "string") {
-    return false;
+  // 留 1 个核给主线程和系统；上限 8，避免 cheerio 解析大页面时内存峰值过高
+  const concurrency = Math.min(8, Math.max(1, os.cpus().length - 1));
+
+  if (concurrency === 1) {
+    files.forEach(handleOne);
+    return result;
   }
-  return value.startsWith("/") && !value.startsWith("//");
-}
 
-function offlineHtmlFile(fileName) {
-  // 本次改写的属性个数，用于处理结束后的汇总输出
-  let rewritten = 0;
-  const htmlContent = fs.readFileSync(fileName, "utf-8");
-  const $ = cheerio.load(htmlContent);
-  // CSS
-  $("link").each((index, element) => {
-      const attributeValue = $(element).attr("href");
-      // <link rel="preconnect"> 之类没有 href 的标签直接跳过
-      if (!isRootAbsolutePath(attributeValue)) {
-          return;
-      }
-      const realAttributeValue = path.join(distPath, attributeValue);
-      const relativeValue = url_relative(path.dirname(fileName), realAttributeValue);
-      $(element).attr("href", relativeValue);
-      rewritten++;
-      //console.log(fileName, attributeValue, "->", relativeValue)
-  });
-  // JS
-  $("script").each((index, element) => {
-      const attributeValue = $(element).attr("src");
-      if(!attributeValue){
-          return;
-      }
-      const realAttributeValue = path.join(distPath, attributeValue);
-      const relativeValue = url_relative(path.dirname(fileName), realAttributeValue)
-      $(element).attr("src", relativeValue);
-      //console.log(fileName, attributeValue, "->", relativeValue)
+  const slices = Array.from({ length: concurrency }, () => []);
+  files.forEach((file, index) => slices[index % concurrency].push(file));
 
-  });
-  // a.href
-  $("a").each((index, element) => {
-      const attributeValue = $(element).attr("href");
-      // 没有 href 的锚点(<a id="x"></a>)、#锚点、外链、已相对化的链接都跳过
-      if (!isRootAbsolutePath(attributeValue)) {
-          return;
-      }
-      let realAttributeValue = path.join(distPath, attributeValue);
-      if (fs.existsSync(path.join(realAttributeValue, "index.html"))) {
-          realAttributeValue = path.join(realAttributeValue, "index.html");
-      }
-      const relativeValue = url_relative(path.dirname(fileName), realAttributeValue);
-      $(element).attr("href", relativeValue);
-      rewritten++;
-      //console.log(fileName, attributeValue, "->", relativeValue)
+  await Promise.all(
+    slices
+      .filter(slice => slice.length > 0)
+      .map(
+        slice =>
+          new Promise((resolve, reject) => {
+            const worker = new Worker(path.resolve(__dirname, "standalone-html-worker.cjs"), {
+              workerData: { files: slice, distPath },
+            });
 
-  });
-  // img
-  $("img").each((index, element) => {
-      const attributeValue = $(element).attr("src");
-      // 没有 src 的 <img> 直接跳过（isAbsoluteUrl 传入 undefined 会抛异常）
-      if (typeof attributeValue !== "string" || attributeValue === "") {
-          return;
-      }
-      if (isAbsoluteUrl(attributeValue)) {
-          return;
-      }
-      if (attributeValue.startsWith("//")) {
-          // replace like //example.com/1.png
-          $(element).attr("src", `https:${attributeValue}`);
-          rewritten++;
-          //console.log(fileName, attributeValue, "->", `https:${attributeValue}`)
-      } else if (isRootAbsolutePath(attributeValue)) {
-          const realAttributeValue = path.join(distPath, attributeValue);
-          const relativeValue = url_relative(path.dirname(fileName), realAttributeValue);
-          $(element).attr("src", relativeValue);
-          rewritten++;
-          //console.log(fileName, attributeValue, "->", relativeValue)
-      }
-  });
+            worker.on("message", message => {
+              result.html += message.html;
+              result.rewritten += message.rewritten;
+              result.failed.push(...message.failed);
+            });
+            worker.on("error", reject);
+            worker.on("exit", code => {
+              if (code !== 0) {
+                reject(new Error(`HTML 处理 worker 异常退出，退出码 ${code}`));
+              } else {
+                resolve();
+              }
+            });
+          })
+      )
+  );
 
-  const transformedHtml = $.html();
-  fs.writeFileSync(fileName, transformedHtml, "utf-8");
-
-  return rewritten;
-}
-
-
+  return result;
+};
 
 const walker = walk.walk(distPath, {
   followLinks: false
 });
 
-
-// 处理过程中的统计，结束时统一输出，避免「静默只处理了一部分」的情况
-const stats = {
-  html: 0,
-  rewritten: 0,
-  failed: [],
-};
+const htmlFiles = [];
 
 walker.on("file", (root, fileStats, next) => {
-  const extName = path.extname(fileStats.name);
-  const file = path.join(root, fileStats.name);
-  if (extName === ".html") {
-      //console.log(`Offline ${file}`);
-      try {
-          stats.rewritten += offlineHtmlFile(file);
-          stats.html++;
-      } catch (error) {
-          // 单个文件异常不再中断整批处理
-          stats.failed.push(file);
-          console.error(`离线化失败：${file}\n  ${error && error.stack ? error.stack : error}`);
-      }
-  } else if (extName === ".css") {
-      // console.log(`Offline ${file}`);
-      // offlineCssFile(file);
+  if (path.extname(fileStats.name) === ".html") {
+    htmlFiles.push(path.join(root, fileStats.name));
   }
   next();
 });
@@ -281,11 +232,17 @@ walker.on("errors", (root, nodeStatsArray, next) => {
   next();
 });
 
-walker.on("end", () => {
+walker.on("end", async () => {
+  const stats = await processHtmlFiles(htmlFiles);
   console.log(`全部完成：处理 ${stats.html} 个 html 文件，改写 ${stats.rewritten} 个属性，失败 ${stats.failed.length} 个`);
+  // 有文件没被处理到（例如 worker 中途异常退出）也要以非 0 退出，避免打包产物半成品却没人发现
+  const missed = htmlFiles.length - stats.html - stats.failed.length;
+  if (missed > 0) {
+    console.error(`有 ${missed} 个 html 文件未被处理，请检查 worker 是否异常退出`);
+    process.exitCode = 1;
+  }
   if (stats.failed.length > 0) {
     console.error(`以下文件离线化失败：\n${stats.failed.join("\n")}`);
-    // 有文件没处理成功时以非 0 退出，避免打包产物半成品却没人发现
     process.exitCode = 1;
   }
 });
