@@ -19,16 +19,15 @@
  *      这是"尽力而为"：无法把源语义精确翻译到不同转义体系的目标语言；
  *   4. 除「语法壳」外，ATK 的 atkOpen / atkConnect / atkClose 三组调用还要按各语言
  *      SDK 的真实签名整形（见 shapeAtkCalls 与 LANGS[*].atk）：
- *        Python / C++  自由函数，atkConnect 3 参（atkOpen 两参有默认值，可省略）
- *        Java          自由函数，atkConnect 4 参（第 4 参保留参数传 ""）
- *        MATLAB        经 ATKConnectJavaModule 对象调用，atkConnect 4 参（传 ''）
- *        Octave        同 MATLAB，保留参数传 ""
+ *        Python / C++ / MATLAB  自由函数，atkConnect 3 参（atkOpen 两参有默认值，可省略）
+ *        Java                   自由函数，atkConnect 4 参（第 4 参保留参数传 ""）
+ *        Octave                 经 ATKConnectJavaModule 对象调用，atkConnect 4 参（传 ""）
  *      这一步只动调用外形（接收者前缀与保留参数），字符串内容一律不动。
  */
 
 // 各语言 atkOpen / atkConnect / atkClose 的调用外形（详见 shapeAtkCalls）：
-//   receiver  调用前缀：MATLAB / Octave 经 ATKConnectJavaModule 对象调用，其余为自由函数
-//   args      atkConnect 的实参个数（Python/C++ 3 参；Java/MATLAB/Octave 4 参）
+//   receiver  调用前缀：Octave 经 ATKConnectJavaModule 对象调用，其余为自由函数
+//   args      atkConnect 的实参个数（Python/C++/MATLAB 3 参；Java/Octave 4 参）
 //   emptyArg  第 4 个保留参数的写法（args 为 4 时才有意义）
 //   openArgs  atkOpen 的必填实参个数；null 表示可从简（Python/C++ 有默认值）
 //   openFill  省略 atkOpen 实参时补上的默认 IP 与端口
@@ -78,9 +77,9 @@ const LANGS = {
     matlabDoubleQuote: true,
     quote: "'",
     semicolon: true,
-    // MATLAB 经内置 Java 接口调用，签名与 Java 一致；但 '' 才是空字符串
-    // （"" 是 R2016b 才引入的 string 类型，与 R2015b 起的旧版本不兼容）
-    atk: { receiver: 'ATKConnectJavaModule.', args: 4, emptyArg: "''", openArgs: 2, openFill: "'127.0.0.1', 6655" },
+    // MATLAB 使用 ATK 自带的通信库（IntegratingWithATK\connect\Matlab），
+    // atkOpen / atkConnect / atkClose 都是自由函数，签名与 Python / C++ 一致
+    atk: { ...ATK_FREE },
   },
   octave: {
     name: 'Octave',
@@ -91,7 +90,7 @@ const LANGS = {
     matlabDoubleQuote: true,
     quote: "'",
     semicolon: true,
-    // Octave 同样经 Java 接口调用，但空字符串写作 ""（与 Java 一致）
+    // Octave 经内置 Java 接口调用，空字符串写作 ""（与 Java 一致）
     atk: { receiver: 'ATKConnectJavaModule.', args: 4, emptyArg: '""', openArgs: 2, openFill: '"127.0.0.1", 6655' },
   },
 };
@@ -224,12 +223,11 @@ function isStructuralEnd(code) {
  * ATK 三组 API 的调用形态适配
  *
  * 「语法壳」转换之外，ATK 的三个接口在五种 SDK 里的调用外形并不一样：
- *   Python / C++   atkConnect(conID, 'Graphics', '...')            —— 自由函数，3 参
+ *   Python / C++ / MATLAB  atkConnect(conID, 'Graphics', '...')    —— 自由函数，3 参
  *   Java           atkConnect(conID, "Graphics", "...", "")        —— 自由函数，4 参
- *   MATLAB         ATKConnectJavaModule.atkConnect(conID, ...
- *                  ..., '')                                        —— 对象方法，4 参
- *   Octave         同 MATLAB，但保留参数用 ""（与 Java 一致）
- * 另外 Java / MATLAB / Octave 的 atkOpen 无默认参数，两个参数必须显式传入。
+ *   Octave         ATKConnectJavaModule.atkConnect(conID, ...
+ *                  ..., "")                                        —— 对象方法，4 参
+ * 另外 Java / Octave 的 atkOpen 无默认参数，两个参数必须显式传入。
  *
  * 这里按目标语言把调用改写成上面的形态，作者只需写一份源码
  * （推荐 Python：`atkConnect(conID, 'New', '/ Scenario X')`）。

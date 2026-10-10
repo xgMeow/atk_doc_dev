@@ -17,7 +17,7 @@
 - **源码语言对应的 Tab 展示的永远是作者写的原文**，不会被转换器“洗”一遍；
 - 跨语言做两层转换：
   1. **语法壳**：换引号、换注释符、补/删行尾分号；**字符串内部的内容与反斜杠原样保留**（Windows 路径、`\n` 等不会被吞）；
-  2. **ATK 调用外形**：`atkOpen` / `atkConnect` / `atkClose` 按目标语言 SDK 的真实签名整形（见 §8.1）——Java 补第 4 个保留参数，MATLAB / Octave 补 `ATKConnectJavaModule.` 接收者前缀。
+  2. **ATK 调用外形**：`atkOpen` / `atkConnect` / `atkClose` 按目标语言 SDK 的真实签名整形（见 §8.1）——Java 补第 4 个保留参数，Octave 补 `ATKConnectJavaModule.` 接收者前缀。
 
 > 注意：这种翻译是“尽力而为”，只适合把**同一段命令语句**在不同语言的引号与注释体系之间搬运，做不到把一段完整程序逐字翻译成另一种语言。一段代码若换成另一种语言后不能靠“换引号/注释/分号”变合法，就不该用它（见 §2）。
 
@@ -53,8 +53,8 @@ atkConnect(conID, 'SetState', '*/Satellite/Satellite1 HPOP "2026-03-06 00:00:00.
 - 顶栏一组语言 Tab：**Python / C++ / Java / MATLAB / Octave**。源码语言（上例是 Python）默认选中，显示的就是你写的原文；
 - 切到 C++：注释变 `//`、字符串变双引号、行尾自动补 `;`；调用仍是自由函数 `atkConnect(conID, "New", "/ Scenario …")`（C++ 与 Python 同为 3 参）；
 - 切到 Java：同上，并且 `atkConnect` 自动补上第 4 个保留参数 `""`；
-- 切到 MATLAB：注释变 `%`、字符串保持单引号、行尾补 `;`，调用改写成对象方法 `ATKConnectJavaModule.atkConnect(conID, 'New', '/ Scenario …', '')`；
-- 切到 Octave：与 MATLAB 基本一致，区别只在保留参数写作 `""`（与 Java 一致）；
+- 切到 MATLAB：注释变 `%`、字符串保持单引号、行尾补 `;`；调用仍是自由函数 `atkConnect(conID, 'New', '/ Scenario …')`（Matlab 与 Python / C++ 同为 3 参）；
+- 切到 Octave：注释变 `%`、字符串保持单引号、行尾补 `;`，调用改写成对象方法 `ATKConnectJavaModule.atkConnect(conID, 'New', '/ Scenario …', "")`；
 - 右上角「复制」按钮，复制的是**当前选中 Tab** 的代码。
 
 ### 硬性规则
@@ -114,7 +114,7 @@ atkOpenFile('C:/ATK/data/scen.atk')
 3. **字符串里的转义、反斜杠原样保留**（Windows 路径、`\n` 等不会被吞）。
 4. **别把代码写成“完整程序/定义结构”**（含类、函数、控制块体、`#include`、`function … end`）。这类代码换成其它语言必然非法，组件只会显示源码一个 Tab，等于没发挥多语言价值。
 5. **源码 Tab 恒等于作者原文**：不要为了“看起来正常”去手工整理/转义源码，原样粘贴即可。
-6. **ATK 三组 API 的调用外形（接收者前缀、第 4 个保留参数）由组件自动适配**，源码里按源语言的写法写就行：Python 写 `atkConnect(conID, 'New', '…')`、`atkOpen('127.0.0.1', 6655)`，不要手工写成 `ATKConnectJavaModule.atkConnect(…)`——那样 Python / C++ Tab 反而会拿到 MATLAB 写法。详见 §8.1。
+6. **ATK 三组 API 的调用外形（接收者前缀、第 4 个保留参数）由组件自动适配**，源码里按源语言的写法写就行：Python 写 `atkConnect(conID, 'New', '…')`、`atkOpen('127.0.0.1', 6655)`，不要手工写成 `ATKConnectJavaModule.atkConnect(…)`——那样 Python / C++ / MATLAB Tab 反而会拿到 Octave 写法。详见 §8.1。
 7. **注释里的调用不会被整形**：被注释掉的 `# atkConnect(…)` 在其它语言 Tab 里只是换注释符，内容保持原样（注释是说明文字，不是可执行代码）。若希望读者能直接取消注释使用，就别把它写在注释里。
 8. **中英文页面都要写**：`src/zh/**` 与 `src/en/**` 的对应页面放**同一段** `<mix-code>` 即可（组件是全站注册的）。
 9. **自动识别认不出 Octave**：Octave 与 MATLAB 语法几乎一致，`lang` 省略时只会被识别成 `matlab`、拿到 MATLAB 列的写法。要出 Octave Tab 请显式写 `lang="octave"`（或让源码是 Python 这类无歧义的语言）。
@@ -148,7 +148,7 @@ Java                         // 创建任务场景
                              atkConnect(conID, "New", "/ Scenario SimpleExample", "");
 
 MATLAB                       % 创建任务场景
-                             ATKConnectJavaModule.atkConnect(conID, 'New', '/ Scenario SimpleExample', '');
+                             atkConnect(conID, 'New', '/ Scenario SimpleExample');
 
 Octave                       % 创建任务场景
                              ATKConnectJavaModule.atkConnect(conID, 'New', '/ Scenario SimpleExample', "");
@@ -178,8 +178,8 @@ atkConnect(conID, "Animate", "* Reset");
 ````text
 <mix-code lang="matlab" langs="matlab">
 % 1, 加载通信库并与 ATK 建立连接
-ATKConnectJavaModule = javaObject('com.atk.connect.ATKConnectJavaModule');
-conID = ATKConnectJavaModule.atkOpen('127.0.0.1', 6655);
+addpath('<ATK安装目录>\IntegratingWithATK\connect\Matlab\Win_2015b')
+conID = atkOpen('127.0.0.1', 6655);
 </mix-code>
 ````
 
@@ -220,10 +220,10 @@ public class Demo {
 
 | 差异项 | Python | C++ | Java | MATLAB | Octave |
 |---|---|---|---|---|---|
-| `atkConnect` 实参个数 | 3 | 3 | **4**（第 4 参保留） | **4**（第 4 参保留） | **4**（第 4 参保留） |
-| 第 4 个保留参数写法 | —— | —— | `""` | `''` | `""` |
-| 调用前缀 | 自由函数 | 自由函数 | 自由函数 | `ATKConnectJavaModule.` | `ATKConnectJavaModule.` |
-| `atkOpen` 是否必须传 IP/端口 | 否（有默认值） | 否（有默认值） | **是** | **是** | **是** |
+| `atkConnect` 实参个数 | 3 | 3 | **4**（第 4 参保留） | 3 | **4**（第 4 参保留） |
+| 第 4 个保留参数写法 | —— | —— | `""` | —— | `""` |
+| 调用前缀 | 自由函数 | 自由函数 | 自由函数 | 自由函数 | `ATKConnectJavaModule.` |
+| `atkOpen` 是否必须传 IP/端口 | 否（有默认值） | 否（有默认值） | **是** | 否（有默认值） | **是** |
 
 以 Python 源码 `conID = atkOpen('127.0.0.1', 6655)` / `atkConnect(conID, 'New', '/ Scenario X')` / `atkClose(conID)` 为例：
 
@@ -240,9 +240,9 @@ Java                         conID = atkOpen("127.0.0.1", 6655);
                              atkConnect(conID, "New", "/ Scenario X", "");
                              atkClose(conID);
 
-MATLAB                       conID = ATKConnectJavaModule.atkOpen('127.0.0.1', 6655);
-                             ATKConnectJavaModule.atkConnect(conID, 'New', '/ Scenario X', '');
-                             ATKConnectJavaModule.atkClose(conID);
+MATLAB                       conID = atkOpen('127.0.0.1', 6655);
+                             atkConnect(conID, 'New', '/ Scenario X');
+                             atkClose(conID);
 
 Octave                       conID = ATKConnectJavaModule.atkOpen('127.0.0.1', 6655);
                              ATKConnectJavaModule.atkConnect(conID, 'New', '/ Scenario X', "");
@@ -251,12 +251,12 @@ Octave                       conID = ATKConnectJavaModule.atkOpen('127.0.0.1', 6
 
 几个要点：
 
-- `atkOpen()` 省略实参时，只有**无默认参数**的语言（Java / MATLAB / Octave）会被补上 `"127.0.0.1", 6655`，Python / C++ 保持省略写法；补默认值是为了让生成的 Tab 不至于调用不成。**新写的源码建议一律显式写 `atkOpen('127.0.0.1', 6655)`**，与其它 Tab 保持一致。
-- 反向转换（如 MATLAB 源码转到 Python / C++）会自动去掉 `ATKConnectJavaModule.` 前缀与第 4 个保留参数，回到 3 参形式。
+- `atkOpen()` 省略实参时，只有**无默认参数**的语言（Java / Octave）会被补上 `"127.0.0.1", 6655`，Python / C++ / MATLAB 保持省略写法；补默认值是为了让生成的 Tab 不至于调用不成。**新写的源码建议一律显式写 `atkOpen('127.0.0.1', 6655)`**，与其它 Tab 保持一致。
+- 反向转换（如 Octave 源码转到 Python / C++）会自动去掉 `ATKConnectJavaModule.` 前缀与第 4 个保留参数，回到 3 参形式。
 - 只有 `atkOpen` / `atkConnect` / `atkClose` **三个名字**会被整形；`atkOpenFile` 之类不受影响。
 - 整形只发生在**代码**里：被注释掉的调用（`# atkConnect(…)`）只换注释符，内容原样。
 
-> MATLAB / Octave Tab 里的 `ATKConnectJavaModule` 对象需要脚本先加载通信库并创建（`javaaddpath` → `javaMethod('loadLibrary', 'ATKLibraryLoader')` → `javaObject('com.atk.connect.ATKConnectJavaModule')`），组件**不会**自动补这段前置代码。跨语言 Tab 只展示命令语句序列；完整可运行脚本见 [Matlab SDK 简介与配置](../../src/zh/二次开发教程/2-二次开发CONNECT模式/1-开发方式/4-语言SDK/2-Matlab/1-简介与配置.md) 与 [Octave SDK 简介与配置](../../src/zh/二次开发教程/2-二次开发CONNECT模式/1-开发方式/4-语言SDK/5-Octave/1-简介与配置.md)。
+> MATLAB Tab 用的是 ATK 自带的 Matlab 通信库，脚本需先把库文件目录加入搜索路径（`addpath('<ATK安装目录>\IntegratingWithATK\connect\Matlab\Win_2015b')`）；Octave Tab 里的 `ATKConnectJavaModule` 对象需要脚本先加载通信库并创建（`javaaddpath` → `javaMethod('loadLibrary', 'ATKLibraryLoader')` → `javaObject('com.atk.connect.ATKConnectJavaModule')`）。这些前置代码组件**不会**自动补。跨语言 Tab 只展示命令语句序列；完整可运行脚本见 [Matlab SDK 简介与配置](../src/zh/二次开发教程/2-二次开发CONNECT模式/1-开发方式/4-语言SDK/2-Matlab/1-简介与配置.md) 与 [Octave SDK 简介与配置](../src/zh/二次开发教程/2-二次开发CONNECT模式/1-开发方式/4-语言SDK/5-Octave/1-简介与配置.md)。
 
 转换只做上面这些；字符串内容、数字、代码结构一律不动。
 
@@ -287,7 +287,7 @@ Octave                       conID = ATKConnectJavaModule.atkOpen('127.0.0.1', 6
         ├─ convert.js：逐行 token 化后做两层转换
         │     ① 语法壳：引号 / 注释符 / 行尾分号
         │     ② shapeAtkCalls：atkOpen / atkConnect / atkClose 的调用外形
-        │        （Java 补第 4 参、MATLAB/Octave 补对象接收者、atkOpen 补默认 IP/端口）
+        │        （Java 补第 4 参、Octave 补对象接收者、atkOpen 补默认 IP/端口）
         └─ 顶栏语言 Tab（源码语言默认选中）＋ 行号 ＋ 复制当前 Tab
 ````
 
@@ -317,7 +317,7 @@ Octave                       conID = ATKConnectJavaModule.atkOpen('127.0.0.1', 6
 
 1. **为什么用块级插件，而不是改代码围栏**：markdown-it 默认把 `<mix-code>` 当 HTML block（type-7），空行会提前截断、VuePress 又会把标签内换行折叠成空格。插件在块级阶段整体捕获，转成 `<pre v-pre>`：`<pre>` 保留换行，`v-pre` 禁用 `#`、`{{ }}` 的模板编译，内容再做 HTML 转义，最终提取到的仍是作者原文。
 2. **为什么跨语言只做“语法壳”+“调用外形”**：完整程序不可能靠换引号/注释/分号变成另一种合法程序，所以检测到完整程序时只展示源码 Tab；而 ATK 三组 API 的差异是**固定且有限**的（接收者、参数个数、默认值），可以可靠地按目标语言改写，因此单独做成一层整形。除这三个接口名之外，组件不认识任何 ATK 语义，也不会去改别的调用。
-3. **为什么建议用 Python 写**：ATK 命令序列最接近纯语句集合，Python 单引号里可直接放命令字符串中常见的双引号，最省转义，转到其它语言也最干净；而且 `atkOpen('127.0.0.1', 6655)` 这种显式写法能让 Java / MATLAB / Octave 三个 Tab 免于依赖组件补默认值。
+3. **为什么建议用 Python 写**：ATK 命令序列最接近纯语句集合，Python 单引号里可直接放命令字符串中常见的双引号，最省转义，转到其它语言也最干净；而且 `atkOpen('127.0.0.1', 6655)` 这种显式写法能让 Java / Octave 两个 Tab 免于依赖组件补默认值。
 4. **为什么不动注释**：注释是写给人看的说明文字（里面可能只是引用一段调用写法），组件只把注释符换成目标语言的，正文一律不动，避免把说明文字改成语义不同的代码。
 
 ---
@@ -352,14 +352,14 @@ Octave                       conID = ATKConnectJavaModule.atkOpen('127.0.0.1', 6
 **复制出来的内容和我源码里不一致？**
 「复制」复制的是**当前选中 Tab**。切回源码语言那个 Tab 复制的才是原文。
 
-**MATLAB / Octave Tab 里为什么多了 `ATKConnectJavaModule.` 和第 4 个参数？**
-这是组件的调用整形（§8.2）：MATLAB / Octave 的 SDK 就是通过 `ATKConnectJavaModule` 对象调用、`atkConnect` 为 4 参形式，Java 同样要补第 4 个保留参数。源码里仍按源语言写，不用手工加。
+**Octave Tab 里为什么多了 `ATKConnectJavaModule.` 和第 4 个参数？**
+这是组件的调用整形（§8.2）：Octave 的 SDK 就是通过 `ATKConnectJavaModule` 对象调用、`atkConnect` 为 4 参形式，Java 同样要补第 4 个保留参数。源码里仍按源语言写，不用手工加。MATLAB 与 Python / C++ 一样是自由函数 3 参，不会被加前缀。
 
-**MATLAB / Octave Tab 里出现 `ATKConnectJavaModule`，但那个 Tab 并没有创建这个对象？**
+**Octave Tab 里出现 `ATKConnectJavaModule`，但那个 Tab 并没有创建这个对象？**
 组件不会自动补加载通信库的前置代码（`javaaddpath` / `javaMethod('loadLibrary', …)` / `javaObject(…)`），跨语言 Tab 只展示命令语句序列。要给出可直接运行的完整脚本，请用 `langs="matlab"` 的单语言块自己写全（见 §7 示例四），或引导读者去看 MATLAB / Octave SDK 的「简介与配置」页。
 
-**Java / MATLAB / Octave Tab 里 `atkOpen()` 被补成了 `atkOpen("127.0.0.1", 6655)`？**
-这几种语言的 `atkOpen` 没有默认参数，省略实参无法调用，组件按默认端口补齐。与其依赖组件补，不如源码里就显式写 `atkOpen('127.0.0.1', 6655)`。
+**Java / Octave Tab 里 `atkOpen()` 被补成了 `atkOpen("127.0.0.1", 6655)`？**
+这两种语言的 `atkOpen` 没有默认参数，省略实参无法调用，组件按默认端口补齐。与其依赖组件补，不如源码里就显式写 `atkOpen('127.0.0.1', 6655)`。
 
 **为什么有的代码块只有一个 Tab、有的有五个？**
 `langs` 属性控制展示哪几种（如 `langs="matlab"` 只显示 MATLAB）；被判为“完整程序”的代码块也只显示源码语言一个 Tab。见 §4、§5。
