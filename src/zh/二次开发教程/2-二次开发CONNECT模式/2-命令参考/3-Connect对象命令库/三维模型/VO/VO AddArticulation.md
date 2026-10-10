@@ -40,6 +40,7 @@ VO <ObjectPath> AddArticulation {ArticulateOptions}
 - 除上述三项外的其余选项，未指定时均默认为 `0.0`。
 - 使用 `AutoStartValue` 时若不写 `StartValue`，则关节从 `StartTime` 时刻的实际取值开始动作；但若同时使用了 `Period`，仍须给出 `StartValue`，用于确定该周期的完整运动范围。
 - `ArticulationName`、`TransformationName` 取的是**模型文件中已定义**的关节名与变换名，须与模型实际内容一致。
+- ATK 提供的**默认模型文件不支持关节设置**，如需设置关节，须自行提供含关节定义的模型文件。
 :::
 
 ## 示例

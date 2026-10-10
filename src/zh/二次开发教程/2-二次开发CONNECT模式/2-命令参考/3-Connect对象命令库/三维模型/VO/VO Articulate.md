@@ -30,6 +30,7 @@ VO <ObjectPath> Articulate "<StartTime>" <Duration> <ArticName> <TransformationN
 
 ::: warning 注意
 - `<ArticName>`、`<TransformationName>`、`<BeginningArticValue>`、`<EndArticValue>` 四项的取值**取决于具体模型**，须与模型文件中实际定义的关节名、旋转轴名及其取值范围一致。
+- ATK 提供的**默认模型文件不支持关节设置**，如需设置关节，须自行提供含关节定义的模型文件。
 :::
 
 ## 示例

@@ -22,7 +22,8 @@ VO <ObjectPath> Realtimeartic <ArticName> <TransformationName> <Value>
 | `<Value>` | 为该关节的变换设定的值 |
 
 ::: warning 注意
-`<ArticName>`、`<TransformationName>` 均来自模型文件定义，须与模型文件中的写法一致。
+- `<ArticName>`、`<TransformationName>` 均来自模型文件定义，须与模型文件中的写法一致。
+- ATK 提供的**默认模型文件不支持关节设置**，如需设置关节，须自行提供含关节定义的模型文件。
 :::
 
 ## 示例
