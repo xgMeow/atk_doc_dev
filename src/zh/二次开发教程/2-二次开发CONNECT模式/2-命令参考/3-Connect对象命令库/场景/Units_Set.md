@@ -23,7 +23,7 @@ Units_Set <ScenarioPath> {Option} <Parameters>
 | `GUI` | 设置通过图形界面输入数据时使用的单位 |
 | `Report` | 设置通过图形界面生成和显示报告时使用的单位 |
 | `Connect` | 设置输入 Connect 命令时使用的单位。Connect 单位仅对 `Date`、`Distance`、`Time`、`Angle` 这几个量纲有效；设置其他量纲时仍沿用 GUI 单位，具体请查阅各命令的说明以确认有无例外 |
-| `ConnectReport` | 设置当前 Connect 会话中生成和显示报告时使用的单位。仅当 `ConnectReportUnitsFlag` 已设为 `On` 时才生效；该标志开启后，通过 Connect 生成的所有报告/图表都使用 Connect 报告单位，并覆盖报告样式中原有的单位设置 |
+| `ConnectReport` | 设置当前 Connect 会话中生成和显示报告时使用的单位 |
 | `All` | 同时为 Connect、GUI、Report、ConnectReport 设置指定的单位 |
 
 注意事项：
