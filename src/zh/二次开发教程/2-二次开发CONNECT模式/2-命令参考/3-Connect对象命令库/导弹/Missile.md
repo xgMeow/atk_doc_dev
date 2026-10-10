@@ -2,7 +2,7 @@
 
 ## 作用
 
-使用弹道学设置导弹弹道
+使用二体弹道学设置导弹弹道
 
 ## 语法
 
@@ -21,7 +21,7 @@ Missile <ObjectPath> Trajectory {TimeValue} <StepSize> LnLatGeoD <GeodeticLatitu
 
 ## 示例
 
-::: details open **使用弹道学设置导弹弹道**
+::: details open **使用二体弹道学设置导弹弹道**
 ```
 Missile */Missile/Missile1 Trajectory "1 Jun 2000 00:00:00.00" 60.0 LnLatGeoD 27 -81 0.0 TOF 5086 ImLatGeoD 24 -14 0.0
 ```
