@@ -44,6 +44,6 @@ Antenna_RM */Satellite/Satellite1/Antenna/Antenna1 GetValue Model.DesignFrequenc
 ```
 
 - `*/Satellite/Satellite1/Antenna/Antenna1`：天线对象完整路径
-- `Model.DesignFrequency`：待查询的参数，此处为天线模型的参考频率
+- `Model.DesignFrequency`：待查询的参数，此处为天线模型的设计频率
 
 :::
