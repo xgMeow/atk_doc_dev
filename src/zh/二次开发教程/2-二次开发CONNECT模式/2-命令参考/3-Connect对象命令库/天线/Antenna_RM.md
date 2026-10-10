@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Antenna_RM <AntennaObjectPath> SetValue <Parameter>
+Antenna_RM <AntennaObjectPath> GetValue <Parameter>
 ```
 
 ## 补充说明
@@ -29,7 +29,7 @@ Antenna_RM <AntennaObjectPath> SetValue <Parameter>
 ::: details open **获取天线模型类型**
 
 ```
-Antenna_RM */Satellite/Satellite1/Antenna/Antenna1 SetValue Model
+Antenna_RM */Satellite/Satellite1/Antenna/Antenna1 GetValue Model
 ```
 
 - `*/Satellite/Satellite1/Antenna/Antenna1`：天线对象完整路径
@@ -40,7 +40,7 @@ Antenna_RM */Satellite/Satellite1/Antenna/Antenna1 SetValue Model
 ::: details open **获取天线的设计频率**
 
 ```
-Antenna_RM */Satellite/Satellite1/Antenna/Antenna1 SetValue Model.DesignFrequency
+Antenna_RM */Satellite/Satellite1/Antenna/Antenna1 GetValue Model.DesignFrequency
 ```
 
 - `*/Satellite/Satellite1/Antenna/Antenna1`：天线对象完整路径
