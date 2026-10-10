@@ -22,7 +22,7 @@ Antenna_RM <AntennaObjectPath> GetValue <Parameter>
 - **天线模型**：切换参数 `Model`，取值为 `Gaussian`、`Isotropic`、`Parabolic`、`ExternalAntennaPattern`；具体参数为 `Model.DesignFrequency`、`Model.Diameter`、`Model.BackLobeGain`、`Model.Efficiency`、`Model.ExternalAntennaFile`。
 - **天线指向**：切换参数 `Orientation`，取值为 `AzimuthElevation`、`EulerAngles`、`Quaternion`、`YPRAngles`；具体参数为 `Orientation.AzimuthAngle`、`Orientation.ElevationAngle`、`Orientation.AboutBoresight`、`Orientation.EulerA`、`Orientation.EulerB`、`Orientation.EulerC`、`Orientation.Yaw`、`Orientation.Pitch`、`Orientation.Roll`、`Orientation.Sequence`、`Orientation.Qx`、`Orientation.Qy`、`Orientation.Qz`、`Orientation.Qs`、`Orientation.XPositionOffset`、`Orientation.YPositionOffset`、`Orientation.ZPositionOffset`。
 
-`Model`、`Orientation` 为切换参数，切换后前一种方式的各项参数不再参与计算。查询某一具体参数前，须先用 `Antenna` 设置过该参数所在分组的切换参数。
+`Model`、`Orientation` 为切换参数，分别用于切换天线模型与天线指向方式；具体参数都带有对应的 `Model.` 或 `Orientation.` 前缀。切换后，前一种方式的各项参数不再参与计算。因此，查询某个具体参数前，须先用 `Antenna` 设置过该参数所在分组的切换参数。
 
 ## 示例
 
