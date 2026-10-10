@@ -41,7 +41,7 @@ Antenna <AntennaObjectPath> SetValue <Parameter> <Value>
 |------|------|
 | `Model.DesignFrequency` | 天线模型的设计频率，用于确定波长并参与天线增益、波束宽度等参数计算，取值单位由当前 Connect 的频率单位设置决定 |
 | `Model.Diameter` | 天线口径直径，量纲为长度，取值单位由当前 Connect 的长度单位设置决定 |
-| `Model.BackLobeGain` | 天线背向区域的增益水平，取值以 dB 为单位 |
+| `Model.BackLobeGain` | 天线后波瓣增益，取值以 dB 为单位 |
 | `Model.Efficiency` | 天线效率，反映实际天线相对于理想孔径天线的性能折减，取值以 % 为单位 |
 | `Model.ExternalAntennaFile` | 外部天线的方向图文件 |
 
