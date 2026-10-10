@@ -1,0 +1,59 @@
+# VO AddArticulation
+
+## 作用
+
+为对象三维模型上的可动部件添加关节动作定义。关节动作会对模型中的部件施加动态变换。
+
+适用于卫星、地面站、飞机、船、车辆、导弹、火箭共 7 类对象。
+
+只要场景和所需模型已加载，本命令可在任意时刻下达；关节动作实际发生在 `StartTime` 与 `Duration` 所描述的时段内。
+
+## 语法
+
+```atk-command
+VO <ObjectPath> AddArticulation {ArticulateOptions}
+```
+
+## 参数说明
+
+`{ArticulateOptions}` 由下列选项及其取值构成，可按需组合使用：
+
+| 选项 | 取值 | 说明 |
+|------|------|------|
+| `ArticulationName` | `<Value>` | 本关节动作所要附加到的模型关节名称，字符串，最长 31 个字符 |
+| `TransformationName` | `<Value>` | 该关节的旋转轴名称，字符串，最长 31 个字符 |
+| `StartTime` | `<Value>` | 关节动作的起始时刻，按**历元秒**计（EpSec，自场景参考历元起算的累计秒数） |
+| `Duration` | `<Value>` | 关节动作持续的秒数，须大于 `0.0` |
+| `DeadBandDuration` | `<Value>` | 关节不运动的持续时间，须 ≥ `0.0` 且 ≤ `Period` |
+| `AccelDuration` | `<Value>` | 非线性加速的系数，须 ≥ `0.0` |
+| `DecelDuration` | `<Value>` | 非线性减速的系数，须 ≥ `0.0` |
+| `DutyCycleDelta` | `<Value>` | 关节动作周期开始时刻相对起止时段的百分比偏移，须 ≥ `0.0` 且 ≤ `Duration` |
+| `Period` | `<Value>` | 完成一个完整周期所需的秒数，须 ≥ `0.0` 且 ≤ `Duration` |
+| `StartValue` | `<Value>` | 关节动作的起始值，须大于该关节的最小值且小于其最大值 |
+| `EndValue` | `<Value>` | 关节动作的结束值，须大于该关节的最小值且小于其最大值 |
+
+::: warning 注意
+- `ArticulationName`、`TransformationName`、`Duration` 为**必填项**，缺少其中任一项或填写有误时，命令会执行失败（返回 Nack）。
+- 除上述三项外的其余选项，未指定时均默认为 `0.0`。
+- `ArticulationName`、`TransformationName` 取的是**模型文件中已定义**的关节名与旋转轴名，须与模型实际内容一致。
+- ATK 提供的**默认模型文件不支持关节设置**，如需设置关节，须自行提供含关节定义的模型文件。
+:::
+
+## 示例
+
+::: details open **为卫星添加两个关节动作**
+
+```
+VO */Satellite/Satellite1 AddArticulation ArticulationName SlrPnl-1 TransformationName xrot StartTime 0 Duration 300 DeadBandDuration 0.0 AccelDuration 0 DecelDuration 0 DutyCycleDelta 0 Period 10 StartValue 10 EndValue 60
+VO */Satellite/Satellite1 AddArticulation ArticulationName SlrPnl-1 TransformationName xrot StartTime 330 Duration 20 DeadBandDuration 11 StartValue 60 EndValue -30
+```
+
+- `ArticulationName SlrPnl-1`、`TransformationName xrot`：指定模型中已有的关节及其旋转轴
+- `StartTime 0`、`StartTime 330`：起始时刻，按历元秒给出，分别为第 0 秒与第 330 秒
+- `Duration 300`、`Duration 20`：关节动作持续的秒数
+- `Period 10`：每 10 秒完成一个完整周期
+- `StartValue 10`、`EndValue 60`（第二条为 `StartValue 60`、`EndValue -30`）：关节动作的起始值与结束值
+- `DeadBandDuration 11`：关节不运动的持续时间为 11 秒，即结束值在结束时刻前 11 秒到达
+- 第二条命令未写出的选项（`AccelDuration`、`DecelDuration`、`DutyCycleDelta`、`Period`）均默认为 `0.0`
+
+:::
