@@ -172,6 +172,6 @@ public class ATKComponentJavaTest{
 ## Java Case Execution Commands
 
 1. Switch disk: E:
-2. Switch path: cd E:\cssx\ATK-4.0-rc.1
+2. Switch path: cd E:\cssx\ATK-4.0-rc.1\IntegratingWithATK\component\Java
 3. Compile command: javac -cp ATKComponentJava.jar -encoding utf-8 com/atk/test/ATKComponentJavaTest.java
 4. Execute command: java -cp .;ATKComponentJava.jar com/atk/test/ATKComponentJavaTest

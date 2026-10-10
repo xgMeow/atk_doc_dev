@@ -159,7 +159,7 @@ strReportFilePath
 ## Matlab案例执行命令
 打开Matlab软件，设置依赖路径并初始化依赖环境，调用运行Matlab案例脚本，具体步骤如下：
 
-	1. 复制ATK安装包根目录路径，设置为Matlab当前路径；
+	1. 复制 `IntegratingWithATK\component\Java` 路径，设置为Matlab当前路径；
 
 	2. 双击打开Matlab案例脚本ATKComponentMatlabTest.m；
 

@@ -159,7 +159,7 @@ strReportFilePath
 ## Matlab Case Execution Commands
 Open the Matlab software, set the dependency paths and initialize the dependency environment, and call and run the Matlab case script. The specific steps are as follows:
 
-	1. Copy the ATK installation package root directory path and set it as the current Matlab path;
+	1. Copy the `IntegratingWithATK\component\Java` path and set it as the current Matlab path;
 
 	2. Double-click to open the Matlab case script ATKComponentMatlabTest.m;
 

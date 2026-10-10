@@ -172,6 +172,6 @@ public class ATKComponentJavaTest{
 ## Java案例执行命令
 
 1. 切换磁盘：E:
-2. 切换路径：cd E:\cssx\ATK-4.0-rc.1
+2. 切换路径：cd E:\cssx\ATK-4.0-rc.1\IntegratingWithATK\component\Java
 3. 编译命令：javac -cp ATKComponentJava.jar -encoding utf-8 com/atk/test/ATKComponentJavaTest.java
 4. 执行命令：java -cp .;ATKComponentJava.jar com/atk/test/ATKComponentJavaTest

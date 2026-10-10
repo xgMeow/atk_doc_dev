@@ -32,6 +32,8 @@ Confirm that your CPU architecture is 64-bit via **Settings → System → About
     ├── config/               # Configuration files directory
     ├── Help/                 # Help documentation directory
     ├── IntegratingWithATK/   # External integration interfaces directory
+    │   ├── component/        # Interfaces for Component-mode secondary development
+    │   └── connect/          # Interfaces for Connect-mode secondary development
     ├── licenses/             # Open-source licenses directory
     ├── platforms/            # Platform plugins directory
     ├── translations/         # UI translation files directory

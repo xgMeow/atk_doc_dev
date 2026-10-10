@@ -32,6 +32,8 @@ ATK Windows 平台提供 **绿色免安装版**，解压后即可直接运行。
     ├── config/               # 配置文件目录
     ├── Help/                 # 帮助文档目录
     ├── IntegratingWithATK/   # 外部集成接口目录
+    │   ├── component/        # 组件（COMPONENT）模式二次开发接口
+    │   └── connect/          # CONNECT 模式二次开发接口
     ├── licenses/             # 开源许可证目录
     ├── platforms/            # 平台插件目录
     ├── translations/         # 界面翻译文件目录
