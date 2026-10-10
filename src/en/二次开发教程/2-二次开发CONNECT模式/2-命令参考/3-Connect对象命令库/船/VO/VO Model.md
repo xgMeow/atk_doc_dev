@@ -15,7 +15,7 @@ VO <ObjectPath> Model {Option1} <Value1> [{Option2} <Value2>]...
 | Parameter | Value | Description |
 | -- | -- | -- |
 | `Show` | `{On \| Off}` | Whether to show the model |
-| `File` | `<ModelFile>` | Model file path |
+| `File` | `<ModelFile>` | Model file path, supports flt and ive formats |
 
 ## Examples
 
