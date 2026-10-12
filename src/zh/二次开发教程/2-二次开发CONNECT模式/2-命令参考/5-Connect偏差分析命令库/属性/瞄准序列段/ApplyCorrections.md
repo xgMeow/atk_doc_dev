@@ -7,13 +7,13 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> ApplyCorrections <Attribute Path>
+AstroUQ <Satellite Object Path> ApplyCorrections <Attribute Path>
 ```
 
 ## 示例
 
 ::: details open **应用指定瞄准段配置修改**
 ```
-Astrogator */Satellite/Satellite1 ApplyCorrections MainSequence.SegmentList.Target_Sequence
+AstroUQ */Satellite/Satellite1 ApplyCorrections MainSequence.SegmentList.Target_Sequence
 ```
 :::

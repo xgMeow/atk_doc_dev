@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.CalcObjectAttributes.CentralBody {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.CalcObjectAttributes.CentralBody {Value}
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.
 
 ::: details open **设置 Apoapsis 停止条件的中心天体为 Moon**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Propagate.StoppingConditions.Apoapsis.CalcObjectAttributes.CentralBody Moon
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Propagate.StoppingConditions.Apoapsis.CalcObjectAttributes.CentralBody Moon
 ```
 :::

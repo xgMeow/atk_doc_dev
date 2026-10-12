@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.IsLongArc <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.IsLongArc <Value>
 ```
 
 ## 补充说明
@@ -22,6 +22,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.IsLongArc <Value>
 
 ::: details open **设置不沿长弧转移**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.IsLongArc off
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.IsLongArc off
 ```
 :::

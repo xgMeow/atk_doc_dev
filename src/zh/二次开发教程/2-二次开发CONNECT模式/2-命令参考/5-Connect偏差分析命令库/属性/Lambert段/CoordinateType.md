@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.CoordinateType {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.CoordinateType {Value}
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.CoordinateType {Val
 
 ::: details open **设置坐标类型为 Cartesian**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.CoordinateType "Cartesian"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.CoordinateType "Cartesian"
 ```
 :::

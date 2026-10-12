@@ -7,13 +7,13 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.UsePeriJudge <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.UsePeriJudge <Value>
 ```
 
 ## 示例
 
 ::: details open **设置不启用最小近拱点高度判断**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.UsePeriJudge false
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.UsePeriJudge false
 ```
 :::

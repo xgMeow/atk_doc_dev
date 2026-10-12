@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Target_Sequence.Action {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Target_Sequence.Action {Value}
 ```
 
 ## 参数说明
@@ -24,6 +24,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Target_Sequence.Act
 
 ::: details open **设置瞄准段动作为运行活动配置**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Action "Run active profiles"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Action "Run active profiles"
 ```
 :::

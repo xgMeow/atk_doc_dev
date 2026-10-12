@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> [{Unit}]
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> [{Unit}]
 ```
 
 ## 参数说明
@@ -20,6 +20,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differenti
 
 ::: details open **设置瞄准段配置页模式为迭代**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.TargetSequence.Profiles.ShooterProfile.Mode Iterate
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.TargetSequence.Profiles.ShooterProfile.Mode Iterate
 ```
 :::

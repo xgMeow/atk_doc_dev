@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.{Offset Attribute} <Value>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ Object Path>.{Offset Attribute} <Value>
 ```
 
 ## 参数说明
@@ -21,7 +21,7 @@ Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.{Offset Att
 ::: details open **设置 X 方向偏移量**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Xoffset 100 m
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Xoffset 100 m
 ```
 
 :::

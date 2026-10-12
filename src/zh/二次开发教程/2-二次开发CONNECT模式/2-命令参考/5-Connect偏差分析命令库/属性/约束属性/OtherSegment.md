@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.OtherSegment {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.OtherSegment {Value}
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.Ot
 
 ::: details open **设置时长约束的参考段对象**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.Duration.OtherSegment Target_Sequence.Maneuver
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.Duration.OtherSegment Target_Sequence.Maneuver
 ```
 :::

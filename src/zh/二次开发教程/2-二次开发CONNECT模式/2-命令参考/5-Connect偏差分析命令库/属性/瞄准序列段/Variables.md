@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetMCSControlValue <AttributePath>.Profiles.Differential_Corrector <ParentObjectName> <ControlName> <Attribute> <Value> [<Unit>]
+AstroUQ <Satellite Object Path> SetMCSControlValue <AttributePath>.Profiles.Differential_Corrector <ParentObjectName> <ControlName> <Attribute> <Value> [<Unit>]
 ```
 
 ## 参数说明
@@ -28,6 +28,6 @@ Astrogator <Satellite Object Path> SetMCSControlValue <AttributePath>.Profiles.D
 
 ::: details open **设置瞄准段控制变量为机动段 Cartesian.X Active**
 ```
-Astrogator */Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X Active true
+AstroUQ */Satellite/FastTransfer SetMCSControlValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector Maneuver ImpulsiveMnvr.Cartesian.X Active true
 ```
 :::

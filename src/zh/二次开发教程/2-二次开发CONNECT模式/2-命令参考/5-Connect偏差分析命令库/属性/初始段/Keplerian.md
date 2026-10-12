@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Keplerian.{Attribute} <Value> [{Unit}]
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.Keplerian.{Attribute} <Value> [{Unit}]
 ```
 
 ## 参数说明
@@ -69,12 +69,12 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Keplerian.{A
 
 ::: details open **设置 Keplerian SizeType 为 Apoapsis Radius**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.SizeType "Apoapsis Radius"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.SizeType "Apoapsis Radius"
 ```
 :::
 
 ::: details open **设置 Keplerian 半长轴值**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.sma 8000 km
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Keplerian.sma 8000 km
 ```
 :::

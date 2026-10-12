@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.{Attribute} <Value> [{Unit}]
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.{Attribute} <Value> [{Unit}]
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.{Attribute} <Value>
 
 ::: details open **设置最大外推时间为 10 天**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.MaxPropTime 10 day
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.MaxPropTime 10 day
 ```
 :::

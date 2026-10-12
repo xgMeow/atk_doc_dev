@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.CoordSystem {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.CoordSystem {Value}
 ```
 
 ## 补充说明
@@ -22,6 +22,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.Co
 
 ::: details open **设置 X 方向约束的坐标系**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.X.CoordSystem "CentralBody/Moon.L1 Fixed"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.X.CoordSystem "CentralBody/Moon.L1 Fixed"
 ```
 :::

@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.MnvrType <Maneuver Type>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.MnvrType <Maneuver Type>
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.MnvrType <Ma
 
 ::: details open **设置机动类型为 Impulsive**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.MnvrType Impulsive
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.MnvrType Impulsive
 ```
 :::

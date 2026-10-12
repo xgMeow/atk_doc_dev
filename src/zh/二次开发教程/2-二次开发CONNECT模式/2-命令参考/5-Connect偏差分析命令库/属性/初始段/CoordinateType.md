@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.CoordinateType <Value>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.CoordinateType <Value>
 ```
 
 ## 补充说明
@@ -22,6 +22,6 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.CoordinateTy
 
 ::: details open **设置初始段坐标类型为 Modified Keplerian**
 ```
-Astrogator */Satellite/Satellite1 SetValue "MainSequence.SegmentList.Initial_State.CoordinateType "Modified Keplerian"
+AstroUQ */Satellite/Satellite1 SetValue "MainSequence.SegmentList.Initial_State.CoordinateType "Modified Keplerian"
 ```
 :::

@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.CalcObjectAttributes.CoordSystem {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.CalcObjectAttributes.CoordSystem {Value}
 ```
 
 ## 补充说明
@@ -19,6 +19,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.
 
 ::: details open **设置 AscendingNode 停止条件的坐标系为 CentralBody/Mars Fixed**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Hold.StoppingConditions.Ascending_Node.CalcObjectAttributes.CoordSystem "CentralBody/Mars Fixed"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Hold.StoppingConditions.Ascending_Node.CalcObjectAttributes.CoordSystem "CentralBody/Mars Fixed"
 ```
 :::

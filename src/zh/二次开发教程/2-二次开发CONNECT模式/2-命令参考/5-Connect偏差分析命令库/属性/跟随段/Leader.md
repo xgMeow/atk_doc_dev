@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.Leader <Value>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ Object Path>.Leader <Value>
 ```
 
 ## 示例
@@ -15,7 +15,7 @@ Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.Leader <Val
 ::: details open **设置跟随段的参考航天器**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Leader Vehicle2
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Leader Vehicle2
 ```
 
 :::

@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.CentralBody {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.CentralBody {Value}
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.Ce
 
 ::: details open **设置远地点高度约束的中心天体为月球**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.AltitudeOfPeriapsis.CentralBody Moon
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.AltitudeOfPeriapsis.CentralBody Moon
 ```
 :::

@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.CoordinateSystem { Coordinate System }
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.CoordinateSystem { Coordinate System }
 ```
 
 ## 补充说明
@@ -26,13 +26,13 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.CoordinateSy
 
 ::: details open **为初始段设置 CentralBody 坐标系**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.CoordinateSystem "CentralBody/Mars Fixed"
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.CoordinateSystem "CentralBody/Mars.L1 Fixed"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.CoordinateSystem "CentralBody/Mars Fixed"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.CoordinateSystem "CentralBody/Mars.L1 Fixed"
 ```
 :::
 
 ::: details open **为初始段设置 Satellite 坐标系**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.CoordinateSystem "Satellite/Satellite1 VVLH"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.CoordinateSystem "Satellite/Satellite1 VVLH"
 ```
 :::

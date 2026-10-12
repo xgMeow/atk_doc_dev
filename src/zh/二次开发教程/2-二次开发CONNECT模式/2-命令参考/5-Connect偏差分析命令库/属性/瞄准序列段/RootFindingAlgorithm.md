@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> 
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differential_Corrector.{Attribute} <Value> 
 ```
 
 ## 参数说明
@@ -20,6 +20,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Profiles.Differenti
 
 ::: details open **设置瞄准段求根算法为牛顿-拉夫森方法**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector.RootFindingAlgorithm "Newton-Raphson Method"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.Profiles.Differential_Corrector.RootFindingAlgorithm "Newton-Raphson Method"
 ```
 :::

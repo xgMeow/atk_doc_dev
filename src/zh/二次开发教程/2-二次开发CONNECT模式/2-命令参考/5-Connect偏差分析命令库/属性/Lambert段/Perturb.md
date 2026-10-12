@@ -7,13 +7,13 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Perturb <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Perturb <Value>
 ```
 
 ## 示例
 
 ::: details open **设置为不摄动迭代**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.Perturb false
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.Perturb false
 ```
 :::

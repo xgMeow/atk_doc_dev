@@ -11,7 +11,7 @@ description: 设置序列段和逆向序列段颜色，包含颜色值的 RGB �
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.SegmentColor <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.SegmentColor <Value>
 ```
 
 ## 补充说明
@@ -24,6 +24,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.SegmentColor <Value
 
 ::: details open **设置序列段颜色**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Sequence.SegmentColor -65536
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Sequence.SegmentColor -65536
 ```
 :::

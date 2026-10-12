@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{StoppingCondition}.Tolerance <Value> [{Unit}]
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{StoppingCondition}.Tolerance <Value> [{Unit}]
 ```
 
 ## 参数说明
@@ -21,7 +21,7 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.
 ::: details open **设置 Duration 停止条件的误差**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.Duration.Tolerance 0.0000001 sec
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.Duration.Tolerance 0.0000001 sec
 ```
 
 :::
@@ -29,7 +29,7 @@ Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Stopp
 ::: details open **设置 Duration 加入条件的误差**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.Duration.Tolerance 0.0000001 sec
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.Duration.Tolerance 0.0000001 sec
 ```
 
 :::

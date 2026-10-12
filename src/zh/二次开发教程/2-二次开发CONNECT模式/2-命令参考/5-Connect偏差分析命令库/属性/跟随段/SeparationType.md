@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.SeparationType {Type}
+AstroUQ <Satellite Object Path> SetValue <AstroUQ Object Path>.SeparationType {Type}
 ```
 
 ## 参数说明
@@ -21,7 +21,7 @@ Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.SeparationT
 ::: details open **设置分离类型为 Separate at End of Leader's Ephemeris**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.SeparationType "Separate at End of Leader's Ephemeris"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.SeparationType "Separate at End of Leader's Ephemeris"
 ```
 
 :::

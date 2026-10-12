@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.JoiningType {Type}
+AstroUQ <Satellite Object Path> SetValue <AstroUQ Object Path>.JoiningType {Type}
 ```
 
 ## 参数说明
@@ -21,7 +21,7 @@ Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.JoiningType
 ::: details open **设置跟随类型为 Join at End of Leader's Ephemeris**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningType "Join at End of Leader's Ephemeris"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningType "Join at End of Leader's Ephemeris"
 ```
 
 :::

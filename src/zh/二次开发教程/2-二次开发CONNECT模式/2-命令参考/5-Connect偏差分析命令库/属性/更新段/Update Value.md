@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Update.{Val Attribute} <Value> [{Unit}]
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Update.{Val Attribute} <Value> [{Unit}]
 ```
 
 ## 参数说明
@@ -33,6 +33,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Update.{Val Attribu
 
 ::: details open **设置拖拽面积值为 10 m²**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Update.DragAreaVal 10 m^2
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Update.DragAreaVal 10 m^2
 ```
 :::

@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Method <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Method <Value>
 ```
 
 ## 参数说明
@@ -29,6 +29,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Method <Value>
 
 ::: details open **设置 Lambert 求解方法为 SpecAll**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.Method specall
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.Method specall
 ```
 :::

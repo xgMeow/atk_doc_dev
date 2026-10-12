@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.{PhysicalProperty} <Value> <Unit>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.{PhysicalProperty} <Value> <Unit>
 ```
 
 ## 参数说明
@@ -25,6 +25,6 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.{PhysicalPro
 
 ::: details open **设置初始段推进剂质量**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.FuelMass 200 kg
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.FuelMass 200 kg
 ```
 :::

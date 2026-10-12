@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.RepeatCount <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.RepeatCount <Value>
 ```
 
 ## 参数说明
@@ -21,7 +21,7 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.
 ::: details open **设置 Apoapsis 停止条件的重复次数**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.Apoapsis.RepeatCount 3
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.Apoapsis.RepeatCount 3
 ```
 
 :::
@@ -29,7 +29,7 @@ Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Stopp
 ::: details open **设置 Apoapsis 加入条件的重复次数**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.Apoapsis.RepeatCount 3
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.Apoapsis.RepeatCount 3
 ```
 
 :::

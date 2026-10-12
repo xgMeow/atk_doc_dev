@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.LambertTarget.<CoordinateType>.<Element> <Value> <Unit>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.LambertTarget.<CoordinateType>.<Element> <Value> <Unit>
 ```
 
 ::: details 属性设置详细说明（点击展开）
@@ -40,6 +40,6 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.LambertTarge
 
 ::: details open **设置 Lambert 状态的 Cartesian X 坐标**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.LambertState.Cartesian.X 6700000 m
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.LambertState.Cartesian.X 6700000 m
 ```
 :::

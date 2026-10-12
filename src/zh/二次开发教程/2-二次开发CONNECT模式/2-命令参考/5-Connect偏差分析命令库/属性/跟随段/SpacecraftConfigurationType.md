@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.SpacecraftConfigurationType <Value>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ Object Path>.SpacecraftConfigurationType <Value>
 ```
 
 ## 参数说明
@@ -21,7 +21,7 @@ Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.SpacecraftC
 ::: details open **设置航天器参数为 Specify Configuration**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.SpacecraftConfigurationType "Specify Configuration"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.SpacecraftConfigurationType "Specify Configuration"
 ```
 
 :::

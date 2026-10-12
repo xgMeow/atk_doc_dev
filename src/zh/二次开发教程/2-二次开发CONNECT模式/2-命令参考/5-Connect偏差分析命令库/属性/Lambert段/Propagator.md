@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.ForceModel.{Parameters} {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.ForceModel.{Parameters} {Value}
 ```
 
 ## 参数说明
@@ -46,7 +46,7 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.ForceModel.{Paramet
 对于冥王星  plu017Spice,ZonalsToJ4 <br><br>
 对应输入序号，从0开始，例如：
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.ForceModel.Gravity.GravModel EGM96
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.ForceModel.Gravity.GravModel EGM96
 ```
 <br><br>CentralBodyName包括：Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune,Pluto,Moon,Sun
 :::
@@ -59,6 +59,6 @@ Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Seque
 
 ::: details open **设置引力场模型为 EGM96**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.LambertTarget.ForceModel.Gravity.GravModel EGM96
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.LambertTarget.ForceModel.Gravity.GravModel EGM96
 ```
 :::

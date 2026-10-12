@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Epoch <Value> <Unit>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.Epoch <Value> <Unit>
 ```
 
 ## 补充说明
@@ -22,12 +22,12 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Epoch <Value
 
 ::: details open **使用 EpSec 单位设置轨道历元**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Epoch 86400 EpSec
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Epoch 86400 EpSec
 ```
 :::
 
 ::: details open **使用 UTCG 格式设置轨道历元**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Epoch "2 Feb 2023 14:14:14.144" UTCG
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Epoch "2 Feb 2023 14:14:14.144" UTCG
 ```
 :::

@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Cartesian.<Element> <Value> <Unit>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.Cartesian.<Element> <Value> <Unit>
 ```
 
 ## 参数说明
@@ -25,6 +25,6 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Cartesian.<E
 
 ::: details open **为初始段设置 Cartesian X 分量值**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Cartesian.X 6700000 m
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Initial_State.InitialState.Cartesian.X 6700000 m
 ```
 :::

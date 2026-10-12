@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.Condition {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition}.Condition {Value}
 ```
 
 ## 参数说明
@@ -22,7 +22,7 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.
 ::: details open **设置 R_Magnitude 停止条件的触发方式**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.R_Magnitude.Condition "Cross Either (Inc.or Dec.)"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.R_Magnitude.Condition "Cross Either (Inc.or Dec.)"
 ```
 
 :::
@@ -30,7 +30,7 @@ Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Stopp
 ::: details open **设置 R_Magnitude 加入条件的触发方式**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.R_Magnitude.Condition "Cross Either (Inc.or Dec.)"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.R_Magnitude.Condition "Cross Either (Inc.or Dec.)"
 ```
 
 :::

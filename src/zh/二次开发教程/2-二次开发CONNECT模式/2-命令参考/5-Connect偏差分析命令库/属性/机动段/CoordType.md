@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.CoordType <Value>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.CoordType <Value>
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.CoordType <V
 
 ::: details open **设置坐标方式为 Cartesian**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.CoordType Cartesian
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.CoordType Cartesian
 ```
 :::

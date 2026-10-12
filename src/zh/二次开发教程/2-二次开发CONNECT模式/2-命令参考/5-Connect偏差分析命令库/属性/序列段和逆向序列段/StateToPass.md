@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.StateToPass {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.StateToPass {Value}
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.StateToPass {Value}
 
 ::: details open **设置序列段传递状态**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Backward_Sequence.StateToPass Initial
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Backward_Sequence.StateToPass Initial
 ```
 :::

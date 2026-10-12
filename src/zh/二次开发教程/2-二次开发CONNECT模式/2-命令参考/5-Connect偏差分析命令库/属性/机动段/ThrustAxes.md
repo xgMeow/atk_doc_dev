@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.ThrustAxes <Value>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.ThrustAxes <Value>
 ```
 
 ::: info 注意
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.ThrustAxes <
 
 ::: details open **设置推力坐标轴为 VNC(Earth)**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.ThrustAxes "Satellite/Satellite1 VNC(Earth)"
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.ThrustAxes "Satellite/Satellite1 VNC(Earth)"
 ```
 :::

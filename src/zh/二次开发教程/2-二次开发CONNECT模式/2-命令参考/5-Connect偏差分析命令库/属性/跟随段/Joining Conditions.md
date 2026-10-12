@@ -7,11 +7,11 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.JoiningConditions <List of Joining Conditions>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.JoiningConditions <List of Joining Conditions>
 ```
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.JoiningConditions.{Joining Condition} <Value> [{Unit}]
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.JoiningConditions.{Joining Condition} <Value> [{Unit}]
 ```
 
 ## 参数说明
@@ -25,7 +25,7 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.JoiningConditions.{
 ::: details open **设置多个加入条件**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions Duration Apoapsis R_Magnitude Duration Altitude
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions Duration Apoapsis R_Magnitude Duration Altitude
 ```
 
 :::

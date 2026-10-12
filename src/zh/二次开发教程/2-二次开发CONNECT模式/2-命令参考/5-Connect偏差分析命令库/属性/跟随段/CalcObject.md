@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.CalcObject.CalcObject {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.CalcObject.CalcObject {Value}
 ```
 
 ## 补充说明
@@ -19,7 +19,7 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.CalcObject.CalcObje
 ::: details open **设置 StateCalc 停止条件的计算对象**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.StateCalc.CalcObject X
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.StoppingConditions.StateCalc.CalcObject X
 ```
 
 :::
@@ -27,7 +27,7 @@ Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.Stopp
 ::: details open **设置 StateCalc 加入条件的计算对象**
 
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.StateCalc.CalcObject X
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Follow.JoiningConditions.StateCalc.CalcObject X
 ```
 
 :::

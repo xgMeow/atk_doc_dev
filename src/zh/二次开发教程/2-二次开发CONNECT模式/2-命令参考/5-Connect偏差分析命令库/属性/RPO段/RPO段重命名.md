@@ -7,13 +7,13 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.ComponentName Rename
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.ComponentName Rename
 ```
 
 ## 示例
 
 ::: details open **重命名RPO段**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOExitGEO.ComponentName 111
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOExitGEO.ComponentName 111
 ```
 :::

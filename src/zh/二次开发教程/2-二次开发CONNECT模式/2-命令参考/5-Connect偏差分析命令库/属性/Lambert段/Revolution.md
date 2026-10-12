@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Revolution <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Revolution <Value>
 ```
 
 ## 补充说明
@@ -22,6 +22,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Revolution <Value>
 
 ::: details open **设置转移轨道圈数为 0**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.Revolution 0
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.Revolution 0
 ```
 :::

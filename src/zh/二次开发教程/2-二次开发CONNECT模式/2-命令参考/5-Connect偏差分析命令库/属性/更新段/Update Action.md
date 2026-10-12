@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Update.{Action Attribute} {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Update.{Action Attribute} {Value}
 ```
 
 ## 参数说明
@@ -21,6 +21,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Update.{Action Attr
 
 ::: details open **设置拖拽面积动作为不改变**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Update.DragAreaAction No change in value
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Update.DragAreaAction No change in value
 ```
 :::

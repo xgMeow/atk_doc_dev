@@ -7,13 +7,13 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> ResetAllProfiles
+AstroUQ <Satellite Object Path> ResetAllProfiles
 ```
 
 ## 示例
 
 ::: details open **重置所有瞄准段配置**
 ```
-Astrogator */Satellite/Satellite1 ResetAllProfiles
+AstroUQ */Satellite/Satellite1 ResetAllProfiles
 ```
 :::

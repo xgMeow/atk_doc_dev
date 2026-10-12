@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.Reference {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.Reference {Value}
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Results.{Result}.Re
 
 ::: details open **设置角度约束的参考航天器**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.Angle.Reference Satellite/Satellite2
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Target_Sequence.SegmentList.Propagate.Results.Angle.Reference Satellite/Satellite2
 ```
 :::

@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.DecrementMass {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.DecrementMass {Value}
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.DecrementMass {Valu
 
 ::: details open **启用推进剂消耗质量更新**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.DecrementMass true
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.DecrementMass true
 ```
 :::

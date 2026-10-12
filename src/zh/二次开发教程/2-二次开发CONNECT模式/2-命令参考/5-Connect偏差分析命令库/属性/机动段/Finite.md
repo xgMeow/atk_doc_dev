@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.<Attributes ><Value>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ Object Path>.<Attributes ><Value>
 ```
 
 ## 参数说明
@@ -33,6 +33,6 @@ Astrogator <Satellite Object Path> SetValue <Astrogator Object Path>.<Attributes
 
 ::: details open **禁用有限推力机动段的 Duration Active 停止条件**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.FiniteMnvr.StoppingConditions.Duration.Active false
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.FiniteMnvr.StoppingConditions.Duration.Active false
 ```
 :::

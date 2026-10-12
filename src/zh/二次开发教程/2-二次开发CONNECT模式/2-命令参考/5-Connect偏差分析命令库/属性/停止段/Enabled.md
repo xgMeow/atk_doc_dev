@@ -7,13 +7,13 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.Stop.Enabled {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.Stop.Enabled {Value}
 ```
 
 ## 示例
 
 ::: details open **禁用停止段**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Stop.Enabled false
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Stop.Enabled false
 ```
 :::

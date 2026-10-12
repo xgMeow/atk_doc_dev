@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.RetState {Value}
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.RetState {Value}
 ```
 
 ## 参数说明
@@ -27,6 +27,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.RetState {Value}
 
 ::: details open **设置 RetState 属性值为 Enable**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Return.RetState Enable
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Return.RetState Enable
 ```
 :::

@@ -7,13 +7,13 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.StepSize <Value> [{Unit}]
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.StepSize <Value> [{Unit}]
 ```
 
 ## 示例
 
 ::: details open **设置保持段步长为 10 秒**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Hold.StepSize 10 sec
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Hold.StepSize 10 sec
 ```
 :::

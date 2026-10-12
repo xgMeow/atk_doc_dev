@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.{Attribute} <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.{Attribute} <Value>
 ```
 
 ## 补充说明
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.{Attribute} <Value>
 
 ::: details open **设置中心天体代码为 3（Mars）**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Propagate.CentralBodyCode 3
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Propagate.CentralBodyCode 3
 ```
 :::

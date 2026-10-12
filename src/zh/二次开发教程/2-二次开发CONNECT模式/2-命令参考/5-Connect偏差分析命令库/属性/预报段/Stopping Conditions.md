@@ -7,9 +7,9 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions <List of Stopping Conditions>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions <List of Stopping Conditions>
 
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition} <Value> [{Unit}]
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.{Stopping Condition} <Value> [{Unit}]
 ```
 
 ## 补充说明
@@ -20,6 +20,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.StoppingConditions.
 
 ::: details open **设置多个停止条件**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Propagate.StoppingConditions Duration Apoapsis R_Magnitude Duration Altitude
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Propagate.StoppingConditions Duration Apoapsis R_Magnitude Duration Altitude
 ```
 :::

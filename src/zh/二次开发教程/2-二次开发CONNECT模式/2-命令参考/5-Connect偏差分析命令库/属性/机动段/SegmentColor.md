@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.SegmentColor <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.SegmentColor <Value>
 ```
 
 ## 补充说明
@@ -19,6 +19,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.SegmentColor <Value
 
 ::: details open **设置机动段颜色**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.SegmentColor -16712191
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.SegmentColor -16712191
 ```
 :::

@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.NewtonMax <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.NewtonMax <Value>
 ```
 
 ::: warning 注意
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.NewtonMax <Value>
 
 ::: details open **设置牛顿迭代次数为 10**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.NewtonMax 10
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.NewtonMax 10
 ```
 :::

@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.IsMajorArc <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.IsMajorArc <Value>
 ```
 
 ## 补充说明
@@ -22,6 +22,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.IsMajorArc <Value>
 
 ::: details open **设置沿大圆弧转移**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.IsMajorArc on
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.LambertTarget.IsMajorArc on
 ```
 :::

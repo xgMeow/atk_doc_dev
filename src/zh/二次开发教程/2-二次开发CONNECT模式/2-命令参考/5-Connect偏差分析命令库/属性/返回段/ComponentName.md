@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.ComponentName <Value>
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.ComponentName <Value>
 ```
 
 ::: info 注意
@@ -18,6 +18,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.ComponentName <Valu
 
 ::: details open **设置 ComponentName 属性值**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Return.ComponentName abc
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Return.ComponentName abc
 ```
 :::

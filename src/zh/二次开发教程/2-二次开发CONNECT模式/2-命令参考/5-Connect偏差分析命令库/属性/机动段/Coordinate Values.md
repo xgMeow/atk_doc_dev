@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.<Coordinate Type>.<Attribute> <Value> <Unit>
+AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.<Coordinate Type>.<Attribute> <Value> <Unit>
 ```
 
 ## 补充说明
@@ -23,6 +23,6 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.<Coordinate 
 
 ::: details open **设置球坐标方位角为 30 度**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.Spherical.Azimuth 30 deg
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.Maneuver.ImpulsiveMnvr.Spherical.Azimuth 30 deg
 ```
 :::

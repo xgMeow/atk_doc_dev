@@ -7,7 +7,7 @@
 ## 语法
 
 ```atk-command
-Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
+AstroUQ <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List of Results >
 ```
 
 ## 参数说明
@@ -25,6 +25,6 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.<Parameters> <List 
 
 ::: details open **设置太阳同步绕飞段属性**
 ```
-Astrogator */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOFollowSun.NumPoints 10
+AstroUQ */Satellite/Satellite1 SetValue MainSequence.SegmentList.RPOFollowSun.NumPoints 10
 ```
 :::
