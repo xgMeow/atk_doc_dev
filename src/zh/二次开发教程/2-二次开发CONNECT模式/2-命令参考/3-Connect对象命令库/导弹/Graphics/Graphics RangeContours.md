@@ -6,8 +6,6 @@
 
 本命令作用于 **2D 窗口**；**3D 窗口**中显示的范围轮廓线由 [VO RangeContours](../VO/VO%20RangeContours.md) 命令设置。
 
-适用于卫星、地面站、飞机、船、车辆、导弹、火箭共 7 类对象。
-
 ## 语法
 
 ```atk-command
