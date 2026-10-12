@@ -1,8 +1,8 @@
-# Realtime
+# RealTime
 
 ## Description
 
-Sets attributes related to the Realtime propagator.
+Sets attributes related to the RealTime propagator.
 
 ## Syntax
 
@@ -14,7 +14,7 @@ RealTime <VehObjectPath> {RealTimeOption} [<Parameters>]
 
 | `{RealTimeOption}` | `[<Parameters>]` | Description |
 | --- | --- | --- |
-| `SetProp` | | Indicates that the propagator is a Realtime propagator |
+| `SetProp` | | Indicates that the propagator is a RealTime propagator |
 | `SetLookAhead` | `{PropType} <Duration> <TimeStep> <TimeOutGap>` | Sets the look-ahead state |
 | `SetHistory` | `<Duration> <InterpOrder>` | Sets the history state |
 
@@ -36,8 +36,8 @@ RealTime <VehObjectPath> {RealTimeOption} [<Parameters>]
 
 ## Examples
 
-::: details open **Set Realtime Propagator Attributes**
+::: details open **Set RealTime Propagator Attributes**
 ```
-Realtime */Satellite/Satellite1 SetLookAhead J2Perturbation 1800 60 240
+RealTime */Satellite/Satellite1 SetLookAhead J2Perturbation 1800 60 240
 ```
 :::

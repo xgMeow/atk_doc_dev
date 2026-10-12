@@ -2,7 +2,7 @@
 
 ## 作用
 
-Realtime 模式下设置对象位置点。
+RealTime 模式下设置对象位置点。
 
 ## 语法
 
@@ -27,7 +27,7 @@ SetPosition <ObjectPath> {PositionType} {TimeValue} <PositionData>
 
 ## 示例
 
-::: details open **Realtime 模式下设置对象位置点**
+::: details open **RealTime 模式下设置对象位置点**
 ```
 SetPosition */Satellite/Satellite1 ECI "1 Jul 2021 09:00:00.000"  8678140.000000 0.000064 -1.837743 0.000781 6789.530412 3686.41396 
 ```

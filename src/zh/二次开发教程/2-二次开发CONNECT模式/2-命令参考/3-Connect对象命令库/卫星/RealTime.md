@@ -1,8 +1,8 @@
-# Realtime
+# RealTime
 
 ## 作用
 
-设置 Realtime 预报器相关属性。
+设置 RealTime 预报器相关属性。
 
 ## 语法
 
@@ -14,7 +14,7 @@ RealTime <VehObjectPath> {RealTimeOption} [<Parameters>]
 
 | `{RealTimeOption}` | `[<Parameters>]` | 说明 |
 | --- | --- | --- |
-| `SetProp` | | 是指预报器为 Realtime 预报器 |
+| `SetProp` | | 是指预报器为 RealTime 预报器 |
 | `SetLookAhead` | `{PropType} <Duration> <TimeStep> <TimeOutGap>` | 设置持续状态 |
 | `SetHistory` | `<Duration> <InterpOrder>` | 设置历史状态 |
 
@@ -36,8 +36,8 @@ RealTime <VehObjectPath> {RealTimeOption} [<Parameters>]
 
 ## 示例
 
-::: details open **设置 Realtime 预报器属性**
+::: details open **设置 RealTime 预报器属性**
 ```
-Realtime */Satellite/Satellite1 SetLookAhead J2Perturbation 1800 60 240
+RealTime */Satellite/Satellite1 SetLookAhead J2Perturbation 1800 60 240
 ```
 :::
