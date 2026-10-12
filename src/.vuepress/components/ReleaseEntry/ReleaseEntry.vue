@@ -231,7 +231,6 @@ const renderCategories = computed(() => {
   gap: 16px;
   padding: 16px 22px;
   cursor: pointer;
-  user-select: none;
   transition: background 0.2s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
