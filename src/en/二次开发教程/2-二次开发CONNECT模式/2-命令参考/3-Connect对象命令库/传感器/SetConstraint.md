@@ -2,7 +2,7 @@
 description: Sets various constraint conditions for the sensor, including basic azimuth/elevation/range constraints and sun- and moon-related constraint parameters.
 ---
 
-# Set Constraint
+# SetConstraint
 
 ## Description
 

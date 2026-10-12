@@ -1,8 +1,8 @@
-# Set Constraint
+# SetConstraint
 
 ## Description
 
-Set the constraint.
+Set the **constraint**.
 
 ## Syntax
 
@@ -15,7 +15,7 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ### Basic Constraints
 
 | Parameter | Description |
-| -------------- | ------------------------------------------------------------ |
+|------|------|
 | `AzimuthAngle` | `{Off \| Min <Value1> Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 | `ElevationAngle` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 | `Range` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
@@ -31,14 +31,12 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ### Solar/Lunar Constraints
 
 | Parameter | Description |
-| ------------------- | ----------------------------------------- |
+|------|------|
 | `SunElevationAngle` | `{Off \| Min <Value1> [\|] Max <Value2>}` |
 | `SunGroundElevAngle` | `{Off \| Min <Value1> [\|] Max <Value2>}` |
 | `LunarElevationAngle` | `{Off \| Min <Value1> [\|] Max <Value2>}` |
 | `LOSSunExclusion` | `{Off \| <Value1>}` |
 | `LOSLunarExclusion` | `{Off \| <Value1>}` |
-| `BSSunExclusion` | `{Off \| <Value1>}` |
-| `BSLunarExclusion` | `{Off \| <Value1>}` |
 
 ## Additional Notes
 
@@ -48,18 +46,18 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 
 ::: details open **Set an azimuth angle constraint**
 ```
-SetConstraint */Facility/Facility1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
+SetConstraint */Aircraft/Aircraft1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
 ```
 :::
 
 ::: details open **Set an elevation angle constraint**
 ```
-SetConstraint */Facility/Facility1 ElevationAngle Min 10.0
+SetConstraint */Aircraft/Aircraft1 ElevationAngle Min 10.0
 ```
 :::
 
 ::: details open **Set a sun elevation angle constraint**
 ```
-SetConstraint */Facility/Facility1 SunElevationAngle Min 10
+SetConstraint */Aircraft/Aircraft1 SunElevationAngle Min 10
 ```
 :::

@@ -1,4 +1,4 @@
-# Set Mass
+# SetMass
 
 ## 作用
 

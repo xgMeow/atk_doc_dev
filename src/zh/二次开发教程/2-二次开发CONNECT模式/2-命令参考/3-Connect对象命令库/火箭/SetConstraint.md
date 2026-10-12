@@ -1,18 +1,18 @@
-# Set Constraint
+# SetConstraint
 
-## Description
+## 作用
 
-Set constraints.
+设置约束
 
-## Syntax
+## 语法
 
 ```atk-command
 SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ```
 
-## Parameters
+## 参数说明
 
-**Basic Constraints:**
+**基本约束：**
 
 | ConstraintName   | Parameters                                                   |
 | ---------------- | ------------------------------------------------------------ |
@@ -28,7 +28,7 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | `LineOfSight`      | `{On \| Off}`                                                |
 | `TerrainMask`      | `{On \| Off}`                                                |
 
-**Sun Constraints:**
+**太阳约束：**
 
 | ConstraintName      | Parameters                                |
 | ------------------- | ----------------------------------------- |
@@ -38,19 +38,19 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | `LOSSunExclusion`     | `{Off \| <Value1>}`                        |
 | `LOSLunarExclusion`   | `{Off \| <Value1>}`                        |
 
-## Additional Notes
+## 补充说明
 
-- When entering an `AzimuthAngle` value, the maximum and minimum values must both be entered.
+- 当输入 `AzimuthAngle` 值时，最大值和最小值必须同时输入
 
-## Examples
+## 示例
 
-::: details open **Set an azimuth angle constraint**
+::: details open **设置方位角约束**
 ```
 SetConstraint */LaunchVehicle/LaunchVehicle1 AzimuthAngle Min 10 Max 100
 ```
 :::
 
-::: details open **Set a solar exclusion angle constraint**
+::: details open **设置太阳排除角约束**
 ```
 SetConstraint */LaunchVehicle/LaunchVehicle1 LOSSunExclusion 30
 ```

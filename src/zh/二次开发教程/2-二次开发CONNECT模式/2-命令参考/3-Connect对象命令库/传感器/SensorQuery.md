@@ -2,7 +2,7 @@
 description: 查询传感器属性，支持指向模式、方向图名称和定义类型的获取。
 ---
 
-# Sensor Query
+# SensorQuery
 
 ## 作用
 

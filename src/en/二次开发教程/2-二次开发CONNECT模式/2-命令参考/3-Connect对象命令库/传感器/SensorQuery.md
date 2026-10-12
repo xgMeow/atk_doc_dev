@@ -2,7 +2,7 @@
 description: Queries sensor properties, supporting the retrieval of the pointing mode, pattern name, and definition type.
 ---
 
-# Sensor Query
+# SensorQuery
 
 ## Description
 

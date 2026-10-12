@@ -2,7 +2,7 @@
 description: 设置传感器的各种约束条件，包括基本方位角/高度角/距离等约束、太阳及月球相关约束参数。
 ---
 
-# Set Constraint
+# SetConstraint
 
 ## 作用
 

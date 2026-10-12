@@ -1,21 +1,21 @@
-# Set Constraint
+# SetConstraint
 
-## Description
+## 作用
 
-Set the **constraint**.
+设置**约束**。
 
-## Syntax
+## 语法
 
 ```atk-command
 SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 ```
 
-## Parameters
+## 参数说明
 
-### Basic Constraints
+### 基本约束
 
-| ConstraintName | Parameters |
-| -- | -- |
+| 参数 | 说明 |
+|------|------|
 | `AzimuthAngle` | `{Off \| Min <Value1> Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 | `ElevationAngle` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
 | `Range` | `{Off \| Min <Value1> [\|] Max <Value2>} [ExcludeIntervals \| IncludeIntervals]` |
@@ -28,36 +28,36 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 | `LineOfSight` | `{On \| Off}` |
 | `TerrainMask` | `{On \| Off}` |
 
-### Solar/Lunar Constraints
+### 太阳约束
 
-| ConstraintName | Parameters |
-| -- | -- |
+| 参数 | 说明 |
+|------|------|
 | `SunElevationAngle` | `{Off \| Min <Value1> [\|] Max <Value2>}` |
 | `SunGroundElevAngle` | `{Off \| Min <Value1> [\|] Max <Value2>}` |
 | `LunarElevationAngle` | `{Off \| Min <Value1> [\|] Max <Value2>}` |
 | `LOSSunExclusion` | `{Off \| <Value1>}` |
 | `LOSLunarExclusion` | `{Off \| <Value1>}` |
 
-## Additional Notes
+## 补充说明
 
-- When entering an `AzimuthAngle` value, the maximum and minimum values must be entered at the same time.
+- 当输入 `AzimuthAngle` 值时，最大值和最小值必须同时输入。
 
-## Examples
+## 示例
 
-::: details open **Set an azimuth angle constraint**
+::: details open **设置方位角约束**
 ```
-SetConstraint */Ship/Ship1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
-```
-:::
-
-::: details open **Set an elevation angle constraint**
-```
-SetConstraint */Ship/Ship1 ElevationAngle Min 10.0
+SetConstraint */Aircraft/Aircraft1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
 ```
 :::
 
-::: details open **Set a sun elevation angle constraint**
+::: details open **设置仰角约束**
 ```
-SetConstraint */Ship/Ship1 SunElevationAngle Min 10
+SetConstraint */Aircraft/Aircraft1 ElevationAngle Min 10.0
+```
+:::
+
+::: details open **设置太阳仰角约束**
+```
+SetConstraint */Aircraft/Aircraft1 SunElevationAngle Min 10
 ```
 :::
