@@ -1,18 +1,18 @@
-# VOSetVectorGeometry
+# VO SetVectorGeometry
 
-## Description
+## 作用
 
-Sets the vectors of the satellite.
+设置卫星向量。
 
-## Syntax
+## 语法
 
 ```atk-command
 VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 ```
 
-## Parameters
+## 参数说明
 
-::: details Detailed Description (click to expand)
+::: details 详细说明（点击展开）
 
 | `{Option}` | `<Parameters>` |
 | --- | --- |
@@ -20,9 +20,9 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `Modify` | `"<ReferenceCrdn>" [{DisplayOption} <DisplayValue>...]` |
 | `Delete` | `"<ReferenceCrdn>"` |
 
-**Note: ReferenceCrdn must be enclosed in double quotation marks**
+**注意：ReferenceCrdn 必须使用双引号**
 
-- If `{Option}` is Add or Modify, the following parameters apply to all types:
+- 若 `{Option}` 输入为 Add 或 Modify，以下参数适用所有类型：
 
 | `{DisplayOption}` | `<DisplayValue>` |
 | --- | --- |
@@ -30,7 +30,7 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `ShowLabel` | `{On \| Off}` |
 | `Color` | `{Color}` |
 
-- If `{Option}` is Add or Modify, the following parameters apply only to Axes and Vector:
+- 若 `{Option}` 输入为 Add 或 Modify，以下参数仅适用 Axes 和 Vector：
 
 | `{DisplayOption}` | `<DisplayValue>` |
 | --- | --- |
@@ -40,7 +40,7 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 | `OriginPointDef` | `"{ReferenceCrdn}"` |
 | `usetruescale` | `{On \| Off}` |
 
-- If `{Option}` is Add or Modify, the following parameters apply only to Vector:
+- 若 `{Option}` 输入为 Add 或 Modify，以下参数仅适用 Vector：
 
 | `{DisplayOption}` | `<DisplayValue>` |
 | --- | --- |
@@ -48,15 +48,15 @@ VO <ObjectPath> SetVectorGeometry {Option} <Parameters>
 
 :::
 
-## Examples
+## 示例
 
-::: details open **Add Satellite Vectors**
+::: details open **添加卫星向量**
 ```
 VO */Satellite/Satellite1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
 ```
 :::
 
-::: details open **Modify Satellite Vectors**
+::: details open **修改卫星向量**
 ```
 VO */Satellite/Satellite1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
 ```

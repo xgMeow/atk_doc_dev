@@ -1,4 +1,4 @@
-# VOAttitudeView
+# VO AttitudeView
 
 ## Description
 

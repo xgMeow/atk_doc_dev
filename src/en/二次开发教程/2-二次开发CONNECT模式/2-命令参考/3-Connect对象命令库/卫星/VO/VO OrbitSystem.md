@@ -1,4 +1,4 @@
-# VOOrbitSystem
+# VO OrbitSystem
 
 ## Description
 
