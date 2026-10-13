@@ -2,8 +2,9 @@
 import { computed, nextTick, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { RouteLink } from 'vuepress/client';
-import { buildCommandGroups } from './extractCommandInfo.mjs';
+import { buildCommandGroups, buildIncludedEntries } from './extractCommandInfo.mjs';
 import { buildFunctionGroups } from './extractFunctionInfo.mjs';
+import { getLocalePrefix, parseIncludeList } from './shared.mjs';
 import { highlightUsage } from './highlightCommand.mjs';
 import { zhCommandSummaryStrings } from './zh';
 import { enCommandSummaryStrings } from './en';
@@ -14,6 +15,8 @@ interface CommandEntry {
   usage: string;
   path: string;
   category: string;
+  /** include 引用项未解析到文档：渲染为不可点的行 */
+  missing?: boolean;
 }
 
 interface CommandGroup {
@@ -25,11 +28,27 @@ const props = withDefaults(defineProps<{
   base?: string;
   syntaxGuide?: string;
   mode?: 'connect' | 'script';
+  include?: string | string[];
+  /** 初始展示模式：按目录分组（默认）或按字母排列 */
+  defaultMode?: 'grouped' | 'flat';
 }>(), {
   base: '',
   syntaxGuide: '',
   mode: 'connect',
+  include: '',
+  defaultMode: 'grouped',
 });
+
+// 容忍页面里写中文（字母 / 分类），写错时回退并提示，不静默生效
+function normalizeDefaultMode(value: string): 'grouped' | 'flat' {
+  const v = String(value).trim().toLowerCase();
+  if (v === 'flat' || v === '字母' || v === '按字母排列') return 'flat';
+  if (v === 'grouped' || v === '分类' || v === '按目录分组') return 'grouped';
+  console.warn(`[ConnectCommandSummary] 未知的 default-mode "${value}"，已回退为 grouped`);
+  return 'grouped';
+}
+
+const entryKey = (entry: CommandEntry) => `${entry.path}|${entry.command}`;
 
 const route = useRoute();
 
@@ -149,7 +168,8 @@ function flashCopied(entry: CommandEntry) {
   }, 2000);
 }
 
-const displayMode = ref<'grouped' | 'flat'>('grouped');
+// 页面可用 default-mode 指定初始展示模式，工具栏上仍可随时手动切换
+const displayMode = ref<'grouped' | 'flat'>(normalizeDefaultMode(props.defaultMode));
 
 function renderInlineMarkdown(text: string): string {
   return text
@@ -189,7 +209,31 @@ const commandGroups = computed<CommandGroup[]>(() => {
       })),
     }));
   }
-  return buildCommandGroups(modules, currentPath.value);
+
+  const groups = buildCommandGroups(modules, currentPath.value)
+    .map(g => ({ ...g, entries: [...g.entries] }));
+
+  // 页面 include 手动追加的命令，按来源分类并进页面自有分组
+  const refs = parseIncludeList(props.include);
+  if (!refs.length) return groups;
+
+  const included = buildIncludedEntries(modules, refs, getLocalePrefix(currentPath.value));
+  const seen = new Set(groups.flatMap(g => g.entries.map(entryKey)));
+  for (const entry of included) {
+    const key = entryKey(entry);
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    let group = groups.find(g => g.category === entry.category);
+    if (!group) {
+      group = { category: entry.category, entries: [] };
+      groups.push(group);
+    }
+    group.entries.push(entry);
+  }
+
+  groups.forEach(g => g.entries.sort((a, b) => a.command.localeCompare(b.command)));
+  return groups.sort((a, b) => a.category.localeCompare(b.category));
 });
 
 // ── Filtering ──────────────────────────────────
@@ -368,9 +412,10 @@ onMounted(() => {
           <tbody>
             <tr v-for="entry in sec.entries" :key="`${entry.path}-${entry.command}`">
               <td class="cmd-cell-cmd">
-                <RouteLink :to="entry.path">{{ entry.command }}</RouteLink>
+                <RouteLink v-if="entry.path" :to="entry.path">{{ entry.command }}</RouteLink>
+                <span v-else class="cmd-cell-cmd-missing">{{ entry.command }}</span>
               </td>
-              <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect || '--')"></td>
+              <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.missing ? t.includeMissing : (entry.effect || '--'))"></td>
               <td class="cmd-cell-usage">
                 <div class="cmd-usage-row">
                   <code v-if="isScript" class="cmd-code">{{ entry.usage || '--' }}</code>
@@ -875,6 +920,16 @@ onMounted(() => {
     text-underline-offset: 3px;
     text-decoration-thickness: 2px;
   }
+}
+
+/* include 引用项没解析到文档：灰色 + 虚线下划线，明确不是链接 */
+.cmd-cell-cmd-missing {
+  color: var(--text-muted);
+  font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);
+  font-size: 14px;
+  font-weight: 600;
+  word-break: break-all;
+  border-bottom: 1px dashed currentColor;
 }
 
 /* ── Effect Description ──────────────────── */

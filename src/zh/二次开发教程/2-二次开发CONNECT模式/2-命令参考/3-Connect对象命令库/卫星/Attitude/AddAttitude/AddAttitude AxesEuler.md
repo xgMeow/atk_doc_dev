@@ -13,7 +13,7 @@ AddAttitude <ObjectPath> AxesEuler "<AxesPath>" "<StartTime>" <seqFlag> <Angle1>
 ## 补充说明
 
 - `<AxesPath>` 为姿态所参考的 Axes 对象路径，须用双引号括起来。
-- `<seqFlag>` 为旋转顺序，含义与 [AddAttitude Euler](AddAttitude%20Euler.md) 的 `{Sequence}` 相同，有效值为 123、132、213、231、312、321。
+- `<seqFlag>` 为旋转顺序，含义与 [AddAttitude Euler](../../../通用命令/AddAttitude%20Euler.md) 的 `{Sequence}` 相同，有效值为 123、132、213、231、312、321。
 - `<Angle1>`、`<Angle2>`、`<Angle3>` 依次为三个欧拉角。
 - 角度值按当前 Connect 的 `Angle` 单位输入，默认为 deg。
 - `<StartTime>` 格式设置请查看[常用日期/时间格式](../../../../2-参数值格式/日期时间格式.md)。

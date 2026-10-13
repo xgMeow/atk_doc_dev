@@ -204,3 +204,46 @@ import './styles/atk-command-tokens.scss';
 - `node_modules/` 下的修改通过 `patch-package` 持久化。`npm install` 后自动 apply
 - 两套实现必须保持 token 类型名和正则完全一致，否则视觉效果不同步
 - 客户端 tokenizer 的 `TOKEN_RULES` 顺序即优先级，新增规则时注意插入位置
+
+---
+
+## include：手动追加命令
+
+速查表默认只列当前目录（含子目录）里的命令。重构后公共命令被提到命令库根目录（`VO` / `Graphics` / `通用命令`），对象页需要额外把这批命令列出来，用 `include` 属性声明：
+
+```md
+<ConnectCommandSummary
+  syntax-guide="/二次开发教程/2-二次开发CONNECT模式/2-命令参考/1-命令语法约定.md"
+  include="
+    VO/VO Model
+    Graphics/Graphics Show
+    通用命令/SetConstraint
+  "
+/>
+```
+
+- 引用项是**命令库内的文档路径**，不带语言前缀，可省略 `.md`，也可写更多上级目录（`3-Connect对象命令库/VO/VO Model`）。之所以不用命令名：库内存在重名 H1（`Define` / `SetPosition` / `GetValue` / `SetValue`），按名字查有歧义。
+- 多个引用项用换行或逗号分隔；`buildIncludedEntries` 按当前语言查找，分类沿用命令所在文件夹名，因此追加的命令会并进页面上同名的分组，搜索与分类索引一并生效。
+- 引用项解析不到时**不静默丢弃**：渲染成灰色不可点的行并提示「未找到对应命令，请检查 include 路径」，同时在控制台 `warn`；命中多个同名文档时也会 `warn` 并取第一个。
+- 相关实现：`extractCommandInfo.mjs` 的 `buildIncludedEntries`、`shared.mjs` 的 `parseIncludeList`、组件内 `commandGroups` 的合并与去重。
+
+---
+
+## default-mode：默认展示模式
+
+速查表有两种展示模式，工具栏右侧的两个按钮可随时切换：
+
+| 值 | 模式 | 索引栏 |
+|----|------|--------|
+| `grouped`（默认） | 按目录分组，同一目录的命令归为一组 | 分类 |
+| `flat` | 所有命令按命令名首字母 A-Z 排列 | A-Z 字母表 |
+
+页面可以指定初始模式：
+
+```md
+<ConnectCommandSummary default-mode="flat" />
+```
+
+- 只决定**初始**状态，用户仍可点按钮切回另一种模式。
+- 也接受中文写法 `字母` / `分类`；写成无法识别的值时回退为 `grouped`，并在控制台 `warn`（不静默生效）。
+- 不写该属性时用 `grouped`，与改造前行为一致。

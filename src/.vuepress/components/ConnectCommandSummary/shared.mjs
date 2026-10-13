@@ -78,6 +78,14 @@ export const buildCategoryNameMap = (modules, baseDirectory) => {
   return map;
 };
 
+// ── Include List ────────────────────────────────
+
+// 页面 include 属性：字符串（换行或逗号分隔）或数组 → 引用项列表
+export const parseIncludeList = (raw) => {
+  const list = Array.isArray(raw) ? raw : String(raw ?? '').split(/[,，\n]/);
+  return list.map(item => String(item).trim()).filter(Boolean);
+};
+
 // ── Section Extraction ──────────────────────────
 
 // 按标题定位小节：支持单个标题或多个候选标题（中/英文文档并存），返回第一个命中的小节

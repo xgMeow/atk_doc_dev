@@ -37,4 +37,6 @@ export interface CommandSummaryLocaleStrings {
   copy: string;
   /** 已复制 */
   copied: string;
+  /** include 引用项未解析到文档时的提示 */
+  includeMissing: string;
 }

@@ -4,5 +4,13 @@ description: 传感器命令库目录，包含传感器定义、指向模式、�
 index: false
 ---
 
-
-<ConnectCommandSummary syntax-guide="/二次开发教程/2-二次开发CONNECT模式/2-命令参考/1-命令语法约定.md" />
+<ConnectCommandSummary
+  syntax-guide="/二次开发教程/2-二次开发CONNECT模式/2-命令参考/1-命令语法约定.md"
+  include="
+    VO/VO Pulse
+    VO/VO SetVectorGeometry
+    Graphics/Graphics SetColor
+    Graphics/Graphics Show
+    通用命令/SetConstraint
+  "
+/>
