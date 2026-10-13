@@ -20,5 +20,4 @@ export const enCommandSummaryStrings: CommandSummaryLocaleStrings = {
   jumpTo: (letter) => `Jump to ${letter}`,
   copy: 'Copy command',
   copied: 'Copied',
-  includeMissing: 'Command document not found; check the include path.',
 };

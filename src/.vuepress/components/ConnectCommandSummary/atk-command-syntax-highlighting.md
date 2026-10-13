@@ -207,43 +207,45 @@ import './styles/atk-command-tokens.scss';
 
 ---
 
-## include：手动追加命令
+## group：按声明聚合命令
 
-速查表默认只列当前目录（含子目录）里的命令。重构后公共命令被提到命令库根目录（`VO` / `Graphics` / `通用命令`），对象页需要额外把这批命令列出来，用 `include` 属性声明：
+命令库里的**归属写在命令页自己身上**，视图页只声明要看哪个分组。命令页 frontmatter：
+
+```md
+---
+description: 设置约束。
+groups: [对象通用命令, 卫星, 地面站]
+---
+
+# SetConstraint
+```
+
+视图页用 `group` 属性声明分组名，一行即可：
 
 ```md
 <ConnectCommandSummary
   syntax-guide="/二次开发教程/2-二次开发CONNECT模式/2-命令参考/1-命令语法约定.md"
-  include="
-    VO/VO Model
-    Graphics/Graphics Show
-    通用命令/SetConstraint
-  "
+  group="覆盖分析"
 />
 ```
 
-- 引用项是**命令库内的文档路径**，不带语言前缀，可省略 `.md`，也可写更多上级目录（`3-Connect对象命令库/VO/VO Model`）。之所以不用命令名：库内存在重名 H1（`Define` / `SetPosition` / `GetValue` / `SetValue`），按名字查有歧义。
-- 多个引用项用换行或逗号分隔；`buildIncludedEntries` 按当前语言查找，分类沿用命令所在文件夹名，因此追加的命令会并进页面上同名的分组，搜索与分类索引一并生效。
-- 引用项解析不到时**不静默丢弃**：渲染成灰色不可点的行并提示「未找到对应命令，请检查 include 路径」，同时在控制台 `warn`；命中多个同名文档时也会 `warn` 并取第一个。
-- 相关实现：`extractCommandInfo.mjs` 的 `buildIncludedEntries`、`shared.mjs` 的 `parseIncludeList`、组件内 `commandGroups` 的合并与去重。
+- `groups` 列表的含义就是**这条命令要出现在哪些视图页**，顺序无关，也没有「第一位特殊」的约定；调整归属只改这一行。
+- 分组名是**逻辑名而非路径**，但必须与某个视图页声明的 `group` 值完全一致才生效。当前可用的分组名就是对象页（卫星、地面站……）与功能索引页（三维视图显示、覆盖分析……）的名字。
+- **一份定义、多处出现**：同一条命令被多少个视图页列出，只由它自己的 `groups` 决定。加一条命令改一个文件，不会漏、也不会因目录改名而失效。
+- 视图页里**不再分节**：一页就是一张表，收录的命令统一按命令名 A–Z 排列。因此「卫星」页会把卫星专属命令与通用命令（如 `SetConstraint`）混在同一张表里 —— 这是有意为之，用户要找的是「卫星能用哪些命令」，而不是「这条命令是不是卫星专属」。
+- 声明了却没有命令认领的分组名，以及声明了 `groups` 却没有一级标题的文件，都会 `console.warn`，不静默少一行。
+- 视图页本身（内容含 `<ConnectCommandSummary` 的文档）会被自动排除在速查表之外，不会被当成命令收进来 —— 这条件取代了原先「跳过 README.md」的规则。
+- 命令库布局：入口页（`README.md` + 各对象页）在 `3-Connect对象命令库/` 顶层，164 条命令平铺在 `3-Connect对象命令库/命令/` 下，文件名即命令名（重名时补对象限定，如 `Define 传感器.md`）。
+- 不声明 `group` 的页面（命令库首页、英文版对象页）回落到**按当前目录聚合**（`buildCommandGroups`）。
+- 相关实现：`extractCommandInfo.mjs` 的 `buildGroupEntries` / `buildCommandGroups`、`shared.mjs` 的 `getFrontmatterList` / `parseGroupList` / `isViewPage`、组件内 `commandGroups` 的聚合与去重。
 
 ---
 
-## default-mode：默认展示模式
+## 展示模式
 
-速查表有两种展示模式，工具栏右侧的两个按钮可随时切换：
+组件的两种模式各自只有一种展示形态：
 
-| 值 | 模式 | 索引栏 |
-|----|------|--------|
-| `grouped`（默认） | 按目录分组，同一目录的命令归为一组 | 分类 |
-| `flat` | 所有命令按命令名首字母 A-Z 排列 | A-Z 字母表 |
+- **命令模式**（`mode="connect"`，默认）：只有 **A–Z 平铺**，索引栏是 A–Z 字母表，工具栏不显示切换按钮。一条命令就是一条，分类维度由页面本身承担（对象页按对象、功能索引页按功能），页内再分节只会把页面标题重复一遍。
+- **脚本模式**（`mode="script"`，内置函数）：按目录分组，索引栏是分类；工具栏保留「分类 / A–Z」切换按钮。
 
-页面可以指定初始模式：
-
-```md
-<ConnectCommandSummary default-mode="flat" />
-```
-
-- 只决定**初始**状态，用户仍可点按钮切回另一种模式。
-- 也接受中文写法 `字母` / `分类`；写成无法识别的值时回退为 `grouped`，并在控制台 `warn`（不静默生效）。
-- 不写该属性时用 `grouped`，与改造前行为一致。
+组件不再接受 `default-mode` 属性。

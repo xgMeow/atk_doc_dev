@@ -20,5 +20,4 @@ export const zhCommandSummaryStrings: CommandSummaryLocaleStrings = {
   jumpTo: (letter) => `跳转到 ${letter}`,
   copy: '复制命令',
   copied: '已复制',
-  includeMissing: '未找到对应命令，请检查 include 路径。',
 };

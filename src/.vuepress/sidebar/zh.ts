@@ -17,65 +17,82 @@ export const zhSidebarConfig = sidebar({
       text: "开发方式",
       prefix: "1-开发方式/",
       children: "structure",
-      collapsible: false,
     },
     {
       text: "命令参考",
       prefix: "2-命令参考/",
-      collapsible: false,
       children: [
         {
           text: "命令语法约定",
           link: "1-命令语法约定.md",
+          collapsible: true,
         },
         {
           text: "参数值格式",
           prefix: "2-参数值格式/",
+          collapsible: true,
           children: "structure",
-          collapsible: false,
         },
         {
-          // 对象命令库只列各类别的 README（命令速查表），
+          // 对象命令库平铺：每个对象一个速查表页（<对象>.md），
           // 具体命令从速查表里跳转，侧边栏不会展开成上百条。
-          // VO / Graphics / 通用命令 是供对象页引用的公共命令池，不在此列出。
+          // 公共命令池（三维视图显示 / 二维视图显示 / 对象通用命令）已升级为
+          // 「6-Connect功能索引」下的模块页，与对象页并列为另一种查法。
           text: "Connect对象命令库",
           // 分组标题可点击跳转（命令库首页速查表）。
           // 注意：link 相对的是父级前缀 2-命令参考/，不是本项的 prefix，
           // 所以这里要带上「3-Connect对象命令库/」而非直接写 README.md。
           link: "3-Connect对象命令库/README.md",
           prefix: "3-Connect对象命令库/",
+          collapsible: true,
           children: [
-            { text: "场景", link: "场景/README.md" },
-            { text: "车辆", link: "车辆/README.md" },
-            { text: "传感器", link: "传感器/README.md" },
-            { text: "船", link: "船/README.md" },
-            { text: "导弹", link: "导弹/README.md" },
-            { text: "地面站", link: "地面站/README.md" },
-            { text: "飞机", link: "飞机/README.md" },
-            { text: "覆盖定义", link: "覆盖定义/README.md" },
-            { text: "高级接近分析", link: "高级接近分析/README.md" },
-            { text: "工具", link: "工具/README.md" },
-            { text: "恒星", link: "恒星/README.md" },
-            { text: "火箭", link: "火箭/README.md" },
-            { text: "链路接收器", link: "链路接收器/README.md" },
-            { text: "天线", link: "天线/README.md" },
-            { text: "卫星", link: "卫星/README.md" },
-            { text: "卫星集群", link: "卫星集群/README.md" },
-            { text: "信号发射器", link: "信号发射器/README.md" },
-            { text: "行星", link: "行星/README.md" },
+            { text: "场景", link: "场景.md" },
+            { text: "车辆", link: "车辆.md" },
+            { text: "传感器", link: "传感器.md" },
+            { text: "船", link: "船.md" },
+            { text: "导弹", link: "导弹.md" },
+            { text: "地面站", link: "地面站.md" },
+            { text: "飞机", link: "飞机.md" },
+            { text: "覆盖定义", link: "覆盖定义.md" },
+            { text: "高级接近分析", link: "高级接近分析.md" },
+            { text: "恒星", link: "恒星.md" },
+            { text: "火箭", link: "火箭.md" },
+            { text: "链路接收器", link: "链路接收器.md" },
+            { text: "天线", link: "天线.md" },
+            { text: "卫星", link: "卫星.md" },
+            { text: "卫星集群", link: "卫星集群.md" },
+            { text: "信号发射器", link: "信号发射器.md" },
+            { text: "行星", link: "行星.md" },
           ],
         },
         {
           text: "Connect机动规划命令库",
           prefix: "4-Connect机动规划命令库/",
           children: "structure",
-          collapsible: false,
+          collapsible: true,
         },
         {
           text: "Connect偏差分析命令库",
           prefix: "5-Connect偏差分析命令库/",
           children: "structure",
-          collapsible: false,
+          collapsible: true,
+        },
+        {
+          // 按功能（而非按对象）组织同一批命令，与上面的对象命令库互补。
+          // 每条命令在自身 frontmatter 里声明所属分组，模块页只列分组名。
+          text: "Connect功能索引",
+          link: "6-Connect功能索引/README.md",
+          prefix: "6-Connect功能索引/",
+          collapsible: true,
+          children: [
+            { text: "三维视图显示", link: "三维视图显示.md" },
+            { text: "二维视图显示", link: "二维视图显示.md" },
+            { text: "对象通用命令", link: "对象通用命令.md" },
+            { text: "覆盖分析", link: "覆盖分析.md" },
+            { text: "可见性与接近分析", link: "可见性与接近分析.md" },
+            { text: "姿态与指向", link: "姿态与指向.md" },
+            { text: "对象工具", link: "对象工具.md" },
+          ],
         },
       ],
     },
@@ -87,13 +104,11 @@ export const zhSidebarConfig = sidebar({
       text: "场景生成智能体",
       prefix: "场景生成智能体/",
       children: "structure",
-      collapsible: false,
     },
     {
       text: "知识问答助手",
       prefix: "知识问答助手/",
       children: "structure",
-      collapsible: false,
     },
   ],
   "/zh/": [

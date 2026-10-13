@@ -2,9 +2,9 @@
 import { computed, nextTick, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { RouteLink } from 'vuepress/client';
-import { buildCommandGroups, buildIncludedEntries } from './extractCommandInfo.mjs';
+import { buildCommandGroups, buildGroupEntries } from './extractCommandInfo.mjs';
 import { buildFunctionGroups } from './extractFunctionInfo.mjs';
-import { getLocalePrefix, parseIncludeList } from './shared.mjs';
+import { getLocalePrefix, parseGroupList } from './shared.mjs';
 import { highlightUsage } from './highlightCommand.mjs';
 import { zhCommandSummaryStrings } from './zh';
 import { enCommandSummaryStrings } from './en';
@@ -15,8 +15,6 @@ interface CommandEntry {
   usage: string;
   path: string;
   category: string;
-  /** include 引用项未解析到文档：渲染为不可点的行 */
-  missing?: boolean;
 }
 
 interface CommandGroup {
@@ -28,25 +26,14 @@ const props = withDefaults(defineProps<{
   base?: string;
   syntaxGuide?: string;
   mode?: 'connect' | 'script';
-  include?: string | string[];
-  /** 初始展示模式：按目录分组（默认）或按字母排列 */
-  defaultMode?: 'grouped' | 'flat';
+  /** 分组名：渲染所有在命令页 groups 里声明了该名的命令（反向索引，命令页自报归属） */
+  group?: string | string[];
 }>(), {
   base: '',
   syntaxGuide: '',
   mode: 'connect',
-  include: '',
-  defaultMode: 'grouped',
+  group: '',
 });
-
-// 容忍页面里写中文（字母 / 分类），写错时回退并提示，不静默生效
-function normalizeDefaultMode(value: string): 'grouped' | 'flat' {
-  const v = String(value).trim().toLowerCase();
-  if (v === 'flat' || v === '字母' || v === '按字母排列') return 'flat';
-  if (v === 'grouped' || v === '分类' || v === '按目录分组') return 'grouped';
-  console.warn(`[ConnectCommandSummary] 未知的 default-mode "${value}"，已回退为 grouped`);
-  return 'grouped';
-}
 
 const entryKey = (entry: CommandEntry) => `${entry.path}|${entry.command}`;
 
@@ -168,8 +155,9 @@ function flashCopied(entry: CommandEntry) {
   }, 2000);
 }
 
-// 页面可用 default-mode 指定初始展示模式，工具栏上仍可随时手动切换
-const displayMode = ref<'grouped' | 'flat'>(normalizeDefaultMode(props.defaultMode));
+// 命令模式没有「分类」这一维（一条命令就是一条），一律按 A–Z 平铺，工具栏上不给切换；
+// 脚本模式（内置函数）仍按目录分组，保留切换按钮。
+const displayMode = ref<'grouped' | 'flat'>(props.mode === 'script' ? 'grouped' : 'flat');
 
 function renderInlineMarkdown(text: string): string {
   return text
@@ -193,6 +181,24 @@ function sectionId(text: string): string {
 
 // ── Build groups ───────────────────────────────
 
+// 把条目并进现有分组：同名合并、按 path|command 去重（一条命令出现在多个视图页是设计使然，
+// 但同一页里重复出现只应算一次）
+function mergeInto(groups: CommandGroup[], entries: CommandEntry[]) {
+  const seen = new Set(groups.flatMap(g => g.entries.map(entryKey)));
+  for (const entry of entries) {
+    const key = entryKey(entry);
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    let group = groups.find(g => g.category === entry.category);
+    if (!group) {
+      group = { category: entry.category, entries: [] };
+      groups.push(group);
+    }
+    group.entries.push(entry);
+  }
+}
+
 const commandGroups = computed<CommandGroup[]>(() => {
   const modules = activeModules.value;
   if (isScript.value) {
@@ -210,26 +216,19 @@ const commandGroups = computed<CommandGroup[]>(() => {
     }));
   }
 
-  const groups = buildCommandGroups(modules, currentPath.value)
-    .map(g => ({ ...g, entries: [...g.entries] }));
+  const localePrefix = getLocalePrefix(currentPath.value);
 
-  // 页面 include 手动追加的命令，按来源分类并进页面自有分组
-  const refs = parseIncludeList(props.include);
-  if (!refs.length) return groups;
+  // 声明了 group 的页面（对象页 / 模块页）完全由命令页的 groups 声明生成；
+  // 不声明时才回落到「按当前目录聚合」——库首页与英文版对象页走这条。
+  const groups = props.group
+    ? []
+    : buildCommandGroups(modules, currentPath.value)
+      .map(g => ({ ...g, entries: [...g.entries] }));
 
-  const included = buildIncludedEntries(modules, refs, getLocalePrefix(currentPath.value));
-  const seen = new Set(groups.flatMap(g => g.entries.map(entryKey)));
-  for (const entry of included) {
-    const key = entryKey(entry);
-    if (seen.has(key)) continue;
-    seen.add(key);
-
-    let group = groups.find(g => g.category === entry.category);
-    if (!group) {
-      group = { category: entry.category, entries: [] };
-      groups.push(group);
-    }
-    group.entries.push(entry);
+  // 命令页自报归属（反向索引）：声明了哪些分组，就出现在哪些视图页
+  const groupNames = parseGroupList(props.group);
+  if (groupNames.length) {
+    mergeInto(groups, buildGroupEntries(modules, groupNames, localePrefix));
   }
 
   groups.forEach(g => g.entries.sort((a, b) => a.command.localeCompare(b.command)));
@@ -359,7 +358,7 @@ onMounted(() => {
           </button>
           <span v-if="keyword.trim()" class="cmd-search-count">{{ shownCount }}/{{ commandCount }}</span>
         </div>
-        <div class="cmd-mode-toggle">
+        <div v-if="isScript" class="cmd-mode-toggle">
           <button class="cmd-mode-btn" :class="{ active: displayMode === 'grouped' }" @click="displayMode = 'grouped'" :title="t.modeGrouped">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
           </button>
@@ -415,7 +414,7 @@ onMounted(() => {
                 <RouteLink v-if="entry.path" :to="entry.path">{{ entry.command }}</RouteLink>
                 <span v-else class="cmd-cell-cmd-missing">{{ entry.command }}</span>
               </td>
-              <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.missing ? t.includeMissing : (entry.effect || '--'))"></td>
+              <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect || '--')"></td>
               <td class="cmd-cell-usage">
                 <div class="cmd-usage-row">
                   <code v-if="isScript" class="cmd-code">{{ entry.usage || '--' }}</code>
@@ -922,7 +921,7 @@ onMounted(() => {
   }
 }
 
-/* include 引用项没解析到文档：灰色 + 虚线下划线，明确不是链接 */
+/* 命令名没有可跳转文档：灰色 + 虚线下划线，明确不是链接 */
 .cmd-cell-cmd-missing {
   color: var(--text-muted);
   font-family: var(--font-family-code, 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace);

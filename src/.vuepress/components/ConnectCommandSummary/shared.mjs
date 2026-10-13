@@ -40,6 +40,46 @@ const getFrontmatterTitle = (content) => {
   return m[1].trim().replace(/^["']|["']$/g, '').trim();
 };
 
+const stripQuotes = (text) => text.trim().replace(/^["']|["']$/g, '').trim();
+
+// 仅解析 frontmatter 块中的列表字段；支持 `groups: [a, b]` 与 `groups:\n  - a` 两种写法。
+// 命名分组用逻辑名而非路径，故命令改名/移动/目录改名都不会让它失效。
+export const getFrontmatterList = (content, key) => {
+  const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!fm) return [];
+  const body = fm[1];
+
+  // 行内写法：groups: [a, b]
+  const inline = body.match(new RegExp(`^${key}:\\s*(.+)$`, 'm'));
+  if (inline && inline[1].trim().startsWith('[')) {
+    return inline[1]
+      .trim()
+      .replace(/^\[|\]$/g, '')
+      .split(/[,，]/)
+      .map(stripQuotes)
+      .filter(Boolean);
+  }
+
+  // 块式写法：groups: 换行后跟若干个 `- 项`
+  const block = body.match(new RegExp(`^${key}:\\s*$`, 'm'));
+  if (!block) return [];
+
+  const items = [];
+  for (const line of body.slice(block.index + block[0].length).split(/\r?\n/)) {
+    const m = line.match(/^\s+-\s*(.+?)\s*$/);
+    if (m) {
+      items.push(stripQuotes(m[1]));
+      continue;
+    }
+    if (line.trim() && !/^\s/.test(line)) break; // 回到下一行顶层 key，列表结束
+  }
+  return items.filter(Boolean);
+};
+
+// 视图页 = 只放一个速查表组件的页面，本身不是一条命令。
+// 平铺后对象页/模块页与命令页同处一个目录，靠这条把它挡在首页 A–Z 之外。
+export const isViewPage = (content) => content.includes('<ConnectCommandSummary');
+
 export const buildCategoryNameMap = (modules, baseDirectory) => {
   const map = {};
   const decodedBase = decodeURI(baseDirectory);
@@ -78,10 +118,10 @@ export const buildCategoryNameMap = (modules, baseDirectory) => {
   return map;
 };
 
-// ── Include List ────────────────────────────────
+// ── Group List ──────────────────────────────────
 
-// 页面 include 属性：字符串（换行或逗号分隔）或数组 → 引用项列表
-export const parseIncludeList = (raw) => {
+// 页面 group 属性：字符串（换行或逗号分隔）或数组 → 分组名列表
+export const parseGroupList = (raw) => {
   const list = Array.isArray(raw) ? raw : String(raw ?? '').split(/[,，\n]/);
   return list.map(item => String(item).trim()).filter(Boolean);
 };
