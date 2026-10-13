@@ -32,3 +32,39 @@ Graphics <ObjectPath> Label {Options}
 Graphics */Satellite/Satellite1 Label Show on
 ```
 :::
+
+::: details open **设置卫星标签属性**
+```
+Graphics */Satellite/Satellite1 Label Show on
+```
+:::
+
+::: details open **显示标签**
+```
+Graphics */Facility/Facility1 Label Show on
+```
+:::
+
+::: details open **显示恒星标签**
+```
+Graphics */Star/Star1 Label Show on
+```
+:::
+
+::: details open **显示船标签**
+```
+Graphics */Ship/Ship1 Label Show on
+```
+:::
+
+::: details open **显示车辆标签**
+```
+Graphics */GroundVehicle/GroundVehicle1 Label Show on
+```
+:::
+
+::: details open **显示飞机标签**
+```
+Graphics */Aircraft/Aircraft1 Label Show on
+```
+:::

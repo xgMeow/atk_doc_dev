@@ -39,3 +39,21 @@ AddAttitude <ObjectPath> Quat {StartTime} <Q1> <Q2> <Q3> <Q4>
 AddAttitude */Satellite/Satellite1 Quat "1 Jul 2021 09:00:00.000" 0.0 0.0 0.0 1.0
 ```
 :::
+
+::: details open **添加 ECI J2000 四元数姿态数据**
+```
+AddAttitude */Satellite/Satellite1 Quat "1 Jul 2021 09:00:00.000" 0.0 0.0 0.0 1.0
+```
+:::
+
+::: details open **根据四元数设置姿态数据**
+```
+AddAttitude */Missile/Missile1 Quat "1 Jul 2021 09:00:00.000" 0.0 0.0 0.0 1.0
+```
+:::
+
+::: details open **添加四元数姿态数据**
+```
+AddAttitude */LaunchVehicle/LaunchVehicle1 Quat "1 Jul 2021 09:00:00.000" 0.0 0.0 0.0 1.0
+```
+:::

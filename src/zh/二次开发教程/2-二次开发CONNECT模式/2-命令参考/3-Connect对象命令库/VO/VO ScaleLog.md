@@ -28,3 +28,45 @@ VO <ObjectPath> ScaleLog <Value>
 VO */Satellite/Shuttle ScaleLog 3
 ```
 :::
+
+::: details open **设置卫星 3D 模型 log 比例**
+```
+VO */Satellite/Shuttle ScaleLog 3
+```
+:::
+
+::: details open **设置缩放比例**
+```
+VO */Facility/Facility1 ScaleLog 3
+```
+:::
+
+::: details open **设置模型比例**
+```
+VO */Missile/Missile1 ScaleLog 3
+```
+:::
+
+::: details open **设置火箭 3D 模型 log 比例**
+```
+VO */LaunchVehicle/LaunchVehicle1 ScaleLog 3
+```
+:::
+
+::: details open **设置模型 log 比例**
+```
+VO */Ship/Ship1 ScaleLog 3
+```
+:::
+
+::: details open **设置模型 Log 比例**
+```
+VO */GroundVehicle/GroVeh1 ScaleLog 3
+```
+:::
+
+::: details open **设置模型 log 比例为 3**
+```
+VO */Aircraft/Aircraft1 ScaleLog 3
+```
+:::

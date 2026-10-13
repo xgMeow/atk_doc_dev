@@ -33,3 +33,21 @@ Graphics <ObjectPath> Pass2D ({LeadTrailOption} <Parameters>)
 Graphics */Satellite/Satellite1 Pass2D GrndTrail PointNumber 5000
 ```
 :::
+
+::: details open **设置卫星轨迹属性**
+```
+Graphics */Satellite/Satellite1 Pass2D GrndTrail PointNumber 5000
+```
+:::
+
+::: details open **设置轨迹类型**
+```
+Graphics */Missile/Missile1 Pass2D GrndTrail PointNumber 5000
+```
+:::
+
+::: details open **设置对象轨迹属性**
+```
+Graphics */LaunchVehicle/LaunchVehicle1 Pass2D GrndTrail PointNumber 5000
+```
+:::

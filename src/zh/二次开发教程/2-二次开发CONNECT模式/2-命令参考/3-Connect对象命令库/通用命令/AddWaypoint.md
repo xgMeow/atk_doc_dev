@@ -48,3 +48,21 @@ AddWaypoint */GroundVehicle/GroundVehicle1 DetTimeAccFromVel LatLon 42.5 15 0.0 
 AddWaypoint */Aircraft/Aircraft1 DetVelFromTime LatLon 42.5 15 0.0 "1 Jan 2026 00:00:00.000"
 ```
 :::
+
+::: details open **设置船航线**
+```
+AddWaypoint */Ship/Ship1 DetTimeAccFromVel LatLon 42.5 15 0.0 1.0
+```
+:::
+
+::: details open **使用 DetTimeAccFromVel 方式添加航点**
+```
+AddWaypoint */GroundVehicle/GroundVehicle1 DetTimeAccFromVel LatLon 42.5 15 0.0 1.0
+```
+:::
+
+::: details open **使用 DetVelFromTime 方法添加航点**
+```
+AddWaypoint */Aircraft/Aircraft1 DetVelFromTime LatLon 42.5 15 0.0 "1 Jan 2026 00:00:00.000"
+```
+:::

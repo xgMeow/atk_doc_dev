@@ -33,3 +33,45 @@ Graphics <ObjectPath> SetColor {Color} [{Item}]
 Graphics */Satellite/Satellite1 SetColor 4
 ```
 :::
+
+::: details open **设置传感器颜色**
+```
+Graphics */Satellite/Satellite1/Sensor/Sensor1 SetColor 4
+```
+:::
+
+::: details open **设置卫星轨迹标签颜色**
+```
+Graphics */Satellite/Satellite1 SetColor 4
+```
+:::
+
+::: details open **设置颜色**
+```
+Graphics */Facility/Facility1 SetColor 4
+```
+:::
+
+::: details open **设置恒星标签颜色**
+```
+Graphics */Star/Star1 SetColor %255000000
+```
+:::
+
+::: details open **设置轨迹标签颜色**
+```
+Graphics */Ship/Ship1 SetColor 4
+```
+:::
+
+::: details open **设置轨迹颜色**
+```
+Graphics */GroundVehicle/GroundVehicle1 SetColor 4
+```
+:::
+
+::: details open **设置飞机轨迹颜色**
+```
+Graphics */Aircraft/Aircraft1 SetColor 4
+```
+:::

@@ -106,3 +106,171 @@ SetConstraint */Satellite/Satellite1 LOSSunExclusion 30
 SetConstraint */Satellite/Satellite1/Transmitter/Transmitter1 Frequency Min 10
 ```
 :::
+
+::: details open **设置方位角约束**
+```
+SetConstraint */Satellite/Sate1/Sensor/Sen1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
+```
+:::
+
+::: details open **设置仰角约束**
+```
+SetConstraint */Satellite/Satellite1/Sensor/Sen1 ElevationAngle Min 10.0
+```
+:::
+
+::: details open **设置太阳排除约束**
+```
+SetConstraint */Satellite/Sate1/Sensor/Sen1 BSSunExclusion 30
+```
+:::
+
+::: details open **设置方位角约束（排除区间）**
+```
+SetConstraint */Satellite/Satellite1/Transmitter/Trans1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
+```
+:::
+
+::: details open **设置仰角约束（最小值）**
+```
+SetConstraint */Satellite/Satellite1/Transmitter/Transmitter1 ElevationAngle Min 10.0
+```
+:::
+
+::: details open **设置频率约束**
+```
+SetConstraint */Satellite/Satellite1/Transmitter/Transmitter1 Frequency Min 10
+```
+:::
+
+::: details open **设置方位角约束**
+```
+SetConstraint */Satellite/Satellite1 AzimuthAngle Min 10 Max 100
+```
+:::
+
+::: details open **设置太阳排除角约束**
+```
+SetConstraint */Satellite/Satellite1 LOSSunExclusion 30
+```
+:::
+
+::: details open **设置方位角约束**
+```
+SetConstraint */Facility/Facility1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
+```
+:::
+
+::: details open **设置仰角约束**
+```
+SetConstraint */Facility/Facility1 ElevationAngle Min 10.0
+```
+:::
+
+::: details open **设置太阳仰角约束**
+```
+SetConstraint */Facility/Facility1 SunElevationAngle Min 10
+```
+:::
+
+::: details open **设置方位角约束**
+```
+SetConstraint */Missile/Missile1 AzimuthAngle Min 10 Max 100
+```
+:::
+
+::: details open **设置太阳排除约束**
+```
+SetConstraint */Missile/Missile1 LOSSunExclusion 30
+```
+:::
+
+::: details open **设置方位角约束**
+```
+SetConstraint */LaunchVehicle/LaunchVehicle1 AzimuthAngle Min 10 Max 100
+```
+:::
+
+::: details open **设置太阳排除角约束**
+```
+SetConstraint */LaunchVehicle/LaunchVehicle1 LOSSunExclusion 30
+```
+:::
+
+::: details open **设置方位角约束**
+```
+SetConstraint */Ship/Ship1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
+```
+:::
+
+::: details open **设置仰角约束**
+```
+SetConstraint */Ship/Ship1 ElevationAngle Min 10.0
+```
+:::
+
+::: details open **设置太阳仰角约束**
+```
+SetConstraint */Ship/Ship1 SunElevationAngle Min 10
+```
+:::
+
+::: details open **设置行星视距约束**
+```
+SetConstraint */Planet/Jupiter LineOfSight On
+```
+:::
+
+::: details open **设置方位角约束**
+```
+SetConstraint */GroundVehicle/GroVeh1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
+```
+:::
+
+::: details open **设置仰角约束**
+```
+SetConstraint */GroundVehicle/GroVeh1 ElevationAngle Min 10.0
+```
+:::
+
+::: details open **设置太阳仰角约束**
+```
+SetConstraint */GroundVehicle/GroVeh1 SunElevationAngle Min 10
+```
+:::
+
+::: details open **设置方位角约束（排除区间）**
+```
+SetConstraint */Satellite/Satellite1/Receiver/Receiver1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
+```
+:::
+
+::: details open **设置最小仰角约束**
+```
+SetConstraint */Satellite/Sate1/Receiver/Rece1 ElevationAngle Min 10.0
+```
+:::
+
+::: details open **设置最小频率约束**
+```
+SetConstraint */Satellite/Sate1/Receiver/Receiver1 Frequency Min 10
+```
+:::
+
+::: details open **设置方位角约束**
+```
+SetConstraint */Aircraft/Aircraft1 AzimuthAngle Min 10.0 Max 60.0 ExcludeIntervals
+```
+:::
+
+::: details open **设置仰角约束**
+```
+SetConstraint */Aircraft/Aircraft1 ElevationAngle Min 10.0
+```
+:::
+
+::: details open **设置太阳仰角约束**
+```
+SetConstraint */Aircraft/Aircraft1 SunElevationAngle Min 10
+```
+:::

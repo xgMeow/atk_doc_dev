@@ -31,3 +31,15 @@ Graphics_R <ObjectPath> GetLabel
 Graphics_R */Satellite/Satellite1 GetLabel
 ```
 :::
+
+::: details open **获得对象的标签**
+```
+Graphics_R */Satellite/Satellite1 GetLabel
+```
+:::
+
+::: details open **获得标签**
+```
+Graphics_R */Facility/Facility1 GetLabel
+```
+:::

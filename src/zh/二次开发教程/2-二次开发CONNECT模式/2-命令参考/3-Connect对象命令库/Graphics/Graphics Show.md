@@ -32,3 +32,33 @@ Graphics <ObjectPath> Show {On | Off}
 Graphics */Satellite/Satellite1 Show Off
 ```
 :::
+
+::: details open **设置传感器显示**
+```
+Graphics */Satellite/Satellite1/Sensor/Sensor1 Show Off
+```
+:::
+
+::: details open **设置卫星是否在窗口显示**
+```
+Graphics */Satellite/Satellite1 Show Off
+```
+:::
+
+::: details open **隐藏船模型**
+```
+Graphics */Ship/Ship1 Show Off
+```
+:::
+
+::: details open **隐藏车辆显示**
+```
+Graphics */GroundVehicle/GroundVehicle1 Show Off
+```
+:::
+
+::: details open **隐藏飞机显示**
+```
+Graphics */Aircraft/Aircraft1 Show Off
+```
+:::

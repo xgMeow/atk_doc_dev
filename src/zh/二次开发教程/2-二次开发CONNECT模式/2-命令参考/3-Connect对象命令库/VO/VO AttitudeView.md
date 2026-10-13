@@ -72,3 +72,87 @@ VO */Satellite/Satellite1 AttitudeView Projection Name Sun Show On ShowLabel On 
 VO */Satellite/Satellite1 AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
 ```
 :::
+
+::: details open **设置卫星姿态球投影属性**
+```
+VO */Satellite/Satellite1 AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6 Frame "Type Axes ObjectPath Satellite/Satellite2 Name Fixed"
+```
+:::
+
+::: details open **设置卫星姿态球 Sphere 属性**
+```
+VO */Satellite/Satellite1 AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
+```
+:::
+
+::: details open **设置姿态球投影属性**
+```
+VO */Facility/Facility1 AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6 Frame "Type Axes ObjectPath Satellite/Satellite2 Name Fixed"
+```
+:::
+
+::: details open **设置姿态球球体属性**
+```
+VO */Facility/Facility1 AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
+```
+:::
+
+::: details open **设置投影属性**
+```
+VO */Missile/Missile1 AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6
+```
+:::
+
+::: details open **设置姿态球属性**
+```
+VO */Missile/Missile1 AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
+```
+:::
+
+::: details open **设置姿态球投影属性**
+```
+VO */LaunchVehicle/LaunchVehicle1 AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6
+```
+:::
+
+::: details open **设置姿态球球体属性**
+```
+VO */LaunchVehicle/LaunchVehicle1 AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
+```
+:::
+
+::: details open **设置姿态球投影属性**
+```
+VO */Ship/Ship1  AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6 Frame "Type Axes ObjectPath Satellite/Satellite2 Name Fixed"
+```
+:::
+
+::: details open **设置姿态球 Sphere 属性**
+```
+VO */Ship/Ship1  AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
+```
+:::
+
+::: details open **设置投影属性**
+```
+VO */GroundVehicle/GroVeh1  AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6 Frame "Type Axes ObjectPath Satellite/Satellite2 Name Fixed"
+```
+:::
+
+::: details open **设置姿态球属性**
+```
+VO */GroundVehicle/GroVeh1  AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
+```
+:::
+
+::: details open **设置姿态球投影属性**
+```
+VO */Aircraft/Aircraft1 AttitudeView Projection Name Sun Show On ShowLabel On Color red PointSize 6 Frame "Type Axes ObjectPath Satellite/Satellite2 Name Fixed"
+```
+:::
+
+::: details open **设置姿态球 Sphere 属性**
+```
+VO */Aircraft/Aircraft1 AttitudeView Sphere Show On SphereColor %255000000 ZeroDegLineWidth 2 GridLineWidth 5 Frame "Type Axes Name Body" Scale 10
+```
+:::

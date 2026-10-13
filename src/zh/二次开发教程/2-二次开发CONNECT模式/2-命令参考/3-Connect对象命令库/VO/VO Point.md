@@ -29,3 +29,51 @@ VO <ObjectPath> Point {PointOptions}
 VO */Satellite/Satellite1 Point Show On Size 7
 ```
 :::
+
+::: details open **设置卫星 3D 模型点属性**
+```
+VO */Satellite/Satellite1 Point Show On Size 7
+```
+:::
+
+::: details open **显示模型点**
+```
+VO */Facility/Facility1 Point Show On Size 7
+```
+:::
+
+::: details open **显示3D模型点**
+```
+VO */Missile/Missile1 Point show on
+```
+:::
+
+::: details open **设置点大小**
+```
+VO */Missile/Missile1 Point size 3
+```
+:::
+
+::: details open **设置火箭 3D 模型点属性**
+```
+VO */SLaunchVehicle/LaunchVehicle1 Point Show On Size 7
+```
+:::
+
+::: details open **设置模型点显示和大小**
+```
+VO */Ship/Ship1 Point Show On Size 7
+```
+:::
+
+::: details open **设置模型点属性**
+```
+VO */GroundVehicle/GroVeh1 Point Show On Size 7
+```
+:::
+
+::: details open **显示模型点并设置大小**
+```
+VO */Aircraft/Aircraft Point Show On Size 7
+```
+:::

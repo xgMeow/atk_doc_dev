@@ -39,3 +39,21 @@ Graphics <ObjectPath> Basic { AttributeOption } {Action}
 Graphics */Satellite/Satellite1 Basic Show on Label on LineStyle 2 LineWidth 5.0 Orbit on color 15
 ```
 :::
+
+::: details open **设置卫星可视化显示属性**
+```
+Graphics */Satellite/Satellite1 Basic Show on Label on LineStyle 2 LineWidth 5.0 Orbit on color 15
+```
+:::
+
+::: details open **设置可视化显示**
+```
+Graphics */Missile/Missile1 Basic Show on Label on LineStyle 2 LineWidth 5.0 MarkerStyle Star Orbit on color 15
+```
+:::
+
+::: details open **设置火箭可视化显示属性**
+```
+Graphics */LaunchVehicle/LaunchVehicle1 Basic Show on Label on LineStyle 2 LineWidth 5.0 MarkerStyle Star Orbit on color 15
+```
+:::

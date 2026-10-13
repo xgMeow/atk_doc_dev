@@ -29,3 +29,45 @@ VO <ObjectPath> Model {Option1} <Value1> [{Option2} <Value2>]...
 VO */Satellite/Satellite1 Model Show Off
 ```
 :::
+
+::: details open **设置卫星 3D 模型属性**
+```
+VO */Satellite/Satellite1 Model Show Off
+```
+:::
+
+::: details open **隐藏模型**
+```
+VO */Facility/Facility1 Model Show Off
+```
+:::
+
+::: details open **显示3D模型**
+```
+VO */Missile/Missile1 Model Show on
+```
+:::
+
+::: details open **设置火箭 3D 模型属性**
+```
+VO */LaunchVehicle/LaunchVehicle1 Model Show Off
+```
+:::
+
+::: details open **隐藏船 3D 模型**
+```
+VO */Ship/Ship1 Model Show Off
+```
+:::
+
+::: details open **隐藏车辆 3D 模型**
+```
+VO */GroundVehicle/GroVeh1 Model Show Off
+```
+:::
+
+::: details open **隐藏飞机 3D 模型**
+```
+VO */Aircraft/Aircraft1 Model Show Off
+```
+:::

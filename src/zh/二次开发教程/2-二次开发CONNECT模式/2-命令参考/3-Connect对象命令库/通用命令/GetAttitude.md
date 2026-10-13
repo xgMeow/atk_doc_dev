@@ -32,3 +32,21 @@ GetAttitude <ObjectPath> {AttOption}
 GetAttitude */Satellite/Satellite1 Profile LongName
 ```
 :::
+
+::: details open **获得卫星的姿态类型**
+```
+GetAttitude */Satellite/Satellite1 Profile LongName
+```
+:::
+
+::: details open **获得姿态类型**
+```
+GetAttitude *//Missile/Missile1 Profile LongName
+```
+:::
+
+::: details open **获取火箭姿态类型**
+```
+GetAttitude */LaunchVehicle/LaunchVehicle1 Profile LongName
+```
+:::

@@ -32,3 +32,21 @@ Waypoints <VehObjectPath> Clear
 Waypoints */GroundVehicle/GroundVehicle1 Clear
 ```
 :::
+
+::: details open **清空船航线**
+```
+Waypoints */Ship/Ship1 Clear
+```
+:::
+
+::: details open **清空车辆航线**
+```
+Waypoints */GroundVehicle/GroundVehicle1 Clear
+```
+:::
+
+::: details open **清空飞机航线**
+```
+Waypoints */Aircraft/Aircraft1 Clear
+```
+:::

@@ -65,3 +65,75 @@ VO */Satellite/Satellite1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes
 VO */Satellite/Satellite1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
 ```
 :::
+
+::: details open **添加传感器向量**
+```
+VO */Satellite/Satellite1/Sensor/Sen1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
+```
+:::
+
+::: details open **修改传感器向量**
+```
+VO */Satellite/Satellite1/Sensor/Sen1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
+```
+:::
+
+::: details open **添加卫星向量**
+```
+VO */Satellite/Satellite1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
+```
+:::
+
+::: details open **修改卫星向量**
+```
+VO */Satellite/Satellite1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
+```
+:::
+
+::: details open **添加向量**
+```
+VO */Facility/Facility1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
+```
+:::
+
+::: details open **修改向量**
+```
+VO */Facility/Facility1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
+```
+:::
+
+::: details open **添加向量**
+```
+VO */Ship/Ship1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
+```
+:::
+
+::: details open **修改向量**
+```
+VO */Ship/Ship1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
+```
+:::
+
+::: details open **添加向量几何**
+```
+VO */GroundVehicle/GroundVehicle1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
+```
+:::
+
+::: details open **修改向量几何**
+```
+VO */GroundVehicle/GroundVehicle1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
+```
+:::
+
+::: details open **添加飞机向量**
+```
+VO */Aircraft/Aircraft1 SetVectorGeometry Add "Satellite/Satellite1 J2000 Axes" Show On Color red
+```
+:::
+
+::: details open **修改飞机向量**
+```
+VO */Aircraft/Aircraft1 SetVectorGeometry Modify "Satellite/Satellite1 J2000 Axes" Show Off
+```
+:::

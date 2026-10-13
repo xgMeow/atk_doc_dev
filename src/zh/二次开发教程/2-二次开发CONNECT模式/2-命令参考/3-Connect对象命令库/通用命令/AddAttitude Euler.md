@@ -38,3 +38,21 @@ AddAttitude <ObjectPath> Euler {StartTime} {Sequence} <Angle1> <Angle2> <Angle3>
 AddAttitude */Satellite/Satellite1 Euler "1 Jul 2021 09:00:00.000" 321 30.0 45.0 60.0
 ```
 :::
+
+::: details open **添加欧拉角姿态数据**
+```
+AddAttitude */Satellite/Satellite1 Euler "1 Jul 2021 09:00:00.000" 321 30.0 45.0 60.0
+```
+:::
+
+::: details open **根据欧拉角设置姿态数据**
+```
+AddAttitude */Missile/Missile1 Euler "1 Jul 2021 09:00:00.000" 321 30.0 45.0 60.0
+```
+:::
+
+::: details open **添加欧拉角姿态数据**
+```
+AddAttitude */LaunchVehicle/LaunchVehicle1 Euler "1 Jul 2021 09:00:00.000" 321 30.0 45.0 60.0
+```
+:::
