@@ -93,6 +93,63 @@ export const buildCommandGroups = (modules, currentPath = `/${connectCommandRoot
     .sort((a, b) => a.category.localeCompare(b.category));
 };
 
+// ── Cross-library Alphabetical Index ─────────────
+
+// 模块命令页（机动规划 / 偏差分析）的标题是中文动作名，无法参与字母序；
+// 真正的命令标识符写在「语法」里，如 `Astrogator <Satellite Object Path> InsertSegment ...`。
+// 前缀 token 有 Astrogator / Astrogator_RM / AstroUQ / AstroUQ_RM 多种，占位符本身又含空格，
+// 故锚定 `<...Object Path>` 而不是按空白切分取第 N 个 token。
+const OBJECT_PATH_ANCHOR = /^[A-Za-z_]+[ \t]+<[^>]*Object Path>[ \t]+(\S+)/;
+
+export const deriveCommandId = (usage = '') => usage.match(OBJECT_PATH_ANCHOR)?.[1] ?? '';
+
+const isPlainAscii = (text) => /^[\x20-\x7E]+$/.test(text);
+
+// 模块库名：.../4-Connect机动规划命令库/... → 机动规划（对象命令库不是「模块库」，返回空）
+const getModuleLibraryName = (routePath) => {
+  const match = decodeURI(routePath).match(/\d+-Connect(.+?)命令库\//);
+  const name = match?.[1] ?? '';
+  return name === '对象' ? '' : name;
+};
+
+/**
+ * 全库字母序总索引：对象命令库 + 各模块命令库（机动规划 / 偏差分析）。
+ * 只收命令不收属性（STK 的 Alphabetical Listing 同样只收命令），库首页与视图页也不是命令。
+ * 排序键统一为英文命令名 —— 对象命令页 H1 本身就是命令名，模块命令页从语法派生，
+ * 这样「记得命令名、不知道属于哪个库」时能在同一个字母序里找到。
+ */
+export const buildAlphaEntries = (modules, localePrefix = '/zh/') => {
+  const entries = [];
+
+  for (const [filePath, content] of Object.entries(modules)) {
+    if (filePath.endsWith('/README.md')) continue;
+    if (isViewPage(content)) continue;
+
+    const routePath = toRoutePath(filePath);
+    if (!routePath.startsWith(localePrefix)) continue; // 语言强隔离，避免 zh/en 混用
+    // 各库的命令都住在「命令/」目录下；这一条同时挡掉属性页与库首页
+    if (!decodeURI(routePath).includes('/命令/')) continue;
+
+    const [entry] = extractCommandEntries(content, routePath);
+    if (!entry) continue;
+
+    const derived = isPlainAscii(entry.command) ? entry.command : deriveCommandId(entry.usage);
+    const sortName = derived || entry.command;
+
+    entries.push({
+      ...entry,
+      sortName,
+      // 命令列主文本 / 副标题：模块命令主显英文命令名、副显中文页名
+      display: sortName,
+      subtitle: sortName === entry.command ? '' : entry.command,
+      // 来源标签：对象命令取它自报的分组名（重名时恰好就是对象名），模块命令取库名
+      category: getFrontmatterList(content, 'groups')[0] || getModuleLibraryName(routePath),
+    });
+  }
+
+  return entries;
+};
+
 export const extractCommandEntries = (content, path) => {
   const lines = content.replace(/\r\n/g, '\n').split('\n');
   const headings = [];

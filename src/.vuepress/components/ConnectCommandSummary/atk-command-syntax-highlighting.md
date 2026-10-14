@@ -251,3 +251,22 @@ groups: [对象通用命令, 卫星, 地面站]
 - **脚本模式**（`mode="script"`，内置函数）：按目录分组，索引栏是分类；工具栏保留「分类 / A–Z」切换按钮。
 
 组件不再接受 `default-mode` 属性。
+
+---
+
+## scope：跨库字母序总索引
+
+`scope="all"` 把**对象命令库与各模块命令库（机动规划 / 偏差分析）的命令**收进一张按字母序排列的表 —— 对应 STK 的 Alphabetical Listing（`list_alpha.htm`），用于「记得命令名、不确定属于哪个库」的场景。页面本身只写一行：
+
+```md
+<ConnectCommandSummary
+  scope="all"
+  syntax-guide="/二次开发教程/2-二次开发CONNECT模式/2-命令参考/1-命令语法约定.md"
+/>
+```
+
+- **收录规则**：各库 `命令/` 目录下的文档；`属性/` 与库首页不入表（STK 的字母序清单同样只收命令）。
+- **排序键是英文命令名**：对象命令页 H1 本身就是命令名；模块命令页 H1 是中文动作名，得从 `## 语法` 派生 —— 锚定 `<...Object Path>` 之后的第一个 token。不能按空白取第 N 个 token（占位符内部含空格），也不能拿前缀当命令名（有 `Astrogator` / `Astrogator_RM` / `AstroUQ` / `AstroUQ_RM` 四种）。派生失败时回落 H1，不静默丢行。
+- 命令列因此有两行信息：**英文命令名**（主）+ **中文页名**（副，仅模块命令有）+ **来源标签**（对象命令取它自报的 `groups[0]`，模块命令取库名）。同名命令（如 `Define` ×4、跨库的 `SetValue` / `GetValue`）靠来源标签区分。
+- 其余页面不传 `scope`，`sortName` / `display` / `subtitle` 三个字段缺省，行为与改造前逐字节一致。
+- 实现：`extractCommandInfo.mjs` 的 `buildAlphaEntries` / `deriveCommandId`；用它的页面是 `2-命令参考/11-命令总索引.md`。

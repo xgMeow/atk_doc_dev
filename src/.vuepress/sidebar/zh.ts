@@ -21,8 +21,9 @@ export const zhSidebarConfig = sidebar({
     {
       text: "命令参考",
       prefix: "2-命令参考/",
-      // 排列顺序：先说清查询方式（按对象 / 按功能两种正交查法，对应 STK 的
-      // Listings by Object 与 Listings by Module），再列不属于任何一方的共用命令，
+      // 排列顺序：先语法与参数值格式，再是三种查法 —— 按命令名（跨库字母序总索引，
+      // 对应 STK 的 Alphabetical Listing）、按对象、按功能（后两者对应 STK 的
+      // Listings by Object 与 Listings by Module），然后列不属于任何一方的共用命令，
       // 最后才是机动规划 / 偏差分析两棵深树 —— STK 同样把 Astrogator、
       // Component Browser、Aviator 的深树排在所有清单之后。
       children: [
@@ -36,6 +37,13 @@ export const zhSidebarConfig = sidebar({
           prefix: "2-参数值格式/",
           collapsible: true,
           children: "structure",
+        },
+        {
+          // 第三条查法：按命令名。跨库字母序总索引，把对象命令库与两个模块命令库
+          // 的命令收进一张表，对应 STK 的 Alphabetical Listing（list_alpha）。
+          // STK 同样把它排在各对象/模块清单之前，故插在这里。
+          text: "命令总索引",
+          link: "11-命令总索引.md",
         },
         {
           // 正交查法之一：按对象（我要操作某类对象，有哪些命令）。

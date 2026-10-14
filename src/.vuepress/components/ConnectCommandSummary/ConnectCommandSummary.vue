@@ -2,7 +2,7 @@
 import { computed, nextTick, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { RouteLink } from 'vuepress/client';
-import { buildCommandGroups, buildGroupEntries } from './extractCommandInfo.mjs';
+import { buildAlphaEntries, buildCommandGroups, buildGroupEntries } from './extractCommandInfo.mjs';
 import { buildFunctionGroups } from './extractFunctionInfo.mjs';
 import { getLocalePrefix, parseGroupList } from './shared.mjs';
 import { highlightUsage } from './highlightCommand.mjs';
@@ -15,6 +15,12 @@ interface CommandEntry {
   usage: string;
   path: string;
   category: string;
+  /** 排序键：跨库总索引里统一为英文命令名（对象命令名 / 从语法派生的模块命令名） */
+  sortName?: string;
+  /** 命令列主文本；缺省时用 command */
+  display?: string;
+  /** 命令列副标题（模块命令的中文页名） */
+  subtitle?: string;
 }
 
 interface CommandGroup {
@@ -28,14 +34,32 @@ const props = withDefaults(defineProps<{
   mode?: 'connect' | 'script';
   /** 分组名：渲染所有在命令页 groups 里声明了该名的命令（反向索引，命令页自报归属） */
   group?: string | string[];
+  /** 收录范围：library = 当前目录（默认）；all = 跨库字母序总索引（对象命令库 + 各模块命令库） */
+  scope?: 'library' | 'all';
 }>(), {
   base: '',
   syntaxGuide: '',
   mode: 'connect',
   group: '',
+  scope: 'library',
 });
 
 const entryKey = (entry: CommandEntry) => `${entry.path}|${entry.command}`;
+
+// 排序 / 分桶 / 展示统一走 sortName：跨库总索引里它是英文命令名，
+// 其余页面不传该字段，行为与改造前逐字节一致。
+const entrySortName = (entry: CommandEntry) => entry.sortName || entry.command;
+const entryDisplay = (entry: CommandEntry) => entry.display || entry.command;
+
+// 页内筛选：命中命令名（含派生出的英文命令名与中文副标题）、作用、语法、来源
+const matchesKeyword = (entry: CommandEntry, value: string) => [
+  entry.command,
+  entry.sortName,
+  entry.subtitle,
+  entry.effect,
+  entry.usage,
+  entry.category,
+].some(text => (text || '').toLowerCase().includes(value));
 
 const route = useRoute();
 
@@ -218,6 +242,12 @@ const commandGroups = computed<CommandGroup[]>(() => {
 
   const localePrefix = getLocalePrefix(currentPath.value);
 
+  // 跨库字母序总索引（scope="all"）：对象命令库 + 各模块命令库收进一张表，
+  // 一条命令就是一条，故只有一个伪分组，具体字母分节由平铺模式负责。
+  if (props.scope === 'all') {
+    return [{ category: 'all', entries: buildAlphaEntries(modules, localePrefix) }];
+  }
+
   // 声明了 group 的页面（对象页 / 模块页）完全由命令页的 groups 声明生成；
   // 不声明时才回落到「按当前目录聚合」——库首页与英文版对象页走这条。
   const groups = props.group
@@ -244,12 +274,7 @@ const filteredGroups = computed(() => {
   return commandGroups.value
     .map(group => ({
       ...group,
-      entries: group.entries.filter(entry => [
-        entry.command,
-        entry.effect,
-        entry.usage,
-        entry.category,
-      ].some(text => text.toLowerCase().includes(value))),
+      entries: group.entries.filter(entry => matchesKeyword(entry, value)),
     }))
     .filter(group => group.entries.length);
 });
@@ -272,17 +297,13 @@ function scrollToSection(id: string) {
 const flatEntries = computed<CommandEntry[]>(() =>
   commandGroups.value
     .flatMap(g => g.entries)
-    .sort((a, b) => a.command.localeCompare(b.command)),
+    .sort((a, b) => entrySortName(a).localeCompare(entrySortName(b))),
 );
 
 const filteredFlat = computed(() => {
   const value = keyword.value.trim().toLowerCase();
   if (!value) return flatEntries.value;
-  return flatEntries.value.filter(entry =>
-    [entry.command, entry.effect, entry.usage, entry.category].some(text =>
-      text.toLowerCase().includes(value),
-    ),
-  );
+  return flatEntries.value.filter(entry => matchesKeyword(entry, value));
 });
 
 /* 平铺模式：按首字母分组，非字母归入 # */
@@ -291,7 +312,7 @@ interface LetterGroup { letter: string; entries: CommandEntry[] }
 const letterGroups = computed<LetterGroup[]>(() => {
   const map: Record<string, CommandEntry[]> = {};
   for (const e of filteredFlat.value) {
-    const ch = e.command.charAt(0).toUpperCase();
+    const ch = entrySortName(e).charAt(0).toUpperCase();
     const key = /[A-Z]/.test(ch) ? ch : '#';
     (map[key] ??= []).push(e);
   }
@@ -411,8 +432,12 @@ onMounted(() => {
           <tbody>
             <tr v-for="entry in sec.entries" :key="`${entry.path}-${entry.command}`">
               <td class="cmd-cell-cmd">
-                <RouteLink v-if="entry.path" :to="entry.path">{{ entry.command }}</RouteLink>
-                <span v-else class="cmd-cell-cmd-missing">{{ entry.command }}</span>
+                <RouteLink v-if="entry.path" :to="entry.path">{{ entryDisplay(entry) }}</RouteLink>
+                <span v-else class="cmd-cell-cmd-missing">{{ entryDisplay(entry) }}</span>
+                <span v-if="entry.subtitle || (props.scope === 'all' && entry.category)" class="cmd-cell-meta">
+                  <span v-if="entry.subtitle" class="cmd-cell-subtitle">{{ entry.subtitle }}</span>
+                  <span v-if="props.scope === 'all' && entry.category" class="cmd-cell-source">{{ entry.category }}</span>
+                </span>
               </td>
               <td class="cmd-cell-effect" v-html="renderInlineMarkdown(entry.effect || '--')"></td>
               <td class="cmd-cell-usage">
@@ -929,6 +954,32 @@ onMounted(() => {
   font-weight: 600;
   word-break: break-all;
   border-bottom: 1px dashed currentColor;
+}
+
+/* 命令列副信息：中文页名 + 来源标签（跨库总索引里区分同名命令） */
+.cmd-cell-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.cmd-cell-subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+.cmd-cell-source {
+  display: inline-block;
+  padding: 1px 8px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  background: var(--bg-badge);
+  border-radius: 9px;
+  white-space: nowrap;
 }
 
 /* ── Effect Description ──────────────────── */
