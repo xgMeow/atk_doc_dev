@@ -21,11 +21,11 @@ export const zhSidebarConfig = sidebar({
     {
       text: "命令参考",
       prefix: "2-命令参考/",
-      // 排列顺序：先语法与参数值格式，再是三种查法 —— 按命令名（跨库字母序总索引，
-      // 对应 STK 的 Alphabetical Listing）、按对象、按功能（后两者对应 STK 的
-      // Listings by Object 与 Listings by Module），最后才是机动规划 / 偏差分析
-      // 两棵深树 —— STK 同样把 Astrogator、Component Browser、Aviator 的深树
-      // 排在所有清单之后。
+      // 排列顺序：先语法与参数值格式（看文档前得先会读语法、会写参数值），
+      // 再是三种查法 —— 按命令名（跨库字母序总索引）、按对象、按功能。
+      // 三种查法由浅入深、互为补充：先给一张无差别的总表，再按对象与功能细分。
+      // 最后才是机动规划 / 偏差分析两棵深树 —— 它们节点最多、最占版面，
+      // 排在所有速查清单之后，不挤占前面的入口。
       children: [
         {
           text: "命令语法约定",
@@ -40,8 +40,8 @@ export const zhSidebarConfig = sidebar({
         },
         {
           // 第三条查法：按命令名。跨库字母序总索引，把对象命令库与两个模块命令库
-          // 的命令收进一张表，对应 STK 的 Alphabetical Listing（list_alpha）。
-          // STK 同样把它排在各对象/模块清单之前，故插在这里。
+          // 的命令收进一张表 —— 不挑对象、不挑功能，是最“兜底”的一条路，
+          // 所以排在各对象/功能清单之前，先给总入口。
           text: "命令总索引",
           link: "3-命令总索引.md",
         },

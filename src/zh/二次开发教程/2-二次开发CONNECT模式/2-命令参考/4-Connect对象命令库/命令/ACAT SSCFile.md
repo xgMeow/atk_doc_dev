@@ -18,6 +18,6 @@ ACAT <AdvCatObjPath> SSCFile {On | Off | "<FilePath>"}
 
 ::: details open **使用SSC文件设置目标半径**
 ```
-ACAT */AdvCAT/MyAdvCAT SSCFile "C:\Users\tempest\Documents\STK\SSC.rad"
+ACAT */AdvCAT/MyAdvCAT SSCFile "C:\atk\User\Data\SSC.rad"
 ```
 :::

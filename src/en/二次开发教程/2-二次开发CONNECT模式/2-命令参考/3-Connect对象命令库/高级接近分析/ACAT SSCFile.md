@@ -14,6 +14,6 @@ ACAT <AdvCatObjPath> SSCFile {On | Off | "<FilePath>"}
 
 ::: details open **Use an SSC file to set the target radius**
 ```
-ACAT */AdvCAT/MyAdvCAT SSCFile "C:\Users\tempest\Documents\STK\SSC.rad"
+ACAT */AdvCAT/MyAdvCAT SSCFile "C:\atk\User\Data\SSC.rad"
 ```
 :::
