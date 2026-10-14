@@ -12,7 +12,7 @@ import {
   toRoutePath,
 } from './shared.mjs';
 
-export const connectCommandRoot = '/zh/二次开发教程/2-二次开发CONNECT模式/2-命令参考/3-Connect对象命令库';
+export const connectCommandRoot = '/zh/二次开发教程/2-二次开发CONNECT模式/2-命令参考/4-Connect对象命令库';
 
 // ── Declared Groups（命令页自报归属，反向聚合） ──────
 
@@ -105,7 +105,7 @@ export const deriveCommandId = (usage = '') => usage.match(OBJECT_PATH_ANCHOR)?.
 
 const isPlainAscii = (text) => /^[\x20-\x7E]+$/.test(text);
 
-// 模块库名：.../4-Connect机动规划命令库/... → 机动规划（对象命令库不是「模块库」，返回空）
+// 模块库名：.../6-Connect机动规划命令库/... → 机动规划（对象命令库不是「模块库」，返回空）
 const getModuleLibraryName = (routePath) => {
   const match = decodeURI(routePath).match(/\d+-Connect(.+?)命令库\//);
   const name = match?.[1] ?? '';

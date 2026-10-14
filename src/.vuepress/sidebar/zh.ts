@@ -23,9 +23,9 @@ export const zhSidebarConfig = sidebar({
       prefix: "2-命令参考/",
       // 排列顺序：先语法与参数值格式，再是三种查法 —— 按命令名（跨库字母序总索引，
       // 对应 STK 的 Alphabetical Listing）、按对象、按功能（后两者对应 STK 的
-      // Listings by Object 与 Listings by Module），然后列不属于任何一方的共用命令，
-      // 最后才是机动规划 / 偏差分析两棵深树 —— STK 同样把 Astrogator、
-      // Component Browser、Aviator 的深树排在所有清单之后。
+      // Listings by Object 与 Listings by Module），最后才是机动规划 / 偏差分析
+      // 两棵深树 —— STK 同样把 Astrogator、Component Browser、Aviator 的深树
+      // 排在所有清单之后。
       children: [
         {
           text: "命令语法约定",
@@ -43,7 +43,7 @@ export const zhSidebarConfig = sidebar({
           // 的命令收进一张表，对应 STK 的 Alphabetical Listing（list_alpha）。
           // STK 同样把它排在各对象/模块清单之前，故插在这里。
           text: "命令总索引",
-          link: "11-命令总索引.md",
+          link: "3-命令总索引.md",
         },
         {
           // 正交查法之一：按对象（我要操作某类对象，有哪些命令）。
@@ -52,9 +52,9 @@ export const zhSidebarConfig = sidebar({
           text: "按对象查命令",
           // 分组标题可点击跳转（命令库首页速查表）。
           // 注意：link 相对的是父级前缀 2-命令参考/，不是本项的 prefix，
-          // 所以这里要带上「3-Connect对象命令库/」而非直接写 README.md。
-          link: "3-Connect对象命令库/README.md",
-          prefix: "3-Connect对象命令库/",
+          // 所以这里要带上「4-Connect对象命令库/」而非直接写 README.md。
+          link: "4-Connect对象命令库/README.md",
+          prefix: "4-Connect对象命令库/",
           collapsible: true,
           children: [
             { text: "场景", link: "场景.md" },
@@ -81,31 +81,33 @@ export const zhSidebarConfig = sidebar({
           // 与「按对象查命令」互补，每条命令在自身 frontmatter 里声明所属分组，
           // 模块页只列分组名。
           text: "按功能查命令",
-          link: "6-Connect功能索引/README.md",
-          prefix: "6-Connect功能索引/",
+          link: "5-Connect功能索引/README.md",
+          prefix: "5-Connect功能索引/",
           collapsible: true,
           children: [
             { text: "覆盖分析", link: "覆盖分析.md" },
             { text: "可见性分析", link: "可见性分析.md" },
             { text: "姿态与指向", link: "姿态与指向.md" },
+            // 「碰撞规避」「矢量几何」原与「对象工具」合并为一张顶层视图页
+            // （原 10-对象工具.md，24 条），其成员本就分属不同功能，
+            // 故按功能拆成独立页，不再保留「对象工具」这一层级。
+            // 「三维视图」「二维视图」原为顶层独立页（7-、8-，曾称「共用命令集」），
+            // 现并入本清单，与其余功能页并列。
+            { text: "碰撞规避", link: "碰撞规避.md" },
+            { text: "矢量几何", link: "矢量几何.md" },
+            { text: "三维视图", link: "三维视图.md" },
+            { text: "二维视图", link: "二维视图.md" },
           ],
         },
-        // 共用命令集：既不专属某类对象、也不归属某个功能模块，
-        // 故与上面两个清单平级（对应 STK 中 2D/3D Graphics、Object Tools、
-        // Application Options 等直接挂在命令库下的扁平叶子）。
-        { text: "三维视图显示", link: "7-三维视图显示.md" },
-        { text: "二维视图显示", link: "8-二维视图显示.md" },
-        { text: "对象通用命令", link: "9-对象通用命令.md" },
-        { text: "对象工具", link: "10-对象工具.md" },
         {
           text: "机动规划命令库",
-          prefix: "4-Connect机动规划命令库/",
+          prefix: "6-Connect机动规划命令库/",
           children: "structure",
           collapsible: true,
         },
         {
           text: "偏差分析命令库",
-          prefix: "5-Connect偏差分析命令库/",
+          prefix: "7-Connect偏差分析命令库/",
           children: "structure",
           collapsible: true,
         },

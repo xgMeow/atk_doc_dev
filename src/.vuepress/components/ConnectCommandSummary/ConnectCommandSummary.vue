@@ -126,7 +126,7 @@ const currentPath = computed(() => {
   if (p.startsWith('/zh/') || p.startsWith('/en/')) return p;
   return isScript.value
     ? '/zh/5.专业使用指南/18-脚本工具/'
-    : '/zh/二次开发教程/2-二次开发CONNECT模式/2-命令参考/3-Connect对象命令库/';
+    : '/zh/二次开发教程/2-二次开发CONNECT模式/2-命令参考/4-Connect对象命令库/';
 });
 
 const uiTitle = computed(() =>
