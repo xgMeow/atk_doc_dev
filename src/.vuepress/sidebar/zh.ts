@@ -21,6 +21,10 @@ export const zhSidebarConfig = sidebar({
     {
       text: "命令参考",
       prefix: "2-命令参考/",
+      // 排列顺序：先说清查询方式（按对象 / 按功能两种正交查法，对应 STK 的
+      // Listings by Object 与 Listings by Module），再列不属于任何一方的共用命令，
+      // 最后才是机动规划 / 偏差分析两棵深树 —— STK 同样把 Astrogator、
+      // Component Browser、Aviator 的深树排在所有清单之后。
       children: [
         {
           text: "命令语法约定",
@@ -34,11 +38,10 @@ export const zhSidebarConfig = sidebar({
           children: "structure",
         },
         {
+          // 正交查法之一：按对象（我要操作某类对象，有哪些命令）。
           // 对象命令库平铺：每个对象一个速查表页（<对象>.md），
           // 具体命令从速查表里跳转，侧边栏不会展开成上百条。
-          // 公共命令池（三维视图显示 / 二维视图显示 / 对象通用命令）已升级为
-          // 「6-Connect功能索引」下的模块页，与对象页并列为另一种查法。
-          text: "Connect对象命令库",
+          text: "按对象查命令",
           // 分组标题可点击跳转（命令库首页速查表）。
           // 注意：link 相对的是父级前缀 2-命令参考/，不是本项的 prefix，
           // 所以这里要带上「3-Connect对象命令库/」而非直接写 README.md。
@@ -66,33 +69,37 @@ export const zhSidebarConfig = sidebar({
           ],
         },
         {
-          text: "Connect机动规划命令库",
+          // 正交查法之二：按功能/模块（我要完成某项任务，该用哪条命令）。
+          // 与「按对象查命令」互补，每条命令在自身 frontmatter 里声明所属分组，
+          // 模块页只列分组名。
+          text: "按功能查命令",
+          link: "6-Connect功能索引/README.md",
+          prefix: "6-Connect功能索引/",
+          collapsible: true,
+          children: [
+            { text: "覆盖分析", link: "覆盖分析.md" },
+            { text: "可见性与接近分析", link: "可见性与接近分析.md" },
+            { text: "姿态与指向", link: "姿态与指向.md" },
+          ],
+        },
+        // 共用命令集：既不专属某类对象、也不归属某个功能模块，
+        // 故与上面两个清单平级（对应 STK 中 2D/3D Graphics、Object Tools、
+        // Application Options 等直接挂在命令库下的扁平叶子）。
+        { text: "三维视图显示", link: "7-三维视图显示.md" },
+        { text: "二维视图显示", link: "8-二维视图显示.md" },
+        { text: "对象通用命令", link: "9-对象通用命令.md" },
+        { text: "对象工具", link: "10-对象工具.md" },
+        {
+          text: "机动规划命令库",
           prefix: "4-Connect机动规划命令库/",
           children: "structure",
           collapsible: true,
         },
         {
-          text: "Connect偏差分析命令库",
+          text: "偏差分析命令库",
           prefix: "5-Connect偏差分析命令库/",
           children: "structure",
           collapsible: true,
-        },
-        {
-          // 按功能（而非按对象）组织同一批命令，与上面的对象命令库互补。
-          // 每条命令在自身 frontmatter 里声明所属分组，模块页只列分组名。
-          text: "Connect功能索引",
-          link: "6-Connect功能索引/README.md",
-          prefix: "6-Connect功能索引/",
-          collapsible: true,
-          children: [
-            { text: "三维视图显示", link: "三维视图显示.md" },
-            { text: "二维视图显示", link: "二维视图显示.md" },
-            { text: "对象通用命令", link: "对象通用命令.md" },
-            { text: "覆盖分析", link: "覆盖分析.md" },
-            { text: "可见性与接近分析", link: "可见性与接近分析.md" },
-            { text: "姿态与指向", link: "姿态与指向.md" },
-            { text: "对象工具", link: "对象工具.md" },
-          ],
         },
       ],
     },
