@@ -78,7 +78,7 @@ export const zhSidebarConfig = sidebar({
           collapsible: true,
           children: [
             { text: "覆盖分析", link: "覆盖分析.md" },
-            { text: "可见性与接近分析", link: "可见性与接近分析.md" },
+            { text: "可见性分析", link: "可见性分析.md" },
             { text: "姿态与指向", link: "姿态与指向.md" },
           ],
         },
