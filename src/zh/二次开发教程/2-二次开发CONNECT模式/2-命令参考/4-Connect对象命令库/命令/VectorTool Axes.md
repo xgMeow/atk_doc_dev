@@ -45,7 +45,7 @@ VectorTool * Satellite/Satellite1 Create Axes SatAxes1 "Aligned and Constrained"
 
 ::: details open **修改 Axes 组件**
 ```
-VectorTool * Satellite/Satellite1 Modify Axes SatAxes1 "Aligned and Constrained" X "CentralBody/Earth ICRF.Axes.x" Y "Satellite/Satellite2 VVLH.Axes.Y"
+VectorTool * Satellite/Satellite1 Modify Axes SatAxes1 "Aligned and Constrained" X "CentralBody/Earth ICRF.Axes.X" Y "Satellite/Satellite2 VVLH.Axes.Y"
 ```
 :::
 
