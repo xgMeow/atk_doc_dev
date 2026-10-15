@@ -37,7 +37,7 @@ VectorTool * Satellite/Satellite1 Create Angle SatAngle1 "Between Planes"
 
 ::: details open **Modify an Angle component**
 ```
-VectorTool * Satellite/Satellite1 Modify Angle SatAngle1 "Between Vectors" "CentralBody/Earth ICRF.Axes.x" "Satellite/Satellite2 VVLH.Axes.Y"
+VectorTool * Satellite/Satellite1 Modify Angle SatAngle1 "Between Vectors" "CentralBody/Earth ICRF.Axes.X" "Satellite/Satellite2 VVLH.Axes.Y"
 ```
 :::
 

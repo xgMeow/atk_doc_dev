@@ -36,7 +36,7 @@ VectorTool * Satellite/Satellite1 Create Plane SatPlane1 "Containing Two Vectors
 
 ::: details open **Modify a Plane component**
 ```
-VectorTool * Satellite/Satellite1 Modify Plane SatPlane1 "Containing Two Vectors" Vector1 "CentralBody/Earth ICRF.Axes.x" Vector2 "Satellite/Satellite2 VVLH.Axes.Y"
+VectorTool * Satellite/Satellite1 Modify Plane SatPlane1 "Containing Two Vectors" Vector1 "CentralBody/Earth ICRF.Axes.X" Vector2 "Satellite/Satellite2 VVLH.Axes.Y"
 ```
 :::
 
