@@ -6,7 +6,9 @@ groups: [场景]
 
 ## 作用
 
-设置场景仿真操作
+设置场景的仿真状态，用于启动、暂停、重置仿真，以及调整仿真速度或单步推进。
+
+各项操作中，Reset 需要特别留意：它除了重置仿真，**还会令场景中各对象生成星历数据**。新建的卫星等对象在星历生成之前，其报告为空表、视图中看不到轨迹、以它作为输入的分析也算不出结果。详见下文「关于 Reset」。
 
 ## 语法
 
@@ -16,49 +18,67 @@ Animate <ScenarioPath> {AnimateOption} <Parameters>
 
 ## 参数说明
 
-| {AnimateOption} | 说明 |
+| 参数 | 说明 |
 | --- | --- |
-| `Start` | 设置仿真开始状态，默认 `Forward`（正向仿真）。`<Parameters>` 取值见下表 |
-| `Pause` | 仿真暂停 |
-| `Reset` | 仿真重置 |
-| `Faster` | 仿真步长增加 |
-| `Slower` | 仿真步长减少 |
-| `Speed` | 设置仿真步长 |
-| `Step` | 仿真步长正向 +1 / 反向 -1。`<Parameters>` 取值见下表 |
-| `XRealTimeContinueFromPausedTime` | 暂停期间内部实时时钟行为控制。`<Parameters>` 取值见下表 |
+| Start | 设置仿真开始状态，缺省为 Forward（正向仿真）。可选值见下文「Start 的可选值」。 |
+| Pause | 暂停仿真。 |
+| Reset | 重置仿真，并令场景中各对象生成星历数据。详见下文「关于 Reset」。 |
+| Faster | 增大仿真步长。 |
+| Slower | 减小仿真步长。 |
+| Speed | 设置仿真步长。 |
+| Step | 仿真步长正向 +1 或反向 -1。可选值见下文「Step 的可选值」。 |
+| XRealTimeContinueFromPausedTime | 暂停期间内部实时时钟的行为控制。可选值见下文。 |
 
-### Start 的 `<Parameters>` 取值
+### Start 的可选值
 
 | 取值 | 说明 |
 | --- | --- |
-| `Forward` | 正向仿真 |
-| `Reverse` | 反向仿真 |
-| `RealTime` | 实时模式 |
-| `XRealTime` | 倍率模式 |
-| `Normal` | 步长模式 |
+| Forward | 正向仿真 |
+| Reverse | 反向仿真 |
+| RealTime | 实时模式 |
+| XRealTime | 倍率模式 |
+| Normal | 步长模式 |
 
-### Step 的 `<Parameters>` 取值
-
-| 取值 | 说明 |
-| --- | --- |
-| `Forward` | 步长正向 +1 |
-| `Reverse` | 步长反向 -1 |
-
-### XRealTimeContinueFromPausedTime 的 `<Parameters>` 取值
+### Step 的可选值
 
 | 取值 | 说明 |
 | --- | --- |
-| `On` | 可在仿真暂停时停止内部实时时钟运行，并在仿真恢复时从当前仿真时间继续播放。 |
-| `Off` | 默认值。倍率模式在仿真暂停时会继续运行内部实时时钟，当仿真恢复时，仿真时间会跳转到暂停期间经过的时间点。 |
+| Forward | 步长正向 +1 |
+| Reverse | 步长反向 -1 |
+
+### XRealTimeContinueFromPausedTime 的可选值
+
+| 取值 | 说明 |
+| --- | --- |
+| On | 可在仿真暂停时停止内部实时时钟运行，并在仿真恢复时从当前仿真时间继续播放 |
+| Off | 默认值。倍率模式在仿真暂停时会继续运行内部实时时钟，当仿真恢复时，仿真时间会跳转到暂停期间经过的时间点 |
+
+## 关于 Reset
+
+Reset 的作用有两重：重置仿真，以及**令场景中各对象生成星历数据**。
+
+通过 [New](./New.md) 新建的卫星等对象，只是把对象建立了起来，其星历数据尚未生成。在生成之前：
+
+- 用 [Report_RM](./Report_RM.md) 读取该对象的报告，只能得到一张仅有标题的空表；
+- 三维视图与二维视图中看不到该对象的轨迹；
+- 以该对象作为输入的分析计算得不到任何结果，例如 [ACAT](./ACAT.md) 的高级接近分析不会算出任何接近事件。
+
+执行一次 Reset，上述内容即恢复正常。因此，**在新建对象之后、读取报告或执行计算之前，须先发送本命令**。
 
 ## 示例
 
 ::: details open **启动场景仿真**
+
 ```
 Animate * Start
 ```
+
 :::
 
-::: tip 提示
-文档常见问题：新建对象默认不生成星历，需调用 `Animate * Reset` 命令计算星历，二三维视图才可看到对象轨迹。
+::: details open **新建对象后生成星历**
+
+```
+Animate * Reset
+```
+
 :::
