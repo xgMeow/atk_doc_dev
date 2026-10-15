@@ -49,3 +49,14 @@
   background: rgba(100, 116, 139, 0.1);
   color: #475569;
 }
+
+// Details 内代码块
+// 内层 pre 自带 0.85rem 上下外边距，代码块容器无上下内边距，该外边距会溢出容器，
+// 与容器的 10px 外边距按较大值合并，使代码块与上下方段落的间距大于设计值。
+// 此处仅清除 pre 的上下外边距，垂直间距一律由容器的 10px 控制。
+// 注意须用 margin-top / margin-bottom 长写形式：带行号时主题以 margin-left
+// 为代码区让出行号栏宽度，简写的 margin 会一并覆盖该属性。
+.hint-container.details > div[class*="language-"] pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
