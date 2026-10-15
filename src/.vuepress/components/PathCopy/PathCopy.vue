@@ -27,7 +27,7 @@
         </span>
 
         <span class="popover-actions">
-          <a class="popover-action secondary" :href="viewerHref" @click="closePopover">
+          <a v-if="hasViewerTarget" class="popover-action secondary" :href="viewerHref" @click="closePopover">
             跳转文件列表
           </a>
           <button class="popover-action primary" type="button" @click="copyPath">
@@ -74,6 +74,8 @@ const rootRef = ref(null)
 const rootPath = ref('')
 const message = ref('')
 const isOpen = ref(false)
+// 当前页面是否存在 PathViewer：没有就不显示「跳转文件列表」，避免给出一个没有落点的按钮
+const hasViewerTarget = ref(false)
 const popoverId = `path-copy-${Math.random().toString(36).slice(2, 10)}`
 let messageTimer = null
 
@@ -104,6 +106,8 @@ const loadRootPath = () => {
 
 const openPopover = () => {
   loadRootPath()
+  // 打开时再查一次：路由切换会整页重挂，此刻的 DOM 才是本页的真实情况
+  hasViewerTarget.value = Boolean(document.getElementById(props.viewerTarget))
   isOpen.value = true
 }
 
