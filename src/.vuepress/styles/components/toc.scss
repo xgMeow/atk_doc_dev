@@ -25,10 +25,32 @@
   }
 }
 
+// 主题给 TOC 外层容器的是 margin-inline: auto + padding-inline，低版本内核均不认，物理属性兜底
+.vp-toc-placeholder {
+  // 无侧边栏时容器按 max-width 收窄，缺了 auto 边距就贴到左边，TOC 整体左移
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+
+  @media (max-width: 959px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+// 主题的滚动指示条用 inset-inline-start: 0 定位，低版本内核不认，物理属性兜底
+.vp-toc-marker,
+.vp-toc-wrapper::before {
+  left: 0;
+}
+
 // PC 端：TOC 浮动到内容右侧
 @media (min-width: 1440px) {
   #toc {
     position: absolute;
+    // 低版本内核对 inset-inline-start 与 inset 简写均不识别，物理属性兜底
+    left: calc(100% + var(--toc-gap, 1rem));
     inset-inline-start: calc(100% + var(--toc-gap, 1rem));
     // 显式给宽度：绝对定位 + 不设 width 时宽度走 shrink-to-fit，
     // 会由最长的一条目录文字决定，目录项偏短时 TOC 就缩成窄窄一条
@@ -81,7 +103,11 @@
     &::before {
       content: '';
       position: absolute;
-      inset: 0 -0.75rem;
+      // 四向长写，等价 inset: 0 -0.75rem
+      top: 0;
+      right: -0.75rem;
+      bottom: 0;
+      left: -0.75rem;
       z-index: -1;
       border-radius: 4px;
       background: transparent;

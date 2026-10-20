@@ -14,6 +14,14 @@
   will-change: transform;
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
+  // 主题给面包屑的是 padding-inline: 2.5rem，低版本内核不认，物理属性兜底
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+
+  @media (max-width: 959px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 
   // —— 小屏水平滚动适配 ——
 

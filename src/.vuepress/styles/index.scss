@@ -48,6 +48,17 @@ a strong {
   right: calc(.5rem);
 }
 
+// 主题的 kbd 与搜索框占位符用 margin-inline 撑间距，低版本内核不认，物理属性兜底
+kbd {
+  margin-left: 0.125rem;
+  margin-right: 0.125rem;
+}
+
+.search-pro-placeholder {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
 .vp-back-to-top-button{
   right: 1rem;
 }
@@ -97,6 +108,9 @@ mjx-container {
 
 .theme-hope-content mjx-container[display="true"] > svg {
   display: block;
+  // 低版本内核不认 margin-inline 简写，物理属性兜底
+  margin-left: auto;
+  margin-right: auto;
   margin-inline: auto;
 }
 
@@ -237,6 +251,9 @@ h3 {
   padding-inline-start: 0;
 }
 .theme-container.no-sidebar .vp-page {
+  // 低版本内核不认 padding-inline 简写，物理属性兜底
+  padding-left: 0;
+  padding-right: 0;
   padding-inline: 0;
 }
 
@@ -288,7 +305,21 @@ h4 {
   padding: 2rem 2.5rem;
 }
 .vp-footer-wrapper{
+  // 低版本内核不认 padding-block / padding-inline 简写，物理属性兜底（右侧 2rem 来自主题）
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: calc(var(--sidebar-space) + 2rem);
+  padding-right: 2rem;
   padding-block:0.5rem;
+
+  // 与主题断点一致：小屏与超宽屏改为固定 2rem
+  @media (max-width: 719px) {
+    padding-left: 2rem;
+  }
+
+  @media (min-width: 1440px) {
+    padding-left: 2rem;
+  }
 }
 
 #appearance-switch:focus{

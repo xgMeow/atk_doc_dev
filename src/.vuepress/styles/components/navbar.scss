@@ -102,6 +102,9 @@
   align-items: center;
   box-sizing: content-box;
   height: 1.25rem;
+  // 低版本内核不认 margin-inline 简写，物理属性兜底
+  margin-left: 1rem;
+  margin-right: 0;
   margin-inline: 1rem 0;
   padding: 0.5rem;
   border: none;
@@ -133,12 +136,17 @@
 
 .vp-navbar-end{
   width: 20%;
+  // 主题用 justify-content: end，低版本内核按 flex-start 处理，内容超出时挤向屏幕右外侧
+  justify-content: flex-end;
 }
 
 .search-pro-key {
   background: var(--vp-bgl);
   display: inline-block;
   min-width: 1em;
+  // 低版本内核不认 margin-inline 简写，物理属性兜底
+  margin-left: 0.125rem;
+  margin-right: 0.125rem;
   margin-inline: 0.125rem;
   padding: 0.25rem;
   border: 1px solid var(--vp-brc);

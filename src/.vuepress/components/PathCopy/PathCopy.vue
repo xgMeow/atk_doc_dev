@@ -250,7 +250,11 @@ onBeforeUnmount(() => {
 
 .path-popover::before {
   position: absolute;
-  inset: 0;
+  /* 四向长写，等价 inset: 0 */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   border-radius: inherit;
   background:
     radial-gradient(circle at 18px 18px, rgba(0, 110, 220, 0.12), transparent 26px),

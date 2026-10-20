@@ -28,7 +28,7 @@
   color: #334155;
   cursor: pointer;
   margin: 0;
-  padding-block: 0;
+  // 上下内边距已由下面的 padding 长写覆盖，此处不再写 padding-block（低版本内核亦不支持）
   padding: 8px 0 8px 32px;
 
   &:hover {

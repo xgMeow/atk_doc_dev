@@ -747,7 +747,11 @@ img {
   &::before {
     content: '';
     position: absolute;
-    inset: 0;
+    // 四向长写，等价 inset: 0
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-image:
       linear-gradient(rgba($clr-accent, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba($clr-accent, 0.03) 1px, transparent 1px);
@@ -760,7 +764,11 @@ img {
   &::after {
     content: '';
     position: absolute;
-    inset: 0;
+    // 四向长写，等价 inset: 0
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     border: 1px solid transparent;
     transition: border-color 0.4s ease;
     pointer-events: none;

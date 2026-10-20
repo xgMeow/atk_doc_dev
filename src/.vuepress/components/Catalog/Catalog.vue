@@ -444,7 +444,7 @@ $accent-subtle:  rgba(20, 86, 240, 0.08);
   // border-radius: 4px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 2px 1.5rem;
 }
 

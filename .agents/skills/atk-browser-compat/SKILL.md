@@ -19,7 +19,9 @@ description: ATK 文档站的浏览器兼容性约束（目标内核 Chromium 86
 
 | 特性 | 最低内核 | 替代写法 |
 | --- | --- | --- |
-| `inset` / `inset-inline-*` / `inset-block-*` | 87 | `top` / `right` / `bottom` / `left` 四向长写；逻辑属性另配一条同名物理属性 |
+| `inset` / `inset-inline` / `inset-block` / `inset-inline-start` / `inset-block-end` 等整组 | 87 | `top` / `right` / `bottom` / `left` 四向长写，逻辑属性另配一条同名物理属性 |
+| `margin-inline` / `margin-block` / `padding-inline` / `padding-block` / `border-inline` / `border-block` **简写** | 87 | 拆成左右、上下物理属性；`margin-inline-start` / `padding-inline-start` / `border-inline-start` 这类**长写** 86 已支持，可保留 |
+| `justify-content` / `align-items` / `align-content` / `align-self` 取 `start` / `end` 关键字 | 新版（86 实测无效） | 一律写 `flex-start` / `flex-end`；`start` / `end` 在 86 上被解析但按 `flex-start` 生效，**内容不溢出时看不出问题，一溢出就错边** |
 | `aspect-ratio` | 88 | 显式 `width` + `height`；内容自适应高度时用 `padding-top` 百分比占位 |
 | `:is()` / `:where()` | 88 | 展开成逗号选择器列表 |
 | `:has()` | 105 | 不得承载必需样式，改由 JS 切换 class |
@@ -38,7 +40,9 @@ description: ATK 文档站的浏览器兼容性约束（目标内核 Chromium 86
 3. **宽高比用显式宽高**。若确实需要 `aspect-ratio`，先写死 `width` / `height`，再在 `@supports (aspect-ratio: 1)` 内覆盖。
 4. **`:has()` / `:is()` / `:where()` 只能锦上添花**。内核不认识时整条规则被丢弃，若该规则承载必需样式（如暗色模式换图），会直接丢功能。
 5. **`color-mix()` 前面必须有纯色兜底**，两条声明相邻，靠层叠降级。
-6. **`transition` 的属性列表里不要放低版本内核不认识的属性**。只要列表里有一个未知属性名，**整条 `transition` 声明失效**，连 `background` 的过渡一起丢失。需要时用 `@supports` 拆成两条声明。
+6. **`transition` 列表里可以出现低版本内核不认识的属性名**，实测 86 不会因此把整条声明作废（那条只是不动）。真正要留意的是**兜底属性有没有一起写进去**：布局若用 `left` 兜底，列表里也要有 `left`，否则低版本内核上位置是跳变，不是滑动。
+7. **盒对齐一律用 `flex-start` / `flex-end`**，不用 `start` / `end`。前者所有版本都认，后者在低版本内核里静默退化成 `flex-start`，容器内容一溢出就挤错边。
+8. **`margin-inline: auto` 同属简写**，会连带丢掉居中效果：容器一旦有 `max-width` 收窄，缺了它就直接贴左（无侧边栏页面的 TOC 就是这样整体左移的）。
 
 ## JS 写法规则
 
@@ -61,11 +65,11 @@ inset-inline-start: 0;
 
 ```powershell
 $files = Get-ChildItem src\.vuepress -Recurse -Include *.scss,*.css,*.vue,*.styl
-Select-String -Path $files.FullName -Pattern '(?<![\w-])inset\s*:|inset-inline|inset-block|aspect-ratio|:is\(|:where\(|:has\(|color-mix\(|\bdvh\b|@container'
+Select-String -Path $files.FullName -Pattern '(?<![\w-])inset\s*:|inset-(inline|block)|(margin|padding|border)-(inline|block)\s*:|(justify-content|align-items|align-content|align-self|justify-items)\s*:\s*(start|end)\b|aspect-ratio|:is\(|:where\(|:has\(|color-mix\(|\bdvh\b|@container'
 ```
 
 ```bash
-rg -n '(?<![\w-])inset\s*:|inset-inline|inset-block|aspect-ratio|:is\(|:where\(|:has\(|color-mix\(|\bdvh\b|@container' src/.vuepress
+rg -n '(?<![\w-])inset\s*:|inset-(inline|block)|(margin|padding|border)-(inline|block)\s*:|(justify-content|align-items|align-content|align-self|justify-items)\s*:\s*(start|end)\b|aspect-ratio|:is\(|:where\(|:has\(|color-mix\(|\bdvh\b|@container' src/.vuepress
 ```
 
 命中不等于要改，先分类：
@@ -84,10 +88,17 @@ rg -n '(?<![\w-])inset\s*:|inset-inline|inset-block|aspect-ratio|:is\(|:where\(|
    - 截图：`chrome.exe --headless --disable-gpu --hide-scrollbars --window-size=1440,900 --virtual-time-budget=15000 --user-data-dir=<临时目录> --screenshot=out.png http://localhost:8080/zh/`
    - headless 必须显式给 `--user-data-dir`，否则会和已打开的实例抢用户目录而失败。
 3. **量尺寸而不是只看截图**：用 `--dump-dom` 加页面脚本打印 `CSS.supports(...)`、`getComputedStyle(el, '::after')`。元素“看不见”常常是 0×0，截图上分不清是没画出来还是尺寸为零。
-4. **真机（麒麟）**：浏览器 UA 里看 `Chrome/86.0.x`，或地址栏进 `chrome://version`。产品版本号（如 10.4.1006.26）不是内核版本号。
+4. **与新版内核逐元素对齐**：本机装了新版 Chrome，可用 `playwright-core`（在 `node_modules` 内）以 `executablePath` 分别指向 `cr86\chrome-win\chrome.exe` 与新版 `chrome.exe`，对同一页面同一视口打印 `getBoundingClientRect()` 和 `getComputedStyle()`，两行并排比 `x / width / padding`。**差异即为低版本丢声明的位置**，比肉眼比对截图可靠。
+5. **真机（麒麟）**：浏览器 UA 里看 `Chrome/86.0.x`，或地址栏进 `chrome://version`。产品版本号（如 10.4.1006.26）不是内核版本号。
 
 ## 已知结论
 
+- **逻辑属性的分界在“简写”上**：86 认识 `margin-inline-start` / `padding-inline-end` / `border-inline-start` 这类长写（69 起即有），但**不认识 `margin-inline` / `padding-inline` / `margin-block` / `padding-block` / `border-inline` 这类简写**（87 才有，与 `inset` 同批落地）。`inset-*` 整组（含 `inset-inline-start`）都是 87，一律要物理兜底。
+- **`justify-content: start|end` 在 86 上“能解析但不生效”**，实测等同 `flex-start`：`CSS.supports('justify-content','end')` 返回 true，所以 `@supports` 也挡不住，只能靠量几何发现。主题 `.vp-navbar-end` 用了 `justify-content: end`，在 960–1100px 区间导航栏本身溢出时，搜索框会被挤到屏幕右外侧、被裁掉。
+- `float: inline-start` 一类逻辑关键字同样不支持，用 `left` / `right` 值。
+- 主题自带的 `margin-inline: auto` + `padding-inline: 2.5rem` 组合用在多个外层容器上（`.vp-toc-placeholder`、面包屑、页脚等），丢弃后容器会少 40px 内边距、宽度随之变化，**位置差异会比视觉感受大**，需按元素逐个补物理属性。
+- **有侧边栏的页面看不出、无侧边栏的页面才暴露**：`.vp-toc-placeholder` 在有侧边栏时被容器的 `padding-inline-start` 顶到位，`margin-inline: auto` 丢了也不明显；无侧边栏页面靠它居中，丢了 TOC 会整体左移 160px（1440 宽下）。修兼容时**两类页面都要量**。
 - 主题 `vuepress-theme-hope` 自身带 `inset`、`:has()` 等写法，**不能改 `node_modules`**，只能在项目样式里用同特异性选择器覆盖。低版本内核会丢弃不认识的声明，所以覆盖是安全的。
 - 全局覆盖入口：`src/.vuepress/styles/index.scss`。
 - 侧边栏模块在 `src/.vuepress/modules/sidebar/`，其中 `styles/sidebar.scss` 与 `styles/components/toggle-sidebar-wrapper.scss` 已做 `inset` 兜底，是同类问题的典型改法。
+- `src/.vuepress/styles/components/toc.scss`、`styles/page-nav.scss`、`styles/components/breadcrumb.scss` 是与主题争同一批元素的覆盖文件，改这些元素时先看它们，别直接改主题。
