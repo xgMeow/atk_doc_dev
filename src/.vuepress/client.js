@@ -29,6 +29,107 @@ defineCatalogInfoGetter((meta) => {
 var is_file_protocol = false;   // 是否是离线模型
 var root_dir = "";              // 用于在离线模式下缓存当前文档所在的文件夹
 
+// 站内跳转时主线程会被新页面的渲染占满，先把加载遮罩画出来、让过这一帧再继续跳，
+// 否则慢页面（公式、大表格）看起来就是“点了没反应”。转圈只用 transform 动画，
+// 由合成层驱动，主线程阻塞期间仍会转。
+const installRouteLoading = (router) => {
+    let layer = null;
+    let pending = null;
+    let failTimer = 0;
+    let token = 0;
+    let first = true;
+
+    const ensureLayer = () => {
+        if (layer && layer.isConnected) return layer;
+        layer = document.createElement("div");
+        layer.className = "atk-route-loading";
+        layer.setAttribute("aria-hidden", "true");
+        const box = document.createElement("div");
+        box.className = "atk-route-loading__box";
+        const spinner = document.createElement("span");
+        spinner.className = "atk-route-loading__spinner";
+        const text = document.createElement("span");
+        text.textContent = "正在加载…";
+        box.appendChild(spinner);
+        box.appendChild(text);
+        layer.appendChild(box);
+        document.body.appendChild(layer);
+        return layer;
+    };
+
+    const hide = (current) => {
+        if (current !== token || !layer) return;
+        clearTimeout(failTimer);
+        layer.classList.remove("is-active");
+    };
+
+    const show = () => {
+        const current = ++token;
+        ensureLayer().classList.add("is-active");
+        clearTimeout(failTimer);
+        failTimer = setTimeout(() => hide(current), 15000);
+        return current;
+    };
+
+    // 等这一帧真正画出来：rAF 之后要再让出一个任务，否则渲染阻塞会把这一帧一起吞掉
+    const afterPaint = () =>
+        new Promise((resolve) => {
+            let done = false;
+            const finish = () => {
+                if (done) return;
+                done = true;
+                resolve();
+            };
+            requestAnimationFrame(() => setTimeout(finish, 0));
+            setTimeout(finish, 100);
+        });
+
+    // 路由确认只代表地址变了：页面组件是异步加载的，要等标题或内容容器换成新的才算真的切完
+    const waitForSwap = (current, contentBefore, textBefore) => {
+        const started = performance.now();
+        const check = () => {
+            if (current !== token) return;
+            const content = document.querySelector(".theme-hope-content");
+            const title = document.querySelector(".vp-page-title h1");
+            const text = title ? title.textContent.trim() : "";
+            const swapped = (content && content !== contentBefore) || (text && text !== textBefore);
+            if (swapped || performance.now() - started > 12000) {
+                // 双 rAF：等新页面这一帧真正画出来再收起
+                requestAnimationFrame(() => requestAnimationFrame(() => hide(current)));
+                return;
+            }
+            requestAnimationFrame(check);
+        };
+        requestAnimationFrame(check);
+    };
+
+    router.beforeEach(async (to, from) => {
+        if (first) {
+            first = false;
+            return;
+        }
+        // 同页锚点不动页面，不提示
+        if (to.path === from.path) return;
+        const current = show();
+        const contentBefore = document.querySelector(".theme-hope-content");
+        const titleBefore = document.querySelector(".vp-page-title h1");
+        pending = { current, contentBefore, textBefore: titleBefore ? titleBefore.textContent.trim() : "" };
+        // 先把进度条画出来，再放行路由；否则同步渲染会把这一帧吞掉
+        await afterPaint();
+    });
+
+    router.afterEach((to, from, failure) => {
+        if (!pending) return;
+        const { current, contentBefore, textBefore } = pending;
+        pending = null;
+        if (failure) {
+            hide(current);
+            return;
+        }
+        waitForSwap(current, contentBefore, textBefore);
+    });
+};
+
 export default defineClientConfig({
   enhance ({ app, router, siteData }) {
     app.component('Catalog', Catalog);
@@ -51,7 +152,12 @@ export default defineClientConfig({
   
     router.afterEach((to) => {
         //console.log("afterEach", {to});
-    }); 
+    });
+
+    // 离线模式的跳转由下面的 beforeResolve 重写路径，这里不接管
+    if (!__VUEPRESS_SSR__ && !is_file_protocol) {
+        installRouteLoading(router);
+    }
 
     router.beforeResolve( async(to, from) => {
         //console.log(Date.now)

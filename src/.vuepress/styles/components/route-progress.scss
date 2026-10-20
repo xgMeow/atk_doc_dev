@@ -1,0 +1,52 @@
+// 用户视线在正文里，顶部细条容易被忽略，改成覆盖全屏的浅色遮罩加居中转圈
+.atk-route-loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.66);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.16s linear, visibility 0.16s linear;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    // 立即出现：渲染一开始就阻塞主线程，渐变会赶不上这一帧
+    transition: none;
+  }
+}
+
+.atk-route-loading__box {
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(20, 40, 90, 0.16);
+  color: #3c3c43;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.atk-route-loading__spinner {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  border: 2px solid rgba(20, 86, 240, 0.2);
+  border-top-color: #1456f0;
+  border-radius: 50%;
+  animation: atk-route-spin 0.8s linear infinite;
+}
+
+@keyframes atk-route-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
