@@ -46,8 +46,8 @@ description: ATK 文档站的浏览器兼容性约束（目标内核 Chromium 86
 
 ## JS 写法规则
 
-- **语法层**：`?.` / `??` 需要 Chrome 80，`??=` 需要 85。构建时 `babel-loader` 的匹配规则是 `test: /\.js$/`，**`.mjs` 不经过 babel**，所以 `src/.vuepress/**/*.mjs` 里写了可选链会原样进产物，低版本内核直接 `SyntaxError`，整站失去交互（页面退化成纯静态多页）。**`.mjs` 里一律不用 `?.` / `??` / `??=`**。
-- **运行时**：`Object.fromEntries`、`String.matchAll` 需要 Chrome 73；`Array.prototype.at` 需要 92、`Object.hasOwn` 需要 93、`structuredClone` 需要 98。目标 86 下不要用后三个。
+- **语法层**：`.mjs` 不走 `babel-loader`（规则是 `test: /\.js$/`），写了什么就原样进产物。基线 86 之内可用的 `?.` / `??`（80）与 `??=`（85）不必改写；**不得使用 87 及以上的语法**（顶层 `await` 89、类静态块 94）。
+- **运行时**：`Object.fromEntries`、`String.matchAll` 需要 Chrome 73，可用。`Array.prototype.at` 需要 92、`Object.hasOwn` 需要 93、`structuredClone` 需要 98，目标 86 下一律不用：取末项写 `list[list.length - 1]`，判自有属性写 `Object.prototype.hasOwnProperty.call(obj, key)`。这类是运行时能力，转译补不上，`.mjs`、`.vue`、`.js` 一视同仁。
 
 ## 注释规范
 
@@ -98,6 +98,7 @@ rg -n '(?<![\w-])inset\s*:|inset-(inline|block)|(margin|padding|border)-(inline|
 - `float: inline-start` 一类逻辑关键字同样不支持，用 `left` / `right` 值。
 - 主题自带的 `margin-inline: auto` + `padding-inline: 2.5rem` 组合用在多个外层容器上（`.vp-toc-placeholder`、面包屑、页脚等），丢弃后容器会少 40px 内边距、宽度随之变化，**位置差异会比视觉感受大**，需按元素逐个补物理属性。
 - **有侧边栏的页面看不出、无侧边栏的页面才暴露**：`.vp-toc-placeholder` 在有侧边栏时被容器的 `padding-inline-start` 顶到位，`margin-inline: auto` 丢了也不明显；无侧边栏页面靠它居中，丢了 TOC 会整体左移 160px（1440 宽下）。修兼容时**两类页面都要量**。
+- **`Array.prototype.at` 会让整页白屏**：命令速查表（`ConnectCommandSummary`）抛 `...at is not a function`，组件渲染中断、页面空白；新版内核正常，问题只在目标内核上暴露。取末项一律写下标。
 - 主题 `vuepress-theme-hope` 自身带 `inset`、`:has()` 等写法，**不能改 `node_modules`**，只能在项目样式里用同特异性选择器覆盖。低版本内核会丢弃不认识的声明，所以覆盖是安全的。
 - 全局覆盖入口：`src/.vuepress/styles/index.scss`。
 - 侧边栏模块在 `src/.vuepress/modules/sidebar/`，其中 `styles/sidebar.scss` 与 `styles/components/toggle-sidebar-wrapper.scss` 已做 `inset` 兜底，是同类问题的典型改法。

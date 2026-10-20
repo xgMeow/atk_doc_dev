@@ -18,6 +18,12 @@ export const isSameOrChildPath = (routePath, directoryPath) =>
 export const getLocalePrefix = (currentPath) =>
   currentPath.startsWith('/en/') ? '/en/' : '/zh/';
 
+// 低版本内核没有 Array.prototype.at，取末段改用下标
+const lastSegment = (path) => {
+  const segments = path.split('/').filter(Boolean);
+  return segments[segments.length - 1] || '';
+};
+
 export const getCategory = (filePath, directoryPath, defaultCategory = '') => {
   const decodedDirectory = decodeURI(directoryPath);
   const decodedRoute = decodeURI(toRoutePath(filePath));
@@ -25,7 +31,7 @@ export const getCategory = (filePath, directoryPath, defaultCategory = '') => {
   if (relativePath.includes('/')) {
     return relativePath.split('/')[0];
   }
-  return decodedDirectory.split('/').filter(Boolean).at(-1) || defaultCategory;
+  return lastSegment(decodedDirectory) || defaultCategory;
 };
 
 // ── Category Name Resolution ──────────────────────
@@ -96,7 +102,7 @@ export const buildCategoryNameMap = (modules, baseDirectory) => {
     // 与 getCategory 相同的 raw name 计算逻辑（文件夹名）
     const decodedDir = decodeURI(dirPath);
     const relativePath = decodedDir.replace(decodedBase, '').replace(/^\//, '').replace(/\/$/, '');
-    const rawName = relativePath || decodedBase.split('/').filter(Boolean).at(-1) || '';
+    const rawName = relativePath || lastSegment(decodedBase);
 
     if (!rawName) continue;
 
