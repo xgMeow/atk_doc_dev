@@ -171,7 +171,10 @@ function releaseObserver() {
 
 /* ---------- 尺寸 ---------- */
 // 不给 height 时按 16:9 自适应正文宽度；给了则固定高度。
-const frameStyle = computed(() => (props.height ? { height: props.height } : {}))
+// 固定高度时同时清掉占位用的 padding-top，否则内边距会叠在高度之上。
+const frameStyle = computed(() =>
+  props.height ? { height: props.height, paddingTop: 0 } : {},
+)
 
 /* ---------- 在新标签页里打开完整界面 ---------- */
 /*
@@ -241,11 +244,26 @@ function openStandalone() {
 .atk-html-demo__frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  min-height: 320px;
+  /* 低版本内核不认 aspect-ratio，用百分比内边距占出 16:9 */
+  height: 0;
+  padding-top: 56.25%;
   background: #f7f9fc;
 }
+@supports (aspect-ratio: 16 / 9) {
+  .atk-html-demo__frame {
+    height: auto;
+    padding-top: 0;
+    min-height: 320px;
+    aspect-ratio: 16 / 9;
+  }
+}
 .atk-html-demo__iframe {
+  /* 父级高度由内边距撑开，iframe 须脱出文档流才能铺满 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: block;
   width: 100%;
   height: 100%;

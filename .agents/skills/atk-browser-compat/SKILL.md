@@ -22,9 +22,9 @@ description: ATK 文档站的浏览器兼容性约束（目标内核 Chromium 86
 | `inset` / `inset-inline` / `inset-block` / `inset-inline-start` / `inset-block-end` 等整组 | 87 | `top` / `right` / `bottom` / `left` 四向长写，逻辑属性另配一条同名物理属性 |
 | `margin-inline` / `margin-block` / `padding-inline` / `padding-block` / `border-inline` / `border-block` **简写** | 87 | 拆成左右、上下物理属性；`margin-inline-start` / `padding-inline-start` / `border-inline-start` 这类**长写** 86 已支持，可保留 |
 | `justify-content` / `align-items` / `align-content` / `align-self` 取 `start` / `end` 关键字 | 新版（86 实测无效） | 一律写 `flex-start` / `flex-end`；`start` / `end` 在 86 上被解析但按 `flex-start` 生效，**内容不溢出时看不出问题，一溢出就错边** |
-| `aspect-ratio` | 88 | 显式 `width` + `height`；内容自适应高度时用 `padding-top` 百分比占位 |
+| `aspect-ratio` | 88 | `height: 0` + `padding-top` 百分比占位（16:9 即 `56.25%`），内部图片 / iframe / 图标改为绝对定位铺满，再在 `@supports (aspect-ratio: 16 / 9)` 内改回 |
 | `:is()` / `:where()` | 88 | 展开成逗号选择器列表 |
-| `:has()` | 105 | 不得承载必需样式，改由 JS 切换 class |
+| `:has()` | 105 | 不得承载必需样式：能改模板的由模板给 class，`:not(:has(...))` 这类无等价写法 |
 | `color-mix()` | 111 | 前置一条纯色 / `rgba()` 兜底声明 |
 | `dvh` / `svh` / `lvh` | 108 | `100vh`，或由 JS 写入 `--vh` 变量 |
 | `@container` 容器查询 | 105 | 媒体查询 |
@@ -37,7 +37,7 @@ description: ATK 文档站的浏览器兼容性约束（目标内核 Chromium 86
 
 1. **布局偏移一律四向长写**，不用 `inset` 简写。`inset: a b` 等价于 `top: a; right: b; bottom: a; left: b`。
 2. **逻辑属性必须配物理兜底**：`left: 0;` 与 `inset-inline-start: 0;` 两条并列。低版本内核丢弃不认识的声明，现代内核以后者为准，两条并存不会冲突。
-3. **宽高比用显式宽高**。若确实需要 `aspect-ratio`，先写死 `width` / `height`，再在 `@supports (aspect-ratio: 1)` 内覆盖。
+3. **宽高比兜底按「内边距占位」写**：`height: 0; padding-top: 56.25%;` 占出 16:9，**里面的图片、iframe、图标必须改成绝对定位**，否则百分比高度参照的是 0 高度内容盒，元素直接塌掉。再用 `@supports (aspect-ratio: 16 / 9)` 把高度改回 `auto`，现代内核上的表现与原来完全一致。
 4. **`:has()` / `:is()` / `:where()` 只能锦上添花**。内核不认识时整条规则被丢弃，若该规则承载必需样式（如暗色模式换图），会直接丢功能。
 5. **`color-mix()` 前面必须有纯色兜底**，两条声明相邻，靠层叠降级。
 6. **`transition` 列表里可以出现低版本内核不认识的属性名**，实测 86 不会因此把整条声明作废（那条只是不动）。真正要留意的是**兜底属性有没有一起写进去**：布局若用 `left` 兜底，列表里也要有 `left`，否则低版本内核上位置是跳变，不是滑动。
@@ -78,6 +78,8 @@ rg -n '(?<![\w-])inset\s*:|inset-(inline|block)|(margin|padding|border)-(inline|
 - 注释里的文字 —— 忽略。
 - 只有简写、没有兜底的 —— 必须改。
 - `:has()` / `:is()` 承载必需样式 —— 必须改。
+- 写在 `@supports` 分支里的现代写法 —— 保留。
+- 全屏浮层（无内容的 `position: fixed` 容器）—— 扫描只会命中 `inset: 0` 一行，看不出后果，**必须到 86 里点开量尺寸**。
 
 ## 验证方法
 
@@ -89,7 +91,8 @@ rg -n '(?<![\w-])inset\s*:|inset-(inline|block)|(margin|padding|border)-(inline|
    - headless 必须显式给 `--user-data-dir`，否则会和已打开的实例抢用户目录而失败。
 3. **量尺寸而不是只看截图**：用 `--dump-dom` 加页面脚本打印 `CSS.supports(...)`、`getComputedStyle(el, '::after')`。元素“看不见”常常是 0×0，截图上分不清是没画出来还是尺寸为零。
 4. **与新版内核逐元素对齐**：本机装了新版 Chrome，可用 `playwright-core`（在 `node_modules` 内）以 `executablePath` 分别指向 `cr86\chrome-win\chrome.exe` 与新版 `chrome.exe`，对同一页面同一视口打印 `getBoundingClientRect()` 和 `getComputedStyle()`，两行并排比 `x / width / padding`。**差异即为低版本丢声明的位置**，比肉眼比对截图可靠。
-5. **真机（麒麟）**：浏览器 UA 里看 `Chrome/86.0.x`，或地址栏进 `chrome://version`。产品版本号（如 10.4.1006.26）不是内核版本号。
+5. **浮层要点开再量**：搜索弹窗、移动端导航抽屉、侧边栏遮罩这些元素只在交互后出现，扫描与整页截图都看不到。用 `page.click()` 打开后打印 `getBoundingClientRect()`：宽或高为 0、或 `y` 落在文档末尾（明显大于视口高度），就是 `inset` 被丢弃、容器塌了。
+6. **真机（麒麟）**：浏览器 UA 里看 `Chrome/86.0.x`，或地址栏进 `chrome://version`。产品版本号（如 10.4.1006.26）不是内核版本号。
 
 ## 已知结论
 
@@ -99,6 +102,10 @@ rg -n '(?<![\w-])inset\s*:|inset-(inline|block)|(margin|padding|border)-(inline|
 - 主题自带的 `margin-inline: auto` + `padding-inline: 2.5rem` 组合用在多个外层容器上（`.vp-toc-placeholder`、面包屑、页脚等），丢弃后容器会少 40px 内边距、宽度随之变化，**位置差异会比视觉感受大**，需按元素逐个补物理属性。
 - **有侧边栏的页面看不出、无侧边栏的页面才暴露**：`.vp-toc-placeholder` 在有侧边栏时被容器的 `padding-inline-start` 顶到位，`margin-inline: auto` 丢了也不明显；无侧边栏页面靠它居中，丢了 TOC 会整体左移 160px（1440 宽下）。修兼容时**两类页面都要量**。
 - **`Array.prototype.at` 会让整页白屏**：命令速查表（`ConnectCommandSummary`）抛 `...at is not a function`，组件渲染中断、页面空白；新版内核正常，问题只在目标内核上暴露。取末项一律写下标。
+- **全屏浮层的 `inset: 0` 是最容易漏的一类**：这类容器自身没有内容，`inset` 一丢就塌成 0×0，或者退回到文档末尾的静态位置，**界面上什么都不出现**，静态扫描和正文截图都看不出来。已修：搜索弹窗 `.search-pro-modal-wrapper` / `.search-pro-mask`（不修则点搜索按钮毫无反应，见 `styles/components/search-modal.scss`）、移动端导航抽屉 `#nav-screen`（不修则抽屉缩成内容大小并压住导航栏，见 `styles/components/navbar.scss`）。同类还有主题的 `.vp-sidebar-mask`，早已在 `modules/sidebar/styles/sidebar.scss` 里四向长写。**改完样式要在 86 里真的点开搜索、移动端菜单、侧边栏遮罩**。
+- **`aspect-ratio` 丢失的后果分两种**：容器里是空内容（图标区）时高度塌成内容高度；容器里是图片时高度改由图片自身比例决定，等于**取消裁切**，同一页里卡片高度跟着图片走，整页高度能差几百像素。典型点位：`CatalogCard.vue` 的 `.card-icon-wrapper`、`HtmlDemo.vue` 的 `.atk-html-demo__frame`（后者还会让 iframe 退回 150px 默认高度，演示区一片空白）。两处都改成 `padding-top: 56.25%` + 内部元素绝对定位 + `@supports` 覆盖。
+- **`:has()` 承载布局时会静默丢样式**：`.example-card:has(.card-thumbnail)` 里是卡片内边距与正文分隔线，86 丢弃后卡片多出 16px 顶边距；改为模板给 `has-thumbnail` 类即可，无需 JS。**`index.scss` 里 `.theme-container:not(...):not(:has(.vp-toc-placeholder)) .vp-page` 没有等价写法**——它按“页面有没有目录”切换右侧留白，86 上整条失效，≥1440 宽的无目录页（各栏目首页、README）正文会比新版内核左移 96px、右侧空出 224px。要彻底对齐只能在客户端按 `.vp-toc-placeholder` 是否存在切 class，尚未处理。
+- `text-underline-offset` / `text-decoration-thickness` 是 87 才有的，只影响下划线的位置与粗细，丢了不影响可用性，可视为装饰。
 - 主题 `vuepress-theme-hope` 自身带 `inset`、`:has()` 等写法，**不能改 `node_modules`**，只能在项目样式里用同特异性选择器覆盖。低版本内核会丢弃不认识的声明，所以覆盖是安全的。
 - 全局覆盖入口：`src/.vuepress/styles/index.scss`。
 - 侧边栏模块在 `src/.vuepress/modules/sidebar/`，其中 `styles/sidebar.scss` 与 `styles/components/toggle-sidebar-wrapper.scss` 已做 `inset` 兜底，是同类问题的典型改法。

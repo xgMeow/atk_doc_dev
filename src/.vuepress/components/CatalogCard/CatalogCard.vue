@@ -272,6 +272,7 @@ const flatModules = computed(() => {
             v-for="(card, cardIndex) in flatModules.docs"
             :key="card.path"
             class="example-card"
+            :class="{ 'has-thumbnail': card.thumbnail }"
             :style="{ '--card-index': cardIndex }"
           >
             <div v-if="showIcon" class="card-icon-wrapper" :class="{ 'has-thumbnail': card.thumbnail }">
@@ -328,6 +329,7 @@ const flatModules = computed(() => {
               v-for="(card, cardIndex) in section.cards"
               :key="card.path"
               class="example-card"
+              :class="{ 'has-thumbnail': card.thumbnail }"
               :style="{ '--card-index': cardIndex }"
             >
               <div v-if="showIcon" class="card-icon-wrapper" :class="{ 'has-thumbnail': card.thumbnail }">
@@ -388,6 +390,7 @@ const flatModules = computed(() => {
               v-for="(card, cardIndex) in section.cards"
               :key="card.path"
               class="example-card"
+              :class="{ 'has-thumbnail': card.thumbnail }"
               :style="{ '--card-index': cardIndex }"
             >
               <div v-if="showIcon" class="card-icon-wrapper" :class="{ 'has-thumbnail': card.thumbnail }">
@@ -732,8 +735,9 @@ img {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  // 低版本内核不认 aspect-ratio，改用百分比内边距占出 16:9
+  height: 0;
+  padding-top: 56.25%;
   background: $clr-icon-bg;
   overflow: hidden;
   flex-shrink: 0;
@@ -790,8 +794,6 @@ img {
 
   &.has-thumbnail {
     width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
     background: $clr-card-border;
     border-radius: 0;
 
@@ -808,7 +810,20 @@ img {
   }
 }
 
+// 支持 aspect-ratio 的内核改回按宽度定高，比例与内边距写法一致
+@supports (aspect-ratio: 16 / 9) {
+  .card-icon-wrapper {
+    height: auto;
+    padding-top: 0;
+    aspect-ratio: 16 / 9;
+  }
+}
+
 .card-thumbnail {
+  // 父级高度由内边距撑开，图片须脱出文档流才能铺满
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -816,7 +831,6 @@ img {
   transition:
     transform 0.7s cubic-bezier(0.17, 0.67, 0.12, 0.99),
     filter 0.5s ease;
-  position: relative;
   z-index: 1;
 
   // 渐变叠加层
@@ -830,8 +844,8 @@ img {
   }
 }
 
-// 缩略图卡片的特殊样式调整
-.example-card:has(.card-thumbnail) {
+// 缩略图卡片的特殊样式调整；低版本内核无 :has()，由模板给出 has-thumbnail 类
+.example-card.has-thumbnail {
   padding-top: 0;
 
   .card-main {
@@ -843,7 +857,11 @@ img {
   width: 28px;
   height: 28px;
   color: $clr-icon-fg;
-  position: relative;
+  // 父级高度由内边距撑开，图标改为绝对定位居中
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -14px 0 0 -14px;
   z-index: 1;
   transition:
     color 0.4s ease,
@@ -993,11 +1011,14 @@ img {
   .card-icon-wrapper:not(.has-thumbnail) {
     width: 48px;
     height: 48px;
+    // 小屏改回固定方形图标，去掉用于占 16:9 的内边距
+    padding-top: 0;
     border-radius: 14px;
   }
   .card-icon {
     width: 22px;
     height: 22px;
+    margin: -11px 0 0 -11px;
   }
   .example-card {
     padding: 1.25rem 1rem 1rem;
@@ -1021,10 +1042,6 @@ img {
   }
   .example-card {
     padding: 1rem 0.875rem 0.75rem;
-
-    &:has(.card-thumbnail) {
-      padding-top: 0;
-    }
   }
   .card-main {
     padding: 0.75rem 1rem 1rem;
