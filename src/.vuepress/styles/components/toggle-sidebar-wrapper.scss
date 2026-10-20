@@ -4,6 +4,7 @@
 .toggle-sidebar-wrapper {
   position: fixed;
   top: 50%;
+  left: var(--sidebar-space);
   inset-inline-start: var(--sidebar-space);
   z-index: 100;
 
@@ -99,6 +100,7 @@ html[data-theme=dark] .toggle-sidebar-wrapper {
 
 // 侧边栏折叠时按钮紧贴左边缘
 .theme-container.sidebar-collapsed .toggle-sidebar-wrapper {
+  left: 0;
   inset-inline-start: 0;
 }
 

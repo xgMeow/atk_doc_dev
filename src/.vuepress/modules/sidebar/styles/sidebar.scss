@@ -2,6 +2,8 @@
   position: fixed;
   top: 0;
   bottom: 0;
+  // 低版本内核不认 inset-inline-start，物理属性兜底
+  left: 0;
   inset-inline-start: 0;
 
   // this prevents footer issue on tablet
@@ -105,7 +107,11 @@
 
 .vp-sidebar-mask {
   position: fixed;
-  inset: 0;
+  // 四向长写，等价 inset: 0。空元素不写偏移会塌成 0×0
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 9;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(4px);
@@ -395,13 +401,17 @@ $sidebar-line-height: 1.5;
   border-radius: 4px;
   transition: background-color 0.2s ease;
   height: $sidebar-item-height;
-  width: auto;
-  aspect-ratio: 1;
+  // 不用 aspect-ratio：低版本内核上宽度会塌成 0
+  width: $sidebar-item-height;
 
   &::after {
     content: "";
     position: absolute;
-    inset: 10%; // 占父元素 80%
+    // 四向长写，等价 inset: 10%（占父元素 80%）
+    top: 10%;
+    right: 10%;
+    bottom: 10%;
+    left: 10%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238f959e' d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/%3E%3C/svg%3E");
     background-size: contain;
     background-position: center;
