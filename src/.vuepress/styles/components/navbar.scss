@@ -168,3 +168,11 @@
 .vp-toggle-navbar-button.is-active:hover .vp-top, .vp-toggle-navbar-button.is-active:hover .vp-middle, .vp-toggle-navbar-button.is-active:hover .vp-bottom{
   background: #75ecff;
 }
+
+// 主题给移动端导航抽屉的是 inset 简写，低版本内核丢弃后抽屉缩成内容大小并压住导航栏
+#nav-screen {
+  top: var(--navbar-height);
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
