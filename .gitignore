@@ -16,7 +16,9 @@ Help
 __pycache__/
 *.pyc
 
-.agents
-
 references/
 plan/
+
+# 技能目录：正文在 .agents/skills（入库），.claude/skills 是指向它的目录联接，不入库。
+# 新克隆仓库后执行一次 scripts/link-skills.ps1 建立联接。
+.claude/skills/
