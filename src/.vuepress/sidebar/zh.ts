@@ -118,8 +118,8 @@ export const zhSidebarConfig = sidebar({
   "/zh/二次开发教程/4-二次开发COMPONENT模式/": "structure",
   "/zh/06-AI助手/": [
     {
-      text: "场景生成智能体",
-      prefix: "场景生成智能体/",
+      text: "智能体",
+      prefix: "智能体/",
       children: "structure",
     },
     {
