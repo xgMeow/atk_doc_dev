@@ -38,6 +38,8 @@
 
 .hint-container.details[open]>summary {
   border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+  // 主题为展开态标题补的 0.5em 下外边距会叠加到正文首段留白上，此处清零，保持与收起态一致
+  margin-bottom: 0;
 }
 
 .hint-container.details>summary {
@@ -59,4 +61,21 @@
 .hint-container.details > div[class*="language-"] pre {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+// ==========================================================================
+// 正文留白 — 以段落开篇、以段落收尾的折叠块
+// 容器自身不设内边距，段落的上下外边距又被主题压缩：首段上方留白远大于末段下方，
+// 表现为「标题下方很空、正文末尾贴边」。此处首段上外边距清零、末段下内边距补齐，
+// 首尾统一为 16px 内边距。
+// 首段用 summary + p 定位而非 :first-of-type：正文以代码块开篇时，其后的段落
+// 仍是同级里第一个 p 元素，会错误地获得这段留白。
+// ==========================================================================
+.hint-container.details > summary + p:not(.hint-container-title) {
+  margin-top: 0;
+  padding-top: 16px;
+}
+
+.hint-container.details > p:not(.hint-container-title):last-child {
+  padding-bottom: 16px;
 }

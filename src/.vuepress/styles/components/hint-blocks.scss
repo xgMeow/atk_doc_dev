@@ -156,13 +156,6 @@
   line-height: 2 !important;
 }
 
-// 标题与正文之间的留白，仅补给紧跟在折叠块标题之后的段落。
-// 不可改用 :first-of-type：正文以代码块开头时，其后段落仍是同级里第一个 p 元素，
-// 会错误地获得这段留白，导致代码块与下方段落间距过大。
-.hint-container.details > summary + p:not(.hint-container-title) {
-  padding-top: 16px;
-}
-
 .hint-container > div:not(.hint-container-title) {
   margin: 10px 20px !important;
   padding: 0;
