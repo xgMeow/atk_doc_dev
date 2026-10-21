@@ -1,3 +1,10 @@
+// 离线版整页重载后，展开与滚动位置要等客户端脚本才恢复。
+// 恢复之前先把侧边栏藏起来，避免首帧画出“未恢复”的状态、下一帧再跳过去（闪烁）。
+// 这个类由离线 HTML 里的内联脚本添加，在线版不会出现。
+html.atk-sidebar-restoring .vp-sidebar {
+  visibility: hidden;
+}
+
 .vp-sidebar {
   position: fixed;
   top: 0;

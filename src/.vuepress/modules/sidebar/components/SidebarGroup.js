@@ -4,6 +4,7 @@ import AutoLink from "@theme-hope/components/AutoLink";
 import HopeIcon from "@theme-hope/components/HopeIcon";
 import SidebarLinks from "@theme-hope/modules/sidebar/components/SidebarLinks";
 import { highlightText, isActiveSidebarItem } from "@theme-hope/modules/sidebar/utils/index";
+import { sidebarGroupKey } from "../persistedGroupState.js";
 import "../styles/sidebar-group.scss";
 
 export default defineComponent({
@@ -90,6 +91,8 @@ export default defineComponent({
                 : null;
 
             return h("section", {
+                // 分组身份写进 DOM：离线 HTML 的内联脚本靠它在首帧前恢复展开状态
+                "data-atk-group": sidebarGroupKey(props.config),
                 class: [
                     "vp-sidebar-group",
                     { "search-matched": isMatched.value }

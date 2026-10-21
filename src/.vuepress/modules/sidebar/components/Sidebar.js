@@ -2,6 +2,13 @@ import { computed, defineComponent, h, nextTick, onMounted, onUnmounted, shallow
 import { usePageData, useRoute } from "vuepress/client";
 import SidebarLinks from "@theme-hope/modules/sidebar/components/SidebarLinks";
 import { useSidebarItems } from "@theme-hope/modules/sidebar/composables/index";
+import {
+    flushSidebarScroll,
+    isOfflineSidebarScroll,
+    readSidebarScroll,
+    sidebarScrollKey,
+    writeSidebarScroll,
+} from "../persistedSidebarScroll.js";
 import { zhSidebarText } from "./zh";
 import { enSidebarText } from "./en";
 import "../styles/sidebar.scss";
@@ -22,20 +29,53 @@ export default defineComponent({
         const isEn = computed(() => page.value.path.startsWith("/en/"));
         const t = computed(() => (isEn.value ? enSidebarText : zhSidebarText));
 
+        // 离线版整页重载后恢复侧边栏的滚动位置：同一套目录树（语言 + 顶层条目）共用一条记录
+        const scrollSignature = computed(() => {
+            const items = sidebarItems.value || [];
+            return `${isEn.value ? "en" : "zh"}|${items
+                .map((item) => item.prefix || item.link || item.text || "")
+                .join("|")}`;
+        });
+
+        const handleSidebarScroll = () => {
+            if (!sidebar.value) return;
+            writeSidebarScroll(scrollSignature.value, sidebar.value.scrollTop);
+        };
+
         // 导航后把当前页面条目滚进侧边栏可视区
         let stopScrollWatch = null;
 
         onMounted(() => {
             if (typeof window === "undefined") return;
+            // 离线版整页重载会丢掉侧边栏自身的滚动位置，先把滚动监听挂上
+            if (isOfflineSidebarScroll()) {
+                sidebar.value?.addEventListener("scroll", handleSidebarScroll, { passive: true });
+                window.addEventListener("pagehide", flushSidebarScroll);
+            }
+            let firstRun = true;
             // 同时监听 path：SPA 跳转到别的页面时 hash 通常没变，只监听 hash 不会触发
             stopScrollWatch = watch(() => [route.path, route.hash], async () => {
                 // 等分组展开状态和 DOM 更新完，否则目标还藏在 display:none 里，rect 全是 0
                 await nextTick();
+                // 首次挂载先把滚动位置滚回去。分组恢复是在子组件的 mounted 里改状态、
+                // 由同一轮 flush 补到 DOM 上的，nextTick 之后高度已是最终值；
+                // 这里不能再等 rAF/定时器——那会让浏览器先画出未恢复的位置再跳过去，
+                // 看起来就是“闪一下”。
+                if (firstRun) {
+                    firstRun = false;
+                    if (isOfflineSidebarScroll()) {
+                        const saved = readSidebarScroll(scrollSignature.value);
+                        if (saved !== null && sidebar.value) {
+                            sidebar.value.scrollTop = saved;
+                        }
+                    }
+                }
                 // 侧边栏链接不带 #锚点，不能用 href + hash 去选，直接取当前激活项
                 const activeSidebarItem = document.querySelector(".vp-sidebar a.vp-sidebar-page.active");
                 if (!activeSidebarItem || !sidebar.value) return;
                 const { top: sidebarTop, height: sidebarHeight } = sidebar.value.getBoundingClientRect();
                 const { top: activeSidebarItemTop, height: activeSidebarItemHeight } = activeSidebarItem.getBoundingClientRect();
+                // 保存的位置看不到激活项时（例如从顶部导航跳到别的章节），仍把激活项滚进来
                 if (activeSidebarItemTop < sidebarTop)
                     activeSidebarItem.scrollIntoView({ block: "start" });
                 else if (activeSidebarItemTop + activeSidebarItemHeight > sidebarTop + sidebarHeight)
@@ -45,6 +85,11 @@ export default defineComponent({
 
         onUnmounted(() => {
             stopScrollWatch?.();
+            if (typeof window !== "undefined") {
+                sidebar.value?.removeEventListener("scroll", handleSidebarScroll);
+                window.removeEventListener("pagehide", flushSidebarScroll);
+                flushSidebarScroll();
+            }
         });
 
         // 全部折叠
@@ -196,6 +241,8 @@ export default defineComponent({
             key: "sidebar",
             id: "sidebar",
             class: "vp-sidebar",
+            // 当前这套目录树的滚动记录键：离线 HTML 的内联脚本靠它在首帧前恢复滚动位置
+            "data-atk-scroll-key": sidebarScrollKey(scrollSignature.value),
         }, [
             renderSearchBox(t.value),
             renderToolbar(t.value),
