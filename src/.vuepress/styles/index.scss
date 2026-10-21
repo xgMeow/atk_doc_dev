@@ -584,14 +584,19 @@ a {
     padding-inline-end: calc(var(--toc-gap) + var(--toc-width));
   }
 
-  // 3. 页面实际没有目录（没有 h2 及以下标题，或 frontmatter 关掉了 toc）时，
-  //    主题仍会挂 .has-toc，但 .vp-toc-placeholder 根本不会渲染 —— 此时不必给右侧留白，
-  //    正文居中即可。:has() 不支持的老浏览器会整条规则失效，退回上面的行为，不影响可用性。
-  .theme-container:not(.no-sidebar):not(.sidebar-collapsed):not(
-      :has(.vp-toc-placeholder)
-    )
-    .vp-page {
+  // 3. 页面没有目录时（构建期在容器上写入 atk-no-toc），右侧不必为目录留白，
+  //    正文在侧边栏右侧的整块区域里居中。主题的 .has-toc 只反映 frontmatter 开关，
+  //    看不出页面有没有标题；目标内核没有 :has()，改由容器类判断。
+  .theme-container.atk-no-toc:not(.no-sidebar):not(.sidebar-collapsed) .vp-page {
+    // 低版本内核不认 padding-inline-end，物理属性兜底
+    padding-right: 2rem;
     padding-inline-end: 2rem;
+  }
+
+  // 侧边栏折叠时正文列左留白为 0，无目录页面右侧同样不留白
+  .theme-container.atk-no-toc.sidebar-collapsed .vp-page {
+    padding-right: 0;
+    padding-inline-end: 0;
   }
 }
 

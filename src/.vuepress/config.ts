@@ -115,6 +115,16 @@ export const useConfig = ({type, plat=""}) => {
         thumbnail: page.frontmatter.thumbnail,
         icon: page.frontmatter.icon,
       }
+      // 没有标题（或关掉目录）的页面，主题不会渲染目录，正文右侧也不该为目录留白。
+      // 目标内核不支持 :has()，样式里判断不了目录是否存在，这里在构建期把结果写成容器类。
+      if (!page.headers.length || page.frontmatter.toc === false) {
+        page.frontmatter.containerClass = [
+          page.frontmatter.containerClass,
+          "atk-no-toc",
+        ]
+          .filter(Boolean)
+          .join(" ")
+      }
     },
     shouldPrefetch: false,
     theme: useHopeTheme({type, plat}),

@@ -2,7 +2,7 @@
 
 // PC 端无侧边栏时，为右侧 TOC 预留空间
 @media (min-width: 1440px) {
-  .theme-container.no-sidebar.has-toc .vp-page {
+  .theme-container.no-sidebar.has-toc:not(.atk-no-toc) .vp-page {
     padding-inline-end: 16rem;
   }
 }
