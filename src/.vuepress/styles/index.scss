@@ -48,7 +48,6 @@ a strong {
 
 @import "search.scss";
 
-// 主题的 kbd 用 margin-inline 撑间距，低版本内核不认，物理属性兜底
 kbd {
   margin-left: 0.125rem;
   margin-right: 0.125rem;
@@ -103,10 +102,8 @@ mjx-container {
 
 .theme-hope-content mjx-container[display="true"] > svg {
   display: block;
-  // 低版本内核不认 margin-inline 简写，物理属性兜底
   margin-left: auto;
   margin-right: auto;
-  margin-inline: auto;
 }
 
 #app{
@@ -243,13 +240,21 @@ h3 {
   padding-top: 0;
 }
 .theme-container.sidebar-collapsed .vp-page {
-  padding-inline-start: 0;
+  padding-left: 0;
 }
 .theme-container.no-sidebar .vp-page {
   // 低版本内核不认 padding-inline 简写，物理属性兜底
   padding-left: 0;
   padding-right: 0;
   padding-inline: 0;
+}
+
+// 主题在移动端断点用 padding-inline 简写清零，低版本内核不认，物理属性兜底
+@media (max-width: 719px) {
+  .theme-container .vp-page {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 h1 {

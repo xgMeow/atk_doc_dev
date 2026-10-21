@@ -751,7 +751,6 @@ img {
   &::before {
     content: '';
     position: absolute;
-    // 四向长写，等价 inset: 0
     top: 0;
     right: 0;
     bottom: 0;
@@ -768,7 +767,6 @@ img {
   &::after {
     content: '';
     position: absolute;
-    // 四向长写，等价 inset: 0
     top: 0;
     right: 0;
     bottom: 0;

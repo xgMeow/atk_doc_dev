@@ -9,13 +9,11 @@
   padding-right: 2rem;
 }
 
-// 主题的搜索框占位符用 margin-inline 撑间距，低版本内核不认，物理属性兜底
 .search-pro-placeholder {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
 
-// 主题给弹窗外层用的是 inset: 0，低版本内核丢弃后容器塌成 0×0，弹窗按百分比算出来是 0
 .search-pro-modal-wrapper {
   top: 0;
   right: 0;
@@ -39,10 +37,8 @@
   align-items: center;
   box-sizing: content-box;
   height: 1.25rem;
-  // 低版本内核不认 margin-inline 简写，物理属性兜底
   margin-left: 1rem;
   margin-right: 0;
-  margin-inline: 1rem 0;
   padding: 0.5rem;
   border: none;
   background: var(--vp-bgl);
@@ -65,10 +61,8 @@
   background: var(--vp-bgl);
   display: inline-block;
   min-width: 1em;
-  // 低版本内核不认 margin-inline 简写，物理属性兜底
   margin-left: 0.125rem;
   margin-right: 0.125rem;
-  margin-inline: 0.125rem;
   padding: 0.25rem;
   border: 1px solid var(--vp-brc);
   border-radius: 4px;

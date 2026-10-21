@@ -6,10 +6,8 @@
 
   max-width: var(--content-width, 740px);
   min-height: 2rem;
-  // 低版本内核不认 margin-inline / padding-inline / padding-block 简写，物理属性兜底
   margin-left: auto;
   margin-right: auto;
-  margin-inline: auto;
   margin-top: 0;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -59,7 +57,7 @@
     text-align: start;
 
     .icon {
-      margin-inline-end: 0.25em;
+      margin-right: 0.25em;
       font-size: 1em;
     }
 
@@ -73,7 +71,7 @@
     text-align: end;
 
     .icon {
-      margin-inline-start: 0.25em;
+      margin-left: 0.25em;
       font-size: 1em;
     }
 

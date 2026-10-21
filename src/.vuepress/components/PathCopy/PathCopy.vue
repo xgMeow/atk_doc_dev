@@ -250,7 +250,6 @@ onBeforeUnmount(() => {
 
 .path-popover::before {
   position: absolute;
-  /* 四向长写，等价 inset: 0 */
   top: 0;
   right: 0;
   bottom: 0;

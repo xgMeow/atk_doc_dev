@@ -95,7 +95,7 @@
   }
 
   .icon {
-    margin-inline-end: 0.25em;
+    margin-right: 0.25em;
     font-size: 1em;
   }
 
@@ -107,7 +107,6 @@
 
 .vp-sidebar-mask {
   position: fixed;
-  // 四向长写，等价 inset: 0。空元素不写偏移会塌成 0×0
   top: 0;
   right: 0;
   bottom: 0;
@@ -376,7 +375,7 @@ $sidebar-line-height: 1.5;
 
 // 组内 link：在原缩进 0.75rem 基础上叠加 sidebar-gap 左间距
 .vp-sidebar-group .vp-sidebar-link {
-  margin-inline-start: calc(0.75rem + $sidebar-gap);
+  margin-left: calc(0.75rem + $sidebar-gap);
   width: calc(100% - 0.75rem - 2 * $sidebar-gap);
   padding-top: 0;
   padding-bottom: 0;
@@ -407,7 +406,6 @@ $sidebar-line-height: 1.5;
   &::after {
     content: "";
     position: absolute;
-    // 四向长写，等价 inset: 10%（占父元素 80%）
     top: 10%;
     right: 10%;
     bottom: 10%;
