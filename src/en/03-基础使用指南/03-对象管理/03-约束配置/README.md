@@ -24,7 +24,7 @@ Constraints describe the access conditions between two objects. The constraint p
 
 - **Central Body**: The body that the analysis object orbits or on which it is located; for example, the central body of an Earth-orbiting satellite is the Earth. Altitude is measured relative to it, and the line-of-sight constraint and the terrain mask also use it to determine obstruction. The “Additional Central Bodies” in Sun Constraints are bodies specified separately from it, used to determine whether other bodies such as the Moon block the access path.
 
-- **Ground Object**: An object located on the surface of the central body, such as a facility, ground vehicle, or ship. Local elevation angles such as the Sun ground elevation angle are defined in the local LH (local horizontal) coordinate system of the analysis object; when the analysis object is a ground object, the reference is the local horizontal plane of the ground where that object is located.
+- **Ground Object**: An object located on the surface of the central body, such as a facility, GroundVehicle, or ship. Local elevation angles such as the Sun ground elevation angle are defined in the local LH (local horizontal) coordinate system of the analysis object; when the analysis object is a ground object, the reference is the local horizontal plane of the ground where that object is located.
 
 ## Opening Constraints
 

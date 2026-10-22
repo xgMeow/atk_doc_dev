@@ -1,5 +1,5 @@
 ---
-title: Coverage Definition
+title: CoverageDefinition
 index: false
 ---
 

@@ -13,7 +13,7 @@ thumbnail: '/zh/02-案例教程/media/3.12RPO案例/cover.png'
 
 To better provide satellite services (repair, refueling, etc.), pre-contact observation fly-around is essential.
 
-This example simulates an on-orbit servicing observation mission for a geosynchronous satellite, using a teardrop fly-around pattern.
+This example simulates a fly-around observation mission performed before the on-orbit servicing of a geosynchronous satellite, using the teardrop fly-around mode.
 
 ## Mission Control Sequence Description
 
