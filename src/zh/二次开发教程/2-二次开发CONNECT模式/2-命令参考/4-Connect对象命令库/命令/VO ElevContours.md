@@ -56,10 +56,6 @@ VO */Satellite/ERS1 ElevContours On ShowCones Off ShowFill On FillTranslucency 5
 
 :::
 
-::: warning 注意
-原始资料中关于 `VO ElevContours` 与 `Graphics ElevContours` 分工的说明**互相矛盾**：本命令的说明文字既写「在 **3D 窗口**中开关仰角轮廓线」，又写「要在 3D 窗口中真正设置轮廓线，请使用 `Graphics ElevContours` 命令」；而 [Graphics ElevContours](./Graphics%20ElevContours.md) 自身的说明明确写的是 **2D Graphics window**（二维图形窗口）。两者**未能调和**，实际分工待开发确认。
-:::
-
 ::: tip 相关参考
 
 - [Graphics ElevContours](./Graphics%20ElevContours.md)：在二维图形窗口中显示仰角轮廓线

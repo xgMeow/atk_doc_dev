@@ -34,13 +34,12 @@ Graphics <ObjectPath> ElevContours {AddMethod} [<Parameters>]
 | `Remove` | `<LevelValue>` | 删除指定 `<LevelValue>` 所对应的那条轮廓线。 |
 | `RemoveAll` | 无 | 删除**全部**轮廓线。 |
 | `LabelAngle` | `<Angle>` | 为**已有**的全部轮廓线设置标注角度，用以决定文字和／或距离标注沿轮廓线的显示位置。`<Angle>` 取 `0`～`359` 度，顺时针；默认为 `180` 度，即 6 点钟位置。 |
-| `Fill` | `{On \| Off} [{FillStyle}]` | 取 `On` 时，把**范围**轮廓线以填充多边形绘制在中心天体表面。`{FillStyle}` 可取 `Solid`、`VerticalStripe`、`HorizontalStripe`、`DiagonalStripe1`、`DiagonalStripe2`、`Hatch`、`DiagonalHatch`、`Screen`；仅当同时取 `On` 时才能给出 `{FillStyle}`。 |
+| `Fill` | `{On \| Off} [{FillStyle}]` | 取 `On` 时，把**仰角**轮廓线以填充多边形绘制在中心天体表面。`{FillStyle}` 可取 `Solid`、`VerticalStripe`、`HorizontalStripe`、`DiagonalStripe1`、`DiagonalStripe2`、`Hatch`、`DiagonalHatch`、`Screen`；仅当同时取 `On` 时才能给出 `{FillStyle}`。 |
 | `FillTranslucency` | `<Value>` | 设置填充的半透明度，`<Value>` 取 `0.0`～`100.0`。 |
 
 ::: warning 注意
 - `Remove`：若指定的分级不存在，本命令会返回 **Ack**，并**不做任何改动**。
 - `LabelAngle`：调用本命令**之后**新增的轮廓线，其标注角度仍为默认的 `180`。
-- 原始资料中 `Fill` 一行的说明写的是「把**范围**轮廓线……绘制」，与本命令的仰角轮廓线不符，**已按原文保留**。
 :::
 
 `<LevelValue>` 与 `<Start> <Stop> <Step>` 的取值均以**度**为单位，合法的仰角轮廓线分级取 `0.0`～`90.0` 度。用 `StartStop` 方式输入分级时，**即使给出的分级非法，本命令也不会返回 Nack**，只是**只绘制其中合法的分级**。

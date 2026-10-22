@@ -73,11 +73,6 @@ SetConstraint <ObjectPath> {ConstraintName} <Parameters>
 当输入 `AzimuthAngle` 值时，最大值和最小值必须同时输入。
 :::
 
-::: warning 原始资料差异
-- 原始资料中 `{ConstraintName}` 的大小写不统一（如 `fieldofview` 与 `FieldOfView` 并存），此处统一为 `FieldOfView`。
-- 原始资料中该命令的语法，部分对象写作 `{ConstraintName} <Parameters>`，行星对象写作 `{ConstraintName} {State}`，此处统一为 `<Parameters>`。
-:::
-
 ## 适用对象
 
 传感器、信号发射器、卫星、地面站、导弹、火箭、船、行星、车辆、链路接收器、飞机
