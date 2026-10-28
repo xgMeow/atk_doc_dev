@@ -94,7 +94,7 @@ Primary、PrimaryMulti、Secondary、SecondaryMulti 均用于增删目标，取�
 | 对象截断路径 | 场景中已存在的对象，须用双引号括起。 | "Satellite/Satellite1" |
 | 文件全路径 | 目标库文件（.tce 或 .tle），须用双引号括起。ATK 自带的 TLE 库位于安装目录下的 <PathCopy :entry="tleDatabaseDir" /> 目录中。 | "D:\ProgramTool\ATK-4.2.0-alpha.2\AstroData\Database\Satellite\atkAllTLE.tce" |
 
-两种写法中的路径**均不作校验**：添加场景中并不存在的对象、乃至指定一个并不存在的文件，命令同样返回成功，路径的有效性需自行保证。
+两种写法中的路径**均不作校验**：添加场景中并不存在的对象、乃至指定一个并不存在的文件，命令同样返回成功，但**参数不会设置成功**，列表中的该项只是一条无效路径，路径的有效性需自行保证。
 
 ### 目标库文件格式
 

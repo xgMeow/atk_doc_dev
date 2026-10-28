@@ -94,7 +94,7 @@ Target paths may be written in either of the following two ways:
 | Truncated object path | An object that already exists in the scenario, which must be enclosed in double quotes. | "Satellite/Satellite1" |
 | Full file path | A target library file (.tce or .tle), which must be enclosed in double quotes. The TLE library shipped with ATK resides in the <PathCopy :entry="tleDatabaseDir" /> directory under the installation directory. | "D:\ProgramTool\ATK-4.2.0-alpha.2\AstroData\Database\Satellite\atkAllTLE.tce" |
 
-Paths in both forms **are not validated**: adding an object that does not exist in the scenario, or even specifying a file that does not exist, still returns success, and the validity of the path must be ensured by the caller.
+Paths in both forms **are not validated**: adding an object that does not exist in the scenario, or even specifying a file that does not exist, still returns success, but **the parameters are not set successfully**; the entry in the list is merely an invalid path, and the validity of the path must be ensured by the caller.
 
 ### Target Library File Formats
 
