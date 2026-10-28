@@ -17,7 +17,7 @@ AddAttitude <ObjectPath> AxesYPR "<AxesPath>" "<StartTime>" <seqFlag> <Yaw> <Pit
 ## 补充说明
 
 - `<AxesPath>` 为姿态所参考的 Axes 对象路径，须用双引号括起来。
-- `<seqFlag>` 为旋转顺序，含义与 [AddAttitude YPR](./AddAttitude%20YPR.md) 的 `{Sequence}` 相同，有效值为 123、132、213、231、312、321。
+- `<seqFlag>` 为旋转顺序，含义与 [AddAttitude YPR](./AddAttitude%20YPR.md) 的 `{Sequence}` 相同，有效值为 121、123、131、132、212、213、231、232、312、313、321、323。
 - `<Yaw>`、`<Pitch>`、`<Roll>` 依次为偏航角、俯仰角、滚转角。
 - 角度值按当前 Connect 的 `Angle` 单位输入，默认为 deg。
 - `<StartTime>` 格式设置请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md)。

@@ -17,7 +17,7 @@ AddAttitude <ObjectPath> AxesYPR "<AxesPath>" "<StartTime>" <seqFlag> <Yaw> <Pit
 ## Additional Notes
 
 - `<AxesPath>` is the path of the Axes object that the attitude references and must be enclosed in double quotes.
-- `<seqFlag>` is the rotation sequence; its meaning is the same as `{Sequence}` in [AddAttitude YPR](./AddAttitude%20YPR.md), and the valid values are 123, 132, 213, 231, 312, 321.
+- `<seqFlag>` is the rotation sequence; its meaning is the same as `{Sequence}` in [AddAttitude YPR](./AddAttitude%20YPR.md), and the valid values are 121, 123, 131, 132, 212, 213, 231, 232, 312, 313, 321, 323.
 - `<Yaw>`, `<Pitch>`, and `<Roll>` are the yaw angle, pitch angle, and roll angle in order.
 - Angle values are entered in the `Angle` unit of the current Connect; the default is deg.
 - `<StartTime>` format settings: see [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md).
