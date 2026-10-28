@@ -46,7 +46,7 @@ The command consists of three parts: the **command name** ACAT, the **object pat
 
 **One ACAT command sets only one parameter.** For example, when ACAT */AdvCat/AdvCat1 Threshold 50000 PntToPnt On is sent, only the leading Threshold takes effect and the PntToPnt that follows is ignored. To set several parameters, send several commands, each repeating the object path. The following two commands set one parameter each:
 
-```atk-command
+```
 ACAT */AdvCat/AdvCat1 Threshold 50000
 ACAT */AdvCat/AdvCat1 PntToPnt On
 ```
@@ -104,7 +104,7 @@ Primary and secondary targets may reference target library files in either of tw
 
 In the multi-target form, **multiple targets can only be separated by spaces**. When commas or semicolons are used, ATK reports no error but stores the whole string as **one** target path, so that none of those targets is actually added, for example:
 
-```atk-command
+```
 ACAT */AdvCat/AdvCat1 PrimaryMulti Add "Satellite/Satellite2,Satellite/Satellite3"
 ```
 
@@ -116,7 +116,7 @@ In the example above, the following single path is recorded in the list:
 
 It must be changed to space separation:
 
-```atk-command
+```
 ACAT */AdvCat/AdvCat1 PrimaryMulti Add "Satellite/Satellite2 Satellite/Satellite3"
 ```
 
@@ -174,7 +174,7 @@ New objects have ApogeePerigee and Time **enabled by default**, and these filter
 
 **Each filter must be set with two separate commands**: one gives the filter name and On or Off to determine whether it is enabled, and the other gives the filter name and a threshold value to modify the threshold. The reason is that **one command processes only the word that comes first**, for example in PreFilters Time Off 555 only Off takes effect and 555 is ignored. Example of the two commands:
 
-```atk-command
+```
 ACAT */AdvCat/AdvCat1 PreFilters OutOfDate On
 ACAT */AdvCat/AdvCat1 PreFilters OutOfDate 2592000
 ```

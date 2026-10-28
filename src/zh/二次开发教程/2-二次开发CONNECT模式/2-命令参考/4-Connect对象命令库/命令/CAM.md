@@ -147,7 +147,7 @@ CAM * DistThreshold EquivalFactor <Value>
 
 对应自然交会模块的计算。
 
-```atk-command
+```
 CAM * Compute CloseAnalysis
 ```
 
@@ -267,7 +267,7 @@ CAM * Compute MVUDa3s
 
 将各分析结果另存为文件。
 
-```atk-command
+```
 CAM * SaveAs CloseAnalysis
 CAM * SaveAs CAMEnum
 CAM * SaveAs ManeuverVerification

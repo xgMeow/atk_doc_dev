@@ -147,7 +147,7 @@ The equivalent distance is computed as $s_{k}=\max \left(d_{k}/k,\left|R_{k}\rig
 
 Corresponds to the computation of the Close Approach Analysis module.
 
-```atk-command
+```
 CAM * Compute CloseAnalysis
 ```
 
@@ -267,7 +267,7 @@ For each input, both the mean (`Mean`) and the standard deviation (`SD`) must be
 
 Saves each analysis result to a file.
 
-```atk-command
+```
 CAM * SaveAs CloseAnalysis
 CAM * SaveAs CAMEnum
 CAM * SaveAs ManeuverVerification

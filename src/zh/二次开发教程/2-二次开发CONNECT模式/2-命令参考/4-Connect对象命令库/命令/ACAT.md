@@ -46,7 +46,7 @@ ACAT <AdvCatObjPath> <Option> <Parameters>
 
 **一条 ACAT 命令仅设置一个参数。** 例如发送 ACAT */AdvCat/AdvCat1 Threshold 50000 PntToPnt On 时，只有排在首位的 Threshold 生效，其后的 PntToPnt 被忽略。需设置多个参数时，应分多条命令发送，每条命令均须重复书写对象路径。下列两条命令分别设置一个参数：
 
-```atk-command
+```
 ACAT */AdvCat/AdvCat1 Threshold 50000
 ACAT */AdvCat/AdvCat1 PntToPnt On
 ```
@@ -104,7 +104,7 @@ Primary、PrimaryMulti、Secondary、SecondaryMulti 均用于增删目标，取�
 
 多目标写法中，**多个目标之间只能以空格分隔**。以逗号或分号分隔时，ATK 不报错，而是把整串当作**一个**目标路径存入列表，这些目标实际一个也没有加入，例如：
 
-```atk-command
+```
 ACAT */AdvCat/AdvCat1 PrimaryMulti Add "Satellite/Satellite2,Satellite/Satellite3"
 ```
 
@@ -116,7 +116,7 @@ ACAT */AdvCat/AdvCat1 PrimaryMulti Add "Satellite/Satellite2,Satellite/Satellite
 
 须改为以空格分隔：
 
-```atk-command
+```
 ACAT */AdvCat/AdvCat1 PrimaryMulti Add "Satellite/Satellite2 Satellite/Satellite3"
 ```
 
@@ -174,7 +174,7 @@ Primary Add "Satellite/Satellite1" HardBodyRadius 20 Fixed 21000.0 11000.0 6000.
 
 **每个滤波器须分别用两条命令设置**：一条给出滤波器名与 On 或 Off 决定是否启用，另一条给出滤波器名与门限值修改门限。原因是**一条命令只处理排在最前的一个词**，例如 PreFilters Time Off 555 中只有 Off 生效，555 被忽略。两条命令的示例：
 
-```atk-command
+```
 ACAT */AdvCat/AdvCat1 PreFilters OutOfDate On
 ACAT */AdvCat/AdvCat1 PreFilters OutOfDate 2592000
 ```
