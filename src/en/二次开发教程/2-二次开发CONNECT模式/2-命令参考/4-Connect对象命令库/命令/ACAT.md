@@ -18,7 +18,7 @@ Sets the parameters of an **AdvCat** (AdvCat) object and triggers the computatio
 
     All subsequent settings apply to that object, whose object path is */AdvCat/AdvCat1. When no object has been created first, all ACAT commands return NACK.
 
-- The objects or files referenced by the primary and secondary targets must already exist; see "Target List Parameter Values" below.
+- The objects or files referenced by the primary and secondary targets must already exist; target library files support the .tce and .tle formats. For how to specify target lists, see "Target List Parameter Values" below.
 
 - **Before running the computation and reading reports, execute Reset of the [Animate](./Animate.md) command so that each object participating in the computation generates ephemeris data**:
 
@@ -92,9 +92,13 @@ Target paths may be written in either of the following two ways:
 | Form | Meaning | Example |
 | --- | --- | --- |
 | Truncated object path | An object that already exists in the scenario, which must be enclosed in double quotes. | "Satellite/Satellite1" |
-| Full file path | A target library file (such as a TLE library .tce), which must be enclosed in double quotes. The TLE library shipped with ATK resides in the <PathCopy :entry="tleDatabaseDir" /> directory under the installation directory. | "D:\ProgramTool\ATK-4.2.0-alpha.2\AstroData\Database\Satellite\atkAllTLE.tce" |
+| Full file path | A target library file (.tce or .tle), which must be enclosed in double quotes. The TLE library shipped with ATK resides in the <PathCopy :entry="tleDatabaseDir" /> directory under the installation directory. | "D:\ProgramTool\ATK-4.2.0-alpha.2\AstroData\Database\Satellite\atkAllTLE.tce" |
 
 Paths in both forms **are not validated**: adding an object that does not exist in the scenario, or even specifying a file that does not exist, still returns success, and the validity of the path must be ensured by the caller.
+
+### Target Library File Formats
+
+Primary and secondary targets may reference target library files in either of two formats, .tce or .tle; both contain TLE two-line elements. A .tce file is a TLE target library file of ATK that collects an entire satellite catalog, while a .tle file is a TLE file that may contain one or more targets.
 
 ### Separators for Multiple Targets
 

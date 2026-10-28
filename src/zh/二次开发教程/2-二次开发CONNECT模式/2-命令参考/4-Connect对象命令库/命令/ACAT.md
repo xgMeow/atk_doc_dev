@@ -18,7 +18,7 @@ groups: [高级接近分析]
 
     后续所有设置均作用于该对象，其对象路径为 */AdvCat/AdvCat1。未先创建对象时，所有 ACAT 命令均返回 NACK。
 
-- 主目标、次目标所引用的对象或文件须已存在，参见下文「目标列表参数取值」。
+- 主目标、次目标所引用的对象或文件须已存在；目标库文件支持 .tce 与 .tle 两种格式。目标列表的取值方式参见下文「目标列表参数取值」。
 
 - **在执行计算与读取报告之前，须先执行 [Animate](./Animate.md) 命令的 Reset，令各参与计算的对象生成星历数据**：
 
@@ -92,9 +92,13 @@ Primary、PrimaryMulti、Secondary、SecondaryMulti 均用于增删目标，取�
 | 写法 | 含义 | 示例 |
 | --- | --- | --- |
 | 对象截断路径 | 场景中已存在的对象，须用双引号括起。 | "Satellite/Satellite1" |
-| 文件全路径 | 目标库文件（如 TLE 库 .tce），须用双引号括起。ATK 自带的 TLE 库位于安装目录下的 <PathCopy :entry="tleDatabaseDir" /> 目录中。 | "D:\ProgramTool\ATK-4.2.0-alpha.2\AstroData\Database\Satellite\atkAllTLE.tce" |
+| 文件全路径 | 目标库文件（.tce 或 .tle），须用双引号括起。ATK 自带的 TLE 库位于安装目录下的 <PathCopy :entry="tleDatabaseDir" /> 目录中。 | "D:\ProgramTool\ATK-4.2.0-alpha.2\AstroData\Database\Satellite\atkAllTLE.tce" |
 
 两种写法中的路径**均不作校验**：添加场景中并不存在的对象、乃至指定一个并不存在的文件，命令同样返回成功，路径的有效性需自行保证。
+
+### 目标库文件格式
+
+主目标、次目标均可引用目标库文件，格式支持 .tce 与 .tle 两种，两者内容均为 TLE 两行根数：.tce 为 ATK 的 TLE 目标库文件，汇集整个卫星编目；.tle 为 TLE 文件，可容纳一个或多个目标。
 
 ### 多目标的分隔符
 
