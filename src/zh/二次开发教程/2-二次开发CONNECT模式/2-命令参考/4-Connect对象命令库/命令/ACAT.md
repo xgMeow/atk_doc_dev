@@ -83,7 +83,7 @@ Primary、PrimaryMulti、Secondary、SecondaryMulti 均用于增删目标，取�
 | `Add "<Path>" {AdditionalParams}` | 单目标写法。仅可添加一个目标，附加参数**不可省略**，省略后返回 NACK。 |
 | `Add "<Path>" [{AdditionalParams}]` | 多目标写法。目标路径书写于**同一对引号之内**，多个目标以空格分隔，可一次全部添加；附加参数可省略，省略时该目标的三轴半长与包络球半径均记为 0。 |
 | Remove | 从列表中移除目标。**仅在单目标写法（Primary、Secondary）上生效**；以 PrimaryMulti、SecondaryMulti 发送 Remove 时命令返回成功，但目标并未从列表中移除。 |
-| RemoveAll | 移除列表中的全部目标。**仅 Primary RemoveAll 可用**；Secondary、PrimaryMulti、SecondaryMulti 的 RemoveAll 均返回 NACK。 |
+| RemoveAll | 移除列表中的全部目标。**仅在单目标写法（Primary、Secondary）上可用**；以 PrimaryMulti、SecondaryMulti 发送 RemoveAll 时返回 NACK。 |
 
 ### 目标路径写法
 
@@ -257,13 +257,14 @@ ACAT */AdvCat/AdvCat1 ConjTcaMode GlobalPlusLocal
 
 :::
 
-::: details open **清空主目标列表**
+::: details open **清空主目标、次目标列表**
 
 ```
 ACAT */AdvCat/AdvCat1 Primary RemoveAll
+ACAT */AdvCat/AdvCat1 Secondary RemoveAll
 ```
 
-RemoveAll 只有 Primary 可用，不可写成 Secondary RemoveAll 或 PrimaryMulti RemoveAll。
+RemoveAll 在 Primary、Secondary 上均可用，不可写成 PrimaryMulti RemoveAll 或 SecondaryMulti RemoveAll。
 
 :::
 

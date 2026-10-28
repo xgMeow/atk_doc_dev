@@ -83,7 +83,7 @@ Primary and PrimaryMulti act on **the same primary target list**, and Secondary 
 | `Add "<Path>" {AdditionalParams}` | Single-target form. Only one target can be added, and the additional parameters **cannot be omitted**; omitting them returns NACK. |
 | `Add "<Path>" [{AdditionalParams}]` | Multi-target form. Target paths are written **inside the same pair of double quotes**, with multiple targets separated by spaces, so that they can all be added at once; the additional parameters may be omitted, in which case the three semi-axes and the envelope sphere radius of that target are all recorded as 0. |
 | Remove | Removes a target from the list. **Takes effect only in the single-target form (Primary, Secondary)**; when Remove is sent with PrimaryMulti or SecondaryMulti, the command returns success but the target is not removed from the list. |
-| RemoveAll | Removes all targets from the list. **Only Primary RemoveAll is available**; RemoveAll with Secondary, PrimaryMulti, or SecondaryMulti returns NACK. |
+| RemoveAll | Removes all targets from the list. **Available only in the single-target form (Primary, Secondary)**; RemoveAll with PrimaryMulti or SecondaryMulti returns NACK. |
 
 ### Target Path Formats
 
@@ -257,13 +257,14 @@ Each filter requires two commands, one for the switch and one for the threshold;
 
 :::
 
-::: details open **Clear the primary target list**
+::: details open **Clear the primary and secondary target lists**
 
 ```
 ACAT */AdvCat/AdvCat1 Primary RemoveAll
+ACAT */AdvCat/AdvCat1 Secondary RemoveAll
 ```
 
-RemoveAll is available only with Primary and must not be written as Secondary RemoveAll or PrimaryMulti RemoveAll.
+RemoveAll is available with both Primary and Secondary, and must not be written as PrimaryMulti RemoveAll or SecondaryMulti RemoveAll.
 
 :::
 
