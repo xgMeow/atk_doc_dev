@@ -41,7 +41,7 @@ ACAT <AdvCatObjPath> <Option> <Parameters>
 | 部分 | 含义 |
 | --- | --- |
 | ACAT | 命令名。 |
-| `<AdvCatObjPath>` | 待设置的高级接近分析对象路径。可写为截断路径，如 */AdvCat/AdvCat1；亦可写为完整路径 /Scenario/场景名/AdvCat/对象名。*/AdvCat/对象名、/AdvCat/对象名、AdvCat/对象名、/Scenario/场景名/AdvCat/对象名 四种写法均被接受。 |
+| `<AdvCatObjPath>` | 待设置的高级接近分析对象路径。可写为截断路径，如 */AdvCat/AdvCat1；亦可写为完整路径 /Scenario/场景名/AdvCat/对象名。*/AdvCat/对象名、AdvCat/对象名、/Scenario/场景名/AdvCat/对象名 三种写法均被接受。 |
 | 参数块 | 单个待设置的参数，即指定要设置的对象属性及其取值。 |
 
 **一条 ACAT 命令仅设置一个参数。** 例如发送 ACAT */AdvCat/AdvCat1 Threshold 50000 PntToPnt On 时，只有排在首位的 Threshold 生效，其后的 PntToPnt 被忽略。需设置多个参数时，应分多条命令发送，每条命令均须重复书写对象路径。下列两条命令分别设置一个参数：
