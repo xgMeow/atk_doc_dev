@@ -80,8 +80,8 @@ Primary and PrimaryMulti act on **the same primary target list**, and Secondary 
 
 | Parameter | Description |
 | --- | --- |
-| `Add "<Path>" {AdditionalParams}` | **Single-target form.** Only one target can be added, and the additional parameters **cannot be omitted**; omitting them returns NACK. |
-| `Add "<Path>" [{AdditionalParams}]` | **Multi-target form.** Target paths are written **inside the same pair of double quotes**, with multiple targets separated by spaces, so that they can all be added at once; the additional parameters may be omitted, in which case the three semi-axes and the envelope sphere radius of that target are all recorded as 0. |
+| `Add "<Path>" {AdditionalParams}` | Single-target form. Only one target can be added, and the additional parameters **cannot be omitted**; omitting them returns NACK. |
+| `Add "<Path>" [{AdditionalParams}]` | Multi-target form. Target paths are written **inside the same pair of double quotes**, with multiple targets separated by spaces, so that they can all be added at once; the additional parameters may be omitted, in which case the three semi-axes and the envelope sphere radius of that target are all recorded as 0. |
 | Remove | Removes a target from the list. **Takes effect only in the single-target form (Primary, Secondary)**; when Remove is sent with PrimaryMulti or SecondaryMulti, the command returns success but the target is not removed from the list. |
 | RemoveAll | Removes all targets from the list. **Only Primary RemoveAll is available**; RemoveAll with Secondary, PrimaryMulti, or SecondaryMulti returns NACK. |
 
