@@ -38,7 +38,7 @@ Graphics <ObjectPath> ElevationEllipse {EllipseSetType} <Options>
 
 ## 适用对象
 
-卫星、导弹、火箭、视图、飞机
+卫星、导弹、火箭、飞机
 
 ## 示例
 

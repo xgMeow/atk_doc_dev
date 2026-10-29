@@ -64,7 +64,7 @@ The `{Keyword} <Value>` pairs may take the following values:
 
 ## Applies To
 
-Satellite, Missile, LaunchVehicle, 2D Graphics, Aircraft
+Satellite, Missile, LaunchVehicle, Aircraft
 
 ## Examples
 

@@ -38,7 +38,7 @@ Graphics <ObjectPath> ElevationEllipse {EllipseSetType} <Options>
 
 ## Applies To
 
-Satellite, Missile, LaunchVehicle, 2D Graphics, Aircraft
+Satellite, Missile, LaunchVehicle, Aircraft
 
 ## Examples
 

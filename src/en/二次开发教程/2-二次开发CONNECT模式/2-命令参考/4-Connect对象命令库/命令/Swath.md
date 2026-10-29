@@ -41,7 +41,7 @@ If `{DisplayOption}` is omitted, the swath is set to **Off** (not displayed).
 
 ## Applies To
 
-Satellite, Missile, LaunchVehicle, 2D Graphics, Aircraft
+Satellite, Missile, LaunchVehicle, Aircraft
 
 ## Examples
 

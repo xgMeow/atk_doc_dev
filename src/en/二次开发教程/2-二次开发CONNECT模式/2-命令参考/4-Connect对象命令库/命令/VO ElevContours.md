@@ -38,7 +38,7 @@ Elevation contour lines **do not apply to GroundVehicles**: issuing this command
 
 ## Applies To
 
-Satellite, Missile, LaunchVehicle, 3D Graphics, Aircraft
+Satellite, Missile, LaunchVehicle, Aircraft
 
 ## Examples
 
