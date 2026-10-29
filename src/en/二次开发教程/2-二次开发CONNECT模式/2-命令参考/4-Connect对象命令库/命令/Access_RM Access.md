@@ -50,7 +50,7 @@ The two forms below are alternatives; the whole block may also be omitted.
 
 **UseObjectTimes.** No explicit date times are given; the object's own time period is used instead.
 
-- **The order of the two epochs may be reversed**; the result is the same as in the original order.
+- **The two epochs cannot be given in reverse order**; the start epoch must come first, followed by the end epoch.
 - The report is generated **within the intersection of the given time period and the scenario analysis time period**; the part of the given period outside the scenario analysis period does not participate in the computation. When the given period and the scenario analysis period **do not intersect at all, the command returns NACK**.
 - Each visibility interval is **truncated** at that period: when a visibility interval crosses a period boundary, the start epoch or the end epoch of that interval in the report takes the boundary value.
 - When there is no visibility interval within the period, or when the two epochs are identical, the report body is "No analysis data!", and the command does **not** return NACK.

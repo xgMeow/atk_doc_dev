@@ -60,7 +60,7 @@ Choose one of the two forms below; the whole block may also be omitted.
 
 **UseObjectTimes.** Gives no explicit date-time and uses the time interval of the objects involved in the computation instead.
 
-- **The two epochs may be given in either order**; reversing them yields the same result as the forward order.
+- **The two epochs cannot be given in reverse order**; the start epoch must come first, followed by the end epoch.
 - **This command does not accept the TimePeriod keyword.** Writing the TimePeriod keyword after Access Compute returns NACK; simply give the two date-times in order. The time interval of the Access command must be preceded by the TimePeriod keyword; the two forms differ and cannot be substituted for each other.
 - The time interval parameter block **recognizes only the single word UseObjectTimes**. Writing anything else, including UseObjectTime with the trailing s omitted, returns NACK.
 - **Extra date-times after the time interval parameter block do not raise an error.** When three or more date-times are given in order, the command still uses the first two epochs; extra date-times after UseObjectTimes are likewise ignored.

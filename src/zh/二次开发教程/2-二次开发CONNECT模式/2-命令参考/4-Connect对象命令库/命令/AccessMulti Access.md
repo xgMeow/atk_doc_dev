@@ -60,7 +60,7 @@ AccessMulti / Access Compute [{<StartTime> <StopTime> | UseObjectTimes}]
 
 **UseObjectTimes。** 不给出具体日期时间，改用参与计算的对象自身时段。
 
-- **两个历元的先后顺序可颠倒**，颠倒后与正序所得结果相同。
+- **两个历元的先后顺序不可颠倒**，须按开始历元在前、结束历元在后的次序给出。
 - **本命令不接受 TimePeriod 关键字。** 在 Access Compute 之后误写 TimePeriod 关键字会返回 NACK；直接依次给出两个日期时间即可。Access 命令的时段须冠以 TimePeriod 关键字，两者写法不同，不可套用。
 - 时段参数块**只识别 UseObjectTimes 这一个词**。写成其他任何内容，包括漏写末尾 s 的 UseObjectTime，均返回 NACK。
 - **在时段参数块之后多写日期时间不会报错。** 依次给出三个及以上日期时间时，命令仍按前两个历元处理；UseObjectTimes 之后多写日期时间同样被忽略。
