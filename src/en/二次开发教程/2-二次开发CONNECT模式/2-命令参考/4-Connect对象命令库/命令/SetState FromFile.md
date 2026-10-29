@@ -34,12 +34,6 @@ SetState */Satellite/Satellite1 FromFile "C:\atk\User\Data\EphemFile.e"
 ```
 :::
 
-::: details open **Set the Satellite Object State Using an Ephemeris File**
-```
-SetState */Satellite/Satellite1 FromFile "C:\atk\User\Data\EphemFile.e"
-```
-:::
-
 ::: details open **Set the Missile Trajectory Using an Ephemeris File**
 ```
 SetState */Missile/Missile1 FromFile "C:\atk\User\Data\EphemFile.e"

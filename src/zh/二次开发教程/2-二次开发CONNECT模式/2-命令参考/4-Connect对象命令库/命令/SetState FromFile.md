@@ -34,12 +34,6 @@ SetState */Satellite/Satellite1 FromFile "C:\atk\User\Data\EphemFile.e"
 ```
 :::
 
-::: details open **使用星历文件设置卫星对象状态**
-```
-SetState */Satellite/Satellite1 FromFile "C:\atk\User\Data\EphemFile.e"
-```
-:::
-
 ::: details open **使用星历文件设置导弹弹道**
 ```
 SetState */Missile/Missile1 FromFile "C:\atk\User\Data\EphemFile.e"
