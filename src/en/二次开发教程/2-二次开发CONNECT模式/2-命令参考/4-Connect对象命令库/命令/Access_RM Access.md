@@ -55,9 +55,6 @@ The two forms below are alternatives; the whole block may also be omitted.
 - Each visibility interval is **truncated** at that period: when a visibility interval crosses a period boundary, the start epoch or the end epoch of that interval in the report takes the boundary value.
 - When there is no visibility interval within the period, or when the two epochs are identical, the report body is "No analysis data!", and the command does **not** return NACK.
 - The time period parameter block may be omitted entirely. When it is omitted, the time period is not restricted and the report covers the entire scenario analysis period, which yields the same result as giving UseObjectTimes.
-
-**The time period used by the report is determined by the time period parameter block of this command and is independent of the time period used by the preceding Access command.** For example, the scenario analysis time period is 00:00—06:00; compute the access with 00:00—03:00 first (no visibility interval within it), which gives "No analysis data!"; afterwards, execute this command without a time period, and the complete report covering the entire scenario analysis period with all visibility intervals is still returned.
-
 ### Report Styles
 
 The values of `<ReportStyle>` are listed below. Style names are case-insensitive: `Access`, `access` and `aCcEsS` are equivalent. In practice the style name is usually enclosed in double quotes.
