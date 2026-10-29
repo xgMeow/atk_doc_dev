@@ -27,7 +27,6 @@ Copy <ApplicationPath> <CopyFromObjectPath> [{CopyOption}]
 | `{CopyOption}` | 说明 |
 |----|------|
 | `Name <NewName>` | 拷贝后使用新名称 |
-| `Path <NewObjectPath>` | 拷贝后使用新路径 |
 
 ## 示例
 

@@ -27,7 +27,6 @@ Copy <ApplicationPath> <CopyFromObjectPath> [{CopyOption}]
 | `{CopyOption}` | Description |
 |----|------|
 | `Name <NewName>` | Uses a new name after copying |
-| `Path <NewObjectPath>` | Uses a new path after copying |
 
 ## Examples
 
