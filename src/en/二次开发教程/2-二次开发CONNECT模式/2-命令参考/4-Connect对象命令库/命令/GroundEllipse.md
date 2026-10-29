@@ -30,7 +30,7 @@ GroundEllipse <VehObjectPath> {EllipseSetOptions}
 | `ModifySetEllipse <SetName> {EllipseAtTime "<TimeVal>" \| EllipseAtLatLon <Latitude> <Longitude>} {EllipseOptions}` | Modifies, with the given `{EllipseOptions}`, the ellipse in the specified ellipse set identified by the specified time or position. The unit of `<TimeVal>` is determined by the current Connect `Date` unit setting; the units of `<Latitude>` and `<Longitude>` are determined by the current Connect `Angle` unit setting. |
 
 ::: warning Note
-In `AddSetEllipse` and `ModifySetEllipse`, **at least one** of the following `{EllipseOptions}` must be given.
+`AddSetEllipse` may omit `{EllipseOptions}`, in which case the ellipse is added with default values; `ModifySetEllipse` requires **at least one** `{EllipseOptions}`.
 :::
 
 `{EllipseOptions}` accepts the following values:

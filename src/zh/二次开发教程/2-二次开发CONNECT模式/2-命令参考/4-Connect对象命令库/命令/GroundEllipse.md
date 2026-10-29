@@ -30,7 +30,7 @@ GroundEllipse <VehObjectPath> {EllipseSetOptions}
 | `ModifySetEllipse <SetName> {EllipseAtTime "<TimeVal>" \| EllipseAtLatLon <Latitude> <Longitude>} {EllipseOptions}` | 用给定的 `{EllipseOptions}` 修改指定椭圆集中由指定时刻或指定位置确定的那一个椭圆。`<TimeVal>` 的取值单位由当前 Connect 的 `Date` 单位设置决定；`<Latitude>`、`<Longitude>` 的取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
 
 ::: warning 注意
-`AddSetEllipse` 与 `ModifySetEllipse` 中，下面这组 `{EllipseOptions}` **至少要给出一个**。
+`AddSetEllipse` 可不给出 `{EllipseOptions}`，此时按默认值新增椭圆；`ModifySetEllipse` 则**至少要给出一个** `{EllipseOptions}`。
 :::
 
 `{EllipseOptions}` 可取下列取值：
