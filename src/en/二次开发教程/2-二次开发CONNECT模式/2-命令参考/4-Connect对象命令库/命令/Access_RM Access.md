@@ -21,12 +21,12 @@ The command only generates a report; it neither creates nor modifies objects in 
 ## Syntax
 
 ```atk-command
-Access_RM <ObjectPath> Access Compute "<ReportStyle>" [{<StartTime> <StopTime> | UseObjectTimes}]
+Access_RM <ObjectPath> Access Compute "<ReportStyle>" {<StartTime> <StopTime> | UseObjectTimes}
 ```
 
 ## Syntax Description
 
-This command consists of four parts: the command name Access_RM, **one object path**, **the keyword pair Access Compute**, **one report style**, and **an optional time period parameter block**.
+This command consists of four parts: the command name Access_RM, **one object path**, **the keyword pair Access Compute**, **one report style**, and **a time period parameter block**.
 
 | Part | Meaning |
 | --- | --- |
@@ -34,7 +34,7 @@ This command consists of four parts: the command name Access_RM, **one object pa
 | `<ObjectPath>` | Path of the first object of the current access. |
 | Access Compute | Fixed keyword pair, which must be given as a pair; when only one of the two is written, the command returns NACK. |
 | `<ReportStyle>` | Report style, whose values are listed in "Report Styles" below. |
-| Time period parameter block | Optional. When given, it is either two date times or UseObjectTimes; see "Time Period Block" below. |
+| Time period parameter block | Required. It is either two date times or UseObjectTimes; see "Time Period Block" below. |
 
 Neither the command name nor the keywords are case-sensitive; see [Command Syntax Conventions](../../1-命令语法约定.md).
 
@@ -44,7 +44,7 @@ Fill in the object path in the usual way described in [Command Syntax Convention
 
 ### Time Period Block
 
-The two forms below are alternatives; the whole block may also be omitted.
+The two forms below are alternatives.
 
 **Two date times.** Give the **start epoch** and the **end epoch** in order; for the format see [Date/Time Format](../../2-参数值格式/日期时间格式.md). Both date times must be enclosed in double quotes; when they are not quoted, when only one of them is given, or when the content cannot be parsed as a valid date/time, the command returns NACK.
 
@@ -54,7 +54,7 @@ The two forms below are alternatives; the whole block may also be omitted.
 - The given period must lie **within the scenario analysis period**.
 - Each visibility interval is **truncated** at that period: when a visibility interval crosses a period boundary, the start epoch or the end epoch of that interval in the report takes the boundary value.
 - When there is no visibility interval within the period, or when the two epochs are identical, the report body is "No analysis data!", and the command does **not** return NACK.
-- The time period parameter block may be omitted entirely. When it is omitted, the time period is not restricted and the report covers the entire scenario analysis period, which yields the same result as giving UseObjectTimes.
+
 ### Report Styles
 
 The values of `<ReportStyle>` are listed below. Style names are case-insensitive: `Access`, `access` and `aCcEsS` are equivalent. In practice the style name is usually enclosed in double quotes.
@@ -171,18 +171,6 @@ The time step and orbit parameters in the example above are illustrative only; s
 
 :::
 
-::: details open **Omit the time period parameter block**
-
-Without a time period, the report covers the entire scenario analysis period:
-
-```
-Access_RM */Satellite/Satellite1 Access Compute "Access"
-```
-
-It may also be written as `Access_RM */Satellite/Satellite1 Access Compute "Access" UseObjectTimes`; both forms yield the same result.
-
-:::
-
 ::: details open **Read the line-of-sight parameter (AER) report**
 
 The access must be computed as in the example above before the report is read:
@@ -214,12 +202,13 @@ The report body is "No analysis data!".
 ::: details open **Common forms that return NACK**
 
 ```
-Access_RM */Facility/Facility1 Access Compute "Access"
+Access_RM */Facility/Facility1 Access Compute "Access" "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
+Access_RM */Satellite/Satellite1 Access Compute "Access"
 Access_RM */Satellite/Satellite1 Access Compute "Access" TimePeriod "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 Access_RM */Satellite/Satellite1 Access Compute "Access" "5 Mar 2025 00:00:00.000"
-Access_RM */Satellite/Satellite1 Compute "Access"
+Access_RM */Satellite/Satellite1 Compute "Access" "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 ```
 
-The four commands correspond, in order, to: using the **second object** of the current access as the object path, the **TimePeriod keyword not being accepted**, only one epoch being given, and the Access keyword being missing.
+The five commands correspond, in order, to: using the **second object** of the current access as the object path, omitting the time period parameter block, the **TimePeriod keyword not being accepted**, only one epoch being given, and the Access keyword being missing.
 
 :::

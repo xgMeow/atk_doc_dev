@@ -35,18 +35,18 @@ groups: [可见性分析]
 ## 语法
 
 ```atk-command
-AccessMulti / Access Compute [{<StartTime> <StopTime> | UseObjectTimes}]
+AccessMulti / Access Compute {<StartTime> <StopTime> | UseObjectTimes}
 ```
 
 ## 语法说明
 
-本命令由三部分构成：命令名 AccessMulti、**子命令 / Access Compute**、**一个可省略的时段参数块**。
+本命令由三部分构成：命令名 AccessMulti、**子命令 / Access Compute**、**一个时段参数块**。
 
 | 部分 | 含义 |
 | --- | --- |
 | AccessMulti | 命令名。 |
 | / Access Compute | 子命令。斜杠与斜杠后的三个单词均为子命令的组成部分。 |
-| 时段参数块 | 指定计算所用时段，可整块省略；给出时为两个日期时间，或 UseObjectTimes，详见下文「时段参数块」。 |
+| 时段参数块 | 指定计算所用时段，为两个日期时间，或 UseObjectTimes，详见下文「时段参数块」。 |
 
 **命令名与子命令之间的斜杠不可省略。** 写成 AccessMulti Access Compute 时，命令返回 NACK。
 
@@ -54,7 +54,7 @@ AccessMulti / Access Compute [{<StartTime> <StopTime> | UseObjectTimes}]
 
 ## 时段参数块
 
-以下两种写法二选一，整块亦可省略。
+以下两种写法二选一。
 
 **两个日期时间。** 依次给出**开始历元**与**结束历元**，格式参见[日期时间格式](../../2-参数值格式/日期时间格式.md)。两个日期时间均须用双引号括起；未加引号，或只给出其中一个，或内容无法解析为合法日期时间，命令均返回 NACK。
 
@@ -64,7 +64,6 @@ AccessMulti / Access Compute [{<StartTime> <StopTime> | UseObjectTimes}]
 - **本命令不接受 TimePeriod 关键字。** 在 Access Compute 之后误写 TimePeriod 关键字会返回 NACK；直接依次给出两个日期时间即可。Access 命令的时段须冠以 TimePeriod 关键字，两者写法不同，不可套用。
 - 时段参数块**只识别 UseObjectTimes 这一个词**。写成其他任何内容，包括漏写末尾 s 的 UseObjectTime，均返回 NACK。
 - **在时段参数块之后多写日期时间不会报错。** 依次给出三个及以上日期时间时，命令仍按前两个历元处理；UseObjectTimes 之后多写日期时间同样被忽略。
-- 时段参数块**可整块省略**，省略时不指定具体时段。
 
 **计算所用时段不随访问对象保存。** 访问对象只记录对象对本身，读取结果时的时段由读取命令的时段参数块决定，与本命令所用时段无关，参见 [Access_RM](./Access_RM%20Access.md) 的「时段参数块」。
 
@@ -75,7 +74,7 @@ AccessMulti / Access Compute [{<StartTime> <StopTime> | UseObjectTimes}]
 计算结果体现为场景中生成的访问对象。须用 [Access_RM](./Access_RM%20Access.md) 读取，读取时以**目标对象**的路径为参数：
 
 ```
-Access_RM */Facility/Facility1 Access Compute "Access"
+Access_RM */Facility/Facility1 Access Compute "Access" "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 ```
 
 以来源对象的路径读取时返回 NACK。
@@ -121,7 +120,7 @@ AccessMulti / Access Compute "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 最后一条命令为 2 个目标对象与 2 个来源对象的四个组合各生成一个访问对象。随后以目标对象的路径读取结果：
 
 ```
-Access_RM */Facility/Facility1 Access Compute "Access"
+Access_RM */Facility/Facility1 Access Compute "Access" "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 ```
 
 上方示例中的时间步与轨道参数仅为示意，实际使用时应按场景设定。
@@ -136,23 +135,16 @@ AccessMulti / Access Compute UseObjectTimes
 
 :::
 
-::: details open **省略时段参数块**
-
-```
-AccessMulti / Access Compute
-```
-
-:::
-
 ::: details open **返回 NACK 的常见写法**
 
 ```
 AccessMulti Access Compute "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
+AccessMulti / Access Compute
 AccessMulti / Access Compute TimePeriod "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 AccessMulti / Access Compute "5 Mar 2025 00:00:00.000"
 AccessMulti / Access Compute 5 Mar 2025 00:00:00.000
 ```
 
-四条命令依次对应：缺少命令名与子命令之间的斜杠、误用 TimePeriod 关键字、只给出一个日期时间、日期时间未加双引号。
+五条命令依次对应：缺少命令名与子命令之间的斜杠、省略时段参数块、误用 TimePeriod 关键字、只给出一个日期时间、日期时间未加双引号。
 
 :::

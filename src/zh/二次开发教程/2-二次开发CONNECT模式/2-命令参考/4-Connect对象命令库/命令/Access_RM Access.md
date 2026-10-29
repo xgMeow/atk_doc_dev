@@ -21,12 +21,12 @@ groups: [可见性分析]
 ## 语法
 
 ```atk-command
-Access_RM <ObjectPath> Access Compute "<ReportStyle>" [{<StartTime> <StopTime> | UseObjectTimes}]
+Access_RM <ObjectPath> Access Compute "<ReportStyle>" {<StartTime> <StopTime> | UseObjectTimes}
 ```
 
 ## 语法说明
 
-本命令由四部分构成：命令名 Access_RM、**一个对象路径**、**关键字对 Access Compute**、**一个报告样式**，以及**一个可省略的时段参数块**。
+本命令由四部分构成：命令名 Access_RM、**一个对象路径**、**关键字对 Access Compute**、**一个报告样式**，以及**一个时段参数块**。
 
 | 部分 | 含义 |
 | --- | --- |
@@ -34,7 +34,7 @@ Access_RM <ObjectPath> Access Compute "<ReportStyle>" [{<StartTime> <StopTime> |
 | `<ObjectPath>` | 当前访问中第一个对象的路径。 |
 | Access Compute | 固定关键字对，须成对给出；只写其中一个时命令返回 NACK。 |
 | `<ReportStyle>` | 报告样式，取值见下文「报告样式」。 |
-| 时段参数块 | 可省略。给出时为两个日期时间，或 UseObjectTimes，见下文「时段参数块」。 |
+| 时段参数块 | 须给出。为两个日期时间，或 UseObjectTimes，见下文「时段参数块」。 |
 
 命令名与关键字均不区分大小写，参见[命令语法约定](../../1-命令语法约定.md)。
 
@@ -44,7 +44,7 @@ Access_RM <ObjectPath> Access Compute "<ReportStyle>" [{<StartTime> <StopTime> |
 
 ### 时段参数块
 
-以下两种写法二选一，整块亦可省略。
+以下两种写法二选一。
 
 **两个日期时间。** 依次给出**开始历元**与**结束历元**，格式参见[日期时间格式](../../2-参数值格式/日期时间格式.md)。两个日期时间均须用双引号括起；未加引号、只给出其中一个，或内容无法解析为合法日期时间，命令均返回 NACK。
 
@@ -54,7 +54,6 @@ Access_RM <ObjectPath> Access Compute "<ReportStyle>" [{<StartTime> <StopTime> |
 - 所给时段须落在**场景分析时段之内**。
 - 各可见区间按该时段**截断**：某个可见区间跨出时段边界时，报告中该区间的开始历元或结束历元取时段边界值。
 - 时段内无可见区间、或两个历元相同时，报告正文为「无分析数据！」，命令**不**返回 NACK。
-- 时段参数块可整块省略。省略时不限定时段，报告覆盖整个场景分析时段，与给出 UseObjectTimes 时所得结果相同。
 
 ### 报告样式
 
@@ -172,18 +171,6 @@ Access_RM */Satellite/Satellite1 Access Compute "Access" "5 Mar 2025 00:00:00.00
 
 :::
 
-::: details open **省略时段参数块**
-
-不给出时段，报告覆盖整个场景分析时段：
-
-```
-Access_RM */Satellite/Satellite1 Access Compute "Access"
-```
-
-也可写成 `Access_RM */Satellite/Satellite1 Access Compute "Access" UseObjectTimes`，两者所得结果相同。
-
-:::
-
 ::: details open **读取视线参数（AER）报告**
 
 须先按上例计算访问，再读取报告：
@@ -215,12 +202,13 @@ Access_RM */Satellite/Satellite1 Access Compute "Access" "5 Mar 2025 00:00:00.00
 ::: details open **返回 NACK 的常见写法**
 
 ```
-Access_RM */Facility/Facility1 Access Compute "Access"
+Access_RM */Facility/Facility1 Access Compute "Access" "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
+Access_RM */Satellite/Satellite1 Access Compute "Access"
 Access_RM */Satellite/Satellite1 Access Compute "Access" TimePeriod "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 Access_RM */Satellite/Satellite1 Access Compute "Access" "5 Mar 2025 00:00:00.000"
-Access_RM */Satellite/Satellite1 Compute "Access"
+Access_RM */Satellite/Satellite1 Compute "Access" "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 ```
 
-四条命令依次对应：以当前访问的**第二个对象**为对象路径、**不接受 TimePeriod 关键字**、只给出一个历元、缺少 Access 关键字。
+五条命令依次对应：以当前访问的**第二个对象**为对象路径、省略时段参数块、**不接受 TimePeriod 关键字**、只给出一个历元、缺少 Access 关键字。
 
 :::

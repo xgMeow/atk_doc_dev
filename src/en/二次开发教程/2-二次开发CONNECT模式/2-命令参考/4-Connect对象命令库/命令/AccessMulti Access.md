@@ -35,18 +35,18 @@ In a single pass, the command processes every "target object and source object" 
 ## Syntax
 
 ```atk-command
-AccessMulti / Access Compute [{<StartTime> <StopTime> | UseObjectTimes}]
+AccessMulti / Access Compute {<StartTime> <StopTime> | UseObjectTimes}
 ```
 
 ## Syntax Description
 
-The command consists of three parts: the command name AccessMulti, the **subcommand / Access Compute**, and **an optional time interval parameter block**.
+The command consists of three parts: the command name AccessMulti, the **subcommand / Access Compute**, and **a time interval parameter block**.
 
 | Part | Meaning |
 | --- | --- |
 | AccessMulti | Command name. |
 | / Access Compute | Subcommand. The slash and the three words after it are all part of the subcommand. |
-| Time interval parameter block | Specifies the time interval used for the computation; the whole block may be omitted. When given, it is either two date-times or UseObjectTimes; see "Time Interval Parameter Block" below. |
+| Time interval parameter block | Specifies the time interval used for the computation; it is either two date-times or UseObjectTimes; see "Time Interval Parameter Block" below. |
 
 **The slash between the command name and the subcommand cannot be omitted.** Writing AccessMulti Access Compute makes the command return NACK.
 
@@ -54,7 +54,7 @@ The words in the command name and the subcommand and the keywords are **case-ins
 
 ## Time Interval Parameter Block
 
-Choose one of the two forms below; the whole block may also be omitted.
+Choose one of the two forms below.
 
 **Two date-times.** Give the **start epoch** and then the **end epoch**; for the format, see [Date/Time Formats](../../2-参数值格式/日期时间格式.md). Both date-times must be enclosed in double quotes; when they are not quoted, when only one of them is given, or when the content cannot be parsed as a valid date-time, the command returns NACK.
 
@@ -64,7 +64,6 @@ Choose one of the two forms below; the whole block may also be omitted.
 - **This command does not accept the TimePeriod keyword.** Writing the TimePeriod keyword after Access Compute returns NACK; simply give the two date-times in order. The time interval of the Access command must be preceded by the TimePeriod keyword; the two forms differ and cannot be substituted for each other.
 - The time interval parameter block **recognizes only the single word UseObjectTimes**. Writing anything else, including UseObjectTime with the trailing s omitted, returns NACK.
 - **Extra date-times after the time interval parameter block do not raise an error.** When three or more date-times are given in order, the command still uses the first two epochs; extra date-times after UseObjectTimes are likewise ignored.
-- The time interval parameter block **may be omitted entirely**; when it is omitted, no specific time interval is specified.
 
 **The time interval used for the computation is not saved with the Access objects.** The Access objects record only the object pair itself; the time interval used when reading the results is determined by the time interval parameter block of the reading command and is unrelated to the time interval used by this command. See "Time Interval Parameter Block" in [Access_RM](./Access_RM%20Access.md).
 
@@ -75,7 +74,7 @@ Choose one of the two forms below; the whole block may also be omitted.
 The computation result is reflected in the Access objects generated in the scenario. Read them with [Access_RM](./Access_RM%20Access.md), passing the path of the **target object**:
 
 ```
-Access_RM */Facility/Facility1 Access Compute "Access"
+Access_RM */Facility/Facility1 Access Compute "Access" "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 ```
 
 Reading with the path of a source object returns NACK.
@@ -121,7 +120,7 @@ AccessMulti / Access Compute "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 The last command generates one Access object for each of the four combinations of the 2 target objects and the 2 source objects. The results are then read with the path of the target object:
 
 ```
-Access_RM */Facility/Facility1 Access Compute "Access"
+Access_RM */Facility/Facility1 Access Compute "Access" "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 ```
 
 The time step and orbital parameters in the example above are illustrative only; in actual use they must be set according to the scenario.
@@ -136,23 +135,16 @@ AccessMulti / Access Compute UseObjectTimes
 
 :::
 
-::: details open **Omit the time interval parameter block**
-
-```
-AccessMulti / Access Compute
-```
-
-:::
-
 ::: details open **Common forms that return NACK**
 
 ```
 AccessMulti Access Compute "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
+AccessMulti / Access Compute
 AccessMulti / Access Compute TimePeriod "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"
 AccessMulti / Access Compute "5 Mar 2025 00:00:00.000"
 AccessMulti / Access Compute 5 Mar 2025 00:00:00.000
 ```
 
-The four commands correspond, in order, to: the missing slash between the command name and the subcommand, a misused TimePeriod keyword, only one date-time given, and date-times not enclosed in double quotes.
+The five commands correspond, in order, to: the missing slash between the command name and the subcommand, an omitted time interval parameter block, a misused TimePeriod keyword, only one date-time given, and date-times not enclosed in double quotes.
 
 :::
