@@ -28,7 +28,7 @@ Graphics <ObjectPath> RangeContours {AddMethod} [<Parameters>]
 | `{AddMethod}` | `<Parameters>` | Description |
 |------|------|------|
 | `Show` | `{On \| Off}` | Displays or hides the range contour graphics |
-| `Explicit` | `<LevelValue> {Color} {LineStyle} <LineWidth> {ShowDistance} [{ShowText} ["<LabelText>" [<LabelAngle>]]]` | Adds range contour levels one by one and specifies their display attributes. For valid values of `{Color}` and `{LineStyle}`, see [Color Format](../../2-参数值格式/颜色格式.md) and [Line Style Format](../../2-参数值格式/线型格式.md); `<LineWidth>` is the pixel width from `1.0` to `10.0`; `{ShowDistance}` and `{ShowText}` take `On` or `Off`; `<LabelAngle>` is in degrees |
+| `Explicit` | `<LevelValue> {Color} {LineStyle} <LineWidth> {ShowDistance} [{ShowText} ["<LabelText>" [<LabelAngle>]]]` | Adds range contour levels one by one and specifies their display attributes. For valid values of `{Color}` and `{LineStyle}`, see [Color Format](../../2-参数值格式/颜色格式.md) and [Line Style Format](../../2-参数值格式/线型格式.md); `<LineWidth>` is the pixel width from `1.0` to `10.0`; `{ShowDistance}` and `{ShowText}` take `On` or `Off`; the unit of `<LabelAngle>` is determined by the current Connect `Angle` unit setting |
 | `Contour` | `<LevelValue> {Keyword} <Value> [{Keyword} <Value>...]` | Modifies the attributes of the specified `<LevelValue>` level |
 | `StartStop` | `<Start> <Stop> <Step>` | Generates levels starting at `Start` and incrementing by `Step` until `Stop` is exceeded. `<Step>` must be greater than `0` |
 | `Remove` | `<LevelValue>` | Removes the level corresponding to the specified `<LevelValue>` |

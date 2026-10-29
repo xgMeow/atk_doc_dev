@@ -18,7 +18,7 @@ SetPosition <ObjectPath> [{Type}] {CoordType} <Parameters>
 
 | Parameter | Description |
 | --------- | --------------------------- |
-| `Cartesian` | `<X> <Y> <Z>`, inputs default to m |
+| `Cartesian` | `<X> <Y> <Z>`; the unit is determined by the current Connect `Distance` unit setting |
 | `Geodetic` | `<Lat> <Lon> {<Altitude> \| Terrain} [MSL]`, currently only latitude, longitude, and altitude are supported |
 
 ## Examples

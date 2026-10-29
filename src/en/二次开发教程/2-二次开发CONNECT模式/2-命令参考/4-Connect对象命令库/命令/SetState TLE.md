@@ -19,7 +19,7 @@ SetState <SatObjectPath> TLE "<TLECard1>" "<TLECard2>" [{Options}]
 | `Options` | Description |
 | --- | --- |
 | `TimePeriod {TimeInterval}` | If no time period is entered, the time in the `TLE` data is used by default. For the input format of `TimeInterval`, see [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md) |
-| `TimeStep <StepSize>` | The default unit is seconds |
+| `TimeStep <StepSize>` | The unit is determined by the current Connect `Time` unit setting |
 | `Routine <PropName>` | Enter this command to set a different `SGP4` routine |
 | `NoProp` | If this command is entered, the satellite state will be set but not propagated |
 

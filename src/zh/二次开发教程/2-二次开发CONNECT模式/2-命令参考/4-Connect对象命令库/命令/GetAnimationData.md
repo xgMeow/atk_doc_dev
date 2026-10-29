@@ -20,7 +20,7 @@ GetAnimationData <ScenarioPath> {Option}
 |------|------|
 | `TimePeriod` | 获得场景开始时间和停止时间 |
 | `CurrentTime` | 获得当前仿真时间 |
-| `TimeStep` | 获得仿真步长时间，默认单位为秒 |
+| `TimeStep` | 获得仿真步长时间，取值单位由当前 Connect 的 `Time` 单位设置决定 |
 
 ## 示例
 

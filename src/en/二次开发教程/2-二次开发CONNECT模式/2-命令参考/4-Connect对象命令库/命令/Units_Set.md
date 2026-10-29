@@ -32,7 +32,7 @@ The valid values of `{Option}` are:
 
 Notes:
 
-- In Connect units, angle values must be entered in degrees.
+- Connect units are set per dimension: each parameter in a command is entered in the unit set for its dimension, for example angle values in the `Angle` unit and distance values in the `Distance` unit.
 - This command can affect several categories of units, such as GUI and Report; to set only Connect units, use [Units_SetConnect](./Units_SetConnect.md).
 
 ## Examples

@@ -18,7 +18,7 @@ SetPosition <ObjectPath> [{Type}] {CoordType} <Parameters>
 
 | 参数 | 说明 |
 | --------- | --------------------------- |
-| `Cartesian` | `<X> <Y> <Z>`，输入默认单位为 m |
+| `Cartesian` | `<X> <Y> <Z>`，取值单位由当前 Connect 的 `Distance` 单位设置决定 |
 | `Geodetic` | `<Lat> <Lon> {<Altitude> \| Terrain} [MSL]`，目前仅支持输入纬度、经度、高度 |
 
 ## 示例

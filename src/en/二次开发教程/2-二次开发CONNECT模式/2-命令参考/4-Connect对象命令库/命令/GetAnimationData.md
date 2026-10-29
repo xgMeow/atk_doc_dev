@@ -20,7 +20,7 @@ GetAnimationData <ScenarioPath> {Option}
 |------|------|
 | `TimePeriod` | Gets the scenario start time and stop time |
 | `CurrentTime` | Gets the current simulation time |
-| `TimeStep` | Gets the simulation time step; the default unit is seconds |
+| `TimeStep` | Gets the simulation time step; the unit is determined by the current Connect `Time` unit setting |
 
 ## Examples
 

@@ -28,7 +28,7 @@ Graphics <ObjectPath> ElevContours {AddMethod} [<Parameters>]
 | `{AddMethod}` | `<Parameters>` | Description |
 |------|------|------|
 | `Show` | `{On \| Off}` | Displays the elevation contour lines. |
-| `Explicit` | `<LevelValue> {Color} {LineStyle} <LineWidth> {ShowDistance} [{ShowText} ["<LabelText>" [<LabelAngle>]]]` | Adds elevation contour levels one by one by specifying `<LevelValue>` and its display attributes. For the valid values of `{Color}` and `{LineStyle}`, see [Color Formats](../../2-参数值格式/颜色格式.md) and [Line Style Formats](../../2-参数值格式/线型格式.md). `<LineWidth>` is a pixel width from `1.0` to `10.0`. `{ShowDistance}` and `{ShowText}` take `On` or `Off`. `<LabelAngle>` is in **degrees**. |
+| `Explicit` | `<LevelValue> {Color} {LineStyle} <LineWidth> {ShowDistance} [{ShowText} ["<LabelText>" [<LabelAngle>]]]` | Adds elevation contour levels one by one by specifying `<LevelValue>` and its display attributes. For the valid values of `{Color}` and `{LineStyle}`, see [Color Formats](../../2-参数值格式/颜色格式.md) and [Line Style Formats](../../2-参数值格式/线型格式.md). `<LineWidth>` is a pixel width from `1.0` to `10.0`. `{ShowDistance}` and `{ShowText}` take `On` or `Off`. The unit of `<LabelAngle>` is determined by the current Connect `Angle` unit setting. |
 | `Contour` | `<LevelValue> {Keyword} <Value> [{Keyword} <Value>...]` | Modifies the attributes of the specified `<LevelValue>`. For the `{Keyword} <Value>` pairs, see the table below. |
 | `StartStop` | `<Start> <Stop> <Step>` | Starting from `Start`, generates contour levels in increments of `Step` until **exceeding** `Stop`. `<Step>` must be greater than `0.0`. |
 | `Remove` | `<LevelValue>` | Removes the contour line corresponding to the specified `<LevelValue>`. |
@@ -42,7 +42,7 @@ Graphics <ObjectPath> ElevContours {AddMethod} [<Parameters>]
 - `LabelAngle`: contour lines added **after** this command is called still use the default label angle of `180`.
 :::
 
-The values of `<LevelValue>` and `<Start> <Stop> <Step>` are all in **degrees**, and the valid elevation contour levels range from `0.0` to `90.0` degrees. When levels are entered with the `StartStop` method, **even if an invalid level is given, this command does not return Nack**; it simply **draws only the valid levels**.
+The units of `<LevelValue>` and `<Start> <Stop> <Step>` are determined by the current Connect `Angle` unit setting, and the valid elevation contour levels range from `0.0` to `90.0` degrees. When levels are entered with the `StartStop` method, **even if an invalid level is given, this command does not return Nack**; it simply **draws only the valid levels**.
 
 The `{Keyword} <Value>` pairs may take the following values:
 

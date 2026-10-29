@@ -43,8 +43,8 @@ The specific parameters of the `Model` group are as follows.
 
 | Parameter | Description |
 |------|------|
-| `Model.DesignFrequency` | Design frequency of the antenna model, used to determine the wavelength and involved in the computation of parameters such as antenna gain and beamwidth; the unit is determined by the current Connect frequency unit setting |
-| `Model.Diameter` | Aperture diameter of the antenna; the dimension is length, and the unit is determined by the current Connect length unit setting |
+| `Model.DesignFrequency` | Design frequency of the antenna model, used to determine the wavelength and involved in the computation of parameters such as antenna gain and beamwidth; the unit is determined by the current Connect `Frequency` unit setting |
+| `Model.Diameter` | Aperture diameter of the antenna; the unit is determined by the current Connect `Distance` unit setting |
 | `Model.BackLobeGain` | Back-lobe gain of the antenna, in dB |
 | `Model.Efficiency` | Efficiency of the antenna, reflecting the performance reduction of the actual antenna relative to an ideal aperture antenna, in % |
 | `Model.ExternalAntennaFile` | Pattern file of the external antenna |
@@ -78,9 +78,9 @@ The specific parameters of the `Orientation` group are as follows.
 | `Orientation.Qy` | Vector component qy in quaternion mode |
 | `Orientation.Qz` | Vector component qz in quaternion mode |
 | `Orientation.Qs` | Scalar component qs in quaternion mode |
-| `Orientation.XPositionOffset` | X component of the position offset of the antenna reference point relative to the reference origin of the parent object; the dimension is length, and the unit is determined by the current Connect length unit setting |
-| `Orientation.YPositionOffset` | Y component of the position offset of the antenna reference point relative to the reference origin of the parent object; the dimension is length, and the unit is determined by the current Connect length unit setting |
-| `Orientation.ZPositionOffset` | Z component of the position offset of the antenna reference point relative to the reference origin of the parent object; the dimension is length, and the unit is determined by the current Connect length unit setting |
+| `Orientation.XPositionOffset` | X component of the position offset of the antenna reference point relative to the reference origin of the parent object; the unit is determined by the current Connect `Distance` unit setting |
+| `Orientation.YPositionOffset` | Y component of the position offset of the antenna reference point relative to the reference origin of the parent object; the unit is determined by the current Connect `Distance` unit setting |
+| `Orientation.ZPositionOffset` | Z component of the position offset of the antenna reference point relative to the reference origin of the parent object; the unit is determined by the current Connect `Distance` unit setting |
 
 Notes:
 
@@ -113,7 +113,7 @@ Antenna */Satellite/Satellite1/Antenna/Antenna1 SetValue Model.Diameter 3.0
 - `Model.DesignFrequency`: the parameter to set, here the design frequency of the antenna model
 - `2.4`: the design frequency value; the unit is determined by the current Connect frequency unit setting
 - `Model.Diameter`: the parameter to set, here the aperture diameter of the antenna
-- `3.0`: the aperture diameter value; the unit is determined by the current Connect length unit setting
+- `3.0`: the aperture diameter value; the unit is determined by the current Connect `Distance` unit setting
 
 :::
 
@@ -143,10 +143,10 @@ Antenna */Satellite/Satellite1/Antenna/Antenna1 SetValue Orientation.ZPositionOf
 ```
 
 - `Orientation.XPositionOffset`: the parameter to set, here the X component of the position offset of the antenna reference point relative to the reference origin of the parent object
-- `1.5`: the X offset value; the unit is determined by the current Connect length unit setting
+- `1.5`: the X offset value; the unit is determined by the current Connect `Distance` unit setting
 - `Orientation.YPositionOffset`: the parameter to set, here the Y component of the position offset
-- `0.0`: the Y offset value; the unit is determined by the current Connect length unit setting
+- `0.0`: the Y offset value; the unit is determined by the current Connect `Distance` unit setting
 - `Orientation.ZPositionOffset`: the parameter to set, here the Z component of the position offset
-- `-0.5`: the Z offset value; the unit is determined by the current Connect length unit setting
+- `-0.5`: the Z offset value; the unit is determined by the current Connect `Distance` unit setting
 
 :::

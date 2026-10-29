@@ -25,11 +25,11 @@ SetState <VehObjectPath> Spherical {Propagator} {NoProp | {TimeInterval}} <StepS
 | `<StepSize>` | Must be greater than or equal to 0.001 seconds. If the LOP propagator is selected, it must be greater than or equal to one day (86164.09 seconds) |
 | `{CoordSystem}` | The coordinate system can be set to `ICRF`, `J2000`, `Fixed`, `TrueOfDate`, `MeanOfDate`, `TEMEOfDate` |
 | `"<OrbitEpoch>"` | See [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md) |
-| `<RightAscension>` | Enter the right ascension parameter. The default unit is degrees |
-| `<Declination>` | Enter the declination parameter. The default unit is degrees |
-| `<Radius>` | Enter the radius parameter. The default unit is meters |
-| `<HorizontalFlightPathAngle>` | Enter the horizontal flight path angle parameter. The default unit is degrees |
-| `<FlightPathAzimuth>` | Enter the flight path azimuth parameter. The default unit is degrees |
+| `<RightAscension>` | Enter the right ascension parameter; the unit is determined by the current Connect `Angle` unit setting |
+| `<Declination>` | Enter the declination parameter; the unit is determined by the current Connect `Angle` unit setting |
+| `<Radius>` | Enter the radius parameter; the unit is determined by the current Connect `Distance` unit setting |
+| `<HorizontalFlightPathAngle>` | Enter the horizontal flight path angle parameter; the unit is determined by the current Connect `Angle` unit setting |
+| `<FlightPathAzimuth>` | Enter the flight path azimuth parameter; the unit is determined by the current Connect `Angle` unit setting |
 | `<Velocity>` | Enter the velocity parameter. The default unit is m/sec |
 | `["<CoordEpoch>"]` | See [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md) |
 

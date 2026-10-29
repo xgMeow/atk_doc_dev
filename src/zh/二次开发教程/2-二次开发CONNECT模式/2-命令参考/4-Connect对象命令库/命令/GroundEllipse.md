@@ -26,8 +26,8 @@ GroundEllipse <VehObjectPath> {EllipseSetOptions}
 | `ClearSet <SetName>` | 移除指定椭圆集中的全部椭圆。 |
 | `RenameSet <SetName> <NewSetName>` | 把椭圆集重命名为新名称。 |
 | `AddSetEllipse <SetName> {EllipseOptions}` | 向指定椭圆集新增一个椭圆，椭圆选项见下方 `{EllipseOptions}`。 |
-| `DeleteSetEllipse <SetName> {EllipseAtTime <TimeVal> \| EllipseAtLatLon <Latitude> <Longitude>}` | 从指定椭圆集中删除由指定时刻或指定位置确定的那一个椭圆。`<TimeVal>` 按 Connect 的日期单位输入；`<Latitude>`、`<Longitude>` 以**度**为单位输入。 |
-| `ModifySetEllipse <SetName> {EllipseAtTime "<TimeVal>" \| EllipseAtLatLon <Latitude> <Longitude>} {EllipseOptions}` | 用给定的 `{EllipseOptions}` 修改指定椭圆集中由指定时刻或指定位置确定的那一个椭圆。`<TimeVal>` 按 Connect 的日期单位输入；`<Latitude>`、`<Longitude>` 以**度**为单位输入。 |
+| `DeleteSetEllipse <SetName> {EllipseAtTime <TimeVal> \| EllipseAtLatLon <Latitude> <Longitude>}` | 从指定椭圆集中删除由指定时刻或指定位置确定的那一个椭圆。`<TimeVal>` 的取值单位由当前 Connect 的 `Date` 单位设置决定；`<Latitude>`、`<Longitude>` 的取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
+| `ModifySetEllipse <SetName> {EllipseAtTime "<TimeVal>" \| EllipseAtLatLon <Latitude> <Longitude>} {EllipseOptions}` | 用给定的 `{EllipseOptions}` 修改指定椭圆集中由指定时刻或指定位置确定的那一个椭圆。`<TimeVal>` 的取值单位由当前 Connect 的 `Date` 单位设置决定；`<Latitude>`、`<Longitude>` 的取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
 
 ::: warning 注意
 `AddSetEllipse` 与 `ModifySetEllipse` 中，下面这组 `{EllipseOptions}` **至少要给出一个**。
@@ -38,12 +38,12 @@ GroundEllipse <VehObjectPath> {EllipseSetOptions}
 | `{EllipseOptions}` | 说明 |
 |------|------|
 | `Time {TimeValue}` | 椭圆的时刻，合法取值参见[日期时间格式](../../2-参数值格式/日期时间格式.md)。 |
-| `SemiMajorAxis <Value>` | 半长轴，以**米**为单位，取值须大于或等于 `0.0`。 |
-| `SemiMinorAxis <Value>` | 半短轴，以**米**为单位，取值须大于或等于 `0.0`。 |
-| `Bearing <Value>` | 方位角，以**度**为单位。 |
+| `SemiMajorAxis <Value>` | 半长轴，取值单位由当前 Connect 的 `Distance` 单位设置决定，取值须大于或等于 `0.0`。 |
+| `SemiMinorAxis <Value>` | 半短轴，取值单位由当前 Connect 的 `Distance` 单位设置决定，取值须大于或等于 `0.0`。 |
+| `Bearing <Value>` | 方位角，取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
 | `UseObjPos {On \| Off}` | 取 `On` 时，地面椭圆以该椭圆所指定时刻的飞行器位置为中心；取 `Off` 时，中心位置改用 `Lat`、`Lon` 两个选项指定。 |
-| `Lat <Value>` | 纬度，以**度**为单位。 |
-| `Lon <Value>` | 经度，以**度**为单位。 |
+| `Lat <Value>` | 纬度，取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
+| `Lon <Value>` | 经度，取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
 
 ## 适用对象
 

@@ -27,10 +27,10 @@ SetState <VehObjectPath> Classical {Propagator} {NoProp | {TimeInterval}} <StepS
 | `"<OrbitEpoch>"` | See [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md) |
 | `<SemiMajorAxis>` | Enter the semi-major axis parameter |
 | `<Eccentricity>` | Enter the eccentricity parameter. The value must be greater than or equal to 0.0 and less than or equal to 1.0 |
-| `<Inclination>` | Enter the orbital inclination parameter. The default unit is degrees |
-| `<ArgOfPerigee>` | Enter the argument of perigee parameter. The default unit is degrees |
-| `<RAAN>` | Enter the right ascension of the ascending node parameter. The default unit is degrees |
-| `<MeanAnom>` | Enter the mean anomaly parameter. The default unit is degrees |
+| `<Inclination>` | Enter the orbital inclination parameter; the unit is determined by the current Connect `Angle` unit setting |
+| `<ArgOfPerigee>` | Enter the argument of perigee parameter; the unit is determined by the current Connect `Angle` unit setting |
+| `<RAAN>` | Enter the right ascension of the ascending node parameter; the unit is determined by the current Connect `Angle` unit setting |
+| `<MeanAnom>` | Enter the mean anomaly parameter; the unit is determined by the current Connect `Angle` unit setting |
 | `["<CoordEpoch>"]` | See [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md) |
 
 :::

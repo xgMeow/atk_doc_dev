@@ -32,7 +32,7 @@ Units_Set <ScenarioPath> {Option} <Parameters>
 
 注意事项：
 
-- `Connect` 单位中，角度值应以「度」为单位输入。
+- `Connect` 单位按量纲设置：命令中各参数以所设置的对应量纲单位输入，如角度值按 `Angle` 单位输入、距离值按 `Distance` 单位输入。
 - 本命令可作用于 GUI、Report 等多类单位；若只需设置 Connect 单位，可使用 [Units_SetConnect](./Units_SetConnect.md)。
 
 ## 示例

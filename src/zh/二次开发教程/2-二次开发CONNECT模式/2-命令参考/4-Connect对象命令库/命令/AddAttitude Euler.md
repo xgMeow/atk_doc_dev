@@ -22,7 +22,7 @@ AddAttitude <ObjectPath> Euler {StartTime} {Sequence} <Angle1> <Angle2> <Angle3>
 | `<ObjectPath>` | 对象完整路径，自场景 `*` 起写全，如 `*/Satellite/Satellite1` |
 | `{StartTime}` | 起始时刻，格式设置请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md) |
 | `{Sequence}` | 欧拉角旋转顺序，如 `321` |
-| `<Angle1> <Angle2> <Angle3>` | 三个角度值，按当前 Connect 的 `Angle` 单位输入，默认为 deg |
+| `<Angle1> <Angle2> <Angle3>` | 三个角度值，取值单位由当前 Connect 的 `Angle` 单位设置决定，缺省为 deg |
 
 ::: warning 注意
 命令输入时间必须是递增序列。

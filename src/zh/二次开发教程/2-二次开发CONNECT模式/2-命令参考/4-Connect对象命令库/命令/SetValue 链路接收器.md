@@ -18,11 +18,11 @@ Receiver <RcObjectPath> SetValue <AttributePath> [<Value>] [<Unit>]
 
 | 参数 | 说明 |
 | --- | --- |
-| `Model.Frequency` | 设置频率，默认单位为 `Hz` |
+| `Model.Frequency` | 设置频率，取值单位由当前 Connect 的 `Frequency` 单位设置决定 |
 | `Model.Govert` | 设置品质因素，默认单位为 `dB/K` |
 | `Model.Polarization` | 设置极化类型，包括 `None`、`Linear`、`Circular`、`Vertical`、`Horizontal`、`Elliptical` |
 | `Model.Polarization.ReferenceAxis` | 设置参考轴，包括 `X Axis`、`Y Axis`、`Z Axis` |
-| `Model.Polarization.TiltAngle` | 设置极化角度，默认单位为 `rad` |
+| `Model.Polarization.TiltAngle` | 设置极化角度，取值单位由当前 Connect 的 `Angle` 单位设置决定 |
 | `Model.LinkMarginType` | 设置链路裕量类型，包括 `None`、`Flux Density`、`RIP`、`Rcvd Carrier Power`、`C/N`、`C/No`、`Eb/No`、`BER` |
 | `Model.LinkMarginThreshold` | 设置阈值，默认单位为 `dB` |
 | `Model.Demodulator` | 设置数字载波调制类型，包括 `BPAK`、`QPSK` |

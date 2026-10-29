@@ -26,8 +26,8 @@ GroundEllipse <VehObjectPath> {EllipseSetOptions}
 | `ClearSet <SetName>` | Removes all ellipses from the specified ellipse set. |
 | `RenameSet <SetName> <NewSetName>` | Renames the ellipse set to the new name. |
 | `AddSetEllipse <SetName> {EllipseOptions}` | Adds an ellipse to the specified ellipse set; see `{EllipseOptions}` below for the ellipse options. |
-| `DeleteSetEllipse <SetName> {EllipseAtTime <TimeVal> \| EllipseAtLatLon <Latitude> <Longitude>}` | Deletes from the specified ellipse set the ellipse identified by the specified time or position. Enter `<TimeVal>` in Connect date units; enter `<Latitude>` and `<Longitude>` in **degrees**. |
-| `ModifySetEllipse <SetName> {EllipseAtTime "<TimeVal>" \| EllipseAtLatLon <Latitude> <Longitude>} {EllipseOptions}` | Modifies, with the given `{EllipseOptions}`, the ellipse in the specified ellipse set identified by the specified time or position. Enter `<TimeVal>` in Connect date units; enter `<Latitude>` and `<Longitude>` in **degrees**. |
+| `DeleteSetEllipse <SetName> {EllipseAtTime <TimeVal> \| EllipseAtLatLon <Latitude> <Longitude>}` | Deletes from the specified ellipse set the ellipse identified by the specified time or position. The unit of `<TimeVal>` is determined by the current Connect `Date` unit setting; the units of `<Latitude>` and `<Longitude>` are determined by the current Connect `Angle` unit setting. |
+| `ModifySetEllipse <SetName> {EllipseAtTime "<TimeVal>" \| EllipseAtLatLon <Latitude> <Longitude>} {EllipseOptions}` | Modifies, with the given `{EllipseOptions}`, the ellipse in the specified ellipse set identified by the specified time or position. The unit of `<TimeVal>` is determined by the current Connect `Date` unit setting; the units of `<Latitude>` and `<Longitude>` are determined by the current Connect `Angle` unit setting. |
 
 ::: warning Note
 In `AddSetEllipse` and `ModifySetEllipse`, **at least one** of the following `{EllipseOptions}` must be given.
@@ -38,12 +38,12 @@ In `AddSetEllipse` and `ModifySetEllipse`, **at least one** of the following `{E
 | `{EllipseOptions}` | Description |
 |------|------|
 | `Time {TimeValue}` | The time of the ellipse; see [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md) for valid values. |
-| `SemiMajorAxis <Value>` | Semi-major axis, in **meters**; the value must be greater than or equal to `0.0`. |
-| `SemiMinorAxis <Value>` | Semi-minor axis, in **meters**; the value must be greater than or equal to `0.0`. |
-| `Bearing <Value>` | Bearing, in **degrees**. |
+| `SemiMajorAxis <Value>` | Semi-major axis; the unit is determined by the current Connect `Distance` unit setting; the value must be greater than or equal to `0.0`. |
+| `SemiMinorAxis <Value>` | Semi-minor axis; the unit is determined by the current Connect `Distance` unit setting; the value must be greater than or equal to `0.0`. |
+| `Bearing <Value>` | Bearing; the unit is determined by the current Connect `Angle` unit setting. |
 | `UseObjPos {On \| Off}` | When `On`, the ground ellipse is centered on the vehicle position at the time specified for that ellipse; when `Off`, the center is specified by the `Lat` and `Lon` options instead. |
-| `Lat <Value>` | Latitude, in **degrees**. |
-| `Lon <Value>` | Longitude, in **degrees**. |
+| `Lat <Value>` | Latitude; the unit is determined by the current Connect `Angle` unit setting. |
+| `Lon <Value>` | Longitude; the unit is determined by the current Connect `Angle` unit setting. |
 
 ## Applies To
 

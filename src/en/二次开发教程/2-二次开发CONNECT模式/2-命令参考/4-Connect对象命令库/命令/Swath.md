@@ -21,11 +21,11 @@ Swath <ObjectPath> {Type} <Value> [{DisplayOption}]
 
 | `{Type}` | Meaning | `<Value>` |
 |------|------|------|
-| `Elevation` | Ground elevation angle | In **degrees**, ranging from `0.0` to `90.0` |
-| `HalfAngle` | Vehicle half-cone angle | In **degrees**, ranging from `0.0` to `90.0` |
-| `HalfWidth` | Swath half-width | In Connect distance units, see [Unit Format](../../2-参数值格式/单位格式.md); must be greater than or equal to `0.0` meters |
-| `ElevationEnvelope` | Ground elevation angle envelope | In **degrees**, ranging from `0.0` to `90.0` |
-| `HalfAngleEnvelope` | Vehicle half-cone angle envelope | In **degrees**, ranging from `0.0` to `90.0` |
+| `Elevation` | Ground elevation angle | ; the unit is determined by the current Connect `Angle` unit setting, ranging from `0.0` to `90.0` |
+| `HalfAngle` | Vehicle half-cone angle | ; the unit is determined by the current Connect `Angle` unit setting, ranging from `0.0` to `90.0` |
+| `HalfWidth` | Swath half-width | The unit is determined by the current Connect `Distance` unit setting, see [Unit Format](../../2-参数值格式/单位格式.md); must be greater than or equal to `0.0` |
+| `ElevationEnvelope` | Ground elevation angle envelope | ; the unit is determined by the current Connect `Angle` unit setting, ranging from `0.0` to `90.0` |
+| `HalfAngleEnvelope` | Vehicle half-cone angle envelope | ; the unit is determined by the current Connect `Angle` unit setting, ranging from `0.0` to `90.0` |
 
 `{DisplayOption}` is optional and determines how the swath is drawn; it takes the following values:
 

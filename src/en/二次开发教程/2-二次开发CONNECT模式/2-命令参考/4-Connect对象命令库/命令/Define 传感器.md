@@ -26,7 +26,7 @@ Define <SensorObjectPath> {Type} <TypeData>
 | SAR         | `<MinElevationAngle> <MaxElevationAngle> <ForwardExclusionAngle> <AftExclusionAngle> {<ParentAltitude> \| TrackParentAltitude {On \| Off}}` |
 
 ::: warning Note
-The default unit for input angle values is degrees.
+The unit of input angle values is determined by the current Connect `Angle` unit setting.
 :::
 
 ## Examples

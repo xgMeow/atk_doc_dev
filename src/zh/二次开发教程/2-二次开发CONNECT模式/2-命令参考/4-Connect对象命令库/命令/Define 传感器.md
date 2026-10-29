@@ -26,7 +26,7 @@ Define <SensorObjectPath> {Type} <TypeData>
 | SAR         | `<MinElevationAngle> <MaxElevationAngle> <ForwardExclusionAngle> <AftExclusionAngle> {<ParentAltitude> \| TrackParentAltitude {On \| Off}}` |
 
 ::: warning 注意
-输入角度值默认单位为度。
+输入角度值的单位由当前 Connect 的 `Angle` 单位设置决定。
 :::
 
 ## 示例

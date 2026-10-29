@@ -19,7 +19,7 @@ Graphics <SensorObjectPath> Projection {Option}
 
 | Option             | 说明                     |
 | ------------------ | ------------------------ |
-| `Altitudes <Alt>`  | 输入固定半径默认单位是 m |
+| `Altitudes <Alt>`  | 输入固定半径，取值单位由当前 Connect 的 `Distance` 单位设置决定 |
 
 ## 示例
 

@@ -21,11 +21,11 @@ Swath <ObjectPath> {Type} <Value> [{DisplayOption}]
 
 | `{Type}` | 含义 | `<Value>` |
 |------|------|------|
-| `Elevation` | 地面仰角 | 以**度**为单位，取 `0.0`～`90.0` |
-| `HalfAngle` | 飞行器半锥角 | 以**度**为单位，取 `0.0`～`90.0` |
-| `HalfWidth` | 刈幅半幅宽 | 以 Connect 距离单位计，参见[单位格式](../../2-参数值格式/单位格式.md)，须大于或等于 `0.0` 米 |
-| `ElevationEnvelope` | 地面仰角包络 | 以**度**为单位，取 `0.0`～`90.0` |
-| `HalfAngleEnvelope` | 飞行器半锥角包络 | 以**度**为单位，取 `0.0`～`90.0` |
+| `Elevation` | 地面仰角 | 取值单位由当前 Connect 的 `Angle` 单位设置决定，取 `0.0`～`90.0` |
+| `HalfAngle` | 飞行器半锥角 | 取值单位由当前 Connect 的 `Angle` 单位设置决定，取 `0.0`～`90.0` |
+| `HalfWidth` | 刈幅半幅宽 | 取值单位由当前 Connect 的 `Distance` 单位设置决定，参见[单位格式](../../2-参数值格式/单位格式.md)，须大于或等于 `0.0` |
+| `ElevationEnvelope` | 地面仰角包络 | 取值单位由当前 Connect 的 `Angle` 单位设置决定，取 `0.0`～`90.0` |
+| `HalfAngleEnvelope` | 飞行器半锥角包络 | 取值单位由当前 Connect 的 `Angle` 单位设置决定，取 `0.0`～`90.0` |
 
 `{DisplayOption}` 为可选项，决定刈幅的绘制方式，可取下列取值：
 

@@ -27,10 +27,10 @@ SetState <VehObjectPath> Classical {Propagator} {NoProp | {TimeInterval}} <StepS
 | `"<OrbitEpoch>"` | 请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md) |
 | `<SemiMajorAxis>` | 输入半长轴参数 |
 | `<Eccentricity>` | 输入离心率参数，参数值应大于等于 0.0 且小于等于 1.0 |
-| `<Inclination>` | 输入轨道倾角参数，默认单位是度 |
-| `<ArgOfPerigee>` | 输入近地点角参数，默认单位是度 |
-| `<RAAN>` | 输入升交点赤经参数，默认单位是度 |
-| `<MeanAnom>` | 输入平近点角参数，默认单位是度 |
+| `<Inclination>` | 输入轨道倾角参数，取值单位由当前 Connect 的 `Angle` 单位设置决定 |
+| `<ArgOfPerigee>` | 输入近地点角参数，取值单位由当前 Connect 的 `Angle` 单位设置决定 |
+| `<RAAN>` | 输入升交点赤经参数，取值单位由当前 Connect 的 `Angle` 单位设置决定 |
+| `<MeanAnom>` | 输入平近点角参数，取值单位由当前 Connect 的 `Angle` 单位设置决定 |
 | `["<CoordEpoch>"]` | 请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md) |
 
 :::

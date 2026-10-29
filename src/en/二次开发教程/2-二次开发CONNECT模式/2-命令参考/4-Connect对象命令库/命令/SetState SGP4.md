@@ -58,10 +58,10 @@ SetState <SatObjectPath> SGP4 {NoProp | {TimeInterval}} <StepSize> <SSCNumber> T
 | --- | --- |
 | `<MeanMotion>` | Sets the mean motion |
 | `<Eccentricity>` | Sets the eccentricity. The value must be greater than 0 and less than 1 |
-| `<Inclination>` | Sets the orbital inclination. The default unit is degrees. |
-| `<ArgOfPerigee>` | Sets the argument of perigee. The default unit is degrees. |
-| `<RAAN>` | Sets the right ascension of the ascending node. The default unit is degrees. |
-| `<MeanAnomaly>` | Sets the mean anomaly. The default unit is degrees. |
+| `<Inclination>` | Sets the orbital inclination. The unit is determined by the current Connect `Angle` unit setting. |
+| `<ArgOfPerigee>` | Sets the argument of perigee. The unit is determined by the current Connect `Angle` unit setting. |
+| `<RAAN>` | Sets the right ascension of the ascending node. The unit is determined by the current Connect `Angle` unit setting. |
+| `<MeanAnomaly>` | Sets the mean anomaly. The unit is determined by the current Connect `Angle` unit setting. |
 | `<BStar>` | Sets the drag term. |
 
 :::

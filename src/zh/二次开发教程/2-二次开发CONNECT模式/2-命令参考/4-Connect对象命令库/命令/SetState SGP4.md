@@ -58,10 +58,10 @@ SetState <SatObjectPath> SGP4 {NoProp | {TimeInterval}} <StepSize> <SSCNumber> T
 | --- | --- |
 | `<MeanMotion>` | 设置平均运动 |
 | `<Eccentricity>` | 设置偏心率，设置值大于 0 且小于 1 |
-| `<Inclination>` | 设置轨道倾角。默认单位是度。 |
-| `<ArgOfPerigee>` | 设置近地点角。默认单位是度。 |
-| `<RAAN>` | 设置升交点赤经。默认单位是度。 |
-| `<MeanAnomaly>` | 设置平近点角。默认单位是度。 |
+| `<Inclination>` | 设置轨道倾角。取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
+| `<ArgOfPerigee>` | 设置近地点角。取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
+| `<RAAN>` | 设置升交点赤经。取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
+| `<MeanAnomaly>` | 设置平近点角。取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
 | `<BStar>` | 设置阻力条件。 |
 
 :::

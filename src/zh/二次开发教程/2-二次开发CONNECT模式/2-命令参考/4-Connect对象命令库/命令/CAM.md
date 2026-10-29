@@ -319,7 +319,7 @@ CAM * DistThreshold Red 50
 CAM * DistThreshold EquivalFactor 10
 ```
 
-- `MaxRange 5000`：交会分析门限的取值，单位由当前 Connect 的距离单位设置决定
+- `MaxRange 5000`：交会分析门限的取值，单位由当前 Connect 的 `Distance` 单位设置决定
 - `RelativeOrbitModel Nonlinear`：相对轨道预报模型取非线性方程
 - `DistThreshold Yellow 200`：黄色告警的等效距离门限
 - `DistThreshold Red 50`：红色告警的等效距离门限
@@ -357,7 +357,7 @@ CAM * SaveAs CAMEnum "C:\Result\CAMEnum.txt"
 - `"1 Jul 2021 09:00:00.000"`：控制时刻前限，字符串内部含空格，须用双引号括起来
 - `CAM LowBoundDA 0.5`、`CAM UpBoundDA 5.0`：半长轴控制量的下限、上限
 - `CAM Enum UseCtrlTime On`：进行时间规划
-- `CAM Enum TimeStep 60`：时间步长的取值，单位由当前 Connect 的时间单位设置决定
+- `CAM Enum TimeStep 60`：时间步长的取值，单位由当前 Connect 的 `Time` 单位设置决定
 - `CAM Enum DAStep 0.1`：半长轴控制步长
 - `Compute CAMEnum`：执行遍历分析计算
 - `SaveAs CAMEnum "C:\Result\CAMEnum.txt"`：把遍历分析结果另存到指定文件

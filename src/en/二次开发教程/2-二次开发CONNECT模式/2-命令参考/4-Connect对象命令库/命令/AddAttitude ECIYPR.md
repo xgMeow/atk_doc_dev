@@ -17,7 +17,7 @@ AddAttitude <ObjectPath> ECIYPR {StartTime} {Sequence} <Yaw> <Pitch> <Roll>
 ## Additional Notes
 
 - `{Sequence}` valid values are 121, 123, 131, 132, 212, 213, 231, 232, 312, 313, 321, 323
-- Angle values are entered in the current Connect `Angle` unit, which defaults to deg
+- The unit of angle values is determined by the current Connect `Angle` unit setting; the default is deg
 - `{StartTime}` format settings: see [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md)
 - The times entered in the command must be in increasing order
 

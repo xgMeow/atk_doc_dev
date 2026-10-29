@@ -28,7 +28,7 @@ Graphics <ObjectPath> RangeContours {AddMethod} [<Parameters>]
 | `{AddMethod}` | `<Parameters>` | 说明 |
 |------|------|------|
 | `Show` | `{On \| Off}` | 显示或隐藏范围轮廓线图形 |
-| `Explicit` | `<LevelValue> {Color} {LineStyle} <LineWidth> {ShowDistance} [{ShowText} ["<LabelText>" [<LabelAngle>]]]` | 逐条添加范围轮廓分级并指定其显示属性。`{Color}`、`{LineStyle}` 的合法取值参见[颜色格式](../../2-参数值格式/颜色格式.md)、[线型格式](../../2-参数值格式/线型格式.md)；`<LineWidth>` 为 `1.0`～`10.0` 的像素宽度；`{ShowDistance}`、`{ShowText}` 取 `On` 或 `Off`；`<LabelAngle>` 以度为单位 |
+| `Explicit` | `<LevelValue> {Color} {LineStyle} <LineWidth> {ShowDistance} [{ShowText} ["<LabelText>" [<LabelAngle>]]]` | 逐条添加范围轮廓分级并指定其显示属性。`{Color}`、`{LineStyle}` 的合法取值参见[颜色格式](../../2-参数值格式/颜色格式.md)、[线型格式](../../2-参数值格式/线型格式.md)；`<LineWidth>` 为 `1.0`～`10.0` 的像素宽度；`{ShowDistance}`、`{ShowText}` 取 `On` 或 `Off`；`<LabelAngle>` 的取值单位由当前 Connect 的 `Angle` 单位设置决定 |
 | `Contour` | `<LevelValue> {Keyword} <Value> [{Keyword} <Value>...]` | 修改指定 `<LevelValue>` 分级的属性 |
 | `StartStop` | `<Start> <Stop> <Step>` | 从 `Start` 开始、按 `Step` 递增生成分级，直到超过 `Stop` 为止。`<Step>` 须大于 `0` |
 | `Remove` | `<LevelValue>` | 移除指定 `<LevelValue>` 对应的分级 |

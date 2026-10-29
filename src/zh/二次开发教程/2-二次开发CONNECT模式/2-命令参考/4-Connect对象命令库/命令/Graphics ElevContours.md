@@ -28,7 +28,7 @@ Graphics <ObjectPath> ElevContours {AddMethod} [<Parameters>]
 | `{AddMethod}` | `<Parameters>` | 说明 |
 |------|------|------|
 | `Show` | `{On \| Off}` | 显示仰角轮廓线图形。 |
-| `Explicit` | `<LevelValue> {Color} {LineStyle} <LineWidth> {ShowDistance} [{ShowText} ["<LabelText>" [<LabelAngle>]]]` | 通过指定 `<LevelValue>` 及其显示属性，逐条新增仰角轮廓线分级。`{Color}`、`{LineStyle}` 的合法取值参见[颜色格式](../../2-参数值格式/颜色格式.md)、[线型格式](../../2-参数值格式/线型格式.md)。`<LineWidth>` 取 `1.0`～`10.0` 的像素宽度。`{ShowDistance}`、`{ShowText}` 取 `On` 或 `Off`。`<LabelAngle>` 以**度**为单位。 |
+| `Explicit` | `<LevelValue> {Color} {LineStyle} <LineWidth> {ShowDistance} [{ShowText} ["<LabelText>" [<LabelAngle>]]]` | 通过指定 `<LevelValue>` 及其显示属性，逐条新增仰角轮廓线分级。`{Color}`、`{LineStyle}` 的合法取值参见[颜色格式](../../2-参数值格式/颜色格式.md)、[线型格式](../../2-参数值格式/线型格式.md)。`<LineWidth>` 取 `1.0`～`10.0` 的像素宽度。`{ShowDistance}`、`{ShowText}` 取 `On` 或 `Off`。`<LabelAngle>` 的取值单位由当前 Connect 的 `Angle` 单位设置决定。 |
 | `Contour` | `<LevelValue> {Keyword} <Value> [{Keyword} <Value>...]` | 修改指定 `<LevelValue>` 的属性。`{Keyword} <Value>` 配对见下表。 |
 | `StartStop` | `<Start> <Stop> <Step>` | 从 `Start` 开始，按 `Step` 递增生成轮廓线分级，直到**超过** `Stop` 为止。`<Step>` 须大于 `0.0`。 |
 | `Remove` | `<LevelValue>` | 删除指定 `<LevelValue>` 所对应的那条轮廓线。 |
@@ -42,7 +42,7 @@ Graphics <ObjectPath> ElevContours {AddMethod} [<Parameters>]
 - `LabelAngle`：调用本命令**之后**新增的轮廓线，其标注角度仍为默认的 `180`。
 :::
 
-`<LevelValue>` 与 `<Start> <Stop> <Step>` 的取值均以**度**为单位，合法的仰角轮廓线分级取 `0.0`～`90.0` 度。用 `StartStop` 方式输入分级时，**即使给出的分级非法，本命令也不会返回 Nack**，只是**只绘制其中合法的分级**。
+`<LevelValue>` 与 `<Start> <Stop> <Step>` 的取值单位均由当前 Connect 的 `Angle` 单位设置决定，合法的仰角轮廓线分级取 `0.0`～`90.0` 度。用 `StartStop` 方式输入分级时，**即使给出的分级非法，本命令也不会返回 Nack**，只是**只绘制其中合法的分级**。
 
 `{Keyword} <Value>` 配对可取下列取值：
 

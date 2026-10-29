@@ -22,7 +22,7 @@ AddAttitude <ObjectPath> Euler {StartTime} {Sequence} <Angle1> <Angle2> <Angle3>
 | `<ObjectPath>` | Full path of the object, written out from the scenario `*`, for example `*/Satellite/Satellite1` |
 | `{StartTime}` | Start time; for format settings, see [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md) |
 | `{Sequence}` | Euler angle rotation sequence, for example `321` |
-| `<Angle1> <Angle2> <Angle3>` | Three angle values, entered in the current Connect `Angle` unit, which defaults to deg |
+| `<Angle1> <Angle2> <Angle3>` | Three angle values; the unit is determined by the current Connect `Angle` unit setting, and the default is deg |
 
 ::: warning Note
 The times entered in the command must be in increasing order.

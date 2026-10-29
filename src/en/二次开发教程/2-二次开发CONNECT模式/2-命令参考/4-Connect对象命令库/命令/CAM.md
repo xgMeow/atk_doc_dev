@@ -319,7 +319,7 @@ CAM * DistThreshold Red 50
 CAM * DistThreshold EquivalFactor 10
 ```
 
-- `MaxRange 5000`: the value of the conjunction analysis threshold; the unit is determined by the current Connect distance unit setting
+- `MaxRange 5000`: the value of the conjunction analysis threshold; the unit is determined by the current Connect `Distance` unit setting
 - `RelativeOrbitModel Nonlinear`: the relative orbit propagation model is set to the nonlinear equations
 - `DistThreshold Yellow 200`: the equivalent distance threshold of the yellow warning
 - `DistThreshold Red 50`: the equivalent distance threshold of the red warning
@@ -357,7 +357,7 @@ CAM * SaveAs CAMEnum "C:\Result\CAMEnum.txt"
 - `"1 Jul 2021 09:00:00.000"`: the control time lower bound; the string contains spaces and must be enclosed in double quotes
 - `CAM LowBoundDA 0.5`, `CAM UpBoundDA 5.0`: the lower bound and upper bound of the semimajor axis control value
 - `CAM Enum UseCtrlTime On`: time planning is performed
-- `CAM Enum TimeStep 60`: the value of the time step; the unit is determined by the current Connect time unit setting
+- `CAM Enum TimeStep 60`: the value of the time step; the unit is determined by the current Connect `Time` unit setting
 - `CAM Enum DAStep 0.1`: the semimajor axis control step
 - `Compute CAMEnum`: performs the enumeration analysis computation
 - `SaveAs CAMEnum "C:\Result\CAMEnum.txt"`: saves the enumeration analysis results to the specified file

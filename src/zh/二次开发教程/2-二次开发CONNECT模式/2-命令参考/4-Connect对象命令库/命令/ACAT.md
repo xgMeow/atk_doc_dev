@@ -63,11 +63,11 @@ ACAT */AdvCat/AdvCat1 PntToPnt On
 | TimePeriod | 设置分析时段，须依次给出开始历元与结束历元两个日期时间，格式参见[常用日期/时间格式](../../2-参数值格式/日期时间格式.md)。设置后该对象**不再使用场景区间**，改用所指定的开始历元与结束历元。 |
 | Primary、PrimaryMulti | 增删**主目标**列表，取值见下文「目标列表参数取值」。 |
 | Secondary、SecondaryMulti | 增删**次目标**列表，取值与上述两者一致。 |
-| Threshold | 设置阈值，须给出一个距离值，单位为 **m**，缺省值 10000。当主目标误差椭球与次目标误差椭球之间的距离低于该阈值时，记为接近事件。 |
+| Threshold | 设置阈值，须给出一个距离值，取值单位由当前 Connect 的 `Distance` 单位设置决定，缺省值 10000。当主目标误差椭球与次目标误差椭球之间的距离低于该阈值时，记为接近事件。 |
 | PntToPnt | 设置是否**使用距离测量**。取值二选一：On 或 Off，缺省为 Off。取 Off 时以主目标误差椭球与次目标误差椭球之间的距离为判据；取 On 时改用两目标中心之间的距离为判据。 |
 | PreFilters | 设置预滤波器是否启用及启用时的门限值，可用的滤波器与取值单位见下文「PreFilters 滤波器说明」。 |
 | ScaleFactor | 设置椭球比例因子，须给出一个缩放系数，缺省值为 1。 |
-| SampleStepSize | 设置采样步长，须依次给出最大步长与最小步长两个数值，单位为 s，缺省值为 300 与 1。**最大值在前**，且须满足第一个数值大于第二个，否则返回 NACK。 |
+| SampleStepSize | 设置采样步长，须依次给出最大步长与最小步长两个数值，取值单位由当前 Connect 的 `Time` 单位设置决定，缺省值为 300 与 1。**最大值在前**，且须满足第一个数值大于第二个，否则返回 NACK。 |
 | ConjTcaMode | 设置碰撞类型，对应界面上的「碰撞类型」下拉框。四选一：GlobalOnly（全局解）、LocalOnly（局部解）、GlobalPlusLocal（全局解+局部解）、LocalPlusEndPoints（局部解+边界解），缺省值为 GlobalOnly。 |
 
 **取值不区分大小写。** PntToPnt 的 On、ON、on，ConjTcaMode 的 GlobalOnly、globalonly，预滤波器的滤波器名 outofdate，均可正常接受。
@@ -129,8 +129,8 @@ ACAT */AdvCat/AdvCat1 PrimaryMulti Add "Satellite/Satellite2 Satellite/Satellite
 | 参数 | 说明 |
 | --- | --- |
 | 椭球类别 | 设置目标误差椭球类别，目前仅支持 Fixed（固定），不区分大小写。 |
-| 三轴半长 | 依次给出**切向、径向、法向**三个半长数值，单位为 **m**，与界面上主目标列表、次目标列表中的「切向」「径向」「法向」三列一一对应（界面上以 km 显示）。 |
-| HardBodyRadius | 设置目标包络球半径，须给出一个半径值，单位为 **m**。 |
+| 三轴半长 | 依次给出**切向、径向、法向**三个半长数值，取值单位由当前 Connect 的 `Distance` 单位设置决定，与界面上主目标列表、次目标列表中的「切向」「径向」「法向」三列一一对应（界面上以 km 显示）。 |
+| HardBodyRadius | 设置目标包络球半径，须给出一个半径值，取值单位由当前 Connect 的 `Distance` 单位设置决定。 |
 
 ### 缺省值
 

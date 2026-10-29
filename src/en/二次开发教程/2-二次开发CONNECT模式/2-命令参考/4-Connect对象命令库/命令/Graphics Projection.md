@@ -19,7 +19,7 @@ Graphics <SensorObjectPath> Projection {Option}
 
 | Option             | Description                      |
 | ------------------ | -------------------------------- |
-| `Altitudes <Alt>`  | The default unit for the input fixed radius is m. |
+| `Altitudes <Alt>`  | The fixed radius; the unit is determined by the current Connect `Distance` unit setting |
 
 ## Examples
 

@@ -63,11 +63,11 @@ For the meaning of angle brackets, braces, square brackets, vertical bars, doubl
 | TimePeriod | Sets the analysis time period; the start epoch and the end epoch must be given in that order as two date-times. For formats, see [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md). Once set, the object **no longer uses the scenario interval** and uses the specified start and end epochs instead. |
 | Primary, PrimaryMulti | Adds or removes targets in the **primary target** list; for values, see "Target List Parameter Values" below. |
 | Secondary, SecondaryMulti | Adds or removes targets in the **secondary target** list; values are the same as above. |
-| Threshold | Sets the threshold; a distance value in **m** must be given, default 10000. When the distance between the error ellipsoid of the primary target and that of the secondary target is below this threshold, the event is recorded as a close approach event. |
+| Threshold | Sets the threshold; a distance value must be given, and the unit is determined by the current Connect `Distance` unit setting, default 10000. When the distance between the error ellipsoid of the primary target and that of the secondary target is below this threshold, the event is recorded as a close approach event. |
 | PntToPnt | Sets whether to **use distance measurement**. Values are one of On or Off, default Off. With Off, the distance between the error ellipsoid of the primary target and that of the secondary target is the criterion; with On, the distance between the centers of the two targets is used instead. |
 | PreFilters | Sets whether the pre-filters are enabled and, when enabled, their threshold values. For the available filters and the units of their values, see "PreFilters Filter Description" below. |
 | ScaleFactor | Sets the ellipsoid scale factor; a scaling coefficient must be given, default 1. |
-| SampleStepSize | Sets the sampling step size; the maximum step size and the minimum step size must be given in that order as two values in s, default 300 and 1. **The maximum comes first**, and the first value must be greater than the second, otherwise NACK is returned. |
+| SampleStepSize | Sets the sampling step size; the maximum step size and the minimum step size must be given in that order as two values, and the unit is determined by the current Connect `Time` unit setting, default 300 and 1. **The maximum comes first**, and the first value must be greater than the second, otherwise NACK is returned. |
 | ConjTcaMode | Sets the conjunction type, corresponding to the **Conjunction Type** drop-down list in the interface. One of four: GlobalOnly (global solution), LocalOnly (local solution), GlobalPlusLocal (global solution + local solution), LocalPlusEndPoints (local solution + endpoints), default GlobalOnly. |
 
 **Values are case-insensitive.** On, ON, and on for PntToPnt, GlobalOnly and globalonly for ConjTcaMode, and the filter name outofdate for pre-filters are all accepted.
@@ -129,8 +129,8 @@ Used to set the error ellipsoid and envelope sphere parameters of the target its
 | Parameter | Description |
 | --- | --- |
 | Ellipsoid class | Sets the target error ellipsoid class; currently only Fixed is supported, case-insensitive. |
-| Three semi-axes | Gives three semi-axis values in the order **tangential, radial, normal**, in **m**, corresponding one-to-one to the **Tangential**, **Radial**, and **Normal** columns of the primary target list and the secondary target list in the interface (displayed in km there). |
-| HardBodyRadius | Sets the target envelope sphere radius; a radius value in **m** must be given. |
+| Three semi-axes | Gives three semi-axis values in the order **tangential, radial, normal**; the unit is determined by the current Connect `Distance` unit setting. They correspond one-to-one to the **Tangential**, **Radial**, and **Normal** columns of the primary target list and the secondary target list in the interface (displayed in km there). |
+| HardBodyRadius | Sets the target envelope sphere radius; a radius value must be given, and the unit is determined by the current Connect `Distance` unit setting. |
 
 ### Default Values
 

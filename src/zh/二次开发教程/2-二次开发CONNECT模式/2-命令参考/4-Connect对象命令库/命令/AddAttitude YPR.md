@@ -17,7 +17,7 @@ AddAttitude <ObjectPath> YPR {StartTime} {Sequence} <Yaw> <Pitch> <Roll>
 ## 补充说明
 
 - `{Sequence}` 有效值为 121、123、131、132、212、213、231、232、312、313、321、323
-- 角度值按当前 Connect 的 `Angle` 单位输入，默认为 deg
+- 角度值的单位由当前 Connect 的 `Angle` 单位设置决定，缺省为 deg
 - `{StartTime}` 格式设置请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md)
 - 命令输入时间必须是递增序列
 

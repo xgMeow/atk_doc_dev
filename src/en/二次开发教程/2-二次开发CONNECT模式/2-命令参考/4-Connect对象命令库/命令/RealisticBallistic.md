@@ -60,7 +60,7 @@ RealisticBallistic */Missile/Missile1 Trajectory MissileType MRM "5 Aug 2026 06:
 - `MissileType`: switch keyword for the missile type
 - `MRM`: missile type value, medium-range ballistic missile
 - `"5 Aug 2026 06:02:00.00"`: start epoch of the trajectory; the string contains spaces, so it must be enclosed in double quotes
-- `20.0`: step size of the trajectory; the unit is determined by the current Connect time unit setting
+- `20.0`: step size of the trajectory; the unit is determined by the current Connect `Time` unit setting
 - `LnLatGeoD 12 -63 1.0`: launch point of the trajectory, in the order geodetic latitude 12, longitude -63, and altitude 1.0
 - `ImLatGeoD 26 -15 0.2`: impact point of the trajectory, in the order geodetic latitude 26, longitude -15, and altitude 0.2
 

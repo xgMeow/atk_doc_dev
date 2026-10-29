@@ -60,7 +60,7 @@ RealisticBallistic */Missile/Missile1 Trajectory MissileType MRM "5 Aug 2026 06:
 - `MissileType`：导弹类型的切换关键字
 - `MRM`：导弹类型取值，中程弹道弹
 - `"5 Aug 2026 06:02:00.00"`：弹道的起始时刻，字符串内部含空格，须用双引号括起来
-- `20.0`：弹道轨迹的步长，取值单位由当前 Connect 的时间单位设置决定
+- `20.0`：弹道轨迹的步长，取值单位由当前 Connect 的 `Time` 单位设置决定
 - `LnLatGeoD 12 -63 1.0`：弹道发射点位置，依次为大地纬度 12、经度 -63、高程 1.0
 - `ImLatGeoD 26 -15 0.2`：弹道落点位置，依次为大地纬度 26、经度 -15、高程 0.2
 
