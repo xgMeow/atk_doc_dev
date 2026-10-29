@@ -6,7 +6,7 @@ groups: [Satellite, Attitude and Pointing]
 
 ## Description
 
-Sets the attitude mode.
+Sets the standard attitude mode.
 
 ## Syntax
 
@@ -16,7 +16,7 @@ SetAttitude <ObjectPath> Standard
 
 ## Examples
 
-::: details open **Set the attitude mode**
+::: details open **Set the standard attitude mode**
 ```
 SetAttitude */Satellite/Satellite1 Standard
 ```

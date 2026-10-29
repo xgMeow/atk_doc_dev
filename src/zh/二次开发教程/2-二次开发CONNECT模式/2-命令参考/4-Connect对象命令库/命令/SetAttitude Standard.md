@@ -6,7 +6,7 @@ groups: [卫星, 姿态与指向]
 
 ## 作用
 
-设置姿态模式。
+设置姿态标准模式。
 
 ## 语法
 
@@ -16,7 +16,7 @@ SetAttitude <ObjectPath> Standard
 
 ## 示例
 
-::: details open **设置姿态模式**
+::: details open **设置姿态标准模式**
 ```
 SetAttitude */Satellite/Satellite1 Standard
 ```
