@@ -56,7 +56,7 @@ For the meanings of the angle brackets, braces, vertical bars, double quotes and
 Give the **start epoch** and then the **end epoch** as two date-times; for the format, see [Date/Time Formats](../../2-参数值格式/日期时间格式.md). Both date-times must be enclosed in double quotes; when they are not quoted, when the content cannot be parsed as a valid date-time, or when only one of them is given, the command returns NACK.
 
 - **The two epochs cannot be given in reverse order**; the start epoch must come first, followed by the end epoch.
-- The computation is performed **within the scenario analysis period**. When the given interval extends beyond the scenario analysis period, the excess part does not take part in the computation: for example, with a scenario analysis period of 00:00—06:00, writing 00:00—12:00 gives the same result as writing 00:00—06:00.
+- The given interval must lie **within the scenario analysis period**.
 - Visibility intervals are **truncated** to the given interval. When a visibility interval crosses the boundary of the given interval, the report takes the boundary value of the interval as the start epoch or end epoch of that interval.
 - When several visibility intervals occur within the given interval, the report lists them one by one, with the index increasing from 1.
 - When the two epochs are identical, or when the two objects are never visible to each other within the given interval, the report body is "No analysis data!".
