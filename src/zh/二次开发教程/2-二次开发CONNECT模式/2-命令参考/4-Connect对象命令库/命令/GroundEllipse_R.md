@@ -33,11 +33,10 @@ GroundEllipse_R <VehObjectPath> {GetAllSets [IncludeEmptySets] | GetSetEllipses 
 ::: details open **获取全部椭圆集（含空集）**
 
 ```
-atkConnect(conID,'GroundEllipse_R','*/GroundVehicle/GroundVehicle1 GetAllSets IncludeEmptySets')
+GroundEllipse_R */GroundVehicle/GroundVehicle1 GetAllSets IncludeEmptySets
 ```
 
-- `'GroundEllipse_R'`：命令名
-- `'*/GroundVehicle/GroundVehicle1 GetAllSets IncludeEmptySets'`：获取当前场景下车辆 `GroundVehicle1` 的全部椭圆集，并**连空椭圆集一并返回**
+- `*/GroundVehicle/GroundVehicle1 GetAllSets IncludeEmptySets`：获取当前场景下车辆 `GroundVehicle1` 的全部椭圆集，并**连空椭圆集一并返回**
 
 :::
 

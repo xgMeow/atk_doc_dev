@@ -48,10 +48,9 @@ Swath <ObjectPath> {Type} <Value> [{DisplayOption}]
 ::: details open **显示填充形式的刈幅**
 
 ```
-atkConnect(conID,'Swath','*/Satellite/Satellite1 Elevation 10.0 Filled')
+Swath */Satellite/Satellite1 Elevation 10.0 Filled
 ```
 
-- `'Swath'`：命令类别
-- `'*/Satellite/Satellite1 Elevation 10.0 Filled'`：为卫星 `Satellite1` 显示**地面仰角**为 `10.0` 度的刈幅，并以**填充**方式绘制
+- `*/Satellite/Satellite1 Elevation 10.0 Filled`：为卫星 `Satellite1` 显示**地面仰角**为 `10.0` 度的刈幅，并以**填充**方式绘制
 
 :::

@@ -45,10 +45,9 @@ Satellite, Missile, LaunchVehicle, Aircraft
 ::: details open **Enable the elevation ellipse**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 ElevationEllipse Show on')
+Graphics */Satellite/Satellite1 ElevationEllipse Show on
 ```
 
-- `'Graphics'`: the command category
-- `'*/Satellite/Satellite1 ElevationEllipse Show on'`: enables the elevation ellipse for the satellite `Satellite1`
+- `*/Satellite/Satellite1 ElevationEllipse Show on`: enables the elevation ellipse for the satellite `Satellite1`
 
 :::

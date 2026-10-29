@@ -46,10 +46,9 @@ Graphics <ObjectPath> CustomIntervals {Action} [<Parameters>]
 ::: details open **清除全部显示区间**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 CustomIntervals clear')
+Graphics */Satellite/Satellite1 CustomIntervals clear
 ```
 
-- `'Graphics'`：命令类别
-- `'*/Satellite/Satellite1 CustomIntervals clear'`：清除卫星 `Satellite1` 的全部自定义显示区间
+- `*/Satellite/Satellite1 CustomIntervals clear`：清除卫星 `Satellite1` 的全部自定义显示区间
 
 :::

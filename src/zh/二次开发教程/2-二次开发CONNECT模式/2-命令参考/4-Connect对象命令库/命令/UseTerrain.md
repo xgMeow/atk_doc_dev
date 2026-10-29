@@ -28,10 +28,9 @@ UseTerrain <FacilityPath> {On|Off}
 ::: details open **开启地面站地形高度**
 
 ```
-atkConnect(conID,'UseTerrain','*/Facility/Facility1 On')
+UseTerrain */Facility/Facility1 On
 ```
 
-- `'UseTerrain'`：命令名
-- `'*/Facility/Facility1 On'`：对当前场景下的地面站 `Facility1` **开启**地形高度
+- `*/Facility/Facility1 On`：对当前场景下的地面站 `Facility1` **开启**地形高度
 
 :::

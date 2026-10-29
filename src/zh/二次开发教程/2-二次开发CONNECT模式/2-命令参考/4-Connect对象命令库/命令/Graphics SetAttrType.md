@@ -43,10 +43,9 @@ Graphics <ObjectPath> SetAttrType {AttributeType}
 ::: details open **按时间区间显示**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 SetAttrType CustomIntervals')
+Graphics */Satellite/Satellite1 SetAttrType CustomIntervals
 ```
 
-- `'Graphics'`：命令类别
-- `'*/Satellite/Satellite1 SetAttrType CustomIntervals'`：把卫星 `Satellite1` 的显示属性类型设为 `CustomIntervals`，即按时间区间显示不同图形属性
+- `*/Satellite/Satellite1 SetAttrType CustomIntervals`：把卫星 `Satellite1` 的显示属性类型设为 `CustomIntervals`，即按时间区间显示不同图形属性
 
 :::

@@ -45,10 +45,9 @@ Graphics <ObjectPath> ElevationEllipse {EllipseSetType} <Options>
 ::: details open **启用仰角椭圆**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 ElevationEllipse Show on')
+Graphics */Satellite/Satellite1 ElevationEllipse Show on
 ```
 
-- `'Graphics'`：命令类别
-- `'*/Satellite/Satellite1 ElevationEllipse Show on'`：为卫星 `Satellite1` 启用仰角椭圆
+- `*/Satellite/Satellite1 ElevationEllipse Show on`：为卫星 `Satellite1` 启用仰角椭圆
 
 :::

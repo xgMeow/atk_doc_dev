@@ -71,10 +71,9 @@ Satellite, Missile, LaunchVehicle, Aircraft
 ::: details open **Display the elevation contour lines**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 ElevContours Show On')
+Graphics */Satellite/Satellite1 ElevContours Show On
 ```
 
-- `'Graphics'`: the command category
-- `'*/Satellite/Satellite1 ElevContours Show On'`: displays the elevation contour lines for the satellite `Satellite1`
+- `*/Satellite/Satellite1 ElevContours Show On`: displays the elevation contour lines for the satellite `Satellite1`
 
 :::

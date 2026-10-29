@@ -28,11 +28,10 @@ SetHeightAboveGround <FacilityPath> <Value>
 ::: details open **设置地面站离地高度**
 
 ```
-atkConnect(conID,'SetHeightAboveGround','*/Facility/Facility1 17.0')
+SetHeightAboveGround */Facility/Facility1 17.0
 ```
 
-- `'SetHeightAboveGround'`：命令名
-- `'*/Facility/Facility1 17.0'`：把当前场景下的地面站 `Facility1` 的离地高度设为 `17.0`
+- `*/Facility/Facility1 17.0`：把当前场景下的地面站 `Facility1` 的离地高度设为 `17.0`
 
 :::
 

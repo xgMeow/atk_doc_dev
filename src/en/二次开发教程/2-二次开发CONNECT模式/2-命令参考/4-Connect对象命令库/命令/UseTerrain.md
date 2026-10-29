@@ -28,10 +28,9 @@ UseTerrain <FacilityPath> {On|Off}
 ::: details open **Enable the terrain height of a facility**
 
 ```
-atkConnect(conID,'UseTerrain','*/Facility/Facility1 On')
+UseTerrain */Facility/Facility1 On
 ```
 
-- `'UseTerrain'`: the command name
-- `'*/Facility/Facility1 On'`: **enables** terrain height for the facility `Facility1` in the current scenario
+- `*/Facility/Facility1 On`: **enables** terrain height for the facility `Facility1` in the current scenario
 
 :::

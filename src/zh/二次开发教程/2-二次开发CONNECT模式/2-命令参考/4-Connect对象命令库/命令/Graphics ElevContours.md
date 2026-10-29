@@ -71,10 +71,9 @@ Graphics <ObjectPath> ElevContours {AddMethod} [<Parameters>]
 ::: details open **显示仰角轮廓线**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 ElevContours Show On')
+Graphics */Satellite/Satellite1 ElevContours Show On
 ```
 
-- `'Graphics'`：命令类别
-- `'*/Satellite/Satellite1 ElevContours Show On'`：为卫星 `Satellite1` 显示仰角轮廓线
+- `*/Satellite/Satellite1 ElevContours Show On`：为卫星 `Satellite1` 显示仰角轮廓线
 
 :::

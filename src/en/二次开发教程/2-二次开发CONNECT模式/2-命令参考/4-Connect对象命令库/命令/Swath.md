@@ -48,10 +48,9 @@ Satellite, Missile, LaunchVehicle, Aircraft
 ::: details open **Display the swath in filled form**
 
 ```
-atkConnect(conID,'Swath','*/Satellite/Satellite1 Elevation 10.0 Filled')
+Swath */Satellite/Satellite1 Elevation 10.0 Filled
 ```
 
-- `'Swath'`: the command category
-- `'*/Satellite/Satellite1 Elevation 10.0 Filled'`: displays the swath with a **ground elevation angle** of `10.0` degrees for the satellite `Satellite1`, drawn in **filled** form
+- `*/Satellite/Satellite1 Elevation 10.0 Filled`: displays the swath with a **ground elevation angle** of `10.0` degrees for the satellite `Satellite1`, drawn in **filled** form
 
 :::

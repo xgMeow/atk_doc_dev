@@ -46,10 +46,9 @@ Satellite, Missile, LaunchVehicle, 2D Graphics
 ::: details open **Clear all display intervals**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 CustomIntervals clear')
+Graphics */Satellite/Satellite1 CustomIntervals clear
 ```
 
-- `'Graphics'`: the command category
-- `'*/Satellite/Satellite1 CustomIntervals clear'`: clears all custom display intervals of the satellite `Satellite1`
+- `*/Satellite/Satellite1 CustomIntervals clear`: clears all custom display intervals of the satellite `Satellite1`
 
 :::

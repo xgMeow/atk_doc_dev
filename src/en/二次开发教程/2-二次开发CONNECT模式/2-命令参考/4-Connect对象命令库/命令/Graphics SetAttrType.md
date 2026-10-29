@@ -43,10 +43,9 @@ Satellite, Missile, LaunchVehicle, 2D Graphics
 ::: details open **Display by time interval**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 SetAttrType CustomIntervals')
+Graphics */Satellite/Satellite1 SetAttrType CustomIntervals
 ```
 
-- `'Graphics'`: the command category
-- `'*/Satellite/Satellite1 SetAttrType CustomIntervals'`: sets the display attribute type of the satellite `Satellite1` to `CustomIntervals`, that is, to display different graphics attributes by time interval
+- `*/Satellite/Satellite1 SetAttrType CustomIntervals`: sets the display attribute type of the satellite `Satellite1` to `CustomIntervals`, that is, to display different graphics attributes by time interval
 
 :::

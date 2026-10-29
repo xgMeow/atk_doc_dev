@@ -54,11 +54,10 @@ GroundEllipse <VehObjectPath> {EllipseSetOptions}
 ::: details open **新增一个椭圆集**
 
 ```
-atkConnect(conID,'GroundEllipse','*/GroundVehicle/GroundVehicle1 AddSet Testset')
+GroundEllipse */GroundVehicle/GroundVehicle1 AddSet Testset
 ```
 
-- `'GroundEllipse'`：命令名
-- `'*/GroundVehicle/GroundVehicle1 AddSet Testset'`：为当前场景下的车辆 `GroundVehicle1` 新增一个名为 `Testset` 的椭圆集
+- `*/GroundVehicle/GroundVehicle1 AddSet Testset`：为当前场景下的车辆 `GroundVehicle1` 新增一个名为 `Testset` 的椭圆集
 
 :::
 

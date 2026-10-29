@@ -28,11 +28,10 @@ SetHeightAboveGround <FacilityPath> <Value>
 ::: details open **Set the Facility Height Above Ground**
 
 ```
-atkConnect(conID,'SetHeightAboveGround','*/Facility/Facility1 17.0')
+SetHeightAboveGround */Facility/Facility1 17.0
 ```
 
-- `'SetHeightAboveGround'`: command name
-- `'*/Facility/Facility1 17.0'`: sets the height above ground of the facility `Facility1` in the current scenario to `17.0`
+- `*/Facility/Facility1 17.0`: sets the height above ground of the facility `Facility1` in the current scenario to `17.0`
 
 :::
 

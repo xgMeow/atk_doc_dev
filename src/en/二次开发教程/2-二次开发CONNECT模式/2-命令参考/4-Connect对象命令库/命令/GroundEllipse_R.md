@@ -33,11 +33,10 @@ Satellite, Missile, LaunchVehicle, Ship, 2D Graphics, GroundVehicle, Aircraft
 ::: details open **Obtain all ellipse sets (including empty sets)**
 
 ```
-atkConnect(conID,'GroundEllipse_R','*/GroundVehicle/GroundVehicle1 GetAllSets IncludeEmptySets')
+GroundEllipse_R */GroundVehicle/GroundVehicle1 GetAllSets IncludeEmptySets
 ```
 
-- `'GroundEllipse_R'`: the command name
-- `'*/GroundVehicle/GroundVehicle1 GetAllSets IncludeEmptySets'`: obtains all ellipse sets of the GroundVehicle `GroundVehicle1` in the current scenario, **including empty ellipse sets**
+- `*/GroundVehicle/GroundVehicle1 GetAllSets IncludeEmptySets`: obtains all ellipse sets of the GroundVehicle `GroundVehicle1` in the current scenario, **including empty ellipse sets**
 
 :::
 

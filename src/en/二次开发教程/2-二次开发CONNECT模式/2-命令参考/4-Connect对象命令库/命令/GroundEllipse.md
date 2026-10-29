@@ -54,11 +54,10 @@ Satellite, Missile, LaunchVehicle, Ship, 2D Graphics, GroundVehicle, Aircraft
 ::: details open **Add an ellipse set**
 
 ```
-atkConnect(conID,'GroundEllipse','*/GroundVehicle/GroundVehicle1 AddSet Testset')
+GroundEllipse */GroundVehicle/GroundVehicle1 AddSet Testset
 ```
 
-- `'GroundEllipse'`: the command name
-- `'*/GroundVehicle/GroundVehicle1 AddSet Testset'`: adds an ellipse set named `Testset` to the GroundVehicle `GroundVehicle1` in the current scenario
+- `*/GroundVehicle/GroundVehicle1 AddSet Testset`: adds an ellipse set named `Testset` to the GroundVehicle `GroundVehicle1` in the current scenario
 
 :::
 

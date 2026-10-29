@@ -51,10 +51,9 @@ Graphics <ObjectPath> RangeContours {AddMethod} [<Parameters>]
 ::: details open **显示范围轮廓线**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 RangeContours Show On')
+Graphics */Satellite/Satellite1 RangeContours Show On
 ```
 
-- `'Graphics'`：命令类别
-- `'*/Satellite/Satellite1 RangeContours Show On'`：为卫星 `Satellite1` 显示范围轮廓线
+- `*/Satellite/Satellite1 RangeContours Show On`：为卫星 `Satellite1` 显示范围轮廓线
 
 :::

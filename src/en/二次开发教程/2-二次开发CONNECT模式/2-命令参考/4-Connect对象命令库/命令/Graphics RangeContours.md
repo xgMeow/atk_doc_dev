@@ -51,10 +51,9 @@ Satellite, Facility, Missile, LaunchVehicle, Ship, 2D Graphics, GroundVehicle, A
 ::: details open **Display the range contours**
 
 ```
-atkConnect(conID,'Graphics','*/Satellite/Satellite1 RangeContours Show On')
+Graphics */Satellite/Satellite1 RangeContours Show On
 ```
 
-- `'Graphics'`: the command category
-- `'*/Satellite/Satellite1 RangeContours Show On'`: displays the range contours for the satellite `Satellite1`
+- `*/Satellite/Satellite1 RangeContours Show On`: displays the range contours for the satellite `Satellite1`
 
 :::
