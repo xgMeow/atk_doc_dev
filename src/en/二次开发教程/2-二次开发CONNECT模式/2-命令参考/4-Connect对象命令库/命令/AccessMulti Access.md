@@ -81,7 +81,7 @@ Reading with the path of a source object returns NACK.
 
 ## About the Access Objects Generated in the Scenario
 
-**Every combination of a target object and a source object generates an Access object in the scenario**, located under ObjectAccess in the object tree, with a name formed by the two pointers of the pair, such as Access - 1975871500528, 1976206728096.
+**Every combination of a target object and a source object generates an Access object in the scenario**, recording the visibility computation result for that pair.
 
 - **A single computation processes all the combinations in the current configuration.** When the target list and the source list each contain several objects, the number of combinations is the product of the two counts: 2 target objects and 2 source objects generate 4 Access objects in total.
 - **Recomputing the same pair of objects does not add a duplicate**; the existing object is reused directly.

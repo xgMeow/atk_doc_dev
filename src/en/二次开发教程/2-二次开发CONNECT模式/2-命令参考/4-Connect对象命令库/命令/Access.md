@@ -113,7 +113,7 @@ Satellite1对Facility1
 
 ## About the Access Objects Generated in the Scenario
 
-**Every pair of objects computed successfully adds an Access object to the scenario**, located under ObjectAccess in the object tree and recording the visibility relationship between that pair of objects.
+**Every pair of objects computed successfully adds an Access object to the scenario**, recording the visibility relationship between that pair of objects.
 
 - **The same pair of objects does not depend on the order in which it is written**: when A, B and then B, A are computed one after the other, only one Access object is generated, without a duplicate being added.
 - **This object cannot be deleted separately by a command**: applying Delete, Remove, Unload, UnloadSubObj and similar commands to it returns NACK in every case. It is unloaded together with the scenario, that is, it disappears when the scenario is removed with `Unload / *`.
