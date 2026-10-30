@@ -16,8 +16,6 @@ groups: [信号发射器]
 
 - 部分属性受开关控制，须先打开对应开关：极化属性须先令 Model.UsePolarization 为 true；滤波器属性须先令 Model.UseFilter 为 true；信号带宽的上下边界须先令 Model.Modulator.AutoScaleBandwidth 与 Model.Modulator.SymmetricBandwidth 均为 false。
 
-- 复杂发射机模型与复杂转发器模型的属性当前版本经 CONNECT 只读，本命令对它们的属性均返回 NACK，详见「补充说明」。
-
 ## 语法
 
 ```atk-command
