@@ -1,7 +1,7 @@
 import { navbar } from "vuepress-theme-hope";
 
 export const enNavbarConfig = navbar([
-  { text: "Download ATK", link: "https://www.osredm.com/atknudt/atk/about" },
+  { text: "Download ATK", link: "https://gitlink.org.cn/zone/atk/about" },
   { text: "Docs", link: "/en/" },
   {
     text: "Development Tutorials",

@@ -1,7 +1,7 @@
 import { navbar } from "vuepress-theme-hope";
 
 export const zhNavbarConfig = navbar([
-  { text: "ATK下载", link: "https://www.osredm.com/atknudt/atk/about" },
+  { text: "ATK下载", link: "https://gitlink.org.cn/zone/atk/about" },
   { text: "帮助文档", link: "/zh/" },
   {
     text: "二次开发教程",
