@@ -203,6 +203,4 @@ Model.FrequencyPolynomial[1].Coefficient = 1.000000
 
 - 调制器的 Model.Modulator.NumPSDNulls 只在启用信号功率谱密度后可读，Model.Modulator.SymmetricBandwidth 只在关闭自动调整带宽后可读。
 
-- 复杂发射机模型与复杂转发器模型的属性当前版本经 CONNECT 只读，其中可读的属性见上文各表。
-
 - 本命令不支持一次读取全部属性，须按属性逐条读取。

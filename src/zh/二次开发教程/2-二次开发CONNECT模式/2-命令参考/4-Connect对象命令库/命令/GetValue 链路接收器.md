@@ -82,8 +82,6 @@ Model.<属性名> = <值>[ <单位>]
 | Model.Filter.LowerBandwidthLimit | 滤波器频谱相对载波的低频边界 | GHz | 启用滤波器后可读 |
 | Model.Filter.UpperBandwidthLimit | 滤波器频谱相对载波的高频边界 | GHz | 启用滤波器后可读 |
 
-- Model.Filter.SamplingFrequency、Model.Filter.RollOffFactor 与 Model.Filter.SymbolRate 经本命令读取返回 NACK，只能设置。
-
 ### 传输线与系统噪声温度
 
 | 属性 | 返回内容 | 单位 | 可读条件 |
@@ -99,13 +97,7 @@ Model.<属性名> = <值>[ <单位>]
 | Model.AntennaNoise.ComputeOption | 天线噪声温度的给出方式，如 Constant | 无 | 计算方式关闭时可读 |
 | Model.AntennaNoise.ConstantNoiseTemp | 常量天线噪声温度 | K | 计算方式关闭时可读 |
 
-- Model.LNANoiseFigure（低噪声放大器噪声系数）经本命令读取返回 NACK，且当前版本不可设置。
-
 - 该组属性只适用于中等、复杂接收机模型。
-
-### 复杂模型的天线
-
-复杂接收机模型的天线属性经本命令读取时返回 NACK，包括 Model.AntennaControl.AntennaReferenceType、Model.AntennaControl.Antenna、Model.AntennaControl.Antenna.Diameter、Model.AntennaControl.Antenna.Efficiency、Model.AntennaControl.Antenna.DesignFrequency、Model.AntennaControl.UsePolarization、Model.AntennaControl.Polarization 等。这些属性只能设置，不能读取。
 
 ## 示例
 
@@ -152,9 +144,5 @@ Receiver_RM */Satellite/Satellite1/Receiver/Receiver1 GetValue Model.LNAGain
 ## 补充说明
 
 - 未启用对应功能时，读取该功能的子属性返回 NACK：Model.Polarization 及其子属性须已启用 Model.UsePolarization；Model.Demodulator 须已关闭 Model.AutoSelectDemodulator；Model.Bandwidth 须已关闭 Model.AutoScaleBandwidth；温度与天线噪声属性须已关闭 Model.ComputeSystemNoiseTemp。
-
-- 接收频率经 CONNECT 不可读：Model.Frequency 对所有接收机模型均返回 NACK。品质因子 Model.GOverT 只在简单接收机模型上可读，中等、复杂模型返回 NACK。
-
-- 简单接收机模型不支持传输线、LNA 与系统噪声温度属性，读取相关属性返回 NACK。
 
 - 本命令不支持一次读取全部属性，须按属性逐条读取。

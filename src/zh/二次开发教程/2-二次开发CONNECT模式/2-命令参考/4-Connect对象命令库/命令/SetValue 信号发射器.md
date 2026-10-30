@@ -29,7 +29,7 @@ Transmitter <XmObjectPath> SetValue <AttributePath> <Value> [<Unit>]
 | 部分 | 含义 |
 | --- | --- |
 | Transmitter | 命令名。 |
-| `<XmObjectPath>` | 发射器对象路径，可写截断路径，如 */Satellite/Satellite1/Transmitter/Transmitter1。 |
+| `<XmObjectPath>` | 发射器对象路径，必须以 */ 开头，例如 */Satellite/Satellite1/Transmitter/Transmitter1。 |
 | `<AttributePath>` | 属性路径，以 Model 开头，如 Model.Frequency。 |
 | `<Value>` | 属性值。含空格的取值须用双引号括起，如 "Y Axis"。 |
 | `<Unit>` | 可选单位，紧跟在值之后，如 15000 MHz。 |
@@ -76,8 +76,6 @@ Model 属性用于选择发射器模型，取值如下。
 
 - 简单发射机模型以 EIRP 描述辐射能力，中等发射机模型以功率与发射增益描述，两者不可互换：对简单模型设置 Model.Power、对中等模型设置 Model.EIRP 均返回 NACK。
 
-- Model.Gain（发射增益）与 Model.SaturatedPower（饱和功率）当前版本不可设置，返回 NACK。
-
 - Model.DataRate 的数值按 b/s 计：缺省值 16000000 即 16 Mb/s。
 
 ### 天线极化
@@ -112,8 +110,6 @@ Model 属性用于选择发射器模型，取值如下。
 
 - 信号带宽的上下边界受自动调整与对称调节两个开关控制：须先令 Model.Modulator.AutoScaleBandwidth 与 Model.Modulator.SymmetricBandwidth 均为 false，再设置 Model.Modulator.LowerBandwidthLimit 与 Model.Modulator.UpperBandwidthLimit；开关未关闭时设置边界返回 NACK。
 
-- Model.Modulator.NumPSDNulls（空频谱数量）与 Model.Modulator.Bandwidth（信号带宽）当前版本只读，设置返回 NACK。
-
 ### 滤波器
 
 | 属性 | 说明 | 取值与单位 | 缺省值 | 适用类型 |
@@ -134,14 +130,12 @@ Model 属性用于选择发射器模型，取值如下。
 
 - 各类型只支持上表所列的专属参数：对 Bessel、Butterworth、Chbyshev 设置采样频率、滚降因子、符号率返回 NACK；对 GaussianWindows 设置截止频率返回 NACK。
 
-- Model.Filter.Bandwidth（滤波器带宽）只读，设置返回 NACK；Model.Filter.Ripple（纹波）与 Model.Filter.InsertionLoss（插入损耗）当前版本不可设置，设置返回 NACK。
-
 ### 转发器的转换方法
 
-| 属性 | 说明 | 取值与单位 | 缺省值 |
+| 属性 | 说明 | 取值与单位 |
 | --- | --- | --- | --- |
-| Model.FrequencyPolynomial[n].Coefficient | 频率转换多项式第 n 项系数 | 数值 | 0 |
-| Model.PowerBackOffPolynomial[n].Coefficient | 功率回退多项式第 n 项系数 | 数值 | 0 |
+| Model.FrequencyPolynomial[n].Coefficient | 频率转换多项式第 n 项系数 | 数值 |
+| Model.PowerBackOffPolynomial[n].Coefficient | 功率回退多项式第 n 项系数 | 数值 |
 
 - 该组属性只适用于简单、中等转发器模型，用于描述输入频率到输出频率、输入功率回退到输出功率回退的转换关系；对简单、中等发射机模型设置时命令返回成功但不生效。
 
@@ -165,7 +159,7 @@ Transmitter <XmObjectPath> RemoveItem <ListPath> <Index>
 
 ### 复杂模型的天线
 
-下列属性只在复杂发射机模型与复杂转发器模型上存在，当前版本经 CONNECT 只读，可用 [GetValue](./GetValue%20信号发射器.md) 读取。
+下列属性只在复杂发射机模型与复杂转发器模型上存在，可用 [GetValue](./GetValue%20信号发射器.md) 读取。
 
 | 属性 | 说明 |
 | --- | --- |
@@ -187,8 +181,6 @@ Transmitter <XmObjectPath> RemoveItem <ListPath> <Index>
 | Model.AntennaControl.Orientation.Qx、Qy、Qz、Qs | 四元数，指向方式为 Quaternion 时可读。 |
 | Model.AntennaControl.Orientation.Yaw、Pitch、Roll | 偏航、俯仰、滚转角。 |
 | Model.AntennaControl.Orientation.XPositionOffset、YPositionOffset、ZPositionOffset | 天线位置偏移。 |
-
-- 天线后瓣增益与外部天线文件（Model.AntennaControl.Antenna.BacklobeGain、Model.AntennaControl.Antenna.ExternalAntennaFile）当前版本经 CONNECT 不可读写，设置与读取均返回 NACK。
 
 ## 返回
 
@@ -251,10 +243,6 @@ Transmitter */Satellite/Satellite1/Transmitter/Transmitter1 SetValue Model.Frequ
 :::
 
 ## 补充说明
-
-- 下列属性当前版本不可设置，返回 NACK：Model.Gain、Model.SaturatedPower、Model.Modulator.NumPSDNulls、Model.Modulator.Bandwidth、Model.Filter.Bandwidth、Model.Filter.InsertionLoss、Model.Filter.Ripple、Model.PostTransmitGainsLosses.TotalGain。
-
-- 复杂发射机模型与复杂转发器模型的属性经 CONNECT 只读，本命令对它们的任何属性均返回 NACK。这些属性的当前值可用 [GetValue](./GetValue%20信号发射器.md) 读取。
 
 - Model.EIRP 以 dBW 为单位给出时换算不正确，例如 10 dBW 被写作 11 W；应以 W 为单位给出。
 

@@ -29,7 +29,7 @@ Receiver <RcObjectPath> SetValue <AttributePath> <Value> [<Unit>]
 | 部分 | 含义 |
 | --- | --- |
 | Receiver | 命令名。 |
-| `<RcObjectPath>` | 接收器对象路径，可写截断路径，如 */Satellite/Satellite1/Receiver/Receiver1。 |
+| `<RcObjectPath>` | 接收器对象路径，必须以 `*/` 开头，如 */Satellite/Satellite1/Receiver/Receiver1。 |
 | `<AttributePath>` | 属性路径，以 Model 开头，如 Model.GOverT。 |
 | `<Value>` | 属性值。含空格的取值须用双引号括起，如 "Z Axis"。 |
 | `<Unit>` | 可选单位，紧跟在值之后。 |
@@ -65,9 +65,7 @@ Model 属性用于选择接收器模型，取值如下。
 | Model.FrequencyAutoTracking | 是否自动跟踪发射信号频率 | true 或 false | true | 全部 |
 | Model.GOverT | 品质因子 G/T | 数值，单位为 dB/K | 20 | 简单 |
 
-- 接收频率由发射信号确定，经 CONNECT 不提供接收频率属性：Model.Frequency 在本命令中返回 NACK，读取亦不可用。
-
-- 中等、复杂模型的接收增益由天线增益与系统噪声温度共同确定，Model.AntennaGain 当前版本不可设置，返回 NACK。
+- 中等、复杂模型的接收增益由天线增益与系统噪声温度共同确定。
 
 ### 天线极化
 
@@ -124,7 +122,7 @@ Model 属性用于选择接收器模型，取值如下。
 
 - 各类型只应设置上表所列的专属参数；设置与类型不符的参数时，部分返回 NACK，部分被接受但不参与计算。
 
-- 滤波器阶数、截止频率、采样频率、滚降因子与符号率均可设置；其中采样频率、滚降因子与符号率经 GetValue 读取返回 NACK，阶数与截止频率只在未启用滤波器时可读。
+- 滤波器阶数、截止频率、采样频率、滚降因子与符号率均可设置；阶数与截止频率只在未启用滤波器时可读。
 
 ### 传输线、LNA 与系统噪声温度
 
@@ -144,8 +142,6 @@ Model 属性用于选择接收器模型，取值如下。
 
 - 温度与天线噪声属性须先令 Model.ComputeSystemNoiseTemp 为 false 再设置；计算方式为 true 时，这些属性由模型计算，设置返回 NACK。Model.AntennaNoise.ComputeOption 当前只接受 Constant。
 
-- Model.ConstantSystemNoiseTemp（系统噪声温度常量）与 Model.LNANoiseFigure（LNA 噪声系数）当前版本不可设置；其中 Model.LNANoiseFigure 读取亦返回 NACK。
-
 ### 复杂模型的天线
 
 复杂接收机模型的天线参数通过下列属性设置。
@@ -159,10 +155,6 @@ Model 属性用于选择接收器模型，取值如下。
 | Model.AntennaControl.Antenna.Efficiency | 天线效率 | 数值，取值 0 到 1 |
 | Model.AntennaControl.UsePolarization | 是否启用天线极化 | true 或 false |
 | Model.AntennaControl.Polarization | 天线极化类型 | 同简单、中等模型的极化类型 |
-
-- 该组属性可设置，但经 GetValue 读取时返回 NACK，只能在设置后由模型计算使用。
-
-- 复杂模型的天线指向方式当前版本不可设置，Model.AntennaControl.Orientation 及其子属性均返回 NACK。
 
 ## 返回
 
@@ -225,10 +217,6 @@ Receiver */Satellite/Satellite1/Receiver/Receiver1 SetValue Model.AntennaControl
 :::
 
 ## 补充说明
-
-- 下列属性当前版本不可设置，返回 NACK：Model.Frequency、Model.AntennaGain、Model.ConstantSystemNoiseTemp、Model.LNANoiseFigure、Model.PreReceiveGainsLosses.TotalGain。
-
-- 链路裕量相关属性经 CONNECT 不可用：Model.LinkMarginType、Model.LinkMarginThreshold 均返回 NACK。
 
 - 交叉极化泄漏 Model.Polarization.CrossPolLeakage 对简单、中等接收机模型不可设置，返回 NACK。
 
