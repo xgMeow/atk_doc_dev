@@ -23,7 +23,7 @@ SetState <VehObjectPath> Cartesian {Propagator} {NoProp | {TimeInterval}} <StepS
 | `{Propagator}` | 卫星可得属性值为 `TwoBody`, `J2Perturbation`, `J4Perturbation`, `HPOP` 和 `LOP` |
 | `{NoProp \| {TimeInterval}}` | 输入 NoProp 可以设置卫星状态但是不进行预报。输入 TimeInterval 定义卫星预报的开始结束时间段，设置格式请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md) |
 | `<StepSize>` | 输入必须大于等于 0.001 秒 |
-| `{CoordSystem}` | 坐标系可设置为 `ICRF`,`J2000`,`Fixed`, `TrueOfDate`,`MeanOfDate`,`TEMEOfDate` |
+| `{CoordSystem}` | 坐标系可设置为 `ICRF`,`J2000`,`Fixed`,`TOD`,`MOD`,`TEME`,`TODEc`,`MoDEc`,`J2000Ec` |
 | `"<OrbitEpoch>"` | 请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md) |
 | `<X>`, `<Y>`, `<Z>`, `<vX>`, `<vY>`, `<vZ>` | 输入位置速度参数 |
 | `["<CoordEpoch>"]` | 请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md) |
