@@ -1,7 +1,7 @@
 ---
 title: AI Assistant
 index: false
-description: Usage guide for the ATK AI Assistant, covering complete documentation for the Scenario Generation Agent and Q&A Assistant modules.
+description: Usage guide for the ATK AI Assistant, covering complete documentation for the Agent and Q&A Assistant modules.
 ---
 
 The ATK AI Assistant integrates large language model (LLM) capabilities to provide intelligent support for aerospace simulation tasks, letting you drive the software with natural language and quickly access professional knowledge.
@@ -10,10 +10,10 @@ The ATK AI Assistant integrates large language model (LLM) capabilities to provi
 
 | Module | Capability | Suitable Scenarios |
 |------|----------|----------|
-| [Scenario Generation Agent](./场景生成智能体/README.md) | Natural language and multimodal input → simulation commands | Creating satellites, Facilities, and constellations, setting orbits and payloads, and running simulations and professional analyses |
+| [Agent](./场景生成智能体/README.md) | Natural language and multimodal input → simulation commands | Creating satellites, Facilities, and constellations, setting orbits and payloads, and running simulations and professional analyses |
 | [Q&A Assistant](./知识问答助手/README.md) | Document knowledge → intelligent Q&A | Looking up ATK operations, retrieving uploaded documents, and understanding academic paper content |
 
-## Scenario Generation Agent
+## Agent
 
 Control ATK with natural language, without writing code or memorizing command formats. The agent accepts natural language text, speech, images, Excel spreadsheets, Word documents, and other inputs, parses requirements into underlying Connect commands in real time, and executes them, covering the entire workflow from object creation and parameter assignment to simulation propagation and data post-processing.
 
@@ -33,7 +33,7 @@ It currently provides 16 categories and 169 tools, covering ATK v4.2.0 release c
 
 ## Q&A Assistant
 
-An intelligent Q&A system based on Retrieval-Augmented Generation (RAG) technology that integrates three knowledge bases to automatically match answers:
+The Q&A Assistant is an intelligent Q&A system based on Retrieval-Augmented Generation (RAG) technology that integrates three knowledge bases to automatically match answers:
 
 | Knowledge Base | Data Source | Example |
 |--------|----------|------|

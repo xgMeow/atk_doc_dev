@@ -1,5 +1,5 @@
 ---
-title: Scenario Generation Agent
+title: Agent
 index: false
 ---
 
