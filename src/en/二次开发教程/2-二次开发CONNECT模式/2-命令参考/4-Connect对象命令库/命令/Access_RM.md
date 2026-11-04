@@ -2,7 +2,7 @@
 groups: [Access]
 ---
 
-# Access_RM Access
+# Access_RM
 
 ## Description
 

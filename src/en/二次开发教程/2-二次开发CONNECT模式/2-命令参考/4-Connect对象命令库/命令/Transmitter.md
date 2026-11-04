@@ -2,7 +2,7 @@
 groups: [Transmitter]
 ---
 
-# SetValue
+# Transmitter
 
 ## Description
 

@@ -3,7 +3,7 @@ description: Defines the sensor type and its parameters, supporting multiple sen
 groups: [Sensor]
 ---
 
-# Define
+# Define Sensor
 
 ## Description
 

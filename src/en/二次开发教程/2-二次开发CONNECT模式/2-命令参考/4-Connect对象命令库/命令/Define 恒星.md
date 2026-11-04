@@ -2,7 +2,7 @@
 groups: [Star]
 ---
 
-# Define
+# Define Star
 
 ## Description
 

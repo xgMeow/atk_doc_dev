@@ -2,7 +2,7 @@
 groups: [Facility]
 ---
 
-# SetPosition
+# SetPosition Facility
 
 ## Description
 

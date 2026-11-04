@@ -2,7 +2,7 @@
 groups: [信号发射器]
 ---
 
-# GetValue
+# Transmitter_RM
 
 ## 作用
 

@@ -120,7 +120,7 @@ Satellite1对Facility1
 
 ## Additional Notes
 
-- **The output of this command is always a visibility report.** If you need other formats such as AER, parameter rates, non-visibility reports or statistical summaries, use [Access_RM](./Access_RM%20Access.md) instead.
+- **The output of this command is always a visibility report.** If you need other formats such as AER, parameter rates, non-visibility reports or statistical summaries, use [Access_RM](./Access_RM.md) instead.
 - **This command computes only one pair of objects at a time.** If you need to process several pairs of objects, use the AccessMulti family of commands instead (configure the targets and sources first, then compute them in one pass); see [AccessMulti Access](./AccessMulti%20Access.md).
 
 ## Examples

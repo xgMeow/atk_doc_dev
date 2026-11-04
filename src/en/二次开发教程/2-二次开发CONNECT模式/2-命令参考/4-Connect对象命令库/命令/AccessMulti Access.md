@@ -10,7 +10,7 @@ Computes visibility **in batch** for the multiple groups of objects already conf
 
 In a single pass, the command processes every "target object and source object" pair in the current configuration, and each pair generates an Access object in the scenario. See "About the Access Objects Generated in the Scenario" below.
 
-**This command returns no report.** The computation result is reflected in the Access objects generated in the scenario, which must be read separately with [Access_RM](./Access_RM%20Access.md).
+**This command returns no report.** The computation result is reflected in the Access objects generated in the scenario, which must be read separately with [Access_RM](./Access_RM.md).
 
 ## Prerequisites
 
@@ -65,13 +65,13 @@ Choose one of the two forms below.
 - The time interval parameter block **recognizes only the single word UseObjectTimes**. Writing anything else, including UseObjectTime with the trailing s omitted, returns NACK.
 - **Extra date-times after the time interval parameter block do not raise an error.** When three or more date-times are given in order, the command still uses the first two epochs; extra date-times after UseObjectTimes are likewise ignored.
 
-**The time interval used for the computation is not saved with the Access objects.** The Access objects record only the object pair itself; the time interval used when reading the results is determined by the time interval parameter block of the reading command and is unrelated to the time interval used by this command. See "Time Interval Parameter Block" in [Access_RM](./Access_RM%20Access.md).
+**The time interval used for the computation is not saved with the Access objects.** The Access objects record only the object pair itself; the time interval used when reading the results is determined by the time interval parameter block of the reading command and is unrelated to the time interval used by this command. See "Time Interval Parameter Block" in [Access_RM](./Access_RM.md).
 
 ## Output
 
 **This command has no return value.** When the command is accepted, CONNECT returns an empty response and no report text; when the command is rejected, it returns NACK.
 
-The computation result is reflected in the Access objects generated in the scenario. Read them with [Access_RM](./Access_RM%20Access.md), passing the path of the **target object**:
+The computation result is reflected in the Access objects generated in the scenario. Read them with [Access_RM](./Access_RM.md), passing the path of the **target object**:
 
 ```
 Access_RM */Facility/Facility1 Access Compute "Access" "5 Mar 2025 00:00:00.000" "5 Mar 2025 06:00:00.000"

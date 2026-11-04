@@ -2,7 +2,7 @@
 groups: [Transmitter]
 ---
 
-# GetValue
+# Transmitter_RM
 
 ## Description
 

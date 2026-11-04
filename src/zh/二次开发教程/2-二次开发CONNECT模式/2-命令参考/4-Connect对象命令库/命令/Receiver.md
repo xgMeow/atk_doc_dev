@@ -2,7 +2,7 @@
 groups: [链路接收器]
 ---
 
-# SetValue
+# Receiver
 
 ## 作用
 

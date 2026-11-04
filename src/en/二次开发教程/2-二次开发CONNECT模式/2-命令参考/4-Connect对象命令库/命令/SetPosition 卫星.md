@@ -2,7 +2,7 @@
 groups: [Satellite]
 ---
 
-# SetPosition
+# SetPosition Satellite
 
 ## Description
 

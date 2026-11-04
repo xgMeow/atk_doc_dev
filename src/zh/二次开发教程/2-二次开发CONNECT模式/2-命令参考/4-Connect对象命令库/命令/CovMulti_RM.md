@@ -2,7 +2,7 @@
 groups: [覆盖分析]
 ---
 
-# CovMulti_RM MultiFOMDefine
+# CovMulti_RM
 
 ## 作用
 

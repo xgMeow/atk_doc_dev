@@ -21,7 +21,7 @@ GetConstraint <ObjectPath> <CentralBodyName> <ReferenceSatPath> {TimeValue}
 | 参数 | 说明 |
 |------|------|
 | `<ObjectPath>` | 待查询的卫星对象完整路径，自场景 `*` 起写全 |
-| `<CentralBodyName>` | 中心天体名称，取值包括 `Mercury`、`Venus`、`Earth`、`Mars`、`Jupiter`、`Saturn`、`Uranus`、`Neptune`、`Pluto`、`Moon`、`Sun`，与[行星中心天体定义](./Define%20行星.md)中的天体名称一致 |
+| `<CentralBodyName>` | 中心天体名称，取值包括 `Mercury`、`Venus`、`Earth`、`Mars`、`Jupiter`、`Saturn`、`Uranus`、`Neptune`、`Pluto`、`Moon`、`Sun`，与[行星中心天体定义](./Define%20CentralBody.md)中的天体名称一致 |
 | `<ReferenceSatPath>` | 参考卫星路径，只写截断路径，不带场景前缀 `*/` |
 | `{TimeValue}` | 查询时刻，填写绝对日期时间 |
 

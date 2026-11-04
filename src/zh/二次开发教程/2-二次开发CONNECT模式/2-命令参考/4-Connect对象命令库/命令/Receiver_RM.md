@@ -2,7 +2,7 @@
 groups: [链路接收器]
 ---
 
-# GetValue
+# Receiver_RM
 
 ## 作用
 

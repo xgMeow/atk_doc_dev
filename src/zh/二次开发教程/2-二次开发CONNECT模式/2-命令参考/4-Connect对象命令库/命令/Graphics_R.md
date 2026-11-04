@@ -3,7 +3,7 @@ description: 获得对象的标签。
 groups: [二维视图, 地面站, 卫星]
 ---
 
-# Graphics_R GetLabel
+# Graphics_R
 
 ## 作用
 

@@ -2,7 +2,7 @@
 groups: [信号发射器]
 ---
 
-# SetValue
+# Transmitter
 
 ## 作用
 
@@ -159,7 +159,7 @@ Transmitter <XmObjectPath> RemoveItem <ListPath> <Index>
 
 ### 复杂模型的天线
 
-下列属性只在复杂发射机模型与复杂转发器模型上存在，可用 [GetValue](./GetValue%20信号发射器.md) 读取。
+下列属性只在复杂发射机模型与复杂转发器模型上存在，可用 [Transmitter_RM](./Transmitter_RM.md) 读取。
 
 | 属性 | 说明 |
 | --- | --- |

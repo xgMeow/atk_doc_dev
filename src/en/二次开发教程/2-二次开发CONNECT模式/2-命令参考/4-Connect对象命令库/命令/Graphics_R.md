@@ -3,7 +3,7 @@ description: Gets the label of the object.
 groups: [2D Graphics, Facility, Satellite]
 ---
 
-# Graphics_R GetLabel
+# Graphics_R
 
 ## Description
 

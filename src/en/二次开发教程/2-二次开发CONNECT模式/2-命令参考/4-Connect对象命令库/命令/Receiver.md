@@ -2,7 +2,7 @@
 groups: [Receiver]
 ---
 
-# SetValue
+# Receiver
 
 ## Description
 
