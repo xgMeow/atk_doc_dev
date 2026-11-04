@@ -30,7 +30,7 @@ SetState <VehObjectPath> Spherical {Propagator} {NoProp | {TimeInterval}} <StepS
 | `<Radius>` | Enter the radius parameter; the unit is determined by the current Connect `Distance` unit setting |
 | `<HorizontalFlightPathAngle>` | Enter the horizontal flight path angle parameter; the unit is determined by the current Connect `Angle` unit setting |
 | `<FlightPathAzimuth>` | Enter the flight path azimuth parameter; the unit is determined by the current Connect `Angle` unit setting |
-| `<Velocity>` | Enter the velocity parameter. The default unit is m/sec |
+| `<Velocity>` | Enter the velocity parameter; the unit is the ratio of the current Connect distance unit to the time unit |
 | `["<CoordEpoch>"]` | See [Common Date/Time Formats](../../2-参数值格式/日期时间格式.md) |
 
 :::

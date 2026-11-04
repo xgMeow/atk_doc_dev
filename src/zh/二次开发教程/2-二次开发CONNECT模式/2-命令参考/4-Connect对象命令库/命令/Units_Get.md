@@ -22,8 +22,10 @@ Units_Get <ScenarioPath> {Option}
 |------|------|
 | `GUI` | 返回通过图形界面输入数据时使用的单位 |
 | `Report` | 返回通过图形界面生成和显示报告时使用的单位 |
-| `Connect` | 返回 Connect 命令专用的单位。Connect 单位仅对 `Date`、`Distance`、`Time`、`Angle` 这几个量纲有效 |
+| `Connect` | 返回发送 Connect 命令时取值的单位，涵盖各量纲 |
 | `ConnectReport` | 返回当前 Connect 会话中生成和显示报告时使用的单位 |
+
+`GUI`、`Report`、`Connect`、`ConnectReport` 四类单位互相独立，各自保存、各自生效。
 
 ## 示例
 

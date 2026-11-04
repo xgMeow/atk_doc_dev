@@ -21,7 +21,7 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Keplerian.{A
 | `Apoapsis Radius` | The default unit is m; supported units are km, m; use ApoapsisRadSize to set the attribute |
 | `Apoapsis Altitude` | The default unit is m; supported units are km, m; use ApoapsisAltSize to set the attribute |
 | `Period` | The default unit is sec; supported units are sec, min, hr; use Period to set the attribute |
-| `Mean Motion` | The default unit is rad/sec; supported units are rad/sec, rad/min; use MeanMotion to set the attribute |
+| `Mean Motion` | The unit is the ratio of the current Connect angle unit to the time unit; rad/sec, rad/min, and other units may be appended; use MeanMotion to set the attribute |
 
 ### Shape Attributes
 

@@ -15,7 +15,7 @@ AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.<Coordinate Type>.
 - `Coordinate Type` includes the attributes `Cartesian` and `Spherical`. When the `Coordinate Type` input value is `Cartesian`, `Attribute` includes the attributes `X`, `Y`, and `Z`; when the `Coordinate Type` input value is `Spherical`, `Attribute` includes the attributes `Azimuth`, `Elevation`, and `Magnitude`.
 
 ::: info Note
-1. The default unit of `Cartesian` is m/sec. For `Spherical`, the default unit of `Azimuth` and `Elevation` is Rad, and the default unit of `Magnitude` is m/sec.
+1. The unit of `Cartesian` is the ratio of the current Connect distance unit to the time unit. For `Spherical`, `Azimuth` and `Elevation` are in the current Connect angle unit, and `Magnitude` is the ratio of the distance unit to the time unit.
 2. When the `MnvrType` is `Finite`, `Cartesian` has no unit, and `Spherical` only includes the attributes `Azimuth` and `Elevation`.
 :::
 

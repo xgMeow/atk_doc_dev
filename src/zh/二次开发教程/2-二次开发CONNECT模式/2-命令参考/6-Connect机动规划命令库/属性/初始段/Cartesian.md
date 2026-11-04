@@ -14,12 +14,12 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Cartesian.<E
 
 | 参数 | 说明 |
 | --- | --- |
-| `X` | 默认单位时 m，包括单位 m ，km |
-| `Y` | 默认单位时 m，包括单位 m ，km |
-| `Z` | 默认单位时 m，包括单位 m ，km |
-| `Vx` | 默认单位时 m/sec，包括单位 m/sec ，km/sec |
-| `Vy` | 默认单位时 m/sec，包括单位 m/sec ，km/sec |
-| `Vz` | 默认单位时 m/sec，包括单位 m/sec ，km/sec |
+| `X` | 位置 X 分量，单位随当前 `Distance` 单位设置 |
+| `Y` | 位置 Y 分量，单位随当前 `Distance` 单位设置 |
+| `Z` | 位置 Z 分量，单位随当前 `Distance` 单位设置 |
+| `Vx` | 速度 X 分量，取当前 Connect 的距离单位与时间单位之比，可附 km/sec 等单位 |
+| `Vy` | 速度 Y 分量，取当前 Connect 的距离单位与时间单位之比，可附 km/sec 等单位 |
+| `Vz` | 速度 Z 分量，取当前 Connect 的距离单位与时间单位之比，可附 km/sec 等单位 |
 
 ## 示例
 

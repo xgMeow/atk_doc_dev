@@ -34,8 +34,6 @@ Receiver <RcObjectPath> SetValue <AttributePath> <Value> [<Unit>]
 | `<Value>` | 属性值。含空格的取值须用双引号括起，如 "Z Axis"。 |
 | `<Unit>` | 可选单位，紧跟在值之后。 |
 
-- 值后的单位可省略。省略时按 Connect 单位解释：频率为 GHz、角度为 deg；给出单位时按该单位换算。
-
 - 一条命令只设置一个属性，不能连续给出多组属性与值。
 
 - 对象类型与名称区分大小写，属性路径不区分大小写。
@@ -58,6 +56,8 @@ Model 属性用于选择接收器模型，取值如下。
 
 ## 参数说明
 
+频率、距离、角度分别取当前 Connect 的频率、`Distance`、`Angle` 单位；表中「缺省值」一列按此给出，单位说明见[单位格式](../../2-参数值格式/单位格式.md)。
+
 ### 模型规格
 
 | 属性 | 说明 | 取值与单位 | 缺省值 | 适用模型 |
@@ -74,7 +74,7 @@ Model 属性用于选择接收器模型，取值如下。
 | Model.UsePolarization | 是否启用极化设置 | true 或 false | 简单、中等 |
 | Model.Polarization | 极化类型 | Linear、Vertical、Horizontal、Left_Hand_Circular、Right_Hand_Circular | 简单、中等 |
 | Model.Polarization.ReferenceAxis | 极化参考轴 | X Axis、Y Axis、Z Axis，须用双引号括起 | 简单、中等 |
-| Model.Polarization.TiltAngle | 极化角 | 角度值，缺省 deg，可附 rad | 简单、中等 |
+| Model.Polarization.TiltAngle | 极化角 | 角度值，可附 rad 等单位 | 简单、中等 |
 
 - 须先令 Model.UsePolarization 为 true，再设置极化类型及其子属性，否则返回 NACK。
 
@@ -98,7 +98,7 @@ Model 属性用于选择接收器模型，取值如下。
 | 属性 | 说明 | 取值与单位 |
 | --- | --- | --- |
 | Model.AutoScaleBandwidth | 是否自动调整带宽 | true 或 false |
-| Model.Bandwidth | 接收带宽 | 频率值，缺省 GHz |
+| Model.Bandwidth | 接收带宽 | 频率值 |
 
 - 须先令 Model.AutoScaleBandwidth 为 false，再设置 Model.Bandwidth，否则返回 NACK。
 
@@ -108,11 +108,11 @@ Model 属性用于选择接收器模型，取值如下。
 | --- | --- | --- | --- | --- |
 | Model.UseFilter | 是否启用滤波器 | true 或 false | false | 全部 |
 | Model.Filter | 滤波器类型 | Bessel、Butterworth、Chbyshev、GaussianWindows、RaisedConsine | Butterworth | 全部 |
-| Model.Filter.LowerBandwidthLimit | 滤波器频谱相对载波的低频边界 | 频率值，缺省 GHz | -0.02 GHz | 全部 |
-| Model.Filter.UpperBandwidthLimit | 滤波器频谱相对载波的高频边界 | 频率值，缺省 GHz | 0.02 GHz | 全部 |
+| Model.Filter.LowerBandwidthLimit | 滤波器频谱相对载波的低频边界 | 频率值 | -0.02 GHz | 全部 |
+| Model.Filter.UpperBandwidthLimit | 滤波器频谱相对载波的高频边界 | 频率值 | 0.02 GHz | 全部 |
 | Model.Filter.Order | 滤波器阶数 | 整数 | 4 | Bessel、Butterworth、Chbyshev、GaussianWindows |
-| Model.Filter.CutoffFrequency | 截止频率 | 频率值，缺省 GHz | 0.01 GHz | Bessel、Butterworth、Chbyshev |
-| Model.Filter.SamplingFrequency | 采样频率 | 频率值，缺省 GHz | 0.01 GHz | GaussianWindows |
+| Model.Filter.CutoffFrequency | 截止频率 | 频率值 | 0.01 GHz | Bessel、Butterworth、Chbyshev |
+| Model.Filter.SamplingFrequency | 采样频率 | 频率值 | 0.01 GHz | GaussianWindows |
 | Model.Filter.RollOffFactor | 滚降因子 | 数值，取值 0 到 1 | 0.5 | RaisedConsine |
 | Model.Filter.SymbolRate | 符号率 | 数值，单位为 Mb/s | 16 | RaisedConsine |
 
@@ -150,8 +150,8 @@ Model 属性用于选择接收器模型，取值如下。
 | --- | --- | --- |
 | Model.AntennaControl.AntennaReferenceType | 天线引用类型 | Embed 或 Link |
 | Model.AntennaControl.Antenna | 天线类型 | 如 Gaussian、Parabolic |
-| Model.AntennaControl.Antenna.DesignFrequency | 天线设计频率 | 频率值，缺省 GHz |
-| Model.AntennaControl.Antenna.Diameter | 天线口径 | 数值，单位为 m |
+| Model.AntennaControl.Antenna.DesignFrequency | 天线设计频率 | 频率值 |
+| Model.AntennaControl.Antenna.Diameter | 天线口径 | 距离值，单位随当前 Connect 的 `Distance` 单位设置 |
 | Model.AntennaControl.Antenna.Efficiency | 天线效率 | 数值，取值 0 到 1 |
 | Model.AntennaControl.UsePolarization | 是否启用天线极化 | true 或 false |
 | Model.AntennaControl.Polarization | 天线极化类型 | 同简单、中等模型的极化类型 |

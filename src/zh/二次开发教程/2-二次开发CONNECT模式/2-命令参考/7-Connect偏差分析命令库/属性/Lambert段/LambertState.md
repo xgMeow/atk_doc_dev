@@ -12,27 +12,29 @@ AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.LambertTarget.<Coo
 
 ::: details 属性设置详细说明（点击展开）
 
+位置类值取当前 Connect 的 `Distance` 单位，角度类值取 `Angle` 单位，速度类值取距离单位与时间单位之比。
+
 - `<CoordinateType>` 为 `"Cartesian"` 时
 
 | Element | 说明 |
 | ------- | ---- |
-| X       | 默认单位时 m，包括单位 m、km |
-| Y       | 默认单位时 m，包括单位 m、km |
-| Z       | 默认单位时 m，包括单位 m、km |
-| Vx      | 默认单位时 m/sec，包括单位 m/sec、km/sec |
-| Vy      | 默认单位时 m/sec，包括单位 m/sec、km/sec |
-| Vz      | 默认单位时 m/sec，包括单位 m/sec、km/sec |
+| X       | 位置 X 分量，单位随当前 `Distance` 单位设置 |
+| Y       | 位置 Y 分量，单位随当前 `Distance` 单位设置 |
+| Z       | 位置 Z 分量，单位随当前 `Distance` 单位设置 |
+| Vx      | 速度 X 分量，取当前 Connect 的距离单位与时间单位之比，可附 km/sec 等单位 |
+| Vy      | 速度 Y 分量，取当前 Connect 的距离单位与时间单位之比，可附 km/sec 等单位 |
+| Vz      | 速度 Z 分量，取当前 Connect 的距离单位与时间单位之比，可附 km/sec 等单位 |
 
 - `<CoordinateType>` 为 `"Keplerian"` 时
 
 | Element | 说明 |
 | ------- | ---- |
-| Sma     | 半长轴默认单位是 m，包括单位 km、m，设置属性使用 sma |
+| Sma     | 半长轴，单位随当前 `Distance` 单位设置，可附 km、m 等单位，设置属性使用 sma |
 | Ecc     | 偏心率 |
-| Inc     | 轨道倾角，默认单位 rad |
-| RAAN    | 升交点赤经，默认单位 rad |
-| W       | 近拱点角距，默认单位 rad |
-| TA      | 真近点角，默认单位 rad |
+| Inc     | 轨道倾角，单位随当前 `Angle` 单位设置 |
+| RAAN    | 升交点赤经，单位随当前 `Angle` 单位设置 |
+| W       | 近拱点角距，单位随当前 `Angle` 单位设置 |
+| TA      | 真近点角，单位随当前 `Angle` 单位设置 |
 
 :::
 

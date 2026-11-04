@@ -288,7 +288,7 @@ Notes:
 - The number and order of the parameters of each subcommand are fixed and cannot be interchanged.
 - For parameters that carry a unit, the unit of the value is determined by the current Connect unit settings rather than being fixed: the conjunction analysis threshold, the equivalent distance warning thresholds, the semimajor axis control value and its bounds, the avoidance threshold, the semimajor axis control step, and the semimajor axis standard deviation are entered in `Distance` units; the time step is entered in `Time` units; the control time and the control time lower and upper bounds are entered in `Date` units. For how to set units, see [Unit Format](../../2-参数值格式/单位格式.md).
 - Time values such as `<TimeValue>` contain spaces and must be enclosed in double quotes as a whole, for example `"1 Jul 2021 09:00:00.000"`; for the format of date and time values, see [Date/Time Format](../../2-参数值格式/日期时间格式.md). File paths follow the same rule and must also be enclosed in double quotes as a whole.
-- The dimensions of the engine thrust and the in-track maneuver amount have no counterpart in the Connect unit settings; their units are `N` and `m/s` as labeled in the interface and are not affected by the Connect unit settings. The equivalent distance coefficient `EquivalFactor` is a dimensionless coefficient.
+- The engine thrust is entered in `Force` units and the in-track maneuver amount as the ratio of the current Connect distance unit to the time unit. The equivalent distance coefficient `EquivalFactor` is a dimensionless coefficient.
 - `SaveAs` supports saving the result to a specified file; in this case, give the file path after the result type, for example `CAM * SaveAs CloseAnalysis "C:\Result\CloseAnalysis.txt"`.
 
 ## Examples

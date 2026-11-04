@@ -30,7 +30,7 @@ SetState <VehObjectPath> Spherical {Propagator} {NoProp | {TimeInterval}} <StepS
 | `<Radius>` | 输入半径参数，取值单位由当前 Connect 的 `Distance` 单位设置决定 |
 | `<HorizontalFlightPathAngle>` | 输入水平航迹角参数，取值单位由当前 Connect 的 `Angle` 单位设置决定 |
 | `<FlightPathAzimuth>` | 输入方位角参数，取值单位由当前 Connect 的 `Angle` 单位设置决定 |
-| `<Velocity>` | 输入速度参数，默认单位是 m/sec |
+| `<Velocity>` | 输入速度参数，取值单位为当前 Connect 距离单位与时间单位之比 |
 | `["<CoordEpoch>"]` | 请查看[常用日期/时间格式](../../2-参数值格式/日期时间格式.md) |
 
 :::

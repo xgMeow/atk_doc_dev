@@ -20,12 +20,12 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Update.{Val Attribu
 
 ### `Val Attribute` Values
 
-| Value | Default Unit |
+| Value | Dimension |
 |------|---------|
-| `DryMassVal` | $kg$ |
-| `FuelMassVal` | $kg$ |
-| `SRPAreaVal` | $m^2$ |
-| `DragAreaVal` | $m^2$ |
+| `DryMassVal` | Mass |
+| `FuelMassVal` | Mass |
+| `SRPAreaVal` | Area (square of the distance unit) |
+| `DragAreaVal` | Area (square of the distance unit) |
 | `CrVal` | — |
 | `CdVal` | — |
 

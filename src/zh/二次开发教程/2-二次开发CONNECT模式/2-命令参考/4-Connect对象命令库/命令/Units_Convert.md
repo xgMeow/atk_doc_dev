@@ -31,7 +31,7 @@ Units_Convert <ScenarioPath> Unit {DimensionName} {FromUnit} {ToUnit} "<InputVal
 注意事项：
 
 - `{FromUnit}`、`{ToUnit}`、`<InputValue>` 中若含空格，必须用双引号括起来。
-- 可用 `Units_Get` 命令获取可用量纲及各量纲当前的单位设置。
+- 可用 `Units_Get` 命令查询各量纲当前的单位
 - 可用 `Units_Get` 命令的 `UnitNames` 选项获取指定量纲下的合法单位名。
 
 ## 示例
