@@ -44,16 +44,16 @@ Model 属性用于选择发射器模型，取值如下。
 
 | 取值 | 对应模型 |
 | --- | --- |
-| simple_receiver_model | 简单发射机模型 |
-| medium_receiver_model | 中等发射机模型 |
-| complex_receiver_model | 复杂发射机模型 |
+| simple_transmitter_model | 简单发射机模型 |
+| medium_transmitter_model | 中等发射机模型 |
+| complex_transmitter_model | 复杂发射机模型 |
 | simple_re-transmitter_model | 简单转发器模型 |
 | medium_re-transmitter_model | 中等转发器模型 |
 | complex_re-transmitter_model | 复杂转发器模型 |
 
-- 取值不区分大小写，下划线可省略，例如 simplereceivermodel 与 simple_receiver_model 等价。
+- 取值不区分大小写，下划线可省略，例如 simpletransmittermodel 与 simple_transmitter_model 等价。
 
-- 发射机模型的取值为 receiver_model 而非 transmitter_model：写成 simple_transmitter_model 返回 NACK。转发器模型的 re 与 transmitter 之间须保留连字符，写成 simple_re_transmitter_model 返回 NACK。
+- 转发器模型的取值在 re 与 transmitter 之间须保留连字符，写成 simple_re_transmitter_model 返回 NACK。
 
 - 切换模型会重建模型对象：载波频率与数据速率保留，其余模型专有参数恢复为缺省值。
 
@@ -199,7 +199,7 @@ Transmitter */Satellite/Satellite1/Transmitter/Transmitter1 SetValue Model.EIRP 
 
 ::: details open **切换为中等发射机模型并设置发射功率**
 ```
-Transmitter */Satellite/Satellite1/Transmitter/Transmitter1 SetValue Model medium_receiver_model
+Transmitter */Satellite/Satellite1/Transmitter/Transmitter1 SetValue Model medium_transmitter_model
 Transmitter */Satellite/Satellite1/Transmitter/Transmitter1 SetValue Model.Power 15 W
 ```
 :::
