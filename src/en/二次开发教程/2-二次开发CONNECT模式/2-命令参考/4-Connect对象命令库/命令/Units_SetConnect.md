@@ -16,8 +16,8 @@ Units_SetConnect <AppOrScenPath> {Default | Internal | {Dimension} {Unit}... }
 
 ## Additional Notes
 
-- See [Common Unit Formats](../../2-参数值格式/单位格式.md) for `{Dimension} {Unit}`.
-- Connect mode only supports setting `{Dimension}` to `Date`, `Distance`, `Time`, and `Angle`.
+- See [Unit Format](../../2-参数值格式/单位格式.md) for `{Dimension} {Unit}`.
+- The units of eleven dimensions can be set: `Date`, `Distance`, `Time`, `Angle`, `Mass`, `Power`, `Frequency`, `Temperature`, `Ratio`, `Force`, and `Pressure`. Velocity, acceleration, angular rate, area, and similar quantities are derived from these dimensions and are not set separately.
 
 ## Examples
 

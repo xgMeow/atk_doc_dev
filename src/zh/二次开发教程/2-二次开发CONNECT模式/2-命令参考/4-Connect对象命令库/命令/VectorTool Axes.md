@@ -29,7 +29,7 @@ VectorTool <ScenarioPath> <ParentObject> {Action} Axes <AxesName> [{AxesType} <A
 | "Fixed at Epoch" | `"<EpochDate>" "<SourceAxes>" ["<ReferenceAxes>"]` |
 | "Fixed in Axes" | `{OrientMethod} <OrientParameters> "<ReferenceAxes>"` <br>{OrientMethod} \<OrientParameters\> 的有效取值见下表之后所述。</br> |
 | "Libration" | `<CentralBodyName> {L1 \| L2 \| L3 \| L4 \| L5} <SecondaryBody> [<SecondaryBody>...]` <br>可根据需要在命令行中输入任意数量的 \<SecondaryBody\>。</br> |
-| "Spinning" | <br> 可以指定以下任意或全部关键字-值对：</br> <br>• Epoch "\<Epoch\>"</br> <br>• SpinVector "\<Vector\>"</br> <br>• Offset \<Value\></br> <br>• RotationRate \<Value\></br> <br>• ReferenceAxes "\<Axes\>"</br> <br>"\<Epoch\>" 的取值单位由当前 Connect 的 `Date` 单位设置决定，默认值为对象的开始时间。</br> <br>Offset \<Value\> 的取值单位由当前 Connect 的 `Angle` 单位设置决定，取值范围必须在 -360.0 到 360.0 度之间，默认值为 0 度。</br> <br>RotationRate \<Value\> 的取值单位由当前 Connect 的 `Time` 单位设置决定，默认值为 1.0 度/秒。</br> |
+| "Spinning" | <br> 可以指定以下任意或全部关键字-值对：</br> <br>• Epoch "\<Epoch\>"</br> <br>• SpinVector "\<Vector\>"</br> <br>• Offset \<Value\></br> <br>• RotationRate \<Value\></br> <br>• ReferenceAxes "\<Axes\>"</br> <br>"\<Epoch\>" 的取值单位由当前 Connect 的 `Date` 单位设置决定，默认值为对象的开始时间。</br> <br>Offset \<Value\> 的取值单位由当前 Connect 的 `Angle` 单位设置决定，取值范围必须在 -360.0 到 360.0 度之间，默认值为 0 度。</br> <br>RotationRate \<Value\> 的取值单位为当前 Connect 角度单位与时间单位之比，默认值为 1.0 度/秒。</br> |
 | "Trajectory" | `"<TrajectoryPoint>" "<ReferenceSystem>" {ICR \| VNC \| RIC \| LVLH \| VVLH \| BBR}` |
 | "Launch" | `<CentralBodyName> "<ReferancePoint>" <AngleValue>` |
 | "Launch Inertial" | `<CentralBodyName> "<ReferancePoint>" <AngleValue> <LaunchTime>` |

@@ -22,7 +22,7 @@ Units_Get <ScenarioPath> {Option}
 |------|------|
 | `GUI` | Returns the units used when data is entered through the graphical user interface |
 | `Report` | Returns the units used when reports are generated and displayed through the graphical user interface |
-| `Connect` | Returns the units dedicated to Connect commands. Connect units apply only to the `Date`, `Distance`, `Time`, and `Angle` dimensions |
+| `Connect` | Returns the units used for values in Connect commands, covering every dimension |
 | `ConnectReport` | Returns the units used when reports are generated and displayed in the current Connect session |
 
 ## Examples

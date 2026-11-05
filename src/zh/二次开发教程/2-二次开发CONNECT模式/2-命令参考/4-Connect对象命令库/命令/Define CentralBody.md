@@ -2,7 +2,7 @@
 groups: [行星]
 ---
 
-# Define
+# Define CentralBody
 
 ## 作用
 

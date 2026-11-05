@@ -43,7 +43,7 @@ The values of `MissileType` are as follows.
 
 Notes:
 
-- Parameters that carry units do not have fixed units; their units are determined by the current Connect unit settings: enter `<TimeValue>` in `Date` units, `<StepSize>` in `Time` units, latitude and longitude in `Angle` units, and altitude in `Distance` units. For the units available for each quantity, see [Common Unit Formats](../../2-参数值格式/单位格式.md).
+- Parameters that carry units do not have fixed units; their units are determined by the current Connect unit settings: enter `<TimeValue>` in `Date` units, `<StepSize>` in `Time` units, latitude and longitude in `Angle` units, and altitude in `Distance` units. For the units available for each quantity, see [Unit Format](../../2-参数值格式/单位格式.md).
 - `<TimeValue>` contains spaces, so it must be enclosed in double quotes as a whole, such as `"5 Aug 2026 06:02:00.00"`; for the date-time notation, see [Date/Time Formats](../../2-参数值格式/日期时间格式.md).
 - The parameter order must follow the syntax definition strictly and cannot be changed; neither the `LnLatGeoD` nor the `ImLatGeoD` position parameter group may be omitted.
 

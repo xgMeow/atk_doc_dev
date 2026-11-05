@@ -16,12 +16,12 @@ AstroUQ <Satellite Object Path> SetValue <AstroUQ ObjectPath>.LambertTarget.<Coo
 
 | Element | Description |
 | ------- | ---- |
-| X       | Default unit is m; supported units: m, km |
-| Y       | Default unit is m; supported units: m, km |
-| Z       | Default unit is m; supported units: m, km |
-| Vx      | Default unit is m/sec; supported units: m/sec, km/sec |
-| Vy      | Default unit is m/sec; supported units: m/sec, km/sec |
-| Vz      | Default unit is m/sec; supported units: m/sec, km/sec |
+| X       | The unit follows the current Connect `Distance` unit setting; km, m, and other units may be appended |
+| Y       | The unit follows the current Connect `Distance` unit setting; km, m, and other units may be appended |
+| Z       | The unit follows the current Connect `Distance` unit setting; km, m, and other units may be appended |
+| Vx      | The unit is the ratio of the current Connect distance unit to the time unit; km/sec and other units may be appended |
+| Vy      | The unit is the ratio of the current Connect distance unit to the time unit; km/sec and other units may be appended |
+| Vz      | The unit is the ratio of the current Connect distance unit to the time unit; km/sec and other units may be appended |
 
 - When `<CoordinateType>` is `"Keplerian"`
 

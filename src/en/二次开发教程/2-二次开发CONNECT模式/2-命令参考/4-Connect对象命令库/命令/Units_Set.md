@@ -18,7 +18,7 @@ Units_Set <ScenarioPath> {Option} <Parameters>
 
 `{Option}` specifies which category of units to set, and `<Parameters>` specifies the unit setting itself.
 
-`<Parameters>` is written the same way for every `{Option}`, namely `{Internal | {Dimension} {Unit}... }`: either the single keyword `Internal`, or one or more groups of `{Dimension} {Unit}`. For the valid values of `{Dimension} {Unit}`, see [Common Unit Format](../../2-参数值格式/单位格式.md).
+`<Parameters>` is written the same way for every `{Option}`, namely `{Internal | {Dimension} {Unit}... }`: either the single keyword `Internal`, or one or more groups of `{Dimension} {Unit}`. For the valid values of `{Dimension} {Unit}`, see [Unit Format](../../2-参数值格式/单位格式.md).
 
 The valid values of `{Option}` are:
 
@@ -26,13 +26,13 @@ The valid values of `{Option}` are:
 |------|------|
 | `GUI` | Sets the units used when data is entered through the graphical user interface |
 | `Report` | Sets the units used when reports are generated and displayed through the graphical user interface |
-| `Connect` | Sets the units used when Connect commands are entered. Connect units apply only to the `Date`, `Distance`, `Time`, and `Angle` dimensions; for other dimensions the GUI units are still used. Refer to the description of each command to confirm whether any exception applies |
+| `Connect` | Sets the units used for values in Connect commands; the units of eleven dimensions can be set |
 | `ConnectReport` | Sets the units used when reports are generated and displayed in the current Connect session |
 | `All` | Sets the specified units for Connect, GUI, Report, and ConnectReport at the same time |
 
 Notes:
 
-- Connect units are set per dimension: each parameter in a command is entered in the unit set for its dimension, for example angle values in the `Angle` unit and distance values in the `Distance` unit.
+- Connect units are set per dimension: each parameter in a command is entered in the unit set for its dimension, for example angle values in the `Angle` unit and distance values in the `Distance` unit. A dimension that has never been set uses its default unit. The dimensions that can be set are listed in the table in [Unit Format](../../2-参数值格式/单位格式.md); velocity, acceleration, angular rate, and area are derived from distance, time, and angle and are not set separately.
 - This command can affect several categories of units, such as GUI and Report; to set only Connect units, use [Units_SetConnect](./Units_SetConnect.md).
 
 ## Examples

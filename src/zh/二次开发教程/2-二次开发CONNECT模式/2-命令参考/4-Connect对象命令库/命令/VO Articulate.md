@@ -25,7 +25,7 @@ VO <ObjectPath> Articulate "<StartTime>" <Duration> <ArticName> <TransformationN
 | 参数 | 说明 |
 |------|------|
 | `<ObjectPath>` | 对象完整路径，其所属模型须含有关节部件，如 `*/Satellite/Satellite1` |
-| `"<StartTime>"` | 关节运动的起始时刻，**按当前 Connect 日期格式填写**，默认 UTCG，格式参见 [日期时间格式](../../2-参数值格式/日期时间格式.md)；字符串内部含空格，须用双引号括起来 |
+| `"<StartTime>"` | 关节运动的起始时刻，**按当前 Connect 日期格式（`Date` 单位）填写**，格式参见 [日期时间格式](../../2-参数值格式/日期时间格式.md)；字符串内部含空格，须用双引号括起来 |
 | `<Duration>` | 关节运动持续的秒数，**始终按秒解释** |
 | `<ArticName>` | 被移动的具体关节部件名称 |
 | `<TransformationName>` | 该关节的旋转轴名称 |
@@ -49,7 +49,7 @@ VO <ObjectPath> Articulate "<StartTime>" <Duration> <ArticName> <TransformationN
 VO */Satellite/Satellite1 Articulate "1 Nov 2000 22:00:00.00" 30 Cargo Rotate 0 -160
 ```
 
-- `"1 Nov 2000 22:00:00.00"`：关节运动的起始时刻，按当前 Connect 日期格式填写，默认 UTCG；字符串内部含空格，须用双引号括起来
+- `"1 Nov 2000 22:00:00.00"`：关节运动的起始时刻，按当前 Connect 日期格式填写；字符串内部含空格，须用双引号括起来
 - `30`：关节运动持续 30 秒
 - `Cargo`：被移动的关节部件名
 - `Rotate`：该关节的旋转轴名

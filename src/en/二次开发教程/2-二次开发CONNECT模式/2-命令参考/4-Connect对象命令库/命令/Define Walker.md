@@ -2,7 +2,7 @@
 groups: [SatelliteCollection]
 ---
 
-# Define
+# Define Walker
 
 ## Description
 

@@ -2,7 +2,7 @@
 groups: [恒星]
 ---
 
-# Define
+# Define 恒星
 
 ## 作用
 

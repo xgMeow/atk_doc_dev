@@ -3,7 +3,7 @@ description: 定义传感器类型及其参数，支持矩形、简单锥形、�
 groups: [传感器]
 ---
 
-# Define
+# Define 传感器
 
 ## 作用
 

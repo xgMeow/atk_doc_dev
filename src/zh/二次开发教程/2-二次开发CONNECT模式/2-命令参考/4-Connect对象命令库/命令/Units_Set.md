@@ -18,7 +18,7 @@ Units_Set <ScenarioPath> {Option} <Parameters>
 
 `{Option}` 指定要设置哪一类单位，`<Parameters>` 指定具体的单位设置。
 
-各 `{Option}` 的 `<Parameters>` 写法相同，均为 `{Internal | {Dimension} {Unit}... }`：既可只写关键字 `Internal`，也可写一组或多组 `{Dimension} {Unit}`。其中 `{Dimension} {Unit}` 的取值范围参见[常用单位格式](../../2-参数值格式/单位格式.md)。
+各 `{Option}` 的 `<Parameters>` 写法相同，均为 `{Internal | {Dimension} {Unit}... }`：既可只写关键字 `Internal`，也可写一组或多组 `{Dimension} {Unit}`。其中 `{Dimension} {Unit}` 的取值范围参见[单位格式](../../2-参数值格式/单位格式.md)。
 
 `{Option}` 的可取值为：
 
@@ -26,13 +26,14 @@ Units_Set <ScenarioPath> {Option} <Parameters>
 |------|------|
 | `GUI` | 设置通过图形界面输入数据时使用的单位 |
 | `Report` | 设置通过图形界面生成和显示报告时使用的单位 |
-| `Connect` | 设置输入 Connect 命令时使用的单位。Connect 单位仅对 `Date`、`Distance`、`Time`、`Angle` 这几个量纲有效；设置其他量纲时仍沿用 GUI 单位，具体请查阅各命令的说明以确认有无例外 |
+| `Connect` | 设置发送 Connect 命令时取值的单位 |
 | `ConnectReport` | 设置当前 Connect 会话中生成和显示报告时使用的单位 |
 | `All` | 同时为 Connect、GUI、Report、ConnectReport 设置指定的单位 |
 
 注意事项：
 
-- `Connect` 单位按量纲设置：命令中各参数以所设置的对应量纲单位输入，如角度值按 `Angle` 单位输入、距离值按 `Distance` 单位输入。
+- 四类单位互相独立，各自保存、各自生效：修改一类不影响其余三类。
+- `Connect` 单位按量纲设置，命令中各参数按其所属量纲取所设置的单位，如角度值按 `Angle` 单位输入、距离值按 `Distance` 单位输入；未设置过的量纲取该量纲的缺省单位。可设置的量纲见[单位格式](../../2-参数值格式/单位格式.md)中的对照表；速度、加速度、角速度、面积由距离、时间、角度组合推导，不单独设置。
 - 本命令可作用于 GUI、Report 等多类单位；若只需设置 Connect 单位，可使用 [Units_SetConnect](./Units_SetConnect.md)。
 
 ## 示例

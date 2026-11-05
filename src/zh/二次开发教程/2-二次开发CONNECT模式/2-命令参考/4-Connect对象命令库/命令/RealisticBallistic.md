@@ -43,7 +43,7 @@ RealisticBallistic <MissileObjectPath> Trajectory MissileType {LRM | MRM | SRM} 
 
 注意事项：
 
-- 带单位的参数，其取值单位由当前 Connect 的单位设置决定，并非固定值：`<TimeValue>` 按 `Date` 单位输入，`<StepSize>` 按 `Time` 单位输入，纬经度按 `Angle` 单位输入，高程按 `Distance` 单位输入。各单位量纲的可选单位参见[常用单位格式](../../2-参数值格式/单位格式.md)。
+- 各参数的取值量纲：`<TimeValue>` 按 `Date` 单位输入，`<StepSize>` 按 `Time` 单位输入，纬经度按 `Angle` 单位输入，高程按 `Distance` 单位输入。各单位量纲的可选单位参见[单位格式](../../2-参数值格式/单位格式.md)。
 - `<TimeValue>` 内部含空格，必须整体用双引号括起来，如 `"5 Aug 2026 06:02:00.00"`；日期时间的填写格式参见[日期时间格式](../../2-参数值格式/日期时间格式.md)。
 - 参数顺序必须严格遵循语法定义，不可调换；`LnLatGeoD`、`ImLatGeoD` 两组位置参数都不可省略。
 

@@ -2,7 +2,7 @@
 groups: [链路接收器]
 ---
 
-# GetValue
+# Receiver_RM
 
 ## 作用
 
@@ -35,6 +35,8 @@ Receiver_RM <RcObjectPath> GetValue <AttributePath>
 ```
 Model.<属性名> = <值>[ <单位>]
 ```
+
+各表「单位」一列按缺省单位设置给出；Connect 单位按量纲分别设置，修改后输出单位随之变化，规则见[单位格式](../../2-参数值格式/单位格式.md)。
 
 ## 参数说明
 
