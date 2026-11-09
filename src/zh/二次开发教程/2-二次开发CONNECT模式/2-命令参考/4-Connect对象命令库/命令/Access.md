@@ -120,7 +120,7 @@ Satellite1对Facility1
 
 ## 补充说明
 
-- **本命令的输出固定为可见性报告。** 若需 AER、参数变化率、不可见报告、统计摘要等其他格式，改用 [Access_RM](./Access_RM%20Access.md)。
+- **本命令的输出固定为可见性报告。** 若需 AER、参数变化率、不可见报告、统计摘要等其他格式，改用 [Access_RM](./Access_RM.md)。
 - **本命令一次只计算一对对象。** 若需批量处理多对对象，改用 AccessMulti 系列命令（先配置来源与目标，再统一计算），参见 [AccessMulti Access](./AccessMulti%20Access.md)。
 
 ## 示例

@@ -86,7 +86,7 @@ Notes:
 
 - The antenna model and the antenna pointing together determine the actual gain along the link direction, and both must be set correctly.
 - For parameters with units, the unit is determined by the current Connect unit settings rather than being a fixed value: the angle parameters under `Orientation` are entered in the `Angle` unit, `Model.DesignFrequency` in the `Frequency` unit, and `Model.Diameter` together with the three position offset components under `Orientation` in the `Distance` unit. For how to set units, see [Unit Format](../../2-参数值格式/单位格式.md).
-- The dB of `Model.BackLobeGain` and the % of `Model.Efficiency` have no corresponding dimension in the unit settings; they are fixed units and are not affected by the Connect unit settings.
+- `Model.BackLobeGain` is given in dB and `Model.Efficiency` in %.
 - A parameter value that contains spaces, such as the file path of `Model.ExternalAntennaFile`, must be enclosed in double quotes as a whole; see [Command Syntax Conventions](../../1-命令语法约定.md).
 
 ## Examples

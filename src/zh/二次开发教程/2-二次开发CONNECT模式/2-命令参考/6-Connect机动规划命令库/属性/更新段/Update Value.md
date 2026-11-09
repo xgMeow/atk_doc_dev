@@ -20,14 +20,14 @@ Astrogator <Satellite Object Path> SetValue <Attribute Path>.Update.{Val Attribu
 
 ### `Val Attribute` 取值
 
-| 取值 | 默认单位 |
+| 取值 | 量纲 |
 |------|---------|
-| `DryMassVal` | $kg$ |
-| `FuelMassVal` | $kg$ |
-| `SRPAreaVal` | $m^2$ |
-| `DragAreaVal` | $m^2$ |
-| `CrVal` | — |
-| `CdVal` | — |
+| `DryMassVal` | 质量 |
+| `FuelMassVal` | 质量 |
+| `SRPAreaVal` | 面积（距离单位的平方） |
+| `DragAreaVal` | 面积（距离单位的平方） |
+| `CrVal` | 无 |
+| `CdVal` | 无 |
 
 ## 示例
 

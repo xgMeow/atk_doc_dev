@@ -2,7 +2,7 @@
 groups: [Receiver]
 ---
 
-# GetValue
+# Receiver_RM
 
 ## Description
 

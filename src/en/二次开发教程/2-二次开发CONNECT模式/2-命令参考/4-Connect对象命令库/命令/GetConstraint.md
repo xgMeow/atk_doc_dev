@@ -21,7 +21,7 @@ The following table describes the command parameters.
 | Parameter | Description |
 |------|------|
 | `<ObjectPath>` | Full path of the satellite object to query, written out from the scenario `*` |
-| `<CentralBodyName>` | Name of the central body. Valid values are `Mercury`, `Venus`, `Earth`, `Mars`, `Jupiter`, `Saturn`, `Uranus`, `Neptune`, `Pluto`, `Moon` and `Sun`, consistent with the body names in [Planet central body definitions](./Define%20行星.md) |
+| `<CentralBodyName>` | Name of the central body. Valid values are `Mercury`, `Venus`, `Earth`, `Mars`, `Jupiter`, `Saturn`, `Uranus`, `Neptune`, `Pluto`, `Moon` and `Sun`, consistent with the body names in [Planet central body definitions](./Define%20CentralBody.md) |
 | `<ReferenceSatPath>` | Path of the reference satellite, given only as a truncated path without the scenario prefix `*/` |
 | `{TimeValue}` | Query epoch, entered as an absolute date and time |
 

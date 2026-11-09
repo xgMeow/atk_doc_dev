@@ -14,12 +14,12 @@ Astrogator <Satellite Object Path> SetValue <Astrogator ObjectPath>.Cartesian.<E
 
 | Parameter | Description |
 | --- | --- |
-| `X` | The default unit is m; supported units are m, km |
-| `Y` | The default unit is m; supported units are m, km |
-| `Z` | The default unit is m; supported units are m, km |
-| `Vx` | The default unit is m/sec; supported units are m/sec, km/sec |
-| `Vy` | The default unit is m/sec; supported units are m/sec, km/sec |
-| `Vz` | The default unit is m/sec; supported units are m/sec, km/sec |
+| `X` | The unit follows the current Connect `Distance` unit setting; km, m, and other units may be appended |
+| `Y` | The unit follows the current Connect `Distance` unit setting; km, m, and other units may be appended |
+| `Z` | The unit follows the current Connect `Distance` unit setting; km, m, and other units may be appended |
+| `Vx` | The unit is the ratio of the current Connect distance unit to the time unit; km/sec and other units may be appended |
+| `Vy` | The unit is the ratio of the current Connect distance unit to the time unit; km/sec and other units may be appended |
+| `Vz` | The unit is the ratio of the current Connect distance unit to the time unit; km/sec and other units may be appended |
 
 ## Examples
 

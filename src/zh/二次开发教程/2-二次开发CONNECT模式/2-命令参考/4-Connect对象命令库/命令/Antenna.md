@@ -43,7 +43,7 @@ Antenna <AntennaObjectPath> SetValue <Parameter> <Value>
 
 | 参数 | 说明 |
 |------|------|
-| `Model.DesignFrequency` | 天线模型的设计频率，用于确定波长并参与天线增益、波束宽度等参数计算，取值单位由当前 Connect 的 `Frequency` 单位设置决定 |
+| `Model.DesignFrequency` | 天线模型的设计频率，用于确定波长并参与天线增益、波束宽度等参数计算，取值为频率值，单位由当前 Connect 的频率单位设置决定 |
 | `Model.Diameter` | 天线口径直径，取值单位由当前 Connect 的 `Distance` 单位设置决定 |
 | `Model.BackLobeGain` | 天线后波瓣增益，取值以 dB 为单位 |
 | `Model.Efficiency` | 天线效率，反映实际天线相对于理想孔径天线的性能折减，取值以 % 为单位 |
@@ -85,8 +85,8 @@ Antenna <AntennaObjectPath> SetValue <Parameter> <Value>
 注意事项：
 
 - 天线模型与天线指向共同决定链路方向上的实际增益，两者应同时正确设置。
-- 带单位的参数，其单位由当前 Connect 的单位设置决定，并非固定值：`Orientation` 下的各角度类参数按 `Angle` 单位输入，`Model.DesignFrequency` 按 `Frequency` 单位输入，`Model.Diameter` 与 `Orientation` 的三个位置偏移分量按 `Distance` 单位输入。单位设置方式参见[常用单位格式](../../2-参数值格式/单位格式.md)。
-- `Model.BackLobeGain` 的 dB、`Model.Efficiency` 的 % 在单位设置中没有对应的量纲，为固定单位，不受 Connect 单位设置影响。
+- `Model.DesignFrequency` 为频率值，`Model.Diameter` 与 `Orientation` 的位置偏移分量为距离值，角度类参数为角度值，均取当前 Connect 的对应单位。单位说明参见[单位格式](../../2-参数值格式/单位格式.md)。
+- `Model.BackLobeGain` 以 dB 计、`Model.Efficiency` 以 % 计。
 - 参数值内部若含空格（如 `Model.ExternalAntennaFile` 的文件路径），必须整体用双引号包裹，参见[命令语法约定](../../1-命令语法约定.md)。
 
 ## 示例
@@ -111,7 +111,7 @@ Antenna */Satellite/Satellite1/Antenna/Antenna1 SetValue Model.Diameter 3.0
 ```
 
 - `Model.DesignFrequency`：待设置的参数，此处为天线模型的设计频率
-- `2.4`：设计频率的取值，单位由当前 Connect 的 `Frequency` 单位设置决定
+- `2.4`：设计频率的取值，单位由当前 Connect 的频率单位设置决定
 - `Model.Diameter`：待设置的参数，此处为天线口径直径
 - `3.0`：口径直径的取值，单位由当前 Connect 的 `Distance` 单位设置决定
 

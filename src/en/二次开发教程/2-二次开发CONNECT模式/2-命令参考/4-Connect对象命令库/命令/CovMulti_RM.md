@@ -2,7 +2,7 @@
 groups: [Coverage]
 ---
 
-# CovMulti_RM MultiFOMDefine
+# CovMulti_RM
 
 ## Description
 

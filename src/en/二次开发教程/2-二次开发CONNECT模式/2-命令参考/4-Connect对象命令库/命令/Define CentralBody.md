@@ -2,7 +2,7 @@
 groups: [Planet]
 ---
 
-# Define
+# Define CentralBody
 
 ## Description
 
