@@ -115,7 +115,6 @@ export const zhSidebarConfig = sidebar({
     },
   ],
   "/zh/二次开发教程/3-MBSE接口/": "structure",
-  "/zh/二次开发教程/4-二次开发COMPONENT模式/": "structure",
   "/zh/06-AI助手/": [
     {
       text: "智能体",

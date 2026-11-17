@@ -99,7 +99,6 @@ export const enSidebarConfig = sidebar({
     },
   ],
   "/en/二次开发教程/3-MBSE接口/": "structure",
-  "/en/二次开发教程/4-二次开发COMPONENT模式/": "structure",
   "/en/06-AI助手/": [
     {
       text: "Agent",

@@ -76,11 +76,10 @@ export const zhOverViewData: OverViewModule[] = [
     title: '二次开发',
     rows: [
       [
-        { name: 'ATK.Component', link: '/zh/二次开发教程/4-二次开发COMPONENT模式/' },
         { name: 'ATK.MBSE', link: '/zh/二次开发教程/3-MBSE接口/' },
+        { name: 'ATK.Connect', link: '/zh/二次开发教程/2-二次开发CONNECT模式/' },
       ],
       [
-        { name: 'ATK.Connect', link: '/zh/二次开发教程/2-二次开发CONNECT模式/' },
         { name: '内置脚本', link: '/zh/5.专业使用指南/18-脚本工具/' },
       ],
     ],

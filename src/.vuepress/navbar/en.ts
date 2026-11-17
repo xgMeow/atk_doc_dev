@@ -18,10 +18,6 @@ export const enNavbarConfig = navbar([
         text: "MBSE Interface",
         link: "/en/二次开发教程/3-MBSE接口/",
       },
-      {
-        text: "Component Mode",
-        link: "/en/二次开发教程/4-二次开发COMPONENT模式/",
-      },
     ],
   },
   { text: "AI Assistant", link: "/en/06-AI助手/" },

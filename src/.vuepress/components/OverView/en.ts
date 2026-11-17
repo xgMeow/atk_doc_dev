@@ -76,11 +76,10 @@ export const enOverViewData: OverViewModule[] = [
     title: 'Secondary Development',
     rows: [
       [
-        { name: 'ATK.Component', link: '/en/二次开发教程/4-二次开发COMPONENT模式/' },
         { name: 'ATK.MBSE', link: '/en/二次开发教程/3-MBSE接口/' },
+        { name: 'ATK.Connect', link: '/en/二次开发教程/2-二次开发CONNECT模式/' },
       ],
       [
-        { name: 'ATK.Connect', link: '/en/二次开发教程/2-二次开发CONNECT模式/' },
         { name: 'ATK Script', link: '/en/5.专业使用指南/18-脚本工具/' },
       ],
     ],
