@@ -81,6 +81,7 @@ export const enOverViewData: OverViewModule[] = [
       ],
       [
         { name: 'ATK Script', link: '/en/5.专业使用指南/18-脚本工具/' },
+        { name: 'ATK.Component', link: null, doc: 'index.html' },
       ],
     ],
   },

@@ -65,6 +65,8 @@ export const useConfig = ({type, plat=""}) => {
     head: [['link', { rel: 'icon', href: '/images/logo.png'}]],
     alias:{
       "@theme-hope/components/PageNav": path.resolve(__dirname,"./components/PageNav.js",),
+      // AutoLink 在主题原版基础上增加了 atk-component: 链接的解析（见该文件顶部说明）
+      "@theme-hope/components/AutoLink": path.resolve(__dirname,"./components/AutoLink.js",),
       //"@theme-hope/components/transitions/index": path.resolve(__dirname,"./components/transitions/index",),
       "@theme-hope/modules/sidebar/components/Sidebar":  path.resolve(__dirname,"./modules/sidebar/components/Sidebar",),
       "@theme-hope/modules/sidebar/components/SidebarChild": path.resolve(__dirname,"./modules/sidebar/components/SidebarChild",),

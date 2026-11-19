@@ -81,6 +81,7 @@ export const zhOverViewData: OverViewModule[] = [
       ],
       [
         { name: '内置脚本', link: '/zh/5.专业使用指南/18-脚本工具/' },
+        { name: 'ATK.Component', link: null, doc: 'index.html' },
       ],
     ],
   },

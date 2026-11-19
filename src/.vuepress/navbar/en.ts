@@ -18,6 +18,12 @@ export const enNavbarConfig = navbar([
         text: "MBSE Interface",
         link: "/en/二次开发教程/3-MBSE接口/",
       },
+      {
+        // atk-component: 前缀表示这条链接指向组件文档，由 src/.vuepress/components/AutoLink.js
+        // 按当前页面层级解析：组件文档与站点产物同级、在站点目录之外
+        text: "Component Mode",
+        link: "atk-component:index.html",
+      },
     ],
   },
   { text: "AI Assistant", link: "/en/06-AI助手/" },

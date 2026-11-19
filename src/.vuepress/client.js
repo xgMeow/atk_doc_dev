@@ -8,6 +8,7 @@ import NotFound from './components/NotFound.vue'
 import Catalog from './components/Catalog/Catalog.vue'
 import CatalogCard from './components/CatalogCard/CatalogCard.vue'
 import ConnectCommandSummary from './components/ConnectCommandSummary/ConnectCommandSummary.vue'
+import ComponentDocLink from './components/ComponentDocLink/ComponentDocLink.vue'
 import MixCode from './components/MixCode/MixCode.vue'
 import ColorSwatch from './components/ColorSwatch.vue'
 import Entry from './components/Entry/Entry.vue'
@@ -135,6 +136,7 @@ export default defineClientConfig({
     app.component('Catalog', Catalog);
     app.component('CatalogCard', CatalogCard);
     app.component('ConnectCommandSummary', ConnectCommandSummary);
+    app.component('ComponentDocLink', ComponentDocLink);
     app.component('MixCode', MixCode);
     app.component('ColorSwatch', ColorSwatch);
     app.component('Entry', Entry);

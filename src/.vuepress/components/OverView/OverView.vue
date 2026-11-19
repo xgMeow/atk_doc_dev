@@ -12,8 +12,10 @@
         <template v-for="(row, rowIndex) in module.rows" :key="rowIndex">
           <template v-for="(item, itemIndex) in row" :key="itemIndex">
             <a
-              v-if="item.link"
-              :href="getLink(item.link)"
+              v-if="item.link || item.doc"
+              :href="item.doc ? docHref(item.doc) : getLink(item.link)"
+              :target="item.doc ? '_blank' : undefined"
+              :rel="item.doc ? 'noopener noreferrer' : undefined"
               class="item-card is-link"
             >
               <span class="item-name">{{ item.name }}</span>
@@ -32,6 +34,7 @@
 <script setup>
 import { computed } from 'vue'
 import { usePageData } from 'vuepress/client'
+import { resolveComponentDocHref } from '../../shared/component-doc.js'
 import { zhOverViewData } from './zh'
 import { enOverViewData } from './en'
 
@@ -45,6 +48,9 @@ const getLink = (path) => {
 const page = usePageData()
 const isEn = computed(() => page.value.path.startsWith('/en/'))
 const modulesData = computed(() => isEn.value ? enOverViewData : zhOverViewData)
+
+// 组件站（atk-component）的条目：组件文档在站点目录之外、与站点产物同级，按页面层级解析
+const docHref = (path) => resolveComponentDocHref(path, page.value.path)
 </script>
 
 <style scoped>
