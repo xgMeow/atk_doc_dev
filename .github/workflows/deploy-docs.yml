@@ -4,11 +4,27 @@ on:
   push:
     branches:
       - main
+  # 组件文档跟随 atk-component 的 docs-latest 滚动资产，只刷新文档时不需要改代码
+  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
+
+# 发布根并列承载站点与组件接口文档（atk-component 产出）：
+#
+#   <发布根>/online/            站点产物  → https://<user>.github.io/<repo>/online/
+#   <发布根>/atk-component-doc/ 组件文档  → https://<user>.github.io/<repo>/atk-component-doc/html/
+#
+# 站内 atk-component: 链接按「组件文档在站点目录之外的一级」解析（见
+# src/.vuepress/shared/component-doc.js），所以站点必须退到 online/ 这一层，
+# base 随之带上 online/ 前缀（SITE_BASE_SUBDIR=online，由 shared/config.js 取用）。
+# 发布根上的 index.html 跳向 online/，让 https://<user>.github.io/<repo>/ 这个旧入口照旧可用；
+# 站点自己的 404.html 也复制到发布根，GitHub Pages 只用这一层的 404 页兜底。
+
+env:
+  SITE_BASE_SUBDIR: online
 
 jobs:
   deploy:
@@ -32,10 +48,56 @@ jobs:
       - name: Build
         run: npm run build:online
 
+      - name: 组装发布根
+        run: |
+          mkdir -p .dist/pages
+          mv .dist/online .dist/pages/online
+          cat > .dist/pages/index.html <<'HTML'
+          <!doctype html>
+          <html lang="zh-CN">
+          <head>
+          <meta charset="utf-8">
+          <meta http-equiv="refresh" content="0; url=./online/">
+          <title>Aerospace Tool Kit</title>
+          </head>
+          <body><a href="./online/">Aerospace Tool Kit</a></body>
+          </html>
+          HTML
+          # GitHub Pages 只用发布根这一层的 404.html 兜底，站点自己的那份在 online/ 里够不着
+          if [ -f .dist/pages/online/404.html ]; then
+            cp .dist/pages/online/404.html .dist/pages/404.html
+          else
+            echo "::warning::站点没有生成 404.html，不存在的地址会落到 GitHub 默认 404"
+          fi
+
+      - name: 拉取组件文档
+        # 组件文档来自另一个仓库的滚动产物，取不到时不拦站点发布，由下一步告警；
+        # 链路受限时可用 COMPONENT_DOC_URL 指向同一份 tar.gz 的内网镜像
+        continue-on-error: true
+        run: node scripts/fetch-component-doc.mjs .dist/pages
+
+      - name: 检查发布根
+        run: |
+          set -eu
+          site=.dist/pages/online
+          test -f "$site/zh/index.html" || { echo "::error::站点产物缺失：$site/zh/index.html"; exit 1; }
+          grep -q "/${GITHUB_REPOSITORY#*/}/online/assets/" "$site/zh/index.html" \
+            || { echo "::error::站点 base 没有带上 online/ 前缀，站内链接会指到发布根之外"; exit 1; }
+          # 组件文档与站点产物同级（见 src/.vuepress/shared/component-doc.js），首页两级退到发布根
+          for page in zh en; do
+            grep -q 'href="\.\./\.\./atk-component-doc/html/index.html"' "$site/$page/index.html" \
+              || { echo "::error::$page 首页的「Component模式」入口没有按同级布局解析"; exit 1; }
+          done
+          if [ -f .dist/pages/atk-component-doc/html/index.html ]; then
+            echo "组件文档已就位：$(find .dist/pages/atk-component-doc -type f | wc -l) 个文件"
+          else
+            echo "::error::发布根里没有 atk-component-doc，本次发布的「Component模式」入口会 404"
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .dist/online
+          path: .dist/pages
 
       - name: Deploy to GitHub Pages
         id: deployment
