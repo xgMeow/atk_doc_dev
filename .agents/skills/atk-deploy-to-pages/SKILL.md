@@ -9,8 +9,11 @@ description: 将本地 develop/master 分支强制推送到 GitHub 远程的 mai
 
 | 场景 | 本地分支 | 远程名 | 远程仓库 | Pages 地址 |
 | --- | --- | --- | --- | --- |
-| 开发版 | `develop` | `github-dev` | `git@github.com:xgMeow/atk_doc_dev.git` | https://xgmeow.github.io/atk_doc_dev/ |
-| 正式版 | `master` | `github-prod` | `git@github-xgmeow:xgMeow/atk_doc.git` | https://xgmeow.github.io/atk_doc/ |
+| 开发版 | `develop` | `github-dev` | `git@github.com:xgMeow/atk_doc_dev.git` | https://xgmeow.github.io/atk_doc_dev/online/ |
+| 正式版 | `master` | `github-prod` | `git@github-xgmeow:xgMeow/atk_doc.git` | https://xgmeow.github.io/atk_doc/online/ |
+
+> 站点产物发布在 `online/` 子目录下：发布根并列 `online/`（站点）与 `atk-component-doc/`（组件接口文档），
+> 见 `.github/workflows/deploy-docs.yml`。仓库根地址仍可访问，会跳到 `online/`。
 
 > ⚠️ 正式版用 `git@github-xgmeow:` 而非 `git@github.com:`。这是 `~/.ssh/config` 里的别名，
 > 用于切到对 `atk_doc` 有写权限的 `xgMeow` 身份（默认身份 `y-coder18` 无写权限）。**不要改回 `github.com`。**
@@ -86,10 +89,10 @@ git push -f github-prod master:main
 
 - 推送成功时，显示远程 main 的更新摘要，并输出对应链接：
   - **开发版**
-    - **Pages 页面**：`https://xgmeow.github.io/atk_doc_dev/`
+    - **Pages 页面**：`https://xgmeow.github.io/atk_doc_dev/online/`
     - **仓库地址**：`https://github.com/xgMeow/atk_doc_dev`
   - **正式版**
-    - **Pages 页面**：`https://xgmeow.github.io/atk_doc/`
+    - **Pages 页面**：`https://xgmeow.github.io/atk_doc/online/`
     - **仓库地址**：`https://github.com/xgMeow/atk_doc`
 - 推送失败时，分析错误原因并给出建议。
 
