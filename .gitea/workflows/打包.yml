@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+  # 组件接口文档跟随 atk-component 的 docs-latest 滚动资产，需要刷新线上这份文档时手动触发
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -28,8 +30,34 @@ jobs:
         env:
           # gitlink 站点挂在独立域名的根路径下，覆盖 GitHub Pages 的 /<repo>/ 规则
           SITE_BASE_ROOT: 'true'
+      # 组件文档与站点产物同级（.dist/atk-component-doc 与 .dist/online 并排），与离线版布局一致；
+      # 站内链接先回到站点根、再多退一级，正好落到这个目录。顺序必须在站点构建之后。
+      # 这一步不阻塞发布：GitLink 的 runner 到 GitHub 的链路不稳时，站点照常上线，只缺「Component模式」
+      # 一个入口。需要内网镜像时给这一步加 COMPONENT_DOC_URL 指向同一份 tar.gz。
+      - name: 拉取并解包组件接口文档
+        continue-on-error: true
+        run: node scripts/fetch-component-doc.mjs .dist
       - name: 检查构建产物
-        run: du -sh .dist/online && ls -lsh .dist/online
+        run: |
+          set -euo pipefail
+          du -sh .dist/online
+          du -sh .dist/atk-component-doc 2>/dev/null || true
+          ls -lsh .dist/online
+
+          # 回归保护：组件文档与站点产物同级，zh/en 首页上的入口应为 ../../atk-component-doc/html/index.html
+          # （见 src/.vuepress/shared/component-doc.js）
+          for page in zh en; do
+            grep -q 'href="\.\./\.\./atk-component-doc/html/index\.html"' ".dist/online/$page/index.html" || {
+              echo "::error::$page 首页的「Component模式」入口没有按同级布局解析"
+              exit 1
+            }
+          done
+
+          if [ -s .dist/atk-component-doc/html/index.html ]; then
+            echo "组件接口文档已就位"
+          else
+            echo "::error title=组件接口文档缺失::本次发布的「Component模式」入口会返回 404，请检查 runner 到 GitHub 的网络，或用 COMPONENT_DOC_URL 指向内网镜像"
+          fi
       - name: "远程文件拷贝[scp-2901445a]"
         uses: https://gitlink.org.cn/actions/scp-action@master
         with:
@@ -39,6 +67,24 @@ jobs:
           password: '${{ secrets.DOCS_SERVER_PWD }}'
           source: '.dist/online/*'
           target: '/root/atk-help/'
+          overwrite: true
+          strip_components: 2
+          timeout: 120s
+          command_timeout: 10m
+      # 组件文档单独传到站点根的同级目录：站内链接回到站点根再退一级后指向这里。
+      # 不用 if: steps.<id>.outcome 判断上一步的拉取结果——act_runner 上该字段不一定可用，
+      # 取不到时这一步会恒被跳过，表现是日志全对、服务器上却没有文档。缺文档时让这步自己失败，
+      # 由 continue-on-error 兜住，站点本身照常发布。
+      - name: "远程文件拷贝（组件文档）"
+        continue-on-error: true
+        uses: https://gitlink.org.cn/actions/scp-action@master
+        with:
+          host: '${{ secrets.DOCS_SERVER }}'
+          port: '22'
+          username: 'root'
+          password: '${{ secrets.DOCS_SERVER_PWD }}'
+          source: '.dist/atk-component-doc/*'
+          target: '/root/atk-help/atk-component-doc/'
           overwrite: true
           strip_components: 2
           timeout: 120s
