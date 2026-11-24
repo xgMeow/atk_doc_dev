@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -99,6 +99,19 @@ jobs:
         with:
           path: .dist/pages
 
+      # deploy-pages 偶尔在上传刚结束时还查不到 github-pages artifact：失败现场是上传结束与部署
+      # 开始同一秒，动作直接报 No artifacts named "github-pages"，而 artifact 随后又能查到。
+      # 隔一会儿重试一次，第二次仍失败才判红。
       - name: Deploy to GitHub Pages
         id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+
+      - name: 等待 Pages 收录 artifact
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 20
+
+      - name: Deploy to GitHub Pages（重试）
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
