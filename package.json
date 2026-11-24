@@ -12,9 +12,9 @@
 		"build:online": "vuepress build --config src/.vuepress/config-online.ts --dest .dist/online src",
 		"build:standalone": "vuepress build --config src/.vuepress/config-standalone.ts --dest .dist/standalone src && npm run script:standalone",
 		"build:standalone-kylin": "vuepress build --config src/.vuepress/config-standalone-kylin.ts --dest .dist/standalone-kylin src && npm run script:standalone-kylin",
-		"export:word": "node scripts/export-word.cjs",
 		"script:standalone": "node src/.vuepress/standalone.cjs .dist/standalone",
 		"script:standalone-kylin": "node src/.vuepress/standalone.cjs .dist/standalone-kylin",
+		"fetch:component-doc": "node scripts/fetch-component-doc.mjs .dist",
 		"postinstall": "patch-package"
 	},
 	"dependencies": {
