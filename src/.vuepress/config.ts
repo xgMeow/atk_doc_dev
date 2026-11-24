@@ -44,7 +44,8 @@ export const useConfig = ({type, plat=""}) => {
   return defineUserConfig({
     // 用来决定哪些文件会被当作页面处理的过滤规则
     pagePatterns: ["**/*.md", "!**/node_modules", "!**/.vuepress", "!**/CLAUDE.md"],
-    // GitHub Pages 部署路径。仓库名是 atk_doc，所以网站在 /atk_doc/ 子目录下
+    // 部署路径，由 shared/config.js 按运行环境计算：GitHub Pages 为 /<repo>/（发布根并列
+    // online/ 时再加上这一层），gitlink 站点在域名根为 /，本地开发为 /
     base: siteBase,
     // 站点默认语言（无 / 首页时，供主题推断根语言）
     lang: "zh-CN",
@@ -62,7 +63,7 @@ export const useConfig = ({type, plat=""}) => {
       },
     },
     // 配置网站图标
-    head: [['link', { rel: 'icon', href: '/images/logo.png'}]],
+    head: [['link', { rel: 'icon', href: `${siteBase}images/logo.png`}]],
     alias:{
       "@theme-hope/components/PageNav": path.resolve(__dirname,"./components/PageNav.js",),
       // AutoLink 在主题原版基础上增加了 atk-component: 链接的解析（见该文件顶部说明）

@@ -1,9 +1,21 @@
 // Component 模式文档（atk-component 项目，Doxygen 生成）的链接解析。
 //
-// 组件文档不随本站构建：它的产物与站点产物同级，位于站点目录之外——
-// .dist/online、.dist/standalone* 是站点产物，组件文档是旁边的 .dist/atk-component-doc，
-// 其站点入口在该目录的 html/index.html（同级还有 xml/，不对外）。
+// 组件文档不随本站源码构建：它由 atk-component 仓库的流水线产出，本站只负责取用与指路。
+// 交付布局只有一种，在线版与离线版保持一致：组件文档与站点产物同级，位于站点目录之外的
+// atk-component-doc/html/，入口是该目录的 index.html。
+//
+//   * 离线版：.dist/standalone* 是站点产物，.dist/atk-component-doc 在它旁边，随包交付；这个
+//     目录里除 html/ 外还有 Doxygen 附带的 xml/，不进站内链接；
+//   * 在线版：发布根下并列 online/（站点）与 atk-component-doc/（组件文档），组件文档由
+//     scripts/fetch-component-doc.mjs 拉到站点旁边，包里只有 html 的内容：
+//       - GitHub Pages：https://<user>.github.io/<repo>/online/ 与 .../<repo>/atk-component-doc/
+//       - Gitea（站点在域名根）：https://atk-help.gitlink.org.cn/ 与 .../atk-component-doc/
+//
 // 因此从站内任意页面到组件文档都要先回到站点根，再多跳出一层站点目录。
+//
+// 在线版必须留出这一层：站点直接放在发布根（base 为 /<repo>/、不带 online/ 这一层）时，
+// 多退一级会越过站点根到 origin 根，而 origin 根不在发布范围内，这个入口就跳不过去。
+// 两条在线流水线的产物形态见 .github/workflows/deploy-docs.yml 与 .gitea/workflows/打包.yml。
 //
 // 必须在渲染时就算好：站内路由切换后重新渲染的节点不会经过任何产物的后处理，
 // 只有组件渲染期拿得到当前页面路径，才能算出正确的 ../ 层数。
