@@ -128,7 +128,6 @@ export const zhSidebarConfig = sidebar({
     },
   ],
   "/zh/": [
-    // "",
     {
       text: "安装",
       prefix: "01-安装/",
@@ -144,7 +143,78 @@ export const zhSidebarConfig = sidebar({
     {
       text: "基础使用指南",
       prefix: "03-基础使用指南/",
-      children: "structure",
+      children: [
+        {
+          text: "主菜单栏",
+          prefix: "01-主菜单栏/",
+          children: "structure",
+          collapsible: true,
+        },
+        {
+          text: "场景管理",
+          prefix: "02-场景管理/",
+          children: "structure",
+          collapsible: true,
+        },
+        {
+          text: "对象管理",
+          prefix: "03-对象管理/",
+          children: [
+            {
+              text: "对象插入",
+              prefix: "01-对象插入/",
+              children: "structure",
+              collapsible: true,
+            },
+            {
+              text: "属性配置",
+              prefix: "02-属性配置/",
+              children: "structure",
+              collapsible: true,
+            },
+            {
+              text: "约束配置",
+              prefix: "03-约束配置/",
+              children: "structure",
+              collapsible: true,
+            },
+            { text: "状态控制", link: "04-状态控制.md" },
+            { text: "基本编辑操作", link: "05-基本编辑操作.md" },
+            { text: "命名对象", link: "06-命名对象.md" },
+            {
+              text: "姿态定义",
+              prefix: "07-姿态定义/",
+              children: "structure",
+              collapsible: true,
+            },
+            {
+              text: "RF",
+              prefix: "08-RF/",
+              children: "structure",
+              collapsible: true,
+            },
+          ],
+          collapsible: true,
+        },
+        {
+          text: "仿真控制",
+          prefix: "04-仿真控制/",
+          children: "structure",
+          collapsible: true,
+        },
+        {
+          text: "二三维地图",
+          prefix: "05-二三维地图/",
+          children: "structure",
+          collapsible: true,
+        },
+        {
+          text: "可视化",
+          prefix: "可视化/",
+          children: "structure",
+          collapsible: true,
+        },
+      ],
       collapsible: true,
     },
     {
