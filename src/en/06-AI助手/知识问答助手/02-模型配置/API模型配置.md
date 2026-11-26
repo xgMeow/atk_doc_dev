@@ -5,7 +5,7 @@ order: 2
 
 # API Model Configuration
 
-No local GPU is required; models are invoked through the API interfaces provided by cloud service providers. Enter the corresponding API Key, Base URL, and model name for the Q&A model and the embedding model respectively.
+No local GPU is required; models are invoked through the API interfaces provided by cloud service providers. The Q&A model and the embedding model can come from different providers; enter the API Key, Base URL, and model name for each according to its provider.
 
 ## Q&A Model Configuration
 
@@ -40,6 +40,12 @@ In the Main Model section of **Parameter Settings**, enter the API Key, Base URL
 ![Main Model Configuration](../../../../zh/06-AI助手/知识问答助手/02-模型配置/media/settings-panel.png)
 
 ## Embedding Model Configuration
+
+The embedding model must be a model that provides a vectorization interface.
+
+::: warning For Example
+DeepSeek provides chat models and cannot be entered in the Knowledge Base Embedding Model section!
+:::
 
 Using **text-embedding-v4** from the Qwen AI platform as an example.
 
