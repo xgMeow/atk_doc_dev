@@ -6,7 +6,7 @@ groups: [三维视图, 车辆, 船, 导弹, 地面站, 飞机, 火箭, 卫星]
 
 ## 作用
 
-设置对象 3D 模型偏移属性。
+设置对象三维模型偏移属性。
 
 ## 语法
 
@@ -29,25 +29,25 @@ VO <ObjectPath> ModelOffset {OffsetOption} {On | Off} [<X> <Y> <Z>]
 
 ## 示例
 
-::: details open **设置 3D 模型 Label 偏移**
+::: details open **设置三维模型 Label 偏移**
 ```
 VO */Satellite/Satellite1 ModelOffset Label On 10 20 30
 ```
 :::
 
-::: details open **设置 3D 模型 Translational 偏移**
+::: details open **设置三维模型 Translational 偏移**
 ```
 VO */Satellite/Satellite1 ModelOffset Translational off
 ```
 :::
 
-::: details open **设置卫星 3D 模型 Label 偏移**
+::: details open **设置卫星三维模型 Label 偏移**
 ```
 VO */Satellite/Satellite1 ModelOffset Label On 10 20 30
 ```
 :::
 
-::: details open **设置卫星 3D 模型 Translational 偏移**
+::: details open **设置卫星三维模型 Translational 偏移**
 ```
 VO */Satellite/Satellite1 ModelOffset Translational off
 ```
@@ -77,13 +77,13 @@ VO */Missile/Missile1 ModelOffset Translational off
 ```
 :::
 
-::: details open **设置 3D 模型标签偏移**
+::: details open **设置三维模型标签偏移**
 ```
 VO */LaunchVehicle/LaunchVehicle1 ModelOffset Label On 10 20 30
 ```
 :::
 
-::: details open **关闭 3D 模型平移偏移**
+::: details open **关闭三维模型平移偏移**
 ```
 VO */LaunchVehicle/LaunchVehicle1 ModelOffset Translational off
 ```

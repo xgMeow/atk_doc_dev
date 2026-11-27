@@ -6,9 +6,9 @@ groups: [三维视图, 车辆, 船, 导弹, 地面站, 飞机, 火箭, 卫星]
 
 ## 作用
 
-在 3D 视图中设置**范围轮廓线**的显示。
+在三维视图中设置**范围轮廓线**的显示。
 
-本命令作用于 **3D 窗口**；**2D 窗口**中显示的范围轮廓线由 [Graphics RangeContours](./Graphics%20RangeContours.md) 命令设置。
+本命令作用于 **三维窗口**；**二维窗口**中显示的范围轮廓线由 [Graphics RangeContours](./Graphics%20RangeContours.md) 命令设置。
 
 ## 语法
 

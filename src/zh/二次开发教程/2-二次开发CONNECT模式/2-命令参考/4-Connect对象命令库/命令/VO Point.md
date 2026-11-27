@@ -6,7 +6,7 @@ groups: [三维视图, 车辆, 船, 导弹, 地面站, 飞机, 火箭, 卫星]
 
 ## 作用
 
-设置对象 3D 模型点属性。
+设置对象三维模型点属性。
 
 ## 语法
 
@@ -28,13 +28,13 @@ VO <ObjectPath> Point {PointOptions}
 
 ## 示例
 
-::: details open **设置 3D 模型点属性**
+::: details open **设置三维模型点属性**
 ```
 VO */Satellite/Satellite1 Point Show On Size 7
 ```
 :::
 
-::: details open **设置卫星 3D 模型点属性**
+::: details open **设置卫星三维模型点属性**
 ```
 VO */Satellite/Satellite1 Point Show On Size 7
 ```
@@ -46,7 +46,7 @@ VO */Facility/Facility1 Point Show On Size 7
 ```
 :::
 
-::: details open **显示3D模型点**
+::: details open **显示三维模型点**
 ```
 VO */Missile/Missile1 Point show on
 ```
@@ -58,7 +58,7 @@ VO */Missile/Missile1 Point size 3
 ```
 :::
 
-::: details open **设置火箭 3D 模型点属性**
+::: details open **设置火箭三维模型点属性**
 ```
 VO */SLaunchVehicle/LaunchVehicle1 Point Show On Size 7
 ```
